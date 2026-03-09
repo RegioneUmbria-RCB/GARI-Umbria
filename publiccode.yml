@@ -1,63 +1,62 @@
-publiccodeYmlVersion: "0.2"
-
+publiccodeYmlVersion: 0.5.0
 name: GARI (Gestione Agricola Rurale Informatizzata della Regione Umbria)
-url: "https://github.com/RegioneUmbria-RCB/GARI-Umbria"
-softwareVersion: "1.0"
-releaseDate: "2025-06-25"
+applicationSuite: Web Application
+url: https://github.com/RegioneUmbria-RCB/GARI-Umbria
+releaseDate: 2025-06-25
 platforms:
   - web
-
-categories:
-  - data-visualization
-  - office
-
-usedBy:
-  - Regione Umbria
-  - Aziende agricole e CAA 
-  - Enti pubblici regionali
-  - Sistemi e banche dati nazionali
-
+organisation:
+  uri: https://www.regione.umbria.it/agricoltura/gias
+  name: Regione Umbria
 developmentStatus: stable
-
-softwareType: "standalone/web"
-
+softwareType: standalone/web
 description:
-  it:   
-    shortDescription: >
-          GARI (Gestione Agricola Rurale Informatizzata della Regione Umbria)
-    genericName: Gestione dei procedimenti amministrativi, normativi e operativi legati al settore agricolo     
-    longDescription: >
-        Il sistema è progettato per rispondere alle crescenti esigenze di efficienza, interoperabilità e trasparenza che caratterizzano la pubblica        amministrazione, con particolare riferimento al mondo agricolo, un settore complesso e altamente regolamentato. In questo contesto, la piattaforma si pone come strumento strategico per il coordinamento e la gestione dei dati, degli adempimenti normativi e dei processi amministrativi, fornendo una base tecnologica solida e flessibile. È in grado di armonizzare le esigenze degli utenti interni dell’Ente Pubblico (amministratori, tecnici, responsabili di procedimenti) con quelle di utenti esterni come aziende agricole, Centri di Assistenza Agricola (CAA), Organismi di Controllo, etc.
-    
+  it:
+    localisedName: GARI (Gestione Agricola Rurale Informatizzata della Regione Umbria)
+    shortDescription: Gestione dati, armonizzare esigenze Ente Pubblico e delle
+      aziende agricole, Centri di Assistenza Agricola (CAA), Organismi di
+      Controllo
+    longDescription: "strumento strategico per il coordinamento e la gestione dei
+      dati, degli adempimenti normativi e dei processi amministrativi, fornendo
+      una base tecnologica solida e flessibile. È in grado di armonizzare le
+      esigenze degli utenti interni dell’Ente Pubblico (amministratori, tecnici,
+      responsabili di procedimenti) con quelle di utenti esterni come aziende
+      agricole, Centri di Assistenza Agricola (CAA), Organismi di
+      Controllo."
+    documentation: https://github.com/RegioneUmbria-RCB/GARI-Umbria
+    apiDocumentation: https://github.com/RegioneUmbria-RCB/GARI-Umbria
     features:
-       Digitalizzazione e ottimizzazione dei processi agricoli regionali:
-        - Automazione dei procedimenti amministrativi per ridurre i tempi e gli errori.
-        - Accesso semplificato ai dati e alle informazioni utili per aziende agricole e CAA.
-       Scalabilità e modularità:
-        - Struttura modulare per adattarsi alle diverse priorità operative, consentendo uno sviluppo incrementale e l’integrazione di nuove funzionalità.
-        - Supporto a flussi di lavoro complessi attraverso moduli dedicati (es. QDCA, PUA, UMA, ACA).
-       Interoperabilità: 
-        - Integrazione con i sistemi informativi nazionali e regionali (es. SPID per l’autenticazione, servizi AGEA per fascicoli e piani colturali).
-        - Gestione dei dati cartografici attraverso sottosistemi GIS per visualizzazioni avanzate e analisi territoriali.
-       Semplificazione dell’accesso:
-        - Fruibilità diretta per gli utenti interni tramite profili configurabili.
-        - Accesso intuitivo per le aziende agricole e i loro rappresentanti, garantendo trasparenza e semplicità nell’interazione con la pubblica amministrazione.
-
+      - Digitalizzazione e ottimizzazione dei processi agricoli regionali
+      - Scalabilità e modularità
+      - Interoperabilità
+      - Semplificazione dell’accesso
+      - Automazione dei procedimenti amministrativi per ridurre i tempi e gli
+        errori
+      - Accesso semplificato ai dati e alle informazioni utili per aziende
+        agricole e CAA
+      - Supporto a flussi di lavoro complessi attraverso moduli dedicati (es.
+        QDCA, PUA, UMA, ACA)
+      - Integrazione con i sistemi informativi nazionali e regionali (es. SPID
+        per l’autenticazione, servizi AGEA per fascicoli e piani colturali)
+      - Gestione dei dati cartografici attraverso sottosistemi GIS per
+        visualizzazioni avanzate e analisi territoriali
+      - Fruibilità diretta per gli utenti interni tramite profili configurabili
+      - Accesso intuitivo per le aziende agricole e i loro rappresentanti,
+        garantendo trasparenza e semplicità nell’interazione con la pubblica
+        amministrazione
 legal:
-  license: 	EUPL-1.2
-  repoOwner: Regione Umbria
-
+  license: EUPL-1.2
 maintenance:
-  type: "internal"
-
+  type: internal
   contacts:
     - name: Carlo Falcinelli
-
+      email: carlo.falcinelli@puntozeroscarl.it
 localisation:
-  localisationReady: no
+  localisationReady: true
   availableLanguages:
     - it
-
-it:
-    riuso:
-        codiceIPA: r_umbria 
+IT:
+  countryExtensionVersion: "1.0"
+  piattaforme:
+    spid: true
+    cie: true
