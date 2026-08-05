@@ -1,0 +1,24 @@
+﻿<div class="gestione-pano-rateo-dialog">
+  <div class="gestione-pano-rateo-column">
+    <div class="gestione-pano-rateo-row">
+      <kendo-label class="full-width" [text]="'gis.GestionePianoRateoDescrizione' | transloco">
+        <kendo-textbox [(ngModel)]="description">
+        </kendo-textbox>
+      </kendo-label>
+    </div>
+
+    <!-- VANNI, Sezione parametri mappe di prescrizione, nascosto il calendario in modo che non vengano eseguite richieste di mappe di prescrizione a google cloud platform in attesa di migliore gestione -->
+    <div class="gestione-pano-rateo-row">
+      <kendo-label class="full-width" style="display:none" [text]="'gis.GestionePianoRateoDataLettura' | transloco">
+        <gis-analisi-mappe-satellitari-calendario [(selectedDate)]="referenceDate"
+          [featureCode]="selectedFeatureGuid$ | async">
+        </gis-analisi-mappe-satellitari-calendario>
+      </kendo-label>
+
+      <kendo-label class="full-width" [text]="'gis.GestionePianoRateoDimensioneCelle' | transloco">
+        <kendo-textbox [(ngModel)]="cellsize">
+        </kendo-textbox>
+      </kendo-label>
+    </div>
+  </div>
+</div>

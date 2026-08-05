@@ -1,0 +1,131 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data && data.length > 0" class="row">
+
+    @if (chartDataBIO.length > 0) {
+        <kendo-chart (seriesClick)="onBarClickBIO($event)" 
+                    class="chart-bio" 
+                    [chartArea]="{ height: plotAreaHeightBIO }">
+
+            <kendo-chart-title [text]="titleBIO" 
+                            [align]="'left'" 
+                            [margin]="{ bottom: 10 }" 
+                            font="bold 12px Arial, sans-serif">
+            </kendo-chart-title>
+
+            <kendo-chart-legend [visible]="otherAuditCharts.length == 0" position="bottom"></kendo-chart-legend>
+
+            <kendo-chart-category-axis>
+                <kendo-chart-category-axis-item [categories]="colture"
+                                                position="left">
+                </kendo-chart-category-axis-item>
+            </kendo-chart-category-axis>
+
+            <kendo-chart-value-axis>
+                <kendo-chart-value-axis-item 
+                    [majorUnit]="0.1"
+                    [labels]="{ format: '{0:P0}' }">
+                </kendo-chart-value-axis-item>
+            </kendo-chart-value-axis>
+
+            <kendo-chart-series>
+                <kendo-chart-series-item [name]= "'Completate' | transloco"
+                                        type="bar"
+                                        [stack]="{ type: '100%' }"
+                                        [data]="completate"
+                                        color="#4CAF50"
+                                        [gap]="barGap"
+                                        [spacing]="0"
+                                        [labels]="{
+                                                        visible: true,
+                                                        position: 'insideEnd',
+                                                        color: 'white',
+                                                        background: 'transparent',
+                                                        content: labelContent
+                                                    }">
+                </kendo-chart-series-item>
+                <kendo-chart-series-item [name]= "'NonCompletate' | transloco"
+                                        type="bar" 
+                                        [data]="nonCompletate"
+                                        color="#F44336"
+                                        [gap]="barGap"
+                                        [spacing]="0"
+                                        [labels]="{
+                                                        visible: true,
+                                                        position: 'insideEnd',
+                                                        color: 'white',
+                                                        background: 'transparent',
+                                                        content: labelContent
+                                                    }">
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+    }
+
+    <!-- Grafici per altri Audit_Tipo (tipo 12, ecc.) -->
+    @for (chart of otherAuditCharts; track chart.audit_Tipo; let idx = $index) {
+
+        <kendo-chart (seriesClick)="onBarClickOtherAudit($event, chart)" 
+                     class="chart-other-audit" 
+                     [chartArea]="{ height: idx === otherAuditCharts.length - 1 ? chart.plotAreaHeight : chart.plotAreaHeight - 30 }">
+
+            <kendo-chart-legend [visible]="idx === otherAuditCharts.length - 1" position="bottom"></kendo-chart-legend>
+
+            <kendo-chart-category-axis>
+                <kendo-chart-category-axis-item [categories]="chart.categories"
+                                                position="left"
+                                                [labels]="{ 
+                                                    padding: { left: 0 },
+                                                    font: 'bold 12px Arial, sans-serif'
+                                                }">
+                </kendo-chart-category-axis-item>
+            </kendo-chart-category-axis>
+
+            <kendo-chart-value-axis>
+                <kendo-chart-value-axis-item 
+                    [majorUnit]="0.1"
+                    [labels]="{ format: '{0:P0}' }">
+                </kendo-chart-value-axis-item>
+            </kendo-chart-value-axis>
+
+            <kendo-chart-series>
+                <kendo-chart-series-item [name]= "'Completate' | transloco"
+                                        type="bar"
+                                        [stack]="{ type: '100%' }"
+                                        [data]="chart.completate"
+                                        color="#4CAF50"
+                                        [gap]="barGap"
+                                        [spacing]="0"
+                                        [labels]="{
+                                                        visible: true,
+                                                        position: 'insideEnd',
+                                                        color: 'white',
+                                                        background: 'transparent',
+                                                        content: labelContent
+                                                    }">
+                </kendo-chart-series-item>
+                <kendo-chart-series-item [name]= "'NonCompletate' | transloco"
+                                        type="bar" 
+                                        [data]="chart.nonCompletate"
+                                        color="#F44336"
+                                        [gap]="barGap"
+                                        [spacing]="0"
+                                        [labels]="{
+                                                        visible: true,
+                                                        position: 'insideEnd',
+                                                        color: 'white',
+                                                        background: 'transparent',
+                                                        content: labelContent
+                                                    }">
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+    }
+
+</div>
+
+<div *ngIf="!loading && data && data.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunDatoRegistrato' | transloco }}</p>
+</div>

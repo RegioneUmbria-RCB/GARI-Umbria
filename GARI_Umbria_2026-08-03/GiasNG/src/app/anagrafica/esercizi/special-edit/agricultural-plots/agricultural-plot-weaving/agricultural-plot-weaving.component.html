@@ -1,0 +1,79 @@
+<h5 class="card-title">{{ 'TessituraTerreno' | transloco }}</h5>
+<div class="row form-row">
+  <form [formGroup]="weavingForm">
+    <div class="col-3 col-sm-12">
+      <gias-numeric-template
+        [name]="'PercSabbia' | transloco"
+        [placeholder]="'appezzamento.Sabbia_Placeholder' | transloco"
+        giasFormControlName="sand"
+        [format]="'n2'"
+        [decimals]="2"
+        [maxValue]="100"
+        [minValue]="0"
+        (valueChange)="onChange()"
+      >
+      </gias-numeric-template>
+    </div>
+    <div class="col-3 col-sm-12">
+      <gias-numeric-template
+        [name]="'PercLimo' | transloco"
+        [placeholder]="'appezzamento.Limo_Placeholder' | transloco"
+        giasFormControlName="silt"
+        [format]="'n2'"
+        [decimals]="2"
+        [maxValue]="100"
+        [minValue]="0"
+      >
+      </gias-numeric-template>
+    </div>
+    <div class="col-3 col-sm-12">
+      <gias-numeric-template
+        [name]="'PercArgilla' | transloco"
+        [placeholder]="'appezzamento.Argilla_Placeholder' | transloco"
+        giasFormControlName="clay"
+        [format]="'n2'"
+        [decimals]="2"
+        [maxValue]="100"
+        [minValue]="0"
+        (valueChange)="onChange()"
+      >
+      </gias-numeric-template>
+    </div>
+  </form>
+  <form [formGroup]="weavingClassForm">
+    <div class="col-3 col-sm-12">
+      <gias-text-template
+        [name]="'Tessitura' | transloco"
+        giasFormControlName="description"
+        [isDisabled]="true"
+      >
+      </gias-text-template>
+    </div>
+  </form>
+</div>
+
+<div class="agricultural-plots-weaving-msg-text">
+  <h5>{{ 'SelectedAgriculturalPlots' | transloco }}</h5>
+</div>
+
+<app-listview
+  [data$]="rows$"
+  [height$]="listViewHeight$"
+  [removeDataItem$]="removeDataItem$"
+  [resetStates$]="resetStates$"
+  [showDeleteBtn]="showListViewDeleteBtn"
+  [loading$]="loading$"
+  removeBtnTitle="RemoveRowFromList"
+></app-listview>
+
+<div class="agricultural-plot-weaving-btn">
+  <button
+    kendoButton
+    class="bottom btn btn-primary btn-primary-fill"
+    fillMode="outline"
+    (click)="submit()"
+    [disabled]="!weavingForm.valid"
+  >
+    {{ 'UpdateWeaving' | transloco }}
+  </button>
+</div>

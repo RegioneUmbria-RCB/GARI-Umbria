@@ -1,0 +1,385 @@
+.gis-toolbar-container {
+    margin: 0 auto;
+    margin-left: -12px;
+    margin-top: 2vh;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: absolute;
+    width: 100%;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    justify-content: center;
+}
+
+.gis-toolbar {
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 10px;
+    background-color: rgb(255 255 255 / 90%);
+    z-index: 1001;
+}
+
+.gis-toolbar button,
+.dropdown-container button {
+    background-color: #002d5a;
+    color: white;
+    border: 0;
+    text-transform: uppercase;
+    padding: 0.2rem 0.25rem;
+}
+
+.gis-toolbar .item,
+.gis-toolbar .items {
+    padding: 1rem;
+    border-right: solid 1px #d3d3d3;
+    width: fit-content;
+    display: inline-block;
+}
+
+.gis-toolbar .item:last-child,
+.gis-toolbar .items:last-child {
+    border-right: 0;
+}
+
+.gis-toolbar .items>div{
+    margin-right: 1rem;
+    display: inline-block;
+}
+.gis-toolbar .items input {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    vertical-align: bottom;
+    border-color: #d3d3d3;
+    border-style: solid;
+    background-color: #f5f5f5;
+    font-size: 10pt;
+    padding-left: 10px;
+    width: 7rem;
+}
+
+.gis-toolbar .items .same-element-effect input {
+    padding: 2.4px;
+    padding-left: 10px;
+}
+
+.gis-toolbar .items>div:last-child{
+    margin-right: 0;
+}
+
+.gis-toolbar-btn-attivo {
+    background-color: red !important;
+}
+
+.left-rounded-full {
+    border-bottom-left-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.right-rounded-full {
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.border-left-0 {
+    border-left: 0;
+}
+
+.border-right-0 {
+    border-right: 0;
+}
+
+/* .same-element-effect button {
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    color: #002d5a;
+    border: solid 2px #d3d3d3;
+    height: 35.4px;
+    border-left: 0;
+} */
+
+.xo-mx-4{
+    margin-right: 4px;
+}
+
+.btn-transparent {
+    background-color: transparent !important;
+    border: 0;
+}
+
+.dropdown-container {
+    top: 56px;
+    right: 74px;
+    position: absolute;
+    height: fit-content;
+    width: fit-content;
+    background: white;
+    z-index: 9500;
+    border-radius: 10px;
+    box-shadow: -4px -1px 15px -14px;
+    border: solid 1px #d3d3d3;
+}
+
+.dropdown-text-container {
+    text-align: left;
+}
+
+.dropdown-text-container h6,
+.dropdown-text-container p{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.9rem;
+}
+
+.dropdown-container h6 {
+    text-transform: uppercase;
+    color: #D52B1E;
+    font-size: 0.9rem;
+}
+
+.dropdown-text-container p {
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    color: #575757;
+}
+
+.options-row {
+    border-bottom: solid 1px #EBEBEB;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.options-row.first {
+    border-top: solid 1px #EBEBEB;
+}
+
+.options-row.last {
+    border-bottom: none;
+}
+
+.dropdown-container hr {
+    background-color: #ebebeb;
+    height: 1px;
+    border: none;
+    opacity: 1;
+}
+
+.options-row p:last-child {
+    border-left: solid 1px #EBEBEB;
+}
+
+.gis-toolbar .item, .gis-toolbar .items, .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+    padding: 0.5rem 0.8rem;
+}
+
+.gis-toolbar button:hover {
+    -webkit-box-shadow: 0px 1px 6px 0px rgba(0, 45, 90, 0.6);
+    -moz-box-shadow: 0px 1px 6px 0px rgba(0, 45, 90, 0.6);
+    -o-box-shadow: 0px 1px 6px 0px rgba(0, 45, 90, 0.6);
+    box-shadow: 0px 1px 6px 0px rgba(0, 45, 90, 0.6);
+}
+.gis-toolbar .item:last-child button:hover, .gis-toolbar .same-element-effect button:hover {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.gis-toolbar .items input:focus, .gis-toolbar .items input:focus-visible{
+    outline: 0px solid rgba(0, 45, 90, 0.6);
+}
+
+.right-rounded-full {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.xo-mx-4 {
+    margin-left: 4px;
+}
+
+.k-button {
+    gap: 0.1rem
+}
+
+input.latlng::placeholder {
+        font-size: 0.65em;
+}
+
+
+
+
+/* RESPONSIVE */
+@media only screen and (max-width: 1600px) {
+
+    /* toolbar padding inner */
+    .gis-toolbar .item, .gis-toolbar .items, .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+        padding: 0.5rem 0.7rem;
+    }
+    .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+        padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+    }
+}
+@media only screen and (max-width: 1560px) {
+
+    /* toolbar padding inner */
+    .gis-toolbar .item, .gis-toolbar .items, .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+        padding: 0.5rem 0.5rem;
+    }
+    .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+        padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+    }
+}
+@media only screen and (max-width: 1520px) {
+
+    /* toolbar padding inner */
+    .gis-toolbar .item, .gis-toolbar .items, .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+       padding: 0.5rem 0.5rem;
+    }
+    .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+       padding: 0.5rem 0.5rem 0.5rem 0rem;
+    }
+
+    /* reduce font-size */
+    .gis-toolbar .k-button-md {
+        font-size: 0.66rem;
+    }
+    .gis-toolbar .items input {
+       font-size: 9.4pt;
+    }
+
+    /* search Indirizzo */
+    .gis-toolbar .same-element-effect button {
+        height: 33.8px;
+    }
+
+    /* Icon size in button */
+    .gis-toolbar .xi-display-settings-dark, .gis-toolbar .xi-arrow-down-dark, .gis-toolbar .xi-search-dark, .gis-toolbar .xi-arrow-down-light, .gis-toolbar .xi-coordinates-light, .gis-toolbar .xi-tools-list-light, .gis-toolbar .xi-info-balloon-light, .gis-toolbar .xi-poi-base-map-light, .gis-toolbar .xi-gps-light, .gis-toolbar .xi-search-light, .gis-toolbar .xi-update-light, .gis-toolbar .xi-measure-light, .gis-toolbar .xi-draw-gps-plants-white {
+        height: 1.62rem;
+        width: 1.62rem;
+    }
+    .gis-toolbar .xi-calendar-filter-light {
+       height: 1.6rem;
+       width: 2.3rem;
+    }
+
+}
+@media only screen and (max-width: 1400px) {
+
+    /* reduce font-size */
+    .gis-toolbar .items input {
+        font-size: 8.4pt;
+        line-height: 1.45rem;
+    }
+    .gis-toolbar .items .same-element-effect input {
+        line-height: 1.55rem;
+    }
+
+    /* Icon size in button */
+    .gis-toolbar .xi-display-settings-dark, .gis-toolbar .xi-arrow-down-dark, .gis-toolbar .xi-search-dark, .gis-toolbar .xi-arrow-down-light, .gis-toolbar .xi-coordinates-light, .gis-toolbar .xi-tools-list-light, .gis-toolbar .xi-info-balloon-light, .gis-toolbar .xi-poi-base-map-light, .gis-toolbar .xi-gps-light, .gis-toolbar .xi-search-light, .gis-toolbar .xi-update-light, .gis-toolbar .xi-measure-light, .gis-toolbar .xi-draw-gps-plants-white {
+        height: 1.52rem;
+        width: 1.52rem;
+    }
+    .gis-toolbar .xi-calendar-filter-light {
+       height: 1.5rem;
+       width: 2.3rem;
+    }
+
+    /* ------ width column toolbar */
+    .gis-toolbar .items > div {
+        margin-right: 0.6rem;
+    }
+
+}
+@media only screen and (max-width: 1330px) {
+
+    /* reduce font-size */
+    .gis-toolbar .items input {
+        font-size: 8.4pt;
+        line-height: 1.45rem;
+        padding-left: 6px;
+    }
+    .gis-toolbar .items .same-element-effect input {
+        line-height: 1.55rem;
+    }
+
+    /* Icon size in button */
+    .gis-toolbar .xi-display-settings-dark, .gis-toolbar .xi-arrow-down-dark, .gis-toolbar .xi-search-dark, .gis-toolbar .xi-arrow-down-light, .gis-toolbar .xi-coordinates-light, .gis-toolbar .xi-tools-list-light, .gis-toolbar .xi-info-balloon-light, .gis-toolbar .xi-poi-base-map-light, .gis-toolbar .xi-gps-light, .gis-toolbar .xi-search-light, .gis-toolbar .xi-update-light, .gis-toolbar .xi-measure-light, .gis-toolbar .xi-draw-gps-plants-white {
+        height: 1.42rem;
+        width: 1.42rem;
+    }
+    .gis-toolbar .xi-calendar-filter-light {
+       height: 1.4rem;
+       width: 2.3rem;
+    }
+
+    /* ------ width column toolbar */
+    .gis-toolbar .items > div {
+        margin-right: 0.4rem;
+    }
+    .gis-toolbar .items input {
+        max-width: 120px;
+    }
+
+
+}
+@media only screen and (max-width: 1180px) {
+
+    /* reduce font-size */
+    .gis-toolbar .k-button-md {
+        font-size: 0.6rem;
+    }
+    .gis-toolbar .items input {
+       font-size: 8.4pt;
+    }
+
+    /* ------ width column toolbar */
+    .gis-toolbar .items input {
+        max-width: 100px;
+    }
+
+}
+@media only screen and (max-width: 1100px) {
+
+    /* toolbar padding inner */
+    .gis-toolbar .item, .gis-toolbar .items, .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+       padding: 0.35rem 0.35rem;
+    }
+    .gis-toolbar .item:last-child, .gis-toolbar .items:last-child {
+       padding: 0.35rem 0.35rem 0.35rem 0rem;
+    }
+
+    /* Icon size in button */
+    .gis-toolbar .xi-display-settings-dark, .gis-toolbar .xi-arrow-down-dark, .gis-toolbar .xi-search-dark, .gis-toolbar .xi-arrow-down-light, .gis-toolbar .xi-coordinates-light, .gis-toolbar .xi-tools-list-light, .gis-toolbar .xi-info-balloon-light, .gis-toolbar .xi-poi-base-map-light, .gis-toolbar .xi-gps-light, .gis-toolbar .xi-search-light, .gis-toolbar .xi-update-light, .gis-toolbar .xi-measure-light, .gis-toolbar .xi-draw-gps-plants-white {
+        height: 1.32rem;
+        width: 1.32rem;
+    }
+    .gis-toolbar .xi-calendar-filter-light {
+       height: 1.3rem;
+       width: 2.3rem;
+    }
+
+    /* reduce font-size */
+    .gis-toolbar .k-button-md {
+        font-size: 0.6rem;
+    }
+    .gis-toolbar .items input {
+       font-size: 8pt;
+    }
+    .gis-toolbar .items input {
+        line-height: 1.25rem;
+    }
+    .gis-toolbar .items .same-element-effect input {
+        line-height: 1.55rem;
+    }
+
+
+    /* ------ width column toolbar */
+    .gis-toolbar .items input {
+        max-width: 89px;
+    }
+
+}

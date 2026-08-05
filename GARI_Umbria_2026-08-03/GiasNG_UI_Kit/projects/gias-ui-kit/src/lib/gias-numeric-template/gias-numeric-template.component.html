@@ -1,0 +1,144 @@
+<!--
+<div *ngIf="inputType == 0" class="form-horizontal" [attr.formGroup]="parentGroup ? parentGroup : null">
+  <div class="form-group">
+    <div class="input-group">
+      <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+        {{name}}
+      </span>
+      <kendo-numerictextbox
+      class="form-control valid"
+      [ngClass]="{'required' : obligatory}"
+      [(ngModel)]="value"
+      (ngModelChange)="changeValue($event)"
+      [format]="format"
+      [disabled]="isDisabled"
+      [attr.formControlName]="giasFormControlName ? giasFormControlName : null"
+      >
+      </kendo-numerictextbox>
+  </div>
+    </div>
+</div>
+
+<div *ngIf="inputType == 1">
+  <mat-form-field class="example-full-width">
+    <mat-label>{{name}}</mat-label>
+    <kendo-numerictextbox
+      class="form-control valid"
+      [ngClass]="{'required' : obligatory}"
+      [(ngModel)]="value"
+      (ngModelChange)="changeValue($event)"
+      [format]="format"
+      [disabled]="isDisabled"
+      [attr.formControlName]="giasFormControlName ? giasFormControlName : null"
+      >
+      </kendo-numerictextbox>
+  </mat-form-field>
+</div>-->
+<div *ngIf="(giasFormControlName == undefined || giasFormControlName == null || giasFormControlName == '')">
+    <div *ngIf="inputType == 0" class="form-horizontal">
+        <div class="form-group">
+            <div class="input-group">
+        <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+          {{name}}
+        </span>
+                <kendo-numerictextbox class="form-control valid" #Numeric
+                                      [ngClass]="{'required' : obligatory}"
+                                      [(ngModel)]="value"
+                                      (ngModelChange)="changeValue($event)"
+                                      [format]="format"
+                                      [disabled]="isDisabled"
+                                      [readonly]="readonly"
+                                      [autoCorrect]="autoCorrect"
+                                      [changeValueOnScroll]="changeValueOnScroll"
+                                      (blur)="Blur()"
+                                      (focus)="Focus()"
+                                      [spinners]="spinners"
+                                      [step]="step"
+                                      [decimals]="decimals"
+                                      [selectOnFocus]="selectOnFocus">
+                </kendo-numerictextbox>
+            </div>
+        </div>
+    </div>
+
+    <kendo-formfield
+        *ngIf="inputType == 2">
+        <kendo-label [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+        <kendo-numerictextbox class="form-control valid" #Numeric
+                              [ngClass]="{'required' : obligatory}"
+                              [(ngModel)]="value"
+                              (ngModelChange)="changeValue($event)"
+                              [format]="format"
+                              [disabled]="isDisabled"
+                              [readonly]="readonly"
+                              [min]="minValue"
+                              [max]="maxValue"
+                              [autoCorrect]="autoCorrect"
+                              [changeValueOnScroll]="changeValueOnScroll"
+                              [spinners]="spinners"
+                              (blur)="Blur()"
+                              (focus)="Focus()"
+                              [step]="step"
+                              [decimals]="decimals"
+                              [selectOnFocus]="selectOnFocus">
+        </kendo-numerictextbox>
+        <kendo-formerror *ngIf="errorMsg != ''">{{ errorMsg }}</kendo-formerror>
+    </kendo-formfield>
+</div>
+<div *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+    <div *ngIf="inputType == 0" class="form-horizontal">
+        <div class="form-group">
+            <div class="input-group">
+        <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+          {{name}}
+        </span>
+                <kendo-numerictextbox class="form-control valid" #Numeric
+                                      [ngClass]="{'required' : obligatory}"
+                                      [format]="format"
+                                      [min]="minValue"
+                                      [max]="maxValue"
+                                      [formControlName]="giasFormControlName"
+                                      (valueChange)="changeValue($event)"
+                                      [autoCorrect]="autoCorrect"
+                                      [changeValueOnScroll]="changeValueOnScroll"
+                                      (blur)="Blur()"
+                                      [disabled]="isDisabled"
+                                      [readonly]="readonly"
+                                      [spinners]="spinners"
+                                      (focus)="Focus()"
+                                      [step]="step"
+                                      [decimals]="decimals"
+                                      [selectOnFocus]="selectOnFocus">
+                </kendo-numerictextbox>
+            </div>
+        </div>
+    </div>
+
+
+    <kendo-formfield *ngIf="inputType == 2">
+        <kendo-label [ngClass]="{'lbl_required' : validator}" *ngIf="name != null">{{name}}</kendo-label>
+        <kendo-label class="lbl_required" *ngIf="validator"> *</kendo-label>
+        <kendo-numerictextbox ngDefaultControl kendoTooltip #Numeric
+                              [ngClass]="{'required' : obligatory}"
+                              [format]="format"
+                              [min]="minValue"
+                              [max]="maxValue"
+                              [title]="title"
+                              style="width: 100%"
+                              [formControlName]="giasFormControlName"
+                              (valueChange)="changeValue($event)"
+                              [changeValueOnScroll]="changeValueOnScroll"
+                              [autoCorrect]="autoCorrect"
+                              (blur)="Blur()"
+                              [id]="completeFormControlName"
+                              [disabled]="isDisabled"
+                              [readonly]="readonly"
+                              [spinners]="spinners"
+                              (focus)="Focus()"
+                              [step]="step"
+                              [decimals]="decimals"
+                              [selectOnFocus]="selectOnFocus">
+        </kendo-numerictextbox>
+        <kendo-formerror *ngIf="errorMsg != ''">{{ errorMsg }}</kendo-formerror>
+    </kendo-formfield>
+</div>

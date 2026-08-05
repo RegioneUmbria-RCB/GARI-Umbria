@@ -1,0 +1,146 @@
+<kendo-dialog [height]="height" [width]="width" (close)="onClose()">
+  <kendo-dialog-titlebar>
+    {{ 'MeteoWidget' | transloco }}
+  </kendo-dialog-titlebar>
+
+  <div class="meteo-widget-full-container">
+    <div class="meteo-widget-full-row">
+      <div class="meteo-widget-full-column-1" *ngIf="today != null">
+        <p class="meteo-widget-full-city">{{ today.city }} </p>
+        <img alt="" alt="img_weather" title="imgweather" [src]="today.imageSrc" width="70%" height="auto">
+
+        <ul>
+          <li class="bold"> {{ 'ValoreMeteoTemperatura' | transloco:  { temp: today.temperature, desc: today.description } }} </li>
+          <li class="bold"> {{ 'ValoreMeteoUmidita' | transloco: { humidity: today.humidity } }} </li>
+          <li class="bold"> {{ 'ValoreMeteoPioggia' | transloco: { rain: today.rain } }} </li>
+          <li class="bold"> {{ 'ValoreMeteoVento' | transloco: { speed: today.windSpeed, direction: today.windDirection } }} </li>
+        </ul>
+
+        <div *ngFor="let forecast of forecasts" class="forecast-container">
+          <p class="bold m-0"> {{ 'PrevisioneData' | transloco: { date: forecast.date } }}</p>
+          <ul *ngIf="forecast.forecasts.length > 0">
+            <li *ngFor="let el of forecast.forecasts">
+              <span class="bold">{{ 'Ore' | transloco }} {{ el.hour }}:</span>
+              <img alt="" style="position: relative;" title="imgweather" [src]="el.imageSrc" height="20px" width="auto">
+              {{ 'ValoreMeteoTemperatura' | transloco:  { temp: el.temperature, desc: el.description } }}
+              {{ 'ValoreMeteoVento' | transloco: { speed: el.windSpeed, direction: el.windDirection } }}
+            </li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="meteo-widget-full-column-3">
+        <kendo-chart>
+          <kendo-chart-title
+            [text]="'PrevisioniSettimanali' | transloco">
+          </kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="line" [data]="minTemperatureWeek"
+              [name]="'TemperaturaMinima' | transloco" color="#1E90FF">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="line" [data]="maxTemperatureWeek"
+              [name]="'TemperaturaMassima' | transloco" color="#FF0000">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="line" [data]="temperatureWeek"
+              [name]="'TemperaturaSettimana' | transloco" color="#000000">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="weekDay">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+        </kendo-chart>
+
+        <kendo-chart>
+          <kendo-chart-title [text]="'PrevisioniPioggiaOre' | transloco: { time: currentChartTime }">
+          </kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="line" [data]="mmRainCorrentTime" [name]="'PioggiaMM' | transloco"
+              color="#1E90FF">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="weekDate">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+        </kendo-chart>
+
+        <kendo-chart>
+          <kendo-chart-title
+            [text]="'PrevisioniPressioneOre' | transloco: { time: currentChartTime }">
+          </kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="column" [data]="pressureCurrentTime" [name]="'PressioneHPa' | transloco"
+              color="#1E90FF">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="column" [data]="groundPressureCurrentTime"
+              [name]="'PressioneSuoloHPa' | transloco" color="#00008B">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="weekDate">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+        </kendo-chart>
+
+        <kendo-chart>
+          <kendo-chart-title [text]="'PrevisioniPioggia' | transloco">
+          </kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="line" [data]="mmRainWeek" [name]="'PioggiaMM' | transloco"
+              color="#1E90FF">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="weekDay">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+        </kendo-chart>
+
+        <kendo-chart>
+          <kendo-chart-title
+            [text]="'PrevisioniPressione' | transloco">
+          </kendo-chart-title>
+          <kendo-chart-series>
+            <kendo-chart-series-item type="column" [data]="pressureWeek" [name]="'PressioneHPa' | transloco"
+              color="#1E90FF">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+            <kendo-chart-series-item type="column" [data]="groundPressureWeek"
+              [name]="'PressioneSuoloHPa' | transloco" color="#00008B">
+              <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+          </kendo-chart-series>
+          <kendo-chart-category-axis>
+            <kendo-chart-category-axis-item [categories]="weekDay">
+            </kendo-chart-category-axis-item>
+          </kendo-chart-category-axis>
+
+          <kendo-chart-tooltip format="{0}"></kendo-chart-tooltip>
+          <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+        </kendo-chart>
+
+      </div>
+    </div>
+  </div>
+</kendo-dialog>

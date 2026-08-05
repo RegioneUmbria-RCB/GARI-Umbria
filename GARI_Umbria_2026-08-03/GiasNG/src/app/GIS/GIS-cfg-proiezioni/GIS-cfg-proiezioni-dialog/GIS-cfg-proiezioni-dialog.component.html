@@ -1,0 +1,59 @@
+<ng-container *ngIf="configuration$ | async"></ng-container>
+
+<kendo-dialog [width]="width">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700">
+      {{ (inputConfiguration == null ? 'gis.NuovaConfigurazione' : 'gis.ModificaConfigurazione') | transloco }}
+    </div>
+  </kendo-dialog-titlebar>
+
+  <div class="cfg-proiezioni" *ngIf="data$ | async as data">
+    <div class="configuration">
+      <div>
+        <kendo-label>{{'Algoritmo' | transloco}}</kendo-label>
+        <kendo-dropdownlist [data]="algorithms" [value]="data.algorithm" textField="Algoritmo_Des"
+                            valueField="Algoritmo_Cod" (valueChange)="algorithmSubject.next($event)" [filterable]="true"
+                            [kendoDropDownFilter]="filterSettings"></kendo-dropdownlist>
+      </div>
+
+      <div>
+        <kendo-label>{{'DescrizioneConfigurazione' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="descriptionSubject.next($event)" [value]="data.description"
+                       [clearButton]="true"></kendo-textbox>
+      </div>
+
+<!--      <div class="align-content-start">-->
+<!--        <form [formGroup]="activateForm">-->
+<!--          <gias-switch-template-->
+<!--            *ngIf="inputConfiguration?.canManage ?? true"-->
+<!--            [name]="'AlgoritmoAttivabile' | transloco"-->
+<!--            [giasFormControlName]="'canActivate'"-->
+<!--            (valueChange)="updateConfigurationCanActivateProperty($event)"-->
+<!--          ></gias-switch-template>-->
+<!--        </form>-->
+<!--      </div>-->
+    </div>
+
+    <kendo-splitter orientation="horizontal" style="height: 400px;" *ngIf="layers$ | async as layers">
+      <kendo-splitter-pane [collapsible]="true" size="33%" *ngIf="data.layer1 != null">
+        <gis-cfg-proiezioni-layer title="Layer 1" [parameters]="data.algorithm?.Parametri" [layers]="layers"
+                                  [inputLayer]="data.layer1"></gis-cfg-proiezioni-layer>
+      </kendo-splitter-pane>
+
+      <kendo-splitter-pane [collapsible]="true" size="33%" *ngIf="data.layer2 != null">
+        <gis-cfg-proiezioni-layer title="Layer 2" [parameters]="data.algorithm?.Parametri" [layers]="layers"
+                                  [inputLayer]="data.layer2"></gis-cfg-proiezioni-layer>
+      </kendo-splitter-pane>
+
+      <kendo-splitter-pane [collapsible]="true" size="33%" *ngIf="data.layerRes != null">
+        <gis-cfg-proiezioni-layer title="Layer 3" [parameters]="data.algorithm?.Parametri" [layers]="layers"
+                                  [inputLayer]="data.layerRes"></gis-cfg-proiezioni-layer>
+      </kendo-splitter-pane>
+    </kendo-splitter>
+  </div>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeDialog()">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton (click)="submit()">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

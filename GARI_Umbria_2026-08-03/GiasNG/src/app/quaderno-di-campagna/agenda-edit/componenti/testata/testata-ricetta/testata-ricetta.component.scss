@@ -1,0 +1,68 @@
+.k-appbar {
+    align-items: center;
+}
+
+.gias-testata-container {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 0; //5px;
+    margin-bottom: 0; // 5px;
+    width: calc(100vw - 20px);
+}
+
+.k-appbar .k-appbar-section {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    // align-items: center;
+    align-items: stretch;
+}
+
+.gias-testata-section {
+    display: flex;
+    margin-right: 5px;
+}
+
+.gias-testata-section.ricetta-note,
+.gias-testata-section.ricetta-descrizione {
+    flex: 1;
+}
+
+.gias-data-container,
+.gias-number-container {
+    width: 140px;
+}
+
+.gias-description-container {
+    width: 100%;
+}
+
+.gias-note-container {
+    width: 100%;
+}
+
+.gias-switch-two-labels {
+    display: flex;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 600px) {
+    .gias-testata-container {
+        flex-direction: column;
+        margin-top: 0; //5px;
+        margin-bottom: 0; // 5px;
+    }
+}
+
+// @media only screen and (max-width: 1686px) {
+//     .gias-testata-container{
+//         display: block;
+//     }
+// }
+@media only screen and (max-width: 1000px) {
+    .gias-testata-container {
+        display: block;
+        margin-top: 0; //5px;
+        margin-bottom: 0; // 5px;
+    }
+}
+

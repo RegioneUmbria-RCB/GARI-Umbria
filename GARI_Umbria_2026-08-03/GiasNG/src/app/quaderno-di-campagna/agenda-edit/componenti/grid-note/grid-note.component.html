@@ -1,0 +1,19 @@
+<gias-kendo-grid *ngIf="!isEmpty" #gridNote
+    [gridId]="'NoteGridId'" [customCommandColumnHeaderTemplate]="customCommandColumn" >
+</gias-kendo-grid>
+
+<kendo-dialog [title]="'GestioneNotePreferite' | transloco"
+              *ngIf="showNoteManager"
+              [width]="'80%'" [height]="630"
+              (close)="showNoteManager = false">
+    <app-gestione-note></app-gestione-note>
+</kendo-dialog>
+
+<ng-template #customCommandColumn let-column="column">
+  <div kendoTooltip>
+    <button (click)="editDefault(column)" class="btn btn-qcd btn-header"
+            [title]="'Gestisci' | transloco">
+      <fa-icon [icon]="faGear" aria-hidden="true"></fa-icon>
+    </button>
+  </div>
+</ng-template>

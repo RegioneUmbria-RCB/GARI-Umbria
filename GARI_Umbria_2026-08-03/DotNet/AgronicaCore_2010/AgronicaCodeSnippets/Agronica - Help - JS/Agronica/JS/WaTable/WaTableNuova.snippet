@@ -1,0 +1,41 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>WaTable: Crea Nuovo via JS</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>id del div dove sarà renderizzato il WaTable</ToolTip>
+          <Default>id</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="jscript">
+        <![CDATA[var waTable$id$;
+        
+        AgroWA_Table_sistemaDati(dd); //aggiusto i dati in base al tipo
+        $$('#tabella$id$').html('');
+        waTable$id$ = $$('#tabella$id$').WATable({
+            pageSize: 10,
+            pageSizes: [10, 15, 20, 30, 40, 50],
+            columnPicker: true,
+            filter: true,
+            preFill: true,
+            types: {
+                string: { placeHolder: '...', filterTooltip: AgroWA_Table_Tooltip_String() },
+                date: { format: 'dd/MM/yyyy', filterTooltip: AgroWA_Table_Tooltip_Date() },
+                number: { filterTooltip: AgroWA_Table_Tooltip_Number() },
+                bool: { filterTooltip: AgroWA_Table_Tooltip_Bool() }
+            }
+        }).data('WATable').setData(dd);
+        InitWaTable("#tabella$id$", waTable$id$);]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

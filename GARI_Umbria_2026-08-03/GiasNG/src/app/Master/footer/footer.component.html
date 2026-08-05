@@ -1,0 +1,23 @@
+<div *ngIf="loadComplete">
+  <div *ngIf="footerComponent.visible" class="">
+  <div class="AgronicaFooter mt-2 AgroFooter">
+    <div class="row">
+      <div class="col-6">
+        <img alt="" [src]="link_logo" />
+      </div>
+      <div class="col-6" style="text-align:right">
+          <h5>{{"Assistenza" | transloco}}
+            <a href="callto:{{footerComponent.phone}}">
+              <img alt="" title='' [src]="link_phoneImg"></a>
+            <a href="mailto:{{footerComponent.mail}}">
+                <div kendoTooltip>
+                    <img alt="" [title]='footerComponent.mail' [src]="link_mailImg" style='margin:5px;cursor:pointer;'>
+                </div>
+            </a>
+          </h5>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,108 @@
+<gis-window #window [windowArgs]="windowArgs" class="pb-3">
+
+    <!-- <div class="head-snippet">
+        <div (click)="toggleSnippet()">
+            <span><i aria-hidden="true" class="xi-eye-edit-dark info-icon"></i></span>
+            <span class="ml-1">Personalizza elementi visivi</span>
+            <i aria-hidden="true" class="float-right xi-arrow-down-dark info-icon" *ngIf="!isSnippetOpen"></i>
+            <i aria-hidden="true" class="float-right xi-arrow-up-dark info-icon" *ngIf="isSnippetOpen"></i>
+        </div>
+        <div *ngIf="isSnippetOpen">
+            <div *ngIf="groupLabel" (click)="toggleGroupLabel()">Raggruppa descrizioni<span class="info-icon"><i aria-hidden="true" class="xi-eye-visible-dark"></i></span></div>
+            <div *ngIf="!groupLabel" (click)="toggleGroupLabel()">Raggruppa descrizioni<span class="info-icon"><i aria-hidden="true" class="xi-eye-invisible-dark"></i></span></div>
+            <div *ngIf="showLabel" (click)="toggleShowLabel()">Mostra descrizione sintetica<span class="info-icon"><i aria-hidden="true" class="xi-eye-visible-dark"></i></span></div>
+            <div *ngIf="!showLabel" (click)="toggleShowLabel()">Mostra descrizione sintetica<span class="info-icon"><i aria-hidden="true" class="xi-eye-invisible-dark"></i></span></div>
+        </div>
+    </div> -->
+
+    <gis-layer-window-toolbar *ngIf="toolbarVisibility" [modality]="modality"></gis-layer-window-toolbar>
+
+    <ng-container *ngIf="isFullModality()">
+        <div class="list-header">
+            <div>
+                <kendo-dropdownlist [data]="dropdownData" textField="Option_DesValue" valueField="Option_Value"
+                    [valuePrimitive]="true" [value]="layerSelected" (selectionChange)="selectLayer($event)">
+                </kendo-dropdownlist>
+            </div>
+            <span (click)="openLayerVisibilityConfigurationWindow()" class="info-icon"><i aria-hidden="true"
+                    class="xi-settings-dark"></i></span>
+        </div>
+
+        <div class="list-body drop-list-container" style="background-color: #f9fbfd;">
+            <div class="item-container drop-list-box" style="justify-content: flex-end; align-items: center;">
+                <div class="info-box" style="width: 100%">
+                    <kendo-textbox class="custom-textbox" [(ngModel)]="filterValue" style="width: 100%"
+                        placeholder="{{'gis.CercaLayer' | transloco}}" (valueChange)="onFilterChange()"
+                        [clearButton]="true" rounded="full" clearButtonIcon="xi-drawer-close">
+                    </kendo-textbox>
+                </div>
+                <span class="list-item-text" style="min-width: 25%">Totale: {{ getNumberOfFeatures() }}</span>
+                <span (click)="toggleAllLayersLabels()" class="info-icon"><i aria-hidden="true"
+                        [class]="showLabel ? 'xi-layer-callout-ab-visible' : 'xi-layer-callout-ab-invisible'"></i></span>
+                <span (click)="toggleAllLayerGrouping()" class="info-icon"><i aria-hidden="true"
+                        [class]="layerGrouping ? 'xi-layer-callout-46-visible' : 'xi-layer-callout-46-invisible'"></i></span>
+                <span (click)="toggleAllLayersVisible()" class="info-icon"><i aria-hidden="true"
+                        [class]="allLayerVisible ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'"></i></span>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- Fixed layers -->
+    <div class="list-body fixed-list-container" *ngIf="fixedLayersData.length != 0">
+        <ng-container #list *ngFor="let item of fixedLayersData">
+            <gis-layer-list-item
+                *ngIf="layerSelected?.Option_Value != enum_TipologiaLayer.Entita || item.id != enum_LayerElementiGraficiStd.ANALISI_MAPPE_SATELLITARI"
+                [id]="item.id" [dataItem]="item" [type]="layerSelected" [borderTop]="!isFirst"
+                (click)="toggleSelectedItem($event, item)" class="item-container drop-list-box fixed-list-item"
+                [ngClass]="{'selected' : item.id == itemSelected?.id }" [ngStyle]=" setStyle(item) ">
+            </gis-layer-list-item>
+
+            <gis-layer-list-item-mappe-satellitari
+                *ngIf="layerSelected?.Option_Value == enum_TipologiaLayer.Entita && item.id == enum_LayerElementiGraficiStd.ANALISI_MAPPE_SATELLITARI"
+                [dataItem]="item" [type]="layerSelected" (click)="toggleSelectedItem($event, item)"
+                class="item-container drop-list-box fixed-list-item"
+                [ngClass]="{'selected' : item.id == itemSelected?.id }" [ngStyle]=" setStyle(item) ">
+            </gis-layer-list-item-mappe-satellitari>
+        </ng-container>
+        <hr class="hr-custom" />
+    </div>
+
+    <!-- Other layers -->
+    <div cdkDropList class="list-body drop-list-container" (cdkDropListDropped)="drop($event)">
+        <ng-container *ngIf="{ active: mappePrescrizioneEngineActive$ | async } as mappePrescrizione">
+            <ng-container *ngFor="let item of pagedLayersData">
+                <gis-layer-list-item-mappe-prescrizione
+                    *ngIf="mappePrescrizione.active && item.id == enum_LayerElementiGraficiStd.Mappe_Prescrizione" cdkDrag
+                    [dataItem]="item" [type]="layerSelected" (click)="toggleSelectedItem($event, item)"
+                    class="item-container drop-list-box fixed-list-item" [ngClass]="{'selected' : item.id == itemSelected?.id}"
+                    [ngStyle]=" setStyle(item) ">
+                    <i aria-hidden="true" cdkDragHandle class="xi-drag-and-drop drag-and-drop-margin"></i>
+                </gis-layer-list-item-mappe-prescrizione>
+
+                <gis-layer-list-item
+                    *ngIf="item.FeatureTypeId != 100 && !(mappePrescrizione.active && item.id == enum_LayerElementiGraficiStd.Mappe_Prescrizione)"
+                    cdkDrag [dataItem]="item" [type]="layerSelected" [borderTop]="!isFirst"
+                    [numberOfFeatures]="getNumberOfFeatures(item.id)" [modality]="modality"
+                    [numberOfVisibleFeatures]="visibleFeatures.get(item.id)" (click)="toggleSelectedItem($event, item)"
+                    class="item-container drop-list-box" [ngClass]="{'selected' : item.id == itemSelected?.id}"
+                    [ngStyle]=" setStyle(item) ">
+                    <i aria-hidden="true" cdkDragHandle class="xi-drag-and-drop drag-and-drop-margin"></i>
+                </gis-layer-list-item>
+
+                <gis-layer-list-item-raster *ngIf="item.FeatureTypeId == 100" cdkDrag [dataItem]="item"
+                    [type]="layerSelected" [borderTop]="!isFirst" [numberOfFeatures]="getNumberOfFeatures(item.id)"
+                    [numberOfVisibleFeatures]="visibleFeatures.get(item.id)" (click)="toggleSelectedItem($event, item)"
+                    class="item-container drop-list-box" [ngClass]="{'selected' : item.id == itemSelected?.id}"
+                    [ngStyle]=" setStyle(item) ">
+                    <i aria-hidden="true" cdkDragHandle class="xi-drag-and-drop drag-and-drop-margin"></i>
+                </gis-layer-list-item-raster>
+            </ng-container>
+        </ng-container>
+    </div>
+
+    <div class="gis-layer-pager" *ngIf="isFullModality()">
+        <kendo-datapager [style.width.%]="100" [(pageSize)]="pageSize" [skip]="skip" [total]="total" [info]="false"
+            (pageChange)="onPageChange($event)" [pageSizeValues]="[3, 5, 8]">
+        </kendo-datapager>
+    </div>
+</gis-window>

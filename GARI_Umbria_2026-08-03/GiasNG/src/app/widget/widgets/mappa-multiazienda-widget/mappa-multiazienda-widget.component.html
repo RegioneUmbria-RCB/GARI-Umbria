@@ -1,0 +1,6 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<!--Non è possibile aprire il componente GIS (<GIS></GIS>), poiché non è supportata più di un'istanza GIS per pagina-->
+<gias-iframe-window *ngIf="!loading" [url]="urlGIS"></gias-iframe-window>

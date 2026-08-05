@@ -1,0 +1,13 @@
+<div class="prof-imprese-column prof-imprese-contatti" *ngIf="contatti$ != null">
+  <p>{{ 'profImprese.SelezionaUnaOPiuContatti' | transloco }} </p>
+  <kendo-grid [kendoGridBinding]="contatti$ | async" [loading]="contattiLoading" [filterable]="true">
+    <kendo-grid-command-column [width]="70">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <kendo-switch (valueChange)="selectContatto($event, dataItem)"
+          [checked]="isContattoSelected(dataItem)"></kendo-switch>
+      </ng-template>
+    </kendo-grid-command-column>
+
+    <kendo-grid-column field="description" [title]="'Contatti' | transloco"></kendo-grid-column>
+  </kendo-grid>
+</div>

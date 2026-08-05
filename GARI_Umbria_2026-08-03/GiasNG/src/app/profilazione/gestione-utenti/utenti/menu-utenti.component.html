@@ -1,0 +1,12 @@
+<section>
+    <app-filtri-utente></app-filtri-utente>
+    <app-grid-menu-profilazione></app-grid-menu-profilazione>
+</section>
+<section class="recap-grid-container" *ngIf="permessoLetturaProfili">
+  <div kendoTooltip [showOn]="getTooltipShowOnProperty()" [title]="getTooltipText()">
+    <kendo-expansionpanel [(expanded)]="isExpanded" [disabled]="tooManyUsers || noUsersLoaded"
+            title="{{ 'TabellaRiepilogativa' | transloco }}: {{ 'UtentiEPermessi' | transloco }}">
+        <app-grid-utenti-permessi *ngIf="isExpanded && !tooManyUsers"></app-grid-utenti-permessi>
+    </kendo-expansionpanel>
+  </div>
+</section>

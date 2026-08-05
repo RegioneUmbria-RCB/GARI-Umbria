@@ -1,0 +1,6 @@
+<div class="prof-imprese-column prof-imprese-campo-applicativo">
+  <p> {{ 'profImprese.CampoApplicativo' | transloco }} </p>
+  <kendo-dropdownlist [data]="campoApplicativo$ | async" textField="NotaUtilizzo_Des" valueField="NotaUtilizzo_Cod"
+    [kendoDropDownFilter]="dropdownSettings" [value]="campoApplicativoSubject | async"
+    (valueChange)="campoApplicativoSubject.next($event)" [valuePrimitive]="true"></kendo-dropdownlist>
+</div>

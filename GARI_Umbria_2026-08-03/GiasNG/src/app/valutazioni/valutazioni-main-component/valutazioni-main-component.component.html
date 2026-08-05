@@ -1,0 +1,41 @@
+<kendo-appbar position="top" class="container">
+
+    <div #topTabsRightArrow class="arrow" (click)="moveToLeft()">
+        <fa-icon class="faTabsLeft"></fa-icon>
+    </div>
+    <div #anagTopTar2 id="anag-top-bar-2">
+        <kendo-appbar-section class="appbar-items" (wheel)="mouseMoved($event)">
+            <div>
+                <ul #topTabsContainer>
+                    <li *ngIf="getPermesso(Valutazioni_Rischio ,0)" routerLink="./PianoConti" class="nav-item"
+                        routerLinkActive="nav-item active">
+                        <!-- <fa-icon style="padding-right: 5px;" size="lg" class="faCentri" [icon]="faHome"
+                            aria-hidden="true">
+                        </fa-icon> -->
+                        <span style="cursor: pointer;">{{ 'PianoConti' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Valutazioni_Rischio ,0)" routerLink="./Valutazioni" class="nav-item"
+                        routerLinkActive="nav-item active">
+                        <!-- <fa-icon style="padding-right: 5px;" size="lg" class="faImpresa" [icon]="faIndustry"
+                            aria-hidden="true">
+                        </fa-icon> -->
+                        <span style="cursor: pointer;">{{ 'Valutazioni' | transloco }}</span>
+                    </li>
+                </ul>
+            </div>
+        </kendo-appbar-section>
+    </div>
+    <div #topTabsLeftArrow class="arrow" (click)="moveToRight()">
+        <fa-icon class="faTabsRight"></fa-icon>
+    </div>
+    <div class="topbar-right-filler"></div>
+</kendo-appbar>
+<!--<app-kendo-tree [treeContainerContext]="treeContextAnagrafiche">
+</app-kendo-tree>-->
+<div class="container anagraficaContainer">
+    <div class="row">
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+
+  <div class="dss-nutrizione-page" [formGroup]="DssNutrizioneForm">
+
+    <!-- Page header -->
+    <div class="page-header k-mb-4">
+      <h2 class="k-m-0">{{ 'dssNutrizione_page_title' | transloco }}</h2>
+      <p class="k-color-subtle k-mt-1 k-mb-0">{{ 'dssNutrizione_page_description' | transloco }}</p>
+    </div>
+
+    <!-- Global loading spinner – FR002 §1 (UIL001 §5) -->
+    <gias-master-spinner *ngIf="isLoading()"></gias-master-spinner>
+
+    <!-- Filter area – FR002 §2: Data corrente + Filtro Specie Vegetale (UIL001 §3) -->
+    <div class="filters-section k-mb-4">
+      <kendo-card [width]="'100%'">
+        <kendo-card-body>
+          <div class="k-d-flex k-flex-wrap k-gap-4 k-align-items-end">
+            <!-- Data corrente indicator – UIL001 §3 -->
+            <div class="col-12 col-md-6">
+              <span class="k-color-subtle">{{ 'dssNutrizione_filter_dati_al' | transloco }} {{ today | date:'dd/MM/yyyy' }}</span>
+            </div>
+            <!-- Specie Vegetale multiselect – UIL001 §3 -->
+            <div class="col-12 col-md-6">
+              <gias-multiselect-template-s
+                id="filtroSpecie"
+                [name]="'SpecieVegetale' | transloco"
+                giasFormControlName="SpecieVegetali"
+                [listItems]="specieList()"
+                textField="Veg_Des"
+                valueField="Veg_Cod"
+                [isDisabled]="specieLoading() || !specieList().length"
+                [filterable]="true"
+                [clearButton]="true"
+                [valuePrimitive]="false">
+              </gias-multiselect-template-s>
+            </div>
+          </div>
+        </kendo-card-body>
+      </kendo-card>
+    </div>
+
+    <!-- Main content: Panel Bar per Centro Aziendale – FR002 §1 (UIL003 §2) -->
+    <ng-container *ngIf="!isLoading()">
+
+      <!-- Global error state – UIL003 §5 -->
+      <div *ngIf="hasError()" class="k-mb-4">
+        <kendo-alert type="error">
+          {{ 'dssNutrizione_error_load_appezzamenti' | transloco }}
+        </kendo-alert>
+        <button kendoButton themeColor="primary" (click)="reload()" class="k-mt-2">
+          {{ 'Riprova' | transloco }}
+        </button>
+      </div>
+
+      <!-- Empty state – UIL003 §4 -->
+      <kendo-alert
+        *ngIf="!hasError() && centroAziendaleGroups().length === 0"
+        type="info">
+        {{ 'dssNutrizione_empty_appezzamenti' | transloco }}
+      </kendo-alert>
+
+      <!-- Panel Bar groups by Centro Aziendale – UIL003 §2 (gias-panelbar) -->
+      <ng-container *ngFor="let group of centroAziendaleGroups(); let i = index">
+        <gias-panelbar
+          [id]="'dss-centro-' + group.saCod"
+          [willStoreCookies]="false"
+          [headerTemplate]="panelHeader"
+          [contentTemplate]="panelContent"
+          class="k-mb-3">
+
+          <!-- Panel header: "Centro Aziendale: [Nome] ([Sa_Cod])" + badge – UIL003 §3 -->
+          <ng-template #panelHeader>
+            <div class="k-d-flex k-align-items-center k-gap-2">
+              <strong>{{ 'CentroAziendale' | transloco }}: {{ group.saDes }} ({{ group.saCod }})</strong>
+              <span kendoBadge themeColor="base" size="small">
+                {{ group.appezzamenti.length }} {{ 'Appezzamenti' | transloco }}
+              </span>
+            </div>
+          </ng-template>
+
+          <!-- Responsive widget cards grid – UIL003 §3 (3 cols desktop, 2 tablet, 1 mobile) -->
+          <ng-template #panelContent>
+            <div class="dss-widget-grid k-p-3">
+              <app-dss-nutrizione-widget-card
+                *ngFor="let widget of group.appezzamenti"
+                [appezzamento]="widget.appezzamento">
+              </app-dss-nutrizione-widget-card>
+            </div>
+          </ng-template>
+
+        </gias-panelbar>
+
+        <br>
+
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+

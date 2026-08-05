@@ -1,0 +1,16 @@
+<gias-side-filters-template [filtersFormGroup]="sideFilters"
+                         [filtersTemplate]="filtersTemplate"
+                         (search)="applyFilters()"
+></gias-side-filters-template>
+
+<section class="padded">
+  <app-letture-contatori-aziendali-grid [searchFilters$]="searchFilters$"
+  ></app-letture-contatori-aziendali-grid>
+</section>
+
+<ng-template #filtersTemplate>
+  <h6>{{'FiltraLettureNelPeriodo' | transloco}}</h6>
+  <form [formGroup]="filters">
+    <gias-validita formGroupName="dateInterval"></gias-validita>
+  </form>
+</ng-template>

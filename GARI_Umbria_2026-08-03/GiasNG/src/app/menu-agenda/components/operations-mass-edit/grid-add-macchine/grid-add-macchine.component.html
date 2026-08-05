@@ -1,0 +1,35 @@
+<gias-kendo-grid #gridAddMech>
+    <ng-container headerContent>
+        <div style="display:flex; flex-flow:column;">
+          <div style="display:flex; flex-flow:row;">
+
+            <div style="display:flex; align-items: center; margin-right: 10px;">
+              <div class="visibilitaPubblica legend-spacing"></div>
+              <div class="text-spacing">{{"qdc.MacchinaPubblica" | transloco}}</div>
+            </div>
+            <div style="display:flex; align-items: center;">
+              <div class="visibilitaAziendale legend-spacing"></div>
+              <div class="text-spacing">{{"qdc.MacchinaAziendale" | transloco}}</div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-flow:row;">
+
+            <form [formGroup]="settings">
+                <div style="display:flex; align-items: center;">
+                    <gias-checkbox-template
+                        [name]="'qdc.SoloAziendali' | transloco"
+                        giasFormControlName="mostraSoloAziendali">
+                      </gias-checkbox-template>
+
+                    <gias-checkbox-template
+                        [name]="'qdc.EliminaMacchineAssociate' | transloco"
+                        giasFormControlName="eliminaAssociate">
+                      </gias-checkbox-template>
+                </div>
+            </form>
+
+          </div>
+        </div>
+      </ng-container>
+</gias-kendo-grid>

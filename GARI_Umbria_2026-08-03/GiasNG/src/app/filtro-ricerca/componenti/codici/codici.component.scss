@@ -1,0 +1,583 @@
+/* Services Customization Cascade Style Sheet */
+
+/* reusable items (reusable across the entire application?) */
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+.title {
+    margin-left: 15px;
+}
+
+.card-shadow {
+    -webkit-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px  rgba(0,0,0,0.08);
+    -moz-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px  rgba(0,0,0,0.08);
+    -o-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08), 0px 6px 6px 0px  rgba(0,0,0,0.08);
+    box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px rgba(0,0,0,0.08);
+}
+
+.action-button {
+    height: 28px;
+    line-height: 28px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 14px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.action-button.dark {
+    color: white;
+    border: 1px solid #205771;
+}
+.action-button.light {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/* layout */
+#ServicesCustomization {
+    width: 100%;
+    background-color: white;
+}
+
+#ServicesCustomization,
+.services-customization-container,
+.services-manager-container,
+.services-favourite-container
+{
+    border-radius: 8px;
+}
+
+.services-customization-container .services-customization-item {
+    flex: 1;
+    margin: 15px;
+}
+
+/* main card */
+.services-customization-header {
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.services-customization-header .actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.services-customization-header .actions-container .action-button {
+    cursor: pointer;
+}
+
+.services-customization-header .title-container {
+    display: flex;
+    align-items: center;
+}
+
+.services-customization-header .title-container .title {
+    line-height: 58px;
+    margin: 0;
+    margin-left: 30px;
+}
+
+.services-customization-header .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.services-customization-body {
+    display: flex;
+}
+
+
+/* Services manager card */
+#ServicesManager {
+    min-height: 100px;
+}
+
+.services-manager-body {
+    padding-bottom: 25px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #BABABA;
+}
+
+.services-manager-container {
+    border: 1px solid #F0F0F0;
+}
+.services-manager-title {
+    text-align: center;
+}
+
+.services-manager-header {
+  border-radius: 8px 8px 0px 0px;
+  border: 1px solid #BABABA;
+}
+
+.services-manager-header .search-services {
+    margin-top: 17px;
+    margin-left: 40px;
+    margin-bottom: 25px;
+    margin-right: 40px;
+    display: flex;
+    background-color: #F5F5F5;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #BABABA;
+}
+
+.services-manager-header .search-services .icon {
+    margin-top: -4px;
+    z-index: 1;
+}
+
+.services-manager-header .search-services input#searchService {
+    background-color: #F5F5F5;
+    border: none;
+    width: 100%;
+    margin-right: 17px;
+}
+.services-manager-header .search-services input#searchService:focus {
+    outline: none;
+}
+
+/* service manager scrollbar */
+.services-manager-body .services-container {
+    overflow-y: auto;
+    margin-right: 10px;
+}
+
+.services-favourite-body .services-container {
+    overflow-y: auto;
+    margin-right: 10px;
+}
+
+.services-container::-webkit-scrollbar {
+    left:-100px;
+    width: 10px;
+    /* width of the entire scrollbar */
+}
+
+.services-container::-webkit-scrollbar-track {
+    background: #F5F5F5; /* color of the tracking area */
+}
+
+.services-container::-webkit-scrollbar-thumb {
+    background-color: #002D5A;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid white;  /* creates padding around scroll thumb */
+}
+
+
+/* Services favourite card */
+#ServicesFavourite {
+    min-height: 300px;
+}
+
+.services-favourite-header {
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+.services-favourite-header .star-icon {
+    float: left;
+    margin-left: 10px;
+    font-size: 28px;
+}
+.services-favourite-header .services-favourite-title {
+    text-align: center;
+}
+
+.services-favourite-body {
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #BABABA;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #F5F5F5;
+}
+
+/***************
+ Service item
+ ****************/
+.services-container .service-item {
+  min-height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 20px;
+}
+
+.services-container .service-item-master {
+  min-height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.services-container .service-item .checkbox-icon {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+.services-container .service-item .checkbox-icon .fa {
+    width: 14px;
+    font-size: 1rem;
+}
+
+.services-container .service-item .checkbox-icon.readonly {
+    color: #BABABA;
+}
+.services-container .service-item .checkbox-icon.readonly .fa.fa-square-o{
+    display: none;
+}
+.services-container .service-item .checkbox-icon.readonly .fa.fa-check-square{
+    display: inline-block;
+    color: #BABABA;
+}
+
+.services-container .service-item .checkbox-icon.active.unchecked {
+    cursor: pointer;
+}
+.services-container .service-item .checkbox-icon.active.unchecked:hover .fa.fa-square-o{
+    display: none;
+}
+.services-container .service-item .checkbox-icon.active.unchecked:hover .fa.fa-check-square{
+    display: inline-block;
+    color: #002D5A;
+}
+.services-container .service-item .checkbox-icon.active.unchecked .fa.fa-square-o{
+    cursor: pointer;
+    color: #BABABA;
+}
+.services-container .service-item .checkbox-icon.active.unchecked .fa.fa-check-square{
+    display: none;
+}
+
+.services-container .service-item .checkbox-icon.remove .fa:hover {
+    cursor: pointer;
+}
+
+.services-container .service-content {
+    width: 100%;
+    margin-right: 20px;
+    background-color: white;
+}
+
+.service-item-text, .service-item-text-master{
+  margin-left: 10px;
+  white-space: pre-line;
+}
+
+.service-item-text-master{
+  font-weight: bold;
+}
+
+.service-content i.fa:first-child {
+    color: #1A1A1A;
+    font-size: 20px;
+}
+
+.service-content i {
+    color: #1A1A1A;
+}
+
+.service-content i.fa.fa-gias {
+    width: 30px;
+    height: 30px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 32px auto;
+}
+
+.service-content i.fa.fa-gias.fa-angle-right {
+    display: none; /* attualmente la freccia di navigazione è disabilitata perchè non è prevista la navigazione */
+    width: 12px;
+    height: 25px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* switch */
+.services-customization-container .item-switch {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/* toggle in label designing */
+.services-customization-container .toggle {
+    position : relative ;
+    display : inline-block;
+    width : 41px;
+    height : 22px;
+    background-color: #002D5A;
+    border-radius: 30px;
+    /* border: 2px solid #002D5A; */
+    margin-top: 5px;
+}
+
+/* After slide changes */
+.services-customization-container .toggle:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+    top: 1px;
+    left: 1px;
+    transition:  all 0.5s;
+}
+
+/* Checkbox checked effect */
+.services-customization-container .checkbox:checked + .toggle::after {
+    left : 20px;
+}
+
+/* Checkbox checked toggle label bg color */
+.services-customization-container .checkbox:checked + .toggle {
+    background-color: #002D5A;
+    /* border: 2px solid #002D5A; */
+}
+
+/* Checkbox vanished */
+.services-customization-container .checkbox {
+    display : none;
+}
+
+/* readonly widget */
+.services-customization-container .readonly .toggle {
+    position : relative ;
+    display : inline-block;
+    width : 51px;
+    height : 27px;
+    background-color: #BABABA;
+    border-radius: 30px;
+    border: 2px solid #BABABA;
+}
+.services-customization-container .readonly .checkbox:checked + .toggle {
+    background-color: #BABABA;
+    border: 2px solid #BABABA;
+}
+
+
+/* table optimization */
+@media only screen and (max-width: 1023px) {
+    /*  */
+    .services-customization-container {
+        padding-bottom: 5px;
+    }
+
+    .services-customization-header .title-container {
+        display: inline-block;
+    }
+
+    .services-customization-header .title-container .title,
+    .services-customization-header .title-container .checkbox-container {
+        line-height: 30px;
+        margin-left: 20px;
+    }
+
+    .services-customization-header .title-container .checkbox {
+        margin-left: 0px;
+        margin-right: 30px;
+    }
+
+    .services-manager-body .services-container {
+        max-height: 125px;
+    }
+
+    .services-customization-body {
+        display: block;
+    }
+
+    .services-customization-header .actions-container {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+}
+
+/* mobile optimization */
+@media only screen and (max-width: 767px) {
+    #ServicesCustomization {
+        margin-top: 15px;
+    }
+
+    .services-customization-header {
+        display: flex;
+    }
+
+    .services-manager-title {
+        font-size: 14px;
+        text-align: center;
+    }
+    .services-manager-header .search-services {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .services-favourite-header .star-icon {
+        font-size: 22px;
+    }
+    .services-favourite-header {
+        font-size: 14px;
+    }
+
+    .services-customization-header .actions-container {
+        margin-bottom: 5px;
+        margin-left: 20px;
+        justify-content: start;
+    }
+    .services-favourite-body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .services-manager-body {
+        padding-bottom: 15px;
+    }
+
+    .services-customization-header .actions-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .action-button {
+        margin-top: 10px;
+    }
+}
+
+/* optimization heght scroll */
+@media screen and (min-width: 1023px) and (max-height: 1010px) {
+
+    .services-manager-body .services-container {
+        max-height: 600px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 730px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 960px) {
+
+    .services-manager-body .services-container {
+        max-height: 550px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 580px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 910px) {
+
+    .services-manager-body .services-container {
+        max-height: 500px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 530px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 860px) {
+
+    .services-manager-body .services-container {
+        max-height: 450px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 480px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 810px) {
+
+    .services-manager-body .services-container {
+        max-height: 400px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 430px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 760px) {
+
+    .services-manager-body .services-container {
+        max-height: 350px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 380px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 710px) {
+    .services-manager-body .services-container {
+        max-height: 300px;
+    }
+    .services-favourite-body .services-container {
+        max-height: 330px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 660px) {
+    .services-manager-body .services-container {
+        max-height: 250px;
+    }
+    .services-favourite-body .services-container {
+        max-height: 280px;
+    }
+}
+
+/*********************************
+ **** services shared style   ****
+ *********************************/
+
+ /* used with color-border-area-*
+    create a card left border colored
+    and all other borders in grey
+ */
+.service-card-border-left {
+    border: 1px solid #E8E8E8;
+    border-radius: 4px;
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+.service-card-border-left-appezzamento {
+  border: 1px solid #b73229;
+  border-radius: 4px;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.service-card-border-left-impianto {
+  border: 1px solid green;
+  border-radius: 4px;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.service-card-border-left-esercizio {
+  border: 1px solid #f8dd6f;
+  border-radius: 4px;
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+

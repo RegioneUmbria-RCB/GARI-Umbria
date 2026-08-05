@@ -1,0 +1,180 @@
+﻿
+form, body {
+    background-color: #fff !important;
+}
+
+form {
+    display: contents;
+}
+
+form > #kendoWindowiFrameGeneric {
+    display: none;
+}
+
+body #wrap_master{
+    display: flex;
+}
+
+.container {
+    padding: 0px !important;
+    display: flex;
+}
+
+.RiepilogoMeteoContainer {
+    flex: auto;
+    overflow: hidden;
+}
+
+.window-loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+}
+
+.zero_opacity { 
+    opacity: 0; 
+}
+
+.k-tabstrip {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.k-tabstrip:focus {
+    box-shadow: none;
+}
+
+.k-tabstrip .k-content:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.meteo-grid {
+    display: grid;
+    grid-gap: 10px 10px;
+    font-size: small;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+ .meteo-cell { 
+     padding: 5px; 
+     cursor: default;
+} 
+
+.inside-container {
+    padding: 4px 0px;
+}
+
+.inside-cell { 
+    position: relative; 
+    cursor: pointer;
+}
+
+.meteo-sensore { 
+    background-color: #aaa; 
+    color: #fff; 
+    font-weight: bold; 
+    padding: 0 0.5em; 
+    height: 2em; 
+    display: flex; 
+    align-items: center; 
+    font-size: 16px;
+} 
+
+.meteo-sensore-text { 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    flex-grow: 1;
+}
+
+.meteo-um {
+    padding-left: 5px;
+}
+
+.meteo-um > span {
+    vertical-align: middle;
+}
+
+.meteo-value { 
+    text-align: center; 
+    font-size: 16px; 
+    color: #333; 
+    font-weight: bold; 
+    height: 2em;
+}
+
+.meteo-value > span {
+    vertical-align: middle;
+}
+
+.meteo-aggr {
+    display: flex;
+    height: 3em;
+} 
+
+.meteo-aggr > div { 
+    flex-grow: 1; 
+    text-align: center; 
+} 
+
+.meteo-aggr-text { 
+    font-size: 11px; 
+    color: #9A9A9A; 
+} 
+
+.meteo-aggr-value { 
+    color: #333;
+    overflow: hidden; 
+    height: 1.25em;
+}
+
+.ripple { 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+    width: 100%; 
+    height: 100%; 
+    border-radius: 4px;
+    background-color: #e5e5e5; 
+    opacity: 0.5; 
+    transform: scale(0); 
+    z-index: 1000;
+}
+
+.inside-cell:hover > .ripple {
+    animation: ripple-in 2s;
+}
+
+@keyframes ripple-in {
+    0% {
+        transform: scaleX(0);
+    }
+
+    20% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+.wind-dir {
+    margin: 0;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    font-size: 20px;
+    color: #00BFFF;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+}
+
+.chart-block {
+    margin-top: 10px;
+}

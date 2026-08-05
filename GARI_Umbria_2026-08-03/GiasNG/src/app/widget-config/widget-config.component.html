@@ -1,0 +1,97 @@
+<div class="dashboard-customization-body">
+  <div class="main-switches">
+    <div class="title-container">
+      <div class="title title_h1 text_blue text_weight_500 k-ml-2">{{ 'TipoVisualizzazione' | transloco }}:</div>
+
+      <div class="widget-customization-body">
+        <div class="widget-customization-item preset-switch text_blue">
+          <div class="checkbox-container">
+            <span class="item-title text_gray_dark2">{{ 'PresetIniziale' | transloco }}</span>
+            <div class="item-switch preset-item-switch">
+              <input type="checkbox" id="switch-preset-iniziale" class="checkbox" [checked]="customSelected"
+                     (click)="changeCustomSelected($event)"/>
+              <label for="switch-preset-iniziale" class="toggle"></label>
+            </div>
+            <span class="item-title text_gray_dark2">{{ 'Personalizza' | transloco }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="this.hideSwitchMultiAzienda()">
+      <div class="title-container">
+        <div class="title title_h1 text_blue text_weight_500 k-ml-2">
+          {{ 'MultiAziendale' | transloco }}:
+        </div>
+        <!-- Test Switch MultiAziendale -->
+        <div class="widget-customization-body">
+          <div class="widget-customization-item preset-switch text_blue">
+            <div class="checkbox-container">
+              <span class="item-title text_gray_dark2">{{ 'Azienda' | transloco }}</span>
+              <div class="item-switch preset-item-switch">
+                <input type="checkbox" id="switch-multiaziendale" class="checkbox" [checked]="useMultiCompany"
+                       (click)="changeMultiAzienda($event)"/>
+                <label for="switch-multiaziendale" class="toggle"></label>
+              </div>
+              <span class="item-title text_gray_dark2">{{ 'MultiAzienda' | transloco }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="title-container dashboard-customization-row-responsive">
+    <div class="widget-customization-body k-mt-2">
+      <div class="title title_h1 text_blue text_weight_500">
+        {{ 'WidgetsGestione' | transloco }}:
+      </div>
+      <div class="widget-customization-item text_blue">
+        <div class="item-title text_gray_dark2">{{ 'WidgetsBloccati' | transloco }}</div>
+        <div class="item-switch">
+          <input type="checkbox" id="switch-widgets-blocked" class="checkbox" [checked]="widgetsBlocked"
+                 (change)="onWidgetsBlocked($event)"/>
+          <label for="switch-widgets-blocked" class="toggle">
+            <div class="switch-icons-container">
+                <span class="switch-icon switch-icon-check">
+                  <i aria-hidden="true" class="fa fa-check" aria-hidden="true"></i>
+                </span>
+              <span class="switch-icon switch-icon-x">
+                  <i aria-hidden="true" class="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="widget-customization-content border_gray_light1">
+      <div class="widget-customization-title text_blue title_h1">
+        {{ 'QualiWidgetsVisualizzare' | transloco }}?
+      </div>
+      <app-widget-config-list
+        #widgetList
+        [user]="user"
+        [customSelected]="customSelected"
+        [useMultiCompany]="useMultiCompany"
+        (loadedWidgets)="this.widgets = $event"
+      ></app-widget-config-list>
+    </div>
+  </div>
+</div>
+
+<kendo-dialog *ngIf="isConfirmationOpen" (close)="isConfirmationOpen = false">
+  <kendo-dialog-titlebar>
+    <div style="font-size: 18px; line-height: 1.3em;">
+      <span class="k-icon k-i-exclamation-circle"></span> {{ 'TornarePresetIniziale' | transloco }}
+    </div>
+  </kendo-dialog-titlebar>
+  <p style="margin: 30px; text-align: center;">
+    {{ 'QuestaAzioneNonPuoEssereAnnullata' | transloco }}.
+  </p>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="isConfirmationOpen = false">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton (click)="resetConfiguration()" themeColor="primary">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

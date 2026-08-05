@@ -1,0 +1,16 @@
+<kendo-breadcrumb
+    [items]="shownBreadCrumbs">
+    <ng-template kendoBreadCrumbItemTemplate let-item let-index="index">
+        <div class="item" role="button" (click)="onItemClick(item)">
+            <fa-icon *ngIf="index === 0" style="padding-right: 5px;" size="lg" [icon]="faImpresa" aria-hidden="true">
+            </fa-icon>
+            <fa-icon *ngIf="index === 1" style="padding-right: 5px;" size="lg" [icon]="faCentri" aria-hidden="true">
+            </fa-icon>
+            <fa-icon *ngIf="index === 2" style="padding-right: 5px;" size="lg" [icon]="faCampi" aria-hidden="true">
+            </fa-icon>
+            <span>{{ item.text }}</span>
+            <div *ngIf="index === 0">: {{ (this.objParametriAgendaService.currentObjParametriAgenda | async).RagSoc }}</div>
+            <!--<div *ngIf="shownBreadCrumbs.length == 1">: {{ 'Nessuno' | transloco }}</div>-->
+        </div>
+    </ng-template>
+</kendo-breadcrumb>

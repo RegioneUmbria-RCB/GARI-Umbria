@@ -1,0 +1,123 @@
+<div id="treeContainer">
+  <div class="row" *ngIf="!contextGis">
+    <div class="col-6">
+      <button style="width: 100%"
+        kendoTooltip [title]="'EspandiTutto' | transloco"
+        kendoButton (click)="expandAll(true)">
+        <i aria-hidden="true" class="fa fa-expand"></i> {{'EspandiTutto' | transloco}}
+      </button>
+    </div>
+    <div class="col-6">
+      <button style="width: 100%"
+        kendoTooltip [title]="'ComprimiTutto' | transloco"
+        kendoButton (click)="expandAll(false)">
+        <i aria-hidden="true" class="fa fa-compress"></i> {{'ComprimiTutto' | transloco}}
+      </button>
+    </div>
+  </div>
+    <kendo-treeview
+        #treeview
+        [nodes]="nodes | async"
+        [filterable]="false"
+        textField="text"
+        [hasChildren]="hasChildren"
+        [children]="fetchChildren"
+
+        kendoTreeViewExpandable
+        [(expandedKeys)]="expandedKeys"
+        (expandedKeysChange)="onExpandedKeysChange($event)"
+
+        kendoTreeViewSelectable
+        [(selectedKeys)]="selectedKeys"
+
+        kendoTreeViewHierarchyBinding
+        [filter]="getServiceFilterFields()"
+        [filterSettings]="filterSettings"
+        childrenField="items"
+
+        (filterStateChange)="onFilterStateChange($event)"
+
+        (selectionChange)="handleSelection($event)"
+
+        [kendoTreeViewCheckable]="checkableSettings"
+        (checkedChange)="handleChecked($event)"
+        [(checkedKeys)]="checkedKeys"
+
+        [expandOnFilter]="filterExpandSettings"
+    >
+        <ng-template kendoTreeViewNodeTemplate let-dataItem >
+            <div style="padding-right: 5px;">
+                <fa-icon
+                    *ngIf="dataItem.type=='utente'"
+                    class="treeviewIconElement"
+                    [icon]="faUser"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='impresa'"
+                    class="treeviewIconElement faImpresa"
+                    [icon]="faIndustry"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='contatti'"
+                    class="treeviewIconElement faContatti"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='macchine'"
+                    class="treeviewIconElement faMacchine"
+                    [icon]="faTruckPickup"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='centri'"
+                    class="treeviewIconElement faCentri"
+                    [icon]="faHome"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='fabbricati'"
+                    class="treeviewIconElement faFabbricati"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='campo'"
+                    class="treeviewIconElement faCampi"
+                    [icon]="faObjectGroup"
+                    aria-hidden="true"></fa-icon>
+                <fa-icon
+                    *ngIf="dataItem.type=='appezzamento'"
+                    class="treeviewIconElement faImpianti"
+                    [icon]="faLeaf"
+                    aria-hidden="true"></fa-icon>
+<!--              <gias-svg-icon-species-species-->
+<!--                *ngIf="dataItem.type=='appezzamento' && dataItem.Veg_Cod > 0"-->
+<!--                [veg_cod]="dataItem.Veg_Cod"-->
+<!--                [type]="'outline-color'"-->
+<!--              ></gias-svg-icon-species-species>-->
+<!--                <fa-icon-->
+<!--                    *ngIf="dataItem.type=='impianto'"-->
+<!--                    class="treeviewIconElement faImpianti"-->
+<!--                    [icon]="faLeaf"-->
+<!--                    aria-hidden="true"></fa-icon>-->
+              <gias-svg-icon-species-species
+                *ngIf="dataItem.type=='impianto'"
+                [veg_cod]="dataItem.Veg_Cod"
+                [type]="'outline-color'"
+              ></gias-svg-icon-species-species>
+<!--                <fa-icon-->
+<!--                    *ngIf="dataItem.type=='anagrafica'"-->
+<!--                    class="treeviewIconElement faImpianti"-->
+<!--                    [icon]="faGripHorizontal"-->
+<!--                    aria-hidden="true"></fa-icon>-->
+                <fa-icon
+                    *ngIf="dataItem.type=='analisi'"
+                    class="treeviewIconElement faAnalisi"
+                    [icon]="faHome"
+                    aria-hidden="true">
+                </fa-icon>
+                <img alt=""
+                    *ngIf="!dataItem.type"
+                    class="treeviewIconElement k-icon generic-icon"
+                    [src]="host + dataItem.imageUrl" />
+                <span
+                    [class]="'tree'+ getNodeStyle(dataItem)">{{ dataItem.text }}</span>
+            </div>
+        </ng-template>
+    </kendo-treeview>
+</div>

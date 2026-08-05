@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29AA22E8-5744-47D3-8F0E-359D1ABB8CD3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreAcciseCommon</RootNamespace>
+    <AssemblyName>AgronicaCoreAcciseCommon</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="D_Parsed.vb" />
+    <Compile Include="GaranziaCircolazione.vb" />
+    <Compile Include="IListableDataTable.vb" />
+    <Compile Include="IntestazioneReport.vb" />
+    <Compile Include="J_Parsed.vb" />
+    <Compile Include="Messaggi\Ie801.vb" />
+    <Compile Include="Messaggi\Ie810.vb" />
+    <Compile Include="Messaggi\Ie813.vb" />
+    <Compile Include="Messaggi\Ie815.vb" />
+    <Compile Include="Messaggi\Ie818.vb" />
+    <Compile Include="Messaggi\Ie906.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PartitaSospensione.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Messaggi\XSDs\doc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\doc_2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie801.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie810.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie813.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie815.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie818.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie819.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\ie906.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\tcl.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\tcl_2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\tms.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\tms_2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Messaggi\XSDs\types_2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

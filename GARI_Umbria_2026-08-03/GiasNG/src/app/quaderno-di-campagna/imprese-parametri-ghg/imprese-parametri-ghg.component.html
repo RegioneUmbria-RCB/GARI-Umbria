@@ -1,0 +1,97 @@
+<div class="custom-toolbar" *ngIf="displayButton">
+    <button kendoButton look="flat"
+        (click) ="onOpenFilters()" 
+        [ngClass]="{ 'with-margin-top': true }">
+        <fa-icon size="lg" [icon]="faSliders"></fa-icon>
+    </button>
+</div>
+
+<div class="filters-container">
+    <form [formGroup]="impreseParametriGHGForm">
+        <kendo-drawer-container [hidden]="!showFilters">
+            <kendo-drawer 
+                [ngClass]="{ 'with-padding-top': true }" 
+                #drawer 
+                mode="overlay" 
+                [width]="drawerWidth"
+                [position]="'end'"
+                (expand)="showFilters = true"
+                (collapse)="onCancel()">
+
+                <ng-template kendoDrawerTemplate>
+
+                    <div class="btn right mt-4 me-4" (click)="onCancel()">
+                        <fa-icon [icon]="faClose"></fa-icon>
+                    </div>
+
+                    <div class="container mt-5">
+                        <div class="row form-row">
+                            <div class="col-3 col-md-3">
+                                <gias-drop-down-template-s [name]="'Azienda' | transloco" [obligatory]="false"
+                                    textField="descrizione" valueField="codice" [filterable]="true"
+                                    giasFormControlName="azienda"
+                                    [defaultItem]="defaultAzienda"
+                                    (open)="openDdl($event)"
+                                    [valuePrimitive]="false">
+                                </gias-drop-down-template-s>
+                            </div>
+            
+                            <div class="col-3 col-md-3">
+                                <gias-multiselect-template-s [name]="'Specie' | transloco" [obligatory]="false"
+                                    textField="descrizione" valueField="codice" [filterable]="true"
+                                    giasFormControlName="specie"
+                                    (open)="openDdl($event)"
+                                    [valuePrimitive]="false">
+                                </gias-multiselect-template-s>
+                            </div>
+            
+                            <div class="col-3 col-md-3">
+                                <gias-drop-down-template-s [name]="'Varieta' | transloco" [obligatory]="false"
+                                    textField="descrizione" valueField="codice" [filterable]="true"
+                                    giasFormControlName="varieta"
+                                    [defaultItem]="defaultVarieta"
+                                    (open)="openDdl($event)"
+                                    [valuePrimitive]="false">
+                                </gias-drop-down-template-s>
+                            </div>
+            
+                            <div class="col-3 col-md-3">
+                                <gias-drop-down-template-s [name]="'Regolamento' | transloco" [obligatory]="false"
+                                    textField="descrizione" valueField="codice" [filterable]="true"
+                                    giasFormControlName="regolamento"
+                                    [defaultItem]="defaultRegolamento"
+                                    (open)="openDdl($event)"
+                                    [valuePrimitive]="false">
+                                </gias-drop-down-template-s>
+                            </div>
+            
+                            
+                            <gias-validita formGroupName="validita"></gias-validita>
+            
+                            <div class="col" style="
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: flex-end;">
+                                <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()" style="display: flex;
+                                    align-items: center; 
+                                    justify-content: center;">
+                                    <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+                                    <span>{{ 'Cerca' | transloco }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </kendo-drawer>
+        </kendo-drawer-container>
+    </form>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-sm-12">
+            <gias-kendo-grid>
+            </gias-kendo-grid>
+        </div>
+    </div>
+</div>

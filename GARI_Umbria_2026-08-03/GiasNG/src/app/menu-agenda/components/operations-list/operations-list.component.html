@@ -1,0 +1,33 @@
+<kendo-drawer-container [ngStyle]="{ 'z-index': kdrawerZIndex}">
+  <kendo-drawer #drawer mode="push" [width]="400" id="ops-drawer">
+    <ng-template kendoDrawerTemplate>
+      <h4>
+        <fa-icon size="lg" [icon]="faStar"></fa-icon>
+        {{ labelPreferiti }}
+      </h4>
+      <div class="panelbar-wrapper">
+        <div *ngIf="showFilter">
+          <input
+            style="width: 365px;"
+            class="k-textbox" (input)="onInput($event)"
+            [disabled]="searchDisabled"
+            [placeholder]="'Filtri...'| transloco"
+          />
+        </div>
+        <kendo-panelbar #panelBar [id]="'mypanelbar'"
+          [items]="items"
+          (stateChange)="stateChange($event)"
+        >
+        </kendo-panelbar>
+      </div>
+    </ng-template>
+  </kendo-drawer>
+  <kendo-drawer-content class="drawerContent">
+    <button kendoButton
+    (click)="toggle()"
+    class="drawerExpander rotated">
+    <span class="k-icon k-i-reddit"></span>{{'Operazioni' | transloco}}
+     <!-- TODO Razvan. Add folder icon -->
+    </button>
+  </kendo-drawer-content>
+</kendo-drawer-container>

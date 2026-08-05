@@ -1,0 +1,199 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Creazione di un nuovo BIZ via Entity Framework</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>agEFbiz</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Nome</ID>
+          <ToolTip>Nome del BIZ</ToolTip>
+          <Default>NomeBIZ</Default>
+        </Literal>
+		<Literal>
+			<ID>NameSpace</ID>
+			<ToolTip>NameSpace del DAL</ToolTip>
+			<Default>AgronicaCoreMetaSchemaDAL</Default>
+		</Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="html">
+        <![CDATA[Imports AgronicaCoreEntityFramework_POCO
+Imports AgronicaCoreMetaSchemaDAL
+Imports Newtonsoft.Json
+Imports Newtonsoft.Json.Linq
+
+Public Class $Nome$_W
+    Inherits AgronicaCoreDataProvider.LogProvider
+
+
+#Region "Costruttori"
+
+    Public Sub New()
+        Provider = Globalization.CultureInfo.InvariantCulture
+        Format = "yyyyMMdd"
+        ValiditaInizio = Date.ParseExact("19000101", Format, Provider)
+        ValiditaFine = Date.ParseExact("21001231", Format, Provider)
+    End Sub
+
+#End Region
+
+    Private _format As String
+    Public Shadows Property Format() As String
+        Get
+            Return _format
+        End Get
+        Set
+            _format = Value
+        End Set
+    End Property
+
+    Private _provider As Globalization.CultureInfo
+    Public Shadows Property Provider() As Globalization.CultureInfo
+        Get
+            Return _provider
+        End Get
+        Set
+            _provider = Value
+        End Set
+    End Property
+
+
+    Private _validitaInizio As Date
+    Public Shadows Property ValiditaInizio() As Date
+        Get
+            Return _validitaInizio
+        End Get
+        Set
+            _validitaInizio = Value
+        End Set
+    End Property
+
+    Private _validitaFine As Date
+    Public Shadows Property ValiditaFine() As Date
+        Get
+            Return _validitaFine
+        End Get
+        Set
+            _validitaFine = Value
+        End Set
+    End Property
+
+
+    Public Function Aggiorna_$Nome$(
+            ByVal righeInserite As String,
+            ByVal righeModificate As String,
+            ByVal righeCancellate As String,
+            ByRef objParametri As AgronicaCoreDataProvider.AgronicaCoreParametri
+        ) As String
+
+
+        Dim Piva_SuperUser = objParametri.PivaSuperUser
+
+        Dim MessaggioErrore As String = String.Empty
+
+        Dim NomeRoutine As String = "$Nome$_W.Aggiorna_$Nome$_W()"
+
+        Try
+            Dim campConf_R As New $Nome$_R
+
+            Dim cur$Nome$ As New $Nome$
+
+            Dim righeInseriteArray As JArray = JArray.Parse(righeInserite)
+            Dim righeModificateArray As JArray = JArray.Parse(righeModificate)
+            Dim righeCancellateArray As JArray = JArray.Parse(righeCancellate)
+            Dim EFArrayToInsert As New ArrayList
+            Dim EFArrayToUpdate As New ArrayList
+            Dim EFArrayToDelete As New ArrayList
+            For Each obj As JObject In righeInseriteArray
+                cur$Nome$ = JsonConvert.DeserializeObject(Of $Nome$)(obj.ToString())
+                cur$Nome$.COD = 0 'Eliminare se già arriva dalla chiamata
+                cur$Nome$.AV_COD = obj("Av_Cod") 'impostare altri valori non ottenuti da Deserializzazione
+                
+                If Not String.IsNullOrEmpty(obj("Validita_Inizio")) Then
+                    cur$Nome$.Validita_Inizio = Date.ParseExact(obj("Validita_Inizio"), Format, Provider)
+                Else
+                    cur$Nome$.Validita_Inizio = ValiditaInizio                    
+                End If
+                If Not String.IsNullOrEmpty(obj("Validita_Fine")) Then
+                    cur$Nome$.Validita_Fine = Date.ParseExact(obj("Validita_Fine"), Format, Provider)
+                Else
+                    cur$Nome$.Validita_Fine = ValiditaFine                   
+                End If
+                cur$Nome$.Data_Creazione = Date.Now
+                cur$Nome$.Username_Creazione = objParametri.UsernameOperazione
+                cur$Nome$.Data_Modifica = Date.Now
+                cur$Nome$.Username_Modifica = objParametri.UsernameOperazione
+                cur$Nome$.inviato = 0
+
+                EFArrayToInsert.Add(cur$Nome$)
+            Next
+            For Each obj As JObject In righeModificateArray
+                cur$Nome$ = campConf_R.Leggi(obj("COD"), objParametri)
+                If cur$Nome$ Is Nothing Then
+                    MessaggioErrore += "Riga da aggiornare " & obj("Validita_Inizio").ToString & " - " & obj("Validita_Fine").ToString & " non trovata"
+                Else
+                    cur$Nome$.AV_COD = obj("Av_Cod")
+                    
+                    If Not String.IsNullOrEmpty(obj("Validita_Inizio")) Then
+                        cur$Nome$.Validita_Inizio = Date.ParseExact(obj("Validita_Inizio"), Format, Provider)
+                    Else
+                        cur$Nome$.Validita_Fine = ValiditaFine                   
+                    End If
+                    If Not String.IsNullOrEmpty(obj("Validita_Fine")) Then
+                        cur$Nome$.Validita_Fine = Date.ParseExact(obj("Validita_Fine"), Format, Provider)
+                    Else
+                        cur$Nome$.Validita_Fine = ValiditaFine
+                    End If
+                    cur$Nome$.Data_Modifica = Date.Now
+                    cur$Nome$.Username_Modifica = objParametri.UsernameOperazione
+                    EFArrayToUpdate.Add(cur$Nome$)
+
+                End If
+            Next
+            For Each obj As JObject In righeCancellateArray
+                cur$Nome$ = New $Nome$
+                cur$Nome$.COD = obj("Cod")
+                EFArrayToDelete.Add(cur$Nome$)
+            Next
+
+            
+            If String.IsNullOrEmpty(MessaggioErrore) Then
+                Dim campConf_W As New AgronicaCoreMetaSchemaDAL.$Nome$_W
+
+                MessaggioErrore = campConf_W.Aggiorna_$Nome$(
+                      EFArrayToInsert,
+                      EFArrayToUpdate,
+                      EFArrayToDelete,
+                      objParametri
+                 )
+
+            End If
+
+        Catch ex As Exception
+            MessaggioErrore = "[" & NomeRoutine & "] : " & ex.Message
+            Scrivi_LOG(objParametri, NomeRoutine, MessaggioErrore)
+        Finally
+
+        End Try
+
+
+        If Not String.IsNullOrEmpty(MessaggioErrore) Then
+            Throw New Exception(MessaggioErrore)
+        End If
+
+        Return MessaggioErrore
+    End Function
+
+
+End Class]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

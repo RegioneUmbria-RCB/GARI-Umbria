@@ -1,0 +1,15 @@
+<div *ngFor="let rbVal of radioButtonValues">
+  <div class="col-auto">
+    <div class="form-check form-check-inline">
+      <label class="form-check-label" [for]="rbVal.name">{{rbVal.name}}</label>
+      <input type="radio"
+             class="form-check-input"
+             [disabled]="!(rbVal.enable || formEnable)"
+             [value]="rbVal.value"
+             [(ngModel)]="value"
+             (change)="onItemChange($event)"
+             [formControlName]="formControlName"
+             kendoRadioButton />
+    </div>
+  </div>
+</div>

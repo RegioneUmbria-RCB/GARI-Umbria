@@ -1,0 +1,1377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati BDN per identificativi</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="Get_Identificativo_Prodotto_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Prodotto_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Prodotto_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Get_Identificativo_Prodotto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_ProdottoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_ProdottoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Giacenza_FornitoreSTR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Giacenza_FornitoreSTRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Giacenza_FornitoreSTRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Giacenza_Fornitore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Giacenza_FornitoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Giacenza_FornitoreResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Giacenza_Distributore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDR_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Giacenza_DistributoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Giacenza_DistributoreResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Usabile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specie_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_UsabileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_UsabileResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Usabile_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specie_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Usabile_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Usabile_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_AllevUsabile_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_AllevUsabile_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_AllevUsabile_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_AllevUsabile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_AllevUsabileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_AllevUsabileResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Richiesta_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IR_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Richiesta_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Richiesta_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Richiesta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IR_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_RichiestaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_RichiestaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_RichiestaDup_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDR_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_RichiestaDup_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_RichiestaDup_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_RichiestaDup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IDR_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_RichiestaDupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_RichiestaDupResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativi_Giacenza_Allev_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativi_Giacenza_Allev_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativi_Giacenza_Allev_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativi_Giacenza_Allev">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativi_Giacenza_AllevResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativi_Giacenza_AllevResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoRichiesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoIdentificativo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DataRichiesta" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_Fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceSpecie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceAzienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoMarca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceProduttore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_Identificativi_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoRichiesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoIdentificativo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DataRichiesta" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_Fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceSpecie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceAzienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceProduttore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_IdentificativiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_Giacenza">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoRichiesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoIdentificativo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DataRichiesta" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceProduttore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceDistributore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_GiacenzaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_Identificativi_GiacenzaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDup_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoRichiesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoIdentificativo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DataRichiesta" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_Fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceSpecie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceAzienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoMarca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceProduttore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDup_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_IdentificativiDup_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TipoRichiesta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TipoIdentificativo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="DataRichiesta" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Allev_ID_Fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceSpecie" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceAzienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceIdentificativo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceProduttore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_IdentificativiDupResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Elettronico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceMarcaAuricolare" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_ElettronicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_ElettronicoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Elettronico_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodiceMarcaAuricolare" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GRSPE_Codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Identificativo_Elettronico_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Identificativo_Elettronico_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_Giacenza_Pk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="richiesta_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_Giacenza_PkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_Identificativi_Giacenza_PkResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDup_Pk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="richiesta_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_IdentificativiDup_PkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_IdentificativiDup_PkResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_Pk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="richiesta_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Richiesta_Identificativi_PkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Richiesta_Identificativi_PkResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Get_Identificativo_Prodotto_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Prodotto_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Prodotto_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Prodotto_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Prodotto_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ProdottoSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Prodotto" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ProdottoSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_ProdottoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ProdottoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSTRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Giacenza_FornitoreSTR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSTRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Giacenza_FornitoreSTRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSTRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Giacenza_Fornitore" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Giacenza_FornitoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Giacenza_FornitoreSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Giacenza_DistributoreSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Giacenza_Distributore" />
+  </wsdl:message>
+  <wsdl:message name="Get_Giacenza_DistributoreSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Giacenza_DistributoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Giacenza_DistributoreSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_UsabileSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Usabile" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_UsabileSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_UsabileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_UsabileSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Usabile_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Usabile_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Usabile_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Usabile_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Usabile_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabile_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_AllevUsabile_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabile_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_AllevUsabile_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabile_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabileSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_AllevUsabile" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabileSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_AllevUsabileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_AllevUsabileSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Richiesta_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Richiesta_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Richiesta_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Richiesta_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Richiesta_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Richiesta" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_RichiestaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDup_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_RichiestaDup_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDup_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_RichiestaDup_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDup_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDupSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_RichiestaDup" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDupSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_RichiestaDupResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_RichiestaDupSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_Allev_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativi_Giacenza_Allev_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_Allev_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativi_Giacenza_Allev_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_Allev_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_AllevSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativi_Giacenza_Allev" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_AllevSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativi_Giacenza_AllevResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativi_Giacenza_AllevSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_GiacenzaSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_Giacenza" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_GiacenzaSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_GiacenzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_GiacenzaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDup_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDup_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDupSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDup" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDupSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDupResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDupSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ElettronicoSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Elettronico" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ElettronicoSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_ElettronicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_ElettronicoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Elettronico_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Elettronico_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Elettronico_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Identificativo_Elettronico_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Identificativo_Elettronico_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_Giacenza_PkSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_Giacenza_Pk" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_Giacenza_PkSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_Giacenza_PkResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_Giacenza_PkSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_PkSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDup_Pk" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_PkSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_IdentificativiDup_PkResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_IdentificativiDup_PkSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_PkSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_Pk" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_PkSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Richiesta_Identificativi_PkResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Richiesta_Identificativi_PkSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsIdentificativiGetSoap">
+    <wsdl:operation name="Get_Identificativo_Prodotto_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera informazioni sull'identificativo prodotto e disponibile in allevamento</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Prodotto_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Prodotto_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Prodotto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera informazioni sull'identificativo prodotto e disponibile in allevamento</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_ProdottoSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_ProdottoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_FornitoreSTR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera informazioni sull'identificativo prodotto e disponibile in giacenza distributore</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Giacenza_FornitoreSTRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Giacenza_FornitoreSTRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_Fornitore">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera informazioni sull'identificativo prodotto e disponibile in giacenza distributore</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Giacenza_FornitoreSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Giacenza_FornitoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Giacenza_Distributore">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera le informazioni degli identificativi prodotti ed in giacenza presso un fornitore tramite il parametro dell'id della richiesta</wsdl:documentation>
+      <wsdl:input message="tns:Get_Giacenza_DistributoreSoapIn" />
+      <wsdl:output message="tns:Get_Giacenza_DistributoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco degli identificativi prodotti ed usabili nell'allevamento indicato nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_UsabileSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_UsabileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco degli identificativi prodotti ed usabili nell'allevamento indicato nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Usabile_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Usabile_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifica che un identificativo prodotto ed usabile sia disponibile nell'allevamento indicato nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_AllevUsabile_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_AllevUsabile_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verifica che un identificativo prodotto ed usabile sia disponibile nell'allevamento indicato nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_AllevUsabileSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_AllevUsabileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco degli identificativi prodotti e consegnati in allevamento relativi alla richiesta indicata nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Richiesta_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Richiesta_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco degli identificativi prodotti nella richiesta di un allevamento indicata nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_RichiestaSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_RichiestaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco dei duplicati relativi alla richiesta indicata nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_RichiestaDup_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_RichiestaDup_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco dei duplicati relativi alla richiesta indicata nei parametri</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_RichiestaDupSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_RichiestaDupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera gli identificativi disponibili in allevamento</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativi_Giacenza_Allev_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativi_Giacenza_Allev_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera gli identificativi disponibili in allevamento</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativi_Giacenza_AllevSoapIn" />
+      <wsdl:output message="tns:Get_Identificativi_Giacenza_AllevSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_Identificativi_STRSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_Identificativi_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_IdentificativiSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_IdentificativiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi in giacenza (fornitori) filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_Identificativi_GiacenzaSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_Identificativi_GiacenzaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di duplicati filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_IdentificativiDup_STRSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_IdentificativiDup_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di duplicati filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_IdentificativiDupSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_IdentificativiDupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera informazioni sull'identificativo elettronico applicato ad un animale (bovino o ovino) a partire dal codice della marca auricolare. Il gruppo specie è opzionale</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_ElettronicoSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_ElettronicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">ecupera informazioni sull'identificativo elettronico applicato ad un animale (bovino o ovino) a partire dal codice della marca auricolare. Il gruppo specie è opzionale</wsdl:documentation>
+      <wsdl:input message="tns:Get_Identificativo_Elettronico_STRSoapIn" />
+      <wsdl:output message="tns:Get_Identificativo_Elettronico_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza_Pk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi in giacenza (fornitori) filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_Identificativi_Giacenza_PkSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_Identificativi_Giacenza_PkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_Pk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi in giacenza (fornitori) filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_IdentificativiDup_PkSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_IdentificativiDup_PkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Pk">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Recupera l'elenco delle richieste di identificativi in giacenza (fornitori) filtrate dai parametri forniti</wsdl:documentation>
+      <wsdl:input message="tns:Get_Richiesta_Identificativi_PkSoapIn" />
+      <wsdl:output message="tns:Get_Richiesta_Identificativi_PkSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsIdentificativiGetSoap" type="tns:wsIdentificativiGetSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Identificativo_Prodotto_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Prodotto_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Prodotto_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Prodotto">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Prodotto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_ProdottoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_FornitoreSTR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Giacenza_FornitoreSTR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Giacenza_FornitoreSTRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_Fornitore">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Giacenza_Fornitore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Giacenza_FornitoreSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Giacenza_Distributore">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Giacenza_Distributore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Giacenza_DistributoreSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Usabile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_UsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Usabile_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Usabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_AllevUsabile_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_AllevUsabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_AllevUsabile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_AllevUsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Richiesta_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Richiesta_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Richiesta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_RichiestaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_RichiestaDup_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_RichiestaDup_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_RichiestaDup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_RichiestaDupSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativi_Giacenza_Allev_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativi_Giacenza_Allev_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativi_Giacenza_Allev" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativi_Giacenza_AllevSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_Identificativi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_IdentificativiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Giacenza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_Identificativi_GiacenzaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_IdentificativiDup_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_IdentificativiDupSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Elettronico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_ElettronicoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Elettronico_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Identificativo_Elettronico_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza_Pk">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Giacenza_Pk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_Identificativi_Giacenza_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_Pk">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup_Pk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_IdentificativiDup_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Pk">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Pk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Richiesta_Identificativi_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsIdentificativiGetSoap12" type="tns:wsIdentificativiGetSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Get_Identificativo_Prodotto_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Prodotto_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Prodotto_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Prodotto">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Prodotto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_ProdottoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_FornitoreSTR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Giacenza_FornitoreSTR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Giacenza_FornitoreSTRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Giacenza_Fornitore">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Giacenza_Fornitore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Giacenza_FornitoreSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Giacenza_Distributore">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Giacenza_Distributore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Giacenza_DistributoreSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Usabile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_UsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Usabile_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Usabile_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Usabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_AllevUsabile_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_AllevUsabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_AllevUsabile">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_AllevUsabile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_AllevUsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Richiesta_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Richiesta_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Richiesta">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Richiesta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_RichiestaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_RichiestaDup_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_RichiestaDup_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_RichiestaDup">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_RichiestaDup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_RichiestaDupSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativi_Giacenza_Allev_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativi_Giacenza_Allev_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativi_Giacenza_Allev">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativi_Giacenza_Allev" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativi_Giacenza_AllevSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_Identificativi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_IdentificativiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Giacenza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_Identificativi_GiacenzaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_IdentificativiDup_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_IdentificativiDupSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Elettronico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_ElettronicoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Identificativo_Elettronico_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Identificativo_Elettronico_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Identificativo_Elettronico_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Giacenza_Pk">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Giacenza_Pk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_Identificativi_Giacenza_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_IdentificativiDup_Pk">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_IdentificativiDup_Pk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_IdentificativiDup_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Richiesta_Identificativi_Pk">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Richiesta_Identificativi_Pk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Richiesta_Identificativi_PkSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsIdentificativiGet">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati BDN per identificativi</wsdl:documentation>
+    <wsdl:port name="wsIdentificativiGetSoap" binding="tns:wsIdentificativiGetSoap">
+      <soap:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsIdentificativiGet.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsIdentificativiGetSoap12" binding="tns:wsIdentificativiGetSoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsIdentificativiGet.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

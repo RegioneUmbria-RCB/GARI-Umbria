@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="columns-full-width">
+  <kendo-chart>
+    <!-- <kendo-chart-title text="Units sold"></kendo-chart-title> -->
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="['Da 0,1 a 0,5 ha', 'Da 0,51 a 1 ha', 'Da 1 a 2 ha', 'Da 2 a 5 ha', 'Da 5 a 10 ha', 'Da 11 a 20 ha', 'Da 21 a 50 ha', '> 50']">
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+
+    <kendo-chart-series>
+      <ng-container *ngFor="let dataItem of data; let i = index">
+        <kendo-chart-series-item type="bar" [color]="colors[i]" [data]="dataItem" [name]="names[i]">
+            <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+        </kendo-chart-series-item>
+      </ng-container>
+    </kendo-chart-series>
+
+    <kendo-chart-value-axis>
+      <kendo-chart-value-axis-item [labels]="{ rotation: 'auto' }" [line]="{ visible: false }" [position]="'bottom'">
+      </kendo-chart-value-axis-item>
+    </kendo-chart-value-axis>
+
+    <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+  </kendo-chart>
+</div>
+
+<div *ngIf="!loading && data.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunDatoRegistrato' | transloco }}</p>
+</div>

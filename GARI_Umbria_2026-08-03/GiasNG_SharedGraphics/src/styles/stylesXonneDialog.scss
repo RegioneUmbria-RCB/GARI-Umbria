@@ -1,0 +1,181 @@
+kendo-dialog.success-dialog .k-content {
+    background-color: #E6ECF2;
+}
+
+kendo-dialog.error-dialog .k-content {
+    background-color: #F8EEED;
+}
+
+.k-notification-container {
+  margin-top: 0!important;
+  margin-bottom: 0.5rem !important;
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+}
+
+.k-i-x::before {
+    content: "" !important
+}
+
+.k-widget.k-notification {
+    font-size: 0.875rem;
+}
+
+.k-notification-wrap {
+    align-items: center;
+    .k-i-close {
+        margin-top: 0;
+        margin-left: 1rem;
+    }
+}
+
+.k-widget.k-notification.k-notification-success .k-notification-content { color: #002850; font-weight: bold; }
+.k-widget.k-notification.k-notification-success.button-notification {
+    background-color: #E6ECF2 !important;
+    color: #575757 !important;
+    border: 1px solid #002850  !important;
+    .k-icon.k-i-success{
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        margin-top: 0;
+        &::before {
+            content: '';
+            background-image: url('../assets/custom-icons/icon-general/ic_modal_alert_success.svg');
+            height: 2rem;
+            width: 2rem;
+            background-size: cover;
+        }
+    }
+    .k-icon.k-i-close {
+        color: #002850;
+    }
+}
+
+.k-widget.k-notification.k-notification-info .k-notification-content { color: #002850 }
+.k-widget.k-notification.k-notification-info.button-notification {
+    color: #212529!important;
+    background-color: #ffffff!important;
+    border: 1px solid #002850  !important;
+    .k-icon.k-i-info{
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        margin-top: 0;
+        &::before {
+            content: '';
+            background-image: url('../assets/custom-icons/icon-general/ic_modal_alert_info.svg');
+            height: 2rem;
+            width: 2rem;
+            background-size: cover;
+        }
+    }
+    .k-icon.k-i-close {
+        color: #002850;
+    }
+}
+
+.k-widget.k-notification.k-notification-warning .k-notification-content { color: #D90D1D; }
+.k-widget.k-notification.k-notification-warning.button-notification {
+    color: #212529!important;
+    background-color: #ffffff!important;
+    border: 1px solid #D90D1D !important;
+    .k-icon.k-i-warning{
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        margin-top: 0;
+        &::before {
+            content: '';
+            background-image: url('../assets/custom-icons/icon-general/ic_modal_alert_warning.svg');
+            height: 2rem;
+            width: 2rem;
+            background-size: cover;
+        }
+    }
+    .k-icon.k-i-close {
+        color: #D90D1D;
+    }
+}
+
+.k-widget.k-notification.k-notification-error .k-notification-content { color: #D90D1D; font-weight: bold; }
+.k-widget.k-notification.k-notification-error.button-notification {
+    color: #212529!important;
+    background-color: #F8EEED!important;
+    border: 1px solid #D90D1D !important;
+    .k-icon.k-i-error{
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        margin-top: 0;
+        &::before {
+            content: '';
+            background-image: url('../assets/custom-icons/icon-general/ic_modal_alert_error.svg');
+            height: 2rem;
+            width: 2rem;
+            background-size: cover;
+        }
+    }
+    .k-icon.k-i-close {
+        color: #D90D1D;
+    }
+}
+
+.k-widget.k-notification.k-notification-info.button-notification-custom {
+    top: 125px;
+    background-color: rgb(255 255 255 / 90%) !important;
+    border: 1px solid #002850  !important;
+    border-radius: 10px;
+    padding: 0rem 1.2rem;
+    width: 90vw;
+    .k-icon {
+        margin: 0px;
+    }
+    .k-icon.k-i-close {
+        border-radius: 4px;
+        opacity: 0.5;
+        height: 26px;
+        width: 26px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-modal/ic_modal_head_close.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        &:hover {
+            opacity: 0.8;
+            background-color: #e9ecef;
+        }
+    }
+    span {
+        color: inherit;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.k-widget.k-notification.k-notification-info.button-notification-custom-no-close {
+    top: 125px;
+    background-color: rgb(255 255 255 / 90%) !important;
+    border: 1px solid #002850  !important;
+    border-radius: 10px;
+    padding: 0rem 1.2rem;
+    width: 90vw;
+    .k-icon {
+        margin: 0px;
+    }
+    .k-icon.k-i-close {
+        display: none;
+    }
+    span {
+        color: inherit;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
+
+.align-end {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,130 @@
+<div class="prof-imprese-column gap-20"
+  *ngIf="{ gruppoNota: gruppoNotaSubject | async, note: note$ | async, utilizzi: utilizzo$ | async } as data">
+  <div class="prof-imprese-row gap-20">
+    <div class="prof-imprese-column">
+      <p>{{ 'profImprese.SelezionareIlGruppoDiNoteDesiderato' | transloco }} </p>
+      <kendo-dropdownlist [data]="gruppoNota$ | async" textField="NotaGruppo_Des" valueField="NotaGruppo_Cod"
+        (valueChange)="gruppoNotaSubject.next($event)" [value]="data.gruppoNota"
+        [kendoDropDownFilter]="dropdownSettings"></kendo-dropdownlist>
+    </div>
+
+    <div>
+      <div class="prof-imprese-switch" *ngIf="data.gruppoNota != null">
+        <div>{{ 'profImprese.NonVisibile' | transloco }}</div>
+        <kendo-switch [(ngModel)]="data.gruppoNota.visibile"></kendo-switch>
+        <div>{{ 'profImprese.Visibile' | transloco }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="prof-imprese-note-dialog-row gap-20 dialog-buttons">
+    <button kenndoButton
+      class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+      (click)="groupDialog = { NotaGruppo_Cod: null, NotaGruppo_Des: '' }">
+      {{ 'profImprese.NuovoGruppo' | transloco }}</button>
+    <button [disabled]="data.gruppoNota == null || data.gruppoNota.NotaGruppo_Cod <= 0" kenndoButton
+      class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+      (click)="groupDialog = data.gruppoNota">{{ 'profImprese.ModificaNomeGruppo' | transloco }}</button>
+    <button [disabled]="data.gruppoNota == null || data.gruppoNota.NotaGruppo_Cod <= 0" kenndoButton
+      class="btn btn-danger btn-danger-fill btn-sm btn-danger-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+      (click)="deleteGroup(data.gruppoNota, data.note, data.utilizzi)">{{ 'profImprese.CancellaGruppo' | transloco
+      }}</button>
+  </div>
+
+  <kendo-grid [kendoGridBinding]="data.note" [loading]="noteLoading" class="dialog-grid">
+    <ng-template kendoGridNoRecordsTemplate>
+      <ng-container *ngIf="data.gruppoNota == null">{{ 'profImprese.NessunGruppoNotaSelezionato' | transloco }}
+      </ng-container>
+      <ng-container *ngIf="data.gruppoNota != null">{{ 'profImprese.NessunaNotaPerIlGruppoSelezionato' | transloco }}
+      </ng-container>
+    </ng-template>
+
+    <kendo-grid-column field="Nota_Des" [title]="'Descrizione' | transloco"></kendo-grid-column>
+    <kendo-grid-column field="NotaGruppo_Des" [title]="'Gruppo' | transloco"></kendo-grid-column>
+    <kendo-grid-column field="NotaUtilizzo_Des" [title]="'Utilizzo' | transloco"></kendo-grid-column>
+    <kendo-grid-column field="Cancella" [title]="'Cancella' | transloco">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <button [title]="'Elimina' | transloco" (click)="deleteNota(dataItem)">
+          <i aria-hidden="true" class="k-icon k-i-trash"></i>
+        </button>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="Visibile" [title]="'Visibilita' | transloco">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <kendo-switch [(ngModel)]="dataItem.Visibile"></kendo-switch>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+
+  <div class="prof-imprese-row gap-20 dialog-buttons">
+    <div>
+      <button [disabled]="data.gruppoNota == null" kenndoButton
+        class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+        (click)="notaDialog = ''">{{ 'profImprese.NuovaNota' |
+        transloco }}</button>
+    </div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <kendo-grid [kendoGridBinding]="data.utilizzi">
+    <ng-template kendoGridNoRecordsTemplate>
+      <ng-container *ngIf="data.gruppoNota == null">{{ 'profImprese.NessunGruppoNotaSelezionato' | transloco }}
+      </ng-container>
+    </ng-template>
+
+    <kendo-grid-column field="NotaUtilizzo_Des" [title]="'Descrizione' | transloco"></kendo-grid-column>
+    <kendo-grid-column field="NotaUtilizzo_Cod" [title]="'Visibilita' | transloco">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <kendo-switch [(ngModel)]="dataItem.Associato"></kendo-switch>
+      </ng-template>
+    </kendo-grid-column>
+  </kendo-grid>
+
+  <div>
+    <button [disabled]="data.gruppoNota == null" kenndoButton
+      class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+      (click)="save(data.gruppoNota, data.utilizzi, data.note)">
+      {{ 'profImprese.SalvaVisibilitaEAreeDelGruppo' | transloco }}
+    </button>
+  </div>
+
+  <kendo-dialog *ngIf="groupDialog != null" (close)="groupDialog = null"
+    [title]="groupDialog.NotaGruppo_Cod == null ? ('profImprese.InserisciUnNuovoGruppo' | transloco) : ('profImprese.ModificaGruppo' | transloco)">
+    <div class="prof-imprese-column gap-20 gruppo-note-dialog" *ngIf="!groupDialogLoading">
+      <kendo-label [text]="'profImprese.NomeGruppo' | transloco">
+        <kendo-textbox [placeholder]="'profImprese.NomeGruppo' | transloco"
+          [(ngModel)]="groupDialog.NotaGruppo_Des"></kendo-textbox>
+      </kendo-label>
+
+      <kendo-dialog-actions [layout]="actionsLayout">
+        <button kendoButton (click)="groupDialog = null">
+          {{ 'Annulla' | transloco }}</button>
+
+        <button kendoButton [disabled]="groupDialog.NotaGruppo_Des == ''"
+          (click)="groupDialog.NotaGruppo_Cod == null ? addGroup() : editGroupName()" themeColor="primary">
+          {{ 'Conferma' | transloco }}</button>
+      </kendo-dialog-actions>
+    </div>
+
+    <kendo-loader *ngIf="groupDialogLoading"></kendo-loader>
+  </kendo-dialog>
+
+  <kendo-dialog *ngIf="notaDialog != null" (close)="notaDialog = null"
+    [title]="'profImprese.InserisciNota' | transloco">
+    <div class="prof-imprese-column gap-20 gruppo-note-dialog">
+      <kendo-label [text]="'profImprese.NomeNota' | transloco">
+        <kendo-textbox [placeholder]="'profImprese.NomeNota' | transloco" [(ngModel)]="notaDialog"></kendo-textbox>
+      </kendo-label>
+
+      <kendo-dialog-actions [layout]="actionsLayout">
+        <button kendoButton (click)="notaDialog = null">
+          {{ 'Annulla' | transloco }}</button>
+
+        <button kendoButton [disabled]="notaDialog == ''" (click)="addNota(data.gruppoNota)" themeColor="primary">
+          {{ 'Conferma' | transloco }}</button>
+      </kendo-dialog-actions>
+    </div>
+
+  </kendo-dialog>
+</div>

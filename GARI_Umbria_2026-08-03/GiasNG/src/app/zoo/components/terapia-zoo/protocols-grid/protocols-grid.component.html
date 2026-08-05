@@ -1,0 +1,44 @@
+<div class="header-summary">
+    <h5>{{ 'zoo.ProtocolliSelezionati' | transloco }}: {{ selectedProtocolsCount }}</h5>
+</div>
+
+<gias-kendo-grid 
+    #ProtocolsGrid
+    [gridId]="this.gridService.gridId"
+    class="kendo-grid-no-shadows"
+    style="background-color: #ffffff">
+  
+    <kendo-grid-column 
+        field="Prot_Alt_DDL" 
+        [title]="'zoo.ProtocolloAlternativo' | transloco"
+        [editable]="true" 
+        [width]="250"
+    >
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            
+            <div *ngIf="!dataItem.Selected">
+                {{ gridService.getProtAltDisplayName(dataItem.Prot_Alt) }}
+            </div>
+
+            <kendo-dropdownlist 
+                *ngIf="dataItem.Selected"
+                [ngModel]="dataItem.Prot_Alt" 
+                [data]="gridService.Array_AllProtocols" 
+                textField="Display" 
+                valueField="Id" 
+                [defaultItem]="{ Id: null, Display: ('zoo.NessunProtocolloAlternativo' | transloco) }"
+                style="width: 100%;"
+                [disabled]="this.terapiaFormService.isInfoMode"
+            >
+            </kendo-dropdownlist>
+        </ng-template>
+
+    </kendo-grid-column>
+    
+    <ng-template #noRecordsTemplateRef>
+        <div>
+        <p>{{ 'zoo.ProtocolliNonTrovati' | transloco }}</p>
+        </div>
+    </ng-template>
+
+</gias-kendo-grid>

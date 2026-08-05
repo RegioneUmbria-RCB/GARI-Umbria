@@ -1,0 +1,23 @@
+<div class="visite-page">
+    <div class="filters-container">
+        <app-filters-visite></app-filters-visite>
+    </div>
+    <div class="container pt-3">
+        <div class="row col-12">
+            <ng-container>
+                <kendo-tabstrip
+                    id="tabstrip"
+                    #tabstrip>
+                    <kendo-tabstrip-tab [selected]="true" [disabled]="isDisabled">
+                        <ng-template kendoTabTitle>
+                            <span style="cursor: pointer;">{{'visite.Visite' | transloco}}</span>
+                        </ng-template>
+                        <ng-template kendoTabContent>
+                            <app-menu-visite *ngIf="showGrid" [tabVisita]="tabstrip" (updateDisabled)="updateDisabled($event)"></app-menu-visite>
+                        </ng-template>
+                    </kendo-tabstrip-tab>
+                </kendo-tabstrip>
+            </ng-container>
+        </div>
+    </div>
+</div>    

@@ -1,0 +1,473 @@
+﻿
+.DSS_GaugesContainer {
+    flex: auto;
+    overflow: hidden;
+}
+
+.window-loader {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+}
+
+.zero_opacity {
+    opacity: 0;
+}
+
+
+.___hidden {
+    display: none;
+}
+
+.__toggle {
+    user-select: none;
+    font-size: 18px;
+    height: 2em;
+    display: flex;
+    align-items: center;
+}
+
+.__toggle input[type=radio] {
+    display: none;
+}
+
+.__toggle label {
+    cursor: pointer;
+    margin: 0px;
+    vertical-align: middle;
+}
+
+.__toggle label > input[type=radio]:checked + div {
+    font-size: 18px;
+    color: #333;
+}
+
+.__toggle label > div {
+    padding: 5px 5px;
+    font-size: 14px;
+    color: #ddd;
+    transition: all 100ms linear;
+}
+
+
+
+
+.indic-grid {
+    display: grid;
+    grid-gap: 10px 10px;
+}
+
+/* Extra Small*/
+@media(max-width: 767px) {
+    .indic-grid
+    {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Small*/
+@media(min-width: 768px) and (max-width: 991px) {
+    .indic-grid
+    {
+        grid-template-columns: repeat( 2, minmax(0, 1fr) );
+    }
+}
+
+/* Medium*/
+@media(min-width: 992px) and (max-width: 1199px) {
+    .indic-grid
+    {
+        grid-template-columns: repeat( 3, minmax(0, 1fr) );
+    }
+}
+
+/* Large*/
+@media(min-width: 1200px) {
+    .indic-grid {
+        grid-template-columns: repeat( 4, minmax(0, 1fr) );
+    }
+}
+
+
+.indic-group {
+    padding: 10px 5px;
+}
+
+.indic-group-header {
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.indic-group-header > div {
+    text-align: center;
+    font-size: 16px;
+}
+
+.indic {
+    cursor: default;
+    padding: 5px;
+}
+
+.indic-title {
+    border-color: #aaa;
+    background-color: #aaa;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    height: 6em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 3px;
+}
+
+.indic-title > div {
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 4px;
+}
+
+.indic-wrapper {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+.error-indic {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.warning-indic {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+}
+
+.indic-elem {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.indic-error-msg {
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.indic-meteo-status-container {
+    position: absolute;
+    cursor: pointer;
+    z-index: 1000;
+    /*right: 0;*/
+}
+
+.indic-msg {
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+    height: 45px;
+}
+
+.indic-meteo-status-icon {
+    font-size: 28px;
+}
+
+.indic-meteo-status-icon.k-i-information,
+.indic-meteo-status-icon.k-i-floppy,
+.indic-meteo-status-icon.k-i-printer {
+    color: #0dcaf0;
+}
+
+.indic-meteo-status-icon.k-i-exclamation-circle {
+    color: #ffc107;
+}
+
+.indic-progress-msg {
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    height: 75px;
+}
+
+.indic-gauge {
+    top: 50px;
+    height: 60px;
+}
+
+.indic-gauge-bands-container {
+    position: relative;
+    border-radius: 5px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.indic-gauge-leds-container {
+    position: relative;
+}
+
+.indic-gauge-bands {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    height: 40%;
+    transform: translateY(-50%);
+    background-color: #1E90FF;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -1px 7px 1px, inset #444444 0px -1px 6px;
+}
+
+.indic-gauge-bands-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -1px 7px 0px, inset #888888 0px -1px 6px;
+}
+
+.indic-gauge-led {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.progress-gauge {
+    top: 80px;
+    height: 30px;
+}
+
+.progress-gauge-bar-container {
+    top: 5px;
+    position: relative;
+}
+
+.progress-gauge-bar-container > div {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.progress-gauge-bar-container > .bar-overlay {
+    width: 100%; 
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -1px 7px 0px, inset #888888 0px -1px 6px; 
+}
+
+.progress-gauge-bar-container > .bar-progress {
+    min-width: 10px;
+    max-width: 100%;
+    background-color: rgba(142, 68, 173, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px -1px 7px 1px, rgb(68, 68, 68) 0px -1px 6px inset;
+}
+
+.indic-avv {
+    border-color: #aaa;
+    border-radius: 4px;
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    width: 100%;
+    top: 125px;
+    height: 120px;
+}
+
+
+.warn-tooltip {
+    padding: 3px;
+    cursor: pointer;
+    right: 0;
+    /*height: 20px; */
+    /*: 20px; */
+    /*margin-left: 5px; */
+    border-radius: 50%;
+    /* background: #8a6d3b; */
+    /* color: #fcf8e3; */
+    box-shadow: 0 0 0 rgba(138, 109, 59, 0.5);
+    -moz-animation: warn-pulse 2s infinite;
+    -wbkit-animation: warn-pulse 2s infinite;
+    -ms-animation: warn-pulse 2s infinite;
+    animation: warn-pulse 2s infinite;
+}
+
+
+.warn-tooltip:hover {
+    -moz-animation: none;
+    -webkit-animation: none;
+    -ms-animation: none;
+    animation: none;
+}
+
+@-moz-keyframes warn-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(138, 109, 59, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0);
+    }
+}
+
+@-webkit-keyframes warn-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(138, 109, 59, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0);
+    }
+}
+
+@-ms-keyframes warn-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(138, 109, 59, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0);
+    }
+}
+
+@keyframes warn-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0.5);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(138, 109, 59, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 109, 59, 0);
+    }
+}
+
+
+.ripple {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #e5e5e5;
+    opacity: 0.5;
+    transform: scale(0);
+}
+
+.indic-gauge:hover > .ripple {
+    animation: ripple-in 2s;
+}
+
+@-moz-keyframes ripple-in {
+    0% {
+        transform: scaleX(0);
+    }
+
+    20% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes ripple-in {
+    0% {
+        transform: scaleX(0);
+    }
+
+    20% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+@-ms-keyframes ripple-in {
+    0% {
+        transform: scaleX(0);
+    }
+
+    20% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple-in {
+    0% {
+        transform: scaleX(0);
+    }
+
+    20% {
+        transform: scaleX(1);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: scaleX(1);
+        opacity: 0;
+    }
+} 
+
+
+.vertical-center { 
+    position: absolute; 
+    top : 50%; 
+    transform: translateY(-50%); 
+} 
+
+
+.___semaforo {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    vertical-align: middle;
+    box-shadow: inset 0 0 1px #999, inset 0 0 8px rgba(0, 0, 0, .2);
+    margin-left: 10px;
+    margin-top: -3px;
+}
+
+.___allineadestra {
+    text-align: right !important;
+}
+
+.div-btn-dss {
+    display: flex;
+    width: 20%;
+}

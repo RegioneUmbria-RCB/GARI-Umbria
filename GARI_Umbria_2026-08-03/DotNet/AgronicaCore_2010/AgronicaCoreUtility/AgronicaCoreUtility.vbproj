@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreUtility</RootNamespace>
+    <AssemblyName>AgronicaCoreUtility</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2024.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2024.1.0\lib\net462\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.Serializers.NewtonsoftJson, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.Serializers.NewtonsoftJson.106.15.0\lib\net452\RestSharp.Serializers.NewtonsoftJson.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="TimeZoneConverter, Version=6.1.0.0, Culture=neutral, PublicKeyToken=e20ab7d0d9479841, processorArchitecture=MSIL">
+      <HintPath>..\packages\TimeZoneConverter.6.1.0\lib\net462\TimeZoneConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessoVeloceDB.vb" />
+    <Compile Include="AgroGISHelper.vb" />
+    <Compile Include="AgroSerializer.vb" />
+    <Compile Include="AgroZip.vb" />
+    <Compile Include="Albero.vb" />
+    <Compile Include="arrayHlp.vb" />
+    <Compile Include="CallNetCore.vb" />
+    <Compile Include="CaricaListControl_2010.vb" />
+    <Compile Include="ClassiReflection.vb" />
+    <Compile Include="CulturaHelper.vb" />
+    <Compile Include="DatamodelUtils.vb" />
+    <Compile Include="DataOra.vb" />
+    <Compile Include="DatarowExtension.vb" />
+    <Compile Include="DebugHelper.vb" />
+    <Compile Include="FileSystemHelper.vb" />
+    <Compile Include="FTPHelper.vb" />
+    <Compile Include="GestioneLoghiFooterStampe.vb" />
+    <Compile Include="Gestione_Eccezioni.vb" />
+    <Compile Include="Http.vb" />
+    <Compile Include="Icone.vb" />
+    <Compile Include="ItaliaAnagrafeFisco.vb" />
+    <Compile Include="jSon.vb" />
+    <Compile Include="Localization.vb" />
+    <Compile Include="Login.vb" />
+    <Compile Include="Mail.vb" />
+    <Compile Include="Messages_Str.vb" />
+    <Compile Include="NetCDF\Attribute.vb" />
+    <Compile Include="NetCDF\Dimension.vb" />
+    <Compile Include="NetCDF\GeoSpatialData.vb" />
+    <Compile Include="NetCDF\NetCDFStream.vb" />
+    <Compile Include="NetCDF\NetCDFTools.vb" />
+    <Compile Include="NetCDF\Variable.vb" />
+    <Compile Include="ObjectExtension.vb" />
+    <Compile Include="Oggetti.vb" />
+    <Compile Include="PredicateBuilder.vb" />
+    <Compile Include="QueryBuilderUtility.vb" />
+    <Compile Include="QueryParametrizzata.vb" />
+    <Compile Include="Redirect.vb" />
+    <Compile Include="SecurityHelper.vb" />
+    <Compile Include="Stringhe.vb" />
+    <Compile Include="TimeZoneUtility.vb" />
+    <Compile Include="UnitTestHelper.vb" />
+    <Compile Include="UtilitySviluppo.vb" />
+    <Compile Include="VisibilitaDiffLogger.vb" />
+    <Compile Include="Varie.vb" />
+    <Compile Include="VB6_Proxy.vb" />
+    <Compile Include="VettoriUtility.vb" />
+    <Compile Include="CaricaListControl.vb" />
+    <Compile Include="DatatableUtility.vb" />
+    <Compile Include="Filtrone.vb" />
+    <Compile Include="Messaggi.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Ricerca.vb" />
+    <Compile Include="VisualStudioHelper.vb" />
+    <Compile Include="web_AspNet.vb" />
+    <Compile Include="XDocUtils.vb" />
+    <Compile Include="XMLUtility.vb" />
+    <Compile Include="XsltUtils.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{6300885f-3954-4f7b-91e9-1b028fa64b74}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415C-E4F0-4EE5-BF6A-C0BD9BF3276B}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabHLP\AgronicaCoreContabHLP.vbproj">
+      <Project>{03C0A225-5A83-4A65-B3AA-207E2932AEF8}</Project>
+      <Name>AgronicaCoreContabHLP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGraficaDAL\AgronicaCoreGraficaDAL.vbproj">
+      <Project>{0BEE295E-9A01-4A27-BEFF-CCB552C07CAE}</Project>
+      <Name>AgronicaCoreGraficaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812BE209-57AC-45DB-9BFC-A4D64BFA29D8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7CF14AE3-4B42-4488-A29E-E4B698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21FDABC5-4CAF-43DE-800A-1AE7B4CB7CBB}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreZooDAL\AgronicaCoreZooDAL.vbproj">
+      <Project>{2332B409-B2E5-4A70-9F33-589F4BF7522F}</Project>
+      <Name>AgronicaCoreZooDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <!-- Mark the project as NOT being a test project -->
+    <SonarQubeTestProject>false</SonarQubeTestProject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

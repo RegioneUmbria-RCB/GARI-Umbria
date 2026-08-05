@@ -1,0 +1,16 @@
+<div *ngIf="!!selectedProfile">
+    <gias-kendo-grid #PermessiGrid (selectionChange)="selectPermission($event)">
+        <ng-container headerContent>
+            <div kendoTooltip [title]="'prof.SbloccaModifica' | transloco">
+                <button kendoButton #unlockPermissionsEditBtn [type]="'button'" (click)="onEditPermissions()" *ngIf="permessoEdit">
+                    <fa-icon [icon]="lockIcon" aria-hidden="true"></fa-icon>
+                </button>
+            </div>
+<!--            <div kendoTooltip [title]="'prof.AggiornaPermessiUtentiCollegati' | transloco">-->
+<!--                <button kendoButton type="button" (click)="onSyncConnectedUsers()">-->
+<!--                    <fa-icon aria-hidden="true" [icon]="faArrowsRotate"></fa-icon>-->
+<!--                </button>-->
+<!--            </div>-->
+        </ng-container>
+    </gias-kendo-grid>
+</div>

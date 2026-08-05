@@ -1,0 +1,52 @@
+.header-treatments-todo {
+    display: flex;
+    justify-content: flex-start; /* This is the key change */
+    align-items: center;        /* Good practice to align items vertically */
+    gap: 16px; 
+}
+
+.label-reset {
+    white-space: nowrap;
+}
+
+.button-time-stamp {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1%;
+    gap: 10px;
+}
+
+.redirect-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1%;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.widget-treatments-todo-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #fafafa;
+
+    gias-kendo-grid {
+        height: 100%;
+    }
+
+    ::ng-deep gias-kendo-grid>div {
+        height: 100% !important;
+    }
+
+    ::ng-deep gias-kendo-grid>div>kendo-grid {
+        height: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+}

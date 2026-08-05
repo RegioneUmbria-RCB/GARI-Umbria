@@ -1,0 +1,80 @@
+<kendo-dialog
+  [title]="'GestioneOperazioniPreferite' | transloco"
+  [width]="'80%'" [height]="630" style="z-index: 10002;"
+  (close)="done.next()"
+>
+  <h1>{{ 'GestioneOpZoo' | transloco }}</h1>
+  <main class="card-shadow">
+    <header class="tool-header">
+      <div>
+        <h2>{{ 'TipoVisualizzazione' | transloco }}</h2>
+        <form [formGroup]="innerForm">
+          <gias-switch-template
+            class="inline-switch" giasFormControlName="canCustomize"
+            [noLabel]="'PresetIniziale' | transloco" [siLabel]="'Personalizza' | transloco"
+            [isBlue]="true"
+          ></gias-switch-template>
+        </form>
+      </div>
+      <div class="btns-container">
+        <div class="action-button light border_blue text_blue text_uppercase" (click)="undoAction()">
+          {{ 'Annulla' | transloco }}
+        </div>
+        <div class="action-button dark bg_blue text_uppercase" (click)="execute()">
+          {{ 'Conferma' | transloco }}
+        </div>
+      </div>
+    </header>
+    <hr>
+
+    <div class="row-container">
+      <section class="operation-search-container padding-20">
+        <header class="operations-search-header">
+          <h3 class="operations-manager-title text_blue text_weight_800">{{ 'SelezionaOpPreferite' | transloco }}</h3>
+          <div class="search-op" id="searchOp">
+            <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+            <input type="search" id="searchOp"
+                   [placeholder]="'CercaOperazioniZoo' | transloco"
+                   [(ngModel)]="filter">
+          </div>
+        </header>
+
+        <div class="operations-manager-body scrollable el-list">
+          <ng-container *ngFor="let op of operations">
+            <div class="op-item" (click)="setFavorite(op)">
+              <span [ngClass]="op.preferito ? 'checkbox-icon readonly': 'checkbox-icon active unchecked'">
+                  <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                  <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+              </span>
+              <div class="op-card-border-left">
+                  <p>{{op.descrizione}}</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+      </section>
+
+      <section class="favorites-container">
+        <header class="bg_blue padding-20 row-container">
+          <span class="star-icon text_white" style="margin-top: -4px"><i aria-hidden="true" class="fa fa-star-o"
+                                                                         aria-hidden="true"></i></span>
+          <h3 class="operations-favourites-title">{{ 'OperazioniPreferite' | transloco }}</h3>
+        </header>
+
+        <div class="margin-20 scrollable el-list">
+          <ng-container *ngFor="let fav of favorites">
+            <div class="op-item" (click)="unsetFavorite(fav)">
+              <span class="checkbox-icon remove text_blue">
+                  <i aria-hidden="true" class="fa fa-minus-square" aria-hidden="true"></i>
+              </span>
+              <div class="op-card-border-left">
+                <p>{{ fav.descrizione }}</p>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </section>
+    </div>
+  </main>
+</kendo-dialog>

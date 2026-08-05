@@ -1,0 +1,43 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '15 1 * * *' # cron syntax defining a schedule (02:15)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: false
+
+variables:
+- group: Destinations
+- template: ../../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+- name: BranchPipe
+  value: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../../templates/pipelines/net-agro-core-pipeline.yml  # Template reference
+  parameters:
+    targets: "AgronicaNetCoreApi\\AgronicaNetCoreApi\\AgronicaNetCoreApi.csproj"
+    projectName: AgronicaNetCoreApi
+    workDir: "AgronicaNetCoreApi\\AgronicaNetCoreApi"
+    artifactName: AgronicaNetCoreApi
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    preBuildSteps:
+      - template: ../../templates/steps/sonar-pre-build.yml
+        parameters:
+          scannerMode: 'dotnet'
+          projectKey: 'GiasDotNet-NetCoreAPI'
+          projectName: 'GiasDotNet - NetCore API'
+          projectVersion: '$(SonarVersion)'
+          #verbose: 'true'
+    postBuildSteps:
+      - template: ../../templates/steps/sonar-post-build.yml

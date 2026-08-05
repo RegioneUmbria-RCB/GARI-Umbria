@@ -1,0 +1,19 @@
+<div [formGroup]="qdcservice.TestataVisitaForm">
+
+    <gias-drop-down-template-s [name]="'Operatore' | transloco" [obligatory]="true"
+                               [clearButton]="true"
+                               (selectionChange)="valueChange($event)"
+                               textField="nome_cognome"
+                               valueField="Cod_RisUm"
+                               [filterable]="true"
+                               [listItems]="arrayOperatori"
+                               giasFormControlName="Operatore_Visita"
+                               [valuePrimitive]="false"
+                               style="width: 350px">
+    </gias-drop-down-template-s>
+
+    <!-- proprietà da aggiungere dopo che si conoscono le specifiche delle ddl -->
+    <!-- [listItems]="arrayOperatori" -->
+    <!-- (open)="openDdlOperatore($event, 'Operatore')" -->
+
+</div>

@@ -1,0 +1,33 @@
+.button-totale-farmaco {
+    align-items: center;
+    align-content: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0.5rem;
+    width: 100%;
+
+    .disabled {
+        pointer-events: none; /* Disabilita il click */
+        opacity: 0.6; /* Riduce l'opacità per indicare che è disabilitato */
+        cursor: not-allowed; /* Cambia il cursore */
+    }
+}
+
+/* Overlay semi-trasparente */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo grigio semi-trasparente */
+    z-index: 9998; /* Sopra gli altri elementi */
+    pointer-events: none; /* Impedisce interazioni con l'overlay */
+}
+
+/* Evidenzia la Kendo NumericTextBox */
+.k-focus {
+    border: 2px solid #007bff; /* Bordo blu per evidenziare */
+    z-index: 9999; /* Sopra l'overlay */
+}

@@ -1,0 +1,61 @@
+<div *ngIf="isNotRecipe">
+    <!-- <h6>{{'qdc.Opzioni' | transloco}}</h6> -->
+    <form [formGroup]="form">
+        <div class="row" *ngIf="MostraOpzioniRaccolta()">
+
+            <div class="col-12 col-sm-12">
+                <gias-drop-down-template-s
+                    [name]="'qdc.OpzioniRaccolta' | transloco"
+                    textField="descrizione"
+                    valueField="codice"
+                    [listItems]="ListChiusura"
+                    giasFormControlName="Chiusura"
+                    [valuePrimitive]="true"
+                ></gias-drop-down-template-s>
+            </div>
+
+        </div>
+        <div class="row" style="margin-top: 15px">
+
+            <div class="col-12 col-sm-3">
+                <gias-drop-down-template-s
+                    [name]="'qdc.RipartizioneRaccolto' | transloco"
+                    textField="descrizione"
+                    valueField="codice"
+                    [listItems]="ListRipartizione"
+                    giasFormControlName="Ripartizione"
+                    [valuePrimitive]="true"
+                ></gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-3">
+                <gias-drop-down-template-s
+                    [name]="'qdc.ModalitaRaccolta' | transloco"
+                    textField="descrizione"
+                    valueField="codice"
+                    [listItems]="ListModalita"
+                    giasFormControlName="Modalita"
+                    [valuePrimitive]="true"
+                ></gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-3" *ngIf="lottiAttivi">
+                <gias-drop-down-template-s
+                    [name]="'qdc.GenerazioneLotto' | transloco"
+                    textField="descrizione"
+                    valueField="codice"
+                    [listItems]="ListLotto"
+                    giasFormControlName="GenerazioneLotto"
+                    [valuePrimitive]="true"
+                ></gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-3" *ngIf="carichiAttivi">
+                <gias-date-time-picker-template
+                    [name]="'DataIngresso' | transloco"
+                    giasFormControlName="dataIngresso"
+                ></gias-date-time-picker-template>
+            </div>
+        </div>
+    </form>
+</div>

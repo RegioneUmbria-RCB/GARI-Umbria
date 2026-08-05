@@ -1,0 +1,54 @@
+<kendo-appbar [positionMode]="'sticky'" [position]="position" [ngClass]="openInIFrame ? 'top-no-header' : ''">
+
+  <kendo-appbar-section>
+    <span *ngIf="trackChanges">
+      <button kendoButton [primary]="true" type="submit" [disabled]="!UndoEnable" (click)="undo()"><span
+          class="k-icon k-i-undo"></span></button>
+    </span>
+    <span *ngIf="trackChanges">
+      <button kendoButton [primary]="true" type="submit" [disabled]="!RedoEnable" (click)="redo()"><span
+          class="k-icon k-i-redo"></span></button>
+    </span>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer class="gias-update-toolbar-before-appbar-section"></kendo-appbar-spacer>
+
+  <ng-content select="[AppbarSection]"></ng-content>
+
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+
+  <ng-content select="[ButtonAppbarSection]"></ng-content>
+
+  <kendo-appbar-section>
+    <span *ngIf="showCompanyName" style="width: 250px; color: #76bc21; padding-right: 10px; overflow: hidden;">
+      <span>{{companyRagSoc ?? ''}} {{companyDescription ?? ''}}</span>
+    </span>
+  </kendo-appbar-section>
+
+  <kendo-appbar-section>
+    <span *ngIf="submit && salva">
+      <div kendoTooltip>
+        <button kendoButton [title]="'Salva' | transloco " [primary]="true" type="submit" [disabled]="disabled"
+          class="btn-primary-fill"><span class="k-icon k-i-save"></span></button>
+      </div>
+    </span>
+    <span *ngIf="!submit && salva">
+      <div kendoTooltip>
+        <button kendoButton [title]="'Salva' | transloco " [primary]="true" (click)="SalvaEvent()" [disabled]="disabled"
+          class="btn-primary-fill">
+          <span class="k-icon k-i-save"></span></button>
+      </div>
+    </span>
+  </kendo-appbar-section>
+
+  <kendo-appbar-section>
+    <span *ngIf="salvaNuovo">
+      <div kendoTooltip>
+        <button kendoButton [title]="'SalvaENuovo' | transloco " [primary]="true" (click)="SalvaNuovoEvent()"
+          [disabled]="disabled" class="btn-primary-fill">
+          <span class="k-icon k-i-save k-i-save-new"></span></button>
+      </div>
+    </span>
+  </kendo-appbar-section>
+
+</kendo-appbar>

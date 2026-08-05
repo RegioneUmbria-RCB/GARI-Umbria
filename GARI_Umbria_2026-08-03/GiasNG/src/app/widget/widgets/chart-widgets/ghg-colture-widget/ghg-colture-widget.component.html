@@ -1,0 +1,30 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="colture-full-width">
+  <div class="space-between">
+    <div class="colture-switch">
+      <div class="middle">{{ 'GHGAdEttaro' | transloco }}</div>
+      <kendo-switch [(ngModel)]="total" style="width: 85px;"></kendo-switch>
+      <div class="middle">{{ 'GHGTotale' | transloco }}</div>
+    </div>
+
+    <div class="colture-switch">
+      <div class="middle">{{ 'Colonne' | transloco }}</div>
+      <kendo-switch [(ngModel)]="chartPie" style="width: 85px;"></kendo-switch>
+      <div class="middle">{{ 'Torta' | transloco }}</div>
+    </div>
+  </div>
+
+  <app-chart-widget [data]="data" [field]="total ? 'Eec_Totale' : 'Eec_Ha'" unit="" [chartPie]="chartPie"
+    style="height: 85%"></app-chart-widget>
+</div>
+
+<div *ngIf="!loading && piva != null && data.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunaColtura' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

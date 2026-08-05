@@ -1,0 +1,60 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Nuovo Core WS</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>NomeFunzione</ID>
+          <ToolTip>Nome</ToolTip>
+          <Default>Nome</Default>
+        </Literal>         
+      </Declarations>
+      <Code Language="vb">
+        <![CDATA[
+    <WebMethod()> _
+    <Script.Services.ScriptMethod()> _
+    Public Function $NomeFunzione$(ByVal objP_super_server As String, ByVal objP_server As String, ByVal objP_utenti as string) As RispostaStandard
+        Dim r As New RispostaStandard
+        
+         Dim objParametri_Server As AgronicaCoreParametri = Utility.convertStringtoOBJparametri(objP_server)
+         Dim objParametri_Utenti As AgronicaCoreParametri = Utility.convertStringtoOBJparametri(objP_utenti)
+
+        Try            
+
+            Dim leggiLingua As New Lingue_Read
+            Dim dtLingua As DataTable = leggiLingua.Leggi_datoCODGIAS(objParametri_Server.Lingua_Cod, 
+                                                                      AgronicaCoreParametri.enumSelezioneVariabile.Selezione_TabellaCompleta,
+                                                                      "", "", objParametri_Utenti)
+            Dim linguaCodiceISO As String = dtLingua.Rows(0)("CodiceISO")
+            Threading.Thread.CurrentThread.CurrentUICulture = new Globalization.CultureInfo(linguaCodiceISO)
+           
+
+            r.RispostaOK = True
+            r.RispostaStringa = ""
+
+        Catch ex As Exception
+
+            r.RispostaOK = False
+            r.Errore =   "Errore durante l'operazione: " & AgronicaCoreUtility.Gestione_Eccezioni.MessaggioCompletoDataEccezione(ex, False)
+
+        End Try
+
+        Return r
+    End Function
+        ]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>AgronicaCoreUtentiDAL</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

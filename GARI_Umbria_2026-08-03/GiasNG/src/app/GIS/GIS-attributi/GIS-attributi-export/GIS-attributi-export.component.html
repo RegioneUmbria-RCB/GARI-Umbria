@@ -1,0 +1,79 @@
+<ng-container *ngIf="submit$ | async"></ng-container>
+<ng-container *ngIf="featureUpdater$ | async"></ng-container>
+
+<div class="attributi-export-column gap-10">
+  <form class="k-form" [formGroup]="form">
+    <div class="attributi-export-column gap-10 k-mr-5">
+      <div class="attributi-export-row">
+        <div class="flex-3">
+          <kendo-label>{{'gis.TipologiaEsportazioneDati' | transloco}}</kendo-label>
+          <kendo-dropdownlist [data]="exportDataTypes" formControlName="exportDataType" textField="name" valueField="id"
+            [filterable]="true" [kendoDropDownFilter]="filterSettings">
+          </kendo-dropdownlist>
+        </div>
+
+        <div class="flex-4">
+          <kendo-formfield style="margin-top: 0px">
+            <kendo-label style="font-weight: bold;">{{'Descrizione' | transloco}} *</kendo-label>
+            <kendo-textbox formControlName="description" [clearButton]="true" required></kendo-textbox>
+          </kendo-formfield>
+        </div>
+
+        <div class="flex-1"></div>
+        <div class="flex-2 d-flex justify-end" [ngClass]="{'loading-spinner': loading}">
+          <button kendoButton class="submit-button" fillMode="outline" (click)="submitSubject.next()"
+            [disabled]="loading"><i aria-hidden="true" class="fa fa-cloud-download white k-p-1"></i>
+            {{ 'gis.AvviaEsportazione' | transloco }}</button>
+        </div>
+      </div>
+
+      <div class="attributi-export-row">
+        <div class="flex-3 switch-container">
+          <div kendoTooltip
+            [title]="hasTotalExportPermissions ? '' : ('gis.NonSiHannoIPermessiPerCambiareQuestaOpzione' | transloco)">
+            <kendo-switch class="data-switch always-on" formControlName="exportOnlyVisibleElementsMapArea"
+              [disabled]="!hasTotalExportPermissions"></kendo-switch>
+          </div>
+
+          <div *ngIf="form.controls.exportOnlyVisibleElementsMapArea.value">{{
+            'gis.EsportaPoligoniVisibiliLayerSuTotali' |
+            transloco: { layer: form.controls.layer.value?.nome, total: form.controls.totalFeatures.value } }} </div>
+
+          <div *ngIf="!form.controls.exportOnlyVisibleElementsMapArea.value">{{
+            'gis.EsportaTuttoSecondoVisibilitaUtente' | transloco }} </div>
+        </div>
+
+        <div class="flex-3"></div>
+        <div class="flex-2"></div>
+        <div class="flex-2 d-flex justify-end" [ngClass]="{'loading-spinner': loading}">
+          <button kendoButton class="submit-button" fillMode="outline" (click)="reloadData()"
+            [disabled]="gridLoading"><i aria-hidden="true" class="fa fa-refresh white k-p-1"></i>
+            {{ 'gis.RicaricaGriglia' | transloco }}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <gias-kendo-grid #kendoGrid [customCommandColumnCellTemplate]="customCommandColumn">
+    <!--<kendo-grid-command-column width="25">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="column-commands">
+          <button kendoButton kendoTooltip (click)="download(dataItem.allegati_Documenti_Cod)"
+            [title]="'Download' | transloco" fillMode="flat">
+            <i aria-hidden="true" class="fa fa-cloud-download color-std"></i>
+          </button>
+        </div>
+      </ng-template>
+    </kendo-grid-command-column>-->
+
+  </gias-kendo-grid>
+
+  <ng-template #customCommandColumn let-dataItem="dataItem">
+      <div class="column-commands">
+        <button kendoButton kendoTooltip (click)="download(dataItem.allegati_Documenti_Cod)"
+                [title]="'Download' | transloco" fillMode="flat">
+          <i aria-hidden="true" class="fa fa-cloud-download color-std"></i>
+        </button>
+      </div>
+  </ng-template>
+</div>

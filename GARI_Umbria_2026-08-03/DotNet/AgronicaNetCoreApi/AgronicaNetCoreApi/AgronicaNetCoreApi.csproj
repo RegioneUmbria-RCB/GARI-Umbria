@@ -1,0 +1,108 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="GiasVersioneCorrente.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.36">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.36" />
+    <PackageReference Include="NetTopologySuite" Version="2.6.0" />
+    <PackageReference Include="NetTopologySuite.CoordinateSystems" Version="1.15.3" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Http" Version="9.1.0" />
+    <PackageReference Include="Serilog.Sinks.Map" Version="1.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.5.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreUtilityStd\AgronicaCoreUtilityStd.vbproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreVarieBizSTD\AgronicaCoreVarieBizSTD.vbproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaDataProvider6\AgronicaDataProvider6.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Anagrafe.BIZ\AgronicaNetCore.Anagrafe.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Authentication.BIZ\AgronicaNetCore.Authentication.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.CodificheCAC.BIZ\AgronicaNetCore.CodificheCAC.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.CodificheCAC.DAL\AgronicaNetCore.CodificheCAC.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.DefaultPianiColturali.BIZ\AgronicaNetCore.DefaultPianiColturali.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Documentale.BIZ\AgronicaNetCore.Documentale.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Documentale.DAL\AgronicaNetCore.Documentale.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.DomandaIrrigua.BIZ\AgronicaNetCore.DomandaIrrigua.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.DomandaIrrigua.DAL\AgronicaNetCore.DomandaIrrigua.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Filtrone.BIZ\AgronicaNetCore.FiltroRicerca.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.SostenibilitaCO2.BIZ\AgronicaNetCore.SostenibilitaCO2.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.SostenibilitaCO2.DAL\AgronicaNetCore.SostenibilitaCO2.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.SostenibilitaH2O.BIZ\AgronicaNetCore.SostenibilitaH2O.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.RischiMeteo.BIZ\AgronicaNetCore.RischiMeteo.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.RischiMeteo.DAL\AgronicaNetCore.RischiMeteo.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Gis.BIZ\AgronicaNetCore.Gis.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Logging.BIZ\AgronicaNetCore.Logging.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Logging.DAL\AgronicaNetCore.Logging.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Magazzino.BIZ\AgronicaNetCore.Magazzino.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Magazzino.DAL\AgronicaNetCore.Magazzino.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.MetaSchema.BIZ\AgronicaNetCore.MetaSchema.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Note.BIZ\AgronicaNetCore.Note.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Note.DAL\AgronicaNetCore.Note.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Operazione.BIZ\AgronicaNetCore.Operazione.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Operazione.DAL\AgronicaNetCore.Operazione.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.OperazioniZoo.BIZ\AgronicaNetCore.OperazioniZoo.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.OperazioniZoo.DAL\AgronicaNetCore.OperazioniZoo.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.ProfilazioneImprese.BIZ\AgronicaNetCore.ProfilazioneImprese.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.ProfilazioneImprese.DAL\AgronicaNetCore.ProfilazioneImprese.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.ProfilazioneMacchine.BIZ\AgronicaNetCore.ProfilazioneMacchine.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.ProfilazioneMacchine.DAL\AgronicaNetCore.ProfilazioneMacchine.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.SpecieVegetaliDefault.DAL\AgronicaNetCore.SpecieVegetaliDefault.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Statistiche.BIZ\AgronicaNetCore.Statistiche.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Utenti.BIZ\AgronicaNetCore.Utenti.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Utility.BIZ\AgronicaNetCore.Utility.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Utility.DAL\AgronicaNetCore.Utility.DAL.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.UtilityDB.BIZ\AgronicaNetCore.UtilityDB.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Widgets.BIZ\AgronicaNetCore.Widgets.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Zoo.BIZ\AgronicaNetCore.Zoo.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Zoo.DAL\AgronicaNetCore.Zoo.DAL.csproj" />    
+  </ItemGroup>
+
+</Project>

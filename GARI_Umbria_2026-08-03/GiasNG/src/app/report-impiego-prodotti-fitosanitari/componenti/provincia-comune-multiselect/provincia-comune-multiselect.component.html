@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-sm-6">
+        <gias-multiselect-template-s [name]="'Province' | transloco" [obligatory]="false"
+                                    textField="PROVINCIA" valueField="PROV" [filterable]="true"
+                                    giasFormControlName="Province"
+                                    (open)="openMultiSelectProvince($event)"
+                                    (removeItem)="onRemoveItemProvince($event)"
+                                    (selectionItem)="onRemoveAll($event, ['Comuni'])"
+                                    [groupBy]="true"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+    <div class="col-sm-6">
+        <gias-multiselect-template-s [name]="'Comuni' | transloco" [obligatory]="false"
+                                    textField="LOCALITA" valueField="CHIAVE" [filterable]="true"
+                                    giasFormControlName="Comuni"
+                                    (open)="openMultiSelectComuni($event)"
+                                    [groupBy]="true"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+</div>

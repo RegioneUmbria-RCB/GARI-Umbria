@@ -1,0 +1,100 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Nuova griglia Kendo</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>NomeFunzione</ID>
+          <ToolTip>Nome della funzione da creare</ToolTip>
+          <Default>MiaFunzioneGriglia</Default>
+        </Literal>
+        <Literal>
+          <ID>IDControllo</ID>
+          <ToolTip>Id del DIV della griglia</ToolTip>
+          <Default>MioDic</Default>
+        </Literal>
+      <Literal>
+          <ID>FunzioneLettura</ID>
+          <ToolTip>Funzione js di lettura dati</ToolTip>
+          <Default>fRead</Default>
+        </Literal>
+      <Literal>
+          <ID>FunzioneInsert</ID>
+          <ToolTip>Funzione js di inserimento dati</ToolTip>
+          <Default>fInsert</Default>
+        </Literal>
+      <Literal>
+          <ID>FunzioneUpdate</ID>
+          <ToolTip>Funzione js di modifica dati</ToolTip>
+          <Default>fUpdate</Default>
+        </Literal>
+        <Literal>
+          <ID>FunzioneDelete</ID>
+          <ToolTip>Funzione js di cancellazione dati</ToolTip>
+          <Default>fDelete</Default>
+        </Literal>
+        
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">
+        <![CDATA[
+         function $NomeFunzione$($IDControllo$) {
+
+    var funzioniCRUD = {
+        funzioneRead: $FunzioneLettura$,
+        funzioneInsert: $FunzioneInsert$,
+        funzioneUpdate: $FunzioneUpdate$,
+        funzioneDelete: $FunzioneDelete$
+    };
+    var idModel = "Id_TestataGriglia";
+    var campiKendoModel = {
+        Id_TestataGriglia: { editable: false, type: "number"},
+        des_TestataGriglia: { editable: true, type: "string", validation: { required: true } },
+        Validita_Inizio: { editable: true, type: "date", validation: { required: true } },
+        Validita_Fine: { editable: true, type: "date", validation: { required: true } }
+    };
+    var colonneKendoGrid = [
+                {
+                    command: [
+                                    { text: "Calibri", click: CalibriLegatiATestata },
+                                    { text: "Prodotti", click: ProdottiLegatiATestata }
+                            ],
+                    title: " ", width: "180px" },                    
+               { field: "des_TestataGriglia", title: "Descrizione" },
+               { field: "Validita_Inizio", title: "Data inizio", format: "{0:dd/MM/yyyy}" },
+               { field: "Validita_Fine", title: "Data fine", format: "{0:dd/MM/yyyy}" }
+    ];
+    var parametriPerLettura = []; 
+    var parametriDataSource = {};
+    var parametriKendoGrid = {pagesize:20, groupable: false, scrollable:false, sortable: false, resizable: false, filterable: false, pageable: false, pdf:false, excel:false };
+    var funzioniPrimaDopoEventi = { funzioneDaChiamarePrimaDelDataBinding: onDataBindingRigheConferimento };
+    var mostraRigheCancellate = true;
+    var colonneDisabilitateSoloInModifica = ["des_TestataGriglia"];
+
+    creaKendoGrid($IDControllo$, // rappresenta l'ID del div a cui si associa la griglia
+                    funzioniCRUD,  //funzioni js da chiamare per read, insert, update, delete
+                    idModel, // chiave riga 
+                    campiKendoModel, // campi modello
+                    colonneKendoGrid, // colonne da mostrare
+                    parametriPerLettura, // parametri da passare alla lettura
+                    parametriDataSource, // parametri data source { chiave - valore}
+                    parametriKendoGrid,   // parametri griglia [{ chiave - valore}]
+                    funzioniPrimaDopoEventi, // funzioni da chiamare all'inizio e alla fine dei vari eventi
+                    mostraRigheCancellate, // se true le righe cancellate vengono mostrate barrate e viene gestita funzione custom cancellazione
+                    colonneDisabilitateSoloInModifica // colonne non modificabili in modifica["colA", "colB", ...]
+    );
+}
+
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

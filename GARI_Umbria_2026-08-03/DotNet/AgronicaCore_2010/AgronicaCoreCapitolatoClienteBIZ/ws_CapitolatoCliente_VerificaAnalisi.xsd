@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ws_CapitolatoCliente_VerificaAnalisi">
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="debug" minOccurs="0" maxOccurs="unbounded"></xs:element>
+        <xs:element name="analisi">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="datiInput">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="specie" type="xs:string" />
+                    <xs:element name="varieta" type="xs:string" />
+                    <xs:element name="dpiImpianto">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="dpiFlagPrivatoPubblico" type="xs:unsignedByte" />
+                          <xs:element name="dpiCodRegolamento" type="xs:unsignedByte" />
+                          <xs:element name="dpiDescrizione" type="xs:string" />
+                          <xs:element name="warning" type="xs:boolean" />
+                          <xs:element name="noCheckDP" type="xs:boolean" />
+                          <xs:element name="dpiResponse">                            
+                            <xs:complexType>
+                              <xs:sequence>                                
+                                <xs:element name="esitoGlobale" type="xs:boolean" />
+                                <xs:element name="principiAttiviNonConformi">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="principioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                            <xs:element name="id" type="xs:unsignedByte" />
+                                            <xs:element name="rma" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="FamiglieDiPrincipiAttiviNonConformi">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="FamigliaDiPrincipioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                            <xs:element name="id" type="xs:string" />
+                                            <xs:element name="rma" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="principiAttivi">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="paCod" />
+                          <xs:element name="qtaRilevata" />
+                          <xs:element name="qtaRilevataUdmGIAS" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element maxOccurs="unbounded" name="famigliePrincipiAttivi">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="famCod" />
+                          <xs:element name="qtaRilevata" />
+                          <xs:element name="qtaRilevataUdmGIAS" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="verifiche">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dpi">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="dpiFlagPrivatoPubblico" type="xs:unsignedByte" />
+                          <xs:element name="dpiCodRegolamento" type="xs:unsignedByte" />                          
+                          <xs:element name="dpiResponse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="warning" type="xs:boolean" />
+                                <xs:element name="noCheckDP" type="xs:boolean" />
+                                <xs:element name="esitoGlobale" type="xs:boolean" />
+                                <xs:element name="principiAttiviNonConformi">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="principioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                            <xs:element name="id" type="xs:unsignedByte" />
+                                            <xs:element name="rma" type="xs:string" />
+                                            <xs:element name="checkFormulati" type="xs:boolean" />
+                                            <xs:element name="percSuperata" type="xs:boolean" />                                            
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="FamiglieDiPrincipiAttiviNonConformi">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="FamigliaDiPrincipioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                            <xs:element name="id" type="xs:string" />
+                                            <xs:element name="rma" type="xs:string" />
+                                            <xs:element name="checkFormulati" type="xs:boolean" />
+                                            <xs:element name="percSuperata" type="xs:boolean" />                                            
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="capitolatiCliente">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="capitolatoCliente">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="id" />                                
+                                <xs:element name="dpiCapitolatoImpianto">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="dpiFlagPrivatoPubblico" type="xs:unsignedByte" />
+                                      <xs:element name="dpiCodRegolamento" type="xs:unsignedByte" />
+                                      <xs:element name="dpiDescrizione" type="xs:string" />
+                                      <xs:element name="warning" type="xs:boolean" />
+                                      <xs:element name="noCheckDP" type="xs:boolean" />
+                                      <xs:element name="dpiResponse">
+                                        <xs:complexType>
+                                          <xs:sequence>                                            
+                                            <xs:element name="esitoGlobale" type="xs:boolean" />
+                                            <xs:element name="principiAttiviNonConformi">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="principioAttivoNonConforme">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                                        <xs:element name="id" type="xs:unsignedByte" />
+                                                        <xs:element name="rma" type="xs:string" />
+                                                        <xs:element name="checkFormulati" type="xs:boolean" />
+                                                        <xs:element name="percSuperata" type="xs:boolean" />                                                        
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="FamiglieDiPrincipiAttiviNonConformi">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="FamigliaDiPrincipioAttivoNonConforme">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="esitoSoloDP" type="xs:boolean" />
+                                                        <xs:element name="id" type="xs:string" />
+                                                        <xs:element name="rma" type="xs:string" />
+                                                        <xs:element name="checkFormulati" type="xs:boolean" />
+                                                        <xs:element name="percSuperata" type="xs:boolean" />                                                        
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="capitolatoResponse">
+                                  <xs:complexType mixed="true">
+                                    <xs:sequence minOccurs="0">
+                                      <xs:element name="esitoGlobale" type="xs:boolean" />
+                                      <xs:element name="esitoNumeroPrincipiAttivi" type="xs:boolean" />
+                                      <xs:element name="esitoPercentualeMax" type="xs:boolean" />
+                                      <xs:element maxOccurs="unbounded" name="principioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="id" />
+                                            <xs:element name="percentuale" type="xs:unsignedByte" />
+                                            <xs:element name="checkFormulati" type="xs:boolean" />                
+                                            <xs:element name="percSuperata" type="xs:boolean" />    
+                                            <xs:element name="rma" type="xs:string" />  
+                                            <xs:element name="Regolamento" type="xs:string" />  
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element maxOccurs="unbounded" name="famigliaPrincipioAttivoNonConforme">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="id" />
+                                            <xs:element name="percentuale" type="xs:unsignedByte" />
+                                            <xs:element name="checkFormulati" type="xs:boolean" />
+                                            <xs:element name="percSuperata" type="xs:boolean" />
+                                            <xs:element name="rma" type="xs:string" />
+                                            <xs:element name="Regolamento" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+
+                                      <xs:element maxOccurs="unbounded" name="bioResponsePrincipioAttivo">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="id" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element maxOccurs="unbounded" name="bioResponseFamiglia">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="id" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="cultivarNonAmmesse" type="xs:boolean" />
+                                <xs:element minOccurs="0" name="elencoCultivarNonAmmesse" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="pivaSuperUser" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="id" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="dataAnalisi" type="xs:dateTime" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

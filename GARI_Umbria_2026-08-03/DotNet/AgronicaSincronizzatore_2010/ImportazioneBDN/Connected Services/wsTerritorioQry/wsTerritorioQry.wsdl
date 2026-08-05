@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati di anagrafiche statiche relative a informazioni territoriali</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="DownloadAssociazioni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAssociazioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAssociazioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="DownloadAssociazioni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAssociazioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAssociazioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAziendeUSL">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAziendeUSLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAziendeUSLResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAziendeUSL_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAziendeUSL_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAziendeUSL_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAziendeUSLComuni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAziendeUSLComuniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAziendeUSLComuniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAziendeUSLComuni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAziendeUSLComuni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAziendeUSLComuni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCategorie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCategorieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCategorieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCategorie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCategorie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCategorie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadComuni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadComuniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadComuniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadComuni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadComuni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadComuni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDistretti">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadDistrettiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadDistrettiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadDistretti_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadDistretti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadDistretti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProvince">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadProvinceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadProvinceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProvince_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadProvince_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadProvince_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadRegioni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadRegioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadRegioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadRegioni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadRegioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadRegioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadStati">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadStatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadStatiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadStati_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadStati_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadStati_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DownloadAssociazioniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAssociazioni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAssociazioniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAssociazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAssociazioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAssociazioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAssociazioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAssociazioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAssociazioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAssociazioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSL" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSLResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSL_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSL_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSL_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSL_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSL_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSLComuni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSLComuniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSLComuni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAziendeUSLComuni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAziendeUSLComuni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCategorie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCategorieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCategorie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCategorie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCategorie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadComuni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadComuniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadComuni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadComuni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadComuni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistrettiSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadDistretti" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistrettiSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadDistrettiResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistrettiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistretti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadDistretti_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistretti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadDistretti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadDistretti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvinceSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadProvince" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvinceSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadProvinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvinceSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvince_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadProvince_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvince_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadProvince_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProvince_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadRegioni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadRegioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadRegioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadRegioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRegioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStatiSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadStati" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStatiSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadStatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStatiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStati_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadStati_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStati_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadStati_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadStati_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsTerritorioQrySoap">
+    <wsdl:operation name="DownloadAssociazioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella Associazioni_Professionali</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAssociazioniSoapIn" />
+      <wsdl:output message="tns:DownloadAssociazioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAssociazioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella Associazioni_Professionali</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAssociazioni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadAssociazioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AZIENDE_USL</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAziendeUSLSoapIn" />
+      <wsdl:output message="tns:DownloadAziendeUSLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AZIENDE_USL</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAziendeUSL_STRSoapIn" />
+      <wsdl:output message="tns:DownloadAziendeUSL_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AZIENDE_USL_COMUNI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAziendeUSLComuniSoapIn" />
+      <wsdl:output message="tns:DownloadAziendeUSLComuniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AZIENDE_USL_COMUNI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAziendeUSLComuni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadAziendeUSLComuni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CATEGORIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCategorieSoapIn" />
+      <wsdl:output message="tns:DownloadCategorieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CATEGORIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCategorie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadCategorie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella COMUNI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadComuniSoapIn" />
+      <wsdl:output message="tns:DownloadComuniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella COMUNI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadComuni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadComuni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella DISTRETTI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadDistrettiSoapIn" />
+      <wsdl:output message="tns:DownloadDistrettiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella DISTRETTI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadDistretti_STRSoapIn" />
+      <wsdl:output message="tns:DownloadDistretti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella PROVINCE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProvinceSoapIn" />
+      <wsdl:output message="tns:DownloadProvinceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella PROVINCE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProvince_STRSoapIn" />
+      <wsdl:output message="tns:DownloadProvince_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella REGIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadRegioniSoapIn" />
+      <wsdl:output message="tns:DownloadRegioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella REGIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadRegioni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadRegioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella STATI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadStatiSoapIn" />
+      <wsdl:output message="tns:DownloadStatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella STATI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadStati_STRSoapIn" />
+      <wsdl:output message="tns:DownloadStati_STRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsTerritorioQrySoap" type="tns:wsTerritorioQrySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadAssociazioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAssociazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAssociazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAssociazioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAssociazioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAssociazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAziendeUSLSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSL_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAziendeUSL_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSLComuni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAziendeUSLComuniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSLComuni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAziendeUSLComuni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCategorie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCategorieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCategorie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCategorie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadComuni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadComuniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadComuni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadComuni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadDistretti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadDistrettiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadDistretti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadDistretti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadProvince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadProvinceSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadProvince_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadProvince_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadRegioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadRegioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadRegioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadRegioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadStati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadStatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadStati_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadStati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsTerritorioQrySoap12" type="tns:wsTerritorioQrySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadAssociazioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAssociazioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAssociazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAssociazioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAssociazioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAssociazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAziendeUSLSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSL_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSL_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAziendeUSL_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSLComuni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAziendeUSLComuniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAziendeUSLComuni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAziendeUSLComuni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAziendeUSLComuni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCategorie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCategorieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCategorie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCategorie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCategorie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadComuni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadComuniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadComuni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadComuni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadComuni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadDistretti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadDistrettiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadDistretti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadDistretti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadDistretti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadProvince" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadProvinceSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProvince_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadProvince_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadProvince_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadRegioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadRegioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRegioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadRegioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadRegioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadStati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadStatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadStati_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadStati_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadStati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsTerritorioQry">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati di anagrafiche statiche relative a informazioni territoriali</wsdl:documentation>
+    <wsdl:port name="wsTerritorioQrySoap" binding="tns:wsTerritorioQrySoap">
+      <soap:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsTerritorioQry.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsTerritorioQrySoap12" binding="tns:wsTerritorioQrySoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsTerritorioQry.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

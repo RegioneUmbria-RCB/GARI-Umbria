@@ -1,0 +1,27 @@
+<div class="widget widget-elevated">
+  <div class="widget-header light">
+    <div class="custom-drag-handle hide">
+      <ng-content *ngIf="!widgetsBlocked" select="[cdkDragHandle]"></ng-content>
+    </div>
+    <div class="widget-title-info">
+      <span class="widget-header-title">{{ title }}</span>
+      <gias-info-template *ngIf="hasInfo" size="lg"
+                          [title]="infoTitle | transloco">
+      </gias-info-template>
+    </div>
+    <div>
+      <app-widget-resizer *ngIf="!widgetsBlocked" class="resizer custom-resizer-handle hide" [widget]="widget"
+        (onSave)="save()">
+      </app-widget-resizer>
+    </div>
+  </div>
+  <div class="widget-body">
+    <ng-content *ngIf="widgetVisible(); else widgetNotVisible" select="[content]" class="widget-content"></ng-content>
+  </div>
+</div>
+
+<ng-template #widgetNotVisible>
+  <div class="widget-loading-container">
+    <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+  </div>
+</ng-template>

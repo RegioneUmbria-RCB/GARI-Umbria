@@ -1,0 +1,80 @@
+<div class="container">
+    <form [formGroup]="consultaSincroDatiAppForm">
+        <div class="jumbotron">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row form-row">
+                        <div class="col-12 col-md-6" style="padding-inline: 24px">
+                            <gias-multiselect-template-s [name]="'Tipo_Dato' | transloco" [obligatory]="true"
+                                textField="descrizione" valueField="codice" [filterable]="true"
+                                giasFormControlName="tipo"
+                                (open)="openDdl($event)"
+                                [valuePrimitive]="true">
+                            </gias-multiselect-template-s>
+                        </div>
+
+                        @if (isDemetra) {
+                            <div class="col-12 col-md-6" style="padding-inline: 24px">
+                                <gias-text-template [name]="'Piva_CUAA' | transloco" 
+                                    giasFormControlName="pivaCUAA">
+                                </gias-text-template>
+                            </div>
+                        }
+
+                        <div class="col" style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
+                            <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()" style="display: flex;
+                                align-items: center; 
+                                justify-content: center;
+                                margin-top: 1%;">
+                                <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+                                <span>{{ 'Cerca' | transloco }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-12 col-md-6">
+                            <gias-validita-datetime formGroupName="validita" style="display:flex"></gias-validita-datetime>
+                        </div>
+                        <div class="col-12 col-md-6" style="display: flex">
+                            <div class="col-12 col-md-4">
+                                <div>
+                                    <gias-switch-template [name]="'VisualizzaDescrizione' | transloco" giasFormControlName="datiAggiuntivi" *ngIf="!isDemetra">
+                                    </gias-switch-template>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div>
+                                    <gias-drop-down-template-s [name]="'VisualizzaLogDati' | transloco" [obligatory]="true"
+                                        textField="descrizione" valueField="codice" [filterable]="true"
+                                        giasFormControlName="filtroImportati"
+                                        (open)="openDdl($event)"
+                                        [valuePrimitive]="false">
+                                    </gias-drop-down-template-s>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-row" *ngIf="contestoCaricato">
+                        <div class="col-12 col-sm-12" style="padding-top: 25px;">
+                            <div>
+                                @if (consultaSincroLogGridService.isDemetra && consultaSincroLogGridService.messageForDemetra !== '') {
+                                    <div class="row form-row">
+                                        <label style="color: black; font-weight: bold">{{ consultaSincroLogGridService.messageForDemetra }}</label>
+                                    </div>
+                                    <br>
+                                }
+                                <div class="row form-row">
+                                    <div class="col-12 col-sm-12">
+                                        <gias-kendo-grid (rowsLoaded)="rowsLoaded()">
+                                        </gias-kendo-grid>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

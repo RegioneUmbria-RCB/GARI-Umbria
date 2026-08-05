@@ -1,0 +1,46 @@
+<div [formGroup]="ProdottiForm">
+    <div class="row">
+        <div [ngClass]="qdcservice.mostraDose_Hl(ProdottiForm.get('Operazione').value) ? 'col-12 col-sm-4': 'col-12 col-sm-6'">
+            <gias-numeric-template
+                [name]="prodottiservice.getDescrizioneDose_HA()"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Dose_Ha"
+                [format]="getFormat('Dose_Ha')"
+                [minValue]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value,true).min"
+                [step]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value,true).step"
+                [decimals]="getDecimals('Dose_Ha')"
+                (valueChange)="changeDose_Ha($event)">
+            </gias-numeric-template>
+        </div>
+
+        <div *ngIf="qdcservice.mostraDose_Hl(ProdottiForm.get('Operazione').value)"
+            [ngClass]="qdcservice.mostraDose_Hl(ProdottiForm.get('Operazione').value) ? 'col-12 col-sm-4': 'col-12 col-sm-6'">
+            <gias-numeric-template
+                [name]="'qdc.rbl_DoseHLResource1.Text' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Dose_Hl"
+                [format]="getFormat('Dose_Hl')"
+                [minValue]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value).min"
+                [step]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value).step"
+                [decimals]="getDecimals('Dose_Hl')"
+                (valueChange)="changeDose_Hl($event)">
+            </gias-numeric-template>
+        </div>
+
+        <div [ngClass]="qdcservice.mostraDose_Hl(ProdottiForm.get('Operazione').value) ? 'col-12 col-sm-4': 'col-12 col-sm-6'">
+            <gias-numeric-template
+                [name]="getDescrizioneDoseTot_Ha()"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="DoseTot_Ha"
+                [format]="getFormat('DoseTot_Ha')"
+                [minValue]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value).min"
+                [step]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM').value).step"
+                [decimals]="getDecimals('DoseTot_Ha')"
+                (valueChange)="changeDoseTot_Ha($event)">
+            </gias-numeric-template>
+        </div>
+    </div>
+</div>

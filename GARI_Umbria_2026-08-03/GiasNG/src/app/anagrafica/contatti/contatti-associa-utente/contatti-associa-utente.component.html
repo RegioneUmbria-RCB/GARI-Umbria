@@ -1,0 +1,25 @@
+<div class="container" id="associautentecomponentfocus">
+    <form [formGroup]="associaUtenteForm" >
+        <div class="row">
+            <div class="col-6">
+                <gias-drop-down-template-s
+                    [name]="'AssociaUtentiLabel' | transloco"
+                    [id]="'associa_utente'" [obligatory]="false"
+                    [listItems]="associaUtenteList"
+                    (open)="associaUtenteDdl($event)" textField="descrizione"
+                    valueField="codice" giasFormControlName="associaUtenteDdl"
+                    [valuePrimitive]="false">
+                </gias-drop-down-template-s>
+            </div>
+            <div class="col-6" style="align-self: flex-end;">
+                <button style="float: right;" [type]="'button'" class="btn btn-primary btn-primary-fill btn-sm gias-button-esercizi"
+                    (click)="onAssocia()"
+                    >
+                    {{"AssociaUtenteaContatto" | transloco}}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+

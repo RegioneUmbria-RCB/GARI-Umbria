@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ppt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="pptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pptResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GDPR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDPR_Verifica" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GDPRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GDPRResult" type="tns:GDPRmodel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GDPRmodel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GDPR_Cod" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TestoHtmlBreve" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TestoHtmlCompleto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Validita_Inizio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Validita_Fine" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="LeggiChiave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username_profilo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="id_servizio" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeggiChiaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeggiChiaveResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaLicenze">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username_profilo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="righeInseriteGrid_Licenze" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="righeModificateGrid_Licenze" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="righeCancellateGrid_Licenze" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaLicenzeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AggiornaLicenzeResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaSuperUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Operazione" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="username_profilo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo_utente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="piva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ragione_sociale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cognome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod_fisc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="via" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="citta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="provincia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaSuperUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AggiornaSuperUserResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeggiLicenze">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username_profilo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xOrderBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeggiLicenzeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeggiLicenzeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeggiUtenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username_profilo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LeggiUtentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LeggiUtentiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="GDPRmodel" nillable="true" type="tns:GDPRmodel" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="pptSoapIn">
+    <wsdl:part name="parameters" element="tns:ppt" />
+  </wsdl:message>
+  <wsdl:message name="pptSoapOut">
+    <wsdl:part name="parameters" element="tns:pptResponse" />
+  </wsdl:message>
+  <wsdl:message name="GDPRSoapIn">
+    <wsdl:part name="parameters" element="tns:GDPR" />
+  </wsdl:message>
+  <wsdl:message name="GDPRSoapOut">
+    <wsdl:part name="parameters" element="tns:GDPRResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeggiChiaveSoapIn">
+    <wsdl:part name="parameters" element="tns:LeggiChiave" />
+  </wsdl:message>
+  <wsdl:message name="LeggiChiaveSoapOut">
+    <wsdl:part name="parameters" element="tns:LeggiChiaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaLicenzeSoapIn">
+    <wsdl:part name="parameters" element="tns:AggiornaLicenze" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaLicenzeSoapOut">
+    <wsdl:part name="parameters" element="tns:AggiornaLicenzeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaSuperUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AggiornaSuperUser" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaSuperUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AggiornaSuperUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeggiLicenzeSoapIn">
+    <wsdl:part name="parameters" element="tns:LeggiLicenze" />
+  </wsdl:message>
+  <wsdl:message name="LeggiLicenzeSoapOut">
+    <wsdl:part name="parameters" element="tns:LeggiLicenzeResponse" />
+  </wsdl:message>
+  <wsdl:message name="LeggiUtentiSoapIn">
+    <wsdl:part name="parameters" element="tns:LeggiUtenti" />
+  </wsdl:message>
+  <wsdl:message name="LeggiUtentiSoapOut">
+    <wsdl:part name="parameters" element="tns:LeggiUtentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="pptHttpGetIn">
+    <wsdl:part name="p" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="pptHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GDPRHttpGetIn">
+    <wsdl:part name="GDPR_Verifica" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GDPRHttpGetOut">
+    <wsdl:part name="Body" element="tns:GDPRmodel" />
+  </wsdl:message>
+  <wsdl:message name="LeggiChiaveHttpGetIn">
+    <wsdl:part name="username_profilo" type="s:string" />
+    <wsdl:part name="id_servizio" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LeggiChiaveHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaLicenzeHttpGetIn">
+    <wsdl:part name="username_profilo" type="s:string" />
+    <wsdl:part name="righeInseriteGrid_Licenze" type="s:string" />
+    <wsdl:part name="righeModificateGrid_Licenze" type="s:string" />
+    <wsdl:part name="righeCancellateGrid_Licenze" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaLicenzeHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaSuperUserHttpGetIn">
+    <wsdl:part name="Operazione" type="s:string" />
+    <wsdl:part name="username_profilo" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="tipo_utente" type="s:string" />
+    <wsdl:part name="piva" type="s:string" />
+    <wsdl:part name="ragione_sociale" type="s:string" />
+    <wsdl:part name="cognome" type="s:string" />
+    <wsdl:part name="nome" type="s:string" />
+    <wsdl:part name="cod_fisc" type="s:string" />
+    <wsdl:part name="via" type="s:string" />
+    <wsdl:part name="numero" type="s:string" />
+    <wsdl:part name="cap" type="s:string" />
+    <wsdl:part name="citta" type="s:string" />
+    <wsdl:part name="provincia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaSuperUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="LeggiLicenzeHttpGetIn">
+    <wsdl:part name="username_profilo" type="s:string" />
+    <wsdl:part name="xOrderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LeggiLicenzeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LeggiUtentiHttpGetIn">
+    <wsdl:part name="username_profilo" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LeggiUtentiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="WS_PptSoap">
+    <wsdl:operation name="ppt">
+      <wsdl:input message="tns:pptSoapIn" />
+      <wsdl:output message="tns:pptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDPR">
+      <wsdl:input message="tns:GDPRSoapIn" />
+      <wsdl:output message="tns:GDPRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiChiave">
+      <wsdl:input message="tns:LeggiChiaveSoapIn" />
+      <wsdl:output message="tns:LeggiChiaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaLicenze">
+      <wsdl:input message="tns:AggiornaLicenzeSoapIn" />
+      <wsdl:output message="tns:AggiornaLicenzeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaSuperUser">
+      <wsdl:input message="tns:AggiornaSuperUserSoapIn" />
+      <wsdl:output message="tns:AggiornaSuperUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiLicenze">
+      <wsdl:input message="tns:LeggiLicenzeSoapIn" />
+      <wsdl:output message="tns:LeggiLicenzeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiUtenti">
+      <wsdl:input message="tns:LeggiUtentiSoapIn" />
+      <wsdl:output message="tns:LeggiUtentiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WS_PptHttpGet">
+    <wsdl:operation name="ppt">
+      <wsdl:input message="tns:pptHttpGetIn" />
+      <wsdl:output message="tns:pptHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GDPR">
+      <wsdl:input message="tns:GDPRHttpGetIn" />
+      <wsdl:output message="tns:GDPRHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiChiave">
+      <wsdl:input message="tns:LeggiChiaveHttpGetIn" />
+      <wsdl:output message="tns:LeggiChiaveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaLicenze">
+      <wsdl:input message="tns:AggiornaLicenzeHttpGetIn" />
+      <wsdl:output message="tns:AggiornaLicenzeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaSuperUser">
+      <wsdl:input message="tns:AggiornaSuperUserHttpGetIn" />
+      <wsdl:output message="tns:AggiornaSuperUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiLicenze">
+      <wsdl:input message="tns:LeggiLicenzeHttpGetIn" />
+      <wsdl:output message="tns:LeggiLicenzeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LeggiUtenti">
+      <wsdl:input message="tns:LeggiUtentiHttpGetIn" />
+      <wsdl:output message="tns:LeggiUtentiHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WS_PptSoap" type="tns:WS_PptSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ppt">
+      <soap:operation soapAction="http://tempuri.org/ppt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDPR">
+      <soap:operation soapAction="http://tempuri.org/GDPR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiChiave">
+      <soap:operation soapAction="http://tempuri.org/LeggiChiave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaLicenze">
+      <soap:operation soapAction="http://tempuri.org/AggiornaLicenze" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaSuperUser">
+      <soap:operation soapAction="http://tempuri.org/AggiornaSuperUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiLicenze">
+      <soap:operation soapAction="http://tempuri.org/LeggiLicenze" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiUtenti">
+      <soap:operation soapAction="http://tempuri.org/LeggiUtenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_PptSoap12" type="tns:WS_PptSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ppt">
+      <soap12:operation soapAction="http://tempuri.org/ppt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDPR">
+      <soap12:operation soapAction="http://tempuri.org/GDPR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiChiave">
+      <soap12:operation soapAction="http://tempuri.org/LeggiChiave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaLicenze">
+      <soap12:operation soapAction="http://tempuri.org/AggiornaLicenze" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaSuperUser">
+      <soap12:operation soapAction="http://tempuri.org/AggiornaSuperUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiLicenze">
+      <soap12:operation soapAction="http://tempuri.org/LeggiLicenze" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiUtenti">
+      <soap12:operation soapAction="http://tempuri.org/LeggiUtenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WS_PptHttpGet" type="tns:WS_PptHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ppt">
+      <http:operation location="/ppt" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GDPR">
+      <http:operation location="/GDPR" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiChiave">
+      <http:operation location="/LeggiChiave" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaLicenze">
+      <http:operation location="/AggiornaLicenze" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AggiornaSuperUser">
+      <http:operation location="/AggiornaSuperUser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiLicenze">
+      <http:operation location="/LeggiLicenze" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LeggiUtenti">
+      <http:operation location="/LeggiUtenti" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WS_Ppt">
+    <wsdl:port name="WS_PptSoap" binding="tns:WS_PptSoap">
+      <soap:address location="http://localhost/AgronicaWebService2010/ws_ppt.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_PptSoap12" binding="tns:WS_PptSoap12">
+      <soap12:address location="http://localhost/AgronicaWebService2010/ws_ppt.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WS_PptHttpGet" binding="tns:WS_PptHttpGet">
+      <http:address location="http://localhost/AgronicaWebService2010/ws_ppt.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

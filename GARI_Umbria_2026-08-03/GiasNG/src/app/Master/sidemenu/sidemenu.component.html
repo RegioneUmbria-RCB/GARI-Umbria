@@ -1,0 +1,52 @@
+<div id="GiasSidenav" class="sidenav bg_blue" *ngIf="headerModel != null && headerModel.visible && loadComplete"
+  [style.paddingTop]="calcBodyPaddingTop">
+  <aside class="sidebar">
+    <div id="leftside-header">
+      <div class="leftside-header-row">
+        <div class="leftside-header-tabs">
+          <div class="leftside-header-tab" [ngClass]="{'active': selectedTab == SideMenuTabs.Favorites}"
+            (click)="selectTab(SideMenuTabs.Favorites)">
+            {{'IMieiPreferiti' | transloco}}
+          </div>
+          <div class="leftside-header-tab" [ngClass]="{'active': selectedTab == SideMenuTabs.All}"
+            (click)="selectTab(SideMenuTabs.All)">
+            {{'TuttiIServizi' | transloco}}
+          </div>
+        </div>
+      </div>
+      <div class="container-search">
+        <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+       <input type="search" id="searchService" autocomplete="off" placeholder="{{'Cerca' | transloco}}"
+         [(ngModel)]="filterText" (keyup)="onFilterText()">
+     </div>
+    </div>
+
+    <div id="leftside-navigation" class="nano">
+      <div *ngIf="selectedTab == SideMenuTabs.Favorites" id="navbar_favorite" class="hRightElement hContainerFavorite"
+        (click)="navigateToFavorites()" [title]="'ModificaPreferiti' | transloco" kendoTooltip>
+        <a class="hIcon overbtn">
+          <div class="hFavoriteContent icon-favorite-edit-sidemenu"></div>
+        </a>
+        <div class="favorite-text">{{ 'Configura' | transloco }}</div>
+      </div>
+
+      <div *ngIf="selectedTab == SideMenuTabs.Favorites" class="leftside-tabcontent">
+        <gias-sidemenu-services [menus]="favoritesMenu" [filterText]="filterText"
+          (childClicked)="redirect($event)"></gias-sidemenu-services>
+      </div>
+
+      <div *ngIf="selectedTab == SideMenuTabs.All" class="leftside-tabcontent">
+        <gias-sidemenu-services [menus]="allMenu" [filterText]="filterText"
+          (childClicked)="redirect($event)"></gias-sidemenu-services>
+      </div>
+    </div>
+
+    <div id="leftside-footer" *ngIf="!isExternalLoad">
+      <gias-sidemenu-footer></gias-sidemenu-footer>
+    </div>
+
+  </aside>
+</div>
+<div id="contenitore_principale" [style.paddingTop]="calcBodyPaddingTop" style="background-color:#f8f8f8;width: auto;">
+  <router-outlet></router-outlet>
+</div>

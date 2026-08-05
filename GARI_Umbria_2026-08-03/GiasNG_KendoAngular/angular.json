@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "gias-kendo-grid": {
+      "projectType": "library",
+      "root": "projects/gias-kendo-grid",
+      "sourceRoot": "projects/gias-kendo-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/gias-kendo-grid/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/gias-kendo-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/gias-kendo-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
+}

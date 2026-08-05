@@ -1,0 +1,14 @@
+<div *ngFor="let imp of getSettings; index as j">
+  <form [formGroup]="imp">
+    <gias-general-input-template
+      giasFormControlName="valoreCorrente"
+      [listItems]="imp.value.valori"
+      [label]="('prof.SetupGisLabel' + imp.value.guida.Impostazione_Des) | transloco"
+      [value]="imp.value.valoreCorrente"
+      [controlType]="+imp.value.guida.Tipo_Campo"
+      [tooltip]="imp.value.guida.Note | transloco"
+      [maxValue]="maxValue"
+      [minValue]="minValue"
+    ></gias-general-input-template>
+  </form>
+</div>

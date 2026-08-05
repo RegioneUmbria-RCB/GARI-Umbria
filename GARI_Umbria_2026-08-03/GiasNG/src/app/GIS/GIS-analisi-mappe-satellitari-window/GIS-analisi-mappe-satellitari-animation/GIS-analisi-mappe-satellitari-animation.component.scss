@@ -1,0 +1,109 @@
+.analisi-mappe-satellitari-column {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.animation-row {
+    display: flex;
+}
+
+.animation-row-spaced {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+    padding: 2px;
+    border-radius: 22px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+    button {
+        background-color: transparent;
+        border-color: transparent;
+        padding: 0;
+        &.small {
+            height:30px;
+        }
+
+        span.k-icon {
+            &::before {
+                opacity: 0;
+            }
+
+            margin: 0;
+            height: 30px;
+            width: 30px;
+            color: transparent;
+            position: relative;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+
+            &.k-i-gm_player_firstoflist {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_firstoflist.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_firstoflist_invisible.svg');
+                }
+            }
+            &.k-i-gm_player_previous {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_previous.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_previous_invisible.svg');
+                }
+            }
+
+            &.k-i-gm_player_last {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_last.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_last_invisible.svg');
+                }
+            }
+            &.k-i-gm_player_next {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_next.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_next_invisible.svg');
+                }
+            }
+
+            &.k-i-gm_player_stop {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_stop.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_video_ok.svg');
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+            &.k-i-gm_player_pause {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_pause.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_pause_invisible.svg');
+                }
+                height: 40px;
+                width: 40px;
+            }
+            &.k-i-gm_player_play {
+                background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_play.svg');
+                &.disabled {
+                    background-image: url('../../../../assets/custom-icons/icons-gis-layers/ndvi/gm_player_play_invisible.svg');
+                }
+                height: 40px;
+                width: 40px;
+            }
+        }
+    }
+}
+
+.float-right {
+    margin-left: auto;
+}
+
+.isCloudy {
+    color: red;
+}
+
+.cloudy-icon {
+    font-size: 1.5rem;
+    margin-left: 10px;
+    padding-bottom: 4px;
+}

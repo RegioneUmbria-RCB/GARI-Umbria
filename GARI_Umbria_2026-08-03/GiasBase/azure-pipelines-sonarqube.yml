@@ -1,0 +1,50 @@
+﻿resources:
+  repositories:
+    - repository: giasdn
+      type: git
+      name: GiasDotNet
+
+name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '30 7 * * *' # cron syntax defining a schedule (08:30)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: false
+
+variables:
+- group: Destinations
+- template: /templates/variables/deploy-path.yml@giasdn
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: /templates/pipelines/net-agro-simple-web-pipeline.yml@giasdn  # Template reference
+  parameters:
+    solution: GiasBase
+    target: GiasBase
+    artifactName: 'GiasBase'
+    path: '.'
+    artifactBasePath: GiasBase
+    outdir: 'GiasBase'
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    preBuildSteps:
+      - template: /templates/steps/sonar-pre-build.yml@giasdn
+        parameters:
+          scannerMode: 'dotnet'
+          projectKey: 'Gias_GiasBase_AY6i4NQqsb2wmyKfofog'
+          projectName: 'GiasBase'
+          projectVersion: '$(SonarVersion)'
+          verbose: 'true'
+
+    postBuildSteps:
+      - template: /templates/steps/sonar-post-build.yml@giasdn

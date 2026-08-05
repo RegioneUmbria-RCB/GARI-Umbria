@@ -1,0 +1,15 @@
+<form [formGroup]="internalForm">
+    <h6>{{ 'prof.AnnataAgraria' | transloco }}</h6>
+    <div class="annata-agraria-container">
+            <gias-data-template
+                name="{{'DataInizio' | transloco}}"
+                giasFormControlName="dataInizio"
+                [format]="format"
+            ></gias-data-template>
+            <gias-data-template
+                name="{{'DataFine' | transloco}}"
+                giasFormControlName="dataFine"
+                [format]="format"
+            ></gias-data-template>
+    </div>
+</form>

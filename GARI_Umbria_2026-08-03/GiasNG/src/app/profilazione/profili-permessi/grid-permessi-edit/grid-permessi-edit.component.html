@@ -1,0 +1,29 @@
+<gias-kendo-grid #permessiGrid>
+    <ng-container headerContent>
+      <div kendoTooltip [title]="'AbilitaGestioneCompleta' | transloco">
+        <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Write)">
+            <fa-icon [icon]="faPen" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip [title]="'AbilitaSolaVisualizzazione' | transloco">
+        <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Read)">
+            <fa-icon [icon]="faBook" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip [title]="'DisabilitaPermesso' | transloco">
+        <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Disabled)">
+            <fa-icon [icon]="faBan" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+<!--      <div kendoTooltip [title]="'prof.AggiornaPermessiUtentiCollegati' | transloco">-->
+<!--        <button kendoButton type="button" (click)="onSyncConnectedUsers()">-->
+<!--          <fa-icon aria-hidden="true" [icon]="faArrowsRotate"></fa-icon>-->
+<!--        </button>-->
+<!--      </div>-->
+      <div kendoTooltip [title]="'prof.BloccaModifica' | transloco">
+        <button kendoButton #unlockPermissionsEditBtn [type]="'button'" (click)="onGoBack()">
+          <fa-icon [icon]="lockIcon" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+</gias-kendo-grid>

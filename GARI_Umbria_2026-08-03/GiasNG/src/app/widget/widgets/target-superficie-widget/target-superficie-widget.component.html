@@ -1,0 +1,36 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && total != -1" class="arc-full-width">
+    <!-- <kendo-arcgauge [value]="value" [colors]="colors" [scale]="scale">
+        <kendo-arcgauge-tooltip format="n0"></kendo-arcgauge-tooltip>
+    </kendo-arcgauge> -->
+
+    <kendo-radialgauge [pointer]="{ value: value }">
+        <kendo-radialgauge-scale [minorUnit]="majorUnit" [majorUnit]="majorUnit" [max]="total">
+          <kendo-radialgauge-scale-labels [format]="labelFormat"></kendo-radialgauge-scale-labels>
+          <kendo-radialgauge-scale-ranges>
+            <kendo-radialgauge-scale-range [from]="3*majorUnit" [to]="4*majorUnit" color="#FFFF00">
+            </kendo-radialgauge-scale-range>
+            <kendo-radialgauge-scale-range
+              [from]="4*majorUnit"
+              [to]="5*majorUnit"
+              color="#ADFF2F"
+            >
+            </kendo-radialgauge-scale-range>
+            <kendo-radialgauge-scale-range
+              [from]="5*majorUnit"
+              [to]="6*majorUnit"
+              color="#00FF00"
+            >
+            </kendo-radialgauge-scale-range>
+          </kendo-radialgauge-scale-ranges>
+        </kendo-radialgauge-scale>
+    </kendo-radialgauge>
+
+</div>
+
+<div *ngIf="!loading && total == -1" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunBudget' | transloco }}</p>
+</div>

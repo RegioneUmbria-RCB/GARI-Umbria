@@ -1,0 +1,12 @@
+<form [formGroup]="form">
+  <gias-multiselect-template-s #opMulti
+                               [name]="'Operazioni' | transloco"
+                               id="multiLav"
+                               [listItems]="listaOperazioneDaGrOp"
+                               textField="descrizione"
+                               valueField="codice"
+                               giasFormControlName="valoreCorrente"
+                               (open)="openDdl($event)"
+                               [filterable]="true">
+  </gias-multiselect-template-s>
+</form>

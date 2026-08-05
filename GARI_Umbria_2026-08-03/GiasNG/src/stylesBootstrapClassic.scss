@@ -1,0 +1,223 @@
+@use "@progress/kendo-font-icons/dist/index.css" as *;
+
+@use "@progress/kendo-theme-utils/dist/all.scss" as *;
+
+$border-radius: 0.25rem;
+$primary: #007bff;
+$secondary: #e4e7eb;
+$info: #17a2b8;
+$success: #28a745;
+$warning: #ffc107;
+$error: #dc3545;
+$body-text: #212529;
+$body-bg: #ffffff;
+$headings-text: #212529;
+$subtle-text: #6c757d;
+$disabled-text: #8f8f8f;
+$component-text: #212529;
+$component-bg: #ffffff;
+$base-text: #212529;
+$base-bg: #f7f7f7;
+$hovered-text: #16181b;
+$hovered-bg: #e9ecef;
+$selected-text: #ffffff;
+$selected-bg: #007bff;
+$button-text: #212529;
+$button-bg: #e4e7eb;
+$link-text: #007bff;
+$link-hover-text: #0056b3;
+$kendo-series-1: #0275d8 !default;
+$kendo-series-2: #5bc0de !default;
+$kendo-series-3: #5cb85c !default;
+$kendo-series-4: #f0ad4e !default;
+$kendo-series-5: #e67d4a !default;
+$kendo-series-6: #d9534f !default;
+
+/* $header-color: blue; */
+/* $footer-color: blue; */
+$header-color: #052747;
+$header-color: #052747;
+
+$font-size-base: 7px;/* this changes the font-size throughout bootstrap */
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 0.73rem;
+$line-height-base: 2;
+
+.AgroHeader {
+ /*background-color: $header-color !important; */
+  background-color: #052747 !important;
+}
+
+.AgroFooter {
+ /*background-color: $footer-color !important; */
+  background-color: #052747 !important;
+}
+
+.form-row {
+  padding-bottom: 5px;
+}
+
+body {
+ /* disabilitato il 27/09/2022 per test GiASng */
+ /* height: 80vh; */
+ /* margin-bottom: 100px; */
+ /* overflow-y: hidden; /* Hide vertical scrollbar */
+ /* overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.editPageContent {
+ /* padding: 0; */
+ /* overflow-y: scroll; */
+ /* overflow-x: hidden; */
+ /* height: 80vh; */
+ /* margin-bottom: 50px; */
+}
+
+@media only screen and (min-width: 1000px) {
+  .container {
+    width: 100%;
+    max-width: none;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .container {
+    width: 100%;
+    max-width: none;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+.faImpresa {
+  color: #e78681 !important;
+}
+
+.faContatti {
+  color: rgb(0, 0, 0) !important;
+}
+
+.faCentri {
+  color: #979797 !important;
+}
+
+.faFabbricati {
+  color: #b980b9 !important;
+}
+
+.faCatasto {
+  color: rgb(135, 126, 255) !important;
+}
+
+.faCampi {
+  color: #e2bca2 !important;
+}
+
+.faAppezzamenti {
+  color: #5b886d !important;
+}
+
+.faImpianti {
+  color: #5b886d !important;
+}
+
+.faMacchine {
+  color: #969696 !important;
+}
+
+.treeDimGray {
+ /* color: dimgray !important; */
+  background-color: rgb(175, 174, 174) !important;
+  border-radius: 5% !important;
+}
+
+.treered {
+ /* color: red !important; */
+  background-color: rgb(253, 66, 66) !important;
+  border-radius: 5% !important;
+}
+
+.k-appbar {
+  line-height: 2 !important;
+}
+
+kendo-icon-wrapper[name=window-restore] {
+  display: none !important;
+}
+
+.k-appbar-light {
+  background-color: #f8f9fa !important;
+}
+
+/* @import "@progress/kendo-theme-utils/dist/all.scss"; */
+@import "@progress/kendo-theme-bootstrap/dist/all.scss";
+
+:root {
+  --bs-body-font-size: 14px;
+  --kendo-font-size: 0.75rem;
+  --kendo-line-height: 2;
+  --kendo-color-primary-subtle: #d8f1fd;
+  --kendo-color-primary-subtle-hover: #c5eafc;
+  --kendo-color-primary-subtle-active: #a3dffb;
+  --kendo-color-primary: #03a9f4;
+  --kendo-color-primary-hover: #039ae0;
+  --kendo-color-primary-active: #028ccb;
+  --kendo-color-primary-emphasis: #61c9f9;
+  --kendo-color-primary-on-subtle: #023f5c;
+  --kendo-color-on-primary: #ffffff;
+  --kendo-color-primary-on-surface: #028ccb;
+  --kendo-color-base: #e4e7eb;
+
+  --kendo-series-1: violet;
+  --kendo-series-2: orange;
+  --kendo-series-3: green;
+}
+
+.k-icon {
+  width: 1em;
+  height: 1em;
+  outline: 0;
+  font-size: 16px;
+  font-family: "WebComponentsIcons";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  speak: none;
+  text-transform: none;
+  text-decoration: none;
+  flex-shrink: 0;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+.k-button-md.k-icon-button .k-button-icon{
+  min-width: 1.46rem;
+}
+
+.k-input-suffix .k-button,
+.k-input-suffix .k-button-icon {
+  height: 100%;
+}
+
+/* Apply ellipsis only when the row is NOT selected */
+tr:not(.k-selected) > td.ellipsable {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Optionally, ensure when the row IS selected, ellipsis is disabled */
+tr.k-selected > td.ellipsable {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+}

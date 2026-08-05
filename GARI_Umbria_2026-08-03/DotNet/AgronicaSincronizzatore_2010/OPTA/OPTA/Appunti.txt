@@ -1,0 +1,384 @@
+﻿Spostati in un core dedicato il 2014-12-18
+nel sincro, cartella OPTA, core Importazioni_Opta
+
+
+
+
+http://localhost/AgronicaSincronizzatoreWeb/opta_tabacco/import_macchine_forni.aspx
+
+USE [OPTA_Server]
+GO
+
+
+INSERT INTO [dbo].[Macchine]
+           ([CLASS_CODE]
+           ,[CLASS_DESC]
+           ,[inviato]
+           ,[datainvio]
+           ,[Data_Creazione]
+           ,[Data_Modifica]
+           ,[Username_Creazione]
+           ,[Username_Modifica]
+           ,[Validita_Inizio]
+           ,[Validita_Fine])
+     VALUES
+	 --movimentazione
+	 ('10.07','Muletto',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 --Lavorazione tabacco
+	 ('18','Macchine per la lavorazione del Tabacco',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 ('18.01','Caricatore',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 ('18.02','Pressa',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 ('18.03','Nastrino',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 ('18.04','Scalmana',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+	 ('18.05','Cantiere',0,NULL,getdate(),getdate(),'agronica','agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME))
+         
+GO
+
+INSERT INTO [dbo].[Codici_Anagrafe]
+           ([codice]
+           ,[descrizione]
+           ,[lunghezza]
+           ,[picture]
+           ,[tipo]
+           ,[gruppo]
+           ,[genitore]
+           ,[creatore]
+           ,[inviato]
+           ,[datainvio]
+           ,[Data_Creazione]
+           ,[Data_Modifica]
+           ,[Username_Creazione]
+           ,[Username_Modifica]
+           ,[Validita_Inizio]
+           ,[Validita_Fine])
+     VALUES
+           (1270,'Combustibile Forno',	250,	NULL,	NULL,	'Fabbricato',	0,	'agronica',	0,	NULL,	getdate(),	getdate(),	'agronica',	'agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+		   (1271,'Fiamma Forno',	250,	NULL,	NULL,	'Fabbricato',	0,	'agronica',	0,	NULL,	getdate(),	getdate(),	'agronica',	'agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+		   (1272,'Cantiere Forno',	250,	NULL,	NULL,	'Fabbricato',	0,	'agronica',	0,	NULL,	getdate(),	getdate(),	'agronica',	'agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+		   (1273,'Umidificazione Forno',	250,	NULL,	NULL,	'Fabbricato',	0,	'agronica',	0,	NULL,	getdate(),	getdate(),	'agronica',	'agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+		   (1274,'Tipo Forno',	250,	NULL,	NULL,	'Fabbricato',	0,	'agronica',	0,	NULL,	getdate(),	getdate(),	'agronica',	'agronica',CAST(0x0000000000000000 AS DATETIME),CAST(0x00011EC500000000 AS DATETIME)),
+GO
+
+CREATE TABLE [dbo].[__ImportForni](
+	[id] [int] not NULL,
+	[Identificativo] [nchar](150) NULL,
+	[Centro] [nchar](150) NULL,
+	[Citta] [nchar](150) NULL,
+	[Prov] [nchar](150) NULL,
+	[Cap] [nchar](150) NULL,
+	[Indirizzo] [nchar](150) NULL,
+	[Numero] [nchar](150) NULL,
+	[Tipo] [nchar](150) NULL,
+	[Gaso] [nchar](150) NULL,
+	[Met] [nchar](150) NULL,
+	[Gas] [nchar](150) NULL,
+	[Altro] [nchar](150) NULL,
+	[Diretta] [nchar](150) NULL,
+	[Indiretta] [nchar](150) NULL,
+	[Recup] [nchar](150) NULL,
+	[Cassoni] [nchar](150) NULL,
+	[Telaini] [nchar](150) NULL,
+	[Plastica] [nchar](150) NULL,
+	[Poliuretano] [nchar](150) NULL,
+	[Ruggine] [nchar](150) NULL,
+	[Polistirolo] [nchar](150) NULL,
+	[Grasso] [nchar](150) NULL,
+	[Cuscini] [nchar](150) NULL,
+	[Acqua] [nchar](150) NULL,
+	[Vapore] [nchar](150) NULL
+) ON [PRIMARY]
+
+GO
+
+CREATE TABLE [dbo].[__ImportMacchine](
+	[id] [int] not NULL,
+	[Identificativo] [nchar](150) NULL,
+	[Centro] [nchar](150) NULL,
+	[TipoMacchina] [nchar](150) NULL,
+	[Marca] [nchar](150) NULL,
+	[Modello] [nchar](150) NULL,
+	[PuliziaSi] [nchar](150) NULL,
+	[PuliziaNo] [nchar](150) NULL,
+	[PerditeSi] [nchar](150) NULL,
+	[PerditeNo] [nchar](150) NULL,
+	[PerditegasolioSi] [nchar](150) NULL,
+	[PerditegasolioNo] [nchar](150) NULL,
+	[GommeSi] [nchar](150) NULL,
+	[GommeNo] [nchar](150) NULL,
+	[TappetinoSi] [nchar](150) NULL,
+	[TappetinoNo] [nchar](150) NULL,
+	[SedileSi] [nchar](150) NULL,
+	[SedileNo] [nchar](150) NULL,
+	[TeloSi] [nchar](150) NULL,
+	[TeloNo] [nchar](150) NULL,
+	[AntisgoccioloSi] [nchar](150) NULL,
+	[AntisgoccioloNo] [nchar](150) NULL
+) ON [PRIMARY]
+
+GO
+
+
+CREATE TABLE [dbo].[__ImportazioneCure](
+	[CHIAVEID] [nvarchar](10) NULL,
+	[UDS] [int] NULL,
+	[LOCALE] [int] NULL,
+	[CODCOLTIV] [nvarchar](8) NULL,
+	[CUUA] [nvarchar](16) NULL,
+	[INIZIO] [nvarchar](8) NULL,
+	[FINE] [nvarchar](8) NULL,
+	[LINEA] [nvarchar](6) NULL,
+	[PESO] [int] NULL,
+	[CORONA] [nvarchar](6) NULL,
+	[APPEZZAMENTO] [nvarchar](10) NULL,
+	[NUMINIZ] [int] NULL,
+	[NUMFINE] [int] NULL,
+	[CARTNO] [nvarchar](6) NULL,
+	[CANCELLATO] [nvarchar](1) NULL
+) ON [PRIMARY]
+
+GO
+
+
+USE [OPTA_Server]
+GO
+/****** Object:  Table [dbo].[__ImportazioneCure]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__ImportazioneCure](
+	[CHIAVEID] [nvarchar](10) NULL,
+	[UDS] [int] NULL,
+	[LOCALE] [int] NULL,
+	[CODCOLTIV] [nvarchar](8) NULL,
+	[CUUA] [nvarchar](16) NULL,
+	[INIZIO] [nvarchar](8) NULL,
+	[FINE] [nvarchar](8) NULL,
+	[LINEA] [nvarchar](6) NULL,
+	[PESO] [int] NULL,
+	[CORONA] [nvarchar](6) NULL,
+	[APPEZZAMENTO] [nvarchar](10) NULL,
+	[NUMINIZ] [int] NULL,
+	[NUMFINE] [int] NULL,
+	[CARTNO] [nvarchar](6) NULL,
+	[CANCELLATO] [nvarchar](1) NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__ImportForni_GiaImportati]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__ImportForni_GiaImportati](
+	[id] [int] NOT NULL,
+	[Identificativo] [nchar](150) NULL,
+	[Centro] [nchar](150) NULL,
+	[Citta] [nchar](150) NULL,
+	[Prov] [nchar](150) NULL,
+	[Cap] [nchar](150) NULL,
+	[Indirizzo] [nchar](150) NULL,
+	[Numero] [nchar](150) NULL,
+	[Tipo] [nchar](150) NULL,
+	[Gaso] [nchar](150) NULL,
+	[Met] [nchar](150) NULL,
+	[Gas] [nchar](150) NULL,
+	[Altro] [nchar](150) NULL,
+	[Diretta] [nchar](150) NULL,
+	[Indiretta] [nchar](150) NULL,
+	[Recup] [nchar](150) NULL,
+	[Cassoni] [nchar](150) NULL,
+	[Telaini] [nchar](150) NULL,
+	[Plastica] [nchar](150) NULL,
+	[Poliuretano] [nchar](150) NULL,
+	[Ruggine] [nchar](150) NULL,
+	[Polistirolo] [nchar](150) NULL,
+	[Grasso] [nchar](150) NULL,
+	[Cuscini] [nchar](150) NULL,
+	[Acqua] [nchar](150) NULL,
+	[Vapore] [nchar](150) NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__ImportForni_Vuota]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__ImportForni_Vuota](
+	[id] [int] NOT NULL,
+	[Identificativo] [nchar](150) NULL,
+	[Centro] [nchar](150) NULL,
+	[Citta] [nchar](150) NULL,
+	[Prov] [nchar](150) NULL,
+	[Cap] [nchar](150) NULL,
+	[Indirizzo] [nchar](150) NULL,
+	[Numero] [nchar](150) NULL,
+	[Tipo] [nchar](150) NULL,
+	[Gaso] [nchar](150) NULL,
+	[Met] [nchar](150) NULL,
+	[Gas] [nchar](150) NULL,
+	[Altro] [nchar](150) NULL,
+	[Diretta] [nchar](150) NULL,
+	[Indiretta] [nchar](150) NULL,
+	[Recup] [nchar](150) NULL,
+	[Cassoni] [nchar](150) NULL,
+	[Telaini] [nchar](150) NULL,
+	[Plastica] [nchar](150) NULL,
+	[Poliuretano] [nchar](150) NULL,
+	[Ruggine] [nchar](150) NULL,
+	[Polistirolo] [nchar](150) NULL,
+	[Grasso] [nchar](150) NULL,
+	[Cuscini] [nchar](150) NULL,
+	[Acqua] [nchar](150) NULL,
+	[Vapore] [nchar](150) NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__ImportMacchine_GiaImportati]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__ImportMacchine_GiaImportati](
+	[id] [int] NOT NULL,
+	[Identificativo] [nchar](50) NULL,
+	[Centro] [nchar](50) NULL,
+	[TipoMacchina] [nchar](50) NULL,
+	[Marca] [nchar](50) NULL,
+	[Modello] [nchar](50) NULL,
+	[PuliziaSi] [nchar](10) NULL,
+	[PuliziaNo] [nchar](10) NULL,
+	[PerditeSi] [nchar](10) NULL,
+	[PerditeNo] [nchar](10) NULL,
+	[PerditegasolioSi] [nchar](10) NULL,
+	[PerditegasolioNo] [nchar](10) NULL,
+	[GommeSi] [nchar](10) NULL,
+	[GommeNo] [nchar](10) NULL,
+	[TappetinoSi] [nchar](10) NULL,
+	[TappetinoNo] [nchar](10) NULL,
+	[SedileSi] [nchar](10) NULL,
+	[SedileNo] [nchar](10) NULL,
+	[TeloSi] [nchar](10) NULL,
+	[TeloNo] [nchar](10) NULL,
+	[AntisgoccioloSi] [nchar](10) NULL,
+	[AntisgoccioloNo] [nchar](10) NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__ImportMacchine_Vuota]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__ImportMacchine_Vuota](
+	[id] [int] NOT NULL,
+	[Identificativo] [nchar](150) NULL,
+	[Centro] [nchar](150) NULL,
+	[TipoMacchina] [nchar](150) NULL,
+	[Marca] [nchar](150) NULL,
+	[Modello] [nchar](150) NULL,
+	[PuliziaSi] [nchar](150) NULL,
+	[PuliziaNo] [nchar](150) NULL,
+	[PerditeSi] [nchar](150) NULL,
+	[PerditeNo] [nchar](150) NULL,
+	[PerditegasolioSi] [nchar](150) NULL,
+	[PerditegasolioNo] [nchar](150) NULL,
+	[GommeSi] [nchar](150) NULL,
+	[GommeNo] [nchar](150) NULL,
+	[TappetinoSi] [nchar](150) NULL,
+	[TappetinoNo] [nchar](150) NULL,
+	[SedileSi] [nchar](150) NULL,
+	[SedileNo] [nchar](150) NULL,
+	[TeloSi] [nchar](150) NULL,
+	[TeloNo] [nchar](150) NULL,
+	[AntisgoccioloSi] [nchar](150) NULL,
+	[AntisgoccioloNo] [nchar](150) NULL
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__Rintraccio_GradoxColore]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__Rintraccio_GradoxColore](
+	[Grado] [nchar](10) NOT NULL,
+	[Colore] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK___Rintraccio_GradoxColore] PRIMARY KEY CLUSTERED 
+(
+	[Grado] ASC,
+	[Colore] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__Rintraccio_Ritiro]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[__Rintraccio_Ritiro](
+	[ID] [int] NOT NULL,
+	[Anno] [int] NULL,
+	[Centro] [int] NULL,
+	[ID_Partita] [int] NULL,
+	[Prog] [int] NULL,
+	[Data] [datetime] NULL,
+	[Grado] [nchar](10) NULL,
+	[Tara] [real] NULL,
+	[Kg] [real] NULL,
+	[Colli] [int] NULL,
+	[Collo] [int] NULL,
+	[QSup] [int] NULL,
+	[Sostanza_E1] [bit] NULL,
+	[Sostanza_E2] [bit] NULL,
+	[Sostanza_E3] [bit] NULL,
+	[Sostanza_E4] [bit] NULL,
+	[Sostanza_E5] [bit] NULL,
+	[Sostanza_E6] [bit] NULL,
+	[Caratteristica_1] [bit] NULL,
+	[Caratteristica_2] [bit] NULL,
+	[Barcode] [nvarchar](50) NULL,
+	[ID_Gruppo_Varietale] [int] NULL,
+	[Prog_Partita] [int] NULL,
+	[CODICE_CUAA] [nvarchar](50) NULL,
+	[QI] [real] NULL,
+ CONSTRAINT [PK___Rintraccio_Ritiro] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[__Rintraccio_RitiroXImpiantiRaccolti]    Script Date: 12/12/2014 13.29.42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[__Rintraccio_RitiroXImpiantiRaccolti](
+	[ID] [int] NOT NULL,
+	[PIVA] [varchar](25) NOT NULL,
+	[SA_COD] [int] NOT NULL,
+	[APPEZZA] [int] NOT NULL,
+	[ID_REG] [int] NOT NULL,
+	[Qta] [real] NULL,
+	[Veg_Cod] [int] NULL,
+	[CUL_COD] [int] NULL,
+	[Cul_Des] [varchar](50) NULL,
+	[Sup_Imp] [real] NULL,
+ CONSTRAINT [PK___Rintraccio_RitiroXImpiantiRaccolti] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC,
+	[PIVA] ASC,
+	[SA_COD] ASC,
+	[APPEZZA] ASC,
+	[ID_REG] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO

@@ -1,0 +1,44 @@
+// div.sticky {
+//     position: -webkit-sticky; /* Safari */
+//     position: sticky;
+//     top: 0;
+// }
+.with-padding {
+    padding: 20px;
+}
+
+.circular-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #002d5a; /* Colore azzurro */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.circular-button:hover {
+    background-color: #001d4a; /* Colore più scuro quando hover */
+}
+
+.circular-button.disabled {
+    background-color: #d3d3d3; /* Colore grigio chiaro per indicare che è disabilitato */
+    cursor: not-allowed; /* Indica che il pulsante non è cliccabile */
+    opacity: 0.6; /* Sbiadisce il pulsante */
+}
+
+.icon-filtra-albero {
+    display: inline-block;
+    vertical-align: middle;
+    height: 1.8rem;
+    width: 1.8rem;
+    color: white;
+    position: relative;
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_filtro_ricerca_filtra_albero_da_griglia.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}

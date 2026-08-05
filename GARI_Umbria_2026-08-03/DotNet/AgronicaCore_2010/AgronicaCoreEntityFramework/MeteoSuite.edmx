@@ -1,0 +1,1849 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="agronicameteosuite_estratto2012Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agricultural_Support_Dati">
+          <Key>
+            <PropertyRef Name="Sistema_id" />
+            <PropertyRef Name="Unita_Id" />
+            <PropertyRef Name="Sensore_ID" />
+            <PropertyRef Name="TimeStamp" />
+          </Key>
+          <Property Name="Sistema_id" Type="int" Nullable="false" />
+          <Property Name="Unita_Id" Type="int" Nullable="false" />
+          <Property Name="Sensore_ID" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Misura" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TimeStamp" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Unita_Di_Misura" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ElaboratoSubOrario" Type="int" />
+          <Property Name="ElaboratoOrario" Type="int" />
+          <Property Name="ElaboratoGiornaliero" Type="int" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori">
+          <Key>
+            <PropertyRef Name="Sensore_Id" />
+          </Key>
+          <Property Name="Sensore_Id" Type="int" Nullable="false" />
+          <Property Name="Sensore_Nome" Type="varchar" MaxLength="500" />
+          <Property Name="Tipo_Sensore" Type="varchar" MaxLength="50" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="varchar" MaxLength="500" />
+          <Property Name="FunzioneAggregazioneDati" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori_Tipo">
+          <Key>
+            <PropertyRef Name="Tipo_Sensore" />
+          </Key>
+          <Property Name="Tipo_Sensore" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UDM_Sensore" Type="nvarchar" MaxLength="50" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="nvarchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="FunzioneAggregazioneDati" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori_Unita">
+          <Key>
+            <PropertyRef Name="Sensore_Id" />
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Sensore_Id" Type="int" Nullable="false" />
+          <Property Name="Unita_Id" Type="int" Nullable="false" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sistemi">
+          <Key>
+            <PropertyRef Name="Sistema_Id" />
+          </Key>
+          <Property Name="Sistema_Id" Type="int" Nullable="false" />
+          <Property Name="Nome_Sistema" Type="nvarchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sistemi_Unita">
+          <Key>
+            <PropertyRef Name="Sistema_Id" />
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Sistema_Id" Type="int" Nullable="false" />
+          <Property Name="Unita_Id" Type="int" Nullable="false" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Unita">
+          <Key>
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Unita_Id" Type="int" Nullable="false" />
+          <Property Name="Nome_Unita" Type="nvarchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="Unita_Latitudine" Type="varchar" MaxLength="50" />
+          <Property Name="Unita_Longitudine" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Agronica_Dati_Rilevati">
+          <Key>
+            <PropertyRef Name="Stazione_Cod" />
+            <PropertyRef Name="DataOraRilievo" />
+          </Key>
+          <Property Name="Stazione_Cod" Type="int" Nullable="false" />
+          <Property Name="DataOraRilievo" Type="datetime" Nullable="false" />
+          <Property Name="AcquaLivelloMedio" Type="int" />
+          <Property Name="AriaTemperaturaMedia" Type="real" />
+          <Property Name="AriaTemperaturaMin" Type="real" />
+          <Property Name="AriaTemperaturaMax" Type="real" />
+          <Property Name="AriaUmidita" Type="real" />
+          <Property Name="BagnaturaBulboTemperatura" Type="real" />
+          <Property Name="BagnaturaFogliareTempo" Type="real" />
+          <Property Name="BagnaturaFogliare" Type="real" />
+          <Property Name="BatteriaUltimoVoltaggio" Type="real" />
+          <Property Name="ETo" Type="real" />
+          <Property Name="Evaporimetro" Type="real" />
+          <Property Name="CondensazionePuntoMedio" Type="real" />
+          <Property Name="CondensazionePuntoMin" Type="real" />
+          <Property Name="Irraggiamento" Type="real" />
+          <Property Name="MPS_1" Type="real" />
+          <Property Name="Precipitazioni" Type="real" />
+          <Property Name="PrecipitazioniCumulo" Type="real" />
+          <Property Name="PrecipitazioniIntensita" Type="real" />
+          <Property Name="TerrenoTemperatura1" Type="real" />
+          <Property Name="TerrenoTemperatura2" Type="real" />
+          <Property Name="SuoloUmidita1" Type="real" />
+          <Property Name="SuoloUmidita2" Type="real" />
+          <Property Name="SuoloUmidita3" Type="real" />
+          <Property Name="Solar_Panel" Type="real" />
+          <Property Name="TerrenoConducibilita" Type="real" />
+          <Property Name="TerrenoUmidita" Type="real" />
+          <Property Name="UmiditaRelativaMedia" Type="real" />
+          <Property Name="VentoDirezione" Type="real" />
+          <Property Name="VentoRaffica" Type="real" />
+          <Property Name="VentoRafficaDirezione" Type="real" />
+          <Property Name="VentoVelocitaMedia" Type="real" />
+          <Property Name="VentoVelocitaMassima" Type="real" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Validita_Inizio" Type="datetime" Nullable="false" />
+          <Property Name="Validita_Fine" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Agronica_Fornitori">
+          <Key>
+            <PropertyRef Name="Fornitore_Cod" />
+          </Key>
+          <Property Name="Fornitore_Cod" Type="int" Nullable="false" />
+          <Property Name="Fornitore_Des" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Tipo_Visibilità" Type="int" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Validita_Inizio" Type="datetime" Nullable="false" />
+          <Property Name="Validita_Fine" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errori trovati durante la generazione:
+avviso 6005: Tipo di dati 'geography' non supportato per lo schema di versione di Entity Framework. La colonna 'Posizione' della tabella 'AgronicaMeteoSuite_Estratto2012.dbo.Agronica_Stazioni' è stata esclusa dal modello. Per utilizzare il tipo di dati 'geography', utilizzare lo schema di Entity Framework di destinazione di versione 3.0 o successiva.-->
+        <EntityType Name="Agronica_Stazioni">
+          <Key>
+            <PropertyRef Name="Stazione_Cod" />
+          </Key>
+          <Property Name="Stazione_Cod" Type="int" Nullable="false" />
+          <Property Name="Stazione_Des" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="PosizioneLatitudine" Type="real" />
+          <Property Name="PosizioneLongitudine" Type="real" />
+          <Property Name="Fornitore_Cod" Type="int" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Validita_Inizio" Type="datetime" Nullable="false" />
+          <Property Name="Validita_Fine" Type="datetime" Nullable="false" />
+          <Property Name="Stazione_Cod_Fornitore" Type="varchar" MaxLength="50" />
+          <Property Name="Stazione_Cod_TabellaAnagrafica" Type="varchar" MaxLength="500" />
+          <Property Name="AttivoPerScarico" Type="int" />
+          <Property Name="RegioneCod" Type="varchar" MaxLength="50" />
+          <Property Name="ProvinciaCod" Type="varchar" MaxLength="50" />
+          <Property Name="ComuneCod" Type="varchar" MaxLength="50" />
+          <Property Name="sql_time_zone_info" Type="varchar" MaxLength="1000" />
+          <Property Name="system_time_zone_info" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Agronica_Stazioni_Configurazioni">
+          <Key>
+            <PropertyRef Name="Agronica_Stazioni_Configurazioni_cod" />
+          </Key>
+          <Property Name="Agronica_Stazioni_Configurazioni_cod" Type="int" Nullable="false" />
+          <Property Name="Stazione_Cod" Type="int" />
+          <Property Name="NomeTabellaDati" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="NomeColonna" Type="varchar" MaxLength="4000" Nullable="false" />
+          <Property Name="SensoreNome" Type="varchar" MaxLength="50" />
+          <Property Name="SensoreDescrizione" Type="varchar" MaxLength="4000" />
+          <Property Name="AlgoritmoRicostruizioneDatiMancanti" Type="int" />
+          <Property Name="NomeColonnaDatiOrigine" Type="varchar" MaxLength="4000" />
+          <Property Name="AlgoritmoRicostruizioneDatiDaOrigine" Type="int" />
+          <Property Name="Fornitore_Cod" Type="int" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Validita_Inizio" Type="datetime" Nullable="false" />
+          <Property Name="Validita_Fine" Type="datetime" Nullable="false" />
+          <Property Name="Ordine" Type="int" Nullable="false" />
+          <Property Name="Raggruppamento" Type="int" />
+          <Property Name="UDM_COD" Type="int" />
+          <Property Name="FunzioneAggregazioneDati" Type="varchar" MaxLength="10" />
+          <Property Name="Colore1" Type="varchar" MaxLength="15" />
+          <Property Name="Colore2" Type="varchar" MaxLength="15" />
+          <Property Name="TipoDiGrafico" Type="varchar" MaxLength="50" />
+          <Property Name="ParametriAggiuntivi" Type="varchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Codima_Dati">
+          <Key>
+            <PropertyRef Name="Codima_Stazioni_Cod" />
+            <PropertyRef Name="Data" />
+            <PropertyRef Name="Ora" />
+          </Key>
+          <Property Name="Codima_Stazioni_Cod" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Data" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Ora" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="TempMin" Type="varchar" MaxLength="25" />
+          <Property Name="TempMax" Type="varchar" MaxLength="25" />
+          <Property Name="UmidMin" Type="varchar" MaxLength="25" />
+          <Property Name="UmidMax" Type="varchar" MaxLength="25" />
+          <Property Name="Pioggia" Type="varchar" MaxLength="25" />
+          <Property Name="Vento" Type="varchar" MaxLength="25" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="Elaborato" Type="int" />
+        </EntityType>
+        <EntityType Name="Codima_Stazioni">
+          <Key>
+            <PropertyRef Name="Codima_Stazioni_Cod" />
+          </Key>
+          <Property Name="Codima_Stazioni_Cod" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Codima_Stazioni_Des" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ElencoSensori" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="CoordinataBoagaX" Type="nvarchar" MaxLength="50" />
+          <Property Name="CoordinataBoagaY" Type="nvarchar" MaxLength="50" />
+          <Property Name="CoordinataGrLatitudine" Type="nvarchar" MaxLength="50" />
+          <Property Name="CoordinataGrLongitudine" Type="nvarchar" MaxLength="50" />
+          <Property Name="StazioneAltitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttivaPerScaricoDati" Type="int" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WiNet_Dati">
+          <Key>
+            <PropertyRef Name="sensorId" />
+            <PropertyRef Name="sensorDate" />
+          </Key>
+          <Property Name="sensorId" Type="int" Nullable="false" />
+          <Property Name="sensorDate" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="sensorValue" Type="varchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="Elaborato" Type="int" />
+          <Property Name="ElaboratoSubOrario" Type="int" />
+          <Property Name="ElaboratoOrario" Type="int" />
+          <Property Name="ElaboratoGiornaliero" Type="int" />
+        </EntityType>
+        <EntityType Name="WiNet_Nodi">
+          <Key>
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="nodeId" Type="int" Nullable="false" />
+          <Property Name="nodeLatitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="nodeLongitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="nodeAltitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="nodeLabel" Type="nvarchar" MaxLength="50" />
+          <Property Name="isCoordinator" Type="smallint" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WiNet_Nodi_Sensori">
+          <Key>
+            <PropertyRef Name="sensorId" />
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="sensorId" Type="int" Nullable="false" />
+          <Property Name="nodeId" Type="int" Nullable="false" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WiNet_Reti">
+          <Key>
+            <PropertyRef Name="NetId" />
+          </Key>
+          <Property Name="NetId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descrizione" Type="varchar" MaxLength="50" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="netName" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="WiNet_Reti_Nodi">
+          <Key>
+            <PropertyRef Name="netId" />
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="netId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nodeId" Type="int" Nullable="false" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WiNet_Sensori">
+          <Key>
+            <PropertyRef Name="sensorId" />
+          </Key>
+          <Property Name="sensorId" Type="int" Nullable="false" />
+          <Property Name="sensorLabel" Type="nvarchar" MaxLength="1000" />
+          <Property Name="sensorType" Type="nvarchar" MaxLength="50" />
+          <Property Name="sensorUM" Type="nvarchar" MaxLength="50" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="varchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="FunzioneAggregazioneDati" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="WiNet_Sensori_Tipo">
+          <Key>
+            <PropertyRef Name="sensorType" />
+          </Key>
+          <Property Name="sensorType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sensorUM" Type="nvarchar" MaxLength="50" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="varchar" MaxLength="500" />
+          <Property Name="inviato" Type="smallint" />
+          <Property Name="datainvio" Type="datetime" />
+          <Property Name="Data_Creazione" Type="datetime" />
+          <Property Name="Data_Modifica" Type="datetime" />
+          <Property Name="Username_Creazione" Type="varchar" MaxLength="250" />
+          <Property Name="Username_Modifica" Type="varchar" MaxLength="250" />
+          <Property Name="Validita_Inizio" Type="datetime" />
+          <Property Name="Validita_Fine" Type="datetime" />
+          <Property Name="FunzioneAggregazioneDati" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo">
+          <End Role="Agricultural_Support_Sensori_Tipo" Type="Self.Agricultural_Support_Sensori_Tipo" Multiplicity="0..1" />
+          <End Role="Agricultural_Support_Sensori" Type="Self.Agricultural_Support_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori_Tipo">
+              <PropertyRef Name="Tipo_Sensore" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Tipo_Sensore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori">
+          <End Role="Agricultural_Support_Sensori" Type="Self.Agricultural_Support_Sensori" Multiplicity="1" />
+          <End Role="Agricultural_Support_Dati" Type="Self.Agricultural_Support_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Sensore_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Dati">
+              <PropertyRef Name="Sensore_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita">
+          <End Role="Agricultural_Support_Unita" Type="Self.Agricultural_Support_Unita" Multiplicity="1" />
+          <End Role="Agricultural_Support_Dati" Type="Self.Agricultural_Support_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Dati">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori">
+          <End Role="Agricultural_Support_Sensori" Type="Self.Agricultural_Support_Sensori" Multiplicity="1" />
+          <End Role="Agricultural_Support_Sensori_Unita" Type="Self.Agricultural_Support_Sensori_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Sensore_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori_Unita">
+              <PropertyRef Name="Sensore_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita">
+          <End Role="Agricultural_Support_Unita" Type="Self.Agricultural_Support_Unita" Multiplicity="1" />
+          <End Role="Agricultural_Support_Sensori_Unita" Type="Self.Agricultural_Support_Sensori_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi">
+          <End Role="Agricultural_Support_Sistemi" Type="Self.Agricultural_Support_Sistemi" Multiplicity="1" />
+          <End Role="Agricultural_Support_Sistemi_Unita" Type="Self.Agricultural_Support_Sistemi_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sistemi">
+              <PropertyRef Name="Sistema_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sistemi_Unita">
+              <PropertyRef Name="Sistema_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita">
+          <End Role="Agricultural_Support_Unita" Type="Self.Agricultural_Support_Unita" Multiplicity="1" />
+          <End Role="Agricultural_Support_Sistemi_Unita" Type="Self.Agricultural_Support_Sistemi_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sistemi_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Dati_WiNet_Sensori">
+          <End Role="WiNet_Sensori" Type="Self.WiNet_Sensori" Multiplicity="1" />
+          <End Role="WiNet_Dati" Type="Self.WiNet_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Principal>
+            <Dependent Role="WiNet_Dati">
+              <PropertyRef Name="sensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Nodi_Sensori_WiNet_Nodi">
+          <End Role="WiNet_Nodi" Type="Self.WiNet_Nodi" Multiplicity="1" />
+          <End Role="WiNet_Nodi_Sensori" Type="Self.WiNet_Nodi_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Principal>
+            <Dependent Role="WiNet_Nodi_Sensori">
+              <PropertyRef Name="nodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Nodi_Sensori_WiNet_Sensori">
+          <End Role="WiNet_Sensori" Type="Self.WiNet_Sensori" Multiplicity="1" />
+          <End Role="WiNet_Nodi_Sensori" Type="Self.WiNet_Nodi_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Principal>
+            <Dependent Role="WiNet_Nodi_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Reti_Nodi_WiNet_Nodi">
+          <End Role="WiNet_Nodi" Type="Self.WiNet_Nodi" Multiplicity="1" />
+          <End Role="WiNet_Reti_Nodi" Type="Self.WiNet_Reti_Nodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Principal>
+            <Dependent Role="WiNet_Reti_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Reti_Nodi_WiNet_Reti">
+          <End Role="WiNet_Reti" Type="Self.WiNet_Reti" Multiplicity="1" />
+          <End Role="WiNet_Reti_Nodi" Type="Self.WiNet_Reti_Nodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Reti">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="WiNet_Reti_Nodi">
+              <PropertyRef Name="netId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Sensori_WiNet_Sensori_Tipo">
+          <End Role="WiNet_Sensori_Tipo" Type="Self.WiNet_Sensori_Tipo" Multiplicity="0..1" />
+          <End Role="WiNet_Sensori" Type="Self.WiNet_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori_Tipo">
+              <PropertyRef Name="sensorType" />
+            </Principal>
+            <Dependent Role="WiNet_Sensori">
+              <PropertyRef Name="sensorType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="agronicameteosuite_estratto2012ModelStoreContainer">
+          <EntitySet Name="Agricultural_Support_Dati" EntityType="Self.Agricultural_Support_Dati" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Sensori" EntityType="Self.Agricultural_Support_Sensori" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Sensori_Tipo" EntityType="Self.Agricultural_Support_Sensori_Tipo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Sensori_Unita" EntityType="Self.Agricultural_Support_Sensori_Unita" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Sistemi" EntityType="Self.Agricultural_Support_Sistemi" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Sistemi_Unita" EntityType="Self.Agricultural_Support_Sistemi_Unita" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agricultural_Support_Unita" EntityType="Self.Agricultural_Support_Unita" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agronica_Dati_Rilevati" EntityType="Self.Agronica_Dati_Rilevati" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agronica_Fornitori" EntityType="Self.Agronica_Fornitori" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agronica_Stazioni" EntityType="Self.Agronica_Stazioni" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Agronica_Stazioni_Configurazioni" EntityType="Self.Agronica_Stazioni_Configurazioni" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Codima_Dati" EntityType="Self.Codima_Dati" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Codima_Stazioni" EntityType="Self.Codima_Stazioni" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Dati" EntityType="Self.WiNet_Dati" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Nodi" EntityType="Self.WiNet_Nodi" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Nodi_Sensori" EntityType="Self.WiNet_Nodi_Sensori" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Reti" EntityType="Self.WiNet_Reti" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Reti_Nodi" EntityType="Self.WiNet_Reti_Nodi" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Sensori" EntityType="Self.WiNet_Sensori" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WiNet_Sensori_Tipo" EntityType="Self.WiNet_Sensori_Tipo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo" Association="Self.FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo">
+            <End Role="Agricultural_Support_Sensori_Tipo" EntitySet="Agricultural_Support_Sensori_Tipo" />
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori" Association="Self.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori">
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+            <End Role="Agricultural_Support_Dati" EntitySet="Agricultural_Support_Dati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita" Association="Self.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Dati" EntitySet="Agricultural_Support_Dati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori" Association="Self.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori">
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+            <End Role="Agricultural_Support_Sensori_Unita" EntitySet="Agricultural_Support_Sensori_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita" Association="Self.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Sensori_Unita" EntitySet="Agricultural_Support_Sensori_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi" Association="Self.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi">
+            <End Role="Agricultural_Support_Sistemi" EntitySet="Agricultural_Support_Sistemi" />
+            <End Role="Agricultural_Support_Sistemi_Unita" EntitySet="Agricultural_Support_Sistemi_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita" Association="Self.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Sistemi_Unita" EntitySet="Agricultural_Support_Sistemi_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Dati_WiNet_Sensori" Association="Self.FK_WiNet_Dati_WiNet_Sensori">
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+            <End Role="WiNet_Dati" EntitySet="WiNet_Dati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Nodi_Sensori_WiNet_Nodi" Association="Self.FK_WiNet_Nodi_Sensori_WiNet_Nodi">
+            <End Role="WiNet_Nodi" EntitySet="WiNet_Nodi" />
+            <End Role="WiNet_Nodi_Sensori" EntitySet="WiNet_Nodi_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Nodi_Sensori_WiNet_Sensori" Association="Self.FK_WiNet_Nodi_Sensori_WiNet_Sensori">
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+            <End Role="WiNet_Nodi_Sensori" EntitySet="WiNet_Nodi_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Reti_Nodi_WiNet_Nodi" Association="Self.FK_WiNet_Reti_Nodi_WiNet_Nodi">
+            <End Role="WiNet_Nodi" EntitySet="WiNet_Nodi" />
+            <End Role="WiNet_Reti_Nodi" EntitySet="WiNet_Reti_Nodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Reti_Nodi_WiNet_Reti" Association="Self.FK_WiNet_Reti_Nodi_WiNet_Reti">
+            <End Role="WiNet_Reti" EntitySet="WiNet_Reti" />
+            <End Role="WiNet_Reti_Nodi" EntitySet="WiNet_Reti_Nodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Sensori_WiNet_Sensori_Tipo" Association="Self.FK_WiNet_Sensori_WiNet_Sensori_Tipo">
+            <End Role="WiNet_Sensori_Tipo" EntitySet="WiNet_Sensori_Tipo" />
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="agronicameteosuite_estratto2012Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="agronicameteosuite_estratto2012Entities" annotation:LazyLoadingEnabled="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="WiNet_Dati" EntityType="agronicameteosuite_estratto2012Model.WiNet_Dati" />
+          <EntitySet Name="WiNet_Nodi" EntityType="agronicameteosuite_estratto2012Model.WiNet_Nodi" />
+          <EntitySet Name="WiNet_Nodi_Sensori" EntityType="agronicameteosuite_estratto2012Model.WiNet_Nodi_Sensori" />
+          <EntitySet Name="WiNet_Reti" EntityType="agronicameteosuite_estratto2012Model.WiNet_Reti" />
+          <EntitySet Name="WiNet_Reti_Nodi" EntityType="agronicameteosuite_estratto2012Model.WiNet_Reti_Nodi" />
+          <EntitySet Name="WiNet_Sensori" EntityType="agronicameteosuite_estratto2012Model.WiNet_Sensori" />
+          <EntitySet Name="WiNet_Sensori_Tipo" EntityType="agronicameteosuite_estratto2012Model.WiNet_Sensori_Tipo" />
+          <AssociationSet Name="FK_WiNet_Dati_WiNet_Sensori" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Dati_WiNet_Sensori">
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+            <End Role="WiNet_Dati" EntitySet="WiNet_Dati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Nodi_Sensori_WiNet_Nodi" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Nodi">
+            <End Role="WiNet_Nodi" EntitySet="WiNet_Nodi" />
+            <End Role="WiNet_Nodi_Sensori" EntitySet="WiNet_Nodi_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Reti_Nodi_WiNet_Nodi" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Nodi">
+            <End Role="WiNet_Nodi" EntitySet="WiNet_Nodi" />
+            <End Role="WiNet_Reti_Nodi" EntitySet="WiNet_Reti_Nodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Nodi_Sensori_WiNet_Sensori" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Sensori">
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+            <End Role="WiNet_Nodi_Sensori" EntitySet="WiNet_Nodi_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Reti_Nodi_WiNet_Reti" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Reti">
+            <End Role="WiNet_Reti" EntitySet="WiNet_Reti" />
+            <End Role="WiNet_Reti_Nodi" EntitySet="WiNet_Reti_Nodi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WiNet_Sensori_WiNet_Sensori_Tipo" Association="agronicameteosuite_estratto2012Model.FK_WiNet_Sensori_WiNet_Sensori_Tipo">
+            <End Role="WiNet_Sensori_Tipo" EntitySet="WiNet_Sensori_Tipo" />
+            <End Role="WiNet_Sensori" EntitySet="WiNet_Sensori" />
+          </AssociationSet>
+          <EntitySet Name="Agronica_Dati_Rilevati" EntityType="agronicameteosuite_estratto2012Model.Agronica_Dati_Rilevati" />
+          <EntitySet Name="Agronica_Fornitori" EntityType="agronicameteosuite_estratto2012Model.Agronica_Fornitori" />
+          <EntitySet Name="Agronica_Stazioni" EntityType="agronicameteosuite_estratto2012Model.Agronica_Stazioni" />
+          <EntitySet Name="Codima_Dati" EntityType="agronicameteosuite_estratto2012Model.Codima_Dati" />
+          <EntitySet Name="Codima_Stazioni" EntityType="agronicameteosuite_estratto2012Model.Codima_Stazioni" />
+          <EntitySet Name="Agronica_Stazioni_Configurazioni" EntityType="agronicameteosuite_estratto2012Model.Agronica_Stazioni_Configurazioni" />
+          <EntitySet Name="Agricultural_Support_Sensori" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori" />
+          <EntitySet Name="Agricultural_Support_Sensori_Tipo" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Tipo" />
+          <EntitySet Name="Agricultural_Support_Sensori_Unita" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Unita" />
+          <EntitySet Name="Agricultural_Support_Sistemi" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi" />
+          <EntitySet Name="Agricultural_Support_Sistemi_Unita" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi_Unita" />
+          <EntitySet Name="Agricultural_Support_Unita" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita" />
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo">
+            <End Role="Agricultural_Support_Sensori_Tipo" EntitySet="Agricultural_Support_Sensori_Tipo" />
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori">
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+            <End Role="Agricultural_Support_Sensori_Unita" EntitySet="Agricultural_Support_Sensori_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Sensori_Unita" EntitySet="Agricultural_Support_Sensori_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi">
+            <End Role="Agricultural_Support_Sistemi" EntitySet="Agricultural_Support_Sistemi" />
+            <End Role="Agricultural_Support_Sistemi_Unita" EntitySet="Agricultural_Support_Sistemi_Unita" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Sistemi_Unita" EntitySet="Agricultural_Support_Sistemi_Unita" />
+          </AssociationSet>
+          <EntitySet Name="Agricultural_Support_Dati" EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Dati" />
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori">
+            <End Role="Agricultural_Support_Sensori" EntitySet="Agricultural_Support_Sensori" />
+            <End Role="Agricultural_Support_Dati" EntitySet="Agricultural_Support_Dati" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita" Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita">
+            <End Role="Agricultural_Support_Unita" EntitySet="Agricultural_Support_Unita" />
+            <End Role="Agricultural_Support_Dati" EntitySet="Agricultural_Support_Dati" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="WiNet_Dati">
+          <Key>
+            <PropertyRef Name="sensorId" />
+            <PropertyRef Name="sensorDate" />
+          </Key>
+          <Property Name="sensorId" Type="Int32" Nullable="false" />
+          <Property Name="sensorDate" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="sensorValue" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Dati_WiNet_Sensori" FromRole="WiNet_Dati" ToRole="WiNet_Sensori" />
+          <Property Name="Elaborato" Type="Int32" />
+          <Property Name="ElaboratoSubOrario" Type="Int32" />
+          <Property Name="ElaboratoOrario" Type="Int32" />
+          <Property Name="ElaboratoGiornaliero" Type="Int32" />
+        </EntityType>
+        <EntityType Name="WiNet_Nodi">
+          <Key>
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="nodeId" Type="Int32" Nullable="false" />
+          <Property Name="nodeLatitude" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="nodeLongitude" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="nodeAltitude" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="nodeLabel" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="isCoordinator" Type="Int16" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Nodi_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Nodi" FromRole="WiNet_Nodi" ToRole="WiNet_Nodi_Sensori" />
+          <NavigationProperty Name="WiNet_Reti_Nodi" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Nodi" FromRole="WiNet_Nodi" ToRole="WiNet_Reti_Nodi" />
+        </EntityType>
+        <EntityType Name="WiNet_Nodi_Sensori">
+          <Key>
+            <PropertyRef Name="sensorId" />
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="sensorId" Type="Int32" Nullable="false" />
+          <Property Name="nodeId" Type="Int32" Nullable="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Nodi" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Nodi" FromRole="WiNet_Nodi_Sensori" ToRole="WiNet_Nodi" />
+          <NavigationProperty Name="WiNet_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Sensori" FromRole="WiNet_Nodi_Sensori" ToRole="WiNet_Sensori" />
+        </EntityType>
+        <EntityType Name="WiNet_Reti">
+          <Key>
+            <PropertyRef Name="NetId" />
+          </Key>
+          <Property Name="NetId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Reti_Nodi" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Reti" FromRole="WiNet_Reti" ToRole="WiNet_Reti_Nodi" />
+          <Property Type="String" Name="netName" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WiNet_Reti_Nodi">
+          <Key>
+            <PropertyRef Name="netId" />
+            <PropertyRef Name="nodeId" />
+          </Key>
+          <Property Name="netId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="nodeId" Type="Int32" Nullable="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Nodi" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Nodi" FromRole="WiNet_Reti_Nodi" ToRole="WiNet_Nodi" />
+          <NavigationProperty Name="WiNet_Reti" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Reti" FromRole="WiNet_Reti_Nodi" ToRole="WiNet_Reti" />
+        </EntityType>
+        <EntityType Name="WiNet_Sensori">
+          <Key>
+            <PropertyRef Name="sensorId" />
+          </Key>
+          <Property Name="sensorId" Type="Int32" Nullable="false" />
+          <Property Name="sensorLabel" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="sensorType" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="sensorUM" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Dati" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Dati_WiNet_Sensori" FromRole="WiNet_Sensori" ToRole="WiNet_Dati" />
+          <NavigationProperty Name="WiNet_Nodi_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Sensori" FromRole="WiNet_Sensori" ToRole="WiNet_Nodi_Sensori" />
+          <NavigationProperty Name="WiNet_Sensori_Tipo" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Sensori_WiNet_Sensori_Tipo" FromRole="WiNet_Sensori" ToRole="WiNet_Sensori_Tipo" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FunzioneAggregazioneDati" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WiNet_Sensori_Tipo">
+          <Key>
+            <PropertyRef Name="sensorType" />
+          </Key>
+          <Property Name="sensorType" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="sensorUM" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="WiNet_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_WiNet_Sensori_WiNet_Sensori_Tipo" FromRole="WiNet_Sensori_Tipo" ToRole="WiNet_Sensori" />
+          <Property Name="FunzioneAggregazioneDati" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_WiNet_Dati_WiNet_Sensori">
+          <End Role="WiNet_Sensori" Type="agronicameteosuite_estratto2012Model.WiNet_Sensori" Multiplicity="1" />
+          <End Role="WiNet_Dati" Type="agronicameteosuite_estratto2012Model.WiNet_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Principal>
+            <Dependent Role="WiNet_Dati">
+              <PropertyRef Name="sensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Nodi_Sensori_WiNet_Nodi">
+          <End Role="WiNet_Nodi" Type="agronicameteosuite_estratto2012Model.WiNet_Nodi" Multiplicity="1" />
+          <End Role="WiNet_Nodi_Sensori" Type="agronicameteosuite_estratto2012Model.WiNet_Nodi_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Principal>
+            <Dependent Role="WiNet_Nodi_Sensori">
+              <PropertyRef Name="nodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Reti_Nodi_WiNet_Nodi">
+          <End Role="WiNet_Nodi" Type="agronicameteosuite_estratto2012Model.WiNet_Nodi" Multiplicity="1" />
+          <End Role="WiNet_Reti_Nodi" Type="agronicameteosuite_estratto2012Model.WiNet_Reti_Nodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Principal>
+            <Dependent Role="WiNet_Reti_Nodi">
+              <PropertyRef Name="nodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Nodi_Sensori_WiNet_Sensori">
+          <End Role="WiNet_Sensori" Type="agronicameteosuite_estratto2012Model.WiNet_Sensori" Multiplicity="1" />
+          <End Role="WiNet_Nodi_Sensori" Type="agronicameteosuite_estratto2012Model.WiNet_Nodi_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Principal>
+            <Dependent Role="WiNet_Nodi_Sensori">
+              <PropertyRef Name="sensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Reti_Nodi_WiNet_Reti">
+          <End Role="WiNet_Reti" Type="agronicameteosuite_estratto2012Model.WiNet_Reti" Multiplicity="1" />
+          <End Role="WiNet_Reti_Nodi" Type="agronicameteosuite_estratto2012Model.WiNet_Reti_Nodi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Reti">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="WiNet_Reti_Nodi">
+              <PropertyRef Name="netId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WiNet_Sensori_WiNet_Sensori_Tipo">
+          <End Role="WiNet_Sensori_Tipo" Type="agronicameteosuite_estratto2012Model.WiNet_Sensori_Tipo" Multiplicity="0..1" />
+          <End Role="WiNet_Sensori" Type="agronicameteosuite_estratto2012Model.WiNet_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WiNet_Sensori_Tipo">
+              <PropertyRef Name="sensorType" />
+            </Principal>
+            <Dependent Role="WiNet_Sensori">
+              <PropertyRef Name="sensorType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Agronica_Dati_Rilevati">
+          <Key>
+            <PropertyRef Name="Stazione_Cod" />
+            <PropertyRef Name="DataOraRilievo" />
+          </Key>
+          <Property Name="Stazione_Cod" Type="Int32" Nullable="false" />
+          <Property Name="DataOraRilievo" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcquaLivelloMedio" Type="Int32" />
+          <Property Name="AriaTemperaturaMedia" Type="Single" />
+          <Property Name="AriaTemperaturaMin" Type="Single" />
+          <Property Name="AriaTemperaturaMax" Type="Single" />
+          <Property Name="AriaUmidita" Type="Single" />
+          <Property Name="BagnaturaBulboTemperatura" Type="Single" />
+          <Property Name="BagnaturaFogliareTempo" Type="Single" />
+          <Property Name="BagnaturaFogliare" Type="Single" />
+          <Property Name="BatteriaUltimoVoltaggio" Type="Single" />
+          <Property Name="ETo" Type="Single" />
+          <Property Name="Evaporimetro" Type="Single" />
+          <Property Name="CondensazionePuntoMedio" Type="Single" />
+          <Property Name="CondensazionePuntoMin" Type="Single" />
+          <Property Name="Irraggiamento" Type="Single" />
+          <Property Name="MPS_1" Type="Single" />
+          <Property Name="Precipitazioni" Type="Single" />
+          <Property Name="PrecipitazioniCumulo" Type="Single" />
+          <Property Name="PrecipitazioniIntensita" Type="Single" />
+          <Property Name="TerrenoTemperatura1" Type="Single" />
+          <Property Name="TerrenoTemperatura2" Type="Single" />
+          <Property Name="SuoloUmidita1" Type="Single" />
+          <Property Name="SuoloUmidita2" Type="Single" />
+          <Property Name="SuoloUmidita3" Type="Single" />
+          <Property Name="Solar_Panel" Type="Single" />
+          <Property Name="TerrenoConducibilita" Type="Single" />
+          <Property Name="TerrenoUmidita" Type="Single" />
+          <Property Name="UmiditaRelativaMedia" Type="Single" />
+          <Property Name="VentoDirezione" Type="Single" />
+          <Property Name="VentoRaffica" Type="Single" />
+          <Property Name="VentoRafficaDirezione" Type="Single" />
+          <Property Name="VentoVelocitaMedia" Type="Single" />
+          <Property Name="VentoVelocitaMassima" Type="Single" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Agronica_Fornitori">
+          <Key>
+            <PropertyRef Name="Fornitore_Cod" />
+          </Key>
+          <Property Name="Fornitore_Cod" Type="Int32" Nullable="false" />
+          <Property Name="Fornitore_Des" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Tipo_Visibilità" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Agronica_Stazioni">
+          <Key>
+            <PropertyRef Name="Stazione_Cod" />
+          </Key>
+          <Property Name="Stazione_Cod" Type="Int32" Nullable="false" />
+          <Property Name="Stazione_Des" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="PosizioneLatitudine" Type="Single" />
+          <Property Name="PosizioneLongitudine" Type="Single" />
+          <Property Name="Fornitore_Cod" Type="Int32" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Stazione_Cod_Fornitore" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stazione_Cod_TabellaAnagrafica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AttivoPerScarico" Type="Int32" />
+          <Property Name="RegioneCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinciaCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ComuneCod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sql_time_zone_info" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="system_time_zone_info" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Codima_Dati">
+          <Key>
+            <PropertyRef Name="Codima_Stazioni_Cod" />
+            <PropertyRef Name="Data" />
+            <PropertyRef Name="Ora" />
+          </Key>
+          <Property Name="Codima_Stazioni_Cod" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Data" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Ora" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TempMin" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TempMax" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UmidMin" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="UmidMax" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Pioggia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Vento" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <Property Name="Elaborato" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Codima_Stazioni">
+          <Key>
+            <PropertyRef Name="Codima_Stazioni_Cod" />
+          </Key>
+          <Property Name="Codima_Stazioni_Cod" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Codima_Stazioni_Des" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ElencoSensori" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CoordinataBoagaX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoordinataBoagaY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoordinataGrLatitudine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CoordinataGrLongitudine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StazioneAltitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <Property Name="AttivaPerScaricoDati" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Agronica_Stazioni_Configurazioni">
+          <Key>
+            <PropertyRef Name="Agronica_Stazioni_Configurazioni_cod" />
+          </Key>
+          <Property Name="Agronica_Stazioni_Configurazioni_cod" Type="Int32" Nullable="false" />
+          <Property Name="Stazione_Cod" Type="Int32" />
+          <Property Name="NomeTabellaDati" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="NomeColonna" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SensoreNome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SensoreDescrizione" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AlgoritmoRicostruizioneDatiMancanti" Type="Int32" />
+          <Property Name="NomeColonnaDatiOrigine" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AlgoritmoRicostruizioneDatiDaOrigine" Type="Int32" />
+          <Property Name="Fornitore_Cod" Type="Int32" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ordine" Type="Int32" Nullable="false" />
+          <Property Name="Raggruppamento" Type="Int32" />
+          <Property Name="UDM_COD" Type="Int32" />
+          <Property Name="FunzioneAggregazioneDati" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Colore1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Colore2" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDiGrafico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ParametriAggiuntivi" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori">
+          <Key>
+            <PropertyRef Name="Sensore_Id" />
+          </Key>
+          <Property Name="Sensore_Id" Type="Int32" Nullable="false" />
+          <Property Name="Sensore_Nome" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo_Sensore" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agricultural_Support_Sensori_Tipo" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo" FromRole="Agricultural_Support_Sensori" ToRole="Agricultural_Support_Sensori_Tipo" />
+          <NavigationProperty Name="Agricultural_Support_Sensori_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori" FromRole="Agricultural_Support_Sensori" ToRole="Agricultural_Support_Sensori_Unita" />
+          <Property Name="FunzioneAggregazioneDati" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agricultural_Support_Dati" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori" FromRole="Agricultural_Support_Sensori" ToRole="Agricultural_Support_Dati" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori_Tipo">
+          <Key>
+            <PropertyRef Name="Tipo_Sensore" />
+          </Key>
+          <Property Name="Tipo_Sensore" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UDM_Sensore" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sensorAgronicaDatiRilevatiColonnaPivot" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agricultural_Support_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo" FromRole="Agricultural_Support_Sensori_Tipo" ToRole="Agricultural_Support_Sensori" />
+          <Property Name="FunzioneAggregazioneDati" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sensori_Unita">
+          <Key>
+            <PropertyRef Name="Sensore_Id" />
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Sensore_Id" Type="Int32" Nullable="false" />
+          <Property Name="Unita_Id" Type="Int32" Nullable="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agricultural_Support_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori" FromRole="Agricultural_Support_Sensori_Unita" ToRole="Agricultural_Support_Sensori" />
+          <NavigationProperty Name="Agricultural_Support_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita" FromRole="Agricultural_Support_Sensori_Unita" ToRole="Agricultural_Support_Unita" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sistemi">
+          <Key>
+            <PropertyRef Name="Sistema_Id" />
+          </Key>
+          <Property Name="Sistema_Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome_Sistema" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agricultural_Support_Sistemi_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi" FromRole="Agricultural_Support_Sistemi" ToRole="Agricultural_Support_Sistemi_Unita" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Sistemi_Unita">
+          <Key>
+            <PropertyRef Name="Sistema_Id" />
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Sistema_Id" Type="Int32" Nullable="false" />
+          <Property Name="Unita_Id" Type="Int32" Nullable="false" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agricultural_Support_Sistemi" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi" FromRole="Agricultural_Support_Sistemi_Unita" ToRole="Agricultural_Support_Sistemi" />
+          <NavigationProperty Name="Agricultural_Support_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita" FromRole="Agricultural_Support_Sistemi_Unita" ToRole="Agricultural_Support_Unita" />
+        </EntityType>
+        <EntityType Name="Agricultural_Support_Unita">
+          <Key>
+            <PropertyRef Name="Unita_Id" />
+          </Key>
+          <Property Name="Unita_Id" Type="Int32" Nullable="false" />
+          <Property Name="Nome_Unita" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <Property Name="Unita_Latitudine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unita_Longitudine" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Agricultural_Support_Sensori_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita" FromRole="Agricultural_Support_Unita" ToRole="Agricultural_Support_Sensori_Unita" />
+          <NavigationProperty Name="Agricultural_Support_Sistemi_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita" FromRole="Agricultural_Support_Unita" ToRole="Agricultural_Support_Sistemi_Unita" />
+          <NavigationProperty Name="Agricultural_Support_Dati" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita" FromRole="Agricultural_Support_Unita" ToRole="Agricultural_Support_Dati" />
+        </EntityType>
+        <Association Name="FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Tipo" Role="Agricultural_Support_Sensori_Tipo" Multiplicity="0..1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori" Role="Agricultural_Support_Sensori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori_Tipo">
+              <PropertyRef Name="Tipo_Sensore" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Tipo_Sensore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori" Role="Agricultural_Support_Sensori" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Unita" Role="Agricultural_Support_Sensori_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Sensore_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori_Unita">
+              <PropertyRef Name="Sensore_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita" Role="Agricultural_Support_Unita" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Unita" Role="Agricultural_Support_Sensori_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sensori_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi" Role="Agricultural_Support_Sistemi" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi_Unita" Role="Agricultural_Support_Sistemi_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sistemi">
+              <PropertyRef Name="Sistema_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sistemi_Unita">
+              <PropertyRef Name="Sistema_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita" Role="Agricultural_Support_Unita" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi_Unita" Role="Agricultural_Support_Sistemi_Unita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Sistemi_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Agricultural_Support_Dati">
+          <Key>
+            <PropertyRef Name="Sistema_id" />
+            <PropertyRef Name="Unita_Id" />
+            <PropertyRef Name="Sensore_ID" />
+            <PropertyRef Name="TimeStamp" />
+          </Key>
+          <Property Name="Sistema_id" Type="Int32" Nullable="false" />
+          <Property Name="Unita_Id" Type="Int32" Nullable="false" />
+          <Property Name="Sensore_ID" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Misura" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TimeStamp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Unita_Di_Misura" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ElaboratoSubOrario" Type="Int32" />
+          <Property Name="ElaboratoOrario" Type="Int32" />
+          <Property Name="ElaboratoGiornaliero" Type="Int32" />
+          <Property Name="inviato" Type="Int16" />
+          <Property Name="datainvio" Type="DateTime" Precision="3" />
+          <Property Name="Data_Creazione" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modifica" Type="DateTime" Precision="3" />
+          <Property Name="Username_Creazione" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Username_Modifica" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Validita_Inizio" Type="DateTime" Precision="3" />
+          <Property Name="Validita_Fine" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Agricultural_Support_Sensori" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori" FromRole="Agricultural_Support_Dati" ToRole="Agricultural_Support_Sensori" />
+          <NavigationProperty Name="Agricultural_Support_Unita" Relationship="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita" FromRole="Agricultural_Support_Dati" ToRole="Agricultural_Support_Unita" />
+        </EntityType>
+        <Association Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori" Role="Agricultural_Support_Sensori" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Dati" Role="Agricultural_Support_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Sensori">
+              <PropertyRef Name="Sensore_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Dati">
+              <PropertyRef Name="Sensore_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita">
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita" Role="Agricultural_Support_Unita" Multiplicity="1" />
+          <End Type="agronicameteosuite_estratto2012Model.Agricultural_Support_Dati" Role="Agricultural_Support_Dati" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Agricultural_Support_Unita">
+              <PropertyRef Name="Unita_Id" />
+            </Principal>
+            <Dependent Role="Agricultural_Support_Dati">
+              <PropertyRef Name="Unita_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="agronicameteosuite_estratto2012ModelStoreContainer" CdmEntityContainer="agronicameteosuite_estratto2012Entities">
+          <EntitySetMapping Name="WiNet_Dati">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Dati">
+              <MappingFragment StoreEntitySet="WiNet_Dati">
+                <ScalarProperty Name="ElaboratoGiornaliero" ColumnName="ElaboratoGiornaliero" />
+                <ScalarProperty Name="ElaboratoOrario" ColumnName="ElaboratoOrario" />
+                <ScalarProperty Name="ElaboratoSubOrario" ColumnName="ElaboratoSubOrario" />
+                <ScalarProperty Name="Elaborato" ColumnName="Elaborato" />
+                <ScalarProperty Name="sensorId" ColumnName="sensorId" />
+                <ScalarProperty Name="sensorDate" ColumnName="sensorDate" />
+                <ScalarProperty Name="sensorValue" ColumnName="sensorValue" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Nodi">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Nodi">
+              <MappingFragment StoreEntitySet="WiNet_Nodi">
+                <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+                <ScalarProperty Name="nodeLatitude" ColumnName="nodeLatitude" />
+                <ScalarProperty Name="nodeLongitude" ColumnName="nodeLongitude" />
+                <ScalarProperty Name="nodeAltitude" ColumnName="nodeAltitude" />
+                <ScalarProperty Name="nodeLabel" ColumnName="nodeLabel" />
+                <ScalarProperty Name="isCoordinator" ColumnName="isCoordinator" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Nodi_Sensori">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Nodi_Sensori">
+              <MappingFragment StoreEntitySet="WiNet_Nodi_Sensori">
+                <ScalarProperty Name="sensorId" ColumnName="sensorId" />
+                <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Reti">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Reti">
+              <MappingFragment StoreEntitySet="WiNet_Reti">
+                <ScalarProperty Name="netName" ColumnName="netName" />
+                <ScalarProperty Name="NetId" ColumnName="NetId" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Reti_Nodi">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Reti_Nodi">
+              <MappingFragment StoreEntitySet="WiNet_Reti_Nodi">
+                <ScalarProperty Name="netId" ColumnName="netId" />
+                <ScalarProperty Name="nodeId" ColumnName="nodeId" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Sensori">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Sensori">
+              <MappingFragment StoreEntitySet="WiNet_Sensori">
+                <ScalarProperty Name="FunzioneAggregazioneDati" ColumnName="FunzioneAggregazioneDati" />
+                <ScalarProperty Name="sensorAgronicaDatiRilevatiColonnaPivot" ColumnName="sensorAgronicaDatiRilevatiColonnaPivot" />
+                <ScalarProperty Name="sensorId" ColumnName="sensorId" />
+                <ScalarProperty Name="sensorLabel" ColumnName="sensorLabel" />
+                <ScalarProperty Name="sensorType" ColumnName="sensorType" />
+                <ScalarProperty Name="sensorUM" ColumnName="sensorUM" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WiNet_Sensori_Tipo">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.WiNet_Sensori_Tipo">
+              <MappingFragment StoreEntitySet="WiNet_Sensori_Tipo">
+                <ScalarProperty Name="FunzioneAggregazioneDati" ColumnName="FunzioneAggregazioneDati" />
+                <ScalarProperty Name="sensorType" ColumnName="sensorType" />
+                <ScalarProperty Name="sensorUM" ColumnName="sensorUM" />
+                <ScalarProperty Name="sensorAgronicaDatiRilevatiColonnaPivot" ColumnName="sensorAgronicaDatiRilevatiColonnaPivot" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agronica_Dati_Rilevati">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agronica_Dati_Rilevati">
+              <MappingFragment StoreEntitySet="Agronica_Dati_Rilevati">
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="VentoVelocitaMassima" ColumnName="VentoVelocitaMassima" />
+                <ScalarProperty Name="VentoVelocitaMedia" ColumnName="VentoVelocitaMedia" />
+                <ScalarProperty Name="VentoRafficaDirezione" ColumnName="VentoRafficaDirezione" />
+                <ScalarProperty Name="VentoRaffica" ColumnName="VentoRaffica" />
+                <ScalarProperty Name="VentoDirezione" ColumnName="VentoDirezione" />
+                <ScalarProperty Name="UmiditaRelativaMedia" ColumnName="UmiditaRelativaMedia" />
+                <ScalarProperty Name="TerrenoUmidita" ColumnName="TerrenoUmidita" />
+                <ScalarProperty Name="TerrenoConducibilita" ColumnName="TerrenoConducibilita" />
+                <ScalarProperty Name="Solar_Panel" ColumnName="Solar_Panel" />
+                <ScalarProperty Name="SuoloUmidita3" ColumnName="SuoloUmidita3" />
+                <ScalarProperty Name="SuoloUmidita2" ColumnName="SuoloUmidita2" />
+                <ScalarProperty Name="SuoloUmidita1" ColumnName="SuoloUmidita1" />
+                <ScalarProperty Name="TerrenoTemperatura2" ColumnName="TerrenoTemperatura2" />
+                <ScalarProperty Name="TerrenoTemperatura1" ColumnName="TerrenoTemperatura1" />
+                <ScalarProperty Name="PrecipitazioniIntensita" ColumnName="PrecipitazioniIntensita" />
+                <ScalarProperty Name="PrecipitazioniCumulo" ColumnName="PrecipitazioniCumulo" />
+                <ScalarProperty Name="Precipitazioni" ColumnName="Precipitazioni" />
+                <ScalarProperty Name="MPS_1" ColumnName="MPS_1" />
+                <ScalarProperty Name="Irraggiamento" ColumnName="Irraggiamento" />
+                <ScalarProperty Name="CondensazionePuntoMin" ColumnName="CondensazionePuntoMin" />
+                <ScalarProperty Name="CondensazionePuntoMedio" ColumnName="CondensazionePuntoMedio" />
+                <ScalarProperty Name="Evaporimetro" ColumnName="Evaporimetro" />
+                <ScalarProperty Name="ETo" ColumnName="ETo" />
+                <ScalarProperty Name="BatteriaUltimoVoltaggio" ColumnName="BatteriaUltimoVoltaggio" />
+                <ScalarProperty Name="BagnaturaFogliare" ColumnName="BagnaturaFogliare" />
+                <ScalarProperty Name="BagnaturaFogliareTempo" ColumnName="BagnaturaFogliareTempo" />
+                <ScalarProperty Name="BagnaturaBulboTemperatura" ColumnName="BagnaturaBulboTemperatura" />
+                <ScalarProperty Name="AriaUmidita" ColumnName="AriaUmidita" />
+                <ScalarProperty Name="AriaTemperaturaMax" ColumnName="AriaTemperaturaMax" />
+                <ScalarProperty Name="AriaTemperaturaMin" ColumnName="AriaTemperaturaMin" />
+                <ScalarProperty Name="AriaTemperaturaMedia" ColumnName="AriaTemperaturaMedia" />
+                <ScalarProperty Name="AcquaLivelloMedio" ColumnName="AcquaLivelloMedio" />
+                <ScalarProperty Name="DataOraRilievo" ColumnName="DataOraRilievo" />
+                <ScalarProperty Name="Stazione_Cod" ColumnName="Stazione_Cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agronica_Fornitori">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agronica_Fornitori">
+              <MappingFragment StoreEntitySet="Agronica_Fornitori">
+                <ScalarProperty Name="Tipo_Visibilità" ColumnName="Tipo_Visibilità" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Fornitore_Des" ColumnName="Fornitore_Des" />
+                <ScalarProperty Name="Fornitore_Cod" ColumnName="Fornitore_Cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agronica_Stazioni">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agronica_Stazioni">
+              <MappingFragment StoreEntitySet="Agronica_Stazioni">
+                <ScalarProperty Name="system_time_zone_info" ColumnName="system_time_zone_info" />
+                <ScalarProperty Name="sql_time_zone_info" ColumnName="sql_time_zone_info" />
+                <ScalarProperty Name="ComuneCod" ColumnName="ComuneCod" />
+                <ScalarProperty Name="ProvinciaCod" ColumnName="ProvinciaCod" />
+                <ScalarProperty Name="RegioneCod" ColumnName="RegioneCod" />
+                <ScalarProperty Name="AttivoPerScarico" ColumnName="AttivoPerScarico" />
+                <ScalarProperty Name="Stazione_Cod_TabellaAnagrafica" ColumnName="Stazione_Cod_TabellaAnagrafica" />
+                <ScalarProperty Name="Stazione_Cod_Fornitore" ColumnName="Stazione_Cod_Fornitore" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Fornitore_Cod" ColumnName="Fornitore_Cod" />
+                <ScalarProperty Name="PosizioneLongitudine" ColumnName="PosizioneLongitudine" />
+                <ScalarProperty Name="PosizioneLatitudine" ColumnName="PosizioneLatitudine" />
+                <ScalarProperty Name="Stazione_Des" ColumnName="Stazione_Des" />
+                <ScalarProperty Name="Stazione_Cod" ColumnName="Stazione_Cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Codima_Dati">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Codima_Dati">
+              <MappingFragment StoreEntitySet="Codima_Dati">
+                <ScalarProperty Name="Elaborato" ColumnName="Elaborato" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Vento" ColumnName="Vento" />
+                <ScalarProperty Name="Pioggia" ColumnName="Pioggia" />
+                <ScalarProperty Name="UmidMax" ColumnName="UmidMax" />
+                <ScalarProperty Name="UmidMin" ColumnName="UmidMin" />
+                <ScalarProperty Name="TempMax" ColumnName="TempMax" />
+                <ScalarProperty Name="TempMin" ColumnName="TempMin" />
+                <ScalarProperty Name="Ora" ColumnName="Ora" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Codima_Stazioni_Cod" ColumnName="Codima_Stazioni_Cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Codima_Stazioni">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Codima_Stazioni">
+              <MappingFragment StoreEntitySet="Codima_Stazioni">
+                <ScalarProperty Name="AttivaPerScaricoDati" ColumnName="AttivaPerScaricoDati" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="StazioneAltitude" ColumnName="StazioneAltitude" />
+                <ScalarProperty Name="CoordinataGrLongitudine" ColumnName="CoordinataGrLongitudine" />
+                <ScalarProperty Name="CoordinataGrLatitudine" ColumnName="CoordinataGrLatitudine" />
+                <ScalarProperty Name="CoordinataBoagaY" ColumnName="CoordinataBoagaY" />
+                <ScalarProperty Name="CoordinataBoagaX" ColumnName="CoordinataBoagaX" />
+                <ScalarProperty Name="ElencoSensori" ColumnName="ElencoSensori" />
+                <ScalarProperty Name="Codima_Stazioni_Des" ColumnName="Codima_Stazioni_Des" />
+                <ScalarProperty Name="Codima_Stazioni_Cod" ColumnName="Codima_Stazioni_Cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agronica_Stazioni_Configurazioni">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agronica_Stazioni_Configurazioni">
+              <MappingFragment StoreEntitySet="Agronica_Stazioni_Configurazioni">
+                <ScalarProperty Name="ParametriAggiuntivi" ColumnName="ParametriAggiuntivi" />
+                <ScalarProperty Name="TipoDiGrafico" ColumnName="TipoDiGrafico" />
+                <ScalarProperty Name="Colore2" ColumnName="Colore2" />
+                <ScalarProperty Name="Colore1" ColumnName="Colore1" />
+                <ScalarProperty Name="FunzioneAggregazioneDati" ColumnName="FunzioneAggregazioneDati" />
+                <ScalarProperty Name="UDM_COD" ColumnName="UDM_COD" />
+                <ScalarProperty Name="Raggruppamento" ColumnName="Raggruppamento" />
+                <ScalarProperty Name="Ordine" ColumnName="Ordine" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Fornitore_Cod" ColumnName="Fornitore_Cod" />
+                <ScalarProperty Name="AlgoritmoRicostruizioneDatiDaOrigine" ColumnName="AlgoritmoRicostruizioneDatiDaOrigine" />
+                <ScalarProperty Name="NomeColonnaDatiOrigine" ColumnName="NomeColonnaDatiOrigine" />
+                <ScalarProperty Name="AlgoritmoRicostruizioneDatiMancanti" ColumnName="AlgoritmoRicostruizioneDatiMancanti" />
+                <ScalarProperty Name="SensoreDescrizione" ColumnName="SensoreDescrizione" />
+                <ScalarProperty Name="SensoreNome" ColumnName="SensoreNome" />
+                <ScalarProperty Name="NomeColonna" ColumnName="NomeColonna" />
+                <ScalarProperty Name="NomeTabellaDati" ColumnName="NomeTabellaDati" />
+                <ScalarProperty Name="Stazione_Cod" ColumnName="Stazione_Cod" />
+                <ScalarProperty Name="Agronica_Stazioni_Configurazioni_cod" ColumnName="Agronica_Stazioni_Configurazioni_cod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Sensori">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Sensori">
+                <ScalarProperty Name="FunzioneAggregazioneDati" ColumnName="FunzioneAggregazioneDati" />
+                <ScalarProperty Name="sensorAgronicaDatiRilevatiColonnaPivot" ColumnName="sensorAgronicaDatiRilevatiColonnaPivot" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Tipo_Sensore" ColumnName="Tipo_Sensore" />
+                <ScalarProperty Name="Sensore_Nome" ColumnName="Sensore_Nome" />
+                <ScalarProperty Name="Sensore_Id" ColumnName="Sensore_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Sensori_Tipo">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Tipo">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Sensori_Tipo">
+                <ScalarProperty Name="FunzioneAggregazioneDati" ColumnName="FunzioneAggregazioneDati" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="sensorAgronicaDatiRilevatiColonnaPivot" ColumnName="sensorAgronicaDatiRilevatiColonnaPivot" />
+                <ScalarProperty Name="UDM_Sensore" ColumnName="UDM_Sensore" />
+                <ScalarProperty Name="Tipo_Sensore" ColumnName="Tipo_Sensore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Sensori_Unita">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Unita">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Sensori_Unita">
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Unita_Id" ColumnName="Unita_Id" />
+                <ScalarProperty Name="Sensore_Id" ColumnName="Sensore_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Sistemi">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Sistemi">
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Nome_Sistema" ColumnName="Nome_Sistema" />
+                <ScalarProperty Name="Sistema_Id" ColumnName="Sistema_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Sistemi_Unita">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi_Unita">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Sistemi_Unita">
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Unita_Id" ColumnName="Unita_Id" />
+                <ScalarProperty Name="Sistema_Id" ColumnName="Sistema_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Unita">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Unita">
+                <ScalarProperty Name="Unita_Longitudine" ColumnName="Unita_Longitudine" />
+                <ScalarProperty Name="Unita_Latitudine" ColumnName="Unita_Latitudine" />
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="Nome_Unita" ColumnName="Nome_Unita" />
+                <ScalarProperty Name="Unita_Id" ColumnName="Unita_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agricultural_Support_Dati">
+            <EntityTypeMapping TypeName="agronicameteosuite_estratto2012Model.Agricultural_Support_Dati">
+              <MappingFragment StoreEntitySet="Agricultural_Support_Dati">
+                <ScalarProperty Name="Validita_Fine" ColumnName="Validita_Fine" />
+                <ScalarProperty Name="Validita_Inizio" ColumnName="Validita_Inizio" />
+                <ScalarProperty Name="Username_Modifica" ColumnName="Username_Modifica" />
+                <ScalarProperty Name="Username_Creazione" ColumnName="Username_Creazione" />
+                <ScalarProperty Name="Data_Modifica" ColumnName="Data_Modifica" />
+                <ScalarProperty Name="Data_Creazione" ColumnName="Data_Creazione" />
+                <ScalarProperty Name="datainvio" ColumnName="datainvio" />
+                <ScalarProperty Name="inviato" ColumnName="inviato" />
+                <ScalarProperty Name="ElaboratoGiornaliero" ColumnName="ElaboratoGiornaliero" />
+                <ScalarProperty Name="ElaboratoOrario" ColumnName="ElaboratoOrario" />
+                <ScalarProperty Name="ElaboratoSubOrario" ColumnName="ElaboratoSubOrario" />
+                <ScalarProperty Name="Unita_Di_Misura" ColumnName="Unita_Di_Misura" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Misura" ColumnName="Misura" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Sensore_ID" ColumnName="Sensore_ID" />
+                <ScalarProperty Name="Unita_Id" ColumnName="Unita_Id" />
+                <ScalarProperty Name="Sistema_id" ColumnName="Sistema_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="False" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <edmx:Diagram Name="MeteoSuite">
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Dati" Width="1.5" PointX="5.25" PointY="3.25" Height="3.3263964843749996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Nodi" Width="1.5" PointX="6" PointY="8.875" Height="4.0956022135416674" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Nodi_Sensori" Width="1.5" PointX="8.25" PointY="3.25" Height="3.3263964843749996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Reti" Width="1.5" PointX="6" PointY="14.375" Height="3.1340950520833317" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Reti_Nodi" Width="1.5" PointX="8.25" PointY="9.25" Height="3.3263964843749996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Sensori" Width="1.5" PointX="3" PointY="3" Height="3.9033007812499996" IsExpanded="true" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.WiNet_Sensori_Tipo" Width="1.5" PointX="0.75" PointY="3.25" Height="3.3263964843749996" IsExpanded="true" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Dati_WiNet_Sensori" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.5" PointY="4.9131982421875" />
+          <edmx:ConnectorPoint PointX="5.25" PointY="4.9131982421875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Nodi" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="7.5" PointY="8.8761528461538468" />
+          <edmx:ConnectorPoint PointX="7.875" PointY="8.5011528461538468" />
+          <edmx:ConnectorPoint PointX="7.875" PointY="4.9131982421875" />
+          <edmx:ConnectorPoint PointX="8.25" PointY="4.9131982421875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Nodi" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="7.5" PointY="10.9131982421875" />
+          <edmx:ConnectorPoint PointX="8.25" PointY="10.9131982421875" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Nodi_Sensori_WiNet_Sensori" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="4.5" PointY="6.90330078125" />
+          <edmx:ConnectorPoint PointX="4.875" PointY="7.27830078125" />
+          <edmx:ConnectorPoint PointX="4.875" PointY="6.951396484375" />
+          <edmx:ConnectorPoint PointX="7.875" PointY="6.951396484375" />
+          <edmx:ConnectorPoint PointX="8.25" PointY="6.576396484375" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Reti_Nodi_WiNet_Reti" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="7.5" PointY="15.942047526041666" />
+          <edmx:ConnectorPoint PointX="9" PointY="15.942047526041666" />
+          <edmx:ConnectorPoint PointX="9" PointY="12.576396484375" />
+        </edmx:AssociationConnector>
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_WiNet_Sensori_WiNet_Sensori_Tipo" ManuallyRouted="false">
+          <edmx:ConnectorPoint PointX="2.25" PointY="4.9131982421875" />
+          <edmx:ConnectorPoint PointX="3" PointY="4.9131982421875" />
+        </edmx:AssociationConnector>
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agronica_Dati_Rilevati" Width="1.5" PointX="0.75" PointY="7.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agronica_Fornitori" Width="1.5" PointX="2.75" PointY="7.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agronica_Stazioni" Width="1.5" PointX="10.75" PointY="0.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Codima_Dati" Width="1.5" PointX="10.75" PointY="5.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Codima_Stazioni" Width="2.625" PointX="2.75" PointY="11.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agronica_Stazioni_Configurazioni" Width="1.5" PointX="10.375" PointY="11.75" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori" Width="1.5" PointX="12.375" PointY="27" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Tipo" Width="1.5" PointX="10.125" PointY="27.375" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sensori_Unita" Width="2.75" PointX="17.625" PointY="17.375" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi" Width="1.5" PointX="12.375" PointY="22.375" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Sistemi_Unita" Width="1.5" PointX="14.625" PointY="12.375" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Unita" Width="1.5" PointX="12.375" PointY="17" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Agricultural_Support_Sensori_Tipo" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Sensori" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Unita_Agricultural_Support_Unita" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Sistemi" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sistemi_Unita_Agricultural_Support_Unita" />
+        <edmx:EntityTypeShape EntityType="agronicameteosuite_estratto2012Model.Agricultural_Support_Dati" Width="1.5" PointX="14.625" PointY="21.625" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Sensori" />
+        <edmx:AssociationConnector Association="agronicameteosuite_estratto2012Model.FK_Agricultural_Support_Sensori_Dati_Agricultural_Support_Unita" />
+      </edmx:Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

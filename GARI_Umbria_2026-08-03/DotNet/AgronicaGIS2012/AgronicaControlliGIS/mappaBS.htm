@@ -1,0 +1,2345 @@
+﻿<!-- pagina GIS in versione bootstrap -->
+
+<script>
+    var variabile_gps = 'replace_gps';
+    var GiasBase_Domain = '__basePath__';
+    var PATH_GIASBASE = '__PATH_GIASBASE__'
+</script>
+
+<style type="text/css">
+
+    .gis-navbar .fa {
+        font-size: 16px;
+    }
+
+    .nav.navbar-nav > div {
+        float: left;
+        margin-left: 1px;
+        margin-right: 1px;
+    }
+
+        .nav.navbar-nav > div:first-child {
+            margin-left: 0px;
+            margin-right: 1px;
+        }
+
+        .nav.navbar-nav > div:last-child {
+            margin-left: 1px;
+            margin-right: 0px;
+        }
+
+    .masked-container > .k-maskedtextbox {
+        background-color: transparent;
+    }
+
+    .gis-red {
+        color: red !important;
+    }
+
+    .gis-menuImg {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+    }
+</style>
+
+<div id="mainGisBS" style="position:absolute; width:100%; height:100%;">
+
+    <nav id="mainGisNavBar" class="navbar navbar-default" style="margin:0px;">
+        <div id="mainGisNavBarHeader" class="navbar-header">
+
+            <div class="col-xs-1 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menuFix">
+                <!-- imposta impresa da selezione -->
+                <div class="img_tool StrumentoGPS" id="StrumentoGPSHeader">
+                    <span class="fa fa-location-arrow fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-1 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menuFix">
+                <!-- info -->
+                <div class="img_tool" id="info_appezzamentoHeader">
+                    <span class="fa fa-info fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu1">
+                <!-- Poligono -->
+                <div class="img_tool" id="disenga_poligonoHeader">
+                    <span class="fa fa-pencil-square-o fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu2">
+                <!-- Insieme di Punti -->
+                <div class="img_tool" id="multipointHeader">
+                    <span class="fa fa-map-marker fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu1">
+                <!-- Salva -->
+                <div class="img_tool" id="save-buttonHeader">
+                    <span class="fa fa-floppy-o fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu1 menu2">
+                <!-- Elimina -->
+                <div class="img_tool" id="delete-buttonHeader">
+                    <span class="fa fa-trash-o fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu2">
+                <!-- Nuova Op agenda -->
+                <div class="img_tool" id="nuova_agendaHeader">
+                    <span class="fa fa-book fa-3x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm hidden-xs">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <!-- disegna -->
+                            <div class="img_tool" id="disenga_poligonoHeader">
+                                <span id="StrumentoDisegnoCorrente" class="fa fa-pencil-square-o fa-2x"></span>
+                            </div>
+                            <span class="caret" style="margin-left: 10px; margin-top: -5px"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="interfaccia.switchDrawingMode(google.maps.drawing.OverlayType.POLYGON); return false;"><span id="StrumentoDisegnoCorrentePoly" class="fa fa-pencil-square-o fa-3x"></span><span>Poligono</span></a></li>
+                            <li><a href="#" onclick="interfaccia.switchDrawingMode(google.maps.drawing.OverlayType.MARKER); return false;"><span id="StrumentoDisegnoCorrentePoint" class="fa fa-map-pin fa-3x"></span><span>Punto</span></a></li>
+                            <li><a href="#" onclick="preparaXSalvataggioPoligoni(); return false;"><span id="StrumentoDisegnoCorrentePoint" class="fa fa-floppy-o fa-3x"></span><span>Salva</span></a></li>
+                            <li><a href="#" onclick="deleteSelectedShape(); return false;"><span id="StrumentoDisegnoCorrentePoint" class="fa fa-trash-o fa-3x"></span><span>Elimina</span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu3">
+                <!-- visite -->
+                <div class="img_tool" id="nuova_visitaHeader">
+                    <span class="fa fa-calendar fa-2x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu3">
+                <!-- imposta impresa da selezione -->
+                <div class="img_tool" id="ImpostaImpresaDaSelezioneHeader">
+                    <span class="fa fa-arrows-h fa-2x"></span>
+                </div>
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menu3">
+                <!-- mantengo il selettore pagine sempre nella stessa posizione-->
+            </div>
+
+            <div class="col-xs-2 hidden-lg hidden-md hidden-sm A-Gis-Tool-xs menuSel">
+                <!-- passaggio attraverso le varie pagine di menu -->
+                <div class="img_tool" id="menuHeaderSel">
+                    <!-- style="margin-left:-13px">-->
+                    <span id="menuSel1" class="menuSelTxt">1</span><span>.</span>
+                    <span id="menuSel2" class="menuSelTxt">2</span><span>.</span>
+                    <span id="menuSel3" class="menuSelTxt">3</span>
+                </div>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-gis-navbar-collapse-1" aria-expanded="false" style="margin-right:7px; background-color:transparent;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-gis-navbar-collapse-1" style="border-color:transparent;padding-left: 0px !important;padding-right: 0px !important;">
+
+            <!-- strumenti in primo piano -->
+            <div class="nav navbar-nav gis-navbar" style="width:100%;">
+
+                <!--posizioneGPS-->
+                <div class=" hidden-xs hidden-readonly">
+                    <div class="k-button StrumentoGPS" id="StrumentoGPS">
+                        <span class="fa fa-location-arrow"></span>
+                    </div>
+                </div>
+
+                <!-- info -->
+                <div class="hidden-xs">
+                    <div class="k-button" id="info_appezzamento" title="Informazioni sul poligono">
+                        <span class="fa fa-info-circle"></span>
+                    </div>
+                </div>
+
+                <!-- info -->
+                <div class="hidden-xs">
+                    <div class="k-button" id="apriMiniWindowEditToolbar" title="Apri strumenti di gestione elementi grafici">
+                        <span class="fa fa-pencil-square-o"></span>
+                    </div>
+                </div>
+
+                <!-- strumenti in secondo piano-->
+                <div class="hidden-readonly">
+                    <!--<li class="gis-tool dropdown hidden-readonly">-->
+                    <!--<div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></div>-->
+                    <div class="k-button" id="gisMenuStrumenti">
+                        <span class="fa fa-bars"></span>
+                        <span class="caret"></span>
+                    </div>
+                    <ul id="gisMenuStrumenti-menu">
+                        <li id="li_print">
+                            <a href="#">
+                                <!-- stampa -->
+                                <div class="img_tool" id="print">
+                                    <img class="gis-menuImg" src="replace_print" title="Stampa Immagine" /><span>Stampa Immagine</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_select_poligono">
+                            <a href="#">
+                                <!-- select -->
+                                <div class="img_tool" id="select_poligono">
+                                    <img class="gis-menuImg" src="replace_select" title="Ripulisci Selezione" /><span>Ripulisci Selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_selectPerSpecie">
+                            <a href="#">
+                                <div class="img_tool" id="selectPerSpecie">
+                                    <img class="gis-menuImg" src="replace_selectPerSpecie" title="Seleziona per impianti omogeneei" /><span>Seleziona per impianti omogenei</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_righello-button">
+                            <a href="#" onclick="clickRighello(); return false;">
+                                <!-- righello -->
+                                <div class="img_tool" id="righello-button">
+                                    <img class="gis-menuImg" src="replace_ruler" title="Misura distanze" /><span>Misura Distanze</span>
+                                    <input type="checkbox" id="righello" style="display: none;" />
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_import-button">
+                            <a href="#">
+                                <!-- importa -->
+                                <div class="img_tool" id="import-button">
+                                    <img class="gis-menuImg" src="replace_import" title="Importa poligoni" /><span>Importazione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_export-button">
+                            <a href="#">
+                                <div class="img_tool" id="export-button">
+                                    <img class="gis-menuImg" src="replace_export" title="Esporta dati" /><span>Esportazione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_nuova_ricetta">
+                            <a href="#">
+                                <div class="img_tool" id="nuova_ricetta">
+                                    <img class="gis-menuImg" src="replace_img_agenda" title="Crea Ricetta (occorre selezionare prima uno o più impianti colturali, una pianificazione (Testata) oppure un campo)" />
+                                    <span>Crea Ricetta</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ab-button">
+                            <a href="#" onclick="clickAB(); return false;">
+                                <div class="img_tool" id="ab-button">
+                                    <img class="gis-menuImg" src="replace_ab" title="Inserisci A-B direzione movimento" /><span>Inserisci Linea Guida A-B</span>
+                                    <input type="checkbox" id="chkAB" style="display: none;" />
+                                    <input type="hidden" id="hiddenA" />
+                                    <input type="hidden" id="hiddenB" />
+                                    <input type="hidden" id="hiddenCurrentSelectedAB" />
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_PianoRateoVariabile">
+                            <a href="#">
+                                <div class="img_tool" id="PianoRateoVariabile">
+                                    <img class="gis-menuImg" src="replace_pfRateo" title="Genera un piano a rateo variabile sul poligono" /><span>Genera un piano a rateo variabile sul poligono</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ripartoCatasto-button">
+                            <a href="#">
+                                <div class="img_tool" id="ripartoCatasto-button">
+                                    <img class="gis-menuImg" src="replace_img_catasto" title="Apri Strumento di Riparto Catasto (impostata eventualmente sugli impianti selezionati)" /><span>Apri Strumento di Riparto Catasto</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ritaglio-sfondo">
+                            <a href="#">
+                                <!-- ritaglio sfondo -->
+                                <div class="img_tool" id="ritaglio-sfondo">
+                                    <img class="gis-menuImg" src="replace_img_ritaglia_sfondo" title="Ritaglia sfondo" /><span>Ritaglia sfondo</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ritaglio-edit-punti-gps-button">
+                            <a href="#">
+                                <!-- work in progress -->
+                                <!-- edit dei punti scomponi/ricomponi -->
+                                <div class="img_tool" id="ritaglio-edit-punti-gps-button">
+                                    <img class="gis-menuImg" src="replace_img_edit_punti" title="Scomponi e modifica per punti" /><span>Scomponi e modifica per punti</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_CopiaOggetto">
+                            <a href="#">
+                                <div class="img_tool" id="CopiaOggetto">
+                                    <img class="gis-menuImg" src="replace_img_CopiaOggetto" title="Copia/incolla oggetto grafico" /><span>Copia/incolla oggetto grafico</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_GeneraPlanning">
+                            <a href="#">
+                                <div class="img_tool" id="GeneraPlanning">
+                                    <img class="gis-menuImg" src="replace_img_GeneraPlanning" title="Genera una nuova pianificazione da selezione" /><span>Genera una nuova pianificazione da selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_BufferZone">
+                            <a href="#">
+                                <div class="img_tool" id="BufferZone">
+                                    <img class="gis-menuImg" src="replace_BufferZone" title="Strumento di gestione fascia di rispetto da selezione" /><span>Strumento di gestione fascia di rispetto da selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_AnalisiMeteo">
+                            <a href="#">
+                                <div class="img_tool" id="AnalisiMeteo">
+                                    <img class="gis-menuImg" src="replace_AnalisiMeteo" title="Strumento di gestione analisi dati meteo da selezione" /><span>Strumento di gestione analisi dati meteo da selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_AnalisiModelli">
+                            <a href="#">
+                                <div class="img_tool" id="AnalisiModelli">
+                                    <img class="gis-menuImg" src="replace_AnalisiModelli" title="Strumento di gestione analisi DSS da selezione" /><span>Strumento di gestione analisi DSS da selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_AnalisiRilievi">
+                            <a href="#">
+                                <div class="img_tool" id="AnalisiRilievi">
+                                    <img class="gis-menuImg" src="replace_AnalisiRilievi" title="Analisi dati schede rilievi" /><span>Analisi dati schede rilievi</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ImpostaImpresaDaSelezione">
+                            <a href="#">
+                                <div class="img_tool" id="ImpostaImpresaDaSelezione">
+                                    <span class="fa fa-arrows-h"></span>
+                                    <span>Imposta Impresa Da Selezione</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li id="li_ApriAnalisi">
+                            <a href="#">
+                                <div class="img_tool" id="ApriAnalisi">
+                                    <img class="gis-menuImg" src="replace_Ingredienti" title="Analisi" /><span>Apri Analisi</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="hidden-xs">
+                    <div id="sitebar_coordinate" style="display: grid;grid-template-columns: auto auto auto;">
+                        <div id="formatoCoord" class="k-button" style="border-top-right-radius:0px; border-bottom-right-radius:0px;" title="Cambia formato coordinate">
+                            <span class="fa fa-exchange"></span>
+                        </div>
+                        <div class="masked-container" style="align-self:center;">
+                            <input type="text" id="find_lat" style="width:12em; border-radius:0px; border-left:none;" />
+                            <input type="text" id="find_lng" style="width:12em; border-radius:0px; border-left:none;" />
+                        </div>
+                        <div id="findCoord" class="k-button" style="border-top-left-radius:0px; border-bottom-left-radius:0px; border-left:none;" title="Cerca coordinate">
+                            <span class="fa fa-search"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden-xs">
+                    <div id="indirizzoTB" class="k-textbox k-space-right" style="padding-bottom:1px; background-color: #fff; width: 15em;">
+                        <input type="text" id="address" value="" class="valid" placeholder="Indirizzo" aria-invalid="false">
+                        <!--<a class="k-icon k-i-search findAddress" title="Cerca indirizzo"></a>-->
+                        <span class="fa fa-search findAddress" title="Cerca indirizzo" style="position: absolute; right: 0px;top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
+                    </div>
+                </div>
+
+                <div class="hidden-xs">
+                    <div id="gisToolMenu" class="k-button">
+                        <span class="fa fa-map-marker"></span>
+                        <span class="caret"></span>
+                        <ul id="gisToolMenu-menu">
+                            <li><a href="#" onclick="IndirizzoLatLong(); return false;">Indirizzo da coordinate</a></li>
+                            <li><a href="#" onclick="CoordDaSelezione(); return false;">Imposta coordinate da impianto</a></li>
+                            <li><a href="#" onclick="ApriGoogleMaps(); return false;">Naviga verso</a></li>
+                            <li><a href="#" onclick="VisualizzazioneTotaleImposta(); return false;">Carica dintorni</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--<li class="gis-tool hidden-xs dropdown">-->
+                <!--<div class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-map-marker"></span> <span class="caret"></span></div>-->
+                <!--<ul class="dropdown-menu">-->
+                <!--<li><a href="#" onclick="ApriGoogleMaps(); return false;">Naviga Verso</a></li>-->
+                <!--       <li><a href="#" onclick="ricercaIndirizzo();return false;">Cerca questo Indirizzo</a></li>-->
+                <!--<li><a href="#" onclick="IndirizzoLatLong(); return false;">Indirizzo Da Coordiante</a></li>-->
+                <!--      <li><a href="#" onclick="nascondiAddress(); return false;">Nascondi PIN</a></li>-->
+                <!--<li><a href="#" onclick="CoordDaSelezione(); AggiornaLatLon(); return false;">Imposta Coordinate da impianto</a></li>-->
+                <!--      <li><a href="#" onclick="ricercaCoordinate(); return false;">Cerca queste coordinate</a></li>-->
+                <!--      <li><a href="#" onclick="CoordFromGPS(); return false;">Posizione GPS</a></li>-->
+                <!--<li><a href="#" onclick="VisualizzazioneTotaleImposta(); return false;">Carica Dintorni</a></li>-->
+                <!--</ul>-->
+                <!--</li>-->
+
+                <div style="display:grid; grid-auto-flow:column; grid-column-gap:2px; float:right;">
+
+                    <div>
+                        <div class="k-button" onclick="LayerAttivaDisattiva(); return false;">
+                            <span><img class="gis-menuImg" src="replace_LayerDoveDisegno" id="LayerDoveDisegno" style="float: left" /> </span>
+                            <span id="navBarLayerAttivoDescrizione">Layer</span>
+                        </div>
+                    </div>
+
+                    <div class="hidden-readonly">
+                        <div class="k-button" onclick="TematizzazioneAttivaDisattiva(); return false;">
+                            <span><img class="gis-menuImg" src="replace_gestisci_layer" id="TematizzazioneDoveDisegno" style="float: left" /> </span>
+                            <span id="navBarTematizzazioneAttivaDescrizione">Temi</span>
+                        </div>
+                    </div>
+
+                    <div class="hidden-readonly" id="satPFToolsNavBar">
+                        <div class="k-button" onclick="SatPFAttivaDisattiva(); return false;">
+                            <span class="fa fa-globe"></span>
+                            <span id="navBarLayerAttivoDescrizione">Sat</span>
+                        </div>
+                    </div>
+
+                    <div class="hidden-readonly" id="wmsToolsNavBar">
+                        <div class="k-button" onclick="WmsAttivaDisattiva(); return false;">
+                            <span class="fa fa-table"></span>
+                            <span id="navBarLayerAttivoDescrizione">Wms</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!--miniWindowEditToolbar-->
+    <div id="miniWindowEditToolbar" class="hidden-xs">
+
+        <!-- nuovo -->
+        <div class="hidden-xs hidden-readonly" id="disenga_poligono_dropdown">
+            <div class="k-button" id="disenga_poligono" style="display:none">
+                <!--<div id="img_poligono">-->
+                <span class="fa fa-pencil-square-o"></span>
+                <span class="caret"></span>
+                <!--</div>-->
+                <!--<div id="img_multipoint" style="display: none">
+            <img class="menuImg" src="replace_multipoint" title="Disegna un nuovo insieme di punti" alt="Disegna un nuovo insieme di punti" />
+            </div>-->
+
+                <input type="hidden" id="hiddenMultipoint" />
+                <input type="hidden" id="hiddenMultipointModifica" />
+                <input type="checkbox" id="chkMP" style="display: none;" />
+            </div>
+
+
+
+
+        </div>
+
+        <div style="display: grid;grid-template-columns: auto;">
+
+            <div id="selimg_EraseSelection" class="k-button">
+                <span class="fa fa-eraser fa-lg"></span>                
+            </div>
+
+            <div id="selimg_poligono" class="k-button">
+                <span class="fa fa-pencil-square-o fa-lg"></span>
+                <!--<span>Disegna un nuovo poligono</span>-->
+            </div>
+
+            <div id="selimg_multipoint" class="k-button">
+                <span class="fa fa-map-marker fa-lg"></span>
+                <!--<span>Disegna un nuovo insieme di punti</span>-->
+            </div>
+            <!-- salva -->
+            <div id="save-button" class="hidden-xs hidden-readonly k-button">
+                <div id="btn-save-button" title="Salva le modifiche">
+                    <span class="fa fa-floppy-o fa-lg"></span>
+                </div>
+            </div>
+
+            <div id="save-plus" class="hidden-xs hidden-readonly k-button">
+                <div id="btn-plus-button" title="Nuovo impianto su appezzamento">
+                    <span class="fa fa-plus fa-lg"></span>
+                </div>
+            </div>
+
+            <!-- delete -->
+            <div id="delete-button" class="hidden-xs hidden-readonly k-button">
+                <div id="btn-delete-button" title="Elimina un poligono">
+                    <span class="fa fa-trash-o fa-lg"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--fine miniWindowEditToolbar-->
+    <!-- mappa -->
+    <div id="mapBS">
+        <div id="mapDockLeft"></div>
+        <div id="map" style="height:100%;"></div>
+        <div id="mapDockRight"></div>
+    </div>
+
+    <!-- layers -->
+    <div id="scala_colori_contenitore">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <label class="input-group-addon">Seleziona un tema:</label>
+                    <select class="form-control k-content" id="cmbViste" onchange="cmbViste_change()"></select>
+                    <span class="input-group-btn" id="gestisci_dettagli_layer" title="Gestisci Dettagli Tematizzazione">
+                        <a class="form-control k-content btn">
+                            <span class="fa fa-bars"></span>
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <!--<div style='height: 40px; color: white; background-color: rgba(63,72,204,0.8); text-align: center'>
+            <div class="col-lg-12">
+
+                <div class="col-lg-2">
+                    Seleziona una vista:
+                </div>
+
+                <div id="cmbScalaColori" class="col-lg-6">
+                    <select class="form-control" id="cmbViste_" onchange="cmbViste_change()"></select>
+                </div>
+
+                <div class="col-lg-1">
+                    <img src="replace_gestisci_layer" id="gestisci_dettagli_layer_"
+                         style="float: left; width: 20px; cursor: pointer;" title="Gestisci Dettagli Tematizzazione" />
+                </div>
+
+
+            </div>
+        </div>-->
+        <!--<div id="scala_colori_descrizione" class="col-lg-12">
+        </div>-->
+        <!--<div class="col-lg-12">
+            <div id="scala_colori" style="position: relative; left:-14px"></div>
+        </div>-->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="scala_colori"></div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--strumenti satellitari e precision farming-->
+    <div id="wmsTools">
+
+        <div style="display:grid; grid-template-columns: 1fr auto; grid-column-gap: 10px;">
+
+            <div>
+                <input id="WmsDdlSensoreElaborazione" style="width:-webkit-fill-available;" />
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon" style="width: 100%; text-align: left !important;">Info su click in mappa</span>
+                <div class="form-control k-content" style="width:auto;">
+                    <input type="checkbox" id="wmsChkAggiornaClickMappa" class="k-checkbox" />
+                    <label class="k-checkbox-label" for="wmsChkAggiornaClickMappa" style="padding-left: 12.6px;"></label>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon" id="wms_lbl_trasparenza">Trasparenza:</span>
+            <div class="form-control k-content" style="padding:2px 25px;">
+                <input id="wmsSliderTrasparenza" />
+            </div>
+        </div>
+
+    </div>
+
+    <!--strumenti satellitari e precision farming-->
+    <div id="satPfTools">
+
+        <div id="satTabStrip" style="padding-bottom:10px">
+            <ul>
+                <li class="k-state-active k-active" id="satTabStrip_Calendari">
+                    Calendario
+                </li>
+                <li id="satTabStrip_Grafici">
+                    Grafici
+                </li>
+            </ul>
+
+            <!--TAB CALENDARIO-->
+            <div>
+                <div style="display:flex;">
+                    <div id="pf_data" style="flex-shrink:0;"></div>
+                    <div id="SatElaborazioneMsg" style="flex-grow:1; border:1px solid #ccc; margin-left:10px;overflow-y:auto;overflow-x:hidden;"></div>
+                </div>
+            </div>
+
+            <!--TAB GRAFICI-->
+            <div>
+                <div id="satKendoMicroChart"></div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <input id="PfDdlSensoreElaborazione" style="width:-webkit-fill-available;" />
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" style="width: 100%; text-align: left !important;">Info Su click in mappa</span>
+                    <div class="form-control k-content" style="width:auto;">
+                        <input type="checkbox" id="satChkAggiornaClickMappa" class="k-checkbox" />
+                        <label class="k-checkbox-label" for="satChkAggiornaClickMappa" style="padding-left: 12.6px;"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sat_lbl_trasparenza" style="width: 100%; text-align: left !important;">Trasparenza:</span>
+                    <div class="form-control k-content" style="width:auto; padding:2px 25px;">
+                        <input id="satSliderTrasparenza" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-top: 5px; padding-bottom: 5px;">
+                <div class="btn btn-info" id="ElaboraMappaDettagliataSuSelezione" style="width: -webkit-fill-available;">
+                    <span class="fa fa-globe"></span>
+                    <span>Elabora Mappa Dettagliata su Poligoni Selezionati</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- -->
+    <div id="FinestraTemporale_Tool">
+
+        <div id="layerFinestraTemporale" style="margin-top: 7px">
+            <div class="">
+                <!--<span class="k-link agroAccordionTitolo"><span class="fa fa-calendar"></span><span>Limita visualizzazione</span></span>-->
+
+                <div id="DateContainer" class="row" style="margin-top: 5px">
+
+                    <div id="divDateVisualizzaAvanzata_RicercheComuni" class="DateVisualizzaSemplice" style="margin-bottom: 7px;">
+                        <select id="ddlDateVisualizzaAvanzata_RicercheComuni" style="width: 100%">
+                            <option value="0">Seleziona una ricerca da qui o scegli le date</option>
+                            <option value="1">Validi ad oggi</option>
+                            <option value="2">Validi su annata agraria in corso</option>
+                            <option value="3">Imposta i filtri iniziali</option>
+                        </select>
+                    </div>
+
+                    <div id="DateContainer_inizio">
+
+                        <div class="input-group DateVisualizzaAvanzata" id="rndBtnLimiti_start" style="width: -webkit-fill-available;">
+                            <input type="radio" name="limite_inferiore" id="limite_inferiore_sucessivo" value="sucessivo" style="margin-left: 6px" />Sucessivo al
+                            <input type="radio" name="limite_inferiore" id="limite_inferiore_precedente" value="precedente" style="margin-left: 16px" checked />Precedente al
+                        </div>
+
+                        <div class="input-group">
+                            <label style="text-align: left !important;" class="input-group-addon">Data inizio:</label>
+                            <input type="text" id="limita_data_da" class="kendoDatePicker" style="width: 100%;" />
+                        </div>
+                    </div>
+                    <div id="DateContainer_fine">
+
+                        <div class="input-group DateVisualizzaAvanzata" id="rndBtnLimiti_end" style="width: -webkit-fill-available;">
+                            <input type="radio" name="limite_superiore" id="limite_superiore_sucessivo" value="sucessivo" style="margin-left: 6px" checked />Sucessivo al
+                            <input type="radio" name="limite_superiore" id="limite_superiore_precedente" value="precedente" style="margin-left: 16px" />Precedente al
+                        </div>
+
+                        <div class="input-group">
+                            <label style="text-align: left !important;" class="input-group-addon">Data fine:</label>
+                            <input type="text" id="limita_data_a" class="kendoDatePicker" style="width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div style="display: none">
+                        <div class="btn btn-info" id="aggiorna_date" style="width: -webkit-fill-available;">
+                            <span class="fa fa-refresh"></span>
+                            <span>Aggiorna</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:2px">
+                        <div class="btn btn-info" id="visualizza_Tutto" style="width: -webkit-fill-available;">
+                            <span class="fa fa-globe"></span>
+                            <span>Mostra Tutto</span>
+                        </div>
+                    </div>
+                    <div style="margin-top:2px">
+                        <div class="btn btn-info" id="visualizza_avanzata" style="width: -webkit-fill-available;">
+                            <span class="fa fa-search"></span>
+                            <span>Ricerca Avanzata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOOL -->
+    <div id="contenitore_tool">
+
+        <div id="pulsantieraEsterna_tool" style="padding-left: 10px; padding-right: 10px;">
+            <!--<img src="replace_piu" id="espandi_contenuti" style="display:none; cursor: pointer; float: left;
+                width: 32px; height: 32px;" alt="piu" title="replace_piu_meno" />-->
+
+            <span id="testoLayerDoveDisegno" class="layerDoveDisegno">Nessun layer selezionato.</span>
+
+            <!--<div id="numero_identita"></div>-->
+        </div>
+
+        <div id="sidebar">
+            <div>
+
+
+                <div id="layerGPSIcona" style="margin-top: 10px">
+                    <div>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 100%; text-align: left !important;">Mostra icona GPS</span>
+                            <div class="form-control k-content" style="width:auto;">
+                                <input type="checkbox" id="chk_mostra_GPS" class="k-checkbox" />
+                                <label class="k-checkbox-label" for="chk_mostra_GPS" style="padding-left: 12.6px;"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="width: 100%; text-align: left !important;">Mostra Descrizione Sintetica</span>
+                            <div class="form-control k-content" style="width:auto;">
+                                <input type="checkbox" id="chk_mostra_descrizioneImpianto" class="k-checkbox" checked="checked" />
+                                <label class="k-checkbox-label" for="chk_mostra_descrizioneImpianto" style="padding-left: 12.6px;"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="layerTipologie">
+
+                    <div>
+                        <div style="display: grid; grid-template-columns: 1fr auto auto auto;">
+
+                            replace_x_tipologia_layer
+
+                            <div class="k-button" id="gestisci_layer_principale" title="Gestione colori layer" style="border-radius: 0px; padding-left: 6px; padding-right: 6px;">
+                                <span class="fa fa-bars"></span>
+                            </div>
+                            <div class="k-button" id="LayerSelezionaTutto" title="Seleziona tutto" style="border-radius: 0px; padding-left: 6px; padding-right: 6px;">
+                                <span class="fa fa-check"></span>
+                            </div>
+                            <div class="k-button" id="LayerDeSelezionaTutto" title="Deseleziona tutto" style="border-top-left-radius: 0px; border-bottom-left-radius: 0px; padding-left: 6px; padding-right: 6px;">
+                                <span class="fa fa-times"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="check-layer">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="lblMessaggiFiltri" style="color:red; font-size:13px; font-weight:bold; background-color: rgba(255, 255, 255, 0.8)" class=""></div>
+
+
+    <div id="mapInfo" style="width: 0px; height: 0px; display: none">
+        <input type="hidden" id="ChiaveAlberoMultiSelezione" />
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+
+            //$('#visualizza_Tutto').button();
+
+            $(document).on("click", "#visualizza_avanzata", function () {
+                let h = "";
+                if ($("#rndBtnLimiti_start").is(":visible")) {
+                    h = '<span class="fa fa-search"></span><span>Ricerca Avanzata</span>';
+                    $(".DateVisualizzaAvanzata").hide();
+                } else {
+                    h = '<span class="fa fa-search"></span><span>Ricerca Semplice</span>';
+                    $(".DateVisualizzaAvanzata").show();
+                }
+
+                $("#visualizza_avanzata").html(h);
+            });
+
+            $(document).on("click", "#visualizza_Tutto", function () {
+                $('#limite_inferiore_successivo').prop("checked", "");
+                $('#limita_data_da').val("");
+
+                $('#limite_superiore_successivo').prop("checked", "");
+                $('#limita_data_a').val("");
+
+                $('#limite_inferiore_precedente').prop("checked", "checked");
+                $('#limite_inferiore_precedente').checked = true;
+
+                $('#limite_superiore_sucessivo').prop("checked", "checked");
+                $('#limite_superiore_sucessivo').checked = true;
+                //$('#aggiorna_date').click();
+            });
+
+        });
+    </script>
+
+
+    <!-- dialog a comparsa -->
+    <!-- Dialog Nuovo Impianto -->
+    <div id="pop_up_impianto" style="padding:0px;" class="load-hidden">
+
+        <input type="hidden" id="hiddenPunti_Nuovo" />
+
+        <div id="contenutoImpianto" style="/*min-height: 400px; max-height:400px; overflow-y: auto;*/ padding:20px;">
+
+            <div id="pop_up_impianto_layer" class="row">
+
+                <div id="layerContainer">
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1" id="pop_up_impianto_icolayer">
+                    <img id="imgpop_up_impianto_icolayer" src="" alt="" />
+                </div>
+
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-9" style="margin-top: 7px" id="">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span style="font-weight: bold" id="pop_up_impianto_nomelayer">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" id="pop_up_impiantoxDescr">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="txtElementoGrafico_Des">
+                                Descrizione aggiuntiva:
+                            </label>
+                            <input class="form-control" type="text" id="txtElementoGrafico_Des" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="pop_up_impiantoxGenerazionePoligoni">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="cmbElementoGrafico_GenerazionePoligoni">
+                                Genera sui layer:
+                            </label>
+                            <select class="form-control" id="cmbElementoGrafico_GenerazionePoligoni">
+                                <!--<option id="cmbElementoGrafico_GenerazionePoligoni_1" value="1">Appezzamento</option>
+                                <option id="cmbElementoGrafico_GenerazionePoligoni_2" value="2">Impianto</option>
+                                <option id="cmbElementoGrafico_GenerazionePoligoni_3" value="3">Impianto e Appezzamento</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <hr style="border: solid 1px #ff0000" />
+                </div>
+
+            </div>
+
+            <div class="form-horizontal">
+                <ul id="panelBarDatiAzienda">
+
+                    <li class="k-state-active k-active agroAccordion" id="panelBarDatiAzienda_Testata">
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-list"></span><span>Dati Aziendali, di Appezzamento e Superfici</span></span>
+
+                        <div class="agroContainer" id="containerDatiAzienda_Testata" style="margin-top: 12px; margin-bottom: 12px">
+                            <!-- Dati azienda -->
+                            <div class="row">
+
+                                <div id="div_pop_up_impianto_azienda" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_impianto_azienda">
+                                                Azienda
+                                            </label>
+                                            <select class="form-control" id="pop_up_impianto_azienda" name="pop_up_impianto_azienda"></select>
+                                            <span class="input-group-btn" id="PopupNuovaImpresa-Button">
+                                                <a class="form-control btn btn-secondary" style="border-bottom-right-radius: 4px; border-top-right-radius: 4px;" title="Nuova Impresa"><span class="fa fa-plus"></span></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="div_pop_up_centro" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_centro" id="lblpop_up_centro">
+                                                Centro Aziendale
+                                            </label>
+
+                                            <select class="form-control" id="pop_up_centro" name="pop_up_centro"></select>
+                                            <span class="input-group-btn" id="PopupNuovoSa-Button">
+                                                <a class="form-control btn btn-secondary" style="border-bottom-right-radius: 4px; border-top-right-radius: 4px;" title="Nuovo centro"><span class="fa fa-plus"></span></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="div_pop_up_campo" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_campo" id="lblpop_up_campo">
+                                                Campo
+                                            </label>
+
+                                            <select class="form-control" id="pop_up_campo" name="pop_up_campo"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="stringaIndirizzo">
+                                                Indirizzo
+                                            </label>
+                                            <input class="form-control" type="text" id="stringaIndirizzo" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_nome">
+                                                Nome
+                                            </label>
+                                            <input class="form-control" type="text" id="pop_up_nome" name="pop_up_nome" value="" />
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--al momento commentato, decommantare quando si vorrà modificare da GIS questo dato -->
+                                <!--<div class="col-lg-3 col-md-5 col-sm-5 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_qdc">
+                                                Rif.QDC
+                                            </label>
+                                            <input class="form-control CodiceAnagrafe" type="text" id="pop_up_qdc" name="pop_up_qdc" data-idCod="1104" value="" />
+
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <!-- Date -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_data_inizio" id="lblpop_up_data_inizio">
+                                            Data Inizio:
+                                        </label>
+                                        <input class="form-control kendoDatePicker" type="text" id="pop_up_data_inizio" name="pop_up_data_inizio" value="" />
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_data_fine" id="lblpop_up_data_fine">
+                                            Data Fine:
+                                        </label>
+                                        <input class="form-control kendoDatePicker" type="text" id="pop_up_data_fine" name="pop_up_data_fine" value="" />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Dati superficie -->
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_sup_google">
+                                            Sup. calcolata (HA):
+                                        </label>
+
+                                        <input class="form-control" type="text" id="pop_up_sup_google" name="pop_up_sup_google" value="" disabled="disabled" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_sup_app">
+                                            Superficie (HA)
+                                        </label>
+
+                                        <input class="form-control" type="text" id="pop_up_sup_app" name="pop_up_sup_app" value="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </li>
+
+
+                    <li class="k-state-active k-active agroAccordion" id="panelBarDatiAzienda_Specie">
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-leaf"></span><span>Dati Agronomici</span></span>
+
+                        <div class="agroContainer" id="containerDatiAzienda_Specie" style="margin-top: 12px; margin-bottom: 12px">
+                            <!-- Dati Specie ... -->
+                            <!-- Dati specie cultivar ecc ..-->
+                            <div class="row">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group ">
+                                        <div class="input-group" id="divpop_up_specie">
+                                            <label class="input-group-addon" for="pop_up_specie">
+                                                Specie
+                                            </label>
+
+                                            <select class="form-control" id="pop_up_specie" name="pop_up_specie" class="cmb"></select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_varieta">
+                                                Varietà
+                                            </label>
+                                            <select class="form-control" id="pop_up_varieta" name="pop_up_varieta"></select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_finalita">
+                                                Finalità
+                                            </label>
+                                            <select class="form-control" id="pop_up_finalita" name="pop_up_finalita"></select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="DatiTipologia">
+                                            <label class="input-group-addon" for="pop_up_tipologia">
+                                                Tipologia
+                                            </label>
+                                            <select class="form-control" id="pop_up_tipologia" name="pop_up_tipologia"></select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </li>
+
+                    <li class="agroAccordion" id="panelBarDatiAzienda_Altro">
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-check-square"></span><span>Opzioni</span></span>
+
+                        <div class="agroContainer" id="containerDatiAzienda_Altro" style="margin-top: 12px; margin-bottom: 12px">
+
+                            <!-- altre informazioni -->
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_d_semina">
+                                                Data Semina Prevista
+                                            </label>
+                                            <input class="form-control kendoDatePicker" type="text" id="pop_up_d_semina" name="pop_up_d_semina" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_d_raccolta">
+                                                Data Raccolta Prevista
+                                            </label>
+                                            <input class="form-control kendoDatePicker" type="text" id="pop_up_d_raccolta" name="pop_up_d_raccolta" value="" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_disciplinare">
+                                                Disciplinare
+                                            </label>
+                                            <select class="form-control" id="pop_up_disciplinare" name="pop_up_disciplinare"></select>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <!-- lotto -->
+                            <div id="kws_appezza" class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="pop_up_app_originale">
+                                                N. Originale
+                                            </label>
+                                            <input class="form-control" type="text" id="pop_up_app_originale" name="pop_up_app_originale" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_app_n_appezza">
+                                                N. Impianto
+                                            </label>
+                                            <input class="form-control" type="text" id="pop_up_app_n_appezza" name="pop_up_app_n_appezza" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NuovoImpiantoCodiciAggiuntivi" class="row">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_PianoSemina">
+                                                Piano Semina
+                                            </label>
+                                            <input class="form-control CodiceAnagrafe" type="text" id="pop_up_app_PianoSemina" name="pop_up_app_PianoSemina" value="" data-idCod="1071" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="">
+                                            <label class="input-group-addon" for="pop_up_app_OrganismoReferente">
+                                                Organismo Referente
+                                            </label>
+                                            <select id="pop_up_app_OrganismoReferente" name="pop_up_app_OrganismoReferente" value=""
+                                                    class="form-control CodiceAnagrafe" data-idCod="1074"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div> <!-- row -->
+
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <div class="input-group" id="div_lotto">
+                                            <label class="input-group-addon" for="pop_up_lotto">
+                                                Lotto
+                                            </label>
+                                            <input class="form-control" type="text" id="pop_up_lotto" name="pop_up_lotto" value="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </li>
+                </ul>
+
+
+
+                <div class="frmGisSepatoreGrande"></div>
+
+
+
+
+                <div id="placeData_Inizio_Fine"></div>
+
+                <!--<div id="divOpzioni_pop_up_impianto">
+                    <p class="heading">
+                        Opzioni
+                    </p>
+
+                    <div class="content">
+
+
+                        <div id="Dati_data_inizio_fine">
+
+
+                        </div>
+
+                    </div>
+
+                </div>-->
+
+
+            </div>
+
+
+            <div style="display: flex; justify-content: flex-end;">
+                <div id="btnVerificaVicini" class="k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">
+                    <span class="fa fa-crosshairs fa-2x"></span>
+                    Verifica prossimità
+                </div>
+            </div>
+
+            <!--<div class="row">
+
+                <div id="righelloSpecie" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                    <img src="replace_ruler" />
+                </div>
+                <div id="righelloCampoVicino" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                    <img src="replace_ruler-info" />
+                </div>
+
+            </div>-->
+            <!--<div id="responseInterferenze" class="row">
+            </div>-->
+
+        </div>
+
+
+
+        <!-- Dialog -->
+        <div id="dialogCultivarRicette" title="Selezione per Specie e Varietà">
+            <label for="lblCultivarRicette" style="min-width: 300px">
+                Selezione per Specie e Varietà:
+            </label>
+            <div id="tblCultivarRicette">
+            </div>
+            <input type="hidden" id="hidCultivarRicette" />
+            <input type="hidden" id="hidCultivarRicetteNodoPartenza" />
+            <hr />
+            <input type="checkbox" id="ckRibaltaGrafica" /><label id="lblRibaltaGrafica" style="min-width: 300px">
+                Copia
+                elementi grafici sul layer impianti leggendo da:
+            </label>
+            <select id="cmbLayerRibaltaGrafica">
+                <option value="1">Appezzamenti</option>
+            </select>
+            <br />
+        </div>
+        <div id="dialogRateo" title="parametri mappa di prescrizione">
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group ">
+                        <div class="input-group" id="divlblDialogRateo_dataSentinel">
+                            <label class="input-group-addon" for="pop_up_specie">
+                                Data di lettura dei parametri satellitari:
+                            </label>
+
+                            <input type="text" id="txtDialogRateo_dataSentinel" name="txtDialogRateo_dataSentinel" value="" class="form-control kendoDatePicker" />
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group ">
+                        <div class="input-group" id="divlblDialogRateo_celle">
+                            <label class="input-group-addon" for="pop_up_specie">
+                                Dimensione in metri delle celle:
+                            </label>
+
+                            <input type="text" id="txtCellSize" name="txtCellSize" value="20" style="width: 75px"
+                                   class="form-control" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dialogGeneraPlanning" title="genera una nuova pianificazione in base a selezione">
+            <label for="lblNomePlanning">
+                Nome della pianificazione:
+            </label>
+            <input type="text" id="txtNomePlanning" name="txtNomePlanning" value="" style="width: 266px"
+                   class="" /><br />
+            <hr />
+            <input type="checkbox" id="ckAggregaEntitaGrafichePerPianificazione" />
+            <label for="lblAggregaEntitaGrafichePerPianificazione" style="min-width: 200px">
+                Aggrega la grafica (se possibile), con uno scarto pari a:
+            </label>
+            <input type="text" id="txtAggregaEntitaGrafichePerPianificazioneScartoM" disabled="disabled"
+                   name="txtNomePlanning" value="0" style="width: 30px" class="" />
+            <div id="gplus" class="bottone" onclick="gplus();" style="font-size: 0.9em; float: right;">
+                +
+            </div>
+            <div id="gminus" class="bottone" onclick="gminus();" style="font-size: 0.9em; float: right;">
+                -
+            </div>
+            <br />
+        </div>
+        <div id="dialogAB" title="imposta linee guida">
+            <label for="lblAB">
+                Conferma salvataggio?
+            </label>
+        </div>
+        <div id="dialogMultipoint" title="Salvataggio dei punti inseriti">
+            <label for="lbldialogMultipointDes">
+                Assegna questa descrizione:
+            </label>
+            <input type="text" id="txtDialogMultipointDes" class="textUI" /><br />
+            <label for="lbldialogMultipoint">
+                Conferma salvataggio?
+            </label>
+        </div>
+        <div id="dialogConfermaAssociazione" class="load-hidden">
+            <div style="display:grid; grid-auto-flow:column; grid-template-columns: max-content 250px; grid-template-rows: auto auto; grid-gap:10px; align-items:center; justify-items:end;">
+
+                <label>Associa la superficie calcolata (<b><span id="lblDialogSup"></span></b>) [ha] a ?</label>
+                <label>Genera elemento GIS sui layer:</label>
+
+                <div style="width:-webkit-fill-available;">
+                    <select class="form-control" id="option_associa">
+                        <option value="1">Nessuno</option>
+                        <option value="2">Impianto</option>
+                        <option value="3">Impianto e Appezzamento</option>
+                    </select>
+                </div>
+
+                <div style="width:-webkit-fill-available;">
+                    <select class="form-control" id="cmbAssocia_GenerazionePoligoni">
+                        <option id="cmbAssocia_GenerazionePoligoni_1" value="1">Appezzamento</option>
+                        <option id="cmbAssocia_GenerazionePoligoni_2" value="2">Impianto</option>
+                        <option id="cmbAssocia_GenerazionePoligoni_3" value="3">Impianto e Appezzamento</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <!--
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="option_associa">
+                                        Associa la superficie calcolata (<b>
+                                            <span id="lblDialogSup">
+                                            </span>
+                                        </b>) [ha] a ?
+                                    </label>
+                                    <select class="form-control" id="option_associa">
+                                        <option value="1">Nessuno</option>
+                                        <option value="2">Impianto</option>
+                                        <option value="3">Impianto e Appezzamento</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="cmbAssocia_GenerazionePoligoni">
+                                            Genera elemento GIS sui layer:
+                                        </label>
+                                        <select class="form-control" id="cmbAssocia_GenerazionePoligoni">
+                                            <option id="cmbAssocia_GenerazionePoligoni_1" value="1">Appezzamento</option>
+                                            <option id="cmbAssocia_GenerazionePoligoni_2" value="2">Impianto</option>
+                                            <option id="cmbAssocia_GenerazionePoligoni_3" value="3">Impianto e Appezzamento</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            -->
+
+        </div>
+        <div id="dialogAllertOperazioniAppezza" title="Continuare?">
+            <label id="lbl_alert_operazioni_Appezza" style="width: 240px">
+            </label>
+        </div>
+        <div id="dialogAllertOperazioni" title="Continuare?">
+            <label id="lbl_alert_operazioni" style="width: 240px">
+            </label>
+            <input type="hidden" id="dialogAllertOperazioni_hidden" />
+        </div>
+
+
+
+        <!-- Dialog Modifica Impianto -->
+        <div id="pop_up_modificaImpianto" class="load-hidden">
+
+            <input type="hidden" id="hiddenPunti_modifica" />
+            <input type="hidden" id="hiddenID" />
+
+            <div class="form-horizontal" style="/*min-height: 400px; max-height:400px; overflow: scroll*/">
+                <ul id="panelBarDatiModifica">
+                    <li class="k-state-active k-active agroAccordion" id="panelBarDatiModifica_Testata">
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-list"></span><span>Dati Aziendali, di Appezzamento e Superfici</span></span>
+
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="stileAnagraficaRiassuntoModifica">
+                                <span id="lbl_smallDescrAzienda_modifica" style="font-weight: bold;">Azienda:</span><span id="smallDescrAzienda_modifica"></span><br />
+                                <span id="lbl_smallDescrCentro_modifica" style="font-weight: bold;">Centro az.: </span><span id="smallDescrCentro_modifica"></span><br />
+                                <span id="lbl_smallDescrAlbero_modifica" style="font-weight: bold;">Anagrafica: </span><span id="smallDescrAlbero_modifica"></span>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="divImpiantiFigli_Modifica">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="cmbImpiantiFigli_Modifica" id="lblImpiantiFigli_Modifica">
+                                            Impianto:
+                                        </label>
+                                        <input type="hidden" id="HiddenSelezioneAlberoAnagraficaAlberoAnagraficaModificaImpianto" />
+                                        <select class="form-control" id="cmbImpiantiFigli_Modifica"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="divDatiAppezza" class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="pop_up_via_modifica">Via</label>
+                                        <input class="form-control" type="text" id="via_stringa_modifica" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="pop_up_modificaImpianto_DatiImp">
+                                        <label class="input-group-addon" for="pop_up_nome_appezza_modifica">Nome</label>
+                                        <input class="form-control" type="text" id="pop_up_nome_appezza_modifica" name="pop_up_nome_appezza_modifica" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!--al momento commentato, decommantare quando si vorrà modificare da GIS questo dato -->
+                            <!--<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="pop_up_modificaImpianto_qdc">
+                                        <label class="input-group-addon" for="pop_up_qdc_appezza_modifica">
+                                            Rif. QDC
+                                        </label>
+                                        <input class="form-control m_CodiceAnagrafe" type="text" id="pop_up_qdc_appezza_modifica" name="pop_up_qdc_appezza_modifica" data-idCod="1104" value="" />
+                                    </div>
+                                </div>
+                            </div>-->
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" id="pop_up_Associa_Modifica_GenerazionePoligoni">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label class="input-group-addon" for="cmbAssocia_Modifica_GenerazionePoligoni" id="lblbAssocia_Modifica_GenerazionePoligoni">Memorizza:</label>
+                                        <select class="form-control" id="cmbAssocia_Modifica_GenerazionePoligoni">
+                                            <!--<option id="cmbAssocia_Modifica_GenerazionePoligoni_1" value="1">Appezzamento</option>
+                                            <option id="cmbAssocia_Modifica_GenerazionePoligoni_2" value="2">Impianto</option>
+                                            <option id="cmbAssocia_Modifica_GenerazionePoligoni_3" value="3">Impianto e Appezzamento</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_sup_precedente">Sup. Originale [ha]:</label>
+                                        <input type="text" id="pop_up_sup_precedente" name="pop_up_sup_precedente" value="" style="min-width: 74px" class="form-control" disabled="disabled">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_sup_google_modifica">Sup. calcolata [ha]:</label>
+                                        <input type="text" id="pop_up_sup_google_modifica" name="pop_up_sup_google_modifica" style="min-width: 74px" class="form-control" value="" disabled="disabled">
+                                        <span class="input-group-btn" id="arrow">
+                                            <a class="form-control btn btn-secondary" style="border-bottom-right-radius: 4px; border-top-right-radius: 4px;" title="Riporta"><span class="fa fa-arrow-right"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_sup_app_modifica">Sup. Nuova [ha]:</label>
+                                        <input type="text" id="pop_up_sup_app_modifica" name="pop_up_sup_app_modifica" value="" class="form-control" style="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="pop_up_sup_app_modifica_divAssocia">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="opt_associa_modifica">Associa la superficie a?</label>
+                                        <select class="form-control" id="opt_associa_modifica">
+                                            <option value="1">Nessuno</option>
+                                            <option value="2">Impianto</option>
+                                            <option value="3">Impianto e Appezzamento</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- row -->
+                        <div class="row" id="pop_up_sup_app_modifica_divModificaDatiDiAnagrafica">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon" style="text-align: left !important;">Modifica i dati di anagrafica</span>
+                                    <div class="form-control" style="width:auto;">
+                                        <input type="checkbox" id="pop_up_sup_app_modifica_chkModificaDatiDiAnagrafica" class="k-checkbox" />
+                                        <label class="k-checkbox-label" for="pop_up_sup_app_modifica_chkModificaDatiDiAnagrafica" style="padding-left: 12.6px;"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li class="k-state-active k-active agroAccordion" id="panelBarDatiModifica_Specie">
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-leaf"></span><span>Dati Agronomici</span></span>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_specie_modifica">Specie</label>
+                                        <select class="form-control" id="pop_up_specie_modifica" name="pop_up_specie_modifica"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_varieta_modifica">Varietà</label>
+                                        <select class="form-control" id="pop_up_varieta_modifica" name="pop_up_varieta_modifica"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_finalita_modifica">Finalità</label>
+                                        <select class="form-control" id="pop_up_finalita_modifica" name="pop_up_finalita_modifica"></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_tipologia_modifica">Tipologia</label>
+                                        <select class="form-control" id="pop_up_tipologia_modifica" name="pop_up_tipologia_modifica"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+
+                        <div id="Dati_data_inizio_fine_modifica" class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_m_data_inizio" id="lblpop_up_m_data_inizio_modifica">Data Inizio:</label>
+                                        <input type="text" id="pop_up_m_data_inizio" name="pop_up_m_data_inizio" value="" class=" form-control kendoDatePicker" />
+                                    </div>
+                                </div>
+                                <div id="div_appezza_data_inizio" class="divAppezzaDate divAppezzaDateNascondi">
+                                    <i id="i_appezza_data_inizio" class="fa fa-exclamation-triangle WarningDateAppezza" style="display:none"></i>
+                                    <small>
+                                        <b>APPEZZAMENTO validità inizio: </b>
+                                        <i id="lbl_appezza_data_inizio"></i>
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_m_data_fine" id="lblpop_up_m_data_fine">Data Fine:</label>
+                                        <input type="text" id="pop_up_m_data_fine" name="pop_up_m_data_fine" value="" class="form-control kendoDatePicker" />
+                                    </div>
+                                </div>
+                                <div id="div_appezza_data_fine" class="divAppezzaDate divAppezzaDateNascondi">
+                                    <i id="i_appezza_data_fine" class="fa fa-exclamation-triangle WarningDateAppezza" style="display:none"></i>
+                                    <small>
+                                        <b>APPEZZAMENTO validità fine: </b>
+                                        <i id="lbl_appezza_data_fine"></i>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </li>
+
+                    <li class="k-state-active k-active agroAccordion" id="panelBarDatiModifica_Altro">
+
+                        <span class="k-link agroAccordionTitolo"><span class="fa fa-check-square"></span><span>Opzioni</span></span>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="div_m_CodiceSocio">
+                                        <label class="input-group-addon" for="txt_m_CodiceSocio">Codice Socio:</label>
+                                        <input class="form-control" type="text" id="txt_m_CodiceSocio" name="txt_m_CodiceSocio" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="div_m_lotto">
+                                        <label class="input-group-addon" for="pop_up_m_lotto" id="Label1">Lotto:</label>
+                                        <input class="form-control" type="text" id="pop_up_m_lotto" name="pop_up_m_lotto" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+
+                        <div id="kws_m_appezza" class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_m_app_originale">N. Originale</label>
+                                        <input class="form-control" type="text" id="pop_up_m_app_originale" name="pop_up_m_app_originale" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_app_m_n_appezza">N. Impianto</label>
+                                        <input type="text" id="pop_up_app_m_n_appezza" name="pop_up_app_m_n_appezza" value="" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+
+                        <div id="ModificaImpiantoCodiciAggiuntivi" class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_m_PianoSemina">Piano Semina</label>
+                                        <input class="form-control m_CodiceAnagrafe" type="text" id="pop_up_m_app_PianoSemina" name="pop_up_m_app_PianoSemina" value="" data-idCod="1071" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="input-group" id="">
+                                        <label class="input-group-addon" for="pop_up_app_m_OrganismoReferente">Organismo Referente</label>
+                                        <select id="pop_up_app_m_OrganismoReferente" name="pop_up_app_m_OrganismoReferente" value="" class="form-control m_CodiceAnagrafe" data-idCod="1074"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- row -->
+                    </li>
+                </ul>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top:20px;">
+                <div id="btnVerificaVicini_2" class="k-button" data-role="button" role="button" aria-disabled="false" tabindex="0">
+                    <span class="fa fa-crosshairs fa-2x"></span>
+                    Verifica prossimità
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Dialog Elimina Multipoint -->
+        <div id="dialogEliminaMultipoint" title="conferma eliminazione">
+            <fieldset>
+                <br />
+                <label for="ckConfermaEliminaMultipoint">
+                    conferma eliminazione:
+                </label>
+                <input type="checkbox" id="ckConfermaEliminaMultipoint" style="width: 150px" />
+            </fieldset>
+        </div>
+        <!-- Dialog Elimina punti scomposti -->
+        <div id="dialogEliminaImpiantoPuntiScomposti" title="conferma conclusione lavoro">
+            <fieldset>
+                <br />
+                <label for="ckConfermaEliminaPuntiScomposti">
+                    conferma conclusione:
+                </label>
+                <input type="checkbox" id="ckConfermaEliminaPuntiScomposti" style="width: 150px" />
+            </fieldset>
+        </div>
+        <!-- Dialog Elimina Impianto -->
+        <div id="dialogEliminaImpianto" title="conferma eliminazione">
+            <fieldset>
+                <div id="divEliminaGrafica" style="margin-bottom: -6px">
+                    <label for="ckEliminaGrafica" style="width: 150px">
+                        - Elimina Entità Grafiche
+                    </label>
+                    <input type="checkbox" id="ckEliminaGrafica" checked="checked" />
+                </div>
+                <br />
+                <div id="divEliminaPrecision" style="margin-bottom: -6px">
+                    <label for="ckEliminaPrecision" style="width: 150px">
+                        - Elimina i dati raccolti con la Precision Farming
+                    </label>
+                    <input type="checkbox" id="ckEliminaPrecision" />
+                </div>
+                <br />
+                <div id="divEliminaPrecisionAB" style="margin-bottom: -6px">
+                    <label for="ckEliminaPrecisionABLine" style="width: 150px">
+                        - Elimina linee guida AB di Precision Farming
+                    </label>
+                    <input type="checkbox" id="ckEliminaPrecisionABLine" />
+                </div>
+                <br />
+                <div id="divEliminaDatoPalm" style="margin-bottom: -6px">
+                    <label for="ckEliminaDatoPalm" style="width: 150px">
+                        - Elimina il dato misurato con Gias PALM
+                    </label>
+                    <input type="checkbox" id="ckEliminaDatoPalm" />
+                </div>
+                <br />
+                <div id="divEliminaEntitaGIAS" style="margin-bottom: -6px">
+                    <label for="ckEliminaImpianto" style="width: 150px">
+                        - Elimina Entità Gias (Appezzamento/Impianto)
+                    </label>
+                    <input type="checkbox" id="ckEliminaImpianto" />
+                </div>
+                <br />
+                <br />
+                <label for="ckConfermaElimina" style="width: 150px">
+                    <b>conferma eliminazione:</b>
+                </label>
+                <input type="checkbox" id="ckConfermaElimina" />
+            </fieldset>
+        </div>
+        <!--Dialog sessione scaduta-->
+        <div id="dialogSessioneScaduta" style="display: none" title="La sessione è scaduta.">
+            <fieldset>
+                <div id="lblManualLogin">
+                    <p>
+                        <b>La sessione è scaduta. Eseguire di nuovo il login.</b>
+                        <br />
+                        Se non appare in automatico la finestra di login <a href="../GST_Autenticazione/Autenticazione.aspx">
+                            fare click qui.
+                        </a>
+                    </p>
+                </div>
+                <div id="lblAutoLogin">
+                </div>
+            </fieldset>
+        </div>
+        <!-- DIALOG Gestion Colori Layer -->
+        <div id="dialogGestioneColoriLayer" title="">
+            <fieldset>
+                <div id="Div2">
+                    <input type="hidden" runat="server" id="hiddenPrincipale_1_Dettagli_2" />
+                    <select id="ddlTipologiaLayer" name="ddlTipologiaLayer" onchange="Cambia_ddlTipologiaLayer()"
+                            style="width: 300px"></select>
+                    <br />
+
+                    <div id="place_tabella" style="overflow: auto; max-height: 300px">
+                        <!-- questo sarà sostituito a runtime da javascript, ma nel frattempo occupa uno spazio per centrare il dialog.-->
+                        <div style="min-width: 677px; min-height: 299px">&nbsp;</div>
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+        <!-- Nuova Azienda-->
+        <div data-role="page" id="popup_nuova_azienda" title="Nuova Azienda">
+            <fieldset>
+                <div data-role="content">
+                    <label for="txt_rag_Soc">
+                        Ragione Sociale:
+                    </label>
+                    <input type="text" id="txt_rag_Soc" name="txt_rag_Soc" value="" style="width: 295px" />
+                    <br />
+                    <br />
+                    <label for="txt_Piva">
+                        PIVA:
+                    </label>
+                    <input type="text" id="txt_Piva" maxlength="11" name="txt_Piva" value="" style="width: 295px" />
+                    <div class="img_tool" id="nuovapiva-button" style="float: right; margin-top: -15px;
+                margin-bottom: -15px;">
+                        <img src="replace_piu" />
+                    </div>
+                    <br />
+                    <label for="txt_Piva">
+                        Codice Socio:
+                    </label>
+                    <input type="text" id="txt_CodiceSocio" name="txt_CodiceSocio" value="" style="width: 295px" />
+                    <br />
+                    <br />
+                    <div id="indirizzoImprese">
+                    </div>
+                    <div data-role="collapsible" id="OpzioniNuovaImpresa">
+                        <p class="heading">
+                            Opzioni
+                        </p>
+                        <div class="content">
+                            <label for="Cmb_Imprese_Padre">
+                                Impresa Padre
+                            </label>
+                            <select id="Cmb_Imprese_Padre" name="Cmb_Imprese_Padre" style="width: 300px"></select>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <script type="text/javascript">
+            var imprese_ID_ind = 'indirizzoImprese';
+            var centro_ID_ind = 'indirizzoCentro';
+
+            $(document).ready(function () {
+                generaIndirizzo(imprese_ID_ind);
+                generaIndirizzo(centro_ID_ind);
+
+                CaricaStatiISO(imprese_ID_ind, "");
+                CaricaStatiISO(centro_ID_ind, "");
+
+                ascoltaStato(imprese_ID_ind);
+                ascoltaStato(centro_ID_ind);
+
+                inizializzaDDLProvincie('ddl_Provincia_', imprese_ID_ind);
+                inizializzaDDLProvincie('ddl_Provincia_', centro_ID_ind);
+
+                ascoltaProvincia(imprese_ID_ind);
+                ascoltaProvincia(centro_ID_ind);
+            });
+
+
+            function impostaValoriIndirizzo(via, numero, frazione, citta, provincia, sigla, nazione, nazioneISO) {
+
+                if (numero == 0) {
+                    $('#txt_Via_' + imprese_ID_ind).val(via);
+                    $('#txt_Via_' + centro_ID_ind).val(via);
+                }
+                else {
+                    $('#txt_Via_' + imprese_ID_ind).val(via + ", " + numero);
+                    $('#txt_Via_' + centro_ID_ind).val(via + ", " + numero);
+                }
+
+                $('#txt_Frazione_' + imprese_ID_ind).val(frazione);
+                $('#txt_Frazione_' + centro_ID_ind).val(frazione);
+
+                $('#txt_Stato_' + imprese_ID_ind).val(nazione);
+                $('#txt_Stato_' + centro_ID_ind).val(nazione);
+
+                $('#txt_ISO_Stato_' + imprese_ID_ind).val(nazioneISO);
+                $('#txt_ISO_Stato_' + centro_ID_ind).val(nazioneISO);
+
+                $('#ddl_Stato_' + imprese_ID_ind).val(nazioneISO);
+                $('#ddl_Stato_' + centro_ID_ind).val(nazioneISO);
+
+
+                inizializzaDDLProvincie('ddl_Provincia_', imprese_ID_ind);
+                inizializzaDDLProvincie('ddl_Provincia_', centro_ID_ind);
+
+                if (nazioneISO == 'IT') {
+                    $('#ddl_Provincia_' + imprese_ID_ind).val(sigla);
+                    $('#ddl_Provincia_' + centro_ID_ind).val(sigla);
+                } else {
+                    $('#ddl_Provincia_' + imprese_ID_ind).val("000");
+                    $('#ddl_Provincia_' + centro_ID_ind).val("000");
+                }
+
+                caricaComune(imprese_ID_ind, citta);
+                caricaComune(centro_ID_ind, citta);
+
+                //se la città è vuota o nulla evidenzio in rosso
+                if (!citta) {
+                    console.log("Selezionare la città");
+                    $('#txt_Frazione_' + imprese_ID_ind).css({ 'background-color': 'red' });
+                    $('#txt_Frazione_' + centro_ID_ind).css({ 'background-color': 'red' });
+                } else {
+                    $('#txt_Frazione_' + imprese_ID_ind).css({ 'background-color': '' });
+                    $('#txt_Frazione_' + centro_ID_ind).css({ 'background-color': '' });
+                }
+
+            }
+
+            function ascoltaStato(id) {
+                $('#ddl_Stato_' + id).change(function () {
+                    $("#txt_Stato_" + id).val($('#ddl_Stato_' + id + ' option:selected').text());
+                    $("#txt_ISO_Stato_" + id).val($('#ddl_Stato_' + id).val());
+                });
+            }
+
+            function ascoltaProvincia(id) {
+                $('#ddl_Provincia_' + id).change(function () {
+                    var Chiave = $(this).val();
+                    var pag;
+                    pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaComuni";
+
+                    $.ajax({
+                        type: "POST",
+                        url: pag,
+                        data: "{ Chiave: '" + Chiave + "'}",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (msg) {
+                            $('#ddl_Comune_' + id).html(msg.d);
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(xhr.status);
+                            alert(thrownError);
+                        }
+                    });
+                });
+            }
+
+
+            function CaricaStatiISO(id, selezione) {
+
+                var pag;
+                pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaStatiISO";
+                $.ajax({
+                    type: "POST",
+                    url: pag,
+                    data: "{}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#ddl_Stato_' + id).html(msg.d);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                });
+            }
+
+            function caricaComune(id, selezione) {
+                var Chiave = $('#ddl_Provincia_' + id).val();
+                var pag;
+                pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaComuni";
+                $.ajax({
+                    type: "POST",
+                    url: pag,
+                    data: "{ Chiave: '" + Chiave + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#ddl_Comune_' + id).html(msg.d);
+                        //seleziono
+                        var i = 0;
+                        $('#ddl_Comune_' + id + ' option').each(function () {
+                            if ($(this).text().toString().toUpperCase() == selezione.toString().toUpperCase()) {
+                                $(this).attr('selected', 'selected');
+                            }
+                        });
+
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                });
+            }
+
+
+            function inizializzaDDLProvincie(id, imprese_ID_ind) {
+                var indirizzohttp = location.pathname;
+                indirizzohttp = indirizzohttp.split("/")[indirizzohttp.split("/").length - 1];
+
+                var ISO_Stato = $("#txt_ISO_Stato_" + imprese_ID_ind).val();
+                utility.log("#txt_ISO_Stato_" + imprese_ID_ind);
+                utility.log("ISO_Stato = " + ISO_Stato);
+
+                $.ajax({
+                    type: "POST",
+                    url: indirizzohttp + "/CaricaProvince",
+                    async: false,
+                    cache: false,
+                    data: "{'ISO_Stato': '" + ISO_Stato + "' }",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#' + id + imprese_ID_ind).html(msg.d);
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                    }
+                });
+
+            }
+
+
+
+            function generaIndirizzo(tipo) {
+                $('<label for="' + 'txt_Via_' + tipo + '">Via</label>').appendTo('#' + tipo);
+
+                //via
+                $('<input />', {
+                    id: 'txt_Via_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //frazione
+                $('<label for="' + 'txt_Frazione_' + tipo + '">Frazione</label>').appendTo('#' + tipo);
+                $('<input />', {
+                    id: 'txt_Frazione_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //provincia
+                $('<label for="' + 'ddl_Provincia_' + tipo + '">Provincia</label>').appendTo('#' + tipo);
+                $('<select />', {
+                    id: 'ddl_Provincia_' + tipo
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //comuni
+                $('<label for="' + 'ddl_Comune_' + tipo + '">Comune</label>').appendTo('#' + tipo);
+                $('<select />', {
+                    id: 'ddl_Comune_' + tipo
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //stato (ddl)
+                $('<label for="' + 'ddl_Stato_' + tipo + '">Stato</label>').appendTo('#' + tipo);
+                $('<select />', {
+                    id: 'ddl_Stato_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //stato
+                $('<label for="' + 'txt_Stato_' + tipo + '">Stato</label>').appendTo('#' + tipo);
+                $('<input />', {
+                    id: 'txt_Stato_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+
+                //stato (sigla iso 3166)
+                $('<div style="">').appendTo('#' + tipo);
+                $('<label for="' + 'txt_ISO_Stato_' + tipo + '">Stato iso</label>').appendTo('#' + tipo);
+                $('<input />', {
+                    id: 'txt_ISO_Stato_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('</div>').appendTo('#' + tipo);
+
+                //note
+                $('<label for="' + 'txt_Note_' + tipo + '">Note</label>').appendTo('#' + tipo);
+                $('<input />', {
+                    id: 'txt_Note_' + tipo,
+                    type: 'text'
+                }).appendTo('#' + tipo);
+                $('<br />').appendTo('#' + tipo);
+            }
+        </script>
+        <!-- Nuovo Centro Aziendale-->
+        <div data-role="page" id="popup_nuovo_centro" title="Nuovo Centro Aziendale">
+            <fieldset>
+                <div data-role="content">
+                    <label for="txt_rag_Soc">
+                        Nome:
+                    </label>
+                    <input type="text" id="txt_sa_nome" name="txt_sa_nome" value="" style="width: 295px" />
+                    <br />
+                    <br />
+                    <div id="indirizzoCentro">
+                    </div>
+                    <div data-role="collapsible" id="Div3">
+                        <p class="heading">
+                            Opzioni
+                        </p>
+                        <div class="content">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <script language="javascript" type="text/javascript">
+
+            function dialogBufferZoneIntersection_tools_Change() {
+
+                //reset iniziale..
+                $("#dialogBufferZoneIntersection_disegna").hide();
+                $("#dialogBufferZoneIntersection_salva").hide();
+
+                if ($("#dialogBufferZoneIntersection_tools").val() == 0) {
+                    $("#dialogBufferZoneIntersection_disegna").show();
+                } else {
+                    $("#dialogBufferZoneIntersection_salva").show();
+                }
+
+            }
+
+        </script>
+
+        <div id="dialogScomponiPunti" title="Strumento di scomposizione e ricomposizione poligoni">
+            <div id="dialogScomponiPunti_Punti">
+                <div>1. Punti selezionati</div>
+                <div id="btnDialogScomponiPunti_AnnullaVtx" class="bottone" onclick="DialogScomponiPunti_AnnullaVtx()" style="font-size: 0.9em;">Annulla ultimo</div>
+                <div id="btnDialogScomponiPunti_AnnullaTutti" class="bottone" onclick="DialogScomponiPunti_AnnullaTutti()" style="font-size: 0.9em;">Annulla tutti</div>
+            </div>
+            <hr />
+            <div id="dialogScomponiPunti_Associazione">
+                <div>2. Seleziona un elemento</div>
+                <div id="btnDialogScomponiPunti_Associa" class="bottone" onclick="DialogScomponiPunti_Associa()" style="font-size: 0.9em;">Genera poligono da punti selezionati</div>
+            </div>
+            <hr />
+            <div id="dialogScomponiPunti_Fine">
+                <div>3. Termina il lavoro</div>
+                <div id="btnDialogScomponiPunti_Termina" class="bottone" onclick="DialogScomponiPunti_Termina()" style="font-size: 0.9em;">Concludi il lavoro</div>
+            </div>
+            <hr />
+        </div>
+
+        <div id="dialogBufferZoneIntersection" title="Strumento di gestione fasce di rispetto non trattate">
+
+
+            <div id="dialogBufferZoneIntersection_tool_bar">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <select id="dialogBufferZoneIntersection_tools" class="form-control" onchange="dialogBufferZoneIntersection_tools_Change()">
+                            <option value="0">Associazione dei dati</option>
+                            <option value="1">Strumenti di disegno</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dialogBufferZoneIntersection_disegna"></div>
+
+
+            <div id="dialogBufferZoneIntersection_salva">
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" id="dialogBufferZoneIntersection_DatoLetto" style="font-weight: bold"></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">Informazioni appezzamento che saranno memorizzate:</div>
+                </div>
+
+                <!--
+                Distanza (m) da :
+                -	Corpi idrici superficiali
+                -	Aree residenziali/pubbliche
+                -	Allevamenti
+                -	Vegetazione naturale/non coltivata
+
+                -->
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="font-weight:bold">Distanza (m) da :</div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="input-group">
+                            <label id="txtDistBZ_CorpiIdrici_a" class="input-group-addon">
+                                Corpi idrici superficiali [m]
+                            </label>
+
+                            <input class="form-control" type="text" id="txtDistBZ_CorpiIdrici" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="input-group">
+                            <label id="txtDistBZ_AreeResPub_a" class="input-group-addon">
+                                Aree residenziali/pubbliche [m]
+                            </label>
+
+                            <input class="form-control" type="text" id="txtDistBZ_AreeResPub" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="input-group">
+                            <label id="txtDistBZ_Allevamenti_a" class="input-group-addon">
+                                Allevamenti [m]
+                            </label>
+
+                            <input class="form-control" type="text" id="txtDistBZ_Allevamenti" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="input-group">
+                            <label id="txtDistBZ_VegNatNonColt_a" class="input-group-addon">
+                                Vegetazione naturale/non coltivata [m]
+                            </label>
+
+                            <input class="form-control" type="text" id="txtDistBZ_VegNatNonColt" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="input-group">
+                            <label id="lblBufferZoneSup" class="input-group-addon">
+                                Superficie
+                            </label>
+
+                            <input class="form-control" type="text" id="txtSupBZ_Riduzione" />
+
+                            <span class="input-group-btn" id="arrowBufferZone">
+
+                                <a class="form-control btn btn-secondary" style="border-bottom-right-radius: 4px; border-top-right-radius: 4px;" title="Gestione Colori layer principale">
+                                    <span class="fa fa-arrow-left"></span>
+                                    <span id="txtSupBZ_Riduzione_Ricalcolata"></span>
+                                </a>
+                            </span>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="pop_up_opAgenda_Preselezione" title="Selezione Operazione di Agenda">
+            <div id="contentpop_up_opAgenda_Preselezione">
+            </div>
+        </div>
+        <!-- Dialog Import
+        <div id="pop_up_import_shape" title="Gestione sincronizzazioni ed importazioni">
+            <iframe src="" id="frameShape" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+        </div>
+        <div id="pop_up_export_shape" title="Gestione esportazioni">
+            <iframe src="" id="frameShapePF" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+        </div>
+        <div id="pop_up_Ricette" title="Gestione Ricette">
+            <iframe src="" id="frameRicette" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+        </div>
+        <div id="pop_up_Catasto" title="Gestione Catasto">
+            <iframe src="" id="frameCatasto" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+        </div>
+
+        <div id="pop_up_Ritaglia" title="Ritaglia Immagine">
+            <iframe src="" id="frameRitaglia" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div id="pop_up_opAgenda" title="Operazione di Agenda">
+            <iframe src="" id="framepop_up_opAgenda" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div id="pop_up_Meteo" title="Analisi Dati">
+            <iframe src="" id="framepop_up_Meteo" style="width: 100%; height: 100%; display: block;
+            border: 0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div id="pop_up_visite" title="Visite">
+            <iframe src="" id="framepop_up_visite" style="width: 100%; height: 100%; display: block;
+                border: 0" frameborder="0" allowfullscreen></iframe>
+        </div>
+        -->
+
+    </div>
+
+</div>

@@ -1,0 +1,10 @@
+<div class="options-row" *ngIf="giasFormControl != null">
+    <p>
+        {{ name }}
+    </p>
+    <p (click)="toggle()" class="k-cursor-pointer">
+        <i aria-hidden="true" *ngIf="giasFormControl.value" class="xi-eye-visible-dark"></i>
+        <i aria-hidden="true" *ngIf="!giasFormControl.value" class="xi-eye-invisible-dark"></i>
+    </p>
+</div>
+

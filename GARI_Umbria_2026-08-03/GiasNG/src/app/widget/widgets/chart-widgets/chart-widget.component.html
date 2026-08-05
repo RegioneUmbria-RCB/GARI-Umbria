@@ -1,0 +1,22 @@
+<div class="colture-full-width">
+  <kendo-chart *ngIf="!chartPie">
+    <kendo-chart-series>
+      <kendo-chart-series-item type="column" *ngFor="let d of data" [data]="[d]" [field]="field" [name]="d.Veg_Des">
+        <kendo-chart-series-item-labels [font]="'11px sans-serif'" [rotation]="30" [content]="labelContent"></kendo-chart-series-item-labels>
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+    <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+  </kendo-chart>
+
+  <kendo-chart *ngIf="chartPie">
+    <kendo-chart-series>
+      <kendo-chart-series-item type="pie" [autoFit]="true" [data]="data" [field]="field" categoryField="Veg_Des">
+        <kendo-chart-series-item-labels [font]="'11px sans-serif'" [content]="labelContent"></kendo-chart-series-item-labels>
+        <kendo-chart-series-item-tooltip>
+          <ng-template let-category="category"> {{ category }} </ng-template>
+        </kendo-chart-series-item-tooltip>
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+    <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+  </kendo-chart>
+</div>

@@ -1,0 +1,131 @@
+<router-outlet></router-outlet>
+<div class="row" style="background-clip: content-box">
+    <gias-kendo-grid #GridVisite 
+                    [gridId]="'VisiteGridId'"
+                    class="kendo-grid-no-shadows"
+                    style="background-color: #ffffff"
+        >
+        <ng-container headerContentButtons>
+            @if (showCaricaDatiAPPbutton()) {
+                <div kendoTooltip>
+                    <button class="btn btn-primary btn-sm btn-primary-fill"
+                            [title]="'visite.CaricaDatiAPP' | transloco"
+                            [type]="'button'"
+                            (click) = "onClickCaricaDatiAPP()">
+                        <!-- <span class="text"> {{  'visite.CaricaDatiAPP' | transloco }} </span> -->
+                        <!-- <fa-icon [icon]="faUpload" style="margin: 5px;" size="lg"></fa-icon> -->
+                        <div class="faGridToolbarIcon faQdCImportByApp"></div>
+                    </button>
+                </div>
+            }
+            @if (hideNewVisitaButton()) {
+                <span class="separator"></span>
+                <div kendoTooltip>
+                    <button class="btn btn-primary btn-sm btn-primary-fill btn-important"
+                            [title]="'visite.NuovaVisitaText' | transloco"
+                            [type]="'button'"
+                            (click) = "redirectToNewOrEditVisita(false)">
+                        <!-- <span class="text"> {{  'visite.NuovaVisita' | transloco }} </span> -->
+                        <fa-icon class="faAddSchedule"></fa-icon>
+                    </button>
+                </div>
+            }
+        </ng-container>
+    </gias-kendo-grid>
+    <kendo-dialog class="dialog-copia" [title]="'visite.CreaCopiaVisita' | transloco" *ngIf="showCopiaVisita"
+            (close)="closeCopiaVisita('back')"
+            [minWidth]="250" [width]="650">
+        <form [formGroup]="visitaForm">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <gias-data-template [name]="'visite.Data' | transloco" [obligatory]="true"
+                        giasFormControlName="Data_Copia_Visita">
+                    </gias-data-template>
+                </div>
+                <div class="col-12 col-md-4">
+                    <gias-time-picker-template [name]="'visite.Ora_Inizio_Visita' | transloco"
+                         giasFormControlName="Ora_Inizio_Copia_Visita">
+                    </gias-time-picker-template>
+                </div>
+                <div class="col-12 col-md-4">
+                    <gias-time-picker-template [name]="'visite.Ora_Fine_Visita' | transloco"
+                         giasFormControlName="Ora_Fine_Copia_Visita">
+                    </gias-time-picker-template>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <gias-text-template [name]="'Descrizione' | transloco"
+                                    giasFormControlName="DescrizioneCopiaVisita">
+                    </gias-text-template>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <gias-drop-down-template-s
+                        [name]="'visite.Specie' | transloco"
+                        giasFormControlName="SpecieCopiaVisita"
+                        [textField]="'descrizione'"
+                        [valueField]="'codice'"
+                        [listItems]="SpecieCopiaVisita"
+                        [valuePrimitive]="false">
+                    </gias-drop-down-template-s>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <gias-drop-down-template-s
+                        [name]="'visite.SpecieAnimale' | transloco"
+                        giasFormControlName="SpecieAnimaleCopiaVisita"
+                        [textField]="'Descrizione_Concatenata'"
+                        [valueField]="'Codice_Concatenato'"
+                        [listItems]="SpecieAnimaleCopiaVisita"
+                        [valuePrimitive]="false">
+                    </gias-drop-down-template-s>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <gias-drop-down-template-s
+                        [name]="'visite.Operatore' | transloco"
+                        [obligatory]="false"
+                        [listItems]="OperatoriCopiaVisita"
+                        textField="nome_cognome"
+                        valueField="username"
+                        giasFormControlName="OperatoreCopiaVisita"
+                        [valuePrimitive]="false">
+                    </gias-drop-down-template-s>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12">
+                    <gias-multiselect-template-s class="multiselect-azienda"
+                        [name]="'visite.Azienda' | transloco"
+                        [obligatory]="false"
+                        [listItems]="AziendeCopiaVisita"
+                        textField="ragioneSociale"
+                        valueField="partitaIva"
+                        [clearButton]="true"
+                        [filterable]="true"
+                        giasFormControlName="AziendeCopiaVisita"
+                        [valuePrimitive]="false">
+                    </gias-multiselect-template-s>
+                </div>
+            </div>
+        </form>
+
+        <!-- <div class="row">
+            <div class="col-lg-12" #creaRicettaInfo>
+            {{ 'RicettaConterraOperazioni' | transloco}}
+            </div>
+        </div> -->
+
+        <kendo-dialog-actions>
+            <button kendoButton class="copia-button back-button" (click)="closeCopiaVisita('back')">{{ 'visite.Indietro' | transloco }}</button>
+            <button kendoButton class="copia-button confirm-button" (click)="closeCopiaVisita('create')" themeColor="primary"
+                [disabled]="visitaForm.invalid">
+            {{ 'visite.CreaVisite' | transloco }}
+            </button>
+        </kendo-dialog-actions>
+    </kendo-dialog>
+</div>

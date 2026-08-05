@@ -1,0 +1,17 @@
+<div>
+    <ng-template #windowTitleBar let-win>
+        <div *ngIf="showWarningIcon">
+            <fa-icon class="iconwindowcontentsize"  size="lg" [icon]="['fas', 'exclamation-triangle']" aria-hidden="true"></fa-icon>
+        </div>
+
+        <div class="k-window-title windowcontentsize">{{ TitleBarMessage }}</div>
+
+        <button kendoWindowCloseAction [window]="win"></button>
+    </ng-template>
+
+    <ng-template #windowContent >
+        <div class="windowcontentsize">{{ messaggio }}</div>
+    </ng-template>
+
+    <div kendoWindowContainer></div>
+</div>

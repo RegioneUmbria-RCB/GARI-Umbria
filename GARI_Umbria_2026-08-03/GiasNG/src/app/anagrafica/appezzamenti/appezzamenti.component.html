@@ -1,0 +1,31 @@
+<div class="row form-row"></div>
+<div class="container">
+    <div class="row form-row">
+        <div class="col-xs-4">
+            <button class="btn btn-success btn-sm" (click)="onAperturaChiusuraEsercizi()">{{ 'ChiusuraAperturaEsercizi' | transloco }}</button>
+        </div>
+    </div>
+    <div class="row form-row">
+        <div class="col-xs-4">
+            <button class="btn btn-success btn-sm" (click)="onNuovo()">{{ 'Nuovo' | transloco }}</button>
+        </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 *ngIf="!impresaSelezionata()">{{ 'SelezionareImpresa' | transloco }}</h2>
+      <gias-kendo-grid *ngIf="impresaSelezionata()" [disableCmdBtnsCallback]="shouldDisableCmd">
+        <!-- <kendo-grid-command-column [title]="'Edit'" [width]="200" >
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                <div class="btn-group">
+                    <button class="btn btn-primary" [type]="'button'" (click)="onTemplateBtnClick($event, dataItem)">
+                        Modifica
+                    </button>
+                </div>
+            </ng-template>
+        </kendo-grid-command-column> -->
+      </gias-kendo-grid>
+    </div>
+  </div>
+</div>
+
+

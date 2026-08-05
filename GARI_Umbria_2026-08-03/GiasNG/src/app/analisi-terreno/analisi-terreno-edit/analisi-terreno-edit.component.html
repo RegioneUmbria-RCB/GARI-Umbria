@@ -1,0 +1,359 @@
+<div class="container">
+  <form [formGroup]="analisiFormService.formAnalisiTerreno">
+    <gias-update-toolbar
+      [TipoOperazioneDB]="objParametriAgenda.TipoOperazioneDB"
+      [formGroup]="analisiFormService.formAnalisiTerreno"
+      [showCompanyName]="false"
+      [openInIFrame]="openInIFrame"
+      (clickEvent)="SalvaEditAnalisiTerreno()"
+      (clickSalvaNuovoEvent)="SalvaAnalisiTerreno()"
+      *ngIf="!fromGIS"
+    >
+      <ng-container ButtonAppbarSection>
+
+        @if (openInIFrame && fromMenuGrid)
+        {
+          <kendo-appbar-section>
+            <div kendoTooltip>
+              <button kendoButton [title]="'Indietro' | transloco " [primary]="true" (click)="onClickBack()"
+                      [disabled]="disabled" class="btn-primary-fill">
+                <span class="icon-back"></span></button>
+            </div>
+          </kendo-appbar-section>
+        }
+
+        <kendo-appbar-section>
+                    <span *ngIf="(onEdit || onInfo) && permessoLetturaDoc">
+                        <div kendoTooltip>
+                            <button kendoButton [title]="'RicercaDocumenti' | transloco " [primary]="true" (click)="onOpenDocumentsList()"
+                                    [disabled]="disabled" class="btn-primary-fill">
+                                <span class="icon-documents-list"></span></button>
+                        </div>
+                    </span>
+        </kendo-appbar-section>
+
+        <kendo-appbar-section>
+                    <span *ngIf="(onEdit || onInfo) && permessoScritturaDoc">
+                        <div kendoTooltip>
+                            <button kendoButton [title]="'AggiungiNuovoAllegato' | transloco " [primary]="true" (click)="onNewDocument()"
+                                    [disabled]="disabled" class="btn-primary-fill">
+                                <span class="icon-new-document"></span></button>
+                        </div>
+                    </span>
+        </kendo-appbar-section>
+
+      </ng-container>
+    </gias-update-toolbar>
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="editPageContent">
+          <div class="row">
+            <h4 class="card-title mb-2 mt-2" style="text-align: center;">{{'AnalisiDelTerreno' | transloco}}</h4>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-3">
+              <gias-text-template [name]="'Descrizione' | transloco"
+                                  [clearButton]="true"
+                                  [maxlength]="250"
+                                  giasFormControlName="descrizione">
+              </gias-text-template>
+            </div>
+            <div [formGroup]="analisiFormService.formAnalisiTerreno.get('certificatoAnalisi')" class="col-12 col-md-3">
+              <gias-text-template [name]="'NrCertificato' | transloco"
+                                  [clearButton]="true"
+                                  [maxlength]="250"
+                                  giasFormControlName="numero_certificato">
+              </gias-text-template>
+            </div>
+            <div [formGroup]="analisiFormService.formAnalisiTerreno.get('validita')" class="col-12 col-md-6">
+              <div class="row">
+                <div class="col-6">
+                  <gias-data-template [name]="'Dal' | transloco"
+                                      giasFormControlName ="inizio">
+                  </gias-data-template>
+                </div>
+                <div class="col-6">
+                  <gias-data-template [name]="'Al' | transloco"
+                                      giasFormControlName ="fine">
+                  </gias-data-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <gias-expansionpanel [id]="'ParametriAnalisi'" [isExpanded]="isExpandedParametri" [willStoreCookies]="false" >
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span>{{ 'ParametriAnalisi' | transloco }}</span>
+            </div>
+
+            <div class="row form-row" *ngIf="analisiFormService.modeAgganciataPC_PUA">
+              <label style="color: red;">{{ "NonEPossibileModificareIParametriDellAnalisiPoicheQuestaRisultaAssociataAdUnoOPiuPianiDiConcimazioneEOPua" | transloco }}</label>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                                <span class="content-text">
+                                    <div class="row ">
+                                        <div class="card">
+                                            <div class="row form-row">
+                                                <div class="col-12 col-sm-5">
+                                                    <gias-drop-down-template
+                                                      [name]="'Laboratorio' | transloco"
+                                                      [id]="'laboratorio'"
+                                                      [listItems]="listaLaboratori"
+                                                      textField="ragione_Sociale"
+                                                      valueField="risorseUmane[0].codice"
+                                                      giasFormControlName="laboratorio"
+                                                      [valuePrimitive]="false">
+                                                    </gias-drop-down-template>
+                                                </div>
+                                                <div class="col-12 col-sm-5">
+                                                    <gias-drop-down-template-s
+                                                      [name]="'Schema' | transloco"
+                                                      [id]="'schema'"
+                                                      [listItems]="listaSchemiAnalisi"
+                                                      textField="descrizione"
+                                                      valueField="codice"
+                                                      giasFormControlName="analisiTipologia"
+                                                      [valuePrimitive]="false"
+                                                      [hasInfo]="true"
+                                                      [infoTitle]="'InfoSchemaAnalisiTerreno' | transloco">
+                                                    </gias-drop-down-template-s>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="content">
+                                <span class="content-text">
+                                    <div class="row ">
+                                        <div class="col-lg-12 text-center">
+                                            <div class="card-text">
+                                                <div class="row form-row">
+                                                    <app-parametri-analisi-terreno *ngIf="showGridParametri"></app-parametri-analisi-terreno>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+              </div>
+            </div>
+          </gias-expansionpanel>
+          <gias-expansionpanel [id]="'AssociaAnalisi'" [isExpanded]="true" [willStoreCookies]="false">
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span>{{ 'AssociaAnalisi' | transloco }}</span>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                                <span class="content-text">
+                                    <div class="row ">
+                                        <div class="card">
+                                            <div class="row form-row">
+                                                <div class="col-12 col-sm-5">
+                                                    <gias-multiselect-template-s
+                                                      [name]="'AssociaA' | transloco"
+                                                      [id]="'elemento'"
+                                                      [listItems]="ListaEntita"
+                                                      textField="nome"
+                                                      valueField="id"
+                                                      giasFormControlName="entitaCoinvolte"
+                                                      [showRedAsterisk]="true"
+                                                      [valuePrimitive]="true">
+                                                    </gias-multiselect-template-s>
+                                                </div>
+                                                <div class="col-12 col-sm-5" *ngIf="showImpresa">
+                                                    <kendo-label class="k-form" [text]="'Azienda' | transloco">
+                                                        <kendo-textbox
+                                                          [disabled]="true"
+                                                          [value]="infoAzienda"
+                                                        ></kendo-textbox>
+                                                    </kendo-label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+              </div>
+            </div>
+            <br>
+            <gias-panelbar #GISPanel
+                           [headerTemplate]="headerTemplateGIS"
+                           [contentTemplate]="contentTemplateGIS"
+                           [id]="'MappaGIS'"
+                           [willStoreCookies]="false"
+                           [keepItemContent]="true"
+                           *ngIf="!fromGIS && analisiFormService.formAnalisiTerreno.get('entitaCoinvolte')?.value?.length > 0">
+
+              <ng-template #headerTemplateGIS>
+                {{ 'MappaGIS' | transloco }}
+              </ng-template>
+
+              <ng-template #contentTemplateGIS>
+                <ng-container>
+                  <div>
+                    <GIS [_modality]="GISModality.AnalisiTerreno" [showToolbar]="true" [analisiTerrenoEdit]="!onInfo" (loaded)="loadGis($event)" #MappaGIS id="MappaGIS"></GIS>
+                  </div>
+                </ng-container>
+              </ng-template>
+
+            </gias-panelbar>
+            <br>
+            <!-- </gias-expansionpanel> -->
+            <div *ngFor="let item of filteredEntitaCoinvolte">
+              <gias-expansionpanel [id]="'Entita'" *ngIf="showGridEntita" [isExpanded]="showGridEntita" [willStoreCookies]="false">
+                <div class="header-content" headerContent>
+                  <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                  <span>{{ getTitlePanel(item) }}</span>
+                </div>
+
+                <app-griglia-entita [entitaGrid]="item"></app-griglia-entita>
+
+              </gias-expansionpanel>
+            </div>
+          </gias-expansionpanel>
+          <gias-expansionpanel [id]="'Campione'" [isExpanded]="isExpandedCampione" [willStoreCookies]="false">
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span>{{ 'Campione' | transloco }}</span>
+            </div>
+
+            <div class="container-campioni">
+              <button class="btn btn-primary btn-primary-fill btn-sm btn-primary-text top-right-button"
+                      (click)="aggiungiCampione()"
+                      *ngIf="!disabilita_Btn_AggiungiCampione()"
+              >
+                <fa-icon size="lg" [icon]="['fas', 'plus']" aria-hidden="true"></fa-icon>
+                <span>
+                                    {{"AggiungiCampione" | transloco}}
+                                </span>
+              </button>
+
+              <br *ngIf="!disabilita_Btn_AggiungiCampione()">
+
+              <div *ngFor="let item of campioni.controls; let i = index" [formGroup]="item" class="item-border">
+
+                <button class="btn btn-primary btn-delete btn-sm top-right-button"
+                        [title]="'EliminaCampione' | transloco"
+                        [disabled]="disabledDeleteCampione"
+                        (click)="removeCampione(i)"
+                >
+                  <div class="k-icon k-i-btn_elimina_campione"></div>
+                </button>
+
+                <br>
+
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <gias-text-template [name]="'Descrizione' | transloco"
+                                        [clearButton]="true"
+                                        [maxlength]="250"
+                                        giasFormControlName="descrizione">
+                    </gias-text-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-data-template [name]="'DataPrelievo' | transloco"
+                                        giasFormControlName ="dataPrelievo">
+                    </gias-data-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-text-template [name]="'Longitudine' | transloco"
+                                        giasFormControlName="longitude">
+                    </gias-text-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-text-template [name]="'Latitudine' | transloco"
+                                        giasFormControlName="latitude">
+                    </gias-text-template>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <gias-numeric-template [name]="'Ettaro' | transloco"
+                                           [format]="'n2'"
+                                           giasFormControlName="riferimento1">
+                    </gias-numeric-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-numeric-template [name]="'Profondita' | transloco"
+                                           [format]="'n2'"
+                                           giasFormControlName="profondita">
+                    </gias-numeric-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-numeric-template [name]="'Quantita' | transloco"
+                                           [format]="'n2'"
+                                           giasFormControlName="quantita">
+                    </gias-numeric-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-drop-down-template
+                      [name]="'UnitàDiMisuraAbbr' | transloco"
+                      [id]="'UdM'"
+                      [listItems]="listaUdM"
+                      textField="descrizione"
+                      valueField="codice"
+                      giasFormControlName="unitaMisura"
+                      [valuePrimitive]="false">
+                    </gias-drop-down-template>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-12 col-md-3">
+                    <gias-text-template [name]="'Riferimenti' | transloco"
+                                        [clearButton]="true"
+                                        [maxlength]="250"
+                                        giasFormControlName="riferimento2">
+                    </gias-text-template>
+                  </div>
+                  <div class="col-12 col-md-3">
+                    <gias-drop-down-template
+                      [name]="'ParticellaCatastale' | transloco"
+                      [id]="'Catasto'"
+                      [listItems]="listaCatasto"
+                      textField="descrizione"
+                      valueField="primaryKey"
+                      giasFormControlName="particella"
+                      [valuePrimitive]="false">
+                    </gias-drop-down-template>
+                  </div>
+                  <div class="col-12 col-md-6">
+                    <gias-text-template [name]="'Note' | transloco"
+                                        [clearButton]="true"
+                                        [maxlength]="1000"
+                                        giasFormControlName="note">
+                    </gias-text-template>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </gias-expansionpanel>
+          <gias-expansionpanel [id]="'Note'" [isExpanded]="isExpandedNote" [willStoreCookies]="false">
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span>{{ 'Note' | transloco }}</span>
+            </div>
+
+            <div class="col-12 col-md-12">
+              <gias-text-template [name]="'Note' | transloco"
+                                  [maxlength]="750"
+                                  [clearButton]="true"
+                                  giasFormControlName="note">
+              </gias-text-template>
+            </div>
+          </gias-expansionpanel>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

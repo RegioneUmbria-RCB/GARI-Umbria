@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{966D35F9-44C1-4706-93C9-1985F349A80B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DataPublish_Abaco</RootNamespace>
+    <AssemblyName>DataPublish_Abaco</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <Reference Include="GeoAPI, Version=1.7.5.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeoAPI.Core.1.7.5\lib\net45\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI.CoordinateSystems, Version=1.7.5.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeoAPI.CoordinateSystems.1.7.5\lib\net45\GeoAPI.CoordinateSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.2.5.0\lib\netstandard2.0\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite.CoordinateSystems, Version=1.15.3.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NetTopologySuite.CoordinateSystems.1.15.3\lib\net45\NetTopologySuite.CoordinateSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNET, Version=1.4.0.0, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <HintPath>..\packages\ProjNET4GeoAPI.1.4.1\lib\net45\ProjNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\WebApiCaller.vb" />
+    <Compile Include="Controller\AgronicaCoreWSController.vb" />
+    <Compile Include="Controller\ColdirettiIdentityProvider.vb" />
+    <Compile Include="Controller\ColdirettiProvisioner.vb" />
+    <Compile Include="DTO\Anagrafica.vb" />
+    <Compile Include="DTO\AssociazionePianoColturaleGraficoTerreni.vb" />
+    <Compile Include="DTO\Equipaggiamento.vb" />
+    <Compile Include="DTO\GruppoAppezzamento.vb" />
+    <Compile Include="DTO\Lavoratore.vb" />
+    <Compile Include="DTO\PianoColturaleGrafico.vb" />
+    <Compile Include="DTO\ProvisioningSubscriptionService.vb" />
+    <Compile Include="DTO\SyncAcknowledge.vb" />
+    <Compile Include="DTO\Terreni.vb" />
+    <Compile Include="DTO\UtenteColdiretti.vb" />
+    <Compile Include="Helper.vb" />
+    <Compile Include="Import.vb" />
+    <Compile Include="Logger\FileLogger.vb" />
+    <Compile Include="Logger\LoggerManager.vb" />
+    <Compile Include="Model\CustomExceptions.vb" />
+    <Compile Include="Model\ParametriImportAnagrafiche.vb" />
+    <Compile Include="Model\Utility.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Controller\WebApiDataPublish.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{67c6ea54-9c35-4baa-b01d-31b11f18f735}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{6300885f-3954-4f7b-91e9-1b028fa64b74}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.OAuth2\Agronica.Helpers.OAuth2.vbproj">
+      <Project>{451c42ed-fc7e-4f90-b4ec-41fc8ac4e39d}</Project>
+      <Name>Agronica.Helpers.OAuth2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDemetraBIZ\AgronicaCoreDemetraBIZ.vbproj">
+      <Project>{5b028fa0-5a20-44d5-9392-3ad735695ac4}</Project>
+      <Name>AgronicaCoreDemetraBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreNotifichePushBIZ\AgronicaCoreNotifichePushBIZ.vbproj">
+      <Project>{16b11741-8e65-4466-89dd-19bfc3fa4bd4}</Project>
+      <Name>AgronicaCoreNotifichePushBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisBIZ\AgronicaCoreGisBIZ.vbproj">
+      <Project>{8942b252-809e-4fe1-9284-a3fdd7a174ea}</Project>
+      <Name>AgronicaCoreGisBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{d6963b76-054b-4070-8bad-dc9cc4c6f8d7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.FormatsConverter\AgronicaConversioneCartografiaGias.FormatsConverter.vbproj">
+      <Project>{AB4CD9B0-7252-43EF-9EFB-34AD450DD74E}</Project>
+      <Name>AgronicaConversioneCartografiaGias.FormatsConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.GeoConverter.vbproj">
+      <Project>{8FA27405-01BD-4DA3-9461-DBB8FE16DEC7}</Project>
+      <Name>AgronicaConversioneCartografiaGias.GeoConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaGIS2012.Commons\AgronicaGIS2012.Commons.vbproj">
+      <Project>{bea06bcc-9ebb-43bc-bb37-fd4519d128d3}</Project>
+      <Name>AgronicaGIS2012.Commons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

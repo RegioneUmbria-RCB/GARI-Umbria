@@ -1,0 +1,57 @@
+<div class="prof-imprese-column gap-20">
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-global [globalSubject]="globalSubject"></app-profilazione-imprese-global>
+
+    <div class="prof-imprese-switch">
+      <div>{{ 'profImprese.SpecieVarietaGestiteInAnagrafica' | transloco }}</div>
+      <kendo-switch (valueChange)="tutteSpecieSubject.next($event)" [checked]="tutteSpecieSubject.value"></kendo-switch>
+      <div>{{ 'profImprese.TutteLeSpecieVarieta' | transloco }}</div>
+    </div>
+
+    <div class="spacer"></div>
+  </div>
+
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-specie [specieSubject]="specieSubject" [globalSubject]="globalSubject"
+      [additionalElement]="additionalSpecie"></app-profilazione-imprese-specie>
+
+    <app-profilazione-imprese-varieta [additionalElement]="additionalVarieta" [specieSubject]="specieSubject"
+      [tutteVarietaSubject]="tutteSpecieSubject" [varietaSubject]="varietaSubject"></app-profilazione-imprese-varieta>
+
+    <div class="default-specie" *ngIf="{
+      global: globalSubject | async, 
+      specie: specieSubject | async, 
+      varieta: varietaSubject | async, 
+      piva: piva$ | async
+    } as data">
+      <button kendoButton [disabled]="specieSubject.value == defaultSpecie"
+        class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+        (click)="addDefault(data.specie, data.varieta, data.global, data.piva)">
+        {{ 'profImprese.GestisciDefaultSpecie' | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <kendo-tabstrip>
+    <kendo-tabstrip-tab title="{{ 'profImprese.DefaultDellaSpecie' | transloco }}" [selected]="true">
+      <ng-template kendoTabContent>
+        <app-profilazione-imprese-default-specie [specieSubject]="specieSubject"
+          [defaultSpecie]="additionalSpecie.Veg_Cod"></app-profilazione-imprese-default-specie>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab title="{{ 'profImprese.ParametriGeneraliColtura' | transloco }}">
+      <ng-template kendoTabContent>
+        <app-profilazione-imprese-parametri-generali-coltura></app-profilazione-imprese-parametri-generali-coltura>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab title="{{ 'profImprese.DefaultDellaDistintaDiProduzione' | transloco }}">
+      <ng-template kendoTabContent>
+        <app-profilazione-imprese-default-distinta-produzione
+          [specieSubject]="specieSubject"></app-profilazione-imprese-default-distinta-produzione>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+
+</div>

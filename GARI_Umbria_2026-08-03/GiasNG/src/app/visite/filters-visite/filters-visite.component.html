@@ -1,0 +1,187 @@
+<div class="custom-toolbar" *ngIf="displayButton">
+    <button kendoButton look="flat"
+        (click) ="onOpenFilters()" 
+        [disabled]="isDisabled">
+        <fa-icon size="lg" [icon]="faFilters"></fa-icon>
+    </button>
+</div>
+
+<kendo-drawer-container>
+    <kendo-drawer #drawer mode="overlay" [width]="drawerWidth"
+    [position]="'end'"
+    (collapse)="onCancel()" 
+    (expand)="shouldApply=true"
+    >
+        <ng-template kendoDrawerTemplate>
+            <form [formGroup]="FiltersVisite">
+
+                <div *ngIf="false" class="btn right" style="margin-bottom: -20px;" (click)="onClear()">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </div>
+
+                <div class="btn right" style="margin-bottom: -20px;" (click)="onCancel()">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </div>
+
+                <div class="gias-label-switch-container">
+                    <span class="switch-label k-label" style="padding-left: 10px; padding-right: 20px">{{ 'Sintetico' | transloco }}</span>
+                        <gias-switch-template #DettaglioRilievo
+                                            [hideLabel]="true"
+                                            giasFormControlName="WithDettaglioRilievo"
+                                            (valueChange)="changeDettaglioRilievo($event)"
+                                            [isBlue]="true"
+                                            [hideformfield]="true">
+                        </gias-switch-template>
+                    <span class="switch-label k-label" style="padding-left: 10px;">{{ 'Dettaglio' | transloco }}</span>
+                </div>
+
+                <gias-drop-down-template-s
+                    [name]="'Operatore' | transloco"
+                    [obligatory]="false"
+                    [listItems]="OperatoriVisita"
+                    textField="nome_cognome"
+                    valueField="username"
+                    giasFormControlName="OperatoreVisita"
+                    [filterable]="true"
+                    [placeholder]="'Tutti'"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultOperatore">
+                </gias-drop-down-template-s>
+
+                <div class="gias-label-switch-container mt-1">
+                    <span class="switch-label k-label" style="padding-left: 10px; padding-right: 20px">{{ 'Aziende' | transloco }}</span>
+                        <gias-switch-template #AziendeAgenzie
+                                            [hideLabel]="true"
+                                            giasFormControlName="Aziende_Agenzie"
+                                            [isBlue]="true"
+                                            (valueChange)="changeAziendeAgenzie($event)"
+                                            [hideformfield]="true">
+                        </gias-switch-template>
+                    <span class="switch-label k-label" style="padding-left: 10px;">{{ 'Agenzie' | transloco }}</span>
+                </div>
+                
+                <gias-drop-down-template-s
+                    [name]="'Azienda' | transloco"
+                    [obligatory]="false"
+                    [listItems]="AziendeVisita"
+                    textField="ragioneSociale"
+                    valueField="partitaIva"
+                    giasFormControlName="AziendeVisita"
+                    [virtual]="{ itemHeight: 28 }"
+                    [filterable]="true"
+                    [placeholder]="'Tutte'"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultAzienda">
+                </gias-drop-down-template-s>
+
+                <div class="gias-label-switch-container mt-1">
+                    <span class="switch-label k-label" style="padding-left: 10px;">{{ 'visite.SpecieAziendali' | transloco }}</span>
+                    <span class="switch-label k-label" style="padding-left: 10px; padding-right: 20px">{{ 'No' | transloco }}</span>
+                        <gias-switch-template #SpecieAziendali
+                                            [hideLabel]="true"
+                                            giasFormControlName="Visualizza_Specie"
+                                            (valueChange)="changeDominioSpecie($event)"
+                                            [isBlue]="true"
+                                            [hideformfield]="true">
+                        </gias-switch-template>
+                    <span class="switch-label k-label" style="padding-left: 10px;">{{ 'Si' | transloco }}</span>
+                </div>
+
+                <gias-drop-down-template-s
+                    [name]="'Specie' | transloco"
+                    giasFormControlName="SpecieVisita"
+                    [textField]="'descrizione'"
+                    [valueField]="'codice'"
+                    [listItems]="SpecieVisita"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultSpecie">
+                </gias-drop-down-template-s>
+
+                <gias-drop-down-template-s
+                    [name]="'Centro_Aziendale' | transloco"
+                    giasFormControlName="CentroAziendaleVisita"
+                    [listItems]="CentroAziendaleVisita"
+                    [textField]="'nome'"
+                    [valueField]="'primaryKey.codice'"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultCentro">
+                </gias-drop-down-template-s>
+
+                <gias-data-template
+                    [name]="'Da' | transloco"
+                    giasFormControlName="Da"
+                    [nullValue]="Data_Inizio">
+                </gias-data-template>
+                <gias-data-template
+                    [name]="'A' | transloco"
+                    giasFormControlName="A"
+                    [nullValue]="Data_Fine">
+                </gias-data-template>
+
+                <div *ngif="false">
+                    <gias-multiselect-template-s
+                        [name]="'Impianti' | transloco"
+                        giasFormControlName="Impianti"
+                        [listItems]="ImpiantiVisita"
+                        textField="des"
+                        valueField="chiave"
+                        [obligatory]="false"
+                        [clearButton]="true"
+                        [filterable]="true"
+                        [placeholder]="'Tutti'"
+                        [valuePrimitive]="false">
+                    </gias-multiselect-template-s>
+                </div>
+
+                <gias-drop-down-template-s
+                        [name]="'SpecieAnimali' | transloco" 
+                        [clearButton]="true"
+                        [listItems]="SpecieAnimaliVisita"
+                        textField="Descrizione_Concatenata"
+                        valueField= "Codice_Concatenato"
+                        [filterable]="true"
+                        giasFormControlName="SpecieAnimaliVisita"
+                        [valuePrimitive]="false"
+                        [defaultItem]="defaultSpecieAnimale">
+                </gias-drop-down-template-s>
+
+                <gias-multiselect-template-s
+                    [name]="'Tipo_Operazione' | transloco"
+                    [obligatory]="false"
+                    [listItems]="OperazioniVisita"
+                    textField="descrizione"
+                    valueField="codice"
+                    giasFormControlName="TipoOperazione"
+                    [filterable]="true"
+                    [placeholder]="'Tutte'"
+                    [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+
+                <gias-drop-down-template-s
+                    [name]="'Tipo_Visita' | transloco"
+                    [obligatory]="false"
+                    [listItems]="TipiVisita"
+                    textField="value"
+                    valueField="key"
+                    giasFormControlName="TipoVisita"
+                    [filterable]="true"
+                    [placeholder]="'Tutte'"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultTipoVisita">
+                </gias-drop-down-template-s>
+                
+                <div class="col" style="padding-top: 20pt;">
+                    <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()">
+                        <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+                        <span>{{ 'Cerca' | transloco }}</span>
+                    </div>
+                </div>
+                
+            </form>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container>

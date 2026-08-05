@@ -1,0 +1,11 @@
+<kendo-tabstrip (tabSelect)="onTabSelect($event)" id="profilazione-imprese-tabstrip">
+  <kendo-tabstrip-tab *ngFor="let tab of tabs; let i = index" [title]="tab.title | transloco"
+    [selected]="selected == i">
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+<div class="k-tabstrip">
+  <div class="k-content k-active">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div [formGroup]="FormulatiForm">
+    <ng-container
+        [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateDettagliFormulatiGridDosi : TemplateDettagliFormulatiSenzaGridDosi"
+        [ngTemplateOutletContext]="{Formulati:FormulatiForm}">
+    </ng-container>
+</div>
+
+
+<ng-template #TemplateDettagliFormulatiGridDosi let-Formulati='Formulati'>
+    <div [formGroup]="Formulati" style="width: 100%">
+        <div class="col-12 col-sm-12">
+            <div class="row form-row mt-2 mb-2" *ngIf="qdcformulatiservice.mostraEpocaDPI(Formulati)">
+                <div class="col-12">
+                    <gias-drop-down-template-s
+                        [name]="qdcformulatiservice.getDescrizioneEpocaDPI(Formulati)"
+                        [obligatory]="true"
+                        [clearButton]="true"
+                        [listItems]="qdcformulatiservice.Array_EpocheDPI"
+                        (open)="openControlFormulati($event, 'EpocaDPI')"
+                        textField="descrizione"
+                        valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="EpocaDPI"
+                        [valuePrimitive]="false">
+                    </gias-drop-down-template-s>
+                </div>
+
+                <div *ngIf="qdcservice.mostraModalitaApplicazione(FormulatiForm.get('Operazione').getRawValue())">
+                  <app-modalita-applicazione></app-modalita-applicazione>
+                </div>
+
+            </div>
+            <app-dettagli-formulati></app-dettagli-formulati>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #TemplateDettagliFormulatiSenzaGridDosi let-Formulati='Formulati'>
+    <div [formGroup]="Formulati" style="width: 100%">
+        <div class="col-12 col-sm-12">
+
+            <div id="parent" class="formulati-header mb-2">
+
+                <div class="epoca-container"
+                        *ngIf="qdcformulatiservice.mostraEpocaDPI(Formulati)">
+                    <gias-drop-down-template-s
+                        [name]="qdcformulatiservice.getDescrizioneEpocaDPI(Formulati)"
+                        [obligatory]="qdcformulatiservice.ObbligatoryEpocaDPI()"
+                        [clearButton]="true"
+                        [listItems]="qdcformulatiservice.Array_EpocheDPI"
+                        (open)="openControlFormulati($event, 'EpocaDPI')"
+                        textField="descrizione"
+                        valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="EpocaDPI"
+                        [valuePrimitive]="false">
+                    </gias-drop-down-template-s>
+                </div>
+
+                <div class="modalita-applicazione-container" *ngIf="qdcservice.mostraModalitaApplicazione(FormulatiForm.get('Operazione').getRawValue())">
+                  <app-modalita-applicazione></app-modalita-applicazione>
+                </div>
+
+                <div class="epoca-container"
+                     *ngIf="qdcformulatiservice.mostraRipartizioneTrappole(Formulati)">
+                  <gias-drop-down-template-s
+                    [name]="'RipartizioneTrappole' | transloco"
+                    [clearButton]="true"
+                    [listItems]="qdcservice.Opzioni_Ripartizione_Trappole"
+                    textField="descrizione"
+                    valueField="codice"
+                    [filterable]="true"
+                    giasFormControlName="Ripartizione_Trappole"
+                    [valuePrimitive]="false">
+                  </gias-drop-down-template-s>
+                </div>
+
+
+                <div class="bottone-aggiunta-container" *ngIf="qdcservice.Mostra_Btn_AggiungiDoseProdotto(Formulati.get('Operazione').getRawValue())">
+                    <app-bottone-aggiunta-prodotto></app-bottone-aggiunta-prodotto>
+                </div>
+
+            </div>
+
+            <ng-container
+              [ngTemplateOutlet]="TemplateDettagli_Formulati"
+              [ngTemplateOutletContext]="{Formulati:FormulatiForm}">
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+
+
+<ng-template #TemplateDettagli_Formulati let-Formulati='Formulati'>
+  <div [id]="'Dettagli_Formulati_' + i"
+       *ngFor="let Dettagli_Formulati of qdcservice.DosiProdottiFormArray(Formulati,null).controls; index as i">
+    <div [formGroup]="Dettagli_Formulati">
+      <div class="row form-row"
+           [ngClass]="ClassDettagliFormulati(Dettagli_Formulati)">
+        <app-dettagli-formulati></app-dettagli-formulati>
+      </div>
+    </div>
+  </div>
+</ng-template>

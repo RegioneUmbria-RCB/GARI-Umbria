@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AgronicaCoreModelsSTD.metaschema.Istat">
+    <Position X="3.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AgAABAAAAAAAAAAAACAAAQAgAAIAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>metaschema\Istat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Indirizzo">
+    <Position X="3.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAABAAAAAEAgAAQAAAAAAAAAAAAAABAAAAAAAQAAAA=</HashCode>
+      <FileName>anagrafiche\Indirizzo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="istatComune" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.IndirizzoAssociato">
+    <Position X="6.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>anagrafiche\IndirizzoAssociato.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="indirizzo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Impresa">
+    <Position X="9.75" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIABAAAARAiAAAAAAgQAAAAAEQAIBAABACAA=</HashCode>
+      <FileName>anagrafiche\Impresa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="indirizzi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Appezzamento">
+    <Position X="9.5" Y="6" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AgronicaCoreModelsSTD.anagrafiche.Appezzamento.PK" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>anagrafiche\Appezzamento.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="indirizzi" Type="AgronicaCoreModelsSTD.anagrafiche.IndirizzoAssociato" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="6.811" />
+        <Point X="7.5" Y="6.811" />
+        <Point X="7.5" Y="4.103" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.807" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAJAEZEwQAAAAQCDAAAUIACAAEAEAEQACCRABAEBk=</HashCode>
+      <FileName>anagrafiche\Appezzamento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="indirizzi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.CentroAziendale">
+    <Position X="9.5" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="AgronicaCoreModelsSTD.anagrafiche.CentroAziendale.PK" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>anagrafiche\CentroAziendale.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="indirizzi" Type="AgronicaCoreModelsSTD.anagrafiche.IndirizzoAssociato" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="4.863" />
+        <Point X="9.125" Y="4.863" />
+        <Point X="9.125" Y="3.688" />
+        <Point X="7.75" Y="3.688" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>QQAAMAEAAAAgAABUAKAAAAAAAAAAAAAABACAAABAAEA=</HashCode>
+      <FileName>anagrafiche\CentroAziendale.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="indirizzi" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Contatto">
+    <Position X="9.5" Y="8" Width="1.5" />
+    <NestedTypes>
+      <Class Name="AgronicaCoreModelsSTD.anagrafiche.Contatto.PK" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>anagrafiche\Contatto.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <AssociationLine Name="indirizzi" Type="AgronicaCoreModelsSTD.anagrafiche.IndirizzoAssociato" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="9.5" Y="8.911" />
+        <Point X="6.688" Y="8.911" />
+        <Point X="6.688" Y="4.103" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AQABBAAAAAggABAQAAAAADAQgQYAAIAAAACAAEBIUAA=</HashCode>
+      <FileName>anagrafiche\Contatto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="indirizzi" />
+      <Property Name="rubricaVoci" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.RubricaVoci">
+    <Position X="6" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>anagrafiche\RubricaVoci.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="rubrica" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Rubrica">
+    <Position X="3.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>anagrafiche\Rubrica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

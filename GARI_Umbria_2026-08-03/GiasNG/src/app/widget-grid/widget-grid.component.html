@@ -1,0 +1,56 @@
+    <!-- <div
+      *ngFor="let dropTarget of dropTargets"
+      kendoDropTarget
+      (dragEnter)="handleDragEnter(dropTarget)"
+      (drop)="handleDrop(dropTarget)"
+      (dragLeave)="handleDragLeave()"
+      [ngClass]="{
+        'my-drop': true,
+        entered: enteredBox === dropTarget && enteredBox !== currentBox
+      }"
+    >
+      <button
+        kendoButton
+        kendoDragTarget
+        *ngIf="currentBox === dropTarget"
+        (press)="handlePress()"
+        (release)="resetText()"
+        (dragEnd)="resetText()"
+        themeColor="primary"
+      >
+        <span class="k-icon k-i-move k-icon-md"></span>
+        {{ btnText }}
+      </button>
+      {{ currentBox !== dropTarget ? "Drop Here" : "" }}
+    </div>
+
+
+    <kendo-card width="360px">
+        <kendo-card-header class="k-hstack">
+          <kendo-avatar
+            width="40px"
+            height="40px"
+            [imageSrc]="thumbnailSrc"
+            shape="circle"
+          ></kendo-avatar>
+          <div>
+            <h1 kendoCardTitle>1</h1>
+            <p kendoCardSubtitle>Bulgaria, Europe</p>
+          </div>
+        </kendo-card-header>
+      </kendo-card>
+
+      <kendo-card width="360px">
+        <kendo-card-header class="k-hstack">
+          <kendo-avatar
+            width="40px"
+            height="40px"
+            [imageSrc]="thumbnailSrc"
+            shape="circle"
+          ></kendo-avatar>
+          <div>
+            <h1 kendoCardTitle>2</h1>
+            <p kendoCardSubtitle>Bulgaria, Europe</p>
+          </div>
+        </kendo-card-header>
+      </kendo-card> -->

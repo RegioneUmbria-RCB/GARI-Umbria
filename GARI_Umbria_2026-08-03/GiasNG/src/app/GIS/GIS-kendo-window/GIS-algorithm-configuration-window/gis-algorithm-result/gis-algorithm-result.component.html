@@ -1,0 +1,163 @@
+<div #checkList>
+
+  <form [formGroup]="timeFilterForm">
+    <div class="row from-row">
+      <div class="col-lg-6 col-md-6 col.sm-12">
+        <gias-data-template
+          [name]="'DaData' | transloco"
+          giasFormControlName="start"
+          [nullValue]="AGRODATAINIZIO"
+          (afterValueChanged)="onTimeFilterChange()"
+        >
+        </gias-data-template>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col.sm-12">
+        <gias-data-template
+          [name]="'AData' | transloco"
+          giasFormControlName="end"
+          [nullValue]="AGRODATAFINE"
+          (afterValueChanged)="onTimeFilterChange()"
+        >
+        </gias-data-template>
+      </div>
+    </div>
+  </form>
+
+  <form [formGroup]="typeForm" style="padding-bottom: 1%">
+    <div class="row from-row">
+      <div class="col-lg-6 col-md-6 col.sm-12">
+        <gias-drop-down-template
+          id="type"
+          [name]="'Tipo' | transloco"
+          valueField="codice"
+          textField="descrizione"
+          giasFormControlName="type"
+          [listItems]="types"
+          [valuePrimitive]="false"
+          (valueChange)="onTypeChange()"
+        ></gias-drop-down-template>
+      </div>
+
+      <div *ngIf="showQueueBtn()" class="col-lg-3 col-md-3 col.sm-12" style="display: flex; align-items: end; justify-content: center;">
+        <button
+          style="width: 100%"
+          [title]="''"
+          [type]="'button'"
+          class="bottom btn btn-primary btn-primary-fill"
+          (click)="queueExecution(false)"
+          [disabled]="!validCheckListTypeSelected()"
+        >
+          {{"AccodaEsecuzione" | transloco}}
+        </button>
+      </div>
+
+      <div *ngIf="showMassiveQueueBtn()" class="col-lg-3 col-md-3 col.sm-12" style="display: flex; align-items: end; justify-content: center;">
+        <button
+          style="width: 100%"
+          [title]="''"
+          [type]="'button'"
+          class="bottom btn btn-primary btn-primary-fill"
+          (click)="queueExecution(true)"
+          [disabled]="!validCheckListTypeSelected()"
+        >
+          {{"AccodaEsecuzioneImprese" | transloco}}
+        </button>
+      </div>
+
+      <div *ngIf="!showQueueBtn()" class="col-lg-3 col-md-3 col.sm-12" style="display: flex; align-items: end; justify-content: center;">
+        <button
+          style="width: 100%"
+          [title]="'' | transloco"
+          [type]="'button'"
+          class="bottom btn btn-primary btn-primary-fill"
+          (click)="enableCompany()"
+          [disabled]="!validCheckListTypeSelected()"
+        >
+          {{ "AbilitaAzienda" | transloco }}
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <ng-container *ngIf="showCheckList()">
+    <div class="card">
+      <div class="row form-row">
+        <div class="row form-row">
+          <div class="col-11">
+            <h5 class="card-title">{{ typeForm.get('type').value['descrizione'] }} - {{ companyName() }}</h5>
+          </div>
+          <div class="col-1">
+            <fa-icon
+              kendoTooltip
+              [title]="'Aggiorna' | transloco"
+              class="verticalAlignMiddle"
+              size="lg"
+              [icon]="faReload"
+              aria-hidden="true"
+              (click)="refreshCheckList$.next()">
+            </fa-icon>
+          </div>
+          <p *ngIf="currentCompanyExecutions.length === 0">{{ 'NessunDatoRegistrato' | transloco}}</p>
+        </div>
+
+
+        <div class="card-text" style="width: 100%">
+          <div *ngFor="let exec of currentCompanyExecutions">
+            <gias-expansionpanel>
+              <div class="header-content" headerContent>
+                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                <span><em>{{ exec.checkList_des }}</em></span>
+              </div>
+
+              <div class="card-text" style="width: 100%">
+                <div *ngFor="let e of exec.elencoElaborazioni">
+                  <gias-expansionpanel>
+                    <div class="header-content execution-item" headerContent>
+                      <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                      <span><em>{{ 'EsecuzioneDel' | transloco }}: {{ transformToShortDate(e.dataElaborazione) }}</em></span>
+                      <span style="align-content: end" [class]="statusClass(e.esito)"> {{ e.esito }}</span>
+                    </div>
+
+                    <div *ngFor="let dd of e.dettaglioAlgoritmi">
+                      <gias-expansionpanel>
+                        <div class="execution-item" headerContent>
+                          <span><em>{{ dd.descrizione }}</em></span>
+                          <span style="align-content: end" [class]="statusClass(dd.esito)"> {{ dd.esito }}</span>
+                        </div>
+
+                        <div *ngFor="let d of dd.dettaglio">
+                          <!--                          <p style="margin: 1%">{{ d.descrizione }}</p>-->
+                          <div style="margin: 1%">
+                            <span><em>{{ d.descrizione }}</em></span>
+                            <span style="align-content: end" [class]="statusClass(d.esito)"> {{ d.esito }}</span>
+                          </div>
+                        </div>
+                      </gias-expansionpanel>
+                    </div>
+                  </gias-expansionpanel>
+                </div>
+              </div>
+            </gias-expansionpanel>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+</div>
+
+<ng-template #dateTemplate>
+  <form [formGroup]="dateForm">
+    <gias-data-template
+      [name]="'Data' | transloco"
+      giasFormControlName="date"
+      [nullValue]="TODAY"
+      [disabledDates]="disableDates.bind(this)"
+    >
+    </gias-data-template>
+  </form>
+  <div *ngIf="showMassiveQueueBtn() && showMassiveAlert" class="massive-execution-alert massive-execution-alert-text">
+    <h6>{{ 'AccodaEsecuzioneImpreseAlert' | transloco }}</h6>
+  </div>
+</ng-template>

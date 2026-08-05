@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01A6779C-2AD5-4D57-A086-3B1A922E5EE5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaAlgoritmiProiezione</RootNamespace>
+    <AssemblyName>AgronicaAlgoritmiProiezione</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.67.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.67.0\lib\net462\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.67.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.67.0\lib\net462\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.67.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.67.0\lib\net462\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2, Version=1.67.0.1869, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Oauth2.v2.1.67.0.1869\lib\net462\Google.Apis.Oauth2.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.CodeDom, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.CodeDom.7.0.0\lib\net462\System.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithm_Extension.vb" />
+    <Compile Include="Algoritmi\AlgoritmoBaseWSMappe.vb" />
+    <Compile Include="Algoritmi\CaricamentoPiattaformaSat.vb" />
+    <Compile Include="Algoritmi\Caricamento_Catasto.vb" />
+    <Compile Include="Algoritmi\Caricamento_WS_Mappe.vb" />
+    <Compile Include="Algoritmi\RasterOverlayGDAL_Algorithm.vb" />
+    <Compile Include="Base\WebApiCaller.vb" />
+    <Compile Include="CheckListExtenstion_Factory.vb" />
+    <Compile Include="Algoritmi\AlgoritmoBaseGEE.vb" />
+    <Compile Include="Algoritmi\EsportazioneBulkLayer.vb" />
+    <Compile Include="Algoritmi\ProjectionLayerOverLayerAlgorithm.vb" />
+    <Compile Include="DTO\CustomMapOverlayBaseInizializzaCalendario.vb" />
+    <Compile Include="DTO\RasterCrop.vb" />
+    <Compile Include="DTO\Rasterized.vb" />
+    <Compile Include="Estensioni\ComplianceISCC_Ext.vb" />
+    <Compile Include="Estensioni\ICheckListExtension.vb" />
+    <Compile Include="InputWSMappe\IInput_WS_Mappe.vb" />
+    <Compile Include="InputWSMappe\Richieste_WS_Mappe.vb" />
+    <Compile Include="V2\Algoritmi\AlgoritmoBaseGEE.vb" />
+    <Compile Include="V2\Algoritmi\Caricamento_Piattaforma_GEE.vb" />
+    <Compile Include="V2\Algoritmi\IAlgoritmoProiezione.vb" />
+    <Compile Include="Algoritmo_Factory.vb" />
+    <Compile Include="Algoritmi\Algoritmo_Intersezione.vb" />
+    <Compile Include="Algoritmi\Caricamento_Raster_GEE.vb" />
+    <Compile Include="Algoritmi\Caricamento_Piattaforma_GEE.vb" />
+    <Compile Include="Algoritmi\IAlgoritmoProiezione.vb" />
+    <Compile Include="InputGEE\Input_Intersezione_GEE.vb" />
+    <Compile Include="InputGEE\InputGEE.vb" />
+    <Compile Include="InputGEE\Richiesta_Accodamento_GEE.vb" />
+    <Compile Include="Models\CF_Config.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ParametriAlgoritmo_Factory.vb" />
+    <Compile Include="V2\Algoritmo_Factory.vb" />
+    <Compile Include="V2\DTOs\CF_Config.vb" />
+    <Compile Include="V2\DTOs\Config_GEE.vb" />
+    <Compile Include="V2\DTOs\Parametri_Extra_Load_GEE.vb" />
+    <Compile Include="V2\ParametriAlgoritmo_Factory.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{A1F2F959-43C8-4FE6-B159-96652FF9FB2B}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisBIZ\AgronicaCoreGisBIZ.vbproj">
+      <Project>{8942b252-809e-4fe1-9284-a3fdd7a174ea}</Project>
+      <Name>AgronicaCoreGisBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{d6963b76-054b-4070-8bad-dc9cc4c6f8d7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaSHPWrapper.InterpretaDatiDBF\AgronicaSHPWrapper.InterpretaDatiDBF.vbproj">
+      <Project>{a129af63-714d-49b5-899d-5500523bba98}</Project>
+      <Name>AgronicaSHPWrapper.InterpretaDatiDBF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaSHP\AgronicaSHPWrapper\AgronicaSHPWrapper.vbproj">
+      <Project>{BF0B317E-C293-4529-B2D5-57E3A92B5FDE}</Project>
+      <Name>AgronicaSHPWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agronica.Helpers.GDAL\Agronica.Helpers.GDALHelper.vbproj">
+      <Project>{bf6c161c-92ea-46e5-a06d-2e1bd8c66c83}</Project>
+      <Name>Agronica.Helpers.GDALHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMessaggisticaBIZ\AgronicaCoreMessaggisticaBIZ.vbproj">
+      <Project>{d9600576-aa06-456a-b606-5c9bf03eaee5}</Project>
+      <Name>AgronicaCoreMessaggisticaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30FDD803-F95C-4F68-BE23-6538127E149D}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProvisioningBIZ\AgronicaCoreProvisioningBIZ.vbproj">
+      <Project>{1c177e8f-a241-439d-aef3-8f64d3755c00}</Project>
+      <Name>AgronicaCoreProvisioningBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="OperazioniOutputSync\" />
+    <Folder Include="V2\Base\" />
+    <Folder Include="V2\Model\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

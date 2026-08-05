@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreDataProvider</RootNamespace>
+    <AssemblyName>AgronicaCoreDataProvider</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Diagnostics.STrace, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.SqlServer.Diagnostics.STrace.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.SqlParser, Version=14.100.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.SqlServer.Management.SqlParser.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessoMultiQuery.vb" />
+    <Compile Include="AgroDBParametro.vb" />
+    <Compile Include="AgroEccezioni.vb" />
+    <Compile Include="AgronicaCoreParametri.vb" />
+    <Compile Include="Agro_Math.vb" />
+    <Compile Include="Agro_Sequenze.vb" />
+    <Compile Include="Albero.vb" />
+    <Compile Include="Attributi\DataProviderBypassLogAttribute.vb" />
+    <Compile Include="Attributi\DataProviderInjectParameterAttribute.vb" />
+    <Compile Include="Caching\ClearCacheAttribute.vb" />
+    <Compile Include="Caching\CacheableAttribute.vb" />
+    <Compile Include="Caching\CacheBase.vb" />
+    <Compile Include="Caching\CacheController.vb" />
+    <Compile Include="Caching\CachedFiltroAggiuntivo.vb" />
+    <Compile Include="Caching\CachedDataProvider.vb" />
+    <Compile Include="Caching\CachedDataProviderAttribute.vb" />
+    <Compile Include="Caching\CahcedQueryInErrore.vb" />
+    <Compile Include="Caching\ICacheableData.vb" />
+    <Compile Include="Chiave_GiasPro.vb" />
+    <Compile Include="Configurazion\ConfigurazioneAjax.vb" />
+    <Compile Include="Configurazion\ConfigurazioneAjaxFactory.vb" />
+    <Compile Include="Configurazion\ConfigurazioneBase.vb" />
+    <Compile Include="Configurazion\ConfigurazioneEstesaSqlProvider.vb" />
+    <Compile Include="Configurazion\ConfigurazioneEstesaSqlProviderFactory.vb" />
+    <Compile Include="Configurazion\ConfigurazioneLogProviderEsteso.vb" />
+    <Compile Include="Configurazion\ConfigurazioneLogProviderFactory.vb" />
+    <Compile Include="Connessioni.vb" />
+    <Compile Include="ConnessioniTransazioni.vb" />
+    <Compile Include="Conversioni.vb" />
+    <Compile Include="Data.vb" />
+    <Compile Include="CostantiPersonalizzate.vb" />
+    <Compile Include="ElasticSearchLogger\Controller.vb" />
+    <Compile Include="ElasticSearchLogger\ElasticSearchLogger.vb" />
+    <Compile Include="ElasticSearchLogger\WebApiCaller.vb" />
+    <Compile Include="Gias_resx\Gias.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Gias.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ISqlSave.vb" />
+    <Compile Include="ListExtension.vb" />
+    <Compile Include="LogProviderEsteso.vb" />
+    <Compile Include="Mapper\Map2Object.vb" />
+    <Compile Include="NomenclatoreParametri.vb" />
+    <Compile Include="OrderByFiltroAggiuntivo.vb" />
+    <Compile Include="ParametrizzatoreException.vb" />
+    <Compile Include="Parametrizzatori\Common.vb" />
+    <Compile Include="Parametrizzatori\IParametrizzatore.vb" />
+    <Compile Include="Parametrizzatori\Parametrizzatore.vb" />
+    <Compile Include="Parametrizzatori\ParametrizzatoreNew.vb" />
+    <Compile Include="Providers\IReadDataProvider.vb" />
+    <Compile Include="Providers\IWriteDataProvider.vb" />
+    <Compile Include="Providers\SqlDataProvider.vb" />
+    <Compile Include="Providers\OleDbDataProvider.vb" />
+    <Compile Include="DataProvider.vb" />
+    <Compile Include="DataProvider2010.vb" />
+    <Compile Include="DatatableUtility.vb" />
+    <Compile Include="DataTable_Pivot.vb" />
+    <Compile Include="Deallocazione_Risorse.vb" />
+    <Compile Include="GestioneFile.vb" />
+    <Compile Include="Gestione_Eccezioni_2015.vb" />
+    <Compile Include="Providers\IDataProvider.vb" />
+    <Compile Include="Identity_R.vb" />
+    <Compile Include="JSON_DataTable.vb" />
+    <Compile Include="KendoDataHelper.vb" />
+    <Compile Include="Lingua.vb" />
+    <Compile Include="LogProvider.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Oggetti_DatatableUtility.vb" />
+    <Compile Include="SAMLHelpers.vb" />
+    <Compile Include="Sequenza_Progressivi.vb" />
+    <Compile Include="Sicurezza.vb" />
+    <Compile Include="StringExtensions.vb" />
+    <Compile Include="TempoParserException.vb" />
+    <Compile Include="TipiEnumerativi.vb" />
+    <Compile Include="UtilityAltoLivello.vb" />
+    <Compile Include="UtilityDatabase.vb" />
+    <Compile Include="UtilityProvider.vb" />
+    <Compile Include="UtilityProvider_2010.vb" />
+    <Compile Include="Util\TempChiaviMassivo.vb" />
+    <Compile Include="VettoriUtility.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Gias_resx\Gias.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gias_resx\Gias.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gias_resx\Gias.pt.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gias_resx\Gias.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Gias.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{6300885f-3954-4f7b-91e9-1b028fa64b74}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Lib\Microsoft.SqlServer.Diagnostics.STrace.dll" />
+    <Content Include="Lib\Microsoft.SqlServer.Management.SqlParser.dll" />
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,61 @@
+<div 
+  class="layer-toolbar"
+  *ngIf="{ operation: operation$ | async, layer: layer$ | async } as data"
+  [ngStyle]="setToolbarStyle()">
+
+  <ng-container *ngIf="checkModality(GISModality.Full)">
+  
+    <button gisTooltip title="{{ 'gis.SelezionaFeatureAdArea' | transloco }}" kendoButton
+      [toggleable]="data.layer != null" class="k-p-1 custom-button"
+      [selected]="data.operation == layerWindowToolbarOperations.SelectArea && data.layer != null"
+      (selectedChange)="data.layer != null ? selectOperation(layerWindowToolbarOperations.SelectArea, true) : null"
+      [iconClass]="data.layer != null ? 'xi-draw-select-map-area' : 'xi-draw-select-map-area-disabled'">
+    </button>
+
+    <button gisTooltip title="{{ 'PulisciSelezione' | transloco }}" kendoButton class="k-p-1 custom-button"
+      (click)="selectOperation(layerWindowToolbarOperations.Deselect, false)" iconClass="xi-draw-deselect-map-area">
+    </button>
+
+    <button gisTooltip title="{{ 'gis.ZoomSuAreaSelezionata' | transloco }}" kendoButton [toggleable]="true"
+      class="k-p-1 custom-button" [selected]="data.operation == layerWindowToolbarOperations.ZoomArea"
+      (selectedChange)="selectOperation(layerWindowToolbarOperations.ZoomArea, true)" iconClass="xi-draw-zoom-area">
+    </button>
+
+    <button gisTooltip title="{{ 'gis.ZoomAvanti' | transloco }}" kendoButton class="k-p-1 custom-button"
+      (click)="selectOperation(layerWindowToolbarOperations.ZoomIn, false)" iconClass="xi-draw-zoom-in">
+    </button>
+
+    <button gisTooltip title="{{ 'gis.ZoomIndietro' | transloco }}" kendoButton class="k-p-1 custom-button"
+      (click)="selectOperation(layerWindowToolbarOperations.ZoomOut, false)" iconClass="xi-draw-zoom-out">
+    </button>
+
+  </ng-container>
+
+  <button gisTooltip title="{{ 'gis.VisualizzaFeature' | transloco }}" kendoButton class="k-p-1 custom-button"
+    (click)="selectOperation(layerWindowToolbarOperations.ZoomAt15, false)" iconClass="xi-draw-zoom-15"
+    *ngIf="checkModality(GISModality.Full, GISModality.PaesePoligoniMultiAzienda)">
+  </button>
+
+  <ng-container *ngIf="checkModality(GISModality.Full)">
+
+    <button gisTooltip title="{{ 'gis.PosizionePrecedente' | transloco }}" kendoButton class="k-p-1 custom-button"
+      (click)="selectOperation(layerWindowToolbarOperations.PrevPosition, false)" iconClass="xi-draw-zoom-prev">
+    </button>
+
+    <button gisTooltip title="{{ 'gis.PosizioneSuccessiva' | transloco }}" kendoButton class="k-p-1 custom-button"
+      (click)="selectOperation(layerWindowToolbarOperations.NextPosition, false)" iconClass="xi-draw-zoom-succ">
+    </button>
+
+    <button gisTooltip title="{{ 'gis.ApriChiudiFinestraPreferiti' | transloco }}" kendoButton class="k-p-1 custom-button"
+      [selected]="bookmarksOpen$ | async " (click)="selectOperation(layerWindowToolbarOperations.OpenBookmarks, false)"
+      iconClass="xi-draw-bookmarks">
+    </button>
+
+  </ng-container>
+
+  <button gisTooltip title="{{ 'CambiaCluster' | transloco }}" kendoButton class="k-p-1 custom-button"
+    (click)="selectOperation(layerWindowToolbarOperations.SwitchClusterMode, false)"
+    iconClass="xi-heatmap" *ngIf="checkModality(GISModality.Full, GISModality.PaesePoligoniMultiAzienda)">
+  </button>
+
+</div>

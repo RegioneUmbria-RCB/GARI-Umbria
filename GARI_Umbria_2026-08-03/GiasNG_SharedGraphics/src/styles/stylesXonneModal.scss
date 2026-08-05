@@ -1,0 +1,323 @@
+.k-window-content,
+.k-prompt-container {
+  overflow: hidden;
+}
+
+.k-window, .k-popup {
+  border-radius: 8px !important;
+
+  .k-dialog-content.k-window-content {
+    padding: 36px 40px;
+    overflow: hidden;
+  }
+
+  .k-window-titlebar {
+    padding: 8px 16px !important;
+  }
+
+  .k-window-title {
+    font-family: 'Lato', Sans-serif;
+    color: #002850 !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+  }
+
+  .k-actions, .k-buttongroup {
+    padding: 12px 36px !important
+  }
+
+  h4 {
+    font-family: 'Lato', Sans-serif !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    color: #002850 !important;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-bottom: 8px;
+    padding-top: 8px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background-color: #e8e8e8;
+      bottom: 0;
+      left: -16px;
+      right: -16px;
+    }
+  }
+
+  p {
+    font-family: 'Lato', Sans-serif !important;
+  }
+
+
+  .k-dialog-close {
+    height: auto !important;
+    opacity: 1 !important;
+
+    &:hover {
+      background-color: transparent !important;
+    }
+  }
+
+
+  .k-action-buttons, .k-actions {
+    .k-button {
+      flex: 1;
+      height: 28px !important;
+      text-transform: uppercase !important;
+      font-family: 'Lato', Sans-serif !important;
+      border-radius: 12px !important;
+
+      &:not(:last-child) {
+        background-color: #002850 !important;
+        color: white !important;
+      }
+
+      &:last-child {
+        border: 1px solid #002850 !important;
+        color: #002850 !important;
+        background-color: white !important;
+
+        &:hover {
+          background-color: #E6ECF2 !important;
+        }
+      }
+
+    }
+  }
+
+}
+
+.gis-configuration-modal {
+  .k-window .k-dialog-content.k-window-content {
+    padding: 0 !important;
+   /*overflow-x: hidden; */
+    overflow: hidden;
+  }
+
+  .k-window {
+    border: 0;
+  }
+}
+
+.k-i-window-minimize {
+  display: none !important;
+}
+
+.gis-layer-pager kendo-datapager {
+  width: 100%;
+  padding: 0 1rem;
+  margin-top: 0 !important;
+}
+
+.gis-layer-pager kendo-datapager-numeric-buttons {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.gis-layer-pager .k-pager-numbers-wrap {
+  padding: 6px 0;
+}
+
+.gis-layer-pager select {
+  height: 1.8rem;
+  width: auto;
+  padding: 5px 10px;
+  margin: 0 8px;
+}
+
+.gis-layer-pager button {
+  padding: 0.3rem 0 !important;
+  height: auto;
+  color: #595959 !important;
+}
+
+.gis-layer-pager kendo-datapager-page-sizes {
+  border-left: solid 1px #e8e8e8;
+  padding-left: 1rem;
+  height: 2.4rem;
+}
+
+kendo-tooltip.k-tooltip.k-widget, kendo-tooltip.k-tooltip {
+  background-color: rgba($color: #002D5A, $alpha: 0.86) !important;
+  color: white !important;
+}
+
+.k-callout.ng-star-inserted.k-callout-s {
+  color: rgba(0, 45, 90, 0.86) !important;
+}
+
+draw-window .k-content.k-window-content.ng-star-inserted {
+  background-color: #F6F6F6;
+}
+
+.maps-polygon-clusterer, .maps-polygon-label {
+  background-color: #002850;
+  padding: 0.2rem 0.3rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+}
+
+.maps-polygon-clusterer {
+  padding: 0.3rem 1rem;
+}
+
+.maps-polygon-clusterer:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 0px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #002850;
+  position: absolute;
+  top: 61%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  -webkit-box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+  -moz-box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: 6px 6px 26px 0px rgba(0, 0, 0, 0.16);
+}
+
+.maps-polygon-clusterer.success {
+  background-color: #28C76F;
+}
+
+.maps-polygon-clusterer.success:after {
+  border-top: 8px solid #28C76F;
+}
+
+.maps-polygon-clusterer.danger {
+  background-color: #FFC543;
+}
+
+.maps-polygon-clusterer.danger:after {
+  border-top: 8px solid #FFC543;
+}
+
+.maps-polygon-clusterer.error {
+  background-color: rgb(235, 67, 11);;
+}
+
+.maps-polygon-clusterer.error:after {
+  border-top: 8px solid rgb(235, 67, 11);;
+}
+
+
+.gm-style .gm-style-iw-c:has(.custom-infobox, .maps-polygon-label-infowindow) {
+  background-color: #002850;
+  color: white !important;
+  padding: 0;
+}
+
+.gm-style .gm-style-iw-c:has(.custom-infobox, .maps-polygon-label-infowindow) span {
+  color: white !important;
+}
+
+.gm-style .gm-style-iw-d:has(.custom-infobox) {
+  overflow: auto !important;
+  padding: 2rem;
+}
+
+.gm-style .gm-style-iw-d:has(.maps-polygon-label-infowindow) {
+  overflow: auto !important;
+  padding: 0.5rem;
+}
+
+.maps-polygon-label-infowindow.edit-feature {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.maps-polygon-label-infowindow.edit-feature > input {
+  margin-top: 8px;
+  width: 70px;
+  padding: 4px 8px 6px 8px;
+  background-color: transparent;
+  color: white;
+  border-radius: 8px;
+  border-color: white;
+  border-style: solid;
+  transition: 0.1s;
+}
+
+.maps-polygon-label-infowindow.edit-feature > input:hover {
+  background-color: #2c4e71;
+}
+
+.maps-polygon-label-infowindow.raster-info > table tr th,
+.maps-polygon-label-infowindow.raster-info > table tr td {
+  color: white !important;
+  text-align: center !important;
+  border-color: white !important;
+  border-width: 1px !important;
+  border-radius: 1px !important;
+  border-style: solid !important;
+  padding: 4px !important;
+}
+
+.maps-polygon-label-infowindow.raster-info > h6 {
+  color: white !important;
+}
+
+.maps-polygon-label-infowindow.raster-info > table tr {
+  background-color: transparent;
+}
+
+.gm-ui-hover-effect > span {
+  background-color: #fff;
+}
+
+.gm-style-iw-tc::after {
+  background-color: #002850 !important;
+}
+
+.gm-style .gm-style-iw-tc {
+  filter: drop-shadow(0 4px 2px rgba(0, 40, 80, .4));
+}
+
+
+draw-window .k-content.k-window-content {
+  background-color: #F6F6F6 !important;
+}
+
+
+@media only screen and (max-width: 991px) {
+  draw-window kendo-window {
+    bottom: 0;
+    top: unset !important;
+  }
+
+  app-marker-window kendo-window {
+    bottom: 0;
+    left: 0 !important;
+    width: 100vw !important;
+    top: unset !important;
+    z-index: 1002 !important;
+    min-height: 160px !important;
+  }
+}
+
+app-gis-configuration-modal .k-window.k-dialog {
+  width: fit-content !important;
+}
+
+.k-appbar.k-appbar-top.k-appbar-static.k-appbar-light {
+  padding-top: 0 !important;
+}
+
+kendo-dialog > .k-overlay {
+  z-index: 11000 !important;
+}
+
+kendo-dialog > .k-window {
+  z-index: 11001 !important;
+}

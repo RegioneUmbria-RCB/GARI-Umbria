@@ -1,0 +1,13 @@
+<kendo-expansionpanel 
+  [disabled]="disabled" 
+  [(expanded)]="isExpanded"
+  (action)="onAction($event)">
+  <ng-template kendoExpansionPanelTitleDirective>
+    <ng-content select="[headerContent]">
+      <!-- Set by attaching the headerContent class to an element. -->
+    </ng-content>
+  </ng-template>
+  <ng-content>
+    <!-- Content set from outside the component. -->
+  </ng-content>
+</kendo-expansionpanel>

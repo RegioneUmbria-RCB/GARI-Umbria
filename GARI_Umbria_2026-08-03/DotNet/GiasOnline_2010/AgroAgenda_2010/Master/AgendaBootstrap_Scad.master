@@ -1,0 +1,112 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Master/AgendaBootstrap.Master" AutoEventWireup="false"  
+        CodeBehind="AgendaBootstrap_Scad.master.vb" Inherits="AgroAgenda_2010.AgendaBootstrap_Scad" %>
+<%@ MasterType VirtualPath="~/Master/AgendaBootstrap.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        
+        #navbar-scad .nav>li>a {
+            text-decoration: none;
+            background-color: #fff !important;
+            color: #052747 !important;
+            transition: background-color 0.5s ease;
+        }
+        
+        #navbar-scad .nav>li>a:hover, #navbar-scad .nav>li>a:focus, #navbar-scad .nav .menuattivo a{
+            text-decoration: none;
+            background-color: #052747 !important;
+            color: #fff !important;
+        }
+        
+    </style>
+
+    <asp:ContentPlaceHolder id="HeadContent_Scad" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:HiddenField id="hf_utenteAbilitato_Lista_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_FiltraEsporta_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_Impostazioni_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_Anagrafiche_Lettura" runat="server" Value="False" />
+    
+    <div class="row">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+             <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-scad">
+                <ul class="nav navbar-nav">
+                <li id="menuLista" style="display:none;"><a href="../Scadenzario/Scad_Lista.aspx">LISTA SCADENZE</a></li>
+                <li id="menuFiltraEsporta" style="display:none;"><a href="../Scadenzario/Scad_FiltraEsporta.aspx">FILTRA-ESPORTA</a></li>
+                <li id="menuImpostazioni" style="display:none;"><a href="../Scadenzario/Scad_Impostazioni.aspx">AVVISI</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="row">
+        <div id="contenitore">
+            <asp:ContentPlaceHolder id="MainContent_Scad" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentScript" runat="server">
+    <asp:ContentPlaceHolder id="ContentScript_Scad" runat="server"></asp:ContentPlaceHolder>
+
+    <script type="text/javascript">
+
+        var objP_server = '<%=objparametri_server_string %>';
+        var objP_utenti = '<%=objparametri_utenti_string %>';
+
+        $(document).ready(function () {
+
+            $('.collapse').on('shown.bs.collapse', function () {
+                $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
+            });
+
+            $('.collapse').on('hidden.bs.collapse', function () {
+                $(this).parent().find(".fa-minus-circle").removeClass("fa-minus-circle").addClass("fa-plus-circle");
+            });
+
+            //Attiva il menu in base alla pagina in cui ci si trova
+            var url = window.location.pathname;
+            var substr = url.split('/');
+            var urlaspx = substr[substr.length - 1];
+            $('#navbar-scad .nav').find('.menuattivo').removeClass('menuattivo');
+            $('#navbar-scad .nav li a').each(function () {
+                if (this.href.indexOf(urlaspx) >= 0) {
+                    $(this).parent().addClass('menuattivo');
+                }
+            });
+
+            //In base ai permessi, mostro le tab
+            if ($("input[name$='hf_utenteAbilitato_Lista_Lettura']").val() == "True")
+                $('#menuLista').show();
+
+            if ($("input[name$='hf_utenteAbilitato_FiltraEsporta_Lettura']").val() == "True")
+                $('#menuFiltraEsporta').show();
+
+            if ($("input[name$='hf_utenteAbilitato_Impostazioni_Lettura']").val() == "True")
+                $('#menuImpostazioni').show();
+
+
+
+        });
+
+    </script>
+
+</asp:Content>

@@ -1,0 +1,36 @@
+<gias-multiselect-template-s
+  [name]="'ACAContributes' | transloco"
+  textField="description"
+  valueField="code"
+  [formGroup]="contributeDdlForm"
+  giasFormControlName="contributes"
+  [filterable]="true"
+  [valuePrimitive]="false"
+  (open)="openDdl($event)">
+</gias-multiselect-template-s>
+
+<div class="agricultural-exercices-contributes-link-msg-text">
+  <h6>{{ 'SelectedAgriculturalExercices' | transloco }}</h6>
+</div>
+
+<app-listview
+  [data$]="rows$"
+  [height$]="listViewHeight$"
+  [removeDataItem$]="removeDataItem$"
+  [resetStates$]="resetStates$"
+  deleteBtnTitle="EliminaAssociazione"
+  removeBtnTitle="RemoveRowFromList"
+  [loading$]="loading$"
+></app-listview>
+
+<div class="agricultural-exercices-contributes-link-btn">
+  <button
+    kendoButton
+    class="bottom btn btn-primary btn-primary-fill"
+    fillMode="outline"
+    [disabled]="disableAddBtn()"
+    (click)="submit()"
+  >
+    {{ 'AddContributes' | transloco }}
+  </button>
+</div>

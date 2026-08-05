@@ -1,0 +1,50 @@
+.header-alert-documenti {
+    display: flex;
+    justify-content: space-between;
+}
+
+.label-reset {
+    white-space: nowrap;
+}
+
+.button-time-stamp {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1%;
+    gap: 10px;
+}
+
+.redirect-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1%;
+}
+
+.label {
+    margin-right: 10px;
+}
+
+.widget-alert-documenti-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #fafafa;
+
+    gias-kendo-grid {
+        height: 100%;
+    }
+
+    ::ng-deep gias-kendo-grid>div {
+        height: 100% !important;
+    }
+
+    ::ng-deep gias-kendo-grid>div>kendo-grid {
+        height: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+}

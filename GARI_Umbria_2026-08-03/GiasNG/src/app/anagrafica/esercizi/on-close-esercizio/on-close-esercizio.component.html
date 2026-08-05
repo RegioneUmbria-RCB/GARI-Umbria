@@ -1,0 +1,36 @@
+<div *ngIf="!isAlreadyClosed()" class="on-close-esrcizio-msg on-close-esrcizio-msg-text">
+  <h6>{{ 'ChiusuraEsercizioAlert' | transloco }}</h6>
+</div>
+
+<form [formGroup]="chiusuraForm">
+  <gias-switch-template
+    [name]="'ChiudiEsercizio' | transloco"
+    [hideLabel]="false"
+    giasFormControlName="chiusura"
+  ></gias-switch-template>
+</form>
+
+<div *ngIf="showReplicaSwitch()">
+  <div *ngIf="!isAlreadyClosed()" class="on-close-esrcizio-msg on-close-esrcizio-msg-text">
+    <h6>{{ 'CreaImpiantoEsercizioSuAltraAzienda' | transloco }}</h6>
+  </div>
+
+  <form [formGroup]="replicaForm">
+    <gias-switch-template
+      [name]="'ReplicaImpiantoEsercizio' | transloco"
+      [hideLabel]="false"
+      giasFormControlName="replica"
+    ></gias-switch-template>
+  </form>
+
+  <div *ngIf="showReplicaAlert()" class="on-close-esrcizio-replica-alert on-close-esrcizio-replica-alert-text">
+    <h6>{{ onReplicaEsercizioMessage() }}</h6>
+  </div>
+
+  <div *ngIf="disableReplicaSwitch()" class="on-close-esrcizio-replica-alert on-close-esrcizio-replica-alert-text">
+    <h6>{{ 'ImpiantoEsercizioGiaReplicato' | transloco }}</h6>
+  </div>
+</div>
+
+
+

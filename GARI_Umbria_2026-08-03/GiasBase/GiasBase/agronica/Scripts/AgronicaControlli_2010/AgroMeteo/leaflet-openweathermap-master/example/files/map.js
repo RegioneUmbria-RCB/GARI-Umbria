@@ -1,0 +1,284 @@
+// --------------------------------------------------------
+// ------------------- LA NOSTRA APPKEY -------------------
+// --------------------------------------------------------
+var OWM_API_KEY = '185477576fdf6d45a5da2ed59a801fb3';
+
+// --------------------------------------------------------
+// ------------------------- MAPPA ------------------------
+// --------------------------------------------------------
+var map;
+
+// --------------------------------------------------------
+// ---------------- COORDINATE DI INTERESSE ---------------
+// --------------------------------------------------------
+// di default punta Cesena
+var latitudineAgroWS = 44.12;
+var longitudineAgroWS = 12.26;
+// --------------------------------------------------------
+// -------------------- PERCORSO ICONE --------------------
+// --------------------------------------------------------
+var percorsoAssolutoIcone = "";
+
+/**
+ * Add or replace a parameter (with value) in the given URL.
+ * By Adil Malik, https://stackoverflow.com/questions/1090948/change-url-parameters/10997390#10997390
+ * @param String url the URL
+ * @param String param the parameter
+ * @param String paramVal the value of the parameter
+ * @return String the changed URL
+ */
+function updateURLParameter(url, param, paramVal) {
+    var theAnchor = null;
+    var newAdditionalURL = "";
+    var tempArray = url.split("?");
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = "";
+
+    if (additionalURL) {
+        var tmpAnchor = additionalURL.split("#");
+        var theParams = tmpAnchor[0];
+        theAnchor = tmpAnchor[1];
+        if (theAnchor) {
+            additionalURL = theParams;
+        }
+
+        tempArray = additionalURL.split("&");
+
+        for (i = 0; i < tempArray.length; i++) {
+            if (tempArray[i].split('=')[0] != param) {
+                newAdditionalURL += temp + tempArray[i];
+                temp = "&";
+            }
+        }
+    } else {
+        var tmpAnchor = baseURL.split("#");
+        var theParams = tmpAnchor[0];
+        theAnchor = tmpAnchor[1];
+
+        if (theParams) {
+            baseURL = theParams;
+        }
+    }
+
+    if (theAnchor) {
+        paramVal += "#" + theAnchor;
+    }
+
+    var rows_txt = temp + "" + param + "=" + paramVal;
+    return baseURL + "?" + newAdditionalURL + rows_txt;
+}
+
+/**
+ * Example function to replace leaflet-openweathermap's builtin marker by a wind rose symbol.
+ * Some helper functions and an event listener are needed, too. See below.
+ */
+function myWindroseMarker(data) {
+    var content = '<canvas id="id_' + data.id + '" width="50" height="50"></canvas>';
+    var icon = L.divIcon({ html: content, iconSize: [50, 50], className: 'owm-div-windrose' });
+    return L.marker([data.coord.Lat, data.coord.Lon], { icon: icon, clickable: false });
+}
+
+/**
+ * Helper function for replacing leaflet-openweathermap's builtin marker by a wind rose symbol.
+ * This function draws the canvas of one marker symbol once it is available in the DOM.
+ */
+function myWindroseDrawCanvas(data, owm) {
+
+    var canvas = document.getElementById('id_' + data.id);
+    canvas.title = data.name;
+    var angle = 0;
+    var speed = 0;
+    var gust = 0;
+    if (typeof data.wind != 'undefined') {
+        if (typeof data.wind.speed != 'undefined') {
+            canvas.title += ', ' + data.wind.speed + ' m/s';
+            canvas.title += ', ' + owm._windMsToBft(data.wind.speed) + ' BFT';
+            speed = data.wind.speed;
+        }
+        if (typeof data.wind.deg != 'undefined') {
+            //canvas.title += ', ' + data.wind.deg + '°';
+            canvas.title += ', ' + owm._directions[(data.wind.deg / 22.5).toFixed(0)];
+            angle = data.wind.deg;
+        }
+        if (typeof data.wind.gust != 'undefined') {
+            gust = data.wind.gust;
+        }
+    }
+    if (canvas.getContext && speed > 0) {
+        var red = 0;
+        var green = 0;
+        if (speed <= 10) {
+            green = 10 * speed + 155;
+            red = 255 * speed / 10.0;
+        } else {
+            red = 255;
+            green = 255 - (255 * (Math.min(speed, 21) - 10) / 11.0);
+        }
+        var ctx = canvas.getContext('2d');
+        ctx.translate(25, 25);
+        ctx.rotate(angle * Math.PI / 180);
+        ctx.fillStyle = 'rgb(' + Math.floor(red) + ',' + Math.floor(green) + ',' + 0 + ')';
+        ctx.beginPath();
+        ctx.moveTo(-15, -25);
+        ctx.lineTo(0, -10);
+        ctx.lineTo(15, -25);
+        ctx.lineTo(0, 25);
+        ctx.fill();
+
+        // draw inner arrow for gust
+        if (gust > 0 && gust != speed) {
+            if (gust <= 10) {
+                green = 10 * gust + 155;
+                red = 255 * gust / 10.0;
+            } else {
+                red = 255;
+                green = 255 - (255 * (Math.min(gust, 21) - 10) / 11.0);
+            }
+            canvas.title += ', gust ' + data.wind.gust + ' m/s';
+            canvas.title += ', ' + owm._windMsToBft(data.wind.gust) + ' BFT';
+            ctx.fillStyle = 'rgb(' + Math.floor(red) + ',' + Math.floor(green) + ',' + 0 + ')';
+            ctx.beginPath();
+            ctx.moveTo(-15, -25);
+            ctx.lineTo(0, -10);
+            //ctx.lineTo(15, -25);
+            ctx.lineTo(0, 25);
+            ctx.fill();
+        }
+    } else {
+        canvas.innerHTML = '<div>'
+            + (typeof data.wind != 'undefined' && typeof data.wind.deg != 'undefined' ? data.wind.deg + '°' : '')
+            + '</div>';
+    }
+}
+
+/**
+ * Helper function for replacing leaflet-openweathermap's builtin marker by a wind rose symbol.
+ * This function is called event-driven when the layer and its markers are added. Now we can draw all marker symbols.
+ * The this-context has to be the windrose layer.
+ */
+function windroseAdded(e) {
+    for (var i in this._markers) {
+        var m = this._markers[i];
+        var cv = document.getElementById('id_' + m.options.owmId);
+        for (var j in this._cache._cachedData.list) {
+            var station = this._cache._cachedData.list[j];
+            if (station.id == m.options.owmId) {
+                myWindroseDrawCanvas(station, this);
+            }
+        }
+    }
+}
+
+/**
+ * Example function to replace leaflet-openweathermap's builtin marker.
+ */
+function myOwmMarker(data) {
+    // just a Leaflet default marker
+    return L.marker([data.coord.Lat, data.coord.Lon]);
+}
+
+/**
+ * Example function to replace leaflet-openweathermap's builtin popup.
+ */
+function myOwmPopup(data) {
+    // just a Leaflet default popup
+    return L.popup().setContent(typeof data.name != 'undefined' ? data.name : data.id);
+}
+
+// --------------------------------------------------------
+// -------------- INIT DELLA MAPPA A LAYER ----------------
+// --------------------------------------------------------
+function initMap(latitudine, longitudine, percorso) {
+
+    // latitudine, longitudine e percorso icone assoluto
+    latitudineAgroWS = latitudine;
+    longitudineAgroWS = longitudine;
+    percorsoAssolutoIcone = percorsoIcone.substring(0, percorso.length - 7);
+
+    var standard = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: ''
+    });
+
+    var esri = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg", {
+        maxZoom: 18, attribution: ''
+    });
+
+    var clouds = L.OWM.clouds({ opacity: 0.8, legendImagePath: percorsoAssolutoIcone + 'NT2.png', appId: OWM_API_KEY });
+    var cloudscls = L.OWM.cloudsClassic({ opacity: 0.5, appId: OWM_API_KEY });
+    var precipitation = L.OWM.precipitation({ opacity: 0.5, appId: OWM_API_KEY });
+    var precipitationcls = L.OWM.precipitationClassic({ opacity: 0.5, appId: OWM_API_KEY });
+    var rain = L.OWM.rain({ opacity: 0.5, appId: OWM_API_KEY });
+    var raincls = L.OWM.rainClassic({ opacity: 0.5, appId: OWM_API_KEY });
+    var snow = L.OWM.snow({ opacity: 0.5, appId: OWM_API_KEY });
+    var pressure = L.OWM.pressure({ opacity: 0.4, appId: OWM_API_KEY });
+    var pressurecntr = L.OWM.pressureContour({ opacity: 0.5, appId: OWM_API_KEY });
+    var temp = L.OWM.temperature({ opacity: 0.5, appId: OWM_API_KEY });
+    var wind = L.OWM.wind({ opacity: 0.5, appId: OWM_API_KEY });
+
+    // come linguaggio metto fisso l'inglese: è stato tradotto in italiano
+    var localLang = 'en';
+
+    var city = L.OWM.current({
+        intervall: 15, imageLoadingUrl: percorsoAssolutoIcone + 'owmloading.gif', lang: localLang, minZoom: 5,
+        appId: OWM_API_KEY
+    });
+    var station = L.OWM.current({
+        type: 'station', intervall: 15, imageLoadingUrl: percorsoAssolutoIcone + 'owmloading.gif', lang: localLang,
+        appId: OWM_API_KEY /* , markerFunction: myOwmMarker, popupFunction: myOwmPopup */
+    });
+    var windrose = L.OWM.current({
+        intervall: 15, imageLoadingUrl: percorsoAssolutoIcone + 'owmloading.gif', lang: localLang, minZoom: 4,
+        appId: OWM_API_KEY, markerFunction: myWindroseMarker, popup: false, clusterSize: 50,
+        imageLoadingBgUrl: 'https://openweathermap.org/img/w0/iwind.png'
+    });
+    windrose.on('owmlayeradd', windroseAdded, windrose); // Add an event listener to get informed when windrose layer is ready
+
+    // geolocalizzazione e zoom della mappa: viene puntata sulla zona in cui è locata l'azienda di interesse
+    var zoom = 11;
+    map = L.map('mappa_interattiva', {
+        center: new L.LatLng(latitudineAgroWS, longitudineAgroWS), zoom: zoom,
+        layers: [standard]
+    });
+    map.attributionControl.setPrefix("");
+
+    // mappa politica e mappa fisica
+    var baseMaps = {
+        "OSM Standard": standard
+        , "ESRI Aerial": esri
+    };
+
+    // opzioni cliccabili
+    var overlayMaps = {};
+    overlayMaps[getI18n('clouds', localLang)] = clouds;
+    overlayMaps[getI18n('cloudscls', localLang)] = cloudscls;
+    overlayMaps[getI18n('precipitation', localLang)] = precipitation;
+    overlayMaps[getI18n('precipitationcls', localLang)] = precipitationcls;
+    overlayMaps[getI18n('rain', localLang)] = rain;
+    overlayMaps[getI18n('raincls', localLang)] = raincls;
+    overlayMaps[getI18n('snow', localLang)] = snow;
+    overlayMaps[getI18n('temp', localLang)] = temp;
+    overlayMaps[getI18n('windspeed', localLang)] = wind;
+    overlayMaps[getI18n('pressure', localLang)] = pressure;
+    overlayMaps[getI18n('presscont', localLang)] = pressurecntr;
+    overlayMaps[getI18n('city', localLang) + " (min Zoom 5)"] = city;
+    overlayMaps[getI18n('station', localLang) + " (min Zoom 7)"] = station;
+    overlayMaps[getI18n('windrose', localLang)] = windrose;
+
+    // aggiungo il menu di scelta dei layer da visualizzare al lato destro della mappa
+    var layerControl = L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
+    // titoli delle sezioni
+    var patch = L.DomUtil.create('div', 'owm-layercontrol-header');
+    patch.innerHTML = getI18n('layers', localLang); // 'TileLayers';
+    layerControl._form.children[2].parentNode.insertBefore(patch, layerControl._form.children[2]);
+    patch = L.DomUtil.create('div', 'leaflet-control-layers-separator');
+    layerControl._form.children[3].children[0].parentNode.insertBefore(patch, layerControl._form.children[3].children[layerControl._form.children[3].children.length - 3]);
+    patch = L.DomUtil.create('div', 'owm-layercontrol-header');
+    patch.innerHTML = getI18n('current', localLang); // 'Current Weather';
+    layerControl._form.children[3].children[0].parentNode.insertBefore(patch, layerControl._form.children[3].children[layerControl._form.children[3].children.length - 3]);
+    patch = L.DomUtil.create('div', 'owm-layercontrol-header');
+    patch.innerHTML = getI18n('maps', localLang); // 'Maps';
+    layerControl._form.children[0].parentNode.insertBefore(patch, layerControl._form.children[0]);
+}

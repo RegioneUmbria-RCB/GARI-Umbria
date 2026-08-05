@@ -1,0 +1,78 @@
+<div class="edit-muz-container edit-muz-column g-32">
+  <div class="edit-muz-card">
+    <div class="edit-muz-column g-32">
+      <div class="edit-muz-row space-between">
+        <div class="edit-muz-row g-64">
+          <h6>{{ 'gis.GruppoDiAppartenenza' | transloco }}: <strong>{{ this.inputPlot?.Group }}</strong></h6>
+          <h6>{{ 'Appezzamento' | transloco }}: <strong>{{ this.inputPlot?.Desc }}</strong></h6>
+        </div>
+        <div>
+          <button class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+            kendoButton (click)="submit()">
+            <span class="k-icon k-i-save"></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="k-ml-5 edit-muz-column g-16">
+        <div class="edit-muz-row">
+          <h6 class="info">{{ 'gis.DatiDellaMuz' | transloco }}</h6>
+
+          <div class="edit-muz-row-wrap">
+            <div class="muz-input">
+              <span> {{ 'Descrizione' | transloco }}</span>
+              <kendo-textbox [(value)]="inputMuz.Area_Des"></kendo-textbox>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'Tessitura' | transloco }}</span>
+              <kendo-numerictextbox [(value)]="inputMuz.Tessitura_cod"></kendo-numerictextbox>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'gis.Altimetria' | transloco }}</span>
+              <kendo-textbox [(value)]="inputMuz.Altimetria"></kendo-textbox>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'gis.SostanzaOrganica' | transloco }}</span>
+              <kendo-numerictextbox [(value)]="inputMuz.SO"></kendo-numerictextbox>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'Classe' | transloco }}</span>
+              <kendo-textbox [(value)]="inputMuz.TipoZona"></kendo-textbox>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'Validita_Inizio' | transloco }}</span>
+              <kendo-datepicker [(value)]="inputMuz.Validita_Inizio"></kendo-datepicker>
+            </div>
+
+            <div class="muz-input">
+              <span> {{ 'Validita_Fine' | transloco }}</span>
+              <kendo-datepicker [(value)]="inputMuz.Validita_Fine"></kendo-datepicker>
+            </div>
+
+            <div class="muz-input">
+              <span>{{ 'gis.AnalisiAssociata' | transloco }}</span>
+              <kendo-dropdownlist class="analysis-ddl" [data]="analysis$ | async" textField="nome"
+                valueField="analisi_testata_cod" [filterable]="true" [kendoDropDownFilter]="filterSettings"
+                [value]="inputMuz.Analisi_Testate[0]?.Analisi_Testata_Cod"
+                (valueChange)="selectAnalysis($event)"></kendo-dropdownlist>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <kendo-tabstrip [keepTabContent]="true" [scrollable]="true">
+    <kendo-tabstrip-tab [title]="'gis.CatastoAssociato' | transloco" [selected]="true">
+      <ng-template kendoTabContent>
+        <gis-edit-muz-particelle-catastali [inputMuz]="inputMuz"></gis-edit-muz-particelle-catastali>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</div>

@@ -1,0 +1,313 @@
+﻿/* reset everything to the default box model */
+/*
+#panelbar
+*, :before, :after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+*/
+/* set a border-box model only to elements that need it */
+
+#panelbar
+.form-control, /* if this class is applied to a Kendo UI widget, its layout may change */
+.container,
+.container-fluid,
+.row,
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.k-grid .btn {
+    margin-bottom: 5px;
+}
+
+.colOperazioni {
+    min-width: 120px;
+}
+
+.w100 {
+    width: 100% !important;
+}
+
+h4 {
+    color: #052747;
+}
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.colonnaAzioni {
+    width: 50px;
+}
+
+/*INIZO: CSS PER LA KENDO DDL "ALTRE OPERAZIONI" E DDL "Ordini di lavoro / Ricette" */
+span.ddlOperazioni > span,
+span.ddlOperazioniZoo > span,
+span.ddlRicette > span,
+span.ddlOperazioniRicette > span,
+span.ddlOperazioniBrogliaccio > span {
+    /**/background-color: #f1f3f7 !important;
+    height: 45px;
+    border-radius: 0px;
+}
+
+span.ddlOperazioni span.k-input, span.ddlOperazioni span.k-select,
+span.ddlOperazioniZoo span.k-input, span.ddlOperazioniZoo span.k-select,
+span.ddlRicette span.k-input, span.ddlRicette span.k-select,
+span.ddlOperazioniRicette span.k-input, span.ddlOperazioniRicette span.k-select,
+span.ddlOperazioniBrogliaccio span.k-input, span.ddlOperazioniBrogliaccio span.k-select {
+    margin-top: 10px;
+}
+
+span.ddlOperazioni:hover > span, span.ddlOperazioni:focus > span,
+span.ddlOperazioniZoo:hover > span, span.ddlOperazioniZoo:focus > span,
+span.ddlRicette:hover > span, span.ddlRicette:focus > span,
+span.ddlOperazioniRicette:hover > span, span.ddlOperazioniRicette:focus > span,
+span.ddlOperazioniBrogliaccio:hover > span, span.ddlOperazioniBrogliaccio:focus > span {
+    border-radius: 0px;
+}
+
+span.ddlOperazioni:hover > span,
+span.ddlOperazioniZoo:hover > span,
+span.ddlRicette:hover > span,
+span.ddlOperazioniRicette:hover > span,
+span.ddlOperazioniBrogliaccio:hover > span {
+   /**/ background-color: #052747 !important;
+}
+
+span.ddlOperazioni:hover span.k-input, span.ddlOperazioni:hover span.k-icon,
+span.ddlOperazioniZoo:hover span.k-input, span.ddlOperazioniZoo:hover span.k-icon,
+span.ddlRicette:hover span.k-input, span.ddlRicette:hover span.k-icon,
+span.ddlOperazioniRicette:hover span.k-input, span.ddlOperazioniRicette:hover span.k-icon,
+span.ddlOperazioniBrogliaccio:hover span.k-input, span.ddlOperazioniBrogliaccio:hover span.k-icon {
+    color: #fff;
+}
+
+#ddlOperazioni_listbox li, span.ddlOperazioni span.k-input,
+#ddlOperazioniZoo_listbox li, span.ddlOperazioniZoo span.k-input,
+#ddlRicette li, span.ddlRicette span.k-input,
+#ddlOperazioniRicette_listbox li, span.ddlOperazioniRicette span.k-input,
+#ddlOperazioniBrogliaccio_listbox li, span.ddlOperazioniBrogliaccio span.k-input {
+    text-transform: uppercase;
+}
+/*FINE: CSS PER LA KENDO DDL "ALTRE OPERAZIONI"*/
+
+.toggleEspandi {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+tbody tr.kendoRiga_AgendaRicettaPubblica, tbody tr.kendoRiga_AgendaRicettaPubblica:hover {
+    background-color: yellow;
+}
+
+tbody tr.kendoRiga_AgendaRicettaInQdC, tbody tr.kendoRiga_AgendaRicettaInQdC:hover, tbody tr.kendoRiga_AgendaRicettaDaFareInBrogliaccio, tbody tr.kendoRiga_AgendaRicettaDaFareInBrogliaccio:hover {
+    background-color: lightgreen;
+}
+
+tbody tr.kendoRiga_AgendaRicettaBloccata, tbody tr.kendoRiga_AgendaRicettaBloccata:hover {
+    background-color: lightgray;
+}
+
+#div_preferiti .btn-default,
+#div_preferitiRicette .btn-default,
+#div_preferitiBrogliaccio .btn-default {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+#pnlPreferiti li.k-list-item,
+#pnlPreferitiZoo li.k-list-item,
+#pnlPreferitiRicette li.k-list-item,
+#pnlPreferitiBrogliaccio li.k-list-item,
+/* Le seguente query css possono essere cancellate quando verrà utilizzata la versione Kendo 2022.2.802 in produzione.
+   La classe .k-item è stata rimossa e sostituita da .k-list-item. Sono state preservata per la retro compatibilità.
+*/
+#pnlPreferiti li.k-item,
+#pnlPreferitiZoo li.k-item,
+#pnlPreferitiRicette li.k-item,
+#pnlPreferitiBrogliaccio li.k-item {
+    border: 1px solid #ddd;
+    border-top: 0px;
+    border-radius: 0px;
+    padding: 6px;
+    min-height: 34px;
+    height: auto !important;
+    background-color: #f1f3f7;
+    color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#pnlPreferiti li.k-list-item:first-child,
+#pnlPreferitiZoo li.k-list-item:first-child,
+#pnlPreferitiRicette li.k-list-item:first-child,
+#pnlPreferitiBrogliaccio li.k-list-item:first-child,
+/* Le seguente query css possono essere cancellate quando verrà utilizzata la versione Kendo 2022.2.802 in produzione.
+   La classe .k-item è stata rimossa e sostituita da .k-list-item. Sono state preservata per la retro compatibilità.
+*/
+#pnlPreferiti li.k-item:first-child,
+#pnlPreferitiZoo li.k-item:first-child,
+#pnlPreferitiRicette li.k-item:first-child,
+#pnlPreferitiBrogliaccio li.k-item:first-child {
+    border-top: 1px solid #ddd;
+}
+
+#pnlPreferiti li.k-list-item:hover, #pnlPreferiti .k-list > .k-state-selected,
+#pnlPreferiti .k-list > .k-selected,
+#pnlPreferitiZoo li.k-list-item:hover, #pnlPreferitiZoo .k-list > .k-state-selected,
+#pnlPreferitiZoo .k-list > .k-selected,
+#pnlPreferitiRicette li.k-list-item:hover, #pnlPreferitiRicette .k-list > .k-state-selected,
+#pnlPreferitiRicette .k-list > .k-selected,
+#pnlPreferitiBrogliaccio li.k-list-item:hover, #pnlPreferitiBrogliaccio .k-list > .k-state-selected,
+ #pnlPreferitiBrogliaccio .k-list > .k-selected,
+/* Le seguente query css possono essere cancellate quando verrà utilizzata la versione Kendo 2022.2.802 in produzione.
+   La classe .k-item è stata rimossa e sostituita da .k-list-item. Sono state preservata per la retro compatibilità.
+*/
+#pnlPreferiti li.k-item:hover, #pnlPreferiti .k-list > .k-state-selected,
+ #pnlPreferiti .k-list > .k-selected,
+#pnlPreferitiZoo li.k-item:hover, #pnlPreferitiZoo .k-list > .k-state-selected,
+#pnlPreferitiZoo .k-list > .k-selected,
+#pnlPreferitiRicette li.k-item:hover, #pnlPreferitiRicette .k-list > .k-state-selected,
+#pnlPreferitiRicette .k-list > .k-selected,
+#pnlPreferitiBrogliaccio li.k-item:hover, #pnlPreferitiBrogliaccio .k-list > .k-state-selected,
+ #pnlPreferitiBrogliaccio .k-list > .k-selected {
+    background-color: #052747;
+    color: #fff;
+}
+
+
+#pnlPreferiti li.k-list-item,
+#pnlPreferitiZoo li.k-list-item,
+#pnlPreferitiRicette li.k-list-item,
+#pnlPreferitiBrogliaccio li.k-list-item {
+    justify-content: center;
+}
+
+#pnlPreferiti .k-list-scroller,
+#pnlPreferitiZoo .k-list-scroller,
+#pnlPreferitiRicette .k-list-scroller,
+#pnlPreferitiBrogliaccio .k-list-scroller {
+    overflow: hidden;
+    padding: 0px 12px;
+    border: 0px;
+}
+
+#pnlPreferiti div.k-widget,
+#pnlPreferitiZoo div.k-widget,
+#pnlPreferitiRicette div.k-widget,
+#pnlPreferitiBrogliaccio div.k-widget {
+    width: 100%;
+    height: auto;
+    border: 0px;
+    display: block;
+    padding-top: 0px;
+}
+
+#pnlPreferiti div.k-listbox-toolbar,
+#pnlPreferitiZoo div.k-listbox-toolbar,
+#pnlPreferitiRicette div.k-listbox-toolbar,
+#pnlPreferitiBrogliaccio div.k-listbox-toolbar {
+    text-align: center;
+    margin-top: 5px;
+}
+
+#btnApriToolbarPreferiti, #btnSalvaPreferiti {
+    margin: 0px 12px;
+    width: -webkit-fill-available;
+    border-radius: 0px;
+}
+
+#btnNuovaOperazione, #btnNuovaRicetta, #btnNuovaOperazioneRicetta, #btnNuovaOperazioneBrogliaccio {
+    margin: 0;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #f1f3f7;
+    font-size: 12px;
+    min-height: 47px;
+}
+
+    #btnNuovaOperazione:hover, #btnNuovaRicetta:hover, #btnNuovaOperazioneRicetta:hover, #btnNuovaOperazioneBrogliaccio:hover {
+        background-color: #052747;
+        color: #fff;
+    }
+
+/*.numElem {
+    margin-left: 5px;
+    background-color: #f1f3f7;
+    border-radius: 20px;
+    padding: 0px 3px;
+    display: inline;
+    border: 1px solid #052747;
+}
+
+.nav-tabs li.active .numElem {
+    background-color: #052747;
+    border-color: white;
+    color: white;
+}*/
+
+
+.fixed-header {
+    top: 0;
+    position: fixed;
+    /*width: auto;*/
+    /*z-index: 1;*/
+}
+
+.k-filter-row {
+    background-color: white;
+}
+
+    .k-filter-row:hover {
+        background-color: white !important;
+    }
+
+/*.scrollMore {
+    margin-top: 600px;
+}
+
+.up {
+    cursor: pointer;
+}*/
+
+#pnlddlOperazioni span.ddlOperazioni:hover {
+    background-color: #052747;
+    color: white;
+}
+
+#pnlddlOperazioni span.ddlOperazioni {
+    background-color: #f1f3f7;
+}
+
+#pnlddlOperazioni span.ddlOperazioni .k-button-solid-base:hover {
+    background-color: #052747;
+}

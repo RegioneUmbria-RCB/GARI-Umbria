@@ -1,0 +1,29 @@
+<div class="container">
+    <div style="display: flex; align-items: center; margin-bottom: 8px">
+        <div class="col-7">
+            <kendo-dropdownlist id="selezionaCentro" [data]="centriAziendaliDDL | async" textField="name"
+                valueField="id" [(ngModel)]="currentCentro" (valueChange)="onFiltersChanged()">
+            </kendo-dropdownlist>
+        </div>
+        <div class="col-4" id="checkboxCatasto">
+            <input type="checkbox" [(ngModel)]="showCatasto" (change)="onFiltersChanged()" #notification
+                kendoCheckBox />
+            <kendo-label class="k-checkbox-label" [for]="notification"
+                [text]="'DisplayCatastoAlberoAnagrafica' | transloco"></kendo-label>
+        </div>
+        <span class="separator"></span>
+        <fa-icon kendoTooltip size="lg" [icon]="faReload" [title]="'RefreshTree' | transloco" aria-hidden="true"
+            (click)="ricaricaAlbero()">
+        </fa-icon>
+    </div>
+    <div class="row sticky">
+        <div class="col-12">
+            <kendo-textbox [style.width.%]="100" [placeholder]="'FiltroAlbero' | transloco" [clearButton]="true"
+                [(value)]="treeService.filterTerm">
+                <ng-template kendoTextBoxSuffixTemplate>
+                    <button kendoButton icon="search"></button>
+                </ng-template>
+            </kendo-textbox>
+        </div>
+    </div>
+</div>

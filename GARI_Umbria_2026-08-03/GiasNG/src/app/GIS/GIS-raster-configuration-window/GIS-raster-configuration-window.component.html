@@ -1,0 +1,33 @@
+<ng-container *ngIf="clickData$ | async"></ng-container>
+
+<gis-window #window [windowArgs]="windowArgs$ | async" class="pb-3 custom-window">
+  <ng-container *ngIf="{ masks: masks$ | async, raster: raster$ | async } as data">
+    <div class="transparency">
+      <kendo-label [text]="'Trasparenza' | transloco"></kendo-label><br />
+      <kendo-slider class="kendo-slider-trasparenza" #sliderTrasparenza [showButtons]="false" [min]="0" [max]="1"
+        [smallStep]="0.01" [tickPlacement]="'none'" [value]="opacity$ | async"
+        (valueChange)="changeOpacity(+data.raster.id, $event)">
+      </kendo-slider>
+    </div>
+
+    <div class="raster-row">
+      <kendo-switch class="raster-switch" color="primary" [checked]="clickInfo$ | async"
+        (valueChange)="changeMapClickInfo(+data.raster.id, $event)"></kendo-switch>
+      <div>{{'gis.InformazioniSuClickInMappa' | transloco}}</div>
+    </div>
+
+    <ng-container *ngIf="data.masks?.length == 0">
+      <h6 class="k-mt-5">{{ 'gis.NessunaMascheraRasterDisponibile' | transloco }}</h6>
+    </ng-container>
+
+    <ng-container *ngIf="data.masks?.length > 0">
+      <h6 class="k-mt-5">{{ 'gis.LayerDisponibiliPerMaschera' | transloco }}</h6>
+
+      <div *ngFor="let mask of data.masks" class="raster-row k-mt-2">
+        <kendo-switch class="raster-switch" color="primary" [checked]="!permission || mask.isAttivaPerUtenteCorrente"
+          (valueChange)="saveRasterMasks(mask, $event)" [readonly]="!permission"></kendo-switch>
+        <div>{{ mask.maschera_des }}</div>
+      </div>
+    </ng-container>
+  </ng-container>
+</gis-window>

@@ -1,0 +1,41 @@
+﻿<Window x:Class="TestShapeFile.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="TestShapeFile" Height="409" Width="576" xmlns:my="clr-namespace:System;assembly=mscorlib"
+    Closing="mainWindow_Closing" KeyDown="mainWindow_KeyDown">
+    <Grid>
+        <Menu Height="22" Margin="0,0,0,0" Name="menu1" VerticalAlignment="Top" >
+            <MenuItem Name="fileMI" Header="_File" SubmenuOpened="fileMI_SubmenuOpened">
+                <MenuItem Name="openMI" Header="_Open..." Click="openMI_Click"/>
+                <Separator/>
+                <MenuItem Name="resetMI" Header="_Reset" Click="resetMI_Click"/>
+                <Separator/>
+                <MenuItem Name="ExportGiasMI" Header="_Esporta in Gias" Click="ExportGiasMI_Click"/>
+                <Separator/>
+                <MenuItem Name="exitMI" Header="E_xit" Click="exitMI_Click"/>
+            </MenuItem>
+            <MenuItem Name="viewMI" Header="_View" SubmenuOpened="viewMI_SubmenuOpened">
+                <MenuItem Name="displayLonLatMI" Header="Display _Lon/Lat" IsCheckable="True" IsChecked="True" Click="displayLonLatMI_Click"/>
+                <Separator/>
+                <MenuItem Name="enablePanningMI" Header="Enable _Panning" IsCheckable="True" IsChecked="True" Click="enablePanningMI_Click"/>
+                <MenuItem Name="zoomMI" Header="_Zoom" SubmenuOpened="zoomMI_SubmenuOpened">
+                    <MenuItem Name="zoom50MI" Header="Zoom 50%" Click="zoom50_Click"/>
+                    <MenuItem Name="zoom100MI" Header="Zoom 100%" Click="zoom100_Click"/>
+                    <MenuItem Name="zoom200MI" Header="Zoom 200%" Click="zoom200_Click"/>
+                    <MenuItem Name="zoom400MI" Header="Zoom 400%" Click="zoom400_Click"/>
+                    <MenuItem Name="zoom800MI" Header="Zoom 800%" Click="zoom800_Click"/>
+                    <MenuItem Name="zoom1600MI" Header="Zoom 1600%" Click="zoom1600_Click"/>
+                    <MenuItem Name="zoom3200MI" Header="Zoom 3200%" Click="zoom3200_Click"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Optio_ns">
+                <MenuItem Name="geometryTypeMI" Header="_Geometry Type" SubmenuOpened="geometryTypeMI_SubmenuOpened">
+                    <MenuItem Name="pathGeometryMI" Header="_Path Geometry" IsCheckable="True" Click="pathGeometryMI_Click"/>
+                    <MenuItem Name="streamGeometryMI" Header="_Stream Geometry" IsCheckable="True" Click="streamGeometryMI_Click"/>
+                    <MenuItem Name="streamGeometryUnstrokedMI" Header="Stream Geometry _Unstroked" IsCheckable="True" Click="streamGeometryUnstrokedMI_Click"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Canvas Margin="0,22,0,0" MinHeight="50" MinWidth="50" Name="canvas1" ClipToBounds="True" RenderOptions.BitmapScalingMode="Unspecified" />
+    </Grid>
+</Window>

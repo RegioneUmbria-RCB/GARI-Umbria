@@ -1,0 +1,60 @@
+<!-- 
+<label [for]="viewPicker">{{ 'giasgrid.ScegliUnaVista' | transloco }} </label> -->
+
+<ng-content select="[start]">
+  
+</ng-content>
+
+<ng-container *ngIf="showSwitch">
+  <span class="switch-label k-label gias-switch-left-label">{{ 'giasgrid.Privata' | transloco }}</span>
+    <kendo-switch [(ngModel)]="switchValue"></kendo-switch>
+  <span class="switch-label k-label gias-switch-right-label">{{ 'giasgrid.Pubblica' | transloco }}</span>
+</ng-container>
+
+<gias-customization-dropdown #viewPicker
+  (applyView)="applyOrCreateAndApplyView($event)"
+  (applyViewAndJSON)="applyViewAndJSON($event)"
+  [(selected)]="selectedDDLItem">
+</gias-customization-dropdown>
+
+<!-- <fa-icon class="faDoubleArrowRight"> </fa-icon> -->
+
+<!-- TODO: Aggiungere traduzione per InfoViste in cui viene spiegato 
+  come aggiungere e gestire le viste -->
+<gias-info-template [title]="'giasgrid.InfoViste' | transloco"></gias-info-template>
+
+<div kendoTooltip [title]="selectedDDLItem?.data == null ? '' : isDefaultSaveDisabled() ? ('giasgrid.SalvaPredefinita' | transloco) : ('giasgrid.SalvaPersonalizzazioni' | transloco)">
+  <button 
+    [disabled]="!selectedDDLItem || isDefaultSaveDisabled()"
+    type="button"
+    (click)="onSave($event)"
+    class="btn btn-default btn-sm"
+    size="small">
+      <fa-icon
+        size="lg"
+        [icon]="faSave"
+        aria-hidden="true">
+      </fa-icon>
+      <!-- {{ 'giasgrid.Salva' | transloco }} -->
+  </button>
+</div>
+
+<button 
+  [disabled]="selectedDDLItem == null || (selectedDDLItem.data?.Predefinita && selectedDDLItem.data.IsNew)"
+  type="button"
+  kendoTooltip
+  (click)="onRemove($event)"
+  class="btn btn-default btn-sm"
+  size="small"
+  [title]="'giasgrid.CancellaPersonalizzazioni' | transloco">
+    <fa-icon
+      size="lg"
+      [icon]="faTrash"
+      aria-hidden="true">
+    </fa-icon>
+    <!-- {{ 'giasgrid.Cancella' | transloco }} -->
+</button>
+
+<ng-content select="[end]">
+  
+</ng-content>

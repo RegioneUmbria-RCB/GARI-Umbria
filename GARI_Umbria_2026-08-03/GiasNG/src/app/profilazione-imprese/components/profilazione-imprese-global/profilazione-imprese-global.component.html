@@ -1,0 +1,5 @@
+<div class="prof-imprese-switch" *ngIf="globalSubject != null">
+  <div>{{ 'profImprese.DefaultAziendali' | transloco }}</div>
+  <kendo-switch (valueChange)="globalSubject.next($event)" [checked]="globalSubject.value"></kendo-switch>
+  <div>{{ 'profImprese.DefaultGlobali' | transloco }}</div>
+</div>

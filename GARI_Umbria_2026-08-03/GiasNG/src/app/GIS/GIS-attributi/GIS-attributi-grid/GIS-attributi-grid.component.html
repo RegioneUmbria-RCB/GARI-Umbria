@@ -1,0 +1,77 @@
+<gias-kendo-grid [gridId]="getGridId" [customCommandColumnCellTemplate]="customCommandColumn">
+    <ng-container headerContent>
+        <div class="btn-group btn-sm">
+            <div gisTooltip *ngIf="true">
+                <button class="btn btn-primary btn-lg" (click)="findSelecetedItem()"
+                    [title]="'gis.TrovaElementoSelezionato' | transloco" [type]="'button'">
+                    <span class="info-icon">
+                        {{'gis.TrovaElementoSelezionato' | transloco}}
+                        <i aria-hidden="true" [class]="'xi-eye-visible-dark'"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container headerContent>
+        <div class="btn-group btn-sm">
+            <div gisTooltip *ngIf="isDeleteAllLayerDataButtonVisible$ | async">
+                <button class="custom-danger btn btn-primary btn-lg" (click)="deleteAllLayerData()"
+                    [title]="'gis.EliminaTuttiIDatiDelLayer' | transloco" type="button">
+                        {{'gis.EliminaDatiLayer' | transloco}}
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container headerContentEnd>
+        <div class="btn-group btn-sm">
+            <div gisTooltip *ngIf="false && permessi.inserimento && enableDrawing">
+                <button class="btn btn-primary btn-lg" (click)="disegnaLayer()" [title]="'gis.DisegnaLayer' | transloco"
+                    [type]="'button'">
+                    <span class="info-icon">
+                        <i aria-hidden="true" [class]="'xi-draw-edit-poly'"></i>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container headerSecondLine>
+        <div *ngIf="isTecnici && permessi.informazioni">
+            <kendo-datepicker [(value)]="filtroTemporale.DataInizio" placeholder="{{'DataInizio'|transloco}}"
+                (valueChange)="setStartDate($event)" style="width: auto" calendarType="classic"></kendo-datepicker>
+            <kendo-datepicker [(value)]="filtroTemporale.DataFine" placeholder="{{'DataFine'|transloco}}"
+                (valueChange)="setEndDate($event)" style="width: auto" calendarType="classic"></kendo-datepicker>
+
+            <div class="btn-group btn-sm">
+                <div gisTooltip>
+                    <button class="btn btn-primary btn-lg" (click)="loadTecnici()"
+                        [title]="'gis.UltimaPosizione' | transloco" [type]="'button'">
+                        <span class="info-icon">{{'gis.UltimaPosizione' | transloco}}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <!--<kendo-grid-command-column [headerStyle]="{
+            'background-color': '#428BCA',
+            'color': 'white'
+        }" [title]="''" [width]="50">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <button gisTooltip [title]="'Focus'" class="btn btn-success btn-sm" [type]="'button'"
+                (click)="focusOnFeature($event, dataItem)">
+                <span class="info-icon">
+                    <i aria-hidden="true" [class]="'xi-eye-visible-dark'"></i>
+                </span>
+            </button>
+        </ng-template>
+    </kendo-grid-command-column>-->
+</gias-kendo-grid>
+
+
+<ng-template #customCommandColumn let-dataItem="dataItem">
+  <button gisTooltip [title]="'Focus'" class="btn btn-success btn-sm" [type]="'button'"
+          (click)="focusOnFeature($event, dataItem)">
+                <span class="info-icon">
+                    <i aria-hidden="true" [class]="'xi-eye-visible-dark'"></i>
+                </span>
+  </button>
+</ng-template>

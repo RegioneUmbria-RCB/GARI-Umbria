@@ -1,0 +1,111 @@
+<ng-container *ngIf="isSementieri$ | async"></ng-container>
+
+<div *ngFor="let polygon of this.polygons">
+    <form [formGroup]="polyWindowForm">
+        <kendo-window
+            [minWidth]="200"
+            [minHeight]="150"
+        >
+
+            <kendo-window-titlebar>
+                <div class='k-window-title'>{{"gis.Area" | transloco}} : {{calculateArea_Ha(polygon)}} ha</div>
+                <button kendoWindowRestoreAction [disabled]="true" [hidden]="true"></button>
+                <button kendoWindowMinimizeAction [disabled]="true" [hidden]="true"></button>
+                <button kendoWindowMaximizeAction [disabled]="true" [hidden]="true"></button>
+                <button kendoWindowCloseAction [disabled]="true" [hidden]="true"></button>
+            </kendo-window-titlebar>
+
+            <div class="row form-row" *ngIf="{ value: isSementieri$ | async } as isSementieri">
+                <gias-drop-down-template *ngIf="!isSementieri.value; else sementieriTemplate"
+                    [id]="'tipoSalvataggio'"
+                    [obligatory]="true"
+                    [listItems]="tipoSalvataggio"
+                    textField="descrizione"
+                    valueField="codice"
+                    [valuePrimitive] = false
+                    giasFormControlName="ddlTipoValue"
+                >
+                </gias-drop-down-template>
+
+                <ng-template #sementieriTemplate>
+                    <gias-drop-down-template 
+                        [id]="'tipoSalvataggio'"
+                        [obligatory]="true"
+                        [listItems]="tipoSalvataggioSementieri"
+                        textField="descrizione"
+                        valueField="codice"
+                        [valuePrimitive] = false
+                        giasFormControlName="ddlTipoValue"
+                    >
+                    </gias-drop-down-template>
+                </ng-template>
+            </div>
+
+            <div class="mt-2 row form-row d-flex align-items-end">
+                <div class="col-lg-6 col-md-6 col-sm-6" style="width: 50%">
+                    <button
+                        kendoButton
+                        fillMode="outline"
+                        [primary]="false"
+                        (click)="save(polygon)"
+                    >
+                        <fa-icon size="lg" [icon]="['fas', 'check']" aria-hidden="true" style="color: green;"></fa-icon>
+                    </button>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-6 text-right" style="width: 50%">
+                    <button
+                        kendoButton
+                        fillMode="outline"
+                        [primary]="false"
+                        (click)="cancel(polygon)"
+                    >
+                        <fa-icon size="lg" [icon]="['fas', 'times']" aria-hidden="true" style="color: red;"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
+        </kendo-window>
+    </form>
+</div>
+
+<ng-template id="associazioneTemplate" #associazioneTemplate>
+    <form [formGroup]="associazioneWindowForm">
+        <div class="row form-row">
+            <div class="col-6 col-sm-12">
+                <label [for]="ddlSup"> {{ ddlSupLabel }}</label>
+            </div>
+            <div class="col-6 col-sm-12">
+                <gias-drop-down-template
+                    #ddlSup
+                    [id]="'assiciazioneSup'"
+                    [obligatory]="true"
+                    [listItems]="assiciazioneSup"
+                    textField="descrizione"
+                    valueField="codice"
+                    [valuePrimitive] = false
+                    giasFormControlName="ddlSupValue"
+                >
+                </gias-drop-down-template>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-6 col-sm-12">
+                <label [for]="ddlGIS"> {{ddlGISLabel}}</label>
+            </div>
+            <div class="col-6 col-sm-12">
+                <gias-drop-down-template
+                    #ddlGIS
+                    [id]="'associazioneGIS'"
+                    [obligatory]="true"
+                    [listItems]="associazioneGIS"
+                    textField="descrizione"
+                    valueField="codice"
+                    [valuePrimitive] = false
+                    giasFormControlName="ddlGISValue"
+                >
+                </gias-drop-down-template>
+            </div>
+        </div>
+    </form>
+</ng-template>

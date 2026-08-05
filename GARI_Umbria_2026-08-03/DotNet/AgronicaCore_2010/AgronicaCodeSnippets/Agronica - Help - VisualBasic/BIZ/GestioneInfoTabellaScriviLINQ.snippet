@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Versione LINQ di Data Creazione, modifica, ecc.. (core biz scrittura xml - chiamata funzione)</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Versione LINQ di Aggiunge l'assegnazione di data creazione, modifica, username (core biz lettura xml)</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>nodoxml</ID>
+          <Type/>
+          <ToolTip>Sostituire con l'origine dati per il nodo xml che si sta usando.</ToolTip>
+          <Default>DrUtentixAppezzamenti</Default>
+          <Function/>
+        </Literal>
+
+		
+        <Literal>
+          <ID>Data Creazione, modifica, ecc..</ID>
+          <Default>Data Creazione, modifica, ecc..</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[Dim $nodoxml$_data_creazione As Date = #2/1/1900#
+                    Dim $nodoxml$_data_Modifica As Date = #2/1/1900#
+                    Dim $nodoxml$_username_creazione As String = ""
+                    Dim $nodoxml$_username_modifica As String = ""
+
+
+                    If Not String.IsNullOrEmpty($nodoxml$.<Data_Creazione>.Value) Then
+                        $nodoxml$_data_creazione = $nodoxml$.<Data_Creazione>.Value
+                    End If
+
+                    If Not String.IsNullOrEmpty($nodoxml$.<Data_Modifica>.Value) Then
+                        $nodoxml$_data_Modifica = $nodoxml$.<Data_Modifica>.Value
+                    End If
+
+                    If Not String.IsNullOrEmpty($nodoxml$.<Username_Creazione>.Value) Then
+                        $nodoxml$_username_creazione = $nodoxml$.<Username_Creazione>.Value
+                    End If
+
+                    If Not String.IsNullOrEmpty($nodoxml$.<Username_Modifica>.Value) Then
+                        $nodoxml$_username_modifica = $nodoxml$.<Username_Modifica>.Value
+                    End If]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

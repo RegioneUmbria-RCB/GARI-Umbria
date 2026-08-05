@@ -1,0 +1,85 @@
+<div *ngIf="impresaSelected" class="container">
+  <form [formGroup]="mainForm">
+    <gias-update-toolbar
+      [submit]="false"
+      [salvaNuovo]="saveAndNew"
+      [TipoOperazioneDB]="tipoOperazione"
+      (clickEvent)="saveCenter()"
+      (clickSalvaNuovoEvent)="saveAndNewCenter()"
+    >
+    </gias-update-toolbar>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="editPageContent">
+          <div class="row form-row">
+            <div class="col-2 col-sm-3 "></div>
+            <div class="col-8 col-sm-6">
+              <gias-form-error-visualizer [form]="mainForm"></gias-form-error-visualizer>
+            </div>
+            <div class="col-2 col-sm-3"></div>
+          </div>
+
+        <div class="row">
+          <div class="content">
+            <span class="content-text">
+              <div class="row ">
+                <div class="col-12">
+                  <!-- <div class="card" style="padding-left: 10px; padding-right:10px "> -->
+
+                    <h4 class="card-title" style="text-align: center;">{{'centro.Dati_Centro' | transloco}}</h4>
+
+                    <div class="row form-row">
+                        <div class="col-12 col-sm-4">
+                            <gias-text-template
+                                [name]="('centro.Sa_Des' | transloco)"
+                                [obligatory]="true"
+                                [clearButton]="true"
+                                [isDisabled]="isFormDisabled"
+                                giasFormControlName="nome"
+                                >
+                            </gias-text-template>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <gias-drop-down-template
+                                [name]="'centro.Tipologia' | transloco"
+                                [listItems]="store.tipologia"
+                                [textField]="'descrizione'"
+                                [valueField]="'codice'"
+                                [obligatory]="true"
+                                [clearButton]="true"
+                                [isDisabled]="isFormDisabled"
+                                giasFormControlName="tipologia"
+                                [valuePrimitive]="false">
+                            </gias-drop-down-template>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <gias-drop-down-template
+                                [name]="'centro.titolo_Di_Possesso' | transloco"
+                                [listItems]="store.titolo_Di_Possesso"
+                                [textField]="'descrizione'"
+                                [valueField]="'codice'"
+                                [obligatory]="true"
+                                [clearButton]="true"
+                                [isDisabled]="isFormDisabled"
+                                giasFormControlName="titolo_Di_Possesso"
+                                [valuePrimitive]="false">
+                            </gias-drop-down-template>
+                        </div>
+                    </div>
+
+                      <dati-centro [isFormDisabled]="isFormDisabled"></dati-centro>
+
+                      <dati-accessori [isFormDisabled]="isFormDisabled"></dati-accessori>
+
+                      <centri-biologico [isFormDisabled]="isFormDisabled"></centri-biologico>
+                    </div>
+                  <!-- </div> -->
+                </div>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,41 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && piva != null && index != null" class="colture-full-width">
+  <kendo-multiselect class="widget-multiselect" [placeholder]="'Widgets_SelezionaUnAnnoDallaLista' | transloco"
+    [data]="validYears$ | async" [value]="yearsSubject.asObservable() | async"
+    (valueChange)="yearsSubject.next($event)"></kendo-multiselect>
+
+  <div *ngIf="data.length > 0" class="comparison-full-width">
+    <kendo-chart>
+      <kendo-chart-tooltip> </kendo-chart-tooltip>
+      <kendo-chart-series>
+        <kendo-chart-series-item *ngFor="let elem of data" type="column" [data]="elem" field="index"
+          categoryField="name" color="color" noteTextField="year">
+          <kendo-chart-series-item-labels [font]="'11px sans-serif'"></kendo-chart-series-item-labels>
+        </kendo-chart-series-item>
+      </kendo-chart-series>
+
+      <kendo-chart-category-axis>
+        <kendo-chart-category-axis-item>
+          <kendo-chart-category-axis-item-labels font="400 16px Lato, sans-serif">
+          </kendo-chart-category-axis-item-labels>
+        </kendo-chart-category-axis-item>
+      </kendo-chart-category-axis>
+      <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+    </kendo-chart>
+  </div>
+
+  <div *ngIf="data.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunDatoSullAnnoSelezionato' | transloco }}</p>
+  </div>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva != null && index == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'LIndiceNonEValido' | transloco }}</p>
+</div>

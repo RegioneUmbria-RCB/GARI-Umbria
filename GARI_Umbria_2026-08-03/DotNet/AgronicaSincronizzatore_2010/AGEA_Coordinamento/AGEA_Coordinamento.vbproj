@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5B07B380-A003-47D7-95C8-96827FA66CD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AGEA_Coordinamento</RootNamespace>
+    <AssemblyName>AGEA_Coordinamento</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GisWS_Chiamate.vb" />
+    <Compile Include="Import_AGEAFS5.vb" />
+    <Compile Include="Import_AGEAFS6.vb" />
+    <Compile Include="Model\AGEA_UMBRIA_FS5.vb" />
+    <Compile Include="Model\AGEA_UMBRIA_FS6.vb" />
+    <Compile Include="BiologicoWS.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OprCFascicoloFS6_Chiamate.vb" />
+    <Compile Include="OprFascicoloFS6_Chiamate.vb" />
+    <Compile Include="RiformaTitoliWS.vb" />
+    <Compile Include="Web References\BiologicoWS\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\GisWS\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\OprCFascicoloFS6\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\OprFascicoloFS6\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\RiformaTitoli\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Model\output.config" />
+    <None Include="Model\wsdl_Generator.cmd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\BiologicoWS\GestSIBWS.wsdl" />
+    <None Include="Web References\BiologicoWS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaArchiviazione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneChiusuraProcedimento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneDocumentoConformita.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneDocumentoGiustificativo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneEsclusione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneEsclusioneODC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneEsitoIstruttoria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneEsitoIstruttoriaODC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneNuovaNotifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneRecesso.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_AnnullaComunicazioneRettifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_CancellaComunicazioneNuovaNotifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneChiusuraProcedimento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneDocumentoConformita.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneDocumentoGiustificativo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneDocumentoGiustificativo2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneEsclusione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneEsclusioneODC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneEsitoIstruttoria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneEsitoIstruttoriaODC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneNotificaParziale.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneNotificaPregressa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneNuovaNotifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneNuovaNotifica2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneNuovaNotifica3.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneRecesso.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ComunicazioneRettifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConfermaLetturaEsito.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConfermaLetturaIdNotifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneChiusuraProcedimento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneComunicazioneEsclusione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneComunicazioneEsclusioneOdc.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneComunicazioneRecesso.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneDocumentoConformita.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneDocumentoConformitaCOVID19.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneDocumentoGiustificativo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneDocumentoGiustificativo2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneDocumentoGiustificativoCOVID19.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneEsitoIstruttoria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneEsitoIstruttoriaOdc.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ConsultazioneIterAmministrativo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiAnagraficiSoggetto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiConsistenzaTerritorio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerIdentificativo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerIdentificativo2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerIdentificativoCodificaOC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerIdentificativoCodificaOC2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerSoggetto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerSoggetto2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerSoggettoCodificaOC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiNotificaPerSoggettoCodificaOC2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneAcquacoltura.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneContoTerzisti.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneContoTerzisti2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneContoTerzisti3.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneImportatori.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezionePreparazione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneStrutture.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneTerritorio.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneTerritorioCodificaOC.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneUnitaProduttive.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneUnitaProduttive2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiSezioneZootecnia.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_DatiStatoNotifica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ElencoIdNotificheAggiornate.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ElencoIdNotificheAggiornate2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_ElencoIdNotificheAggiornateCuaa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_RicercaAzienda.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_RicercaOperatore.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_RicercaPosizione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_RichiestaRispostaSincrona_TestWS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazioneEsitoIstruttoriaODC_2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazioneNuovaNotifica5Livelli.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazionePAPImportatori.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazionePAPPreparatori.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazionePAPVegetali.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazionePAPVegetali5Livelli.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ComunicazionePAPZootecnia.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ConsultazioneEsitoIstruttoriaODC_2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ConsultazioneViolazione202018.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_IdentificaProdotto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ScaricaIterNotificaCuaa.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ScaricoCatalogoFiliere.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ScaricoCatalogoGruppoSpecieAllevamento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ScaricoCatalogoProdottiPreparatori.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\risposta_Sincrona_ScaricoCatalogoProduzioneZootecnica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\BiologicoWS\SIBWSEsitoComunicazioni.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GisWS\GisWs.wsdl" />
+    <None Include="Web References\GisWS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\GisWS\ResponseEfaRefreshGisType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GisWS\ResponseParticellaCatastoType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\OprCFascicoloFS6\ISWSToOprResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\OprCFascicoloFS6\OprCFascicoloFS6.wsdl" />
+    <None Include="Web References\OprCFascicoloFS6\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\OprFascicoloFS6\ISWSToOprResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\OprFascicoloFS6\OprFascicoloFS6.wsdl" />
+    <None Include="Web References\OprFascicoloFS6\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\RiformaTitoli\ElencoEsiti.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ElencoEventi.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ElencoEventiPAC2015.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ElencoEventiPegni.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\InfoAventiDiritto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\InfoTitolo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\InfoTitoloEPegni.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\InfoTitoloPAC2015.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSEventoTitolo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSEventoTitoloPAC2015.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSInfoDomandeTrasferimentoValidazione.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSInfoPegni.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSInfoProvvedimenti.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSResponse.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSRiepilogoTitoliAzienda.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSTitoliAggregati.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSTitoliAggregatiPAC2015.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSTitolo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSTitolo2.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSTitoloPAC2015.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\ISWSVerificaUtilizzo80Percento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\OutputAnticipiDU.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\OutputEstrazioneDAR.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\RiformaTitoli\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\RiformaTitoli\WebServiceTitoli.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://cooperazione.sian.it/wspdd/services/RiformaTitoli%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\RiformaTitoli\</RelPath>
+      <UpdateFromURL>http://cooperazione.sian.it/wspdd/services/RiformaTitoli%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AGEA_Coordinamento_RiformaTitoli_RiformaTitoli</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://cooperazione.sian.it/wsTOAST/services/BiologicoWS%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BiologicoWS\</RelPath>
+      <UpdateFromURL>https://cooperazione.sian.it/wsTOAST/services/BiologicoWS%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AGEA_Coordinamento_BiologicoWS_GestSIBWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://cooperazione.sian.it/wsTOAST/services/GisWs%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GisWS\</RelPath>
+      <UpdateFromURL>https://cooperazione.sian.it/wsTOAST/services/GisWs%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AGEA_Coordinamento_GisWS_GisWs</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://cooperazione.sian.it/wsTOAST/services/OprCFascicoloFS6%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\OprCFascicoloFS6\</RelPath>
+      <UpdateFromURL>https://cooperazione.sian.it/wsTOAST/services/OprCFascicoloFS6%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AGEA_Coordinamento_OprCFascicoloFS6_OprCFascicoloFS6</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://cooperazione.sian.it/wsTOAST/services/OprFascicoloFS6%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\OprFascicoloFS6\</RelPath>
+      <UpdateFromURL>https://cooperazione.sian.it/wsTOAST/services/OprFascicoloFS6%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AGEA_Coordinamento_OprFascicoloFS6_OprFascicoloFS6</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

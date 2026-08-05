@@ -1,0 +1,47 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '30 5 * * *' # cron syntax defining a schedule (06:30)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: false
+
+variables:
+- group: Destinations
+- template: ../../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../../templates/pipelines/net-agro-web-pipeline.yml  # Template reference
+  parameters:
+    solution: AgronicaStampe_2010
+    target: "AgronicaStampe_2010"
+    artifactName: AgronicaStampe_2010
+    path: 'AgronicaStampe_2010'
+    artifactBasePath: 'AgronicaStampe_2010\AgronicaStampe_2010'
+    outdir: 'AgronicaStampe_2010\AgronicaStampe_2010'
+    sonarExcludeDuplicates: true
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    preBuildSteps:
+      - template: ../../templates/steps/sonar-pre-build.yml
+        parameters:
+          scannerMode: 'dotnet'
+          projectKey: 'GiasDotNet-Stampe'
+          projectName: 'GiasDotNet - Stampe'
+          projectVersion: '$(SonarVersion)'
+          #verbose: 'true'
+
+      - template: ../../templates/steps/restore-gias2gias.yml
+
+    postBuildSteps:
+      - template: ../../templates/steps/sonar-post-build.yml

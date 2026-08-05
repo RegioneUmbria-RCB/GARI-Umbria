@@ -1,0 +1,58 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Aggiungi Template Combo</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Nome</ID>
+          <ToolTip>Nome</ToolTip>
+          <Default>Nome</Default>
+        </Literal>
+        <Literal>
+          <ID>Griglia_jQuerySelector</ID>
+          <ToolTip>Griglia_jQuerySelector</ToolTip>
+          <Default>Griglia_jQuerySelector</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">
+        <![CDATA[
+        function $Nome$_Template(container, options) {           
+
+            $$('<input required data-text-field="$Nome$_Des" data-value-field="$Nome$_Cod" data-bind="value:' + options.field + '"/>')
+            .appendTo(container)
+            .kendoDropDownList({
+                autoBind: true,
+                filter: "startswith",
+                dataSource: $Nome$_Leggi(),
+                change: function (e) {
+
+                  // Imposto la descrizione ed il codice nel modello dei dati leggendo dal'elemento selezionato
+                    var dataItem = e.sender.dataItem();
+                    var grid = $$("#$Griglia_jQuerySelector$").data("kendoGrid"),
+                        model = grid.dataItem(this.element.closest("tr"));
+
+                    model.$Nome$_Cod = dataItem.$Nome$_Cod;
+                    model.$Nome$_Des = dataItem.$Nome$_Des;
+                    
+                    
+                    //Sviluppare qui quello che si vuol fare al change (es.: scremare altre griglie)
+
+                }
+
+            });
+
+        }
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

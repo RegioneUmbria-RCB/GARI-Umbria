@@ -1,0 +1,237 @@
+.dialog-title {
+  font-size: 2rem;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.9rem;
+  opacity: 0.6;
+}
+
+/* content */
+/* layout */
+.dashboard-customization-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-customization-row-responsive {
+  display: flex;
+  flex-direction: row;
+}
+
+.dashboard-customization-body .widget-customization-content {
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.main-switches {
+  display: inline-block;
+}
+
+/* title container */
+
+.title-container {
+  display: inline-block;
+}
+
+.dashboard-customization-body .title-container .title {
+  margin-bottom: 14px;
+}
+
+.dashboard-customization-body .title-container .checkbox {
+  color: #002D5A;
+  line-height: 40px;
+}
+
+.dashboard-customization-body .title-container .checkbox:hover {
+  cursor: pointer;
+}
+
+.dashboard-customization-body .title-container .checkbox .checkbox-icon.active .fa.fa-square-o {
+  display: none;
+}
+
+.dashboard-customization-body .title-container .checkbox .checkbox-icon.active .fa.fa-check-square {
+  display: inline-block;
+}
+
+.dashboard-customization-body .title-container .checkbox .checkbox-icon.unchecked .fa.fa-square-o {
+  display: inline-block;
+  color: #BABABA;
+}
+
+.dashboard-customization-body .title-container .checkbox .checkbox-icon.unchecked .fa.fa-check-square {
+  display: none;
+}
+
+
+/* widget customization content */
+.widget-customization-content {
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+app-widget-config-list {
+  display: block;
+  max-height: 50vh !important;
+  overflow-y: auto;
+}
+
+.widget-customization-body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.widget-customization-title {
+  margin-bottom: 14px;
+}
+
+.checkbox-container {
+  display: flex;
+}
+
+/* widget customization item */
+.widget-customization-body .widget-customization-item {
+  display: flex;
+  line-height: 40px;
+  gap: 15px;
+}
+
+.widget-customization-body .widget-customization-item .item-title {
+  justify-content: start;
+}
+
+.widget-customization-body .widget-customization-item .item-switch {
+  justify-content: end;
+}
+
+/* switch */
+/* toggle in label designing */
+.widget-customization-item .toggle {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 27px;
+  background-color: #575757;
+  border-radius: 30px;
+  border: 2px solid #575757;
+  box-sizing: unset;
+}
+
+/* After slide changes */
+.widget-customization-item .toggle:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.5s;
+}
+
+/* Checkbox checked effect */
+.widget-customization-item .checkbox:checked + .toggle::after {
+  left: 25px;
+}
+
+/* Checkbox checked toggle label bg color */
+.widget-customization-item .checkbox:checked + .toggle {
+  background-color: #29C105;
+  border: 2px solid #29C105;
+}
+
+/* Checkbox vanished */
+.widget-customization-item .checkbox {
+  display: none;
+}
+
+/* switch customization */
+.widget-customization-item .switch-icons-container {
+  display: flex;
+}
+
+.widget-customization-item .switch-icon {
+  line-height: 27px;
+  font-size: 1rem;
+}
+
+.widget-customization-item .switch-icons-container .switch-icon-check {
+  margin-left: 6px;
+  color: white;
+}
+
+.widget-customization-item .switch-icons-container .switch-icon-x {
+  margin-left: 10px;
+  color: white;
+  line-height: 25px;
+}
+
+/* readonly widget */
+.widget-customization-item .readonly .toggle {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 27px;
+  background-color: #BABABA;
+  border-radius: 30px;
+  border: 2px solid #BABABA;
+}
+
+.widget-customization-item .readonly .checkbox:checked + .toggle {
+  background-color: #BABABA;
+  border: 2px solid #BABABA;
+}
+
+.preset-switch {
+  justify-content: start !important;
+}
+
+.custom-checkbox {
+  font-size: large;
+  margin-right: 5px;
+}
+
+.new-widget {
+  font-weight: bold;
+  color: #002D5A;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.preset-item-switch {
+  padding-top: 5px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+@media only screen and (max-width: 767px) {
+  .dashboard-customization-body {
+    display: block;
+  }
+
+  .dashboard-customization-body .widget-customization-content {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .dashboard-customization-body .title-container .checkbox {
+    line-height: 25px;
+  }
+
+  .dashboard-customization-row-responsive {
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,2271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci">
+      <s:element name="Verifica_Collegamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Num_1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num_2" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_CollegamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Verifica_CollegamentoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_Collegamento_new">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Num_1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num_2" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_Collegamento_newResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Formulati_Bio_Profitosan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_Bio_ProfitosanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_Bio_ProfitosanResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_Bio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_BioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_BioResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_SpecieVegetali">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_SpecieVegetaliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_PrincipiAttivi_SpecieVegetaliResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetaliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetaliResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Intervallo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_IntervalloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_IntervalloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Infestanti_Dosi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Infestanti_DosiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_Infestanti_DosiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Infestanti_Dosi_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Infestanti_Dosi_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_Infestanti_Dosi_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Avversita_Dosi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Avversita_DosiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_Avversita_DosiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Avversita_Dosi_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Avversita_Dosi_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_Avversita_Dosi_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Avversita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_AvversitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_AvversitaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_Infestanti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_SpecieVegetali_InfestantiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_SpecieVegetali_InfestantiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulato_Completo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulato_CompletoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulato_CompletoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_ConDosiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ListaDitte_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ListaDitte_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_ListaDitte_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_Info_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_Info_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_Info_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_Info_DS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_Info_DSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_Info_DSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulato_Info_con_UdM_DS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulato_Info_con_UdM_DSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulato_Info_con_UdM_DSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_ConDosi_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FormulatiBio_ConDosi_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FormulatiBio_ConDosi_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_FormulatiBio_ConDosi_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_Famiglie_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_Famiglie_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_PrincipiAttivi_Famiglie_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttiviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_PrincipiAttiviResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttivi_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_PrincipiAttivi_2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_PrincipiAttiviGruppiPrincipiAttiviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_PrincipiAttiviGruppiPrincipiAttiviResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulato_UdM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulato_UdMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulato_UdMResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DT_New">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DT_NewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_ConDosi_DT_NewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FormulatiBio_ConDosi_DT_New">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FormulatiBio_ConDosi_DT_NewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_FormulatiBio_ConDosi_DT_NewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FamigliePrincipiAttivi_Utilizzate_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FamigliePrincipiAttivi_Utilizzate_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FamigliePrincipiAttivi_Utilizzate_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DifesaDiserboWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DifesaDiserboWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verifica_DifesaDiserboWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DifesaDiserboWS_Bio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DifesaDiserboWS_BioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verifica_DifesaDiserboWS_BioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DT_Profitosan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_ConDosi_DT_ProfitosanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_ConDosi_DT_ProfitosanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_Classificazioni_DT_Profitosan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Formulati_Classificazioni_DT_ProfitosanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Formulati_Classificazioni_DT_ProfitosanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Verifica_CollegamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_CollegamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_CollegamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento_new" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento_newResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_Bio_ProfitosanSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_Bio_Profitosan" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_Bio_ProfitosanSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_Bio_ProfitosanResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_BioSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_Bio" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_BioSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_BioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_SpecieVegetaliSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_SpecieVegetali" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_SpecieVegetaliSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_SpecieVegetaliResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetaliSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetaliSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetaliResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_IntervalloSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Intervallo" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_IntervalloSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_IntervalloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_DosiSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Infestanti_Dosi" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_DosiSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Infestanti_DosiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_Dosi_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Infestanti_Dosi_DT" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_Dosi_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Infestanti_Dosi_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_DosiSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Avversita_Dosi" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_DosiSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Avversita_DosiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_Dosi_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Avversita_Dosi_DT" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_Dosi_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Avversita_Dosi_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_AvversitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Avversita" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_AvversitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_AvversitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_InfestantiSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_Infestanti" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_InfestantiSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_SpecieVegetali_InfestantiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulato_CompletoSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulato_Completo" />
+  </wsdl:message>
+  <wsdl:message name="Formulato_CompletoSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulato_CompletoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosiSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosiSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ListaDitte_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ListaDitte_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ListaDitte_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ListaDitte_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_Info_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_Info_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_Info_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_Info_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_Info_DSSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_Info_DS" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_Info_DSSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_Info_DSResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_Info_con_UdM_DSSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulato_Info_con_UdM_DS" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_Info_con_UdM_DSSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulato_Info_con_UdM_DSResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FormulatiBio_ConDosi_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_FormulatiBio_ConDosi_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FormulatiBio_ConDosi_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_FormulatiBio_ConDosi_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_Famiglie_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_Famiglie_DT" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_Famiglie_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_Famiglie_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttiviResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_2SoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_2" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_2SoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttivi_2Response" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviGruppiPrincipiAttiviSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttiviGruppiPrincipiAttivi" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviGruppiPrincipiAttiviSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_PrincipiAttiviGruppiPrincipiAttiviResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_UdMSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulato_UdM" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_UdMSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulato_UdMResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DT_NewSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DT_New" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DT_NewSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DT_NewResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FormulatiBio_ConDosi_DT_NewSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_FormulatiBio_ConDosi_DT_New" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FormulatiBio_ConDosi_DT_NewSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_FormulatiBio_ConDosi_DT_NewResponse" />
+  </wsdl:message>
+  <wsdl:message name="FamigliePrincipiAttivi_Utilizzate_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:FamigliePrincipiAttivi_Utilizzate_DT" />
+  </wsdl:message>
+  <wsdl:message name="FamigliePrincipiAttivi_Utilizzate_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:FamigliePrincipiAttivi_Utilizzate_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3Response" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWSSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_DifesaDiserboWS" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWSSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_DifesaDiserboWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWS_BioSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_DifesaDiserboWS_Bio" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWS_BioSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_DifesaDiserboWS_BioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DT_ProfitosanSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DT_Profitosan" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosi_DT_ProfitosanSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_ConDosi_DT_ProfitosanResponse" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_Classificazioni_DT_ProfitosanSoapIn">
+    <wsdl:part name="parameters" element="tns:Formulati_Classificazioni_DT_Profitosan" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_Classificazioni_DT_ProfitosanSoapOut">
+    <wsdl:part name="parameters" element="tns:Formulati_Classificazioni_DT_ProfitosanResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newHttpGetIn">
+    <wsdl:part name="Num_1" type="s:string" />
+    <wsdl:part name="Num_2" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newHttpGetOut" />
+  <wsdl:message name="Formulati_PrincipiAttivi_SpecieVegetaliHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_SpecieVegetaliHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetaliHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetaliHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_IntervalloHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_IntervalloHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_DosiHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Infestanti_DosiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_DosiHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_Avversita_DosiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_AvversitaHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_AvversitaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_InfestantiHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_SpecieVegetali_InfestantiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulato_CompletoHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulato_CompletoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosiHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_ConDosiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_Famiglie_DTHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_Famiglie_DTHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_2HttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttivi_2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviGruppiPrincipiAttiviHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Formulati_PrincipiAttiviGruppiPrincipiAttiviHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_UdMHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulato_UdMHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="FamigliePrincipiAttivi_Utilizzate_DTHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="FamigliePrincipiAttivi_Utilizzate_DTHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2HttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3HttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiHttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2HttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3HttpGetIn">
+    <wsdl:part name="Parametri" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWSHttpGetIn">
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="DatiWS" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWSHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWS_BioHttpGetIn">
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="DatiWS" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DifesaDiserboWS_BioHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AgroWS_FitofarmaciSoap">
+    <wsdl:operation name="Verifica_Collegamento">
+      <wsdl:input message="tns:Verifica_CollegamentoSoapIn" />
+      <wsdl:output message="tns:Verifica_CollegamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <wsdl:input message="tns:Verifica_Collegamento_newSoapIn" />
+      <wsdl:output message="tns:Verifica_Collegamento_newSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio_Profitosan">
+      <wsdl:input message="tns:Formulati_Bio_ProfitosanSoapIn" />
+      <wsdl:output message="tns:Formulati_Bio_ProfitosanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio">
+      <wsdl:input message="tns:Formulati_BioSoapIn" />
+      <wsdl:output message="tns:Formulati_BioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_SpecieVegetali">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_SpecieVegetaliSoapIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_SpecieVegetaliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali">
+      <wsdl:input message="tns:Formulati_SpecieVegetaliSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetaliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Intervallo">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_IntervalloSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_IntervalloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Infestanti_DosiSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Infestanti_DosiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi_DT">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Infestanti_Dosi_DTSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Infestanti_Dosi_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Avversita_DosiSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Avversita_DosiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi_DT">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Avversita_Dosi_DTSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Avversita_Dosi_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_AvversitaSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_AvversitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_InfestantiSoapIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_InfestantiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulato_Completo">
+      <wsdl:input message="tns:Formulato_CompletoSoapIn" />
+      <wsdl:output message="tns:Formulato_CompletoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi">
+      <wsdl:input message="tns:Leggi_Formulati_ConDosiSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ConDosiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ListaDitte_DT">
+      <wsdl:input message="tns:Leggi_Formulati_ListaDitte_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ListaDitte_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DT">
+      <wsdl:input message="tns:Leggi_Formulati_Info_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_Info_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DS">
+      <wsdl:input message="tns:Leggi_Formulati_Info_DSSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_Info_DSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_Info_con_UdM_DS">
+      <wsdl:input message="tns:Leggi_Formulato_Info_con_UdM_DSSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulato_Info_con_UdM_DSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT">
+      <wsdl:input message="tns:Leggi_Formulati_ConDosi_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ConDosi_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT">
+      <wsdl:input message="tns:Leggi_FormulatiBio_ConDosi_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_FormulatiBio_ConDosi_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_Famiglie_DT">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_Famiglie_DTSoapIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_Famiglie_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi">
+      <wsdl:input message="tns:Formulati_PrincipiAttiviSoapIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttiviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_2">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_2SoapIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+      <wsdl:input message="tns:Formulati_PrincipiAttiviGruppiPrincipiAttiviSoapIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttiviGruppiPrincipiAttiviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_UdM">
+      <wsdl:input message="tns:Leggi_Formulato_UdMSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulato_UdMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_New">
+      <wsdl:input message="tns:Leggi_Formulati_ConDosi_DT_NewSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ConDosi_DT_NewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT_New">
+      <wsdl:input message="tns:Leggi_FormulatiBio_ConDosi_DT_NewSoapIn" />
+      <wsdl:output message="tns:Leggi_FormulatiBio_ConDosi_DT_NewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FamigliePrincipiAttivi_Utilizzate_DT">
+      <wsdl:input message="tns:FamigliePrincipiAttivi_Utilizzate_DTSoapIn" />
+      <wsdl:output message="tns:FamigliePrincipiAttivi_Utilizzate_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaSoapIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2SoapIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3SoapIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiSoapIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2SoapIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3SoapIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS">
+      <wsdl:input message="tns:Verifica_DifesaDiserboWSSoapIn" />
+      <wsdl:output message="tns:Verifica_DifesaDiserboWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS_Bio">
+      <wsdl:input message="tns:Verifica_DifesaDiserboWS_BioSoapIn" />
+      <wsdl:output message="tns:Verifica_DifesaDiserboWS_BioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_Profitosan">
+      <wsdl:input message="tns:Leggi_Formulati_ConDosi_DT_ProfitosanSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ConDosi_DT_ProfitosanSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Classificazioni_DT_Profitosan">
+      <wsdl:input message="tns:Formulati_Classificazioni_DT_ProfitosanSoapIn" />
+      <wsdl:output message="tns:Formulati_Classificazioni_DT_ProfitosanSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AgroWS_FitofarmaciHttpGet">
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <wsdl:input message="tns:Verifica_Collegamento_newHttpGetIn" />
+      <wsdl:output message="tns:Verifica_Collegamento_newHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_SpecieVegetali">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_SpecieVegetaliHttpGetIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_SpecieVegetaliHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali">
+      <wsdl:input message="tns:Formulati_SpecieVegetaliHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetaliHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Intervallo">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_IntervalloHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_IntervalloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Infestanti_DosiHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Infestanti_DosiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_Avversita_DosiHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_Avversita_DosiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_AvversitaHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_AvversitaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti">
+      <wsdl:input message="tns:Formulati_SpecieVegetali_InfestantiHttpGetIn" />
+      <wsdl:output message="tns:Formulati_SpecieVegetali_InfestantiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulato_Completo">
+      <wsdl:input message="tns:Formulato_CompletoHttpGetIn" />
+      <wsdl:output message="tns:Formulato_CompletoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi">
+      <wsdl:input message="tns:Leggi_Formulati_ConDosiHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Formulati_ConDosiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_Famiglie_DT">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_Famiglie_DTHttpGetIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_Famiglie_DTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi">
+      <wsdl:input message="tns:Formulati_PrincipiAttiviHttpGetIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttiviHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_2">
+      <wsdl:input message="tns:Formulati_PrincipiAttivi_2HttpGetIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttivi_2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+      <wsdl:input message="tns:Formulati_PrincipiAttiviGruppiPrincipiAttiviHttpGetIn" />
+      <wsdl:output message="tns:Formulati_PrincipiAttiviGruppiPrincipiAttiviHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_UdM">
+      <wsdl:input message="tns:Leggi_Formulato_UdMHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Formulato_UdMHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FamigliePrincipiAttivi_Utilizzate_DT">
+      <wsdl:input message="tns:FamigliePrincipiAttivi_Utilizzate_DTHttpGetIn" />
+      <wsdl:output message="tns:FamigliePrincipiAttivi_Utilizzate_DTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_AvversitaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2HttpGetIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+      <wsdl:input message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3HttpGetIn" />
+      <wsdl:output message="tns:Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_InfestantiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2HttpGetIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+      <wsdl:input message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3HttpGetIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS">
+      <wsdl:input message="tns:Verifica_DifesaDiserboWSHttpGetIn" />
+      <wsdl:output message="tns:Verifica_DifesaDiserboWSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS_Bio">
+      <wsdl:input message="tns:Verifica_DifesaDiserboWS_BioHttpGetIn" />
+      <wsdl:output message="tns:Verifica_DifesaDiserboWS_BioHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgroWS_FitofarmaciSoap" type="tns:AgroWS_FitofarmaciSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Verifica_Collegamento">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_Collegamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_Collegamento_new" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio_Profitosan">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Bio_Profitosan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Bio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_SpecieVegetali">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_SpecieVegetali" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Intervallo">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Intervallo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti_Dosi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti_Dosi_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita_Dosi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita_Dosi_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulato_Completo">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulato_Completo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ListaDitte_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ListaDitte_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_Info_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DS">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_Info_DS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_Info_con_UdM_DS">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulato_Info_con_UdM_DS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_FormulatiBio_ConDosi_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_Famiglie_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_Famiglie_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttiviGruppiPrincipiAttivi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_UdM">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulato_UdM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_New">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT_New" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT_New">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_FormulatiBio_ConDosi_DT_New" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FamigliePrincipiAttivi_Utilizzate_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/FamigliePrincipiAttivi_Utilizzate_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_DifesaDiserboWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS_Bio">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_DifesaDiserboWS_Bio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_Profitosan">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Classificazioni_DT_Profitosan">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Classificazioni_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroWS_FitofarmaciSoap12" type="tns:AgroWS_FitofarmaciSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Verifica_Collegamento">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_Collegamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_Collegamento_new" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio_Profitosan">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Bio_Profitosan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Bio">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Bio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_SpecieVegetali">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_SpecieVegetali" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Intervallo">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Intervallo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti_Dosi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti_Dosi_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita_Dosi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita_Dosi_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Avversita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_SpecieVegetali_Infestanti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulato_Completo">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulato_Completo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ListaDitte_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ListaDitte_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_Info_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_Info_DS">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_Info_DS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_Info_con_UdM_DS">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulato_Info_con_UdM_DS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_FormulatiBio_ConDosi_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_Famiglie_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_Famiglie_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttivi_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_PrincipiAttiviGruppiPrincipiAttivi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_UdM">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulato_UdM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_New">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT_New" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FormulatiBio_ConDosi_DT_New">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_FormulatiBio_ConDosi_DT_New" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FamigliePrincipiAttivi_Utilizzate_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/FamigliePrincipiAttivi_Utilizzate_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_DifesaDiserboWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS_Bio">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Verifica_DifesaDiserboWS_Bio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi_DT_Profitosan">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Leggi_Formulati_ConDosi_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_Classificazioni_DT_Profitosan">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Fitofarmaci/Formulati_Classificazioni_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroWS_FitofarmaciHttpGet" type="tns:AgroWS_FitofarmaciHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <http:operation location="/Verifica_Collegamento_new" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_SpecieVegetali">
+      <http:operation location="/Formulati_PrincipiAttivi_SpecieVegetali" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali">
+      <http:operation location="/Formulati_SpecieVegetali" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Intervallo">
+      <http:operation location="/Formulati_SpecieVegetali_Intervallo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti_Dosi">
+      <http:operation location="/Formulati_SpecieVegetali_Infestanti_Dosi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita_Dosi">
+      <http:operation location="/Formulati_SpecieVegetali_Avversita_Dosi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Avversita">
+      <http:operation location="/Formulati_SpecieVegetali_Avversita" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_SpecieVegetali_Infestanti">
+      <http:operation location="/Formulati_SpecieVegetali_Infestanti" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulato_Completo">
+      <http:operation location="/Formulato_Completo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_ConDosi">
+      <http:operation location="/Leggi_Formulati_ConDosi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_Famiglie_DT">
+      <http:operation location="/Formulati_PrincipiAttivi_Famiglie_DT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi">
+      <http:operation location="/Formulati_PrincipiAttivi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttivi_2">
+      <http:operation location="/Formulati_PrincipiAttivi_2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Formulati_PrincipiAttiviGruppiPrincipiAttivi">
+      <http:operation location="/Formulati_PrincipiAttiviGruppiPrincipiAttivi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulato_UdM">
+      <http:operation location="/Leggi_Formulato_UdM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FamigliePrincipiAttivi_Utilizzate_DT">
+      <http:operation location="/FamigliePrincipiAttivi_Utilizzate_DT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita">
+      <http:operation location="/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2">
+      <http:operation location="/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3">
+      <http:operation location="/Leggi_Avversita_Da_Formulati_SpecieVegetali_Avversita_3" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti">
+      <http:operation location="/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2">
+      <http:operation location="/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3">
+      <http:operation location="/Leggi_Infestanti_Da_Formulati_SpecieVegetali_Infestanti_3" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS">
+      <http:operation location="/Verifica_DifesaDiserboWS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DifesaDiserboWS_Bio">
+      <http:operation location="/Verifica_DifesaDiserboWS_Bio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgroWS_Fitofarmaci">
+    <wsdl:port name="AgroWS_FitofarmaciSoap" binding="tns:AgroWS_FitofarmaciSoap">
+      <soap:address location="http://localhost/AgronicaWebService2010/AgroWS_Fitofarmaci.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroWS_FitofarmaciSoap12" binding="tns:AgroWS_FitofarmaciSoap12">
+      <soap12:address location="http://localhost/AgronicaWebService2010/AgroWS_Fitofarmaci.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroWS_FitofarmaciHttpGet" binding="tns:AgroWS_FitofarmaciHttpGet">
+      <http:address location="http://localhost/AgronicaWebService2010/AgroWS_Fitofarmaci.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

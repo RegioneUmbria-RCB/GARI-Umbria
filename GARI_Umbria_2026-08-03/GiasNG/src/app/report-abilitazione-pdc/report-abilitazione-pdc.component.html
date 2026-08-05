@@ -1,0 +1,138 @@
+<form [formGroup]="reportForm" (ngSubmit)="onSubmit(false)">
+    
+    <div class="card">
+        <div class="card-header">
+            <h1>Report - Abilitazione PdC</h1>
+        </div>
+        <div class="card-body" style="margin: 20px;">
+            
+            <div class="row" style="margin-bottom: 20px;
+                                    display: flex;
+                                    align-items: flex-end;
+                                    justify-content: space-between;">
+                <div class="col-12 col-md-4">
+                    <gias-drop-down-template
+                    [name]="'TipologiaReport' | transloco"
+                    textField="descrizione" valueField="codice"
+                    [filterable]="true"
+                    giasFormControlName="tipologiaReport"
+                    (open)="openDdl($event, 'TipologiaReport')"
+                    [valuePrimitive]="false"
+                    [obligatory]="true"
+                    [defaultItem]="{codice: 0, descrizione:'Raggruppa per specie'}">
+                    </gias-drop-down-template>
+                </div>
+                <div class="col-12 col-md-2">
+                    <div class="btn btn-primary btn-primary-fill"
+                        (click)="stampaAbilitazioneXSpecie()"
+                        style="display: flex;
+                        align-items: center; 
+                        justify-content: center;">
+                        <span>{{ 'Cerca' | transloco }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="display: flex;
+                                    justify-content: space-between;
+                                    margin-bottom: 20px;">
+                <div class="col-12 col-md-4">
+                    <gias-multiselect-template-s [name]="'CodiceSocio' | transloco" [obligatory]="true"
+                                        [clearButton]="true"
+                                        textField="Codice_Socio"
+                                        valueField="piva" [filterable]="true"
+                                        giasFormControlName="codiceSocio"
+                                        (open)="openDdl($event, 'CodiceSocio')"
+                                        (selectionItem)="aggiornaFiltroImprese($event, 'Aggiunta')"
+                                        (removeItem)="aggiornaFiltroImprese($event, 'Rimozione')"
+                                        [valuePrimitive]="false"
+                                        [obligatory]="true">
+                    </gias-multiselect-template-s>
+                </div>
+                <div class="col-12 col-md-4">
+                    <gias-multiselect-template-s [name]="'Piva' | transloco" [obligatory]="true"
+                                       [clearButton]="true"
+                                       textField="piva"
+                                       valueField="piva" [filterable]="true"
+                                       giasFormControlName="partitaIva"
+                                       (open)="openDdl($event, 'Piva')"
+                                       (selectionItem)="aggiornaFiltroImprese($event, 'Aggiunta')"
+                                       (removeItem)="aggiornaFiltroImprese($event, 'Rimozione')"
+                                       [valuePrimitive]="false"
+                                       [obligatory]="true">
+                    </gias-multiselect-template-s>
+                </div>
+                <div class="col-12 col-md-4">
+                    <gias-multiselect-template-s [name]="'RagioneSociale' | transloco" [obligatory]="true"
+                                       [clearButton]="true"
+                                       textField="rag_soc"
+                                       valueField="piva" [filterable]="true"
+                                       giasFormControlName="ragioneSociale"
+                                       (open)="openDdl($event, 'Azienda')"
+                                       (selectionItem)="aggiornaFiltroImprese($event, 'Aggiunta')"
+                                       (removeItem)="aggiornaFiltroImprese($event, 'Rimozione')"
+                                       [valuePrimitive]="false"
+                                       [obligatory]="true">
+                    </gias-multiselect-template-s>
+                </div>
+            </div>
+
+            <div class="row" style="display: flex;
+                                    justify-content: space-between;
+                                    margin-bottom: 20px;">
+                <div class="col-12 col-md-4">
+                    <gias-drop-down-template
+                        [name]="'Specie' | transloco"
+                        textField="descrizione" valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="specie"
+                        (open)="openDdl($event, 'Specie')"
+                        (valueChange)="aggiornaFiltroSpecie()"
+                        [valuePrimitive]="false"
+                        [obligatory]="true"
+                        [defaultItem]="{codice: 0, descrizione:''}">
+                    </gias-drop-down-template>
+                </div>
+                <div class="col-12 col-md-4">
+                    <gias-drop-down-template
+                        [name]="'GruppoVarietale' | transloco"
+                        textField="descrizione" valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="gruppoVarietale"
+                        (open)="openDdl($event, 'GruppoVarietale')"
+                        [valuePrimitive]="false"
+                        [defaultItem]="{codice: 0, descrizione:''}">
+                    </gias-drop-down-template>
+                </div>
+                <div class="col-12 col-md-4">
+                     <gias-drop-down-template
+                        [name]="'Varieta' | transloco"
+                        textField="descrizione" valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="varieta"
+                        (open)="openDdl($event, 'Varieta')"
+                        [valuePrimitive]="false"
+                        [defaultItem]="{codice: 0, descrizione:''}">
+                    </gias-drop-down-template>
+                </div>
+            </div>
+
+            <div class="row" style="display: flex;
+                                    justify-content: space-between;
+                                    max-width: 50%;">
+                <div class="col-12 col-md-12">
+                    <gias-validita formGroupName="validita"></gias-validita>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="container">
+    <div class="row">      
+        <div class="col-12">          
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.1.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Kendo Basic Panel Bar</Title>
+			<Author>Vanni Costa</Author>
+			<Shortcut>kpbar</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>id</ID>
+					<ToolTip>id della panelbar</ToolTip>
+					<Default>id</Default>
+				</Literal>
+				<Literal>
+					<ID>Titolo</ID>
+					<ToolTip>Titolo della panelbar</ToolTip>
+					<Default>Titolo</Default>
+				</Literal>
+				<Literal>
+					<ID>Aperta</ID>
+					<ToolTip>scheda aperta</ToolTip>
+					<Default>k-active</Default>
+				</Literal>
+			</Declarations>
+
+			<!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+			<Code Language="html">
+				<![CDATA[<div class="panelbar$id$ k-content">
+                    <ul id="panelbar$id$Ul">
+                        <li class="$Aperta$">
+
+                            <%--$Titolo$--%>
+                            <span id="panelbar$id$">
+								<span class="tabStripTileText">
+									<asp:Localize meta:resourcekey="rs_$id$" runat="server">$Titolo$</asp:Localize>
+								</span> 
+							</span>
+							
+							<%--$Titolo$, contenuto--%>
+							<div class="form-group" style="margin-top: 8px; margin-bottom: 8px">
+								<div class="row">
+								</div>
+							</div>
+							
+						</li>
+					</ul>
+				</div>]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E64885E-19AD-4476-9094-1B5EF239CD43}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCorePianoConcimazioneBIZ</RootNamespace>
+    <AssemblyName>AgronicaCorePianoConcimazioneBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DistribuzioneFrazionataFertiManager.vb" />
+    <Compile Include="PianoConcimazione_Bilancio.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PianoConcimazione_DisponibilitaOssigeno.vb" />
+    <Compile Include="PianoConcimazione_DistribuzioneFrazionataFertiManager.vb" />
+    <Compile Include="PianoConcimazione_EpocheModalita.vb" />
+    <Compile Include="PianoConcimazione_FasiCicloColturale.vb" />
+    <Compile Include="PianoConcimazione_FattoriCorrettivi.vb" />
+    <Compile Include="PianoConcimazione_FinalitaRER.vb" />
+    <Compile Include="PianoConcimazione_Frequenza.vb" />
+    <Compile Include="PianoConcimazione_LimitiAzotoxSpecie.vb" />
+    <Compile Include="PianoConcimazione_MatriciOrganiche.vb" />
+    <Compile Include="PianoConcimazione_Precessione.vb" />
+    <Compile Include="PianoConcimazione_Regolamenti.vb" />
+    <Compile Include="PianoConcimazione_SpecieConcimazione.vb" />
+    <Compile Include="PianoConcimazione_StatoImpianto.vb" />
+    <Compile Include="PianoConcimazione_Suolo.vb" />
+    <Compile Include="PianoConcimazione_TipoAcqua.vb" />
+    <Compile Include="PianoConcimazione_Ubicazione.vb" />
+    <Compile Include="PianoNutrizionale_Bilancio.vb" />
+    <Compile Include="PianoNutrizionale_Semplificato.vb" />
+    <Compile Include="PUA_Appezzamento.vb" />
+    <Compile Include="PUA_ClassiTessitura.vb" />
+    <Compile Include="PUA_CoefficienteB_Coltura.vb" />
+    <Compile Include="PUA_CoefficienteTempo_Coltura.vb" />
+    <Compile Include="PUA_EfficienzaxTipiAllevamentixEffluenti.vb" />
+    <Compile Include="PUA_Effluenti.vb" />
+    <Compile Include="PUA_EpocheModalita.vb" />
+    <Compile Include="PUA_Fabbisogni.vb" />
+    <Compile Include="PUA_ListaTipiAllevamenti.vb" />
+    <Compile Include="PUA_PossibilitaDistribuzione.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePianoConcimazioneDAL\AgronicaCorePianoConcimazioneDAL.vbproj">
+      <Project>{068260cc-54bb-4e8d-8538-09ceb2503c0e}</Project>
+      <Name>AgronicaCorePianoConcimazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

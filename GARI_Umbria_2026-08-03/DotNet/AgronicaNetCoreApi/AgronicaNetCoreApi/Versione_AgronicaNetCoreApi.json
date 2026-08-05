@@ -1,0 +1,4968 @@
+﻿{
+  "$schema": "https://www.agronica.it/Deposito/Changelog/changelogVer2.schema.json",
+  "progetto": "Agronica NetCore API",
+  "versioni": [
+    {
+      "data": "2026-07-17",
+      "versione": "152.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "837",
+          "motivo": "Aggiornamento e aggiunta tabelle per gestione visibilita pratiche"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "WebApi Qlick",
+            "descrizione": "Realizzate webApi per poter chiamare dall'esterno i report Riepilogo Consistenze, Controllo Trattamenti, Stazionamento Capi e Scarico Capi'",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 217638,
+            "idTicketTesting": 0,
+            "autore": "Rossi Marco",
+            "noteTest": "Testare le stampe perché sono state modificate per allineare le versioni presenti in vb e in c#",
+            "noteTecniche": ""
+          },
+          {
+            "area": "DSS Nutrizione",
+            "descrizione": "Primo rilascio DSS Nutrizione",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 207213,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Casanova",
+            "noteTest": "Non Testabile",
+            "noteTecniche": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Widgets multiazienda",
+            "descrizione": "Aggiorna la gestione della visibilita' aziendale nei widgets multi azienda per fare in modo che i dati siano riferiti alle sole aziende visibili dall'utente",
+            "cliente": "Fileni",
+            "idTicketAssistenza": 213136,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-07-06",
+      "versione": "152.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "837",
+          "motivo": "Aggiornamento e aggiunta tabelle per gestione visibilita pratiche"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Sostenibilita CO2",
+            "descrizione": "Aggiunto validita inizio impianto, centroide azienda, nazione azienda, finalita produttiva, destinazione d'uso e lettura di tutte le operazioni",
+            "cliente": "Foodmetaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209102,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": "L'unico test possibile è verificare che nel file json creato siano presenti effettivamente questi nuovi campi aggiunti"
+          },
+          {
+            "area": "Utenti Visibilita",
+            "descrizione": "Aggiorna la gestione della visibilita' aziendale degli utenti per fare in modo che sia possibile gestirla anche tramite le pratiche",
+            "cliente": "CAI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209102,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua",
+            "noteTest": "Se la chiave in configurazione siti Utenti_Visibilita_Calcolo_Combinato_Pratiche è attiva sarà possibile assegnare e gestire la visibilita basandosi su imprese e pratiche attive"
+          },
+          {
+            "area": "Sincro selettiva e con pacchetti già pronti GIAS2APP",
+            "descrizione": "Migliorata performance per FiltroRicerca/Imprese.",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 204657,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-06-26",
+      "versione": "151.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "833",
+          "motivo": "Aggiunte tabelle in lingua per la gestione di guida_impostazioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Piva reale",
+            "descrizione": "Fix per l'estrazione dal filtrone della piva reale ed utilizzo della piva reale come filtro di ricerca",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 220594,
+            "idTicketTesting": 0,
+            "autore": "Cecalupo Marco",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-06-19",
+      "versione": "151.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "833",
+          "motivo": "Aggiunte tabelle in lingua per la gestione di guida_impostazioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Progetti e riferimenti",
+            "descrizione": "Rimosso progetto non più necessario e adeguati riferimenti",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Nessun test necessario"
+          }
+        ],
+        "bugfix": [],
+        "security": [],
+        "performance": [
+          {
+            "area": "Sincro web2app: attività",
+            "descrizione": "Modifiche per velocizzare la lettura delle attività e il mapping in oggetto di tipo Attivita",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 204652,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Assicurarsi che la sincro delle attività web2app funzioni correttamente. Fare anche un giro su componenti che utilizzano le librerie in .NET (esempio filtrone oppure nuova qdca compliance) e verificare che non ci siano problemi",
+            "noteTecniche": "Modificato il data provider, è stato inserito un metodo per letture multiple (restituisce dataset). Fatto refactoring del metodo principale delle letture (metodo che restituisce datatable) per non duplicare il codice"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2026-06-12",
+      "versione": "151.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "833",
+          "motivo": "Aggiunte tabelle in lingua per la gestione di guida_impostazioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Pesature e Accrescimento Zoo",
+            "descrizione": "Fix lettura pesature nel widget, non venivano considerate le pesature oltre i 90 giorni.",
+            "cliente": "diprocarni",
+            "idTicketAssistenza": 219148,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Pesature e Accrescimento Zoo",
+            "descrizione": "Fix calcolo peso teorico in griglia, non considerava il peso reale alla data di pesatura.",
+            "cliente": "diprocarni",
+            "idTicketAssistenza": 217708,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Fix blocco modifica (rimozione capi) trattamenti già inviati a VetInfo.",
+            "cliente": "inalca",
+            "idTicketAssistenza": 218152,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-06-08",
+      "versione": "151.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "833",
+          "motivo": "Aggiunte tabelle in lingua per la gestione di guida_impostazioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "144",
+          "motivo": "Aggiunte viste in lingua delle tabelle guida_impostazioni"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Traduzioni guida_impostazioni",
+            "descrizione": "Aggiunge la gestione delle tabelle in lingua per guida_impostazioni",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 179255,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          },
+          {
+            "area": "Tutte",
+            "descrizione": "Estrazione e visualizzazione della Partita Iva Reale",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 214560,
+            "idTicketTesting": 0,
+            "autore": "Cecalupo Marco",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Sostenibilita CO2 e H2O",
+            "descrizione": "Esplorazione filiere per tutta la gerarchia",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Raffaele Nobile",
+            "noteTest": ""
+          },
+          {
+            "area": "Pesate Zoo Accrescimento",
+            "descrizione": "Aggiunta API per lettura elenco razze animali.",
+            "cliente": "diprocarni",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 217708,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Fix lunghezza campo 'Capi' in griglia operazioni zoo.",
+            "cliente": "inalca",
+            "idTicketAssistenza": 218003,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Bloccata modifica trattamento dopo l'avvenuto invio a VetInfo.",
+            "cliente": "inalca",
+            "idTicketAssistenza": 218152,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-05-28",
+      "versione": "150.4.2",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Zootecnia - Curve Pesature e Accrescimento",
+            "descrizione": "Fix pagina dedicata pesate curve e accrescrimento (query lettura non considerava il peso impostato nelle operazioni di carico).",
+            "cliente": "diprocarni",
+            "idTicketAssistenza": 217708,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-05-22",
+      "versione": "150.4.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Zootecnia - Curve Pesature e Accrescimento",
+            "descrizione": "Aggiunte API/BIZ/DAL per pagina e widget zoo visualizzazione e confronto dati pesatura con curve teoriche ed export CSV/XLS.",
+            "cliente": "diprocarni",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 214254,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-05-11",
+      "versione": "150.2.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di ricerca (new!)",
+            "descrizione": "Corretto il filtro per validita inizio >= X su esercizi: ora restituisce correttamente anche quelli con appezzamento e/o impianto con data di inizio antecedente",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 211307,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "noteTest": "Creare un piano colturale avente validita_inizio appezzamento/impianto antecedente rispetto alla data inizio dell'esercizio. Nel filtro di ricerca filtrare: Esercizi con validita_inizio maggiore uguale X (data inizio esercizio scelta). L'esercizio creato deve comparire correttamente.'",
+            "noteTecniche": "Correzione propagazione filtri temporali su entità genitore: Il propagatore copiava ColonnaData e TipoConfronto invariati dal figlio al genitore, causando l'esclusione errata di entità con ValiditaInizio antecedente alla data filtrata. La propagazione ora adatta la colonna rispettando la relazione di contenimento della gerarchia di validità (figlio ⊆ genitore):  - ValiditaInizio >= D sul figlio → ValiditaFine >= D sul genitore; - ValiditaFine <= D sul figlio  → ValiditaInizio <= D sul genitore; - CompresoFra e IntervalloValidita non vengono propagati;"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-05-08",
+      "versione": "150.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Aggiunta esclusione lotto da giacenza se esaurito alla data finale in caso di protocollo retrodatato.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 215292,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-05-04",
+      "versione": "150.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [],
+        "security": [
+          {
+            "area": "Security - TempChiaviMassivo",
+            "descrizione": "Gestione parametrizzazione delle tabelle di appoggio per filtri massivi",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-04-27",
+      "versione": "150.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Sostenibilita CO2 e H2O",
+            "descrizione": "migliorato approssimazione calcoli, aggiunto id appezzamento concatenato, eliminato campi superflui, corretto log, inserita fertirrigazioni",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": "non testabile"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-04-21",
+      "versione": "149.3.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Progetti",
+            "descrizione": "Import dei progetti mancanti (AgronicaNetCore.MeteoSuite.BIZ e AgronicaNetCore.MeteoSuite.DAL) per compilare la soluzione",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile da assistenza"
+          },
+          {
+            "area": "Calcolo Sostenibilità CO2",
+            "descrizione": "Si era perso la codifica UTF-8 e quindi non funzionava più la lettura dei principi attivi",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Giulia Bottan",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-04-17",
+      "versione": "149.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "824",
+          "motivo": "Aggiunte le tabelle per la sostenibilità H2O: Lookup_Sost_H2O_Lotto, Lookup_Sost_H2O_Aziendale_Chiavi e Lookup_Sost_H2O_Aziendale_Payload"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "172",
+          "motivo": "chiave ConfigFirmaDigitale per configurazione server per la firma digitale"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Sostenibilità CO2",
+            "descrizione": "Aggiunte API per lettura token CO2 generabili.",
+            "cliente": "foodmetaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 211717,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Calcolo Sostenibilità H2O",
+            "descrizione": "Sviluppi relativi alla sostenibilità H2O + funzione firma digitale",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209287,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Progetti",
+            "descrizione": "Import dei progetti mancanti (AgronicaNetCore.MeteoSuite.BIZ e AgronicaNetCore.MeteoSuite.DAL) per compilare la soluzione",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile da assistenza"
+          },
+          {
+            "area": "Calcolo Sostenibilità CO2 e rischi meteo",
+            "descrizione": "Fix tabella troncata per sostenibilità e fix progetto_cod",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 212855,
+            "idTicketTesting": 0,
+            "autore": "Raffaele Nobile",
+            "noteTest": ""
+          },
+          {
+            "area": "Calcolo Sostenibilità H2O",
+            "descrizione": "Gestita la possibilità di calcolare il rischio H2O selezionando più perimetri relativi a più aziende",
+            "cliente": "FMP",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209287,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-04-14",
+      "versione": "149.2.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Sostenibilita",
+            "descrizione": "Aggiunta gestione Sostenibilita H2O",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209287,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Calcolo Sostenibilità CO2",
+            "descrizione": "Date di Inizio Annata Agraria e Fine Annata Agraria caricate dalle Impostazioni Utente",
+            "cliente": "FoodMetaVerse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209102,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2026-04-10",
+      "versione": "149.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Progetti",
+            "descrizione": "Import dei progetti mancanti per compilare la soluzione",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "security": [],
+        "performance": [
+          {
+            "area": "Namespaces",
+            "descrizione": "I servizi IMagazzinoService e IMagazzino avevano namespace non appartenenti al loro progetto, sono stati messi a posto",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2026-04-07",
+      "versione": "149.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "FMP integrazione tracciabilità",
+            "descrizione": "ripristinate LeggiImpiantyAsync e LeggiProdottiAsync",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Amine Houkmi",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-04-01",
+      "versione": "149.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Gestione corretta delle eccezioni gestite.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 210200,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Nessun test da parte di assistenza"
+          },
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Filtro corretto per dataEmissione su prescrizioni veterinarie.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fatto in modo che la colonna 'Chiave GIAS' sia nuovamente visualizzabile sul Filtro Di Ricerca (new!)",
+            "cliente": "Eni Kenya",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 210486,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": "Verificare la presenza della colonna 'Chiave GIAS' tra quelle visulizzabili sul Filtro Di Ricerca"
+          },
+          {
+            "area": " Integrazione moduli FMP",
+            "descrizione": "aggiunta metodi in biz e dal per i due endpoint utenti/cono-visibilita e filiere ",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 210661,
+            "idTicketTesting": 0,
+            "autore": "Amine Houkmi",
+            "noteTest": ""
+          },
+          {
+            "area": "Integrazione Sostenibilita",
+            "descrizione": "aggiunto controller sostenibilita",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209101,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": ""
+          },
+          {
+            "area": "Integrazione Rischi Meteo",
+            "descrizione": "aggiunto controller rischi meteo",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 209279,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": ""
+          },
+          {
+            "area": "Integrazione Rischi Meteo e Sostenibilita",
+            "descrizione": "aggiunto Integrazione Rischi Meteo e Sostenibilita",
+            "cliente": "Food Metaverse",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 208823,
+            "idTicketTesting": 0,
+            "autore": "Raffaele Nobile",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-03-20",
+      "versione": "148.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "APP - Prescrizioni veterinarie",
+            "descrizione": "Aggiunta API per prossimi sviluppi App",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 180768,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Trattamenti da Indicazioni Terapeutiche / Prescrizioni Veterinarie",
+            "descrizione": "Risolti alcuni bug su scarico, esecuzione e invio a VetInfo di trattamenti generati da indicazioni terapeutiche e prescrizioni veterinarie.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 210200,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-03-13",
+      "versione": "148.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Controllo se protocollo in corso già ribaltato viene restituito un errore",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Provate a scaricare i protocolli in corso sull'app, poi ad eseguirli sul web e poi a eseguirli e sincronizzarli anche sull'app. Sull'app devono dare errore"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-03-06",
+      "versione": "148.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Logger.Settings.json",
+            "descrizione": "Modificato il MinimumLevel per System.Net.Http a Warning per ridurre il clutter nei log generato dalle chiamate HttpClient. Spostate configurazioni per Microsoft.Hosting.Lifetime e Microsoft nel file di settings per coerenza.",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "noteTest": "Non testabile"
+          },
+          {
+            "area": "Zoo",
+            "descrizione": "Prima versione nuova lettura operazioni",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Non testabile"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Corretto arrotondamento qta per trattamento multiAIC",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 208219,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Potete provare i trattamenti come li ha fatti il cliente nella mail"
+          },
+          {
+            "area": "Operazioni Zootecniche",
+            "descrizione": "Corretta visualizzazione delle operazioni di tipo pesatura che non venivano mostrate",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 206005,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "noteTest": "Verificare che le operazioni di pesatura siano visibili nella maschera delle operazioni zootecniche"
+          },
+          {
+            "area": "Operazioni Zootecniche - Trattamenti",
+            "descrizione": "Cambio salvataggio e lettura numero somministrazione quando viene eseguito un trattamento.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 208848,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": "Verificare che tutte le modalità di esecuzione di un trattamento (da protocollo, protocollo in corso e indicazione terapeutica) valorizzino correttamente il numero della somministrazione."
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-03-02",
+      "versione": "148.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Statistiche Utilizzo",
+            "descrizione": "Disaccoppiamento tra scheduler e logica, con chiamata asincrona ed integrata logica del semaforo",
+            "noteTest": "",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 199709,
+            "idTicketTesting": 0,
+            "autore": "Marco Cecalupo"
+          },
+          {
+            "area": "Logging in mancanza di LogPath (per esempio nei controller)",
+            "descrizione": "Modificata la configurazione del logger per gestire il logging anche in mancanza di LogPath, creato un servizio iniettabile (ILoggingService) per gestire il logging",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 184774,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Corretto campo Quota Distribuita in mov_destinazioni aumentando a 10 le cifre decimali",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-02-13",
+      "versione": "147.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "App Zoo: Trattamenti massicci",
+            "descrizione": "Aggiunto campo BDN_Codice_Azienda in GetPrescrizioni.",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 199275,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi"
+          }
+        ],
+        "bugfix": [],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-02-06",
+      "versione": "147.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Indicazioni Terapeutiche",
+            "descrizione": "Fix salvataggio indicazioni terapeutiche con una sola somministrazione.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 202010,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "OPERAZIONE DI SPOSTAMENTO fatta PRIMA di esecuzione di un PROTOCOLLO.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 199577,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-02-02",
+      "versione": "147.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Operazioni Zoo - Protocolli/Trattamenti",
+            "descrizione": "Aggiunta la possibilità di programmare i protocolli.",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 201810,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Protocolli/Trattamenti",
+            "descrizione": "Aggiunta la possibilità di programmare i protocolli.",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 201810,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Filtro Di Ricerca (new!) - Entità 'Esercizi'",
+            "descrizione": "Rese visibili le due colonne che mostrano il valore dei codici 'Modalità Liquidazione' e 'Origine Prodotto' negli esercizi",
+            "cliente": "OROGEL",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 204066,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Gis (new!)",
+            "descrizione": "Fix relativo alla descrizione del layer nelle configurazioni degli algoritmi di clustering",
+            "cliente": "ENI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 200093,
+            "autore": "Massimo Mengarda"
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Fix note per capi rimossi da trattamenti; fix capi morti in somministrazioni di un gruppo successive alla seconda.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 204055,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Reportistica Zoo - Trattamenti",
+            "descrizione": "Aggiunto campo numero somministrazione.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 205394,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-01-23",
+      "versione": "146.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Log su disco",
+            "descrizione": "Ora i log vengono scritti in una cartella separata per ogni sito NetCore",
+            "cliente": "Tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Tutti",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zootecniche - Trattamenti",
+            "descrizione": "Reso possibile editare la quantità del singolo capo quando si usano confezioni diverse dello stesso farmaco in un trattamento.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 202047,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-01-16",
+      "versione": "146.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Dashboard (widget indici)",
+            "descrizione": "Il grafico mostra ora correttamente i dati di portafoglio e regionali",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 179472,
+            "autore": "Massimo Mengarda"
+          },
+          {
+            "area": "Operazioni Zootecniche - Trattamenti",
+            "descrizione": "(BUG trovato internamente) Fix trattamenti con più AIC e più lotti per lo stesso AIC, non salvava correttamente la quantità per capo distribuita.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": "Testare trattamenti con più AIC e più lotti per lo stesso AIC."
+          },
+          {
+            "area": "Operazioni Zootecniche - Protocolli in corso",
+            "descrizione": "Aggiunto check per verificare in esecuzione di un protocollo in corso che non ci siano somministrazioni precedenti non ancora eseguite.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 202533,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Data provider, .NET Core",
+            "descrizione": "Bug fix, i parametri dentro la clause_in_parameters venivano contati come parametri anche in caso di inserimento tramite tabella. Risolto tenendo in considerazione solo il numero dei parametri realmente necessari in caso di inserimento tramite tabella e forzando l'utilizzo dell'approccio tabellare in caso di numero elevato di parametri",
+            "cliente": "Aboca",
+            "idTicketAssistenza": 202795,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Testare facendo la stessa ricerca (tramite il filtro di ricerca) che generava il bug."
+          },
+          {
+            "area": "Operazioni Zootecniche new",
+            "descrizione": "Aggiunto guid in creazione key tabella temporanea.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 203972,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "Protocolli in corso",
+            "descrizione": "Filtro date corretto",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 204004,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2026-01-07",
+      "versione": "146.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Terapie Zoo",
+            "descrizione": "Aggiunta gestione anagrafiche terapie zoo.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 178646,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Antares invio dati",
+            "descrizione": "Creazione DAL e BIZ per tabelle di Log, estrazione materie prime da inviare.",
+            "cliente": "Antares",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 195555,
+            "idTicketTesting": 0,
+            "autore": "Amine Houkmi",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zootecniche - Prescrizioni Veterinarie",
+            "descrizione": "Aggiunta colonna Quantitativo a griglia Prescrizioni Veterinarie",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 202010,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Filtro Ricerca (new) - Estrazione Aziende con Movimenti",
+            "descrizione": "Corretta estrazione aziende con filtro movimenti",
+            "cliente": "Regione Umbria",
+            "idTicketAssistenza": 195882,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "noteTest": "Estrazione Aziende con filtro Movimenti: 'con operazioni' + dal/al"
+          }
+        ],
+        "security": [],
+        "performance": [
+          {
+            "area": "Gis (new!)",
+            "descrizione": "Migliorate le performance del calcolo dei centroidi",
+            "cliente": "ENI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 183623,
+            "idTicketTesting": 0,
+            "autore": "Massimo Mengarda"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-12-17",
+      "versione": "145.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Aggiunta gestione indicazioni terapeutiche con più somministrazioni.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 199947,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Trattamenti Zoo - Protocolli in corso",
+            "descrizione": "Fix quantità da somministrare ricavata dalla somministrazione precedente nel caso di trattamenti con uso di confezioni diverse per lo stesso prodotto.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 200131,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": "Testare per trattamenti massivi e non."
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-12-12",
+      "versione": "145.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Widget Zoo - Trattamenti da inviare",
+            "descrizione": "Fix query lettura (rimosso filtro data).",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 200814,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zootecniche",
+            "descrizione": "Miglioramento performance query lettura",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-12-09",
+      "versione": "145.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Widget Zoo - Trattamenti da inviare",
+            "descrizione": "Rimosso filtro data.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 200567,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zootecniche",
+            "descrizione": "Miglioramento performance query lettura",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-12-01",
+      "versione": "145.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "807",
+          "motivo": "Aggiunta di tabelle per la gestione delle traduzioni dei layer GIS"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Dashboard - Widget Zoo",
+            "descrizione": "Aggiunto widget zoo - farmaci in scadenza nella dashboard.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 189735,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Gis (new!)",
+            "descrizione": "Internazionalizzazione e lingua, i layer supportano ora traduzioni su più lingue.",
+            "cliente": "Banca Intesa San Paolo",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 176263,
+            "idTicketTesting": 0,
+            "autore": "Massimo Mengarda"
+          },
+          {
+            "area": "Operazioni Zootecniche - Protocolli/Trattamenti",
+            "descrizione": "Fix ai log delle operazioni: ora viene salvato nei log anche l'oggetto attivita completo.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Gis Clustering",
+            "descrizione": "Aggiunta Api per configurazione Clustering GIS e Api per il processo Batch di Clustering",
+            "cliente": "ENI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 183623,
+            "idTicketTesting": 0,
+            "autore": "Amine Houkmi"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Prescrizioni Veterinarie",
+            "descrizione": "Corretti filtri data",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 199947,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Non testabile da assistenza"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-11-21",
+      "versione": "144.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Verifiche conformità (new!)",
+            "descrizione": "Modificata la lettura fatta durante l'autenticazione per leggere anche l'id del DB (serve nella soluzione QdcaCompliance)",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 184774,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "noteTest": "Non testabile"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zootecniche New",
+            "descrizione": "Miglioramento performance query per operazioni zoo quando nel filtro a lato viene selezionato il centro, ma non la stalla.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 198225,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zootecniche New",
+            "descrizione": "Elenco Centri ed Elenco Stalle in Operazioni zootecniche new, per un utente che ha una visibilità solo su alcuni centri queste ddl mostravano comunque tutti i centri e tutte le stalle dell'impresa.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 198528,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Verificare che in altri punti del gias zoo la visibilità dei centri sia corretta",
+            "noteTecniche": "modificato log query sulla console in debug per il dataprovider"
+          },
+          {
+            "area": "Operazioni Zootecniche New",
+            "descrizione": "Migliorate performance query con filtro solo centri",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162706,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": "Nelle operazioni zootecniche new se si filtra solo per un centro, senza mettere la stalla la query era molto molto lenta, adesso dovrebbe essere più veloce"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-11-07",
+      "versione": "144.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Protocolli Zootecnici",
+            "descrizione": "Fix su eliminazione protocolli",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 197023,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "Protocolli Zootecnici",
+            "descrizione": "Fix su eliminazione protocolli",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 196778,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "Widget Zoo - Trattamenti da inviare",
+            "descrizione": "Fix per l'esclusione in lettura dei trattamenti da inviare.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 187095,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Trattamenti Zootecnici",
+            "descrizione": "Fix lettura capi da aggiungere a un trattamento sotto antibiotico/antinfiammatorio.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 196413,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-11-03",
+      "versione": "144.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Operazioni Zoo - Trattamento",
+            "descrizione": "Aggiunto campo sesso alla griglia Capi Animali.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 182317,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": ""
+          }
+
+        ],
+        "bugfix": [],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-10-24",
+      "versione": "143.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca - numero di righe massimo da visualizzare",
+            "descrizione": "Fatto in modo che appaia la finestra di Info quando, sul Filtro Di Ricerca, esiste un limite di righe estraibili",
+            "cliente": "tutti",
+            "idTicketAssistenza": 194780,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras",
+            "noteTest": ""
+          },
+          {
+            "area": "Filtro di Ricerca - Piano Colturale Budget",
+            "descrizione": "Sistemata estrazioni Piano Colturale Budget",
+            "cliente": "tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 195185,
+            "autore": "Anna Funciello",
+            "noteTecniche": "Nel codice c'era il presupposto che le colonne del budget fossero allineate a quelle delle tabelle reali, per l'estrazione dinamica di nuove colonne."
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-10-17",
+      "versione": "143.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "APP Zootecnia",
+            "descrizione": "Aggiunta di ricetta_Agenda_Cod in protocolli in corso x Matricola ",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162707,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "APP Zootecnia",
+            "descrizione": "Aggiunta di Qta_Dose in protocolli in corso x Matricola ",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162707,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTest": ""
+          },
+          {
+            "area": "Operazioni Zoo - Protocolli",
+            "descrizione": "Fix rilevamento capo sotto antibiotici/antiinfiammatori alla creazione di un trattamento da protocollo.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 194878,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca - Campi",
+            "descrizione": "Sistemata estrazioni Campi",
+            "cliente": "tutti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "noteTest": "Trovata internamente, lanciare una qualsiasi ricerca sul tipo 'Campi'"
+          },
+          {
+            "area": "Widget Zoo",
+            "descrizione": "Corretto bottone redirect conferma protocollo in corso.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 193625,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-10-10",
+      "versione": "143.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Filtro Centro/Stalla",
+            "descrizione": "Bug trovato internamente: venivano duplicati i centri zoo nel filtro a lato, risolto sistemando la query che li legge con una distinct. ",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 192804,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          },
+          {
+            "area": "Widget Zoo - Trattamenti da confermare",
+            "descrizione": "Velocizzato il caricamento dei trattamenti. ",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 187095,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-10-06",
+      "versione": "143.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Dashboard - Widget Zoo",
+            "descrizione": "Aggiunti widget zoo nella dashboard: griglia con i protocolli in corso della giornata e griglia con i trattamenti da inviare a VetInfo.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 187095,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Dashboard - Widget Zoo",
+            "descrizione": "Aggiunto widget zoo nella dashboard: griglia con i capi non validati nei box di ricevimento da sincro BDN.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 189715,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": [],
+        "security": [
+        ]
+      }
+    },
+    {
+      "data": "2025-09-26",
+      "versione": "142.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Trattamenti Zoo - APP",
+            "descrizione": "Aggiunti campi CF_Proprietario, Lotto_Fornitore e BDN_Codice_Azienda all'oggetto restituito da api ProtocolliInCorso_Matricola.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 171612,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": [],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-09-19",
+      "versione": "142.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Trattamenti Zoo - APP",
+            "descrizione": "Aggiunti tutti i campi di ProtocolliInCorso all'oggetto restituito da api ProtocolliInCorso_Matricola.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 191171,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Bug trovato internamente: se veniva creato un trattamento da protocollo utilizzando lotti diversi per lo stesso farmaco, i capi nei protocolli in corso venivano duplicati. ",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano",
+            "noteTest": "Creare un trattamento da protocollo utilizzando lo stesso farmaco con lotti diversi e verificare che i capi nei protocolli in corso (griglia) non vengano duplicati."
+          }
+        ],
+        "security": [
+        ]
+      }
+    },
+    {
+      "data": "2025-09-12",
+      "versione": "142.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Profilazione Imprese - Salvataggio Default Contatti per Operazioni QdCA",
+            "descrizione": "Aggiunto tra i contatti salvabili come default dal utilizzare in QdCA anche quelli con rapporto contabile di tipo 'Socio'",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 182504,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Casanova"
+          }
+        ],
+        "bugfix": [],
+        "security": [
+        ]
+      }
+    },
+    {
+      "data": "2025-09-08",
+      "versione": "142.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "797",
+          "motivo": "Aggiunta tabella DocComplianceMarketAccessInviatiAlPortale"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Export Documenti",
+            "descrizione": "Nuova api per sincronizzare i documenti delle analisi PdC gestiti sul portale",
+            "cliente": "Zani",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 184146,
+            "idTicketTesting": 0,
+            "autore": "Carlo Giovanardi"
+          }
+        ],
+        "bugfix": [],
+        "security": [
+          {
+            "area": "Librerie terze parti",
+            "descrizione": "Aggiornate alcune librerie per risolvere problemi di sicurezza",
+            "autore": "Giulia Bottan",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "cliente": ""
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-08-29",
+      "versione": "141.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Rese visibili i seguenti dati di appezzamento e impianti, erroneamente esclusi dall'estrazione automatica: 'Agea - Codice a barre della scheda di validazione', 'Agea - Codice Coltivazione', 'Agea - Codice scheda di validazione', 'Agea - Codice appezzamento', 'Agea - Codice isola', 'Agea - Codice Piano Coltivazione', 'Agea - Codice appezzamento origine'",
+            "cliente": "Regione Umbria",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163356,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          },
+          {
+            "area": "Export Documenti",
+            "descrizione": "Fix per poter esportare i documenti delle analisi PdC anche se già pubblicati",
+            "cliente": "Zani",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 184146,
+            "idTicketTesting": 0,
+            "autore": "Carlo Giovanardi"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-08-22",
+      "versione": "141.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Operazioni Zootecniche (new!)",
+            "descrizione": "Corretta la gestione della modifica di un trattamento che prevede una sola somministrazione. All'apertura in Modifica di un trattamento con tali caratteristiche, sarà possibile ora possibile modificarla",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 186932,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zootecniche (new!)",
+            "descrizione": "Aggiunta Unità Di Misura 'g/100 kg' per configurare i protocolli",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 187097,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras"
+          },
+          {
+            "area": "Operazioni Zootecniche (new!)",
+            "descrizione": "La giacenza del farmaco mostrata sul Trattamento Zootecnico viene ora filtrata per unità di misura: se il protocollo, ad esempio, è configurato con l'unità di misura 'g/100 kg', verrà mostrata solo la giacenza presente a magazzino espressa in 'g'",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 187101,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-08-07",
+      "versione": "141.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Export Documenti",
+            "descrizione": "Modifica api per esportare i documenti allegati alle analisi PdC",
+            "noteTecniche": "Aggiunta costante -9999999 da passare come tipologia per esportare gli allegati delle analisi PdC",
+            "cliente": "Zani",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 184146,
+            "idTicketTesting": 0,
+            "autore": "Carlo Giovanardi"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Import Raccolte",
+            "descrizione": "Corregge la gestione del blocco degli appezzamenti interessati, in modo da impedire l'import su appezzamenti bloccati o nel caso in cui il blocco dell'appezzamento non vada a buon fine.",
+            "cliente": "Ororgel",
+            "idTicketAssistenza": 186724,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-08-04",
+      "versione": "141.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Hub QdCA Compliance - dll",
+            "descrizione": "Modifiche varie per l'esportazione delle dll NetCoreBase",
+            "noteTecniche": "Aggiunti nuovi tipi enumerativi per il Verifica Conformità",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 179450,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          },
+          {
+            "area": "Operazione Alimentazione Zootecnica",
+            "descrizione": "- Aggiunto il caricamento corretto per la nuova modalita' alimentazione zootecnica",
+            "noteTest": "",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 171569,
+            "idTicketTesting": 0,
+            "autore": "Uhalid Abou El Kheir"
+          },
+          {
+            "area": "Hub QdCA Compliance - dll",
+            "descrizione": "Introdotto parametro securityServiceBypass nel costruttore del BaseService, per evitare di creare il SecurityService in progetti dove non serve (progetto 'Hub QdCA Compliance')",
+            "noteTecniche": "",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 185844,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Operazioni Zootecniche - Cure e medicamenti",
+            "descrizione": "Generazione trattamento da prescrizione veterinaria o indicazione terapeutica.",
+            "noteTest": "Non testabile da assistenza (per ora).",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 179749,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Report - Statistiche Utilizzo",
+            "descrizione": "suddivisione su più transazioni per l'estrazione dei dati statistici'",
+            "noteTest": "lanciare l'estrazione e verificare che venga generato correttamente l'excel",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 186226,
+            "idTicketTesting": 0,
+            "autore": "Marco Cecalupo"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Data provider",
+            "descrizione": "La transazione salvata negli objparametri è adesso impostata a null quando la connessione è chiusa",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170817,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-07-25",
+      "versione": "140.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Report - Statistiche Utilizzo",
+            "descrizione": "Ottimizzazione query statistometro mediante sostituzione CTE con tabelle temporanee",
+            "noteTest": "lanciare l'estrazione e verificare che venga generato correttamente l'excel",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170817,
+            "idTicketTesting": 0,
+            "autore": "Marco Cecalupo"
+          }
+        ],
+        "bugfix": [],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-07-11",
+      "versione": "140.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Job Scheduler Quartz",
+            "descrizione": "Primo rilascio",
+            "noteTest": "Nessun test necessario",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170817,
+            "idTicketTesting": 0,
+            "autore": "Marco Cecalupo"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Importazione raccolte Orogel",
+            "descrizione": "Aggiunge la scrittura di un record in Agronica_Log_Agenda durante l'importazione di una raccolta Orogel",
+            "cliente": "Orogel",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 166946,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          },
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": " - Fix lettura peso stimato per capo all'apertura di una somministrazione confermata in info/modifica'.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 181035,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi"
+          },
+          {
+            "area": "Operazioni Zootecniche (new!)",
+            "descrizione": "Aggiunta la possibilità di cancellare i protocolli, previo controllo che questi non abbiano dei trattamenti in corso (tab 'Protocolli In Corso'')",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 183357,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-07-07 BIS",
+      "versione": "140.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di ricerca (new!)",
+            "descrizione": "Nella ricerca dei movimenti, la colonna con l'utente creazione rimaneva vuota. Effettuato il fix per restituire l'utente che ha creato e modificato il movimento.",
+            "noteTest": "Effettuare una ricerca dei movimenti e verificare che l'utente creazione e l'utente modifica appaiano correttamente",
+            "cliente": "ENI Kenya",
+            "idTicketAssistenza": 183083,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-07-07",
+      "versione": "140.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": "Aggiunta gestione somministrazioni massive (e non).",
+            "noteTest": "Se massiva, la distribuzione del prodotto sul capo è gestita tramite la quantità totale, altrimenti viene impostata per singolo capo.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 178281,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": "Aggiunto recupero informazioni Quantità e Unita misura dose in somministrazioni da confermare.",
+            "noteTest": "",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 178281,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": "Aggiunta gestione aggiunta capi animali in modifica di una somministrazione con somministrazioni successive già confermate.",
+            "noteTest": "",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 178281,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Filtro di ricerca - estrazione 3 campi codice",
+            "descrizione": "Aggiunti codici di specie, cultivar e destinazione d'uso nella griglia degli impianti nel filtro di ricerca",
+            "noteTest": "Nel task #168146 si trova un pdf con i casi di test",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 179394,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Lettura connessioni all'avvio delle api",
+            "descrizione": "La lettura delle connessioni all'avvio delle api viene adesso effettuata sempre (anche quando le connessioni non sono criptate)",
+            "noteTest": "Provare ad effettuare la login sia in db dove le connessioni, sono criptate sia in db dove le connessioni non sono criptate",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170817,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": "Gestione decimali nella quantità del prodotto scaricato e nel dosaggio per capo rispetto al totale.",
+            "noteTest": "",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 178285,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": "Aggiunto il campo Note alle somministrazioni.",
+            "noteTest": "Verificare che vengano riproposte le stesse note della prima nelle somministrazioni future.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 180672,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": [
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-06-20",
+      "versione": "193.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Cambio salvataggio data fine in creazione di una somministrazione (ora viene impostata alla data di inizio).",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 180935,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": " - Fix lettura peso stimato per capo all'apertura di una somministrazione confermata in info/modifica'.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 181035,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-06-17 BIS",
+      "versione": "139.1.2",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Export Documenti Portale Socio",
+            "descrizione": " - Bugfix Documento non Agganciato ad Indice'.",
+            "cliente": "Zani",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 163029,
+            "autore": "Marco Lucchi"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-06-17",
+      "versione": "139.1.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": " - Corretta query per l'alert antibiotici/antinfiammatori'.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 179452,
+            "autore": "Riccardo Drudi"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-06-13",
+      "versione": "139.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Operazioni Zoo - Cure e medicamenti",
+            "descrizione": " - Correzione caricamento categorie semplificate farmaci all'apertura di una somministrazione.",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-06-10",
+      "versione": "139.0.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Import raccolte",
+            "descrizione": "Corregge la mappatura dei plot_id indicati nei dati in input e genera un errore in caso di tipo_operazione non supportato",
+            "cliente": "Orogel",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          },
+          {
+            "area": "Filtro di Ricerca",
+            "descrizione": "Risolto problema segnalato - il problema si evidenziava solo per stringhe di connessione con username e password criptate e solo per le letture della classe SecurityDAL",
+            "cliente": "Coldiretti",
+            "idTicketAssistenza": 179261,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "09 Giugno 2025",
+      "versione": "139.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Data Provider",
+            "descrizione": "Creato metodo per l'inserimento massivo di dati (bulk insert)",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170817,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Filtro di Ricerca",
+            "descrizione": "migliorate le prestazioni evitando di serializzare + compressione risposta",
+            "noteTest": "",
+            "cliente": "",
+            "idTicketAssistenza": 163377,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi"
+          },
+          {
+            "area": "Data Provider",
+            "descrizione": "Allineamento a DataProvider 4.8 gestione tabelle xLingue",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          },
+          {
+            "area": "Filtro di Ricerca - Inserite colonne 'Tipo Impresa' e 'Forma Giuridica', inserito filtro 'Tipo Impresa'",
+            "descrizione": "Nel risultato del filtro di ricerca sono state aggiunte due colonne ('Tipo Impresa' e 'Forma Giuridica'). In più è stato aggiunto un filtro (multiselect) sul 'Tipo Impresa'",
+            "noteTest": "Effettuare delle ricerche con il filtro di ricerca impostando un filtro su 'Tipo Impresa'",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163356,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "cliente": "Regione Umbria"
+          },
+          {
+            "area": "Codifica Sistemi Esterni",
+            "descrizione": "Implementazione tabella per la gestione dei sistemi esterni",
+            "cliente": "CAI",
+            "noteTest": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170830,
+            "idTicketTesting": 0,
+            "autore": "Raffaele Nobile"
+          },
+          {
+            "area": "Dashboard",
+            "descrizione": "Porting delle chiamate per la gestione dei widget produttivita con i valori medi regionali e di portafoglio",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 172595,
+            "idTicketTesting": 0,
+            "autore": "Massimo Mengarda"
+          },
+          {
+            "area": "Lettura versione sql",
+            "descrizione": "Per motivi di performance, è stato cambiato il metodo che legge la versione di sql: adesso si legge il numero della build e non l'anno corrispondente",
+            "noteTest": "",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163175,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Sequenze - lettura versione sql",
+            "descrizione": "Per motivi di performance, è stato tolto il controllo sulla versione di sql quando si utilizzano le sequenze, comanda il valore del flag nel file appsettings",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163175,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Gestita eliminazione somministrazioni in base allo stato (confermata o programmata).",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 171591,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Operazioni Zoo - Trattamenti",
+            "descrizione": "Aggiunto endpoint per lettura da app Protocolli in corso (Somministrazioni programmate).",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 171591,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Export Documenti Portale Socio",
+            "descrizione": "Prima Versione API Export Documenti.",
+            "cliente": "Zani",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163029,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          },
+          {
+            "area": "Logging",
+            "descrizione": "Modificato il logger per poter scrivere anche informazioni come il CUAA e il nome dell'utente nel file di log",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163176,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Miglioramenti strutturali soluzione",
+            "descrizione": "Introdotte nuove classi per distinguere tra obj parametri server, utenti e super server. Modificato il codice per usare le nuove classi",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163176,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Filtro di ricerca",
+            "descrizione": "gestione traduzioni",
+            "cliente": "ENI - COSTA D'AVORIO",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 176229,
+            "idTicketTesting": 0,
+            "autore": "Amine Houkmi"
+          },
+          {
+            "area": "Logging - Elastic Search",
+            "descrizione": "Fatte le modifiche necessarie per mandare il log a Elastic Search (coldiretti)",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163176,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Import raccolte",
+            "descrizione": "Sistemata scrittura tabella Agronica_Log_Invio_Chiamate",
+            "noteTest": "Non testabile",
+            "cliente": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Casanova"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-05-30",
+      "versione": "138.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Export Documentale Portale Socio",
+            "descrizione": "Primo rilascio API Export Documenti",
+            "cliente": "ZANI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163029,
+            "idTicketTesting": 0,
+            "autore": "Marco Lucchi",
+            "noteTecniche": "Sull'ambiente di Collaudo Zani sono state create tre tipologie gestite nell'interscambio, sotto la categoria 'Test Portale Soci' (118): Tipologia Test 1 (76), Tipologia Test 2 (77), Tipologia Test 3 (78) "
+          },
+          {
+            "area": "Importazione Raccolte Orogel",
+            "descrizione": "Primo rilascio API Import Attivita",
+            "cliente": "Orogel",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 166946,
+            "idTicketTesting": 0,
+            "autore": "Anny Bevilacqua"
+          },
+          {
+            "area": "Protocolli Zoo",
+            "descrizione": "gestita username modifica e modificato colonna codice prescrizione con dicitura ID (come in menu agenda)",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 177728,
+            "autore": "Riccardo Drudi",
+            "noteTecniche": ""
+          },
+          {
+            "area": "Operazioni Zootecniche new",
+            "descrizione": "Aggiunto nella griglia delle operazioni, per le operazioni di trattamento provenienti da protocolli fatti su gias l'indicazione 1 di 2, 2 di 2 in base al numero di trattamento del protocollo ",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTecniche": ""
+          },
+          {
+            "area": "Trattamento Zootecnico",
+            "descrizione": "Aggiunta colonna descrittiva del magazzino in giacenze farmaco",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTecniche": ""
+          }
+        ],
+        "bugfix": [],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2025-05-26",
+      "versione": "138.2.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Protocolli Zoo",
+            "descrizione": "Aggiunta lettura username creazione e modifica nella griglia protocolli e protocolli in corso",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTecniche": ""
+          }
+        ],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2025-05-23",
+      "versione": "138.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Protocolli terapeutici e Trattamenti Zootecnici",
+            "descrizione": "Aggiunto endpoint per lettura protocolli in corso.",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162707,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Reportistica Zootecnica",
+            "descrizione": "Aggiunta colonna che descrive la 'Data Disponibilità' nella griglia 'Controllo Trattamenti', ottenuta aggiungendo alla 'Data Ultimo Trattamento' il numero di giorni specificati dall'utente sui filtri soprastanti la griglia",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 176584,
+            "idTicketTesting": 0,
+            "autore": "Dario Cabras"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Tra le chiavi griglia dell'estrazione movimenti è stato aggiunto il progetto_cod come fallback",
+            "noteTest": "Testare direttamente in produzione la seguente estrazione dei MOVIMENTI: unico filtro su data operazione dal 10/10/2022 al 11/10/2023 ",
+            "noteTecniche": "Trovato internamente \n Durante i test per ottimizzare le performance è emersa l'esistenza di dati sporchi che mandavano in errore l'applicazione (dati presi da un bak della produzione umbria). Il problema sono alcune coppie di esercizi (con progetto_cod diversi), sotto uno stesso impianto, che hanno la stessa validità (casistica impossibile/errato). Andando in join con la movimenti_destinazioni (che non ha chiave progetto_cod) venivano duplicate righe a parità di piva-sa_cod-appezza-id_reg-veg_cod-id_agenda",
+            "cliente": "Regione Umbria",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          },
+          {
+            "area": "Trattamenti Zoo",
+            "descrizione": "Fix su errori che non permettevano il salvataggio dei trattamenti",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Riccardo Drudi",
+            "noteTecniche": "Mi sono accorto degli errori io in testinterni"
+          }
+        ],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2025-05-21",
+      "versione": "138.1.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Operazioni Zootecniche (new)",
+            "descrizione": "Sistemati i problemi di visualizzazione e funzionamento segnalati",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 175325,
+            "autore": "Riccardo Drudi"
+          }
+        ],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2025-05-16",
+      "versione": "138.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "157",
+          "motivo": "chiave NumeroMassimoRigheEstraibiliFiltroRicerca per limitare il numero di righe estratte dal filtro di ricerca (new!)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro di Ricerca - Numero Massimo Righe Estraibili",
+            "descrizione": "In configurazione_siti aggiunta nuova chiave 'NumeroMassimoRigheEstraibiliFiltroRicerca' che, se valorizzata, imposta un limite alle righe che possono essere estratte dal Filtro di Ricerca. \n In qualsiasi contesto (da: voce menu, chiamanti, filtro avanzato imprese): Se l'estrazione ritorna il numero massimo di righe impostato + 1 verrà visualizzato il seguente messaggio di info: 'Sono state estratte solo le prime [limite+1] righe, applica ulteriori filtri per affinare la ricerca'. \n In caso di chiamanti (stampe, modifica multipla,..): Non sarà possibile procedere con l'estrazione (pulsanti: prosegui, stampa, esporta...). Al click del pulsante comparirà il medesimo messaggio.",
+            "noteTest": "Coordinarsi con lo sviluppatore per eseguire i test. Sia con lettura da super_server, che con lettura da server, per verificare la scalabilità.",
+            "noteTecniche": "La chiave viene creata da script sul super_server, con un valore default di 99.999 righe. La lettura viene fatta a scalare, quindi se sul singolo server viene inserita MANUALMENTE la chiave con qualsiasi valore (anche stringa vuota) viene utilizzata questa. NB. Il valore 0 o stringa vuota ('') equivalgono a NESSUN LIMITE. \n La query utilizza il valore impostato +1 per capire se c'è uno sforamento del limite. ",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163377,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Regione Umbria"
+          }
+        ],
+        "bugfix": [
+        ],
+        "security": [],
+        "performance": [
+        ]
+      }
+    },
+    {
+      "data": "2025-05-14",
+      "versione": "138.0.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca",
+            "descrizione": "Sistemata estrazione Movimenti, quando si applicano filtri su Operazioni",
+            "noteTest": "Estrazione Movimenti, con filtro su Operazioni",
+            "noteTecniche": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "trovato internamente"
+          }
+        ],
+        "security": [],
+        "performance": [
+          {
+            "area": "Filtro di Ricerca - Movimenti",
+            "descrizione": "Ottimizzazione estrazione Movimenti",
+            "noteTest": "",
+            "noteTecniche": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163377,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Regione Umbria"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-05-12",
+      "versione": "138.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "787",
+          "motivo": "Aggiunto permesso 582 per Trattamenti Zootecnici"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Traduzioni (localizzazione stringhe)",
+            "descrizione": "Creata la struttura necessaria per supportare la localizzazione",
+            "noteTest": "Non testabile",
+            "cliente": "Credit Agricole",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 172595,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso"
+          },
+          {
+            "area": "Protocolli terapeutici e Trattamenti Zootecnici",
+            "descrizione": "Aggiunti endpoint, BIZ e DAL per la gestione dei protocolli e dei trattamenti",
+            "cliente": "INALCA",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162708,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          },
+          {
+            "area": "Leggi Trattamenti Per Avversita",
+            "descrizione": "Aggiunto endpoint per lettura ultimo trattamento per avversità, su dato impianto e negli ultimi giorni",
+            "cliente": "ERSAF",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 170681,
+            "idTicketTesting": 0,
+            "autore": "Andrea Novaga"
+          }
+        ],
+        "bugfix": [],
+        "security": [
+          {
+            "area": "Code review",
+            "descrizione": "Eliminato file costants e spostato costanti nel file CostantiPersonalizzate",
+            "noteTest": "Nessun test",
+            "noteTecniche": "Segnalato internamente",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Marco Rossi",
+            "cliente": ""
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-05-08",
+      "versione": "137.3.3",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Security",
+            "descrizione": "Ripristinato valore della proprietà 'cr2' in appsettings (erroneamente cancellata)",
+            "noteTest": "",
+            "noteTecniche": "Il bug ha impatto solo se è stata attivata la feature di security nella quale vengono criptati i valori della tabella Connessioni",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Giulia Bottan",
+            "cliente": ""
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-04-30",
+      "versione": "137.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "DataProvider",
+            "descrizione": "Fix gestione cache chiavi per tabelle filtro clausola IN",
+            "noteTest": "Utilizzare il filtrone con almeno 2 filtri con almeno 10 valori cadauno (es: specie/varietà)",
+            "noteTecniche": "Invertito mapping id\tipo dataset per tabelle filtro",
+            "idTicketAssistenza": 172495,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Lavezzo",
+            "cliente": "Fruttagel"
+          }
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-04-18",
+      "versione": "137.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!) - Filtri Temporali ",
+            "descrizione": "Sistemata logica di propagazione filtri temporali: i filtri temporali impostati sugli impianti non si propagavano sugli appezzamenti. \n Rimossa propagazione per filtri 'Data Creazione Anagrafica' poiché incoerenti.",
+            "noteTest": "Testare normale funzionamento del filtro di ricerca",
+            "noteTecniche": "Trovato internamente mentre veniva sistemata la segnalazione del ticket",
+            "idTicketAssistenza": 171929,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "ENI RWANDA"
+          },
+          {
+            "area": "Filtro di Ricerca (new!) - Visibilità Specie ed Operazioni ",
+            "descrizione": "Sistemate lettura e applicazione visibilità specie e operazioni",
+            "noteTest": "Testare normale funzionamento del filtro di ricerca con varie combinazioni di visibilità specie / operazioni utente: \n 1) Per le specie: testare separatamente e in combo visibilità gruppi colturali, specie vegetali e varietà (impostazioni personalizzate > agronomia) \n Per le operazioni: testare separatamente e in combo visibilità gruppo operazioni e operazioni (impostazioni personalizzate > agenda) \n NB: sulle operazioni c'è un bug nelle impostazioni utente: per impostare filtri sulle singole operazioni assicurarsi di aver selezionato anche il gruppo relativo",
+            "noteTecniche": "",
+            "idTicketAssistenza": 172495,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Fruttagel"
+          }
+
+        ],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-04-14",
+      "versione": "137.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro di Ricerca (new!) - Dati Blocco Appezzamenti ",
+            "descrizione": "Aggiunte colonne 'App. Bloccato', 'Data Blocco App.' e 'Utente Blocco App.'",
+            "noteTest": "Verificare corretta presenza e valori indicati nelle colonne.",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 168713,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Orogel"
+          }
+        ],
+        "bugfix": [],
+        "security": []
+      }
+    },
+    {
+      "data": "2025-04-07",
+      "versione": "136.3.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Widget Documenti Recenti",
+            "descrizione": "Sistemato errore per utenti con visibilità aziende limitata",
+            "noteTest": "",
+            "idTicketAssistenza": 170564,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": ""
+          }
+        ],
+        "security": [],
+        "performance": []
+      }
+    },
+    {
+      "data": "2025-04-04",
+      "versione": "136.3.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione quando l'utente ha impostato sulla visibilità GRUPPO VEGETALE il valore 'Terreno Nudo - Destinazione d'uso'",
+            "noteTest": "Nel modulo Utenti e Permessi (new!) > Impostazioni Superuser > Impostazioni Personalizzate > Agronomia > Gruppo Vegetale: selezionare il valore 'Terreno Nudo - Destinazione d'uso'",
+            "idTicketAssistenza": 170338,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Ainpo"
+          },
+          {
+            "area": "Lettura visibilità Specie Vegetali",
+            "descrizione": "Sistemato errore 'Piva_SuperUser non valido'",
+            "noteTest": "",
+            "idTicketAssistenza": 170709,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "CAI"
+          }
+        ],
+        "security": [],
+        "performance": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Ottimizzazione estrazione Movimenti",
+            "noteTest": "",
+            "idTicketAssistenza": 170074,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "ReUmbria"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-03-19",
+      "versione": "136.0.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!) ",
+            "descrizione": "Fix estrazione Piano Colturale quando l'utente ha visibilità ridotta sulle specie vegetali",
+            "noteTest": "Eseguire un'estrazione del piano colturale con utente soggetto a visibilità ridotta",
+            "idTicketAssistenza": 168175,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "ENI"
+          },
+          {
+            "area": "Filtro di Ricerca (new!) - Dati Libro Soci ",
+            "descrizione": "Accorciate nomenclature Libro Soci nella colonna 'Imprese Referenti', quando estratte",
+            "noteTest": "",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 168091,
+            "autore": "Anna Funciello",
+            "cliente": "Orogel"
+          }
+        ],
+        "security": [
+          {
+            "area": "Security",
+            "descrizione": "Generazione clausola IN: aggiunto controllo per verificare che non esistano clause_in_params simili (substring)",
+            "noteTest": "nessun test",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Lavezzo",
+            "cliente": ""
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-03-17",
+      "versione": "136.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Security",
+            "descrizione": "Sistemati i riferimenti fra progetti in AgronicaNetCore",
+            "noteTest": "nessun test",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 166460,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello e Paolo Netso",
+            "cliente": ""
+          },
+          {
+            "area": "Filtro di Ricerca (new!) - Dati Libro Soci",
+            "descrizione": "Aggiunti due nuovi switch in 'Dati Aggiuntivi - Azienda': 'Numero Libro Soci' e 'Data Iscrizione Libro Soci'. Se attivati, la colonna 'Imprese Referenti' conterrà anche i relativi dettagli del Libro Soci (ove presenti). \n Quando si estrae il dato aggiuntivo dell'esercizio 'Organismo Referente' verranno mostrate anche le colonne relative a 'Numero Libro Soci' e 'Data Iscrizione Libro Soci'",
+            "noteTest": "Estrarre i dati e testare il salvataggio degli switch nelle viste",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 166946,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello",
+            "cliente": "Orogel"
+          }
+        ],
+        "bugfix": [],
+        "security": [
+          {
+            "area": "Security",
+            "descrizione": "Inserito controllo AllowAnyOrigin solo se siamo in debug mode",
+            "noteTest": "nessun test",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 162774,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Lavezzo"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-03-04",
+      "versione": "135.2.1",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Report Impiego Prodotti Fitosanitari",
+            "descrizione": "Fix caso con area totale delle particelle che compongono un impianto uguale a zero",
+            "idTicketAssistenza": 165930,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Paolo Netso",
+            "cliente": "Regione Umbria",
+            "noteTest": "Rifare la stessa prova che ha prodotto l'errore"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-02-28",
+      "versione": "135.2.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro Di Ricerca (new!)",
+            "descrizione": "Fix caricamento colonne boolean: se il valore estratto è null, la colonna non mostrerà nessun valore al posto di 'No'",
+            "cliente": "ENI",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 165905,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-02-21",
+      "versione": "135.1.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo e Imprese_ProgettiXContributi"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Di Ricerca (new!)",
+            "descrizione": "Aggiunta gestione nuovo Dato Aggiuntivo 'Contributi ACA' per l'estrazione Piano Colturale",
+            "cliente": "Regione Umbria",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 163377,
+            "idTicketTesting": 0,
+            "autore": "Anna Funciello"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2025-02-17",
+      "versione": "135.0.0",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "782",
+          "motivo": "Nuove tabelle Ricette_Zoo"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Zoo - Prescrizioni",
+            "descrizione": "Aggiunte chiamate per lettura Prescrizioni e relativi dettagli",
+            "cliente": "Inalca",
+            "idTicketAssistenza": 0,
+            "idTicketSviluppo": 0,
+            "idTicketTesting": 0,
+            "autore": "Lorenzo Di Varano"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2025-02-07",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova colonna Flag_Encrypted in tabella Connessioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "150",
+          "motivo": "Aggiunta chiave 'UserPwdConnectionString_toCrypt' (super server)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione Tecnico di Riferimento Esercizio/Azienda per la seguente casistica: stesso contatto pubblico creato su due aziende diverse, con ruoli diversi (ex Tecnico di Azienda X, Fornitore di Azienda Y)",
+            "idPerforma": 34444,
+            "cliente": "Orogel"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-02-04",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova colonna Flag_Encrypted in tabella Connessioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "150",
+          "motivo": "Aggiunta chiave 'UserPwdConnectionString_toCrypt' (super server)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione 'Utilizzo Terreno' (sempre integrato) e 'Sup. Appezzamento' (sempre vuoto)",
+            "noteTest": "#162829"
+          },
+          {
+            "area": "DataProvider",
+            "descrizione": "Fix GetDBName con ConnectionString criptata",
+            "noteTest": ""
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-01-31",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova colonna Flag_Encrypted in tabella Connessioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "150",
+          "motivo": "Aggiunta chiave 'UserPwdConnectionString_toCrypt' (super server)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix utilizzo filtro Movimenti > Tipo Filtro Operazioni > 'Con / Senza Operazioni'",
+            "noteTest": "Testare usando varie combinazioni di filtri (anche casuali), l'importante è che non dia errore"
+          },
+          {
+            "area": "Security - AgronicaCoreParametri",
+            "descrizione": "Fix per recuperare nome db anche in caso di stringa connessione codificata"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-01-24",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova colonna Flag_Encrypted in tabella Connessioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "150",
+          "motivo": "Aggiunta chiave 'UserPwdConnectionString_toCrypt' (super server)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione Tecnico di Riferimento Esercizio, ora elenca correttamente tutti i tecnici salvati (possono essere più di uno solo sull'esercizio')",
+            "noteTest": "Casistiche di coppie di contatti da creare e assegnare all'esercizio, la base di partenza è che abbiano sempre lo stesso codice fiscale e che siano creati da aziende diverse: \n 1) entrambi pubblici, stesso ruolo (Tecnico). \n NB! Questo tipo di situazione NON dovrebbe esistere nella normalità: se un contatto è pubblico un'altra azienda non dovrebbe crearne uno identico. \n Verrà visualizzato in modo anomalo anche in anagrafica esercizio: rientrando in modifica risulteranno selezionati entrambi i contatti poiché la chiave di aggancio è solo il codice fiscale. \n 2) entrambi pubblici, ruoli diversi per le due aziende (ex Tecnico di Azienda X, Fornitore di Azienda Y) \n 3) entrambi privati, stesso ruolo \n 4) entrambi privati, ruoli diversi per le due aziende (ex Tecnico di Azienda X, Fornitore di Azienda Y) \n",
+            "cliente": "Orogel",
+            "idPerforma": 34444
+          },
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione Contributi Esercizio",
+            "cliente": "Orogel",
+            "idPerforma": 34558
+          },
+          {
+            "area": "Autenticazione",
+            "descrizione": "Corretto problema evidenziato a runtime in fase di costruzione di SecurityService, il metodo InitConnessioni è stato reso sincrono poiché c'è bisogno di chiamarlo dal costruttore di SecurityService. Introdotte versioni sincrone di LeggiConnessioni e LeggiConfigurazioneSiti (classe SecurityLayer) ",
+            "noteTest": "Non testabile"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-01-20",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova colonna Flag_Encrypted in tabella Connessioni"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Configurazione Siti",
+          "versione": "150",
+          "motivo": "Aggiunta chiave 'UserPwdConnectionString_toCrypt' (super server)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Security",
+            "descrizione": "Interventi vari per evitare il passaggio della stringa di connessione al db (8507)"
+          },
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Rimosse colonne Lat. App. e Long. App.",
+            "noteTest": "Nel caso venissero visualizzate ancora, assicurarsi di aver resettato le viste sulla griglia del Filtro Di Ricerca in cui comparivano"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro di Ricerca (new!)",
+            "descrizione": "Fix estrazione Tecnico di Riferimento Esercizio e Impresa",
+            "noteTest": "Creare lo stesso contatto (stesso codice fiscale) PUBBLICO con ruoli diversi, su due imprese diverse (es su Orogel come TECNICO RIFERIMENTO e su un'altra azienda come LEGALE RAPPRESENTANTE). Assegnare questo contatto come Tecnico di Riferimento su Esercizio e su Azienda scelti. L'estrazione tramite il filtro di ricerca (new!) deve andare a buon fine, sia per Piano Colturale che per Azienda. NB: Ricordarsi di aggiungere 'tecnico riferimento' all'estrazione, tramite Dati Aggiuntivi > 'Altri Dati'",
+            "cliente": "Orogel",
+            "idPerforma": 34444
+          }
+        ]
+      }
+    },
+    {
+      "data": "2025-01-10",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova Tabella Operazione_Causale \n Aggiunti record alle tabelle TB_Attivita e Gerarchia_Attivita per la pagina Report Impiego Prodotti Fitosanitari"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Profilazione imprese (new!)",
+            "descrizione": "Fix grafici e fix caricamento dati aziendali",
+            "noteTest": "Riscontrato mediante test interni"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-12-20",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova Tabella Operazione_Causale \n Aggiunti record alle tabelle TB_Attivita e Gerarchia_Attivita per la pagina Report Impiego Prodotti Fitosanitari"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Report Impiego Prodotti Fitosanitari",
+            "descrizione": "Modificato l'endpoint per permettere una lettura iniziale in fase di loading",
+            "cliente": "Regione Umbria",
+            "noteTest": "Lanciare il report dopo aver selezionato una o più aziende",
+            "noteTecniche": "Necessario permesso utente 'Report Impiego Prodotti Fitosanitari'"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Operazione Causale",
+            "descrizione": "Modifica sull'endpoint della lettura delle causali possibili da associare al Rilievo Produzione Prevista, considerando anche una data di validità",
+            "noteTest": "ticket #159943"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-12-18",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova Tabella Operazione_Causale \n Aggiunti record alle tabelle TB_Attivita e Gerarchia_Attivita per la pagina Report Impiego Prodotti Fitosanitari"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Report Impiego Prodotti Fitosanitari",
+            "descrizione": "Aggiunto endpoint che restituisce le aziende che l'utente loggato può vedere, modificato il BE per tener conto delle imprese selezionate",
+            "cliente": "Regione Umbria",
+            "noteTest": "Lanciare il report dopo aver selezionato una o più aziende",
+            "noteTecniche": "Necessario permesso utente 'Report Impiego Prodotti Fitosanitari'"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-12-16",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "778",
+          "motivo": "Nuova Tabella Operazione_Causale \n Aggiunti record alle tabelle TB_Attivita e Gerarchia_Attivita per la pagina Report Impiego Prodotti Fitosanitari"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Letture e scritture asincrone",
+            "descrizione": "Resi asincroni i metodi del data provider che effettuano letture e scritture nel db. Trasformata tutta la soluzione per gestire il pattern async await",
+            "noteTest": "Test generale nel Filtro di Ricerca (new!) per verificare che tutto funzioni correttamente"
+          },
+          {
+            "area": "Letture e scritture asincrone per Operazione Causale",
+            "descrizione": "Realizzati i metodi di lettura/inserimento/update/cancellazione, con relativi controller, per la gestione delle causali da associare al Rilievo",
+            "cliente": "Orogel"
+          },
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Migliorate prestazioni generali estrazione dati + sicurezza clausole IN",
+            "noteTecniche": "Sostituite CTE con TT \n Utilizzo FORCE_LEGACY_CARDINALITY_ESTIMATION se SQL>2014"
+          },
+          {
+            "area": "Lettura Contatore Acqua (new!)",
+            "descrizione": "Primo Rilascio Lettura Contatore Acqua (new!). \n I Contatori mostrati in elenco sono agganciati ad almeno un appezzamento dell'azienda corrente e attivi alla data di lettura.",
+            "noteTest": "Inserire/modifica/cancellare delle letture",
+            "noteTecniche": "Necessario permesso utente 'Letture Contatori Acqua (new!)'"
+          },
+          {
+            "area": "Report Impiego Prodotti Fitosanitari",
+            "descrizione": "Realizzati i metodi di lettura e il controller per la gestione del Report Impiego Prodotti Fitosanitari",
+            "cliente": "Regione Umbria",
+            "noteTest": "Lanciare il report, provando ad impostare criteri diversi di ricerca (Stampe e Statistiche -> Report Impiego Prodotti Fitosanitari)",
+            "noteTecniche": "Necessario permesso utente 'Report Impiego Prodotti Fitosanitari'"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-12-12",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "777",
+          "motivo": "Per nuove colonne nella tabella Utenti_Token_JWT"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Sequence",
+            "descrizione": "Nuove sequence con startValue = 1",
+            "noteTest": ""
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-12-06",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "777",
+          "motivo": "Per nuove colonne nella tabella Utenti_Token_JWT"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Fix join appezzamento a relativo campo",
+            "noteTest": "Trovato internamente. \n Per i testatori: verificare che, estraendo un impianto del Piano Colturale con il Filtro di Ricerca, i dati relativi al campo vengano caricati correttamente (ex Nome del Campo)"
+          },
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Modificata logica per verificare la compatibilità delle funzioni SQL.",
+            "noteTest": "Trovato internamente. \n Per i testatori: obbligatoriamente su ambiente Coldiretti, aggiungere certificazioni aziendali ad Azienda (almeno 2) ed eseguire l'estrazione delle Aziende sul Filtro di Ricerca (new!) aggiungendo alle colonne estratte la Certificazione Aziendale. \n Mostra 'Aziende' --> Pulsante configurazione griglia 'Dati Aggiuntivi Vista Selezionata' --> 'Aziende' --> 'Altri Dati' --> 'Certificazione Aziendale' \n La griglia deve essere caricata correttamente senza errori. Per controprova, eseguire gli stessi passaggi su uno di questi ambienti testInterni: IDSC, Inalca, Opta, Asipo, Zespri... "
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-11-14",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "777",
+          "motivo": "Per nuove colonne nella tabella Utenti_Token_JWT"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Security",
+            "descrizione": "Fix problemi con UsaEncodingSemplice abilitato, introdotta e gestita la chiave UsaEncodingSemplice anche nelle net core api (file ParametriAggiuntivi.settings.json)"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-11-08",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "777",
+          "motivo": "Per nuove colonne nella tabella Utenti_Token_JWT"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Autenticazione",
+            "descrizione": "Modificati i metodi di autenticazione per essere compatibili con la nuova struttura del token",
+            "noteTest": "Testare il Filtro di Ricerca (new!), se c'è un problema di autenticazione si vedrà subito alla prima chiamata verso il Filtro di Ricerca (new!)"
+          },
+          {
+            "area": "Utilizzo dependency injection",
+            "descrizione": "Sostituito il metodo GetService con il metodo GetRequiredService",
+            "noteTest": "Non testabile"
+          },
+          {
+            "area": "Security JWT",
+            "descrizione": "Aggiunta lettura chiave jwt da variabili di ambiente",
+            "noteTest": "Non testabile"
+          },
+          {
+            "area": "Gestione sequence default",
+            "descrizione": "Gestione sequence per progressivi chiavi tabelle di default attive per tutti. Disattivabili esclusivamente impostando a False la chiave Allow_Sql_Sequence nell'appsettings"
+          },
+          {
+            "area": "Security - Query",
+            "descrizione": "Parametrizzate massivamente molte query in filtri aggiuntivi, order by e clausole IN per impedire sql injection"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    },
+    {
+      "data": "2024-10-29",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Profilazione imprese (new!) - Note",
+            "descrizione": "Gestito correttamente filtro visibilità delle note",
+            "noteTest": "Segnalazioni RC_2024-10-14 TEST PROFILAZIONE AZIENDE.docx"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-10-21",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Widget MultiAzienda - HA Raccolti / Seminati",
+            "descrizione": "Fix estrazione HA Raccolti / Seminati"
+          },
+          {
+            "area": "Widget MultiAzienda - Movimenti Aziende",
+            "descrizione": "Ora i grafici 'Aziende con Movimenti recenti' e  'Aziende con Movimenti da Inizio Campagna' riportano i movimenti delle aziende che sono mappate"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-10-11",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "DataProviderNet6",
+            "descrizione": "Evoluzione del DataProvider per gestire puntualmente Connessioni e Transazioni a livello superiore per poter eseguire scritture/letture in blocco. Riportata gestione sequence e isolation level come su DataProvider .NET Framework 4.8",
+            "noteTest": "Testare tutto il Filtrone, Widget, Confronto PianoColturale, Budget)"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    },
+    {
+      "data": "2024-10-09",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Ottimizzate chiamate del filtrone (ricerca e albero) per forzare il Garbage Collector in modo da pulire la RAM del Pool IIS associata"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-10-08",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Le righe di filtri temporali dove non viene indicata una data verranno ignorate"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-10-03",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "La colonna Finalità è visibile anche da estrazione impianti (passando ad esempio dal GIS (new!))"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-09-20",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Corretta query filtro che alterava il funzionamento dei filtri temporali ",
+            "noteTest": "Segnalazioni TEST_FILTRONE.docx"
+          }
+
+        ]
+      }
+    },
+    {
+      "data": "2024-09-19",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Evoluzione filtri Movimenti: ora l'entità di perno è quella selezionata nel 'Tipo Mostra'. \n Es: Estrazione Piano Colturale, filtro Movimenti 'Con Operazioni' + Operazione 'Raccolta' --> verranno estratti tutti i Piani Colturali su cui è stata effettuata almeno un'operazione di raccolta; Estrazione Piano Colturale, filtro Movimenti 'Senza Operazioni' + Operazione 'Raccolta' --> verranno estratti tutti i Piani Colturali su cui non è MAI stata effettuata un'operazione di raccolta; ",
+            "noteTest": "Testare filtri con/senza operazioni + range di date (operazione successiva/precedente al) per tutte le Entità. NG. Da menu non sono visibili appzzamenti/impanti/esercizi ma solo un unico livello, come in anagrafica, 'Piano Colturale'. Per testare le entità separate, passare da un chiamante (Modifica Multipla, Stime Prod, Stampe...)"
+          },
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Agganciate stampe Orogel da Menu Stampe (new!). \n Quando si aggiungono colonne da visualizzare per entità in 'Dati Aggiuntivi' > 'Altri Dati', queste verranno automaticamente impostate a visibili in fondo alla griglia."
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Corretta estrazione campi con più di un appezzamento associato",
+            "noteTest": "Segnalazioni TEST_FILTRONE.docx"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-09-13",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Migliorie grafiche generali;\n Aggancio chiamanti (vedere versione siti coinvolti) ",
+            "noteTest": "Testare meccanismi e usabilità. "
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-08-30",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Migliorie grafiche generali;\n Attivato Albero Imprese; \n Fix estrazione 'Mostra Movimenti.' ",
+            "noteTest": "E' possibile utilizzare l'albero per impostare criteri di ricerca e/o impostare l'azienda corrente.\n 1) Impostare Azienda Corrente tramite l'Albero: \n dal menu a tendina delle Aziende selezionare 'Ricerca Avanzata'. \n Una volta atterrati sul Filtro Ricerca (new!) aprire l'albero e selezionare un qualunque elemento: comparirà un menu a tendina con l'opzione 'Imposta come Azienda Corrente'. \n Al click l'azienda corrente in alto a dx deve essere quella scelta. \n 2) Impostare criteri di ricerca tramite l'Albero: \n una volta aperto l'Albero e selezionato un qualunque elemento possono comparire fino a 2 opzioni: 'Imposta Impresa Referente' (solo se Azienda di tipo coop/OP/consorzio) e 'Imposta Piva e Ragione Sociale'. \n Al click verranno settati i criteri di ricerca nel pannello a dx. \n NB: La scelta di Imprese Referenti è cumulabile. \n Testare meccanismi e usabilità. "
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-08-23",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Terzo Rilascio Filtro Ricerca (new!). Attivato richiamo dalla selezione impianti GIS; Migliorie grafiche generali; ",
+            "noteTecniche": "A differenza dei futuri punti di richiamo, al momento nel GIS non viene letta l'impostazione superuser SUPERUSER_Mod_Filtro_Ricerca che permette di scegliere su quale filtro atterrare a livello installazione ma va richiama sempre il Filtro di Ricerca (new!). Nessuna configurazione necessaria per testare."
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-07-17",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "SQL Sequence",
+            "descrizione": "Aggiunto parametro attivazione in appsettings"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-07-15",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "769",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        },
+        {
+          "prodotto": "Aggancio",
+          "versione": "126",
+          "motivo": "Tabella Metaschema Codici_Anagrafe_xLingue, sviluppo Filtro Ricerca (new)"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Secondo Rilascio Filtro Ricerca (new!). Nuovi criteri ricerca: Imprese Referenti, Servizi, GIS, Catasto, Destinazioni Uso Specifiche, Gruppi Vegetali e Tipologie Varietali, Tipo Operazioni e Operazioni (incluse ed escluse), nuova modalità filtri temporali; Aggiunta modalità Piano Colturale Budget; Migliorie grafiche generali; Gestione in lingue colonne Codici_Anagrafe, SpecieVegetali,...; Ampliata la selezione di dati aggiuntivi da poter visualizzare; Possibilità di richiamare la pagina per la 'ricerca avanzata aziende'; "
+          },
+          {
+            "area": "Confronto Piano Colturale",
+            "descrizione": "aggiornata query lettura piani colturali per azienda, aggiunta estrazione Username_Creazione, Username_Modifica, Data_Creazione, Data_Modifica"
+          }
+        ],
+        "bugfix": []
+      }
+    },
+    {
+      "data": "2024-06-17",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "766",
+          "motivo": "Per Sviluppo Filtro Ricerca NEW"
+        }
+      ],
+      "changelog": {
+        "feature": [
+        ],
+        "bugfix": [
+          {
+            "area": "Filtro Ricerca NEW",
+            "descrizione": "Fix caricamento 'Altri Dati Piano Colturale'"
+          },
+          {
+            "area": "Widget 'Documenti Recenti'",
+            "descrizione": "Fix archiviazione precedente",
+            "noteTecniche": "Mancava un AddScoped post refactory letture UtentiProfili",
+            "noteTest": "L'attivazione del Widget non deve dare problemi sugli ambienti idonei (test interni)"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-06-14",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "766",
+          "motivo": "Per Sviluppo Filtro Ricerca NEW"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Structure",
+            "descrizione": "Fix segnalazioni SonarCube"
+          },
+          {
+            "area": "IsAlive",
+            "descrizione": "Aggiunta chiamata per IsAlive",
+            "noteTest": "NON TESTABILE"
+          },
+          {
+            "area": "Filtro Ricerca (new!)",
+            "descrizione": "Primo rilascio Filtro Ricerca (new!)",
+            "noteTest": "Il funzionamento è similare alla pagina Filtro di Ricerca, con alcune funzionalità in più che necessitano una spiegazione. Prima di eseguire i test contattare Anna F. per una panoramica introduttiva. !ATTENZIONE! Sono stati modificati i componenti griglia angular sparsi per tutto il GIAS, dedicare un test approfondito su quelle più utilizzate per verificare che il comportamento originale sia inalterato (in particolare salvataggio personalizzazioni). ex. griglia QdC/Ricette, Anagrafiche. Per qualsiasi malfunzionamento su quest'ultime contattare immediatamente Anna. ",
+            "noteTecniche": "Per visualizzare la voce di menù è necessario avere il permesso FiltroRicerca_NG = 553"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    },
+    {
+      "data": "2024-04-10",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "761",
+          "motivo": "Per widget multi aziendali"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Widgets",
+            "descrizione": "Prima versione per Widget 'Documenti Recenti'"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    },
+    {
+      "data": "2024-04-04",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "761",
+          "motivo": "Per widget multi aziendali"
+        }
+      ],
+      "changelog": {
+        "feature": [],
+        "bugfix": [
+          {
+            "area": "ConfrontoPianoColturale",
+            "descrizione": "fix query estrazione dati su Planning e PianoColturale"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-03-26",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "761",
+          "motivo": "Per widget multi aziendali"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Confronto Piano Colturale",
+            "descrizione": "Implementato confronto Planning - Anagrafica"
+          },
+          {
+            "area": "Widgets",
+            "descrizione": "Prima versione per Widget Multi Aziendali"
+          }
+        ],
+        "bugfix": [
+          {
+            "area": "RefreshToken",
+            "descrizione": "Gestito unico refresh token per utente"
+          }
+        ]
+      }
+    },
+    {
+      "data": "2024-03-15",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "760",
+          "motivo": "Nuova tabella DataProtectionKeys su SuperServer"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "Confronto Piano Colturale",
+            "descrizione": "Implementato confronto Planning - Anagrafica"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    },
+    {
+      "data": "2024-03-14",
+      "requisiti": [
+        {
+          "prodotto": "Migra",
+          "versione": "760",
+          "motivo": "Nuova tabella DataProtectionKeys su SuperServer"
+        }
+      ],
+      "changelog": {
+        "feature": [
+          {
+            "area": "AgronicaNetCoreAPI",
+            "descrizione": "primo rilascio"
+          }
+        ],
+        "bugfix": [
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="editPageContent">
+
+      <!--    <gias-update-toolbar [TipoOperazioneDB]="objParametriAgenda.TipoOperazioneDB" [submit]="false" [salvaNuovo]="false"-->
+      <!--      (clickEvent)="salva()" [formGroup]="filtriForm">-->
+      <!--    </gias-update-toolbar>-->
+
+      <div class="row form-row">
+        <app-filtri-requisiti-stabilimento [filtriForm]="filtriForm"></app-filtri-requisiti-stabilimento>
+      </div>
+
+      <div class="row form-row">
+        <div class="col-lg-2 col-md-3 col-sm-6">
+          <button kendoButton class="btn-primary-fill mw-150 k-ml-4" [disabled]="!isValid" (click)="getGridData()">{{'Cerca' | transloco}}</button>
+        </div>
+<!--        <div  class="col-lg-2 col-md-3 col-sm-6">-->
+<!--          <button kendoButton class="btn-primary-fill mw-150 k-ml-4" (click)="goToDettaglioAzienda()">Visualizzazione Totale</button>-->
+<!--        </div>-->
+      </div>
+
+      <kendo-appbar position="top">
+        <div #anagTopTar2 id="anag-top-bar-2">
+          <kendo-appbar-section class="appbar-items" (wheel)="mouseMoved($event)">
+            <div>
+              <ul #topTabsContainer>
+                <li routerLink="./piano-colturale" class="nav-item"
+                    routerLinkActive="nav-item active">
+                  <fa-icon style="padding-right: 5px;" size="lg" class="faImpianti" [icon]="faLeaf"
+                           aria-hidden="true">
+                  </fa-icon>
+                  <span style="cursor: pointer;">{{ 'PianoColturale' | transloco }}</span>
+                </li>
+                <li routerLink="./contratti" class="nav-item"
+                    routerLinkActive="nav-item active">
+                  <fa-icon
+                    style="padding-right: 5px;"
+                    size="lg"
+                    class="faImpresa"
+                    [icon]="faIndustry"
+                    aria-hidden="true">
+                  </fa-icon>
+                  <span style="cursor: pointer;">{{ 'Contratti' | transloco }}</span>
+                </li>
+              </ul>
+            </div>
+          </kendo-appbar-section>
+        </div>
+        <div class="topbar-right-filler"></div>
+      </kendo-appbar>
+      <div class="anagraficaContainer">
+        <div class="row">
+          <div class="col-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<gis-window #window [windowArgs]="windowArgs" class="pb-3">
+    <form *ngIf="form != null" [formGroup]="form" class="form-group" (ngSubmit)="submit()">
+        <div class="delete-feature-column">
+            <!-- Opzioni attivabili -->
+
+            <div>
+                <kendo-switch #switchEliminaEntitaGeografiche formControlName="Elimina_Grafica" [disabled]="isSementieri$ | async">
+                </kendo-switch>
+                <kendo-label [for]="switchEliminaEntitaGeografiche" [text]="'gis.EliminaEntitaGeografiche' | transloco">
+                </kendo-label>
+            </div>
+
+            <div *ngIf="permessoPrecisionFarming">
+                <kendo-switch #switchEliminaDatiPrecisionFarming formControlName="Elimina_PrecisionFarming">
+                </kendo-switch>
+                <kendo-label [for]="switchEliminaDatiPrecisionFarming"
+                    [text]="'gis.EliminaDatiPrecisionFarming' | transloco">
+                </kendo-label>
+            </div>
+
+            <div *ngIf="permessoPrecisionFarming">
+                <kendo-switch #switchEliminaLineeGuidaABPrecisionFarming
+                    formControlName="Elimina_PrecisionFarmingABLine">
+                </kendo-switch>
+                <kendo-label [for]="switchEliminaLineeGuidaABPrecisionFarming"
+                    [text]="'gis.EliminaLineeGuidaABPrecisionFarming' | transloco">
+                </kendo-label>
+            </div>
+            
+            <div *ngIf="isSementieri$ | async">
+                <kendo-switch #switchEliminaDatoAnagrafica formControlName="Elimina_Dato_Anagrafica">
+                </kendo-switch>
+                <kendo-label [for]="switchEliminaDatoAnagrafica" [text]="'gis.EliminaDatoAnagrafica' | transloco">
+                </kendo-label>
+            </div>
+
+            <div>
+                <kendo-switch #switchConfermaEliminazione formControlName="confirmDelete" class="complete-delete-switch">
+                </kendo-switch>
+                <kendo-label [for]="switchConfermaEliminazione" [text]="'gis.ConfermaEliminazione' | transloco">
+                </kendo-label>
+            </div>
+
+            <!-- Bottone salvataggio -->
+            <div class="save-button">
+                <button type="submit" [disabled]="!form.valid">
+                    {{'Conferma' | transloco}}
+                </button>
+            </div>
+        </div>
+    </form>
+</gis-window>

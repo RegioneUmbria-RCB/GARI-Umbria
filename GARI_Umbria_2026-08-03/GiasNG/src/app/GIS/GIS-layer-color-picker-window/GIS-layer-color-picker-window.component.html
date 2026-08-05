@@ -1,0 +1,18 @@
+<gis-window [windowArgs]="windowArgs" class="pb-3">
+    <div class="color-preview" [ngStyle]="{ 'background-color': selectedColor }"></div>
+    <div class="">
+        <kendo-flatcolorpicker
+            #gradient
+            [views]="['gradient']"
+            [gradientSettings]="colorGradientSettings"
+            [preview]="false"
+            [format]="colorOutputFormat"
+            [(value)]="selectedColor"
+            (valueChange)="onChangeColor($event)"
+            style="border: 0;">
+        </kendo-flatcolorpicker>
+    </div>
+    <div class="save-button">
+        <button (click)="submit()">{{etichettaBottone}}</button>
+    </div>
+</gis-window>

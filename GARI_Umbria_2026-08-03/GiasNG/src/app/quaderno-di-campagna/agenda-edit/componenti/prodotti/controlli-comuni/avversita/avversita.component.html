@@ -1,0 +1,129 @@
+<div [formGroup]="FormulatiForm" [ngClass]="ClassInnesco()">
+
+    <ng-container *ngIf="mostraAvversitaDDL()"
+                  [ngTemplateOutlet]="TemplateAvversitaDDL"
+                  [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+    </ng-container>
+
+    <ng-container *ngIf="mostraAvversitaMultiColumnCombobox()"
+                  [ngTemplateOutlet]="TemplateMultiColumnComboboxAvversitaInneschi"
+                  [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+    </ng-container>
+</div>
+
+<ng-template #TemplateAvversitaDDL let-FormulatiForm='FormulatiForm'>
+
+  <div [ngClass]="ClassHeader()">
+    <!--<span class="faInfestanti me-1"></span>-->
+    <h5 class="card-title">
+      {{ getDescrizioneAvversita() }}
+    </h5>
+    <div class="ricerca-gestione-prodotto" *ngIf="showComandi && qdcservice.Mostra_Btn_Gestione_Prodotto()">
+      <app-bottoni-gestione-prodotto></app-bottoni-gestione-prodotto>
+    </div>
+  </div>
+
+  <div [ngClass]="ClassBody()">
+    <div [ngClass]="!hideRileva ? 'col-10' : 'col-12'">
+
+      <gias-drop-down-template-s #AvversitaDDL
+                                 [name]="''"
+                                 [clearButton]="true"
+                                 [listItems]="qdcdettagliformulatiservice.Array_Avversita"
+                                 (open)="openControlAvversita($event)"
+                                 textField="Descrizione_Concatenata"
+                                 valueField="Codice_Concatenato"
+                                 [filterable]="true"
+                                 giasFormControlName="Avversita"
+                                 [valuePrimitive]="false">
+      </gias-drop-down-template-s>
+
+    </div>
+  </div>
+
+
+</ng-template>
+
+<ng-template #TemplateMultiColumnComboboxAvversitaInneschi let-FormulatiForm='FormulatiForm'>
+
+  <div class="col-12 ricerca-prodotto-title">
+    <div class="ricerca-text">
+
+      <gias-info-template size="lg" [title]="setInfoLabelInneschi()"></gias-info-template>
+
+      <h5 class="card-title me-1">{{ getDescrizioneAvversita() }}</h5>
+
+      <div id="parent" style="margin-left: 1rem;" *ngIf="mostraSwitchInnesco_Incluso()">
+        <div style="display: inline-block; padding-right: 5px;">
+          <label [for]="VisualizzaInnesco_Incluso">{{'InnescoInclusoConTrappola' | transloco}}</label>
+        </div>
+        <div style="display: inline-block;">
+          <div class="gias-switch-two-labels" #DivVisualizzaInnesco_Incluso>
+            <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+            <gias-switch-template #VisualizzaInnesco_Incluso
+                                  giasFormControlName="Innesco_Incluso"
+                                  [isBlue]="true" [hideLabel]="true">
+            </gias-switch-template>
+            <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="parent" style="margin-left: 1rem;" *ngIf="qdcprodottiservice.controlli_Giacenze_Lotti_Innesco.flag_visualizza_solo_prodotti_in_giacenza.visibile">
+        <div style="display: inline-block; padding-right: 5px;">
+          <label [for]="Visualizza_Solo_Inneschi_in_Giacenza">{{'SoloInneschiInGiacenza' | transloco}}</label>
+        </div>
+        <div style="display: inline-block;">
+          <div class="gias-switch-two-labels" #Visualizza_Solo_Inneschi_in_Giacenza>
+            <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+            <gias-switch-template giasFormControlName="Visualizza_Solo_Inneschi_in_Giacenza"
+                                  [isBlue]="true" [hideLabel]="true">
+            </gias-switch-template>
+            <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+          </div>
+        </div>
+      </div>
+
+   </div>
+  </div>
+
+  <div [ngClass]="ClassBody()">
+    <div [ngClass]="!hideRileva ? 'col-10' : 'col-12'">
+      <gias-multi-column-combobox-template
+        #MultiColumnComboboxAvversitaInneschi
+        [name]="''"
+        [listItems]="qdcdettagliformulatiservice.Array_Avversita"
+        textField="Descrizione_Concatenata"
+        valueField="Codice_Concatenato"
+        [filterable]="true"
+        giasFormControlName="Avversita"
+        [valuePrimitive]="false"
+        [columns]="qdcdettagliformulatiservice.ColumnComboboxAvversitaInneschi">
+      </gias-multi-column-combobox-template>
+   </div>
+  </div>
+
+
+    <div class="row form-row margin-innesco"
+         *ngIf="qdcservice.showInfoGiacenza(FormulatiForm.get('Avversita').getRawValue()?.MagazziniMovimentazioni) !== ''">
+      <div class="col">
+        <div id="Lbl_Info_Giacenza_Innesco"
+             [innerHtml]="qdcservice.showInfoGiacenza(FormulatiForm.get('Avversita').getRawValue()?.MagazziniMovimentazioni)"></div>
+      </div>
+    </div>
+
+    <div class="row form-row margin-innesco">
+
+      <div class="col">
+        <app-magazzino-lotto
+          [flagInnesco]="true"
+          [MagazzinoFormControlName]="'Magazzino_Innesco'"
+          [LottoFormControlName]="'Lotto_Innesco'">
+        </app-magazzino-lotto>
+      </div>
+    </div>
+
+    <div class="row form-row margin-innesco">
+      <app-udm-qta-innesco></app-udm-qta-innesco>
+    </div>
+</ng-template>

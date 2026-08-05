@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49876EE3-206E-4F45-AF8B-6C8BF8E4DC60}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreStazioniBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreStazioniBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.Designer.vb">
+      <DependentUpon>AgronicaCoreStazioniBIZ.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.en.Designer.vb">
+      <DependentUpon>AgronicaCoreStazioniBIZ.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.fr.Designer.vb">
+      <DependentUpon>AgronicaCoreStazioniBIZ.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.pt.Designer.vb">
+      <DependentUpon>AgronicaCoreStazioniBIZ.pt.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ExportStazioni.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Util.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreStazioniBIZ.en.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreStazioniBIZ.fr.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.pt.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreStazioniBIZ.pt.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreStazioniBIZ_resx\AgronicaCoreStazioniBIZ.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreStazioniBIZ.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{A1F2F959-43C8-4FE6-B159-96652FF9FB2B}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09C9A140-71E4-430E-9E87-73C69E876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDemetraBIZ\AgronicaCoreDemetraBIZ.vbproj">
+      <Project>{5B028FA0-5A20-44D5-9392-3AD735695AC4}</Project>
+      <Name>AgronicaCoreDemetraBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ.vbproj">
+      <Project>{c3cd5baa-f8bf-462b-8533-e1a61c376fd7}</Project>
+      <Name>AgronicaCoreScadenziario_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0c28e3ab-427e-45d5-b6b3-43d3378af207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

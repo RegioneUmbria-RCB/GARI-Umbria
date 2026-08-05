@@ -1,0 +1,107 @@
+<kendo-expansionpanel [title]="'Utenti' | transloco" [expanded]="true">
+  <gias-kendo-grid #gridUtentiVisibiilita></gias-kendo-grid>
+</kendo-expansionpanel>
+
+<!-- Shared toolbar: copy button + pratiche controls -->
+<div class="pratiche-toolbar k-mb-3" *ngIf="showPratiche">
+  <div *ngIf="utenti.length === 1" [formGroup]="praticheForm" class="pratiche-controls">
+    <div class="switch-field">
+      <span class="switch-label">
+        {{ 'prof.FiltroPraticheAttivo' | transloco }}
+        <kendo-icon kendoTooltip name="info-circle" size="small"
+          [title]="'prof.FiltroPraticheAttivoTooltip' | transloco" class="k-ml-1 k-cursor-pointer">
+        </kendo-icon>
+      </span>
+      <gias-switch-template giasFormControlName="filtroPraticheAttivo"></gias-switch-template>
+    </div>
+
+    <div class="switch-field">
+      <span class="switch-label">{{ 'prof.OperatoreLogicoFiltri' | transloco }}</span>
+      <gias-switch-template [siLabel]="'prof.SwitchOr' | transloco" [noLabel]="'prof.SwitchAnd' | transloco"
+        giasFormControlName="operatoreOR">
+      </gias-switch-template>
+    </div>
+
+    <button kendoButton [disabled]="!praticheDirty || tabPraticheRef?.isSaving || configSaving"
+      (click)="savePratiche()">
+      {{ 'prof.SalvaPratiche' | transloco }}
+    </button>
+
+    <div kendoTooltip [title]="'prof.CopiaVisibilitaDa' | transloco">
+      <button kendoButton type="button" class="btn" (click)="openCopyVisibilityDialog()">
+        <fa-icon size="lg" [icon]="faCopy"></fa-icon>
+      </button>
+    </div>
+  </div>
+
+  <kendo-alert *ngIf="!praticheOperatoreOR && praticheFiltroPraticheAttivo && utenti.length === 1" role="alert"
+    type="warning" class="k-mb-3 and-operator-alert">
+    {{ 'prof.AlertAndConSelezioni' | transloco }}
+  </kendo-alert>
+</div>
+
+<kendo-tabstrip>
+  <kendo-tabstrip-tab [title]="'prof.TabImprese' | transloco" [selected]="true">
+    <ng-template kendoTabContent>
+      <section class="grid-imprese-container">
+        <!--  <span class="infotext">{{ 'InfoModificaVisibilita' | transloco }}</span>-->
+        <div class="btn-container">
+          <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+            *ngIf="hasVisibilitaTotale && !selezionatiHannoVisibilitaTotale" (click)="assegnaTotale()">{{
+            'prof.AssegnaVisibilitaTotale' | transloco }}</button>
+          <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+            (click)="overwriteVisibility()">{{ 'prof.SostituisciAziendeVisibilita' | transloco }}</button>
+          <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+            *ngIf="!selezionatiHannoVisibilitaTotale && !selezionatiVisibilitaDiversa" (click)="updateVisibility()">{{
+            'prof.AggiungiAziendeVisibilita' | transloco }}</button>
+        </div>
+
+        <div class="full-width"
+          *ngIf="selezionatiHannoVisibilitaTotale || selezionatiNonHannoVisibilita || selezionatiVisibilitaDiversa; else gridImpreseContainer">
+          <div *ngIf="selezionatiHannoVisibilitaTotale && !selezionatiVisibilitaDiversa">
+            <h6 *ngIf="utenti.length === 1">{{'prof.UtenteHaVisibilitaTotale' | transloco}}</h6>
+            <h6 *ngIf="utenti.length > 1">{{'prof.UtentiHannoVisibilitaTotale' | transloco}}</h6>
+          </div>
+          <div *ngIf="selezionatiNonHannoVisibilita && !selezionatiVisibilitaDiversa">
+            <h6 *ngIf="utenti.length === 1">{{'prof.UtenteNonHaVisibilita' | transloco}}</h6>
+            <h6 *ngIf="utenti.length > 1">{{'prof.UtentiNonHannoVisibilita' | transloco}}</h6>
+          </div>
+          <div *ngIf="selezionatiVisibilitaDiversa">
+            <h6>{{'prof.UtentiHannoVisibilitaDiversa' | transloco}}</h6>
+          </div>
+        </div>
+        <ng-template #gridImpreseContainer>
+          <app-grid-visibilita-edit #gridImprese></app-grid-visibilita-edit>
+        </ng-template>
+      </section>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <kendo-tabstrip-tab *ngIf="showPratiche" [title]="'prof.TabPratiche' | transloco">
+    <ng-template kendoTabContent>
+      <ng-container *ngIf="utenti.length === 1; else multiUtenteWarning">
+        <app-tab-pratiche #tabPraticheRef [username]="utenti[0]?.UserName" [operatoreOR]="praticheOperatoreOR"
+          [filtroPraticheAttivo]="praticheFiltroPraticheAttivo"
+          (operatoreORChange)="praticheForm.get('operatoreOR').patchValue($event)"
+          (filtroPraticheAttivoChange)="praticheForm.get('filtroPraticheAttivo').patchValue($event)"
+          (hasUnsavedChanges)="praticheDirty = $event">
+        </app-tab-pratiche>
+      </ng-container>
+      <ng-template #multiUtenteWarning>
+        <div class="k-p-4 k-text-center">
+          <p>{{ 'prof.SelezionaUtentePerPratiche' | transloco }}</p>
+        </div>
+      </ng-template>
+    </ng-template>
+  </kendo-tabstrip-tab>
+</kendo-tabstrip>
+
+
+<ng-template #copyVisibilityRef>
+  <form [formGroup]="form">
+    <gias-drop-down-template-s id="utente" [obligatory]="true"
+      [name]="'prof.SelezionaUtenteCopiaVisibilita' | transloco" textField="Descrizione" valueField="UserName"
+      [listItems]="utentiDdl" [valuePrimitive]="true" [virtual]="virtual"
+      giasFormControlName="utente"></gias-drop-down-template-s>
+  </form>
+</ng-template>

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96403ADF-CA30-460E-9167-CFE2DEEAEF19}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreVisiteBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreVisiteBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\CoreVisiteBIZ.pt.Designer.vb">
+      <DependentUpon>CoreVisiteBIZ.pt.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreVisiteBIZ.fr.Designer.vb">
+      <DependentUpon>CoreVisiteBIZ.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreVisiteBIZ.en.Designer.vb">
+      <DependentUpon>CoreVisiteBIZ.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\CoreVisiteBIZ.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoreVisiteBIZ.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Visite.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Visite_APP.vb" />
+    <Compile Include="Visite_Categoria1.vb" />
+    <Compile Include="Visite_Categoria2.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\CoreVisiteBIZ.pt.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreVisiteBIZ.pt.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\CoreVisiteBIZ.fr.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreVisiteBIZ.fr.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\CoreVisiteBIZ.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>CoreVisiteBIZ.en.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\CoreVisiteBIZ.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>CoreVisiteBIZ.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{CD313002-8DB3-4918-BB01-4432C97AAEC9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09C9A140-71E4-430E-9E87-73C69E876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ.vbproj">
+      <Project>{C3CD5BAA-F8BF-462B-8533-E1A61C376FD7}</Project>
+      <Name>AgronicaCoreScadenziario_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVisiteDAL\AgronicaCoreVisiteDAL.vbproj">
+      <Project>{2d087d3b-adbd-43dd-b1fa-cfe99328f7be}</Project>
+      <Name>AgronicaCoreVisiteDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreZooDAL\AgronicaCoreZooDAL.vbproj">
+      <Project>{2332b409-b2e5-4a70-9f33-589f4bf7522f}</Project>
+      <Name>AgronicaCoreZooDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,50 @@
+﻿Imports System.Web
+Imports System.Web.Services
+Imports System.Web.Services.Protocols
+Imports System.ComponentModel
+Imports AgronicaCoreDataProvider
+
+Namespace Agenda.Operazioni_Colturali.Operazione_Colturale.Installazione_Trappole.Con_Inneschi
+
+
+    Public MustInherit Class Abstr_Installazione_Trappole_Con_Inneschi
+        Inherits Abstr_Installazione_Trappole
+
+        Private _Trappole As List(Of Trappola)
+
+
+        Public Sub New(Piva_Op As String, Data_Op As Date, Tipo_OperazioneDb As TipiEnumerativi.enum_TipoOperazioneDB, ByVal Id_Agenda_In As Integer, objParametri_Server As AgronicaCoreParametri)
+            MyBase.new(Piva_Op, Data_Op, Tipo_OperazioneDb, Id_Agenda_In, objParametri_Server)
+            ImpostaParametriOperazione(objParametri_Server)
+        End Sub
+
+        Public Sub New(ByRef OperazioneColturaleGenerica As I_Operazione_Colturale, ByRef objParametri_Server As AgronicaCoreParametri)
+            MyBase.new(OperazioneColturaleGenerica, objParametri_Server)
+            ImpostaParametriOperazione(objParametri_Server)
+        End Sub
+
+        Private Sub ImpostaParametriOperazione(objParametri_Server As AgronicaCoreParametri)
+            _Trappole = New List(Of Trappola)
+        End Sub
+
+
+        Public ReadOnly Property Trappole As List(Of Trappola)
+            Get
+                Return _Trappole
+            End Get
+        End Property
+
+
+        Public Overloads ReadOnly Property Numero_Trappole() As Integer
+            Get
+                _Numero_Trappole = Trappole.Count
+                Return _Numero_Trappole
+            End Get
+        End Property
+
+
+    End Class
+
+End Namespace
+
+

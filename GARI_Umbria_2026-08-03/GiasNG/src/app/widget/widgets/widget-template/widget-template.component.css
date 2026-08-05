@@ -1,0 +1,195 @@
+/* Dashboard widgets */
+.widget {
+    background-color: white;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.widget-elevated {
+    -webkit-box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.08),
+        0px 6px 6px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.08),
+        0px 6px 6px 0px rgba(0, 0, 0, 0.08);
+    -o-box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.08),
+        0px 6px 6px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.08),
+        0px 6px 6px 0px rgba(0, 0, 0, 0.08);
+}
+
+.widget-header-title {
+    color: #002d5a;
+    padding: 0px 12px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.widget-title-info {
+    display: flex;
+    align-items: center; /* Allinea verticalmente al centro */
+    gap: 8px; /* Spazio tra gli elementi */
+}
+
+.widget-header.light .widget-header-title {
+    color: #002d5a;
+}
+
+.widget-header.dark .widget-header-title {
+    color: white;
+}
+
+.widget-header .widget-header-button {
+    height: 22px;
+    line-height: 22px;
+    cursor: pointer;
+}
+
+.widget-top-marked {
+    justify-content: space-between;
+    border-top: 5px solid #002d5a;
+}
+
+/* large widget (2x2) */
+/**/
+
+/* small widget (1x1) */
+.small-widget-row {
+    margin-top: 10px;
+    display: flex;
+}
+
+.widget {
+    flex: 1;
+}
+
+.widget .widget-header {
+    height: 32px;
+    line-height: 32px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    border-bottom: 1px solid #e8e8e8;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.widget .widget-header.dark {
+    background-color: #002d5a;
+    color: white;
+}
+
+.widget .widget-header.light {
+    background-color: #fafafa;
+    color: #002d5a;
+}
+
+.widget .widget-body {
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: auto;
+    height: calc(100% - 32px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.navigation-text {
+    cursor: pointer;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.widget-content {
+    height: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+    .resizer {
+        visibility: hidden;
+    }
+}
+
+
+/* desktop optimization (for middle size desktop) */
+@media only screen and (max-width: 1249px) {
+    .widget-header-title {
+        font-size: 13px;
+    }
+
+    .dashboard .widgets-container {
+        padding-top: 0px;
+        padding-right: 15px;
+        padding-bottom: 12px;
+        padding-left: 0px;
+    }
+
+    .small-widget-row {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .services-compact-list .service-content i.fa.fa-gias.fa-angle-right {
+        width: 20px;
+    }
+
+    .service-list-item .label_text_normal {
+        font-size: 13px;
+    }
+}
+
+/* table optimization */
+@media only screen and (max-width: 1023px) {
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .small-widget-row {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row !important;
+    }
+}
+
+/* mobile optimization */
+@media only screen and (max-width: 767px) {
+    .dashboard-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard .services-columns-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .dashboard .widgets-container {
+        flex: 1;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 12px;
+        padding-left: 0px;
+    }
+
+    .dashboard .services-container {
+        flex: 1;
+        padding-top: 12px;
+        padding-right: 0px;
+        padding-bottom: 12px;
+        padding-left: 0px;
+    }
+
+    .widget-header-title {
+        font-size: 12px;
+    }
+
+    .small-widget-row {
+        margin-top: 10px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+}

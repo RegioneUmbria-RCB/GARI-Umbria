@@ -1,0 +1,42 @@
+{
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Console", "Serilog.Sinks.File" ],
+    "MinimumLevel": {
+      "Default": "Verbose",
+      "Override": {
+        "System.Net.Http": "Warning",
+        "Microsoft": "Warning",
+        "Microsoft.Hosting.Lifetime": "Information"
+      }
+    },
+    "WriteTo": [
+      { "Name": "Console" },
+      {
+        "Name": "Logger",
+        "Args": {
+          "configureLogger": {
+            "Filter": [
+              {
+                "Name": "ByIncludingOnly",
+                "Args": {
+                  "expression": "General is not null"
+                }
+              }
+            ],
+            "WriteTo": [
+              {
+                "Name": "File",
+                "Args": {
+                  "path": "C:/GIASLAN/LOG/CoreApi/general_log-.log",
+                  "rollingInterval": "Day",
+                  "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} {CorrelationId} {Level:u3} ({ThreadId}) - {Username} {Message:lj}{Exception}{NewLine}"
+                }
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "Enrich": [ "FromLogContext", "WithMachineName", "WithThreadId", "WithThreadName" ]
+  }
+}

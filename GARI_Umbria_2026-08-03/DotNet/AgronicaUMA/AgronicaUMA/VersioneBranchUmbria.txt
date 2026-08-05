@@ -1,0 +1,450 @@
+﻿================================================================================
+NOTE VERSIONE BRANCH UMBRIA (AgronicaUMA)
+================================================================================
+
+--------------------------------------------------------------------------------
+13/03/24 - Aggiunta sezione per permettere il calcolo dei capi allevabili
+--------------------------------------------------------------------------------
+In richieste e rendicontazioni: aggiunto al tab Allevamenti la sezione Unità 
+Foraggere Prodotte dove si possono inserire le colture presenti nei fascicoli 
+disponibili per l'azienda.
+Sarà possibile indicare se gli animali sono allevati in un terreno montuoso,
+che diminiurà il numero di capi allevabili del 26%.
+Al salvataggio verrà calcolato il numero di capi allevabili e verrà confrontato
+con il numero di capi già indicati. In caso di incongruenza verrà segnalato.
+
+--------------------------------------------------------------------------------
+20/03/24 - Fix descrizione lavorazione max volte (chiamata 29232)
+--------------------------------------------------------------------------------
+Sistemato caricamento descrizione lavorazione per considerare correttamente il regolamento.
+
+--------------------------------------------------------------------------------
+25/03/24 - Note Obbligatorie
+--------------------------------------------------------------------------------
+Aggiunta e gestita colonna FlagNoteCompObbl in configurazione lavorazioni UMA.
+
+Aggiunto errore in griglia richieste/rendicontazioni in caso si omettano le note
+di compilazione in una lavorazione che le richiede.
+
+Dopo la fase di compilazione, le lavorazioni con il campo note obbligatorio sono
+segnalate tramite lo sfondo giallo della riga che le contiene.
+
+--------------------------------------------------------------------------------
+26/03/24 - Fix messaggio errore in caso di pendenze o tessiture mancanti (chiamata 29238)
+--------------------------------------------------------------------------------
+Aggiornato il messaggio errore all'apertura di una rendicontazione nel caso in cui
+manchino le informazioni relative alla pendenza e/o tessitura delle varie colture 
+presenti in quel fascicolo rendendolo più comprensibile.
+
+--------------------------------------------------------------------------------
+26/03/24 - Gestione macchine
+--------------------------------------------------------------------------------
+Pulsante 'Aggiungi Macchina' ora sotto permesso Anagrafica_ParcoMacchine (64).
+Aggiunta colonne validità inizio/fine macchina.
+Nuova colonna 'Aziende su cui è registrata la stessa targa', mostra tutte le aziende che hanno 
+registrato la stessa targa nella loro anagrafica.
+Compare quando la richiesta/rendicontazione è in fase 'Verifica_In_Corso' (AFOR) o 'Verifica_Completata',
+solo sulle macchine selezionate. La riga viene evidenziata in giallo.
+
+Pulsante 'Aggiungi Macchina' apre un iFrame sulla griglia delle macchine ANGULAR.
+E' possibile  utilizzzare tutte le funzioni direttamente dal frame (modifica inline/completa, cancellazione, info).
+Aggiunto controllo su targa obbligatoria per le tipologie di macchine specificate nel setup dell'anno:
+quando si seleziona una macchina con questo requisito, se ne è sprovvisto verrà evidenziata in rosso la colonna della targa ed impedito il salvataggio.
+
+--------------------------------------------------------------------------------
+26/03/24 - Gestione setup macchine targa obbligatoria
+--------------------------------------------------------------------------------
+Aggiunto pulsante per duplicare la riga nella griglia UMA setup.
+Aggiunta colonna Macchine Targa Obbligatorie nella griglia UMA Setup come una Multiselect,
+gestito inserimento e modifica.
+
+--------------------------------------------------------------------------------
+28/03/24 - Aggiunto indicatore del livello nella selezione delle macchine in UMA Setup
+--------------------------------------------------------------------------------
+Aggiunti dei "." davanti al nome di ogni tipo di macchina per indicarne il livello
+nella gerarchia.
+
+--------------------------------------------------------------------------------
+28/03/24 - UMA report di controllo e report ELAS
+--------------------------------------------------------------------------------
+- Aggiunto nuovo pulsante per accedere alla sezione di Report Controllo UMA
+- All'interno della nuova sezione sarà possibile scegliere una categoria di 
+  report (al momento è disponibile solo il report ELAS) e generare la griglia 
+  con i dati.
+- Tramite il pulsante predisposto sopra la griglia, sarà possibile esportare la 
+  griglia in formato Excel e caricarlo automaticamente nella sezione documentale 
+  sotto la categoria Gestione UMA nella tipologia Report ELAS.
+
+--------------------------------------------------------------------------------
+08/04/24 - Fix configurazione UMA setup
+--------------------------------------------------------------------------------
+Salvataggio macchine soggettte a controllo targa obbligatoria per non includere
+i sottolivelli alla selezione dei livelli 1 o 2.
+Controllo validità valore tipologia report ELAS.
+
+--------------------------------------------------------------------------------
+10/04/24 - Fix ricerca macchine per targa (1)
+--------------------------------------------------------------------------------
+Effettuata ricerca macchine per targa eliminando eventuali spazi presenti.
+In colonna aziende con stessa targa, riportate solo quelle valide nel periodo
+della pratica.
+
+--------------------------------------------------------------------------------
+11/04/24 - Fix ricerca macchine per targa (2)
+--------------------------------------------------------------------------------
+Sistemato errore che si verificava se in pratica UMA erano selezionate solo
+macchine senza targa prive di controllo obbligatorio.
+
+--------------------------------------------------------------------------------
+11/04/24 - Fix capi allevabili
+--------------------------------------------------------------------------------
+Gestione terreni extra umbria.
+Filtro colonne griglia UF prodotte colture.
+
+--------------------------------------------------------------------------------
+11/04/24 - Configurazione: gestione tendina selezione tipologia report ELAS
+--------------------------------------------------------------------------------
+Inserita tendina di selezione in griglia al posto del numero.
+
+--------------------------------------------------------------------------------
+12/04/24 - Capi allevabili: controllo fascicolo selezionato UF
+--------------------------------------------------------------------------------
+Quando si preme "Aggiungi Colture", controllato che il fascicolo sia utilizzato
+nella pratica corrente.
+
+--------------------------------------------------------------------------------
+12/04/24 - Report ELAS: pulsante elenco report controllo
+--------------------------------------------------------------------------------
+Introdotto pulsante "Elenco Report Controllo" per accedere all'elenco dei report
+già esportati.
+
+--------------------------------------------------------------------------------
+12/04/24 - Griglia gestione macchine
+--------------------------------------------------------------------------------
+Resa non modificabile colonna macchina.
+Fix controllo targa obbligatoria in ritorno da pulsante "Gestione macchine".
+
+--------------------------------------------------------------------------------
+16/04/24 - Note obbligatorie con colore
+--------------------------------------------------------------------------------
+Fix per controllo che la nota sia diversa da spazio.
+
+--------------------------------------------------------------------------------
+22/04/24 - Fix creazione richiesta integrativa
+--------------------------------------------------------------------------------
+Fix errore in fase di copia permesso acqua nel caso sia nullo in prima richiesta.
+
+--------------------------------------------------------------------------------
+23/04/24 - Disabilitata richiesta superficie in zona montana
+--------------------------------------------------------------------------------
+Disabilitata richiesta intera superficie in zona montana con scarsa produttività.
+
+--------------------------------------------------------------------------------
+23/04/24 - Aggiunto tab Elenco Inadempienti in Report Controllo
+--------------------------------------------------------------------------------
+Aggiunta tab Elenco Inadempienti alla pagina di Report Controllo UMA.
+Aggiunta colonna Tipologia_Elenco_Inadempienti alla tabella UMA Setup.
+
+--------------------------------------------------------------------------------
+30/04/24 - Aggiunto tab Elenco Trasferimenti in Report Controllo
+--------------------------------------------------------------------------------
+Aggiunta tab Elenco Trasferimenti alla pagina di Report Controllo UMA.
+Aggiunto pulsante per la visualizzazione del documentale in Elenco Inadempienti.
+
+--------------------------------------------------------------------------------
+09/05/24 - Fix data fascicolo in DDL richieste
+--------------------------------------------------------------------------------
+Modificato per prendere la data validazione, se presente, invece della data creazione.
+
+--------------------------------------------------------------------------------
+14/05/24 - Fix parametri stringhe in query per UMA_UF_Colture
+--------------------------------------------------------------------------------
+Corretta composizione della query di lettura di UMA_UF_Colture per parametri in formato stringa
+
+--------------------------------------------------------------------------------
+16/05/24 - Data rilascio pratica
+--------------------------------------------------------------------------------
+Introdotta data rilascio pratica in elenco richieste/rendicontazioni.
+
+--------------------------------------------------------------------------------
+16/05/24 - Aggiunto tab Segnalazione e Recupero Accise
+--------------------------------------------------------------------------------
+Aggiunta tab Segnalazione e Recupero Accise alla pagina di Report Controllo UMA.
+
+--------------------------------------------------------------------------------
+21/05/24 - Fix errore lettura Elenco Inadempienti
+--------------------------------------------------------------------------------
+Corretto errore su lettura dell'elenco inadempienti in Report Controllo UMA.
+
+--------------------------------------------------------------------------------
+28/05/24 - Aggiunto pulsante annullamento segnalazione Report Controllo + fix
+--------------------------------------------------------------------------------
+Aggiunto pulsante annullamento segnalazione per le segnalazioni recupero accise in Report Controllo
+Corretto errore nella pagina dell'Elenco Richieste/Rendicontazioni che non si caricava nl caso l'azienda selezionata a priori non fosse nell'elenco di visibilità dell'utente in uso
+Rimosso primo caricamento nella pagina delle Vendite e aggiunto waitFrame per notificare il caricamento della query
+
+--------------------------------------------------------------------------------
+29/05/24 - Fix errore lettura date rendicontazione
+--------------------------------------------------------------------------------
+Resituito errore corretto nel caso in cui le date inizio/fine inserimento rendicontazione
+non sono state valorizzate correttamente.
+
+--------------------------------------------------------------------------------
+05/06/24 - Velocizzazione caricamento griglia richieste/rendicontazioni
+--------------------------------------------------------------------------------
+Apportate modifiche configurabili tramite i seguenti parametri della chiave TestUMA:
+- LogCaricaElencoPratiche = 1
+  Abilita log tempi caricamento griglia richieste/rendicontazioni.
+- SetIsolationLevelElencoPratiche = 1
+  Abilita Isolation Level Read Uncommitted.
+- UsaTempTableElencoPratiche = 1
+  Usa tabelle temporanee con chiave al posto delle cte.
+
+--------------------------------------------------------------------------------
+06/06/24 - Fix filtri segnalazione recupero accise
+--------------------------------------------------------------------------------
+Modifica filtro PRATICHE GIA' SEGNALATE = Sì per escludere le pratiche che non
+sono mai state segnalate.
+Fix su impostazione errata filtro ANNO = default quando si impostava un anno
+maggiore all'anno successivo del default.
+Fix query per omogeneizzazione parametro anno.
+
+--------------------------------------------------------------------------------
+06/06/24 - Fix scadenza inadempienti fissa al 30/6
+--------------------------------------------------------------------------------
+Fix query inadempienti per fissare la scadenza al 30/6.
+
+--------------------------------------------------------------------------------
+11/06/24 - Fix visualizzazione caricamento e fix blocco particelle
+--------------------------------------------------------------------------------
+- Fix visualizzazione caricamento in Elenco richieste, elenco rendicontazioni e 
+  sintesi richieste/rendicontazioni.
+- Ora per caricare l'elenco di particelle nella pagina di UMA Blocco Particelle
+  sarà necessario selezionare un'azienda.
+
+--------------------------------------------------------------------------------
+11/06/24 - Fix elenco inadempienti
+--------------------------------------------------------------------------------
+Fix per considerare solo richieste/anticipi in stato verifica intermedia 
+completata con successo.
+
+--------------------------------------------------------------------------------
+13/06/24 - Fix lettura carburante venduto
+--------------------------------------------------------------------------------
+Fix sulla lettura del carburante venduto in presenza di un filtro aggiuntivo.
+
+--------------------------------------------------------------------------------
+14/06/24 - Fix elenco trasferimenti
+--------------------------------------------------------------------------------
+Fix sulla lettura del tipo di carburante ricevuto: conto proprio o conto terzi.
+
+--------------------------------------------------------------------------------
+14/06/24 - Fix elenco inadempienti: velocizzazione + caso trasferimenti
+--------------------------------------------------------------------------------
+Introdotta velocizzazione con uso temporanee.
+Introdotta casistica di carburante ricevuto senza pratiche presenti.
+
+--------------------------------------------------------------------------------
+14/06/24 - Fix elenco segnalazione recupero accise: caso trasferimenti
+--------------------------------------------------------------------------------
+Introdotta casistica di carburante ricevuto senza pratiche presenti.
+
+--------------------------------------------------------------------------------
+14/06/24 - Tabella di configurazione UF
+--------------------------------------------------------------------------------
+Aggiunta sezione per la configurazione delle unità foraggere prodotte per coltura
+nella pagina di configurazione UMA.
+
+--------------------------------------------------------------------------------
+18/06/24 - Speed Up caricamento anno Segnalazione recupero accise											@1
+--------------------------------------------------------------------------------
+Velocizzato enormemente il caricamento delle informazioni relative all'anno selezionato
+nella sezione Segnalazione recupero accise di UMA Report Controllo.
+
+--------------------------------------------------------------------------------
+27/06/24 - Inserimento nuovo passaggio di stato e workflow relativo + aggiunta colonne dettaglio			@2
+--------------------------------------------------------------------------------
+Inserimento stato "Verifica in corso da assegnare", i passaggi di stato da e verso questo
+stato. Ora solo l'AFOR che ha preso in carico una richiesta/rendicontazione (Ossia colui
+che farà il passaggio di stato da "Verifica in corso da assegnare" a "Verifica in corso") 
+potrà modificiarla.
+Aggiunte colonne nascoste per i quattro codici Agea alla griglia di dettaglio colture.
+
+--------------------------------------------------------------------------------
+27/06/24 - Gestione sovrapposizione segnalazione recupero accise											@3
+--------------------------------------------------------------------------------
+Gestita casistica di sovrapposizione nel caso di causali "Dichiarato in richiesta"
+e "Rendicontazione mancanti" che hanno origine dalla stessa richiesta.
+Gestito aggiornamento dati recupero accise in caso di modifica.
+
+--------------------------------------------------------------------------------
+27/06/24 - Velocizzazione inserimento massivo di segnalazioni recupero accise								@4
+--------------------------------------------------------------------------------
+Velocizzazione inserimento massivo di segnalazioni recupero accise
+
+--------------------------------------------------------------------------------
+27/06/24 - Aggiunta colonne codici Agea e "Produce UF" in griglia allevamenti UF							@5
+--------------------------------------------------------------------------------
+Aggiunta delle 4 colonne dei codici Agea e della colonna "Produce UF" alla griglia 
+di UF colture nella pagina degli allevamenti.
+
+--------------------------------------------------------------------------------
+01/07/24 - Fix colonna Approvatore in Elenco e disabilitazione pulsanti										@6
+--------------------------------------------------------------------------------
+Corretto il popolamento della colonna Approvatore nella griglia Elenco Richieste/Rendicontazioni.
+Corretto il controllo per la disabilitazione del pulsante del passaggio di stato per 
+le pratiche non di competenza dell'utente corrente.
+
+--------------------------------------------------------------------------------
+12/07/24 - UMA Ricerca Macrousi/Lavorazioni																	@7
+--------------------------------------------------------------------------------
+Aggiunta nuova pagina per consentire la ricerca di richieste e rendicontazioni filtrando su
+specifici marcousi, lavorazioni o allevamenti presenti all'interno di esse.
+
+--------------------------------------------------------------------------------
+15/07/24 - UMA fix dettaglio colture																		@8
+--------------------------------------------------------------------------------
+Velocizzato il carimaneto dei dettagli colture e corretto bug che duplicava i risultati
+
+--------------------------------------------------------------------------------
+16/07/24 - UMA fix permesso acqua integrative																@9
+--------------------------------------------------------------------------------
+Fixato il caricamento del permesso acqua per le richieste integrative
+
+--------------------------------------------------------------------------------
+23/07/24 - UMA fix azienda cessata ignora limiti temporali per rendicontazione								@10
+--------------------------------------------------------------------------------
+Ora le aziende che hanno dichiarato la cessata attività possono avanzare le 
+rendicontazioni ingorando le Date limite impostate in configurazione UMA.
+
+--------------------------------------------------------------------------------
+(Prossima Versione... circa 30/09/24) - Aggancio Analisi Terreno x UMA										@11
+--------------------------------------------------------------------------------
+Se si ha almeno il permesso di lettura delle Analisi (Gestione Analisi e Laboratori) in richiesta/rendicontazione comparirà un nuovo pulsante 'Analisi Terreni'.
+
+NoteTest: Testare varie configurazioni di permessi.
+Gestione Analisi e Laboratori:
+- Lettura: compare il pulsante  'Analisi Terreni' in richiesta/rendicontazione. Cliccando sarà possibile visualizzare solo analisi già esistenti.
+- Scrittura: quanto sopra + possibilità di modificare/inserire analisi.
+
+Scadenzario e Documentale > Lista e modifica documenti 
+- Lettura: possibilità di visualizzare i documenti già associati all'analisi (Pulosantte 'Visualizza Analisi', dentro l'analisi)
+- Scrittura: quanto sopra +  possibilità di modificare documenti già associati all'analisi
+
+Scadenzario e Documentale > Inserimento Documenti
+- Scrittura: possibilità di aggiungere nuovi documenti associati all'analisi. quando il permesso è attivo, dopo aver creato una nuova analisi verrà aperto automaticamente l'inserimento di un nuovo documento
+
+--------------------------------------------------------------------------------
+ENTRATA IN COLLAUDO AGRONICA PER RILASCIO 25/10/2024														
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+01/10/24 - Fix nomi tabelle																					@13
+--------------------------------------------------------------------------------
+Corrette tabelle "Elenco -" eliminando "Elenco" così da evitare di rinominare tutti i riferimenti nel codice
+
+--------------------------------------------------------------------------------
+04/10/24 - Primi fix post test																				@14
+--------------------------------------------------------------------------------
+Aggiunto "UMA" a varie colonne nelle tabelle "Elenco Macrousi", "Elenco Lavorazioni", "Elenco Allevamenti" in COnfigurazione UMA
+Rimossa visualizzazione del pulsante relativo alle analisi terreni se ci si trova in una richiesta terzisti
+Nascosta visualizzazione delle colonne "Cod_Macrouso" e "Macrouso_Des" in "Associazione macrousi" in Configurazione UMA
+
+--------------------------------------------------------------------------------
+09/10/24 - Fix sulle query																					@15
+--------------------------------------------------------------------------------
+Corretto caso di errore dovuto all'ingresso di un utente non appartenente ad un Gruppo Utenti query "Leggi Elenco Richieste"
+Corretta divisione sulla base della quadrupletta di codici AGEA delle colture UF nella scheda allevamenti nelle richieste/rendicontazioni
+
+--------------------------------------------------------------------------------
+15/10/24 - Correzione elenco stati per coordinatore afor + bugfix vendite									@16
+--------------------------------------------------------------------------------
+Corretto bug che consentiva ai coordinatori afor di avanzare le pratiche non di loro competenza 
+a tutti gli stati disponibili invece che solo nello stato "Pratica in verifica da assegnare"
+
+Corretto bug sulle vendite che aggiungeva l'anticipo al totale dei litri assegnati nel caso sia presente un anticipo e 
+la richiesta non abbia lavorazioni su colture ma solo allevamenti.
+
+--------------------------------------------------------------------------------
+16/10/24 - Correzione ddl associazione macrousi																@17
+--------------------------------------------------------------------------------
+Corretto bug che faceva scomparire la ddl di scelta massiva del macrouso dopo 3/4 aperture - chiusure.
+
+--------------------------------------------------------------------------------
+18/10/24 - Aggiornamento creazione righe Allevamenti UF in richiesta										@18
+--------------------------------------------------------------------------------
+Aggiornamento creazione righe Allevamenti UF in richiesta per considerare correttamente tutta la quadrupletta Agea.
+
+--------------------------------------------------------------------------------
+21/10/24 - Fix inserimento righe configurazione MacrousixLavorazioni										@19
+--------------------------------------------------------------------------------
+Fix errore di query in inserimento righe configurazione MacrousixLavorazioni
+Fix recupero nome approvatore in richieste carburante quando ci si arriva da Ricerca Macrousi/Lavorazioni
+Fix tornare indietro da richiesta a Ricerca Macrousi/Lavorazioni tramite pulsante "Annulla tutto"
+
+--------------------------------------------------------------------------------
+22/10/24 - Correzione elenco stati per coordinatore afor													@20
+--------------------------------------------------------------------------------
+Corretto bug che nascondeva gli stati diversi da "Verifica in corso da assegnare" al 
+passaggio di stato di una richiesta in stato "Compilazione alla data completata e verificata"
+Aggiunte colonne nascoste per codici quadrupletta Agea in configurazione UMA -> UF Colture
+
+--------------------------------------------------------------------------------
+23/10/24 - Correzione visibilità elenco																		@21
+--------------------------------------------------------------------------------
+Corretto bug che consentiva achi non possedesse nessuna visibilità UMA di visualizzare l'intero elenco di pratiche
+Corretto bug visivo sulla selezione della checkbox in ConfigurazioneUMA -> Elenco Lavorazioni
+Corretto bug visivo quando si abbandona la selezione di un macrouso UMA in ConfigurazioneUMA -> Associazioni Macrousi
+Corretto bug visivo sullo sdoppiamento della selezione di un nuovo Macrouso UMA in ConfigurazioneUMA -> Configurazione Macrousi Lavorazioni
+
+--------------------------------------------------------------------------------
+24/10/24 - Correzione visibilità elenco																		@22
+--------------------------------------------------------------------------------
+Impedita la modifica della colonna Validità inizio in UMA Elenco Lavorzioni, UMA Elenco Macrousi e UMA Elenco Allevamenti
+Rimossa la colonna "Utilizzata da consorzi di bonifica" in UMA Elenco Lavorazioni
+
+--------------------------------------------------------------------------------
+25/10/24 - Modificata selezione data minima per validità fine UMA Macrousi Lavorazioni						@23
+--------------------------------------------------------------------------------
+Modificata selezione data per la Validità Fine in modo tale che il minimo valore selzionabile sia la data già inserita o 
+la data odierna nel caso di una validità fine non ancora impostata.
+
+--------------------------------------------------------------------------------
+30/10/24 - Fix pre collaudo																					@24
+--------------------------------------------------------------------------------
+Aggiunta modifica colonne codice quadrupletta agea UF Colture
+aggiunto controllo su inserimento di codice macrouso e lavorazioni in Elenco MAcrousi/Elenco Lavorazioni
+Rimossi dalla visualizzazione le colonne Validità inizio/fine in tabelle configurazione.
+
+--------------------------------------------------------------------------------
+30/10/24 - Fix post collaudo																				@25
+--------------------------------------------------------------------------------
+- Rimossa la dicitura "GIAS" da griglia dettagli colture dentro una richiesta/rendicontazione
+- Corretto l'errore che mostra il messaggio relativo alla presa in carico di un "altro approvatore" anche in compilazione per gli utenti per cui dovrebbe essere modificabile,
+  ora il controllo viene fatto solo nelle fasi di competenza di AFOR.
+- Correggere suddivisione della tessitura del terreno a seguito di una modifica delle analisi, ora il sistema tiene conto delle analisi inserite a livello di centro e di impresa.
+
+--------------------------------------------------------------------------------
+05/11/24 - Fix pre rilascio in produzione																	@26
+--------------------------------------------------------------------------------
+- Corretta ricerca delle colture UF nel caso di un codice non trovato nella tabella Codifica_Specie_Vegetali_Agea
+
+--------------------------------------------------------------------------------
+08/11/24 - Bugfix recupero accise minore di 0																@27
+--------------------------------------------------------------------------------
+- Corretta visualizzazione del recupero accise (di tutti i tipi di carburante) nella griglia di Report Controllo -> Segnalazione Recupero Accise 
+  per visualizzare 0 nel caso il valore sia negativo
+
+--------------------------------------------------------------------------------
+11/11/24 - Bugfix creazione di una lavorazione con lavorazioni previste maggiore di 1						@28
+--------------------------------------------------------------------------------
+- Corretta creazione di una lavorazione che prevede più di una lavorazione dello stesso tipo
+  impostando il numero di lavorazioni richieste a 1 invece che al numero di lavoraizoni previste
+  per i Terzisti.
+
+  --------------------------------------------------------------------------------
+15/11/24 - Bugfix ingresso richiesta da ricerca macrousi/lavorazioni + bugfix rimessa in compilazione		@29
+--------------------------------------------------------------------------------
+- Corretto bug che se si entra in una richiesta dalla ricerca macrousi/lavorazioni veniva visualizzato sempre
+  "Rendicontazione" invece di richiesta quando necessario.
+- Corretto bug che impediva ai CAA di rimettere una richesta in compilazione a partire dallo stato "Verifica completata con Riserva"

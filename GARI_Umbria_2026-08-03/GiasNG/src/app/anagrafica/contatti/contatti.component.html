@@ -1,0 +1,15 @@
+<h2 *ngIf="!impresaSelezionata(); else grid">{{'SelezionareUnAzienda' | transloco}}</h2>
+<ng-template #grid>
+    <gias-kendo-grid #grid>
+        <ng-container headerContentEnd>
+            <div kendoTooltip *ngIf="permessoEdit">
+                <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                        (click)="onNuovo()"
+                        [title]="'NuovaSchedaCompleta' | transloco"
+                        [type]="'button'">
+                    <fa-icon class="faAddSchedule"></fa-icon>
+                </button>
+            </div>
+        </ng-container>
+    </gias-kendo-grid>
+</ng-template>

@@ -1,0 +1,38 @@
+<div class="section">
+    Sezione super segreta per la gestione delle impostazioni!
+    <div class="col col-sm-4">
+        <div class="row">
+            <form [formGroup]="formGuidaImp">
+                <div class="row">
+                    <gias-numeric-template
+                        name="Codice Impostazione:"
+                        giasFormControlName="codice"
+                        format="n0"
+                        autoCorrect="true"
+                    ></gias-numeric-template>
+                </div>
+                <div class="row">
+                    <gias-text-template
+                        name="Descrizione Impostazione:"
+                        giasFormControlName="descrizione"
+                    ></gias-text-template>
+                </div>
+                <div class="row">
+                    <gias-checkbox-template
+                        name="Impostazione SuperUser"
+                        giasFormControlName="isSuperUser"
+                    ></gias-checkbox-template>
+                </div>
+                <div class="row">
+                    <gias-checkbox-template
+                        name="Impostazione Azienda-Centro"
+                        giasFormControlName="isAziendaCentro"
+                    ></gias-checkbox-template>
+                </div>
+            </form>
+        </div>
+        <button class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+                (click)="aggiungiGuidaImpostazione()"
+        >Aggiungi Impostazione</button>
+    </div>
+</div>

@@ -1,0 +1,1479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/WS_Importa_GIAS/ImportaWS" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/WS_Importa_GIAS/ImportaWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/WS_Importa_GIAS/ImportaWS">
+      <s:element name="Importa_DocumentoPubblico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DocumentoPubblicoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_PianificazioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_PianificazioneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione_SuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione_SuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_Pianificazione_SuperServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DataRaccoltaPrevista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Str_Parametri1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Str_Parametri2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DataRaccoltaPrevistaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DataRaccoltaPrevistaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblico_SuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblico_SuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DocumentoPubblico_SuperServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Aggiorna_Riferimenti_Agenda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Aggiorna_Riferimenti_AgendaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Aggiorna_Riferimenti_AgendaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Aggiorna_Riferimenti_AgendaReverse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Aggiorna_Riferimenti_AgendaReverseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Aggiorna_Riferimenti_AgendaReverseResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_Mov_Det_Riferimenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Agenda" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Mov" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Mov_Det" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_Ric" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sa_Cod_Ric" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Agenda_Ric" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Mov_Ric" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Mov_Det_Ric" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="righeAggiornate" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_Mov_Det_RiferimentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_Mov_Det_RiferimentiResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="righeAggiornate" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AgendaXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiciRimappati" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NuovaLogica" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AgendaXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_AgendaXmlPrivatoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiciRimappati" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AgendaXmlPrivatoReverse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiciRimappati" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="NuovaLogica" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AgendaXmlPrivatoReverseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_AgendaXmlPrivatoReverseResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodiciRimappati" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ImpreseMateriePrimeXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ImpreseMateriePrimeXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_ImpreseMateriePrimeXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_XmlFull">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_XmlFullResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Scrivi_XmlFullResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ImpresaXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ImpresaXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Scrivi_ImpresaXmlPrivatoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_CentroAziendaleXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_CentroAziendaleXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_CentroAziendaleXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_CampoXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_CampoXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_CampoXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AppezzamentoXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_AppezzamentoXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_AppezzamentoXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_Reg_ImpiantoXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_Reg_ImpiantoXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_Reg_ImpiantoXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_DistintaXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_DistintaXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_DistintaXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ParticelleXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ParticelleXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_ParticelleXmlPrivatoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Modifica_ParticelleXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sa_Cod" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Modifica_ParticelleXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Modifica_ParticelleXmlPrivatoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FabbricatiXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Sa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fabbricato_Cod" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_FabbricatiXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_FabbricatiXmlPrivatoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_FabbricatiXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_FabbricatiXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Scrivi_FabbricatiXmlPrivatoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ParcoMacchineXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ParcoMacchineXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Scrivi_ParcoMacchineXmlPrivatoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ContattiXmlPrivato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiZip" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_ContattiXmlPrivatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Scrivi_ContattiXmlPrivatoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIAS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIASResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Verifica_EsistenzaPivaGIASResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIAS_G2G">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fittizia" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIAS_G2GResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verifica_EsistenzaPivaGIAS_G2GResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIAS_INI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_EsistenzaPivaGIAS_INIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Verifica_EsistenzaPivaGIAS_INIResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_StringaConnessioneDaSuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strKey" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_StringaConnessioneDaSuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_StringaConnessioneDaSuperServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SuperUserPiva">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Piva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StringaConnessione_Utenti" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SuperUserPivaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_SuperUserPivaResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Piva" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SuperUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PivaSuperuser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_CodFiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StringaConnessione_Utenti" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SuperUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Leggi_SuperUserResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_CodFiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SU_Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_ListaServerUtenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listaServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="listaUtenti" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_ListaServerUtentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_ListaServerUtentiResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="listaServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="listaUtenti" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DettagliUtenteDaSuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ID_DB" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dtLeggi">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="dtLeggiSuperUser">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DettagliUtenteDaSuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Importa_DettagliUtenteDaSuperServerResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="dtLeggi">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="dtLeggiSuperUser">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Importa_DocumentoPubblicoSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblicoSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_PianificazioneSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione" />
+  </wsdl:message>
+  <wsdl:message name="Importa_PianificazioneSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_PianificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_Pianificazione_SuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione_SuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Importa_Pianificazione_SuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione_SuperServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DataRaccoltaPrevistaSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DataRaccoltaPrevista" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DataRaccoltaPrevistaSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DataRaccoltaPrevistaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblico_SuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico_SuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblico_SuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico_SuperServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Aggiorna_Riferimenti_AgendaSoapIn">
+    <wsdl:part name="parameters" element="tns:Aggiorna_Riferimenti_Agenda" />
+  </wsdl:message>
+  <wsdl:message name="Aggiorna_Riferimenti_AgendaSoapOut">
+    <wsdl:part name="parameters" element="tns:Aggiorna_Riferimenti_AgendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Aggiorna_Riferimenti_AgendaReverseSoapIn">
+    <wsdl:part name="parameters" element="tns:Aggiorna_Riferimenti_AgendaReverse" />
+  </wsdl:message>
+  <wsdl:message name="Aggiorna_Riferimenti_AgendaReverseSoapOut">
+    <wsdl:part name="parameters" element="tns:Aggiorna_Riferimenti_AgendaReverseResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_Mov_Det_RiferimentiSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_Mov_Det_Riferimenti" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_Mov_Det_RiferimentiSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_Mov_Det_RiferimentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AgendaXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_AgendaXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AgendaXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_AgendaXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AgendaXmlPrivatoReverseSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_AgendaXmlPrivatoReverse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AgendaXmlPrivatoReverseSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_AgendaXmlPrivatoReverseResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ImpreseMateriePrimeXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_ImpreseMateriePrimeXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ImpreseMateriePrimeXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_ImpreseMateriePrimeXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_XmlFullSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_XmlFull" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_XmlFullSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_XmlFullResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ImpresaXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_ImpresaXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ImpresaXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_ImpresaXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_CentroAziendaleXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_CentroAziendaleXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_CentroAziendaleXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_CentroAziendaleXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_CampoXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_CampoXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_CampoXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_CampoXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AppezzamentoXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_AppezzamentoXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_AppezzamentoXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_AppezzamentoXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_Reg_ImpiantoXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_Reg_ImpiantoXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_Reg_ImpiantoXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_Reg_ImpiantoXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_DistintaXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_DistintaXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_DistintaXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_DistintaXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ParticelleXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_ParticelleXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ParticelleXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_ParticelleXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Modifica_ParticelleXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Modifica_ParticelleXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Modifica_ParticelleXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Modifica_ParticelleXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FabbricatiXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_FabbricatiXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_FabbricatiXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_FabbricatiXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_FabbricatiXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_FabbricatiXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_FabbricatiXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_FabbricatiXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ParcoMacchineXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_ParcoMacchineXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ParcoMacchineXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_ParcoMacchineXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ContattiXmlPrivatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_ContattiXmlPrivato" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_ContattiXmlPrivatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_ContattiXmlPrivatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIASSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIAS" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIASSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIASResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIAS_G2GSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIAS_G2G" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIAS_G2GSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIAS_G2GResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIAS_INISoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIAS_INI" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_EsistenzaPivaGIAS_INISoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_EsistenzaPivaGIAS_INIResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_StringaConnessioneDaSuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_StringaConnessioneDaSuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Get_StringaConnessioneDaSuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_StringaConnessioneDaSuperServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SuperUserPivaSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_SuperUserPiva" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SuperUserPivaSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_SuperUserPivaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SuperUserSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_SuperUser" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SuperUserSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_SuperUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_ListaServerUtentiSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_ListaServerUtenti" />
+  </wsdl:message>
+  <wsdl:message name="Importa_ListaServerUtentiSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_ListaServerUtentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DettagliUtenteDaSuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DettagliUtenteDaSuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DettagliUtenteDaSuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DettagliUtenteDaSuperServerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ImportaWSSoap">
+    <wsdl:operation name="Importa_DocumentoPubblico">
+      <wsdl:input message="tns:Importa_DocumentoPubblicoSoapIn" />
+      <wsdl:output message="tns:Importa_DocumentoPubblicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione">
+      <wsdl:input message="tns:Importa_PianificazioneSoapIn" />
+      <wsdl:output message="tns:Importa_PianificazioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione_SuperServer">
+      <wsdl:input message="tns:Importa_Pianificazione_SuperServerSoapIn" />
+      <wsdl:output message="tns:Importa_Pianificazione_SuperServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DataRaccoltaPrevista">
+      <wsdl:input message="tns:Importa_DataRaccoltaPrevistaSoapIn" />
+      <wsdl:output message="tns:Importa_DataRaccoltaPrevistaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DocumentoPubblico_SuperServer">
+      <wsdl:input message="tns:Importa_DocumentoPubblico_SuperServerSoapIn" />
+      <wsdl:output message="tns:Importa_DocumentoPubblico_SuperServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_Agenda">
+      <wsdl:input message="tns:Aggiorna_Riferimenti_AgendaSoapIn" />
+      <wsdl:output message="tns:Aggiorna_Riferimenti_AgendaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_AgendaReverse">
+      <wsdl:input message="tns:Aggiorna_Riferimenti_AgendaReverseSoapIn" />
+      <wsdl:output message="tns:Aggiorna_Riferimenti_AgendaReverseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Mov_Det_Riferimenti">
+      <wsdl:input message="tns:Scrivi_Mov_Det_RiferimentiSoapIn" />
+      <wsdl:output message="tns:Scrivi_Mov_Det_RiferimentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivato">
+      <wsdl:input message="tns:Scrivi_AgendaXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_AgendaXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivatoReverse">
+      <wsdl:input message="tns:Scrivi_AgendaXmlPrivatoReverseSoapIn" />
+      <wsdl:output message="tns:Scrivi_AgendaXmlPrivatoReverseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpreseMateriePrimeXmlPrivato">
+      <wsdl:input message="tns:Scrivi_ImpreseMateriePrimeXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_ImpreseMateriePrimeXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_XmlFull">
+      <wsdl:input message="tns:Scrivi_XmlFullSoapIn" />
+      <wsdl:output message="tns:Scrivi_XmlFullSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpresaXmlPrivato">
+      <wsdl:input message="tns:Scrivi_ImpresaXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_ImpresaXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CentroAziendaleXmlPrivato">
+      <wsdl:input message="tns:Scrivi_CentroAziendaleXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_CentroAziendaleXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CampoXmlPrivato">
+      <wsdl:input message="tns:Scrivi_CampoXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_CampoXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AppezzamentoXmlPrivato">
+      <wsdl:input message="tns:Scrivi_AppezzamentoXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_AppezzamentoXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Reg_ImpiantoXmlPrivato">
+      <wsdl:input message="tns:Scrivi_Reg_ImpiantoXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_Reg_ImpiantoXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_DistintaXmlPrivato">
+      <wsdl:input message="tns:Scrivi_DistintaXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_DistintaXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParticelleXmlPrivato">
+      <wsdl:input message="tns:Scrivi_ParticelleXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_ParticelleXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Modifica_ParticelleXmlPrivato">
+      <wsdl:input message="tns:Modifica_ParticelleXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Modifica_ParticelleXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FabbricatiXmlPrivato">
+      <wsdl:input message="tns:Leggi_FabbricatiXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Leggi_FabbricatiXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_FabbricatiXmlPrivato">
+      <wsdl:input message="tns:Scrivi_FabbricatiXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_FabbricatiXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParcoMacchineXmlPrivato">
+      <wsdl:input message="tns:Scrivi_ParcoMacchineXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_ParcoMacchineXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ContattiXmlPrivato">
+      <wsdl:input message="tns:Scrivi_ContattiXmlPrivatoSoapIn" />
+      <wsdl:output message="tns:Scrivi_ContattiXmlPrivatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS">
+      <wsdl:input message="tns:Verifica_EsistenzaPivaGIASSoapIn" />
+      <wsdl:output message="tns:Verifica_EsistenzaPivaGIASSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_G2G">
+      <wsdl:input message="tns:Verifica_EsistenzaPivaGIAS_G2GSoapIn" />
+      <wsdl:output message="tns:Verifica_EsistenzaPivaGIAS_G2GSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_INI">
+      <wsdl:input message="tns:Verifica_EsistenzaPivaGIAS_INISoapIn" />
+      <wsdl:output message="tns:Verifica_EsistenzaPivaGIAS_INISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_StringaConnessioneDaSuperServer">
+      <wsdl:input message="tns:Get_StringaConnessioneDaSuperServerSoapIn" />
+      <wsdl:output message="tns:Get_StringaConnessioneDaSuperServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUserPiva">
+      <wsdl:input message="tns:Leggi_SuperUserPivaSoapIn" />
+      <wsdl:output message="tns:Leggi_SuperUserPivaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUser">
+      <wsdl:input message="tns:Leggi_SuperUserSoapIn" />
+      <wsdl:output message="tns:Leggi_SuperUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_ListaServerUtenti">
+      <wsdl:input message="tns:Importa_ListaServerUtentiSoapIn" />
+      <wsdl:output message="tns:Importa_ListaServerUtentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DettagliUtenteDaSuperServer">
+      <wsdl:input message="tns:Importa_DettagliUtenteDaSuperServerSoapIn" />
+      <wsdl:output message="tns:Importa_DettagliUtenteDaSuperServerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImportaWSSoap" type="tns:ImportaWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Importa_DocumentoPubblico">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione_SuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione_SuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DataRaccoltaPrevista">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DataRaccoltaPrevista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DocumentoPubblico_SuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico_SuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_Agenda">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Aggiorna_Riferimenti_Agenda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_AgendaReverse">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Aggiorna_Riferimenti_AgendaReverse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Mov_Det_Riferimenti">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_Mov_Det_Riferimenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AgendaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivatoReverse">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AgendaXmlPrivatoReverse" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpreseMateriePrimeXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ImpreseMateriePrimeXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_XmlFull">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_XmlFull" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpresaXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ImpresaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CentroAziendaleXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_CentroAziendaleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CampoXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_CampoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AppezzamentoXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AppezzamentoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Reg_ImpiantoXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_Reg_ImpiantoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_DistintaXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_DistintaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParticelleXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ParticelleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modifica_ParticelleXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Modifica_ParticelleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FabbricatiXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_FabbricatiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_FabbricatiXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_FabbricatiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParcoMacchineXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ParcoMacchineXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ContattiXmlPrivato">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ContattiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_G2G">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS_G2G" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_INI">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS_INI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_StringaConnessioneDaSuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Get_StringaConnessioneDaSuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUserPiva">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_SuperUserPiva" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUser">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_SuperUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_ListaServerUtenti">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_ListaServerUtenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DettagliUtenteDaSuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DettagliUtenteDaSuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ImportaWSSoap12" type="tns:ImportaWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Importa_DocumentoPubblico">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione_SuperServer">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione_SuperServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DataRaccoltaPrevista">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DataRaccoltaPrevista" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DocumentoPubblico_SuperServer">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico_SuperServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_Agenda">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Aggiorna_Riferimenti_Agenda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Aggiorna_Riferimenti_AgendaReverse">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Aggiorna_Riferimenti_AgendaReverse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Mov_Det_Riferimenti">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_Mov_Det_Riferimenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AgendaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AgendaXmlPrivatoReverse">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AgendaXmlPrivatoReverse" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpreseMateriePrimeXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ImpreseMateriePrimeXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_XmlFull">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_XmlFull" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ImpresaXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ImpresaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CentroAziendaleXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_CentroAziendaleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_CampoXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_CampoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_AppezzamentoXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_AppezzamentoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_Reg_ImpiantoXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_Reg_ImpiantoXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_DistintaXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_DistintaXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParticelleXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ParticelleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modifica_ParticelleXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Modifica_ParticelleXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_FabbricatiXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_FabbricatiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_FabbricatiXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_FabbricatiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ParcoMacchineXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ParcoMacchineXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Scrivi_ContattiXmlPrivato">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Scrivi_ContattiXmlPrivato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_G2G">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS_G2G" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_EsistenzaPivaGIAS_INI">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Verifica_EsistenzaPivaGIAS_INI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_StringaConnessioneDaSuperServer">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Get_StringaConnessioneDaSuperServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUserPiva">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_SuperUserPiva" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SuperUser">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Leggi_SuperUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_ListaServerUtenti">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_ListaServerUtenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DettagliUtenteDaSuperServer">
+      <soap12:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DettagliUtenteDaSuperServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImportaWS">
+    <wsdl:port name="ImportaWSSoap" binding="tns:ImportaWSSoap">
+      <soap:address location="http://localhost/WS_ImportaGias_2014/ImportaWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ImportaWSSoap12" binding="tns:ImportaWSSoap12">
+      <soap12:address location="http://localhost/WS_ImportaGias_2014/ImportaWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

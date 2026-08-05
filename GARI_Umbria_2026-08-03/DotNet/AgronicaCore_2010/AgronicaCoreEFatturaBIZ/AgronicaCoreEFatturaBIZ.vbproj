@@ -1,0 +1,611 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{69034ED6-8DBA-4570-8351-F208DE925636}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreEFatturaBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreEFatturaBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AnagraficaComparer.vb" />
+    <Compile Include="CheckPreliminariException.vb" />
+    <Compile Include="Connected Services\Integrazione2c.Attivo\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\Integrazione2c.Passivo\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="EFatturaLogger.vb" />
+    <Compile Include="Entita\FatturaGias.vb" />
+    <Compile Include="Entita\LivelloPrezzo.vb" />
+    <None Include="Entita\XSDs\1.7\FatturaPA.vb" />
+    <None Include="Entita\XSDs\1.7\FatturaSemplificata.vb" />
+    <None Include="Entita\XSDs\1.8\FatturaPA.vb" />
+    <None Include="Entita\XSDs\1.8\FatturaSemplificata.vb" />
+    <None Include="Entita\XSDs\1.9\FatturaPA.vb" />
+    <None Include="Entita\XSDs\1.9\FatturaSemplificata.vb" />
+    <Compile Include="Exceptions\MaxRetryException.vb" />
+    <Compile Include="Exceptions\MessageNamespaceNotManaged.vb" />
+    <Compile Include="Exceptions\NumerazionFattureException.vb" />
+    <Compile Include="FatturaElettronicaServiceConfigMin.vb" />
+    <Compile Include="FatturaPassivaController.vb" />
+    <Compile Include="GenerazioneXMLResult.vb" />
+    <Compile Include="Integrazione2c\ICicloPassivo.vb" />
+    <Compile Include="Integrazione2c\SDI_CicloPassivo_LeggiFatture.vb" />
+    <Compile Include="Integrazione2c\SOAPControllerCicloPassivo.vb" />
+    <Compile Include="Persisters\MemoryPersister.vb" />
+    <Compile Include="RetryHelper.vb" />
+    <Compile Include="Validatori\DichiarazioneIntentoValidator.vb" />
+    <Compile Include="Validatori\LegaleRappresentanteValidator.vb" />
+    <Compile Include="Validatori\AnagraficaValidator.vb" />
+    <Compile Include="Validatori\CodiciCedenteValidator.vb" />
+    <Compile Include="Validatori\CodiciCessionarioValidator.vb" />
+    <Compile Include="Validatori\IFatturaValidator.vb" />
+    <Compile Include="Validatori\IndirizzoMapValidator.vb" />
+    <Compile Include="Validatori\PivaValidator.vb" />
+    <Compile Include="Validatori\ValidationAttribute.vb" />
+    <Compile Include="Entita\XXXXValidator.vb" />
+    <Compile Include="Exceptions\DBToEntityMapException.vb" />
+    <Compile Include="Exceptions\GiasEntityToEFatturaMapException.vb" />
+    <Compile Include="Exceptions\ValidationException.vb" />
+    <Compile Include="FatturaElettronicaService.vb" />
+    <Compile Include="FileManager.vb" />
+    <Compile Include="IFIleManager.vb" />
+    <Compile Include="Integrazione2c\ICicloAttivo.vb" />
+    <Compile Include="Integrazione2c\InvioFatturaException.vb" />
+    <Compile Include="Integrazione2c\InvoiceOutcomeResponseWrapper.vb" />
+    <Compile Include="Integrazione2c\ISOAPControllerCicloAttivo.vb" />
+    <Compile Include="Integrazione2c\ISOAPControllerCicloPassivo.vb" />
+    <Compile Include="Integrazione2c\SDI_CicloAttivo_InviaFattura.vb" />
+    <Compile Include="Integrazione2c\SDI_CicloAttivo_LetturaEsiti.vb" />
+    <Compile Include="Integrazione2c\SendInvoiceResponseWrapper.vb" />
+    <Compile Include="Integrazione2c\SOAPControllerCicloAttivo.vb" />
+    <Compile Include="DecodificheMapper.vb" />
+    <Compile Include="Entita\FatturaElettronicaExtensions.vb" />
+    <Compile Include="Entita\FatturaPA.vb" />
+    <Compile Include="Entita\FatturaSemplificata.vb" />
+    <Compile Include="Entita\IFatturaElettronica.vb" />
+    <Compile Include="FatturaAttivaController.vb" />
+    <Compile Include="FatturaMapper.vb" />
+    <Compile Include="FatturaReader.vb" />
+    <Compile Include="Persisters\FileSystemPersister.vb" />
+    <Compile Include="IDecodificheMapper.vb" />
+    <Compile Include="IFatturaMapper.vb" />
+    <Compile Include="IFattureReader.vb" />
+    <Compile Include="Persisters\IPersister.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Validatori\ValidatoreBase.vb" />
+    <Compile Include="Validatori\XMLValidator.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.CheckClienteFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.ContattoHubResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.DeleteDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.DeleteSoggettoFirmatarioFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.DownloadDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.EsitoInvioSdiFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetAuthorizationSendEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetAuthorizationVatGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetCodiciUfficioAccreditatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetCustomerTemplateViewerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetDraftElectronicInvoiceByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetDraftElectronicInvoicesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceCounterAnomaliesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceCountersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceEmailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceLogsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceOutcomesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoicesLegalStorageStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoicesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceStateCountersResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetElectronicInvoiceToPdfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetEsitiSdiFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileElectronicInvoiceEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileElectronicInvoiceOutcomeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileEsitoFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileFatturaPAbyIdSdiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFileFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetFolderS3StorageReplicaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetIdUnivocoFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetInfoCodiceIPAFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetInfoUfficiDestinatariFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetListElectronicInvoicesEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetLogFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetNomeFileZipFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetPacchettoDistribuzioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetParametriServizioSdCResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetProcessoPdVAttivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetRapportoVersamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetRecipientCodeChecklistsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetSoggettiFirmatarioFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetStatesActiveElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetStatesDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetStatesPassiveElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetStatoProcessoConservazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetTemplateEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetTemplateViewerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetTipologieFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetTransazioniSdiFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetUrlLoginUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.GetVersionHubResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.ImportaFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.ImportaParamFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.InsertDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.InvioSdiFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.InvioSdiParamFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.PutSoggettiFirmatarioFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SendElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SendEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetFirmatarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetPacchettoDiVersamentoFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetProcessoPdVAttivoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetStateActiveElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetStateDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetStatoProcessoConservazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetTemplateEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.SetTemplateViewerResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.UpdateDraftElectronicInvoiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Attivo.UploadFileFatturaPAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Attivo\solutiondoc_hub.wsdl" />
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.ContattoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.CreaEsitoCommittenteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.CreaEsitoCommittenteSingolaFatturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetAutorizzazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetEsitoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetFatturaDisinbustataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetFatturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetFattureFilterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetFattureParamResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetFattureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.GetVersionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.ResetDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.SetDatiProtocolloLottoInteroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.SetDatiProtocolloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.SetDatiRegistrazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.SetProtocolloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\AgronicaCoreEFatturaBIZ.Integrazione2c.Passivo.SetProtocolloSezionaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA.wsdl" />
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA1.wsdl" />
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.7\Schema_VFPR12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.7\Schema_VFPR12_Validator.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.7\Schema_VFSM10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.7\xmldsig-core-schema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.8\Schema_VFPR12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.8\Schema_VFPR12_Validator.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.8\Schema_VFSM10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.8\xmldsig-core-schema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.9\Schema_VFPR12_v1.2.3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.9\Schema_VFPR12_Validator.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.9\Schema_VFSM10_v1.0.2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\1.9\xmldsig-core-schema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\Schema_VFPR12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entita\XSDs\Schema_VFSM10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Entita\XSDs\xmldsig-core-schema.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Entita\XSDs\Schema_VFPR12_Validator.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Entita\XSDs\_GeneratoreClassi.cmd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AgronicaCoreContabHLP\AgronicaCoreContabHLP.vbproj">
+      <Project>{03c0a225-5a83-4a65-b3aa-207e2932aef8}</Project>
+      <Name>AgronicaCoreContabHLP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEFatturaDAL\AgronicaCoreEFatturaDAL.vbproj">
+      <Project>{fd8a76f9-dc9f-41a5-98dd-849dfed3b233}</Project>
+      <Name>AgronicaCoreEFatturaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21fdabc5-4caf-43de-800a-1ae7b4cb7cbb}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Integrazione2c.Attivo\" />
+    <WCFMetadataStorage Include="Connected Services\Integrazione2c.Passivo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Passivo\FatturaPassivaPA.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Passivo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Passivo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Passivo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entita\XSDs\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Attivo\solutiondoc_hub.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Attivo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Attivo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione2c.Attivo\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

@@ -1,0 +1,42 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:wsm="http://cooperazione.sian.it/schema/wsmrga/">
+   <soapenv:Header>
+      <soap:SOAPAutenticazione>
+         <!--Credenziali rilasciate dal Ministero all'azienda-->
+         <username>AAAAAAAAAA</username>
+         <password>BBBBBBBBBB</password>
+         <nomeServizio>VasiSiRPV</nomeServizio>
+      </soap:SOAPAutenticazione>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wsm:VasiSiRPVInput>
+         <wsm:CodOper>
+            <!--Indicazione del Codice Fiscale dell'azienda (valorizzare persona fisica o giuridica)-->
+            <wsm:PersonaGiuridica>01234567890</wsm:PersonaGiuridica>
+         </wsm:CodOper>
+         <!--Codice ICQRF dello stabilimento nel formato AANNNN-->
+         <wsm:CodiceIcqrf>RM1234</wsm:CodiceIcqrf>
+         <!--Tipologia di richiesta I=Inserimento A=Aggiornamento-->
+         <wsm:TipoRichiesta>I</wsm:TipoRichiesta>
+		 <!--Specificare uno o piu vasi da inserire/aggiornare in ANAGRAFICA VASI VINARI-->
+         <wsm:Vasi>
+			<!--Codice alfanumerico identificativo del vaso-->
+            <wsm:CodVaso>001</wsm:CodVaso>
+			<!--Tipologia di vaso A-Acciaio B-Cemento C-Legno D-Vetroresina E-Altro-->
+            <wsm:TipoVaso>A</wsm:TipoVaso>
+            <wsm:Descrizione>VASO VINARIO PRINCIPALE</wsm:Descrizione>
+			<!--Impostare la capienza del vaso vinario espressa in litri-->
+            <wsm:Volume>1850.587</wsm:Volume>
+         </wsm:Vasi>
+         <wsm:Vasi>
+			<!--Codice alfanumerico identificativo del vaso-->
+            <wsm:CodVaso>AA005</wsm:CodVaso>
+			<!--Tipologia di vaso A-Acciaio B-Cemento C-Legno D-Vetroresina E-Altro-->
+            <wsm:TipoVaso>C</wsm:TipoVaso>
+            <wsm:Descrizione>VASO VINARIO DEPOSITO</wsm:Descrizione>
+			<!--Impostare la capienza del vaso vinario espressa in litri-->
+            <wsm:Volume>982.50</wsm:Volume>
+         </wsm:Vasi>		 
+      </wsm:VasiSiRPVInput>
+   </soapenv:Body>
+</soapenv:Envelope>
+

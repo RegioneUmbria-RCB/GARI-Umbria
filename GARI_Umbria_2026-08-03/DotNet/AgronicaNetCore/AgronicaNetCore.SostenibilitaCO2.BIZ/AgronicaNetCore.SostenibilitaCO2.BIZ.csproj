@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreVarieBizSTD\AgronicaCoreVarieBizSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaDataProvider6\AgronicaDataProvider6.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Agenda.DAL\AgronicaNetCore.Agenda.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Anagrafe.DAL\AgronicaNetCore.Anagrafe.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Gis.DAL\AgronicaNetCore.Gis.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.MetaSchema.DAL\AgronicaNetCore.MetaSchema.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.SostenibilitaCO2.DAL\AgronicaNetCore.SostenibilitaCO2.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Utenti.DAL\AgronicaNetCore.Utenti.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

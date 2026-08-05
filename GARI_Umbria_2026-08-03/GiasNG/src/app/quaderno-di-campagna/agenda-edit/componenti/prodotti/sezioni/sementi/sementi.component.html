@@ -1,0 +1,57 @@
+<div [formGroup]="SementiForm">
+
+    <ng-container
+        [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateDettagliSementiGridDosi : TemplateDettagliSementiSenzaGridDosi"
+        [ngTemplateOutletContext]="{Sementi:SementiForm}">
+    </ng-container>
+</div>
+
+<ng-template #TemplateDettagliSementiGridDosi let-Sementi='Sementi'>
+    <div [formGroup]="Sementi" style="width: 100%">
+        <div class="col-12 col-sm-12">
+
+            <div class="row form-row" *ngIf="qdcsementiservice.mostraOpzioniSemina(Sementi)">
+                <app-opzioni-semina></app-opzioni-semina>
+            </div>
+
+            <app-dettagli-sementi></app-dettagli-sementi>
+
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #TemplateDettagliSementiSenzaGridDosi let-Sementi='Sementi'>
+    <div [formGroup]="Sementi" style="width: 100%">
+
+        <div class="col-12 col-sm-12">
+            <div id="parent" class="semina-header mb-2">
+
+                <div class="semina-container"
+                        *ngIf="qdcsementiservice.mostraOpzioniSemina(Sementi)">
+                    <app-opzioni-semina></app-opzioni-semina>
+                </div>
+
+                <div class="bottone-aggiunta-container"
+                        *ngIf="qdcservice.Mostra_Btn_AggiungiDoseProdotto(Sementi.get('Operazione').getRawValue())">
+                    <app-bottone-aggiunta-prodotto></app-bottone-aggiunta-prodotto>
+                </div>
+
+            </div>
+
+
+            <div [id]="'Dettagli_Sementi_' + i"
+                 *ngFor="let Dettagli_Sementi of Sementi.get('DosiProdotti').controls; index as i">
+                <div [formGroup]="Dettagli_Sementi">
+                    <div class="row form-row"
+                         [ngClass]="Dettagli_Sementi.get('Riga_Salvata').value ? 'salvata' : 'non-salvata'">
+                        <app-dettagli-sementi></app-dettagli-sementi>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</ng-template>
+
+

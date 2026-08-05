@@ -1,0 +1,10 @@
+﻿Imports System.Xml
+Imports AgronicaCoreDataProvider.AgronicaCoreParametri
+Imports AgronicaCoreDataProvider.CostantiPersonalizzate
+Imports AgronicaCoreDataProvider.TipiEnumerativi
+Imports AgronicaCoreDataProvider.UtilityProvider
+Imports System.Text
+Imports AgronicaCoreEntityFramework_POCO
+Imports AgronicaCoreModello.Anagrafe
+Imports AgronicaCoreModello
+

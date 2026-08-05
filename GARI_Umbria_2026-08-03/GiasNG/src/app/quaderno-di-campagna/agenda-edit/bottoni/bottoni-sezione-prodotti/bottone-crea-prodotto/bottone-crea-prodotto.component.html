@@ -1,0 +1,50 @@
+<div kendoTooltip>
+    <button kendoButton class="btn btn-primary-fill btn-sm"
+        [title]="'CreaNuovoProdotto' | transloco"
+        (click)="onClick()"
+        [disabled]="isDisabled()">
+        <!-- <div class="k-icon k-i-btn_crea_prodotto"></div> -->
+        <fa-icon [icon]="faPlus" aria-hidden="true"></fa-icon>
+    </button>
+</div>
+
+
+<ng-template #CreaSementiTemplate>
+     <div>
+        <form [formGroup]="creaProdottoForm">
+            <gias-drop-down-template-s
+                [name]="'Specie' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                [listItems]="specie"
+                [valuePrimitive]="true"
+                giasFormControlName="specie"
+                [obligatory]="true"
+            ></gias-drop-down-template-s>
+            <gias-drop-down-template-s
+                [name]="'Varieta' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                [listItems]="varieta"
+                [valuePrimitive]="false"
+                giasFormControlName="varieta"
+                [obligatory]="true"
+            ></gias-drop-down-template-s>
+            <gias-drop-down-template
+                [name]="'Regolamento' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                [listItems]="regolamenti"
+                [valuePrimitive]="true"
+                giasFormControlName="reg"
+                [obligatory]="true"
+            ></gias-drop-down-template>
+        </form>
+        <button kendoButton class="btn btn-primary-fill btn-sm"
+            style="margin-top: 30px;"
+            [disabled]="!creaProdottoForm.valid"
+            (click)="Submit()"
+        >{{'CreaNuovoProdotto' | transloco}}</button>
+    </div>
+</ng-template>
+

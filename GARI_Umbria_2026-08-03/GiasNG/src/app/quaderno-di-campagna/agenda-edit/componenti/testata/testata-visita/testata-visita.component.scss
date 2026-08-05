@@ -1,0 +1,124 @@
+.k-appbar {
+    align-items: center;
+}
+.k-appbar .k-appbar-section {
+  display: inline-flex;
+}
+
+
+.gias-testata-container-top {
+    display: flex;
+    align-items: flex-end;
+
+    .gias-data-container.date-time {
+      width: 140px;
+    }
+    .gias-data-container.visita-time {
+      width: 120px;
+    }
+}
+
+.gias-testata-container-switch {
+  display: flex;
+  align-items: flex-end;
+  padding-top: 10px;
+}
+
+.gias-testata-container-operatore {
+    align-self: flex-end;
+}
+
+.gias-testata-container {
+    display: flex;
+    align-items: flex-end;
+    width: calc(100vw - 20px);
+    padding-bottom: 5px;
+    padding-top: 5px;
+
+}
+
+.gias-label-switch-container,
+.gias-label-switch-container-bottom {
+  align-items: center;
+  margin-right: 5%;
+
+  .gias-label-switch-container-info {
+    float: left;
+    margin-right: 2px;
+  }
+
+  .gias-switch-right-label {
+    padding-left: 5px;
+  }
+
+  .k-switch::ng-deep {
+    margin-top: 0 !important;
+  }
+}
+
+.gias-testata-section-data {
+    margin-right: 5px;
+}
+
+.gias-ore-totali {
+    width: 50px;
+}
+
+.gias-testata-section {
+    flex: 1;
+    //display: flex;
+    margin-right: 5px;
+}
+
+.gias-label-switch-container {
+    align-items: center;
+    margin-right: 5%;
+}
+
+
+
+.gias-container-switch {
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 30%;
+}
+
+.gias-testata-section {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 30%;
+}
+
+gias-text-template {
+    margin-right: 5px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 5%;
+}
+
+.gias-mb-2px {margin-bottom: 2px;}
+
+@media screen and (max-width: 600px) {
+    .gias-testata-container-top, .gias-testata-container-switch {
+        flex-direction: column;
+        margin-top: 0; //5px;
+        margin-bottom: 0; // 5px;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .gias-testata-container-top, .gias-testata-container-switch {
+        display: flex;
+        margin-top: 0; //5px;
+        margin-bottom: 0; // 5px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .gias-testata-container-top, .gias-testata-container-switch {
+        display: flex;
+    }
+}

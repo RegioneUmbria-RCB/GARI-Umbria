@@ -1,0 +1,2583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controllo e aggiornamento Registri</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="Insert_Ingresso_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Insert_Ingresso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_IngressoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_IngressoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Allevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_AllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_AllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Estero_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_EsteroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_EsteroResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Macello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_MacelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_MacelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ins_Uscita_Da_Pascolo_A_Pascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ins_Uscita_Da_Pascolo_A_PascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ins_Uscita_Da_Pascolo_A_PascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ins_Uscita_Da_Pascolo_A_Pascolo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ins_Uscita_Da_Pascolo_A_Pascolo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ins_Uscita_Da_Pascolo_A_Pascolo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Uscita_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Uscita_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Uscita_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Uscita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_UscitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_UscitaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Uscita_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Uscita_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Uscita_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Uscita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_UscitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_UscitaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Ingresso_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_IngressoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_IngressoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_IngressoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_IngressoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_Pascolo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_PascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_PascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_FieraMercato_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_FieraMercatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Annulla_Registri_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Annulla_Registri_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Annulla_Registri_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Annulla_Registri">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Annulla_RegistriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Annulla_RegistriResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Estero_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Estero_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Estero_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_FieraMercato_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_FieraMercato_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_FieraMercato_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Macello_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Macello_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Macello_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_Mul_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_Mul_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Allevamento_Mul_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_Mul">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Uscita_Allevamento_MulResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Uscita_Allevamento_MulResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_Pascolo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_PascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_PascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Pascolo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Pascolo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Rientro_Da_Pascolo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Pascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_PascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Rientro_Da_PascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Ingresso_Pascolo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_PascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Ingresso_PascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Fiera_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Fiera_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Rientro_Da_Fiera_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_Fiera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Rientro_Da_FieraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Rientro_Da_FieraResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_Aziendale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_AziendaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_Pascolo_AziendaleResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_Aziendale_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Ingresso_Pascolo_Aziendale_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Ingresso_Pascolo_Aziendale_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_Aziendale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_AziendaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Ingresso_Pascolo_AziendaleResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_Aziendale_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update_Ingresso_Pascolo_Aziendale_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Update_Ingresso_Pascolo_Aziendale_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_Aziendale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_AziendaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_Pascolo_AziendaleResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_Aziendale_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Ingresso_Pascolo_Aziendale_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Ingresso_Pascolo_Aziendale_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Insert_Ingresso_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_IngressoSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso" />
+  </wsdl:message>
+  <wsdl:message name="Insert_IngressoSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_IngressoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_IngressoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_AllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_AllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_AllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_AllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_EsteroSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_EsteroSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_EsteroResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_EsteroSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_MacelloSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_MacelloSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_MacelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_MacelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_PascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:Ins_Uscita_Da_Pascolo_A_Pascolo" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_PascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:Ins_Uscita_Da_Pascolo_A_PascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_PascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_Pascolo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_Pascolo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Ins_Uscita_Da_Pascolo_A_Pascolo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Uscita_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Uscita_STR" />
+  </wsdl:message>
+  <wsdl:message name="Update_Uscita_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Uscita_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Uscita_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_UscitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Uscita" />
+  </wsdl:message>
+  <wsdl:message name="Update_UscitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_UscitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_UscitaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Uscita_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Uscita_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Uscita_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Uscita_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Uscita_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_UscitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Uscita" />
+  </wsdl:message>
+  <wsdl:message name="Delete_UscitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_UscitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_UscitaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_STR" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_IngressoSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso" />
+  </wsdl:message>
+  <wsdl:message name="Update_IngressoSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_IngressoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_IngressoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_IngressoSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso" />
+  </wsdl:message>
+  <wsdl:message name="Delete_IngressoSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_IngressoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_IngressoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_PascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_PascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_PascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_PascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercatoSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercatoSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_Registri_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Annulla_Registri_STR" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_Registri_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Annulla_Registri_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_Registri_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_RegistriSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Annulla_Registri" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_RegistriSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Annulla_RegistriResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Annulla_RegistriSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Estero_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Estero_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_FieraMercato_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_FieraMercato_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Macello_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Macello_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_Mul_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_Mul_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_Mul_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_Mul_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_Mul_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_MulSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_Mul" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_MulSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Uscita_Allevamento_MulResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Uscita_Allevamento_MulSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_PascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_PascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_PascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_PascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Pascolo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Pascolo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Pascolo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Pascolo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Pascolo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_PascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Pascolo" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_PascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_PascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_PascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_PascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_PascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_PascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_PascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Fiera_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Fiera_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Fiera_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Fiera_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_Fiera_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_FieraSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_Fiera" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_FieraSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Rientro_Da_FieraResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Rientro_Da_FieraSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_AziendaleSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_Aziendale" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_AziendaleSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_AziendaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_AziendaleSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_Aziendale_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_Aziendale_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_Aziendale_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Ingresso_Pascolo_Aziendale_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_AziendaleSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_Aziendale" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_AziendaleSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_AziendaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_AziendaleSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_Aziendale_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_Aziendale_STR" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_Aziendale_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Update_Ingresso_Pascolo_Aziendale_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Update_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_AziendaleSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_Aziendale" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_AziendaleSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_AziendaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_AziendaleSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_Aziendale_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_Aziendale_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_Aziendale_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Ingresso_Pascolo_Aziendale_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsRegistriUpdSoap">
+    <wsdl:operation name="Insert_Ingresso_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di un ingresso in stalla (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di un ingresso in stalla</wsdl:documentation>
+      <wsdl:input message="tns:Insert_IngressoSoapIn" />
+      <wsdl:output message="tns:Insert_IngressoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un allevamento. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Allevamento_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Allevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_AllevamentoSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_AllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso l'estero. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Estero_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Estero_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso l'estero.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_EsteroSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_EsteroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso uno stabilimento di macellazione. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Macello_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Macello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso uno stabilimento di macellazione.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_MacelloSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_MacelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la movimentazione di uscita di un capo bovino da un pascolo direttamente verso un altro pascolo.</wsdl:documentation>
+      <wsdl:input message="tns:Ins_Uscita_Da_Pascolo_A_PascoloSoapIn" />
+      <wsdl:output message="tns:Ins_Uscita_Da_Pascolo_A_PascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la movimentazione di uscita di un capo bovino da un pascolo direttamente verso un altro pascolo. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STRSoapIn" />
+      <wsdl:output message="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di un movimento di uscita verso un allevamento, un macello o uno stato estero (string)</wsdl:documentation>
+      <wsdl:input message="tns:Update_Uscita_STRSoapIn" />
+      <wsdl:output message="tns:Update_Uscita_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di un movimento di uscita verso un allevamento, un macello o uno stato estero</wsdl:documentation>
+      <wsdl:input message="tns:Update_UscitaSoapIn" />
+      <wsdl:output message="tns:Update_UscitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'eliminazione di un movimento di uscita (string)</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Uscita_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Uscita_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'eliminazione di un movimento di uscita</wsdl:documentation>
+      <wsdl:input message="tns:Delete_UscitaSoapIn" />
+      <wsdl:output message="tns:Delete_UscitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di un ingresso in stalla (string)</wsdl:documentation>
+      <wsdl:input message="tns:Update_Ingresso_STRSoapIn" />
+      <wsdl:output message="tns:Update_Ingresso_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di un ingresso in stalla</wsdl:documentation>
+      <wsdl:input message="tns:Update_IngressoSoapIn" />
+      <wsdl:output message="tns:Update_IngressoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione di un ingresso in stalla (string)</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione di un ingresso in stalla</wsdl:documentation>
+      <wsdl:input message="tns:Delete_IngressoSoapIn" />
+      <wsdl:output message="tns:Delete_IngressoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione di un ingresso al pascolo (string)</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_Pascolo_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_Pascolo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione di un ingresso al pascolo</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_PascoloSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_PascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso una fiera_mercato. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_FieraMercato_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_FieraMercato_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso una fiera_mercato.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_FieraMercatoSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_FieraMercatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la modifica di un annullamento di un registro (string)</wsdl:documentation>
+      <wsdl:input message="tns:Update_Annulla_Registri_STRSoapIn" />
+      <wsdl:output message="tns:Update_Annulla_Registri_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la modifica di un annullamento di un registro</wsdl:documentation>
+      <wsdl:input message="tns:Update_Annulla_RegistriSoapIn" />
+      <wsdl:output message="tns:Update_Annulla_RegistriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione degli ingresso in stalla pin BDN (string)</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua la cancellazione degli ingresso in stalla pin BDN</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_MulSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento degli ingressi in stalla in BDN (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento degli ingressi in stalla in BDN</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_MulSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazione di uscita verso l'estero in BDN. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Estero_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Estero_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazione di uscita verso l'estero in BDN.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Estero_MulSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Estero_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso una fiera_mercato in BDN. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_FieraMercato_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_FieraMercato_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso una fiera_mercato in BDN.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_FieraMercato_MulSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_FieraMercato_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso uno stabilimento di macellazione in BDN. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Macello_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Macello_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso uno stabilimento di macellazione in BDN.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Macello_MulSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Macello_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso un allevamento in BDN. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Allevamento_Mul_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Allevamento_Mul_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento delle movimentazioni di uscita verso un allevamento in BDN.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Uscita_Allevamento_MulSoapIn" />
+      <wsdl:output message="tns:Insert_Uscita_Allevamento_MulSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un pascolo. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_Pascolo_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_Pascolo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un pascolo.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_PascoloSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_PascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di ingresso di un capo bovino da un pascolo. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Rientro_Da_Pascolo_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Rientro_Da_Pascolo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di ingresso di un capo bovino da un pascolo.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Rientro_Da_PascoloSoapIn" />
+      <wsdl:output message="tns:Insert_Rientro_Da_PascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di una movimentazione di uscita di un capo bovino verso un pascolo. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Update_Ingresso_Pascolo_STRSoapIn" />
+      <wsdl:output message="tns:Update_Ingresso_Pascolo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di una movimentazione di uscita di un capo bovino verso un pascolo.</wsdl:documentation>
+      <wsdl:input message="tns:Update_Ingresso_PascoloSoapIn" />
+      <wsdl:output message="tns:Update_Ingresso_PascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di ingresso di un capo bovino da una fiera. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Rientro_Da_Fiera_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Rientro_Da_Fiera_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di ingresso di un capo bovino da una fiera.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Rientro_Da_FieraSoapIn" />
+      <wsdl:output message="tns:Insert_Rientro_Da_FieraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un pascolo aziendale</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_Pascolo_AziendaleSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_Pascolo_AziendaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'inserimento di una movimentazione di uscita di un capo bovino verso un pascolo aziendale. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Ingresso_Pascolo_Aziendale_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Ingresso_Pascolo_Aziendale_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di una movimentazione di uscita di un capo bovino verso un pascolo aziendale</wsdl:documentation>
+      <wsdl:input message="tns:Update_Ingresso_Pascolo_AziendaleSoapIn" />
+      <wsdl:output message="tns:Update_Ingresso_Pascolo_AziendaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controlla ed effettua l'aggiornamento di una movimentazione di uscita di un capo bovino verso un pascolo aziendale. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Update_Ingresso_Pascolo_Aziendale_STRSoapIn" />
+      <wsdl:output message="tns:Update_Ingresso_Pascolo_Aziendale_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Eliminao una movimentazione di uscita di un capo bovino verso un pascolo aziendale</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_Pascolo_AziendaleSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_Pascolo_AziendaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina una movimentazione di uscita di un capo bovino verso un pascolo aziendale. (string)</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Ingresso_Pascolo_Aziendale_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Ingresso_Pascolo_Aziendale_STRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsRegistriUpdSoap" type="tns:wsRegistriUpdSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insert_Ingresso_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Estero_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_EsteroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Macello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_MacelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Ins_Uscita_Da_Pascolo_A_Pascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Ins_Uscita_Da_Pascolo_A_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Ins_Uscita_Da_Pascolo_A_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Uscita_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Uscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Uscita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_UscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Uscita_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Uscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Uscita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_UscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_FieraMercato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_FieraMercatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Annulla_Registri_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Annulla_Registri_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Annulla_Registri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Annulla_RegistriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Estero_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Estero_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_FieraMercato_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_FieraMercato_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Macello_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Macello_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Allevamento_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_Mul" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Uscita_Allevamento_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Rientro_Da_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Pascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Rientro_Da_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Fiera_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Rientro_Da_Fiera_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Fiera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Rientro_Da_FieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Update_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsRegistriUpdSoap12" type="tns:wsRegistriUpdSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insert_Ingresso_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Estero_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_EsteroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Macello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_MacelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Ins_Uscita_Da_Pascolo_A_Pascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Ins_Uscita_Da_Pascolo_A_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ins_Uscita_Da_Pascolo_A_Pascolo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Ins_Uscita_Da_Pascolo_A_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Ins_Uscita_Da_Pascolo_A_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Uscita_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Uscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Uscita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Uscita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_UscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Uscita_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Uscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Uscita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Uscita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_UscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_IngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_FieraMercato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_FieraMercatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Annulla_Registri_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Annulla_Registri_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Annulla_Registri">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Annulla_Registri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Annulla_RegistriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Estero_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Estero_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Estero_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Estero_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_FieraMercato_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_FieraMercato_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_FieraMercato_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_FieraMercato_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Macello_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Macello_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Macello_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Macello_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_Mul_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Allevamento_Mul_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Uscita_Allevamento_Mul">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Uscita_Allevamento_Mul" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Uscita_Allevamento_MulSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Rientro_Da_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Pascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Pascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Rientro_Da_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Ingresso_Pascolo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Ingresso_PascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Fiera_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Rientro_Da_Fiera_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Rientro_Da_Fiera">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Rientro_Da_Fiera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Rientro_Da_FieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Ingresso_Pascolo_Aziendale_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update_Ingresso_Pascolo_Aziendale_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Update_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Update_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_Pascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Ingresso_Pascolo_Aziendale_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Ingresso_Pascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Ingresso_Pascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsRegistriUpd">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Controllo e aggiornamento Registri</wsdl:documentation>
+    <wsdl:port name="wsRegistriUpdSoap" binding="tns:wsRegistriUpdSoap">
+      <soap:address location="http://bdrizsam.izs.it/wsRegistriDiStalla/wsRegistriUpd.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsRegistriUpdSoap12" binding="tns:wsRegistriUpdSoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsRegistriDiStalla/wsRegistriUpd.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

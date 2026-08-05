@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" elementFormDefault="qualified" targetNamespace="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Autorizzazione">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CodiciIpaAutorizzatiLettura" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CodiciIpaAutorizzatiScrittura" nillable="true" type="q2:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Autorizzazione" nillable="true" type="tns:Autorizzazione" />
+  <xs:complexType name="ArrayOfDatiFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DatiFattura" nillable="true" type="tns:DatiFattura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDatiFattura" nillable="true" type="tns:ArrayOfDatiFattura" />
+  <xs:complexType name="DatiFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CanaleSdi" type="tns:CanaleSdiEnum" />
+      <xs:element minOccurs="0" name="CodiceFiscaleMittente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodiceUfficio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataPdA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataPdV" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataPredisposizioneSupporto" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRdV" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataSdi" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Formato" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPdV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdRdV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdSdi" type="xs:long" />
+      <xs:element minOccurs="0" name="ListaCorpiFattura" nillable="true" type="tns:ArrayOfCorpoFattura" />
+      <xs:element minOccurs="0" name="ListaEsitiFattura" nillable="true" type="tns:ArrayOfEsitoFattura" />
+      <xs:element minOccurs="0" name="ListaLogFattura" nillable="true" type="tns:ArrayOfLogFattura" />
+      <xs:element minOccurs="0" name="MittenteFattura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeFile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartitaIvaMittente" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatoArchiviazione" type="tns:StatoArchiviazioneEnum" />
+      <xs:element minOccurs="0" name="StatoEsiti" type="tns:StatoEsitiEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DatiFattura" nillable="true" type="tns:DatiFattura" />
+  <xs:simpleType name="CanaleSdiEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="PEC" />
+      <xs:enumeration value="SPCoop" />
+      <xs:enumeration value="SdIFtp" />
+      <xs:enumeration value="SdiCoop" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CanaleSdiEnum" nillable="true" type="tns:CanaleSdiEnum" />
+  <xs:complexType name="ArrayOfCorpoFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CorpoFattura" nillable="true" type="tns:CorpoFattura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCorpoFattura" nillable="true" type="tns:ArrayOfCorpoFattura" />
+  <xs:complexType name="CorpoFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataFattura" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataProtocollo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRegistrazione" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ImportoPagamento" type="xs:decimal" />
+      <xs:element minOccurs="0" name="NumeroFattura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroProtocollo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroRegistrazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sezionale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatoEsiti" type="tns:StatoEsitiEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CorpoFattura" nillable="true" type="tns:CorpoFattura" />
+  <xs:simpleType name="StatoEsitiEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Sconosciuto">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InAttesaEsito">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EsitoAccettazione">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EsitoRifiuto">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EsitoScartato">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DecorrenzaTermini">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LottoFatture">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatoEsitiEnum" nillable="true" type="tns:StatoEsitiEnum" />
+  <xs:complexType name="ArrayOfEsitoFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EsitoFattura" nillable="true" type="tns:EsitoFattura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEsitoFattura" nillable="true" type="tns:ArrayOfEsitoFattura" />
+  <xs:complexType name="EsitoFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accettazione" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Consegna" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ContenutoEsito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataEsito" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataPdA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataPdv" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRdV" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdDocumento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdEsito" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdPdv" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdRdV" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeFile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroFatturaRiferimento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatoArchiviazione" type="tns:StatoArchiviazioneEnum" />
+      <xs:element minOccurs="0" name="TipoEsito" type="tns:TipoEsitoFatturaEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EsitoFattura" nillable="true" type="tns:EsitoFattura" />
+  <xs:simpleType name="StatoArchiviazioneEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DaConservare" />
+      <xs:enumeration value="VersataPdV" />
+      <xs:enumeration value="VersataRdV" />
+      <xs:enumeration value="Conservata" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatoArchiviazioneEnum" nillable="true" type="tns:StatoArchiviazioneEnum" />
+  <xs:simpleType name="TipoEsitoFatturaEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotificaEsitoCommittenteAccettazione" />
+      <xs:enumeration value="NotificaEsitoCommittenteRifiuto" />
+      <xs:enumeration value="ScartoEsitoCommittente" />
+      <xs:enumeration value="NotificaDecorrenzaTermini" />
+      <xs:enumeration value="MetadatiInvioFattura" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoEsitoFatturaEnum" nillable="true" type="tns:TipoEsitoFatturaEnum" />
+  <xs:complexType name="ArrayOfLogFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LogFattura" nillable="true" type="tns:LogFattura" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLogFattura" nillable="true" type="tns:ArrayOfLogFattura" />
+  <xs:complexType name="LogFattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contenuto" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Data" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KeyS3" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LogFattura" nillable="true" type="tns:LogFattura" />
+  <xs:complexType name="GetFattureRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataFine" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataInizio" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataProtocolloFine" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataProtocolloInizio" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRegistrazioneFine" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DataRegistrazioneInizio" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NumeroProtocollo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumeroRegistrazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sezionale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatoArchiviazione" nillable="true" type="tns:StatoArchiviazioneEnum" />
+      <xs:element minOccurs="0" name="StatoEsiti" nillable="true" type="tns:StatoEsitiEnum" />
+      <xs:element minOccurs="0" name="StatoProtocollo" type="tns:StatoProtocolloEnum" />
+      <xs:element minOccurs="0" name="StatoRegistrazione" type="tns:StatoRegistrazioneEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFattureRequest" nillable="true" type="tns:GetFattureRequest" />
+  <xs:simpleType name="StatoProtocolloEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NonSpecificato" />
+      <xs:enumeration value="Protocollato" />
+      <xs:enumeration value="DaProtocollare" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatoProtocolloEnum" nillable="true" type="tns:StatoProtocolloEnum" />
+  <xs:simpleType name="StatoRegistrazioneEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NonSpecificato" />
+      <xs:enumeration value="Registrato" />
+      <xs:enumeration value="DaRegistrare" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="StatoRegistrazioneEnum" nillable="true" type="tns:StatoRegistrazioneEnum" />
+  <xs:complexType name="Fattura">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DatiFattura" nillable="true" type="tns:DatiFattura" />
+      <xs:element minOccurs="0" name="FileFattura" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Fattura" nillable="true" type="tns:Fattura" />
+  <xs:simpleType name="TipoEsitoCommittenteEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EsitoCommittenteRifiuto" />
+      <xs:enumeration value="EsitoCommittenteAccettazione" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TipoEsitoCommittenteEnum" nillable="true" type="tns:TipoEsitoCommittenteEnum" />
+</xs:schema>

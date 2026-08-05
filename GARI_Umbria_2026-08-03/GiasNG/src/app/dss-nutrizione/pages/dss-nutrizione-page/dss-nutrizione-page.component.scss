@@ -1,0 +1,18 @@
+.dss-nutrizione-page {
+  padding: 1rem;
+}
+
+// Responsive 3-col desktop / 2-col tablet / 1-col mobile grid – UIL003 §3
+.dss-widget-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

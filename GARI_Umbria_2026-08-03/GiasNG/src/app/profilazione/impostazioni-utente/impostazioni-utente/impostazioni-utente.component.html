@@ -1,0 +1,44 @@
+<app-settings-manager *ngIf="MASTER_EDIT"></app-settings-manager>
+
+<div class="fx-space-between">
+  <h6>{{ 'prof.ModificaImpostazioniPerUtente' | transloco }} <strong>{{ usernameText }}</strong></h6>
+  <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text" (click)="onSave()">
+    {{ 'prof.Salva' | transloco }}
+  </button>
+</div>
+<app-form-impostazioni>
+  <!-- AGGIUNGO TAB PER GESTIONE WIDGET. IL RESTO VIENE CARICATO NEL FORM IMPOSTAZIONI -->
+  <kendo-tabstrip-tab [title]="widgetTabTitle">
+    <ng-template kendoTabContent>
+      @if (user != null) {
+      <kendo-expansionpanel [title]="'WidgetsPresetCurrentCompany' | transloco" [expanded]="true">
+        <app-widget-config-list listID="curr_co" [user]="user" [customSelected]="true" [useMultiCompany]="false"
+          [preventDefaultSave]="true" (loadedWidgets)="onLoadedWidgets($event)"></app-widget-config-list>
+      </kendo-expansionpanel>
+
+      <kendo-expansionpanel [title]="'WidgetsPresetMultiCompany' | transloco" [expanded]="true">
+        <app-widget-config-list listID="multi_co" [user]="user" [customSelected]="true" [useMultiCompany]="true"
+          [preventDefaultSave]="true" (loadedWidgets)="onLoadedWidgets($event)"></app-widget-config-list>
+      </kendo-expansionpanel>
+      } @else {
+      <p>{{ 'ErroreCaricamentoDati' | transloco }}</p>
+      }
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <!-- AGGIUNGO TAB PER GESTIONE Parametri Mappatura Isolamenti -->
+  <kendo-tabstrip-tab [title]="PMITabTitle">
+    <ng-template kendoTabContent>
+      <app-mappatura-isolamenti></app-mappatura-isolamenti>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+  <!-- AGGIUNGO TAB PER GESTIONE Parametri Mappatura Isolamenti -->
+  <kendo-tabstrip-tab [title]="AuditTabTitle">
+    <ng-template kendoTabContent>
+      <app-documentary-management></app-documentary-management>
+    </ng-template>
+  </kendo-tabstrip-tab>
+
+
+</app-form-impostazioni>

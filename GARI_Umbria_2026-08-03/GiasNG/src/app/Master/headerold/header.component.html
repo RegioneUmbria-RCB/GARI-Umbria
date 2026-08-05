@@ -1,0 +1,67 @@
+﻿
+<header>
+<div *ngIf="loadComplete">
+  <div *ngIf="headerComponent.visible" class="navbar bg-primary agroTestataPersonalizzata AgroHeader">
+    <div id="div_master_azioni" class="col-sm-3 col-6 pull-right" >
+      <img alt="" [src]="link_logo" style="padding: 5px; max-height: 50px;" />
+    </div>
+    <div id="panelLogoAgronica" class="col-sm-3 col-6 nopadding panelUtente">
+        <div class="row"  *ngIf="utente_collegato_username != ''">
+            <span>
+                {{'Utente'| transloco}}: <strong>{{utente_collegato_nome}}</strong> ({{utente_collegato_username}})
+            </span>
+        </div>
+        <div class="row" *ngIf="showFinestraTemporale()" >
+            <span>
+                <strong> Finestra temporale: </strong>
+                <strong *ngIf="showFinestraTemporaleInizio()">{{ objP_server.FinestraTemporaleInizio | date:'dd/MM/yyyy' }}</strong>
+                <strong *ngIf="!showFinestraTemporaleInizio()">...</strong>
+                <strong> - </strong>
+                <strong *ngIf="showFinestraTemporaleFine()"> {{ objP_server.FinestraTemporaleFine | date:'dd/MM/yyyy' }} </strong>
+                <strong *ngIf="!showFinestraTemporaleFine()">...</strong>
+            </span>
+        </div>
+    </div>
+    <div id="panelTitolo" class="col-sm-3 col-6">
+      <strong><label id="lbl_rag_soc">{{rag_soc}}</label></strong>
+    </div>
+    <div id="panelAziendaEtAl" class="col-sm-3 col-6 pull-right text-right">
+      <!-- <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>L</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="changeLanguage('it')" ngbDropdownItem>IT</button>
+          <button (click)="changeLanguage('en')" ngbDropdownItem>EN</button>
+          <button (click)="changeLanguage('fr')" ngbDropdownItem>FR</button>
+          <button (click)="changeLanguage('pt')" ngbDropdownItem>PT</button>
+        </div>
+      </div> -->
+      <!--<div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>I</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="changeInputs(0)" ngbDropdownItem>Gias Classic</button>
+          <button (click)="changeInputs(1)" ngbDropdownItem>Angular Material</button>
+          <button (click)="changeInputs(2)" ngbDropdownItem>2 Righe</button>
+        </div>
+      </div>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>S</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button (click)="changeStyle('stylesKendoMaterial.css')" ngbDropdownItem>Material</button>
+          <button (click)="changeStyle('stylesBootstrapVintage.css')" ngbDropdownItem>Bootstrap Vintage</button>
+          <button (click)="changeStyle('stylesBootstrapClassic.css')" ngbDropdownItem>Bootstrap Classic</button>
+        </div>
+      </div>-->
+      <button kendoButton backButton look="clear" style="color: white;"><fa-icon [icon]="['fas', 'reply']" size="2x"></fa-icon></button>
+      <button kendoButton homeButton look="clear" style="color: white;"><fa-icon [icon]="['fas', 'home']" size="2x" ></fa-icon></button>
+    </div>
+    <script [src]="link_GiasBase"></script>
+  </div>
+  <!-- <gias-master-wait-frame
+        *ngIf="isLoading"
+        message="LoadingMessage">
+  </gias-master-wait-frame> -->
+
+    <div kendoDialogContainer></div>
+    <div kendoWindowContainer></div>
+</div>
+</header>

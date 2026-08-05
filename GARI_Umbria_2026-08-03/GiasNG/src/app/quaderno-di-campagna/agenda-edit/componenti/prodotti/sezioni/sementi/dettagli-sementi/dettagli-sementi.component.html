@@ -1,0 +1,48 @@
+<div [formGroup]="SementiForm">
+    <div class="col-12 col-sm-12">
+
+        <div class="row form-row">
+            <app-ricerca-sementi></app-ricerca-sementi>
+        </div>
+
+        <div class="row form-row">
+            <app-magazzino-lotto></app-magazzino-lotto>
+        </div>
+
+
+        <div class="row form-row inserisci-dose-container">
+            <div class="udm-container">
+                <app-unita-di-misura></app-unita-di-misura>
+            </div>
+            <div class="dosi-container">
+                <app-dosi></app-dosi>
+            </div>
+            <div class="sup-calcolata-container" *ngIf="qdcdettaglisementiservice.Mostra_Sup_Calcolata()">
+                <gias-numeric-template
+                    [name]="'qdc.Sup_Calcolata_ha' | transloco"
+                    [obligatory]="true"
+                    [clearButton]="true"
+                    giasFormControlName="Sup_Calcolata"
+                    [format]="qdcservice.get4DecimalNumericSettings().format"
+                    [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                    [step]="qdcservice.get4DecimalNumericSettings().step"
+                    [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                    (valueChange)="misceleservice.sup_calcolata_change(SementiForm,$event)">
+                </gias-numeric-template>
+            </div>
+            <div class="btn-dose-container"
+                 *ngIf="prodottiservice.mostrabtnInserisciDoseProdotto() &&  qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+                <div class="btn btn-primary btn-inserisci-dose-prodotto btn-primary-fill"
+                     (click)="InserisciSemente()">
+                    <div class="fa_diserbo_inserisci_prodotto_in_miscela_on"></div>
+                    <span>{{ prodottiservice.btn_Inserisci_Modifica_Prodotto_Text }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12" *ngIf="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+            <app-grid-dosi-prodotti></app-grid-dosi-prodotti>
+        </div>
+
+    </div>
+</div>

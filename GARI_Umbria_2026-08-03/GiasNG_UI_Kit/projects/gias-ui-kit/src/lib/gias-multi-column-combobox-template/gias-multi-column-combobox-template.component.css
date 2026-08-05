@@ -1,0 +1,24 @@
+.FormattaTesto {
+    white-space: pre-line;
+    /*A capo in automatico se c'è uno spazio*/
+    word-wrap: break-word;
+    /*A capo in automatico se il testo non viene visualizzato interamente*/
+}
+
+.FormattaTestoClamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Mostra massimo 2 righe */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+    line-height: 20px;
+    /* Due righe da 20px */
+    font-size: 12px;
+    /* Regolabile ma coerente */
+    box-sizing: border-box;
+    /* Per non sforare i 40px */
+    max-height: 50px;
+}

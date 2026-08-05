@@ -1,0 +1,30 @@
+﻿<div class="marker-window" *ngIf="features$ | async as features">
+  <div class="marker-window-row gap-10">
+    <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-check marker-window-btn size-22"
+      themeColor="success" (click)="save(features)" [title]="'Salva' | transloco" gisTooltip
+      [disabled]="features.length == 0"></button>
+
+    <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-close marker-window-btn size-22"
+      themeColor="error" (click)="reset()" [title]="'Annulla' | transloco" gisTooltip></button>
+
+    <!-- <kendo-dropdownlist class="flex-2" [data]="layers$ | async" textField="nome" valueField="id"
+      [(ngModel)]="selectedLayer">
+    </kendo-dropdownlist> -->
+  </div>
+
+  <div class="marker-window-column mh-200">
+    <h6 class="layer">
+      {{ 'gis.LayerDiAppartenenza' | transloco }} : {{ (inputLayer$ | async)?.nome }}
+    </h6>
+
+    <div class="marker-window-row" *ngFor="let feature of features">
+      <!-- <h6 class="flex-1"> {{ feature.code }}</h6> -->
+
+      <h6 class="flex-2"> Dose: {{ feature.name }}</h6>
+
+      <button kendoButton fillMode="flat" iconClass="p-20 fa fa-trash marker-window-btn" themeColor="error"
+        (click)="unselectFeature(feature)" [title]="'Deseleziona' | transloco" gisTooltip></button>
+    </div>
+
+  </div>
+</div>

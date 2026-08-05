@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dati>
+  <configurazione>
+
+    <urlWsimportaGias>http://</urlWsimportaGias>
+
+    <connessioni>
+      <connessione>
+        <Connessione_SERVER_ORIGINE>cnG2Gserver_Origine</Connessione_SERVER_ORIGINE>
+        <Connessione_SERVER_DESTINAZIONE>cnG2Gserver_Destinazione</Connessione_SERVER_DESTINAZIONE>
+        <Connessione_UTENTI_ORIGINE>cnG2GUtenti_Origine</Connessione_UTENTI_ORIGINE>
+        <Connessione_UTENTI_DESTINAZIONE>cnG2GUtenti_Destinazione</Connessione_UTENTI_DESTINAZIONE>
+      </connessione>
+    </connessioni>
+
+    <!-- granfruttazani-->
+    <parametri>
+      <ProgressivoGIAS_ORIGINE>692</ProgressivoGIAS_ORIGINE>
+      <ProgressivoGIAS_DESTINAZIONE>692</ProgressivoGIAS_DESTINAZIONE>
+      <PivaSuperUser_ORIGINE>00082340399</PivaSuperUser_ORIGINE>
+      <PivaSuperUser_DESTINAZIONE>00082340399</PivaSuperUser_DESTINAZIONE>
+      <UsernameSuperUser_Origine>granfruttazani</UsernameSuperUser_Origine>
+      <UsernameSuperUser_Destinazione>granfruttazani</UsernameSuperUser_Destinazione>
+      <Import_CodFiscale_ORIGINE>SSSNNN00C00R000R</Import_CodFiscale_ORIGINE>
+      <Import_CodFiscale_DESTINAZIONE>SSSNNN00C00R000R</Import_CodFiscale_DESTINAZIONE>
+      <Import_Username_ORIGINE>sincronizzatore</Import_Username_ORIGINE>
+      <Import_Username_DESTINAZIONE>sincronizzatore</Import_Username_DESTINAZIONE>
+      <CodiceImpresa_ORIGINE>1010</CodiceImpresa_ORIGINE>
+      <CodiceImpresa_DESTINAZIONE>1010</CodiceImpresa_DESTINAZIONE>
+      <percorsoConnessioni>C:\agroconnessioni\connessioni.ini</percorsoConnessioni>
+    </parametri>
+
+  </configurazione>
+
+  <imprese>
+
+    <!--come viene utilizzato il filtrone nel G2G 1 = applica filtro per ottenere lista da trasferire-->
+    <TipoUtilizzoFiltroneInG2G>
+      1
+    </TipoUtilizzoFiltroneInG2G>
+    
+    <!--configurazione globale per estrarre le imprese-->
+    <filtrone>      
+      {{"Testo_Descrizione":"Operazione Multi Aziendale","Pagina_Origine":"34","Sito_Origine":"15","Pagina_Destinazione":"56","Sito_Destinazione":"15","TipoFiltrone":"33","CodificaStampe":"0","Veg_Cod":"","Cul_Cod":"","Testo_Bottone_Prosegui":"Prosegui con i selezionati","Icona_Prosegui":"fa-tree","Singola_Piva":"False","Singola_Sa_Cod":"False","Singola_Veg_Cod":"False","Data_Inizio":"","Data_Fine":"","RedirUrl":""},"tab_selezionata":"impianto","filtrone_azienda":{"txPiva":"","txtRagSoc":"","albero":[""],"rblDataCost":"0","txtDataCost":"","rblDataCess":"0","txtDataCess":"","CBL_Regioni":"","CBL_Province":"","Cmb_Comuni":"","cmb_codiceazienda":"1139","Txt_CodiceAzienda":"","Rbl_min_mag_Superficie_Catastale":"maggiore","txt_SupCat":"","Rbl_Zone_And_Or":"AND","cbl_zone":null,"Rbl_Macrousi_And_Or":"AND","CBL_Macrouso":null,"Rbl_min_mag_Superficie_Macrousi":"maggiore","Txt_SupMacrousi":"","CBL_Tecnici":null,"CBL_Utenti":null,"CBL_PChiaveImpresa":null,"cmbTitoloPossessoAzienda":null},"filtrone_centro":{"txtCentroAziendale":"","Cmb_Cartografia":"0","CBL_Regioni_2":[],"CBL_Province_2":[],"Cmb_Comuni_2":[],"CmbTipoCentro":"0","CmbTipoAttivita":" ","CmbOTE":" ","cmbTitoloPossessoStruttura":"0","Cmb_CodiceStruttura":"0","Txt_CodiceStruttura":"","CmbOrganismoControllo":"0","CBL_PChiaveCentro":null},"filtrone_appezzamento":{"TxtAppNome":"","TxtCampoDes":"","rblSupApp":"Superiore","txtSupApp":"","cmbTitoloPossessoAppezzamento":"0","OptionList_MetodoProduzioneAppezzamento":"4","Txt_DataFineImpiego":"","Cmb_CodiceAppezzamento":null,"Txt_CodiceAppezzamento":""},"filtrone_impianto":{"chkTerrNudo":false,"chkIncludiTerrNudo":true,"ckbTuttiGruVeg":true,"cblGruVeg_1":false,"cblGruVeg_2":false,"cblGruVeg_3":false,"cblSpecie":["1"],"CBL_Cultivar":[],"CBL_TipologiaVarietale":null,"rblInizioImp":"1","txtDataIniImp":"17/05/2019","rblFineImp":"0","txtDataFinImp":"17/05/2019","ddlFinProdComm":null,"ddlRegolamento":"","ddlDisciplinare":"","chk_Capitolato":null,"ddlStatoImpianto":"","CkbCopertura":false,"ddlCopertura":null,"Cmb_DettaglioVarietaPersonalizzato":"0","Cmb_CodiceImpianto":"","Txt_CodiceImpianto":"","CkB_AttivaConformita":false,"Cmb_Disciplinare":"","Cmb_Difesa":"","Cmb_Diserbo":"","Cmb_Irrigazione":"","Cmb_PianoConcimazione":"0","RadiobuttonlistIniDist":"0","txtDataIniDist":"","RadiobuttonlistFineDist":"1","txtDataFinDist":""},"filtrone_movimento":{"CBL_GruppoOperazioni":[],"CBL_Operazioni":[],"rblAvversita":"0","CBL_Avversita":null,"Txt_CercaProdotto":""}}
+    </filtrone>
+
+    <!--esito della ricerca da filtrone (Se il tipo di G2G è basato su Aziende)-->
+    <filtronerisultato_azienda>
+      {"tipo":"azienda","chiavi":["00099251001","00099251001"]}
+    </filtronerisultato_azienda>
+    
+    <!-- esito della ricerca da filtrone con lista di chiavi (piva, sa_cod, appezza, id_reg, veg_cod, progetto_cod) -->
+    <filtronerisultato>
+      {"tipo":"impianto","chiavi":["00099251001_69074945_69074965_69074945_1_6559","00099251001_69074945_69074966_69074945_1_6189","00099251001_69074945_69074967_69074945_1_6178"]}
+    </filtronerisultato>
+
+    <!--elementi gias da ricomprendere a fronte del risultato del filtrone-->
+    <datiimpresa>
+      <flagimporta_audit></flagimporta_audit>
+      <flagimporta_audit_interviste></flagimporta_audit_interviste>
+      <flagimporta_agenda>
+        <validita_inizio>11/11/2018</validita_inizio>
+        <configurazione>{ "listaLavCod": [74, 108], "listaCauMovEsclusi": ["8100"] }</configurazione>
+      </flagimporta_agenda>
+      <flagimporta_pap></flagimporta_pap>
+      <flagimporta_papz></flagimporta_papz>
+      <flagimporta_notificabio></flagimporta_notificabio>
+      <flagimporta_planning></flagimporta_planning>
+      <flagimporta_distinta></flagimporta_distinta>
+      <flagimporta_ricette>
+        <validita_inizio>11/11/2018</validita_inizio>
+        <configurazione>
+          { "listaRicette_Tipo": [9,6,5,2] }
+        </configurazione>
+      </flagimporta_ricette>
+      <flagimporta_materieprime></flagimporta_materieprime>
+      <flagimporta_pianocolturale>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_pianocolturale>
+      <flagimporta_gis></flagimporta_gis>
+      <flagimporta_profilazione></flagimporta_profilazione>
+      <flagimporta_catasto></flagimporta_catasto>
+      <flagimporta_pua></flagimporta_pua>
+      <flagimporta_lineeproduttive></flagimporta_lineeproduttive>
+      <flagimporta_piani_di_campionamento></flagimporta_piani_di_campionamento>
+      <flagimporta_analisi>
+        <validita_inizio>01/01/2000</validita_inizio>
+      </flagimporta_analisi>
+      <flagimporta_pratiche>
+        <validita_inizio>11/11/2018</validita_inizio>
+        <configurazione>
+          {
+          "BloccaOperazioni":{
+               "BloccaOperazioni":true,
+               "Blocco_Flag":-1
+          },
+          "listaServiziWWorkflow": [{
+          "Servizio_Cod": 13,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          },
+          {
+          "Servizio_Cod": 14,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          },
+          {
+          "Servizio_Cod": 14,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          }
+          ]
+          }
+        </configurazione>
+      </flagimporta_pratiche>
+      <flagimporta_pratiche_pull>
+        <validita_inizio>11/11/2018</validita_inizio>
+        <configurazione>
+          {
+          "listaServiziWWorkflow": [{
+          "Servizio_Cod": 13,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          },
+          {
+          "Servizio_Cod": 14,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          },
+          {
+          "Servizio_Cod": 14,
+          "PassaggiDiStatoEsclusi": [{
+          "Stato_Iniziale": 2008,
+          "Stato_Finale": 2003
+          }]
+          }
+          ]
+          }
+        </configurazione>
+      </flagimporta_pratiche_pull>
+    </datiimpresa>
+    
+    <!--elementi gias globali da ricomprendere per tutto il g2g-->
+    <datiglobali>
+			<flagallinea_recodes />      
+      <flagimporta_note />
+      <flagimporta_profilazione />
+      <flagimporta_cac_codifica />
+      <flagimporta_pianicampionamento />
+      <flagimporta_contatti>
+        <validita_inizio></validita_inizio>
+        <validita_fine></validita_fine>
+        <configurazione>{ "listaCodRapporto": [-2,-3] }</configurazione>
+      </flagimporta_contatti>
+      <flagimporta_macchine></flagimporta_macchine>
+      <flagimporta_materieprime>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_materieprime>
+      <flagimporta_materieprimecampionature />
+    </datiglobali>
+    
+    <!--dettaglio di ogni singola impresa: sarà trattata in maniera specifica (a prescindere da applicazione del filtrone e/o di elementi "datiimpresa")-->
+    <impresa>
+      <origine>01543860330</origine>
+      <rag_soc>BOSELLI ANDREA</rag_soc>
+      <destinazione>01543860330</destinazione>
+      <sa_cod>80871425</sa_cod>
+      <padre>00000000000</padre>
+      <Livello>1</Livello>
+      <flagimporta_agenda>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_agenda>
+      <flagimporta_pap></flagimporta_pap>
+      <flagimporta_papz></flagimporta_papz>
+      <flagimporta_notificabio></flagimporta_notificabio>
+      <flagimporta_planning></flagimporta_planning>
+      <flagimporta_distinta></flagimporta_distinta>
+      <flagimporta_ricette>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_ricette>
+      <flagimporta_pua></flagimporta_pua>
+      <impianti>
+        <impianto piva="01543860330" sa_cod="80871425" appezza="80871425" id_reg="80871425"></impianto>
+        <impianto piva="01543860330" sa_cod="80871425" appezza="80871426" id_reg="80871425"></impianto>
+        <impianto piva="01543860330" sa_cod="80871425" appezza="80871427" id_reg="80871425"></impianto>
+      </impianti>
+    </impresa>
+    
+    <impresa>
+      <origine>01568730335</origine>
+      <rag_soc>SOCIETA' SEMPLICE AGRICOLA MARCHI PIETRO</rag_soc>
+      <destinazione>01568730335</destinazione>
+      <sa_cod>80871425</sa_cod>
+      <padre>00000000000</padre>
+      <Livello>1</Livello>
+      <flagimporta_agenda>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_agenda>
+      <flagimporta_pap></flagimporta_pap>
+      <flagimporta_papz></flagimporta_papz>
+      <flagimporta_notificabio></flagimporta_notificabio>
+      <flagimporta_planning></flagimporta_planning>
+      <flagimporta_distinta></flagimporta_distinta>
+      <flagimporta_ricette>
+        <validita_inizio>11/11/2018</validita_inizio>
+      </flagimporta_ricette>
+      <flagimporta_pua></flagimporta_pua>      
+    </impresa>
+  </imprese>
+</dati>

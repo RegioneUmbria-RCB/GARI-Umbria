@@ -1,0 +1,1793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns3="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cooperazione.sian.it/wspdd/services" xmlns:tns2="http://cooperazione.sian.it/schema/registroTitoli" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:egov="http://www.cnipa.it/schemas/2003/eGovIT/Busta1_0/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="WebServiceTitoli" targetNamespace="http://cooperazione.sian.it/wspdd/services" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="SOAPAutenticazione" type="tns3:SOAPAutenticazione" />
+      <xs:complexType name="SOAPAutenticazione">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string" />
+          <xs:element name="password" type="xs:string" />
+          <xs:element name="nomeServizio" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://cooperazione.sian.it/schema/registroTitoli">
+      <xsd:simpleType name="CodiceValidazioneMovimentoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="[0-3]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DecoProvvedimentoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="[0-5]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CampagnaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DenominazioneType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="304" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SiglaOPType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IdentificativoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="12" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValoreTitoloType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="8" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ValoreGruppoType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="15" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SuperficieType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="5" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UBAObbligatoriType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="6" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceTipoTitoloType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceOrigineType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceMovimentoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceTipoAnomaliaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceAnomaliaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DataType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="8" />
+          <xsd:pattern value="[2]{1}[0-9]{1}[0-9]{2}[0-1]{1}[0-9]{1}[0-3]{1}[0-9]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SALTitoloType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ZonaPrimoUtilizzoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="6" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IdDocumentoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FlagOperazioneType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="[F;T;A]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FlagConversioneType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[S;N]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TipoTrasferimentoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[D;T]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FlagUtilizzoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[U;R]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="TipoRichiestaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="QuantitaTitoliType">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="1" />
+          <xsd:maxInclusive value="99999" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="NumeroTitoliType">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="0" />
+          <xsd:maxInclusive value="999999" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="FattispecieType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PercentualeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="AnnoCampagnaType">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="2005" />
+          <xsd:maxInclusive value="3000" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IdentificativoEsitoType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="12" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="SuperficieUBAType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="6" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PercentualeUtilizzoType">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="6" />
+          <xsd:fractionDigits value="2" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="PresenzaPegnoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="[S;N]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="IdentificativoPegnoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="50" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="DescrizioneCreditoreType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="100" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ProgressivoType">
+        <xsd:restriction base="xsd:int">
+          <xsd:minInclusive value="1" />
+          <xsd:maxInclusive value="999" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="StatoPegnoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="UtilizzoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="1" />
+          <xsd:pattern value="[S;N]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceFiscalePersonaFisicaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z0-9]{5}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="ConsensoCedenteType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[S;N]{1}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="CodiceFiscalePersonaGiuridicaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:pattern value="[0-9]{11}" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="RequisitoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="SI" />
+          <xsd:enumeration value="NO" />
+          <xsd:enumeration value="ND" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="presenzaType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="SI" />
+          <xsd:enumeration value="NO" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="statoType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="A" />
+          <xsd:enumeration value="C" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="Istruttoria">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="presenza" type="tns2:presenzaType" />
+            <xsd:element minOccurs="0" name="stato" nillable="true" type="tns2:statoType" />
+            <xsd:element minOccurs="0" name="data" nillable="true" type="tns2:DataType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CUAA">
+        <xsd:complexType>
+          <xsd:choice>
+            <xsd:element name="CodiceFiscalePersonaFisica" type="tns2:CodiceFiscalePersonaFisicaType" />
+            <xsd:element name="CodiceFiscalePersonaGiuridica" type="tns2:CodiceFiscalePersonaGiuridicaType" />
+          </xsd:choice>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CUAASoccidario">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CUAAProprietario">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Intestatario">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="IntestatarioPegno">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Rilevante">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Cedente">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CUAATerzoSoggetto">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CUAAOrigine">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputTitoliProduttore">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputTitoliProduttoreAggregati">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputTitoliProduttoreConInfoPegni">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputInfoTitolo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+            <xsd:element minOccurs="0" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputInfoAventiDiritto">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputInfoTitoloEPegni">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputInfoStoricoTitolo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputInfoPegniSulTitolo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputEventiRicevuti">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputEventiPegniRicevuti">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputFissazioneTrasferimentoTitoli">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:Intestatario" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idDocumento" type="tns2:IdDocumentoType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="flagOperazione" type="tns2:FlagOperazioneType" />
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:TitoliVariatiInput" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputMovimentazioneTitoli">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:Intestatario" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="idDocumento" type="tns2:IdDocumentoType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="campagna" type="tns2:CampagnaType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="fattispecie" type="tns2:FattispecieType" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="consensoCedente" type="tns2:ConsensoCedenteType" />
+            <xsd:element minOccurs="0" name="dataConsenso" type="tns2:DataType" />
+            <xsd:element minOccurs="0" name="dataCompilazione" type="tns2:DataType" />
+            <xsd:element minOccurs="0" name="dataRilascio" type="tns2:DataType" />
+            <xsd:element minOccurs="0" name="dataTermineConferimento" type="tns2:DataType" />
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:Cedente" />
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:TitoliMovimentatiInput" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputComunicazioneUtilizzoTitoli">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:Intestatario" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="annoCampagna" type="tns2:CampagnaType" />
+            <xsd:element minOccurs="1" maxOccurs="1" name="codiceDomandaUnica" type="tns2:IdDocumentoType" />
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:TitoliUtilizzatiInput" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputEsitiRicevuti">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="identificativo" type="tns2:IdentificativoEsitoType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputVerificaUtilizzo80Percento">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputTitoliProduttorePAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputDomandeTrasferimentoValidazionePAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ISWSTitolo">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="valoreTitolo" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="UBAObbligatori" type="tns2:UBAObbligatoriType" />
+          <xsd:element minOccurs="1" name="codiceTipoTitolo" type="tns2:CodiceTipoTitoloType" />
+          <xsd:element minOccurs="1" name="codiceOrigine" type="tns2:CodiceOrigineType" />
+          <xsd:element minOccurs="1" name="codiceMovimento" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="1" name="dataMovimento" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataFinePossesso" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataUltimoUtilizzo" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="SALTitolo" type="tns2:SALTitoloType" />
+          <xsd:element minOccurs="0" name="zonaPrimoUtilizzo" type="tns2:ZonaPrimoUtilizzoType" />
+          <xsd:element minOccurs="0" name="idDocumento" type="tns2:IdDocumentoType" />
+          <xsd:element minOccurs="0" name="idTitoloFrazionato" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAASoccidario" />
+          <xsd:element minOccurs="1" name="campagnaInizioValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" name="campagnaFineValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAAProprietario" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element minOccurs="1" name="campagnaNascita" type="tns2:CampagnaType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSTitoloPAC2015">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="valoreTitolo2015" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2016" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2017" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2018" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2019" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2020" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2021" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2022" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="codiceTipoTitolo" type="tns2:CodiceTipoTitoloType" />
+          <xsd:element minOccurs="1" name="codiceOrigine" type="tns2:CodiceOrigineType" />
+          <xsd:element minOccurs="1" name="codiceMovimento" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="1" name="dataMovimento" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataFinePossesso" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataUltimoUtilizzo" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="SALTitolo" type="tns2:SALTitoloType" />
+          <xsd:element minOccurs="0" name="idDocumento" type="tns2:IdDocumentoType" />
+          <xsd:element minOccurs="0" name="idTitoloFrazionato" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="campagnaInizioValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" name="campagnaFineValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAAProprietario" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element minOccurs="1" name="campagnaNascita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" name="presenzaProvvedimento" type="tns2:PresenzaPegnoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSInfoAventiDiritto">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="aventeDiritto" nillable="true" type="tns2:RequisitoType" />
+          <xsd:element minOccurs="1" name="fattiSpecieA" nillable="true" type="tns2:RequisitoType" />
+          <xsd:element minOccurs="1" name="fattiSpecieB" nillable="true" type="tns2:RequisitoType" />
+          <xsd:element minOccurs="1" name="fattiSpecieC" nillable="true" type="tns2:RequisitoType" />
+          <xsd:element minOccurs="1" name="fattiSpecieD" nillable="true" type="tns2:RequisitoType" />
+          <xsd:element minOccurs="1" ref="tns2:Istruttoria" />
+          <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:ISWSResponse" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSTitolo2">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="valoreTitolo" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="UBAObbligatori" type="tns2:UBAObbligatoriType" />
+          <xsd:element minOccurs="1" name="codiceTipoTitolo" type="tns2:CodiceTipoTitoloType" />
+          <xsd:element minOccurs="1" name="codiceOrigine" type="tns2:CodiceOrigineType" />
+          <xsd:element minOccurs="1" name="codiceMovimento" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="1" name="dataMovimento" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataFinePossesso" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataUltimoUtilizzo" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="SALTitolo" type="tns2:SALTitoloType" />
+          <xsd:element minOccurs="0" name="zonaPrimoUtilizzo" type="tns2:ZonaPrimoUtilizzoType" />
+          <xsd:element minOccurs="0" name="idDocumento" type="tns2:IdDocumentoType" />
+          <xsd:element minOccurs="0" name="idTitoloFrazionato" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAASoccidario" />
+          <xsd:element minOccurs="1" name="campagnaInizioValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" name="campagnaFineValidita" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAAProprietario" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element minOccurs="0" name="presenzaPegno" type="tns2:PresenzaPegnoType" />
+          <xsd:element minOccurs="0" name="dataRegistrazione" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataCostituzione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="campagnaNascita" type="tns2:CampagnaType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSTitoliAggregati">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="codiceTipoTitolo" type="tns2:CodiceTipoTitoloType" />
+          <xsd:element minOccurs="1" name="quantitaTitoli" type="tns2:QuantitaTitoliType" />
+          <xsd:element minOccurs="1" name="valoreTitolo" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="UBAObbligatori" type="tns2:UBAObbligatoriType" />
+          <xsd:element minOccurs="1" name="primoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" name="ultimoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="codiceOrigine" type="tns2:CodiceOrigineType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAAOrigine" />
+          <xsd:element minOccurs="1" name="codiceMovimento" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAASoccidario" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSTitoliAggregatiPAC2015">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="codiceTipoTitolo" type="tns2:CodiceTipoTitoloType" />
+          <xsd:element minOccurs="1" name="quantitaTitoli" type="tns2:QuantitaTitoliType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2015" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2016" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2017" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2018" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2019" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2020" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="valoreTitolo2021" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="primoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" name="ultimoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="codiceOrigine" type="tns2:CodiceOrigineType" />
+          <xsd:element minOccurs="0" ref="tns2:CUAAOrigine" />
+          <xsd:element minOccurs="1" name="codiceMovimento" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element minOccurs="1" name="presenzaProvvedimento" type="tns2:PresenzaPegnoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSInfoPegni">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="progressivo" type="tns2:ProgressivoType" />
+          <xsd:element minOccurs="1" name="numeroTitolo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="identificativoPegno" type="tns2:IdentificativoPegnoType" />
+          <xsd:element minOccurs="1" ref="tns2:IntestatarioPegno" />
+          <xsd:element minOccurs="1" name="dataRegistrazione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="dataCostituzione" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataEstinzione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="statoPegno" type="tns2:StatoPegnoType" />
+          <xsd:element minOccurs="1" name="dataSAL" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="creditore" type="tns2:DescrizioneCreditoreType" />
+          <xsd:element minOccurs="1" name="valoreTitolo" type="tns2:ValoreTitoloType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSInfoProvvedimenti">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="0" name="numeroTitolo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="numeroComunicazione" type="tns2:IdentificativoPegnoType" />
+          <xsd:element minOccurs="0" name="dataComunicazione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="dataDecorrenza" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataEstinzione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="genereProvvedimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element minOccurs="1" name="tipologiaProvvedimento" type="tns2:DecoProvvedimentoType" />
+          <xsd:element minOccurs="1" name="enteEmissione" type="tns2:DecoProvvedimentoType" />
+          <xsd:element minOccurs="1" name="categoriaProvvedimento" type="tns2:DecoProvvedimentoType" />
+          <xsd:element minOccurs="1" name="statoProvvedimento" type="tns2:StatoPegnoType" />
+          <xsd:element minOccurs="1" name="dataSAL" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2015" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2016" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2017" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2018" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2019" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2020" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2021" type="tns2:ValoreTitoloType" />
+          <xsd:element minOccurs="0" name="valoreTitolo2022" type="tns2:ValoreTitoloType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSInfoDomandeTrasferimentoValidazione">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="domanda" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" ref="tns2:Cedente" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="fattispecie" type="tns2:FattispecieType" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+          <xsd:element name="codiceTipoAnomalia" type="tns2:CodiceTipoAnomaliaType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSRiepilogoTitoliAzienda">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="annoCampagna" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" ref="tns2:CUAA" />
+          <xsd:element minOccurs="1" name="denominazione" type="tns2:DenominazioneType" />
+          <xsd:element minOccurs="1" name="siglaOP" type="tns2:SiglaOPType" />
+          <xsd:element minOccurs="1" name="quantitaTitoli" type="tns2:QuantitaTitoliType" />
+          <xsd:element minOccurs="1" name="valore" type="tns2:ValoreGruppoType" />
+          <xsd:element minOccurs="1" name="superficie" type="tns2:SuperficieType" />
+          <xsd:element minOccurs="1" name="codiceValidazioneMovimento" type="tns2:CodiceValidazioneMovimentoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="InfoTitolo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ISWSTitolo" type="tns2:ISWSTitolo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InfoTitoloPAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ISWSTitoloPAC2015" type="tns2:ISWSTitoloPAC2015" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InfoAventiDiritto">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" name="ISWSInfoAventiDiritto" type="tns2:ISWSInfoAventiDiritto" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InfoTitoloEPegni">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" name="ISWSTitolo2" type="tns2:ISWSTitolo2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ISWSEventoTitolo">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ISWSTitolo" type="tns2:ISWSTitolo" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSEventoTitoloPAC2015">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="ISWSTitoloPAC2015" type="tns2:ISWSTitoloPAC2015" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSEventoPegno">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="identificativoEvento" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="identificativoPegno" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" name="idDocumento" type="tns2:IdDocumentoType" />
+          <xsd:element minOccurs="1" ref="tns2:IntestatarioPegno" />
+          <xsd:element minOccurs="1" name="dataRegistrazione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="dataCostituzione" type="tns2:DataType" />
+          <xsd:element minOccurs="0" name="dataEstinzione" type="tns2:DataType" />
+          <xsd:element minOccurs="1" name="numeroTitolo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" name="numeroTitoloOrigine" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" name="creditore" type="tns2:DescrizioneCreditoreType" />
+          <xsd:element minOccurs="1" name="codiceMovimentoPegno" type="tns2:CodiceMovimentoType" />
+          <xsd:element minOccurs="1" name="dataMovimento" type="tns2:DataType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ElencoTitoli">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSTitolo" type="tns2:ISWSTitolo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoTitoli2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSTitolo2" type="tns2:ISWSTitolo2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoTitoliPAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSTitoloPAC2015" type="tns2:ISWSTitoloPAC2015" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoStoricoTitoli">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSStoricoTitoli" type="tns2:ISWSEventoTitolo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoStoricoTitoliPAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSStoricoTitoliPAC2015" type="tns2:ISWSEventoTitoloPAC2015" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoTitoliAggregatiPAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSTitoliAggregatiPAC2015" type="tns2:ISWSTitoliAggregatiPAC2015" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoTitoliAggregati">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSTitoliAggregati" type="tns2:ISWSTitoliAggregati" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoInfoPegni">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSInfoPegni" type="tns2:ISWSInfoPegni" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ISWSEsitoDomanda">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="identificativo" type="tns2:IdentificativoEsitoType" />
+          <xsd:element minOccurs="1" ref="tns2:Intestatario" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="idDocumento" type="tns2:IdDocumentoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="tipoRichiesta" type="tns2:TipoRichiestaType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="numeroTitoli" type="tns2:NumeroTitoliType" />
+          <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:Anomalie" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="AnomaliaAggiornamento">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="idTitolo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="codiceTipoAnomalia" type="tns2:CodiceTipoAnomaliaType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="codiceAnomalia" type="tns2:CodiceAnomaliaType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TitoliVariati">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="primoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ultimoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="flagConversione" type="tns2:FlagConversioneType" />
+          <xsd:element minOccurs="0" ref="tns2:Rilevante" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="tipoTrasferimento" type="tns2:TipoTrasferimentoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dataScadenzaAffitto" type="tns2:DataType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="percentuale" type="tns2:PercentualeType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TitoliMovimentati">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="primoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="ultimoIdentificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="dataScadenzaAffitto" type="tns2:DataType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="superficieUBA" type="tns2:SuperficieUBAType" />
+          <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:CUAATerzoSoggetto" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSComunicazioneUtilizzo">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="numeroTitolo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="tipoUtilizzo" type="tns2:FlagUtilizzoType" />
+          <xsd:element minOccurs="0" maxOccurs="1" name="percentualeUtilizzo" type="tns2:PercentualeUtilizzoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSSintesiUtilizzo">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="annoCampagna" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="percentualeTitoliUtilizzati" type="tns2:PercentualeUtilizzoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="percentualeSuperficieUtilizzata" type="tns2:PercentualeUtilizzoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ISWSUtilizzoTitoli">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="1" name="identificativo" type="tns2:IdentificativoType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="annoCampagna" type="tns2:CampagnaType" />
+          <xsd:element minOccurs="1" maxOccurs="1" name="flagUtilizzo" type="tns2:UtilizzoType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SintesiUtilizzo">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSSintesiUtilizzo" type="tns2:ISWSSintesiUtilizzo" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UtilizzoTitoli">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSUtilizzoTitoli" type="tns2:ISWSUtilizzoTitoli" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTitoliVariati">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TitoliVariati" type="tns2:TitoliVariati" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTitoliMovimentati">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="TitoliMovimentati" type="tns2:TitoliMovimentati" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfTitoliUtilizzati">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" maxOccurs="unbounded" name="ISWSComunicazioneUtilizzo" type="tns2:ISWSComunicazioneUtilizzo" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ISWSVerificaUtilizzo80Percento">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:ISWSResponse" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="dataVerifica" type="tns2:DataType" />
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="SintesiUtilizzo" type="tns2:SintesiUtilizzo" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="UtilizzoTitoli" type="tns2:UtilizzoTitoli" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoEsiti">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:ISWSResponse" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSEsitoDomanda" type="tns2:ISWSEsitoDomanda" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoEventi">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:ISWSResponse" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSEventoTitolo" type="tns2:ISWSEventoTitolo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoEventiPAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:ISWSResponse" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSEventoTitoloPAC2015" type="tns2:ISWSEventoTitoloPAC2015" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoValidazioneDomandePAC2015">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSInfoDomandeTrasferimentoValidazione" type="tns2:ISWSInfoDomandeTrasferimentoValidazione" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoRiepilogoTitoliAzienda">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSRiepilogoTitoliAzienda" type="tns2:ISWSRiepilogoTitoliAzienda" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoInfoProvvedimenti">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSInfoProvvedimenti" type="tns2:ISWSInfoProvvedimenti" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ElencoEventiPegni">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:ISWSResponse" />
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="ISWSEventoPegno" type="tns2:ISWSEventoPegno" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="Anomalie">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="unbounded" name="AnomaliaAggiornamento" type="tns2:AnomaliaAggiornamento" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="TitoliVariatiInput" type="tns2:ArrayOfTitoliVariati" />
+      <xsd:element name="TitoliMovimentatiInput" type="tns2:ArrayOfTitoliMovimentati" />
+      <xsd:element name="TitoliUtilizzatiInput" type="tns2:ArrayOfTitoliUtilizzati" />
+      <xsd:element name="ISWSResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="codRet" type="xsd:string" />
+            <xsd:element minOccurs="1" name="segnalazione" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputEstrazioneDAR">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" maxOccurs="1" ref="tns2:CUAA" />
+            <xsd:element minOccurs="0" maxOccurs="1" name="numeroTitolo" type="tns2:IdentificativoType" />
+            <xsd:element minOccurs="1" name="campagna" type="tns2:CampagnaType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OutputEstrazioneDAR">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="importoIncrementoDAR" type="tns2:ValoreTitoloType" />
+            <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:ISWSResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="InputAnticipiDU">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:CUAA" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="OutputAnticipiDU">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="importoAnticipo" type="tns2:ValoreGruppoType" />
+            <xsd:element minOccurs="1" maxOccurs="1" ref="tns2:ISWSResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="SOAPResponseType">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="1" name="codRet" type="xsd:string" />
+            <xsd:element minOccurs="1" name="message" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="DummyRequest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="dummyAttr" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </types>
+  <message name="richiesta_TitoliProduttoreCTL10_Msg">
+    <part name="body" element="tns2:InputTitoliProduttore" />
+  </message>
+  <message name="risposta_TitoliProduttoreCTL10_Msg">
+    <part name="body" element="tns2:ElencoTitoli" />
+  </message>
+  <message name="richiesta_TitoliProduttore_Msg">
+    <part name="body" element="tns2:InputTitoliProduttore" />
+  </message>
+  <message name="risposta_TitoliProduttore_Msg">
+    <part name="body" element="tns2:ElencoTitoli" />
+  </message>
+  <message name="richiesta_InfoTitoloCTL10_Msg">
+    <part name="body" element="tns2:InputInfoTitolo" />
+  </message>
+  <message name="risposta_InfoTitoloCTL10_Msg">
+    <part name="body" element="tns2:InfoTitolo" />
+  </message>
+  <message name="richiesta_InfoTitolo_Msg">
+    <part name="body" element="tns2:InputInfoTitolo" />
+  </message>
+  <message name="risposta_InfoTitolo_Msg">
+    <part name="body" element="tns2:InfoTitolo" />
+  </message>
+  <message name="richiesta_InfoStoricoTitoloCTL10_Msg">
+    <part name="body" element="tns2:InputInfoStoricoTitolo" />
+  </message>
+  <message name="risposta_InfoStoricoTitoloCTL10_Msg">
+    <part name="body" element="tns2:ElencoStoricoTitoli" />
+  </message>
+  <message name="richiesta_InfoStoricoTitolo_Msg">
+    <part name="body" element="tns2:InputInfoStoricoTitolo" />
+  </message>
+  <message name="risposta_InfoStoricoTitolo_Msg">
+    <part name="body" element="tns2:ElencoStoricoTitoli" />
+  </message>
+  <message name="richiesta_TitoliProduttoreAggregatiCTL10_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreAggregati" />
+  </message>
+  <message name="risposta_TitoliProduttoreAggregatiCTL10_Msg">
+    <part name="body" element="tns2:ElencoTitoliAggregati" />
+  </message>
+  <message name="richiesta_TitoliProduttoreAggregati_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreAggregati" />
+  </message>
+  <message name="risposta_TitoliProduttoreAggregati_Msg">
+    <part name="body" element="tns2:ElencoTitoliAggregati" />
+  </message>
+  <message name="richiesta_TitoliProduttoreConInfoPegniCTL10_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreConInfoPegni" />
+  </message>
+  <message name="risposta_TitoliProduttoreConInfoPegniCTL10_Msg">
+    <part name="body" element="tns2:ElencoTitoli2" />
+  </message>
+  <message name="richiesta_TitoliProduttoreConInfoPegni_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreConInfoPegni" />
+  </message>
+  <message name="risposta_TitoliProduttoreConInfoPegni_Msg">
+    <part name="body" element="tns2:ElencoTitoli2" />
+  </message>
+  <message name="richiesta_InfoTitoloEPegni_Msg">
+    <part name="body" element="tns2:InputInfoTitoloEPegni" />
+  </message>
+  <message name="risposta_InfoTitoloEPegni_Msg">
+    <part name="body" element="tns2:InfoTitoloEPegni" />
+  </message>
+  <message name="richiesta_InfoTitoloEPegniCTL10_Msg">
+    <part name="body" element="tns2:InputInfoTitoloEPegni" />
+  </message>
+  <message name="risposta_InfoTitoloEPegniCTL10_Msg">
+    <part name="body" element="tns2:InfoTitoloEPegni" />
+  </message>
+  <message name="richiesta_InfoPegniSulTitolo_Msg">
+    <part name="body" element="tns2:InputInfoPegniSulTitolo" />
+  </message>
+  <message name="risposta_InfoPegniSulTitolo_Msg">
+    <part name="body" element="tns2:ElencoInfoPegni" />
+  </message>
+  <message name="richiesta_InfoPegniSulTitoloCTL10_Msg">
+    <part name="body" element="tns2:InputInfoPegniSulTitolo" />
+  </message>
+  <message name="risposta_InfoPegniSulTitoloCTL10_Msg">
+    <part name="body" element="tns2:ElencoInfoPegni" />
+  </message>
+  <message name="richiesta_FornituraEventiTitoli_Msg">
+    <part name="body" element="tns2:DummyRequest" />
+  </message>
+  <message name="risposta_FornituraEventiTitoli_Msg">
+    <part name="body" element="tns2:ElencoEventi" />
+  </message>
+  <message name="risposta_FornituraEventiTitoliPAC2015_Msg">
+    <part name="body" element="tns2:ElencoEventiPAC2015" />
+  </message>
+  <message name="richiesta_FornituraEventiPegni_Msg">
+    <part name="body" element="tns2:DummyRequest" />
+  </message>
+  <message name="risposta_FornituraEventiPegni_Msg">
+    <part name="body" element="tns2:ElencoEventiPegni" />
+  </message>
+  <message name="richiesta_EventiRicevuti_Msg">
+    <part name="body" element="tns2:InputEventiRicevuti" />
+  </message>
+  <message name="risposta_EventiRicevuti_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_EventiPegniRicevuti_Msg">
+    <part name="body" element="tns2:InputEventiPegniRicevuti" />
+  </message>
+  <message name="risposta_EventiPegniRicevuti_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_FissazioneTrasferimentoTitoli_Msg">
+    <part name="body" element="tns2:InputFissazioneTrasferimentoTitoli" />
+  </message>
+  <message name="risposta_FissazioneTrasferimentoTitoli_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_MovimentazioneTitoli_Msg">
+    <part name="body" element="tns2:InputMovimentazioneTitoli" />
+  </message>
+  <message name="risposta_MovimentazioneTitoli_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_ComunicazioneUtilizzoTitoli_Msg">
+    <part name="body" element="tns2:InputComunicazioneUtilizzoTitoli" />
+  </message>
+  <message name="risposta_ComunicazioneUtilizzoTitoli_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_VerificaUtilizzo80Percento_Msg">
+    <part name="body" element="tns2:InputVerificaUtilizzo80Percento" />
+  </message>
+  <message name="risposta_VerificaUtilizzo80Percento_Msg">
+    <part name="body" element="tns2:ISWSVerificaUtilizzo80Percento" />
+  </message>
+  <message name="richiesta_EsitoDomande_Msg">
+    <part name="body" element="tns2:DummyRequest" />
+  </message>
+  <message name="risposta_EsitoDomande_Msg">
+    <part name="body" element="tns2:ElencoEsiti" />
+  </message>
+  <message name="richiesta_EsitiRicevuti_Msg">
+    <part name="body" element="tns2:InputEsitiRicevuti" />
+  </message>
+  <message name="risposta_EsitiRicevuti_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_InfoAventiDiritto_Msg">
+    <part name="body" element="tns2:InputInfoAventiDiritto" />
+  </message>
+  <message name="risposta_InfoAventiDiritto_Msg">
+    <part name="body" element="tns2:InfoAventiDiritto" />
+  </message>
+  <message name="richiesta_InfoTitoloPAC2015_Msg">
+    <part name="body" element="tns2:InputInfoTitolo" />
+  </message>
+  <message name="risposta_InfoTitoloPAC2015_Msg">
+    <part name="body" element="tns2:InfoTitoloPAC2015" />
+  </message>
+  <message name="richiesta_TitoliProduttorePAC2015_Msg">
+    <part name="body" element="tns2:InputTitoliProduttorePAC2015" />
+  </message>
+  <message name="risposta_TitoliProduttorePAC2015_Msg">
+    <part name="body" element="tns2:ElencoTitoliPAC2015" />
+  </message>
+  <message name="richiesta_InfoStoricoTitoloPAC2015_Msg">
+    <part name="body" element="tns2:InputInfoStoricoTitolo" />
+  </message>
+  <message name="risposta_InfoStoricoTitoloPAC2015_Msg">
+    <part name="body" element="tns2:ElencoStoricoTitoliPAC2015" />
+  </message>
+  <message name="richiesta_TitoliProduttoreAggregatiPAC2015_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreAggregati" />
+  </message>
+  <message name="risposta_TitoliProduttoreAggregatiPAC2015_Msg">
+    <part name="body" element="tns2:ElencoTitoliAggregatiPAC2015" />
+  </message>
+  <message name="richiesta_InfoProvvedimentiTitoloPAC2015_Msg">
+    <part name="body" element="tns2:InputInfoPegniSulTitolo" />
+  </message>
+  <message name="risposta_InfoProvvedimentiTitoloPAC2015_Msg">
+    <part name="body" element="tns2:ElencoInfoProvvedimenti" />
+  </message>
+  <message name="richiesta_InfoProvvedimentiProduttorePAC2015_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreConInfoPegni" />
+  </message>
+  <message name="risposta_InfoProvvedimentiProduttorePAC2015_Msg">
+    <part name="body" element="tns2:ElencoInfoProvvedimenti" />
+  </message>
+  <message name="richiesta_DomandeTrasferimentoValidazione_Msg">
+    <part name="body" element="tns2:InputTitoliProduttorePAC2015" />
+  </message>
+  <message name="risposta_DomandeTrasferimentoValidazione_Msg">
+    <part name="body" element="tns2:ElencoValidazioneDomandePAC2015" />
+  </message>
+  <message name="richiesta_RiepilogoTitoliAzienda_Msg">
+    <part name="body" element="tns2:InputTitoliProduttoreAggregati" />
+  </message>
+  <message name="risposta_RiepilogoTitoliAzienda_Msg">
+    <part name="body" element="tns2:ElencoRiepilogoTitoliAzienda" />
+  </message>
+  <message name="richiesta_MovimentazioneTitoliPAC2015_Msg">
+    <part name="body" element="tns2:InputMovimentazioneTitoli" />
+  </message>
+  <message name="risposta_MovimentazioneTitoliPAC2015_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_EsitoDomandeTrasfPAC2015_Msg">
+    <part name="body" element="tns2:DummyRequest" />
+  </message>
+  <message name="risposta_EsitoDomandeTrasfPAC2015_Msg">
+    <part name="body" element="tns2:ElencoEsiti" />
+  </message>
+  <message name="richiesta_EsitiRicevutiTrasfPAC2015_Msg">
+    <part name="body" element="tns2:InputEsitiRicevuti" />
+  </message>
+  <message name="risposta_EsitiRicevutiTrasfPAC2015_Msg">
+    <part name="body" element="tns2:ISWSResponse" />
+  </message>
+  <message name="richiesta_estrazioneDARPerCalcoloSanzioni">
+    <part name="body" element="tns2:InputEstrazioneDAR" />
+  </message>
+  <message name="risposta_estrazioneDARPerCalcoloSanzioni">
+    <part name="body" element="tns2:OutputEstrazioneDAR" />
+  </message>
+  <message name="richiesta_anticipiDU">
+    <part name="body" element="tns2:InputAnticipiDU" />
+  </message>
+  <message name="risposta_anticipiDU">
+    <part name="body" element="tns2:OutputAnticipiDU" />
+  </message>
+  <message name="intestazione">
+    <part name="header" element="tns3:SOAPAutenticazione" />
+  </message>
+  <portType name="InterService">
+    <operation name="titoliProduttoreCTL10">
+      <input message="tns:richiesta_TitoliProduttoreCTL10_Msg" />
+      <output message="tns:risposta_TitoliProduttoreCTL10_Msg" />
+    </operation>
+    <operation name="TitoliProduttore">
+      <input message="tns:richiesta_TitoliProduttore_Msg" />
+      <output message="tns:risposta_TitoliProduttore_Msg" />
+    </operation>
+    <operation name="infoTitoloCTL10">
+      <input message="tns:richiesta_InfoTitoloCTL10_Msg" />
+      <output message="tns:risposta_InfoTitoloCTL10_Msg" />
+    </operation>
+    <operation name="InfoTitolo">
+      <input message="tns:richiesta_InfoTitolo_Msg" />
+      <output message="tns:risposta_InfoTitolo_Msg" />
+    </operation>
+    <operation name="InfoStoricoTitolo">
+      <input message="tns:richiesta_InfoStoricoTitolo_Msg" />
+      <output message="tns:risposta_InfoStoricoTitolo_Msg" />
+    </operation>
+    <operation name="infoStoricoTitoloCTL10">
+      <input message="tns:richiesta_InfoStoricoTitoloCTL10_Msg" />
+      <output message="tns:risposta_InfoStoricoTitoloCTL10_Msg" />
+    </operation>
+    <operation name="titoliProduttoreAggregatiCTL10">
+      <input message="tns:richiesta_TitoliProduttoreAggregatiCTL10_Msg" />
+      <output message="tns:risposta_TitoliProduttoreAggregatiCTL10_Msg" />
+    </operation>
+    <operation name="TitoliProduttoreAggregati">
+      <input message="tns:richiesta_TitoliProduttoreAggregati_Msg" />
+      <output message="tns:risposta_TitoliProduttoreAggregati_Msg" />
+    </operation>
+    <operation name="TitoliProduttoreConInfoPegni">
+      <input message="tns:richiesta_TitoliProduttoreConInfoPegni_Msg" />
+      <output message="tns:risposta_TitoliProduttoreConInfoPegni_Msg" />
+    </operation>
+    <operation name="titoliProduttoreConInfoPegniCTL10">
+      <input message="tns:richiesta_TitoliProduttoreConInfoPegniCTL10_Msg" />
+      <output message="tns:risposta_TitoliProduttoreConInfoPegniCTL10_Msg" />
+    </operation>
+    <operation name="InfoTitoloEPegni">
+      <input message="tns:richiesta_InfoTitoloEPegni_Msg" />
+      <output message="tns:risposta_InfoTitoloEPegni_Msg" />
+    </operation>
+    <operation name="infoTitoloEPegniCTL10">
+      <input message="tns:richiesta_InfoTitoloEPegniCTL10_Msg" />
+      <output message="tns:risposta_InfoTitoloEPegniCTL10_Msg" />
+    </operation>
+    <operation name="InfoPegniSulTitolo">
+      <input message="tns:richiesta_InfoPegniSulTitolo_Msg" />
+      <output message="tns:risposta_InfoPegniSulTitolo_Msg" />
+    </operation>
+    <operation name="infoPegniSulTitoloCTL10">
+      <input message="tns:richiesta_InfoPegniSulTitoloCTL10_Msg" />
+      <output message="tns:risposta_InfoPegniSulTitoloCTL10_Msg" />
+    </operation>
+    <operation name="FornituraEventiTitoli">
+      <input message="tns:richiesta_FornituraEventiTitoli_Msg" />
+      <output message="tns:risposta_FornituraEventiTitoli_Msg" />
+    </operation>
+    <operation name="FornituraEventiTitoliPAC2015">
+      <input message="tns:richiesta_FornituraEventiTitoli_Msg" />
+      <output message="tns:risposta_FornituraEventiTitoliPAC2015_Msg" />
+    </operation>
+    <operation name="EventiRicevutiPAC2015">
+      <input message="tns:richiesta_EventiRicevuti_Msg" />
+      <output message="tns:risposta_EventiRicevuti_Msg" />
+    </operation>
+    <operation name="ValidazioneDomandeTrasferimentoPAC2015">
+      <input message="tns:richiesta_DomandeTrasferimentoValidazione_Msg" />
+      <output message="tns:risposta_DomandeTrasferimentoValidazione_Msg" />
+    </operation>
+    <operation name="RiepilogoTitoliAzienda">
+      <input message="tns:richiesta_RiepilogoTitoliAzienda_Msg" />
+      <output message="tns:risposta_RiepilogoTitoliAzienda_Msg" />
+    </operation>
+    <operation name="FornituraEventiPegni">
+      <input message="tns:richiesta_FornituraEventiPegni_Msg" />
+      <output message="tns:risposta_FornituraEventiPegni_Msg" />
+    </operation>
+    <operation name="EventiRicevuti">
+      <input message="tns:richiesta_EventiRicevuti_Msg" />
+      <output message="tns:risposta_EventiRicevuti_Msg" />
+    </operation>
+    <operation name="EventiPegniRicevuti">
+      <input message="tns:richiesta_EventiPegniRicevuti_Msg" />
+      <output message="tns:risposta_EventiPegniRicevuti_Msg" />
+    </operation>
+    <operation name="FissazioneTrasferimentoTitoli">
+      <input message="tns:richiesta_FissazioneTrasferimentoTitoli_Msg" />
+      <output message="tns:risposta_FissazioneTrasferimentoTitoli_Msg" />
+    </operation>
+    <operation name="MovimentazioneTitoli">
+      <input message="tns:richiesta_MovimentazioneTitoli_Msg" />
+      <output message="tns:risposta_MovimentazioneTitoli_Msg" />
+    </operation>
+    <operation name="ComunicazioneUtilizzoTitoli">
+      <input message="tns:richiesta_ComunicazioneUtilizzoTitoli_Msg" />
+      <output message="tns:risposta_ComunicazioneUtilizzoTitoli_Msg" />
+    </operation>
+    <operation name="VerificaUtilizzo80Percento">
+      <input message="tns:richiesta_VerificaUtilizzo80Percento_Msg" />
+      <output message="tns:risposta_VerificaUtilizzo80Percento_Msg" />
+    </operation>
+    <operation name="EsitoDomande">
+      <input message="tns:richiesta_EsitoDomande_Msg" />
+      <output message="tns:risposta_EsitoDomande_Msg" />
+    </operation>
+    <operation name="EsitiRicevutiRiformaTitoli">
+      <input message="tns:richiesta_EsitiRicevuti_Msg" />
+      <output message="tns:risposta_EsitiRicevuti_Msg" />
+    </operation>
+    <operation name="InfoAventiDiritto">
+      <input message="tns:richiesta_InfoAventiDiritto_Msg" />
+      <output message="tns:risposta_InfoAventiDiritto_Msg" />
+    </operation>
+    <operation name="InfoTitoloPAC2015">
+      <input message="tns:richiesta_InfoTitoloPAC2015_Msg" />
+      <output message="tns:risposta_InfoTitoloPAC2015_Msg" />
+    </operation>
+    <operation name="TitoliProduttorePAC2015">
+      <input message="tns:richiesta_TitoliProduttorePAC2015_Msg" />
+      <output message="tns:risposta_TitoliProduttorePAC2015_Msg" />
+    </operation>
+    <operation name="InfoStoricoTitoloPAC2015">
+      <input message="tns:richiesta_InfoStoricoTitoloPAC2015_Msg" />
+      <output message="tns:risposta_InfoStoricoTitoloPAC2015_Msg" />
+    </operation>
+    <operation name="TitoliProduttoreAggregatiPAC2015">
+      <input message="tns:richiesta_TitoliProduttoreAggregatiPAC2015_Msg" />
+      <output message="tns:risposta_TitoliProduttoreAggregatiPAC2015_Msg" />
+    </operation>
+    <operation name="InfoProvvedimentiTitoloPAC2015">
+      <input message="tns:richiesta_InfoProvvedimentiTitoloPAC2015_Msg" />
+      <output message="tns:risposta_InfoProvvedimentiTitoloPAC2015_Msg" />
+    </operation>
+    <operation name="InfoProvvedimentiProduttorePAC2015">
+      <input message="tns:richiesta_InfoProvvedimentiProduttorePAC2015_Msg" />
+      <output message="tns:risposta_InfoProvvedimentiProduttorePAC2015_Msg" />
+    </operation>
+    <operation name="MovimentazioneTitoliPAC2015">
+      <input message="tns:richiesta_MovimentazioneTitoliPAC2015_Msg" />
+      <output message="tns:risposta_MovimentazioneTitoliPAC2015_Msg" />
+    </operation>
+    <operation name="EsitoDomandeTrasfPAC2015">
+      <input message="tns:richiesta_EsitoDomandeTrasfPAC2015_Msg" />
+      <output message="tns:risposta_EsitoDomandeTrasfPAC2015_Msg" />
+    </operation>
+    <operation name="EsitiRicevutiPAC2015">
+      <input message="tns:richiesta_EsitiRicevutiTrasfPAC2015_Msg" />
+      <output message="tns:risposta_EsitiRicevutiTrasfPAC2015_Msg" />
+    </operation>
+    <operation name="estrazioneDARPerCalcoloSanzioni">
+      <input message="tns:richiesta_estrazioneDARPerCalcoloSanzioni" />
+      <output message="tns:risposta_estrazioneDARPerCalcoloSanzioni" />
+    </operation>
+    <operation name="anticipiDU">
+      <input message="tns:richiesta_anticipiDU" />
+      <output message="tns:risposta_anticipiDU" />
+    </operation>
+  </portType>
+  <binding name="InterscambioSOAPBinding" type="tns:InterService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="titoliProduttoreCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="TitoliProduttore">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="infoTitoloCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoTitolo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="infoStoricoTitoloCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoStoricoTitolo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="titoliProduttoreAggregatiCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="TitoliProduttoreAggregati">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="titoliProduttoreConInfoPegniCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="TitoliProduttoreConInfoPegni">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoTitoloEPegni">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="infoTitoloEPegniCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoPegniSulTitolo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="infoPegniSulTitoloCTL10">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="FornituraEventiTitoli">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EventiRicevuti">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="FornituraEventiPegni">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EventiPegniRicevuti">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="FissazioneTrasferimentoTitoli">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="MovimentazioneTitoli">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="ComunicazioneUtilizzoTitoli">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="VerificaUtilizzo80Percento">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EsitoDomande">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EsitiRicevutiRiformaTitoli">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoAventiDiritto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoTitoloPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="TitoliProduttorePAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoStoricoTitoloPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="TitoliProduttoreAggregatiPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoProvvedimentiTitoloPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="InfoProvvedimentiProduttorePAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="MovimentazioneTitoliPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EsitoDomandeTrasfPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EsitiRicevutiPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="FornituraEventiTitoliPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="EventiRicevutiPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="ValidazioneDomandeTrasferimentoPAC2015">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="RiepilogoTitoliAzienda">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="estrazioneDARPerCalcoloSanzioni">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="anticipiDU">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RiformaTitoli">
+    <port name="RiformaTitoli" binding="tns:InterscambioSOAPBinding">
+      <soap:address location="http://cooperazione.sian.it/wspdd/services/RiformaTitoli" />
+    </port>
+  </service>
+</definitions>

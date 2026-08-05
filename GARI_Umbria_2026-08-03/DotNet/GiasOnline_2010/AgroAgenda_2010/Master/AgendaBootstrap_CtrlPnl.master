@@ -1,0 +1,70 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Master/AgendaBootstrap.Master" AutoEventWireup="false"  
+        CodeBehind="AgendaBootstrap_CtrlPnl.master.vb" 
+        Inherits="AgroAgenda_2010.AgendaBootstrap_CtrlPnl" %>
+<%@ MasterType VirtualPath="~/Master/AgendaBootstrap.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <asp:ContentPlaceHolder id="HeadContent_CtrlPnl" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="row">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+             <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-pannello-controllo">
+                  <ul class="nav navbar-nav">
+                    <li><a href="#">Riepilogo</a></li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Non Conformità <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="PannelloDiControllo_NC_Analisi.aspx">Analisi</a></li>
+                            <li><a href="PannelloDiControllo_NC_OPTA.aspx">Audit tti</a></li>
+                        </ul>    
+                    </li>
+                    <li><a href="PannelloDiControllo_Scadenze.aspx">Scadenze</a></li>
+                    <li><a href="#">Allegati</a></li>
+                    <li><a href="#">Impostazioni</a></li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+
+
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="row">
+        <div id="contenitore">
+            <asp:ContentPlaceHolder id="MainContent_CtrlPnl" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentScript" runat="server">
+    <asp:ContentPlaceHolder id="ContentScript_CtrlPnl" runat="server"></asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        var objP_server = '<%=objparametri_server_string %>';
+        var objP_utenti = '<%=objparametri_utenti_string %>';
+
+        $('.collapse').on('shown.bs.collapse', function () {
+            $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
+        });
+        $('.collapse').on('hidden.bs.collapse', function () {
+            $(this).parent().find(".fa-minus-circles").removeClass("fa-minus-circle").addClass("fa-plus-circle");
+        });
+    </script>
+</asp:Content>

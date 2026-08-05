@@ -1,0 +1,153 @@
+﻿<div id="divComboMisuraXAvversitaInputData">
+    <script language="javascript" type="text/javascript">
+
+
+
+        function dialogComboMisuraXAvversitaInputData(w, h) {
+
+
+            $('#divInternoComboMisuraXAvversitaInputData').dialog({
+                autoOpen: false,
+                height: h,
+                width: w,
+                maxHeight: $(window).height() - 30,
+                maxWidth: $(window).width() - 60,
+                modal: true,
+                close: function( event, ui ) {
+                    btnChiudiComboMisuraXAvversitaInputData_onclick();
+                }
+            });
+
+
+        }
+
+        $(document).ready(function () {
+            dialogComboMisuraXAvversitaInputData(250, 150);
+        });
+
+
+        var OperazioneInCorso = false;
+
+        function CaricaValoriComboMisuraXAvversitaInputData(controlToFill, av_cod, udm_cod) {
+
+            if (!OperazioneInCorso) {
+
+                OperazioneInCorso = true;
+
+                var myid = controlToFill.attr('id');
+                var veg_cod = $("#" + controlToFill.attr('idSpecie')).val();
+
+                $.logThis("CaricaValoriComboMisuraXAvversitaInputData(" + myid + ")");
+                $.logThis("idComboVeg_cod = " + controlToFill.attr('idSpecie'));
+
+                $("#hdControlToFillInternoComboMisuraXAvversitaInputData").val(myid);
+
+                var indirizzohttp = location.pathname;
+                indirizzohttp = indirizzohttp.split("/")[indirizzohttp.split("/").length - 1];
+
+                $.logThis(indirizzohttp);
+
+                $('#WaitFrame').show();
+
+                var mData = "{ MxAV_Cod: '0', av_cod: '" + av_cod + "', udm_cod: '" + udm_cod + "', veg_cod: '" + veg_cod + "' }";
+                $.logThis(mData);
+
+
+
+                $.ajax({
+                    type: "POST",
+                    url: indirizzohttp + "/CaricaComboMisuraXAvversitaInputData",
+                    data: mData,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+
+                        $('#WaitFrame').hide();
+
+
+                        if (msg.d == 'SessioneScaduta') {
+                            $('#dialogSessioneScaduta').dialog("open");
+                        }
+                        else {
+
+                            $('#selComboMisuraXAvversitaInputData').html(msg.d);
+
+                            if (msg.d != "") {
+                                $("#txtIdleComboMisuraXAvversitaInputData").focus();
+                                $("#divInternoComboMisuraXAvversitaInputData").dialog("open");
+                                $("#divInternoComboMisuraXAvversitaInputData").parent().appendTo($('form:first'));
+
+                            }
+                            else {
+                                $("#divInternoComboMisuraXAvversitaInputData").dialog("close");
+                                OperazioneInCorso = false;
+                            }
+                        }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        $('#WaitFrame').hide();
+                        alert(xhr.status);
+                        alert(thrownError);
+
+                    }
+                });
+
+
+            }
+        }
+
+        function btnChiudiComboMisuraXAvversitaInputData_onclick() {
+            $.logThis("btnChiudiComboMisuraXAvversitaInputData_onclick");
+            OperazioneInCorso = false;
+        }
+
+        function bntOkComboMisuraXAvversitaInputData_onclick() {
+
+
+            $.logThis(
+                "#selComboMisuraXAvversitaInputData = " + 
+                $("#selComboMisuraXAvversitaInputData").val()
+            );
+
+
+            var a = "[name=\"" +
+                $("#hdControlToFillInternoComboMisuraXAvversitaInputData").val().toString().replace(/_/g, '$') + 
+            "\"]";
+
+            $.logThis(a);
+
+            $(a).val(
+                $("#selComboMisuraXAvversitaInputData").val()
+              );
+
+            OperazioneInCorso = false;
+
+            $("#divInternoComboMisuraXAvversitaInputData").dialog("close");
+
+        }
+
+        function bntResetComboMisuraXAvversitaInputData_onclick() {
+            var a = "[name=\"" +
+                $("#hdControlToFillInternoComboMisuraXAvversitaInputData").val().toString().replace(/_/g, '$') +
+            "\"]";
+            $(a).val("");
+            OperazioneInCorso = false;
+            $("#divInternoComboMisuraXAvversitaInputData").dialog("close");
+        }
+
+    
+    </script>
+    <div id="divInternoComboMisuraXAvversitaInputData">
+        <input type="hidden" id="hdControlToFillInternoComboMisuraXAvversitaInputData" />
+        <select id="selComboMisuraXAvversitaInputData">
+        </select>
+        <button type="button" id="bntOkComboMisuraXAvversitaInputData" onclick="bntOkComboMisuraXAvversitaInputData_onclick()">
+            Ok</button>
+        <button type="button" id="bntResetComboMisuraXAvversitaInputData" onclick="bntResetComboMisuraXAvversitaInputData_onclick()">
+            Cancella</button>
+        
+    </div>
+    <div id="divIdleComboMisuraXAvversitaInputData">
+        <input type="text" id = "txtIdleComboMisuraXAvversitaInputData" style="width: 0px" />
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="farmers-full-width">
+    <kendo-grid [data]="data">
+        <kendo-grid-column field="descrizione" [headerStyle]="{ 'display': 'none' }"></kendo-grid-column>
+        <kendo-grid-column field="valore" [headerStyle]="{ 'display': 'none' }"></kendo-grid-column>
+    </kendo-grid>
+</div>
+
+<div *ngIf="!loading && data.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunDatoRegistrato' | transloco }}</p>
+</div>

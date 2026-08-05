@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="CreditoResiduo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditoResiduoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditoResiduoResult" type="tns:CreditoResiduoResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreditoResiduoResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Credito" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodiceErrore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessaggioErrore" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Successo" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvioSms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mittente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Numeri" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="Testo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvioSmsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvioSmsResult" type="tns:InvioSmsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InvioSmsResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="IdUnivoco" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="StatoSms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IdUnivoco" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StatoSmsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StatoSmsResult" type="tns:StatoSmsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StatoSmsResult">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseResult">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="StatiSms" type="tns:ArrayOfStatoSms" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfStatoSms">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatoSms" nillable="true" type="tns:StatoSms" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatoSms">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DataOra" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Numero" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Messaggio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Gateway" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreditoResiduoSoapIn">
+    <wsdl:part name="parameters" element="tns:CreditoResiduo" />
+  </wsdl:message>
+  <wsdl:message name="CreditoResiduoSoapOut">
+    <wsdl:part name="parameters" element="tns:CreditoResiduoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvioSmsSoapIn">
+    <wsdl:part name="parameters" element="tns:InvioSms" />
+  </wsdl:message>
+  <wsdl:message name="InvioSmsSoapOut">
+    <wsdl:part name="parameters" element="tns:InvioSmsResponse" />
+  </wsdl:message>
+  <wsdl:message name="StatoSmsSoapIn">
+    <wsdl:part name="parameters" element="tns:StatoSms" />
+  </wsdl:message>
+  <wsdl:message name="StatoSmsSoapOut">
+    <wsdl:part name="parameters" element="tns:StatoSmsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SMSSoap">
+    <wsdl:operation name="CreditoResiduo">
+      <wsdl:input message="tns:CreditoResiduoSoapIn" />
+      <wsdl:output message="tns:CreditoResiduoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvioSms">
+      <wsdl:input message="tns:InvioSmsSoapIn" />
+      <wsdl:output message="tns:InvioSmsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StatoSms">
+      <wsdl:input message="tns:StatoSmsSoapIn" />
+      <wsdl:output message="tns:StatoSmsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SMSSoap" type="tns:SMSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreditoResiduo">
+      <soap:operation soapAction="http://tempuri.org/CreditoResiduo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvioSms">
+      <soap:operation soapAction="http://tempuri.org/InvioSms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatoSms">
+      <soap:operation soapAction="http://tempuri.org/StatoSms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SMSSoap12" type="tns:SMSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreditoResiduo">
+      <soap12:operation soapAction="http://tempuri.org/CreditoResiduo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvioSms">
+      <soap12:operation soapAction="http://tempuri.org/InvioSms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StatoSms">
+      <soap12:operation soapAction="http://tempuri.org/StatoSms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SMS">
+    <wsdl:port name="SMSSoap" binding="tns:SMSSoap">
+      <soap:address location="https://ws.smssender-gateway.net/SMS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SMSSoap12" binding="tns:SMSSoap12">
+      <soap12:address location="https://ws.smssender-gateway.net/SMS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+<div class="prof-imprese-column prof-imprese-gruppo-operazione" *ngIf="gruppoOperazioni$ != null">
+  <p>{{ 'profImprese.SelezionaUnGruppoDiOperazioni' | transloco }} </p>
+  <kendo-dropdownlist [data]="gruppoOperazioni$ | async" textField="text" valueField="value"
+    [kendoDropDownFilter]="dropdownSettings" (valueChange)="gruppoOperazioneSubject.next($event)"
+    [value]="gruppoOperazioneSubject | async" [valuePrimitive]="true"></kendo-dropdownlist>
+</div>

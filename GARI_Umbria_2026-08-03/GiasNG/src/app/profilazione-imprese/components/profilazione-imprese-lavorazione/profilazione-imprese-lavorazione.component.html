@@ -1,0 +1,6 @@
+<div class="prof-imprese-column prof-imprese-lavorazioni" *ngIf="lavorazioni$ != null">
+  <p>{{ 'profImprese.SelezionaUnaLavorazione' | transloco }} </p>
+  <kendo-dropdownlist [data]="lavorazioni$ | async" textField="LAV_DES" valueField="LAV_COD"
+    (valueChange)="lavorazioneSubject.next($event)" [value]="lavorazioneSubject | async"
+    [kendoDropDownFilter]="dropdownSettings" [valuePrimitive]="true"></kendo-dropdownlist>
+</div>

@@ -1,0 +1,132 @@
+<div *ngIf="qdcservice.QdCForm != undefined && qdcservice.QdCForm != null">
+    <form [formGroup]="qdcservice.QdCForm" (keydown.enter)="$event.preventDefault()">
+        <gias-update-toolbar
+            [salva]="false"
+            [trackChanges]="false" *ngIf="MostraQdC()">
+
+            <ng-container AppbarSection>
+
+                <!-- inizio sezione testata visita-->
+                <kendo-appbar-section *ngIf="qdcservice.mostraTestataVisita()">
+                    <app-testata-visita></app-testata-visita>
+                </kendo-appbar-section>
+
+                <!-- <hr class="gias-m-a-0" style="background-color: black; width: 100% !important;"
+                    *ngIf="qdcservice.mostraTestataVisita()"> -->
+                <!-- fine sezione testata visita-->
+
+                <kendo-appbar-section *ngIf="qdcservice.mostraTestataRicetta()">
+                    <app-testata-ricetta></app-testata-ricetta>
+                </kendo-appbar-section>
+
+                <hr class="gias-m-a-0" style="background-color: black; width: 100% !important;"
+                    *ngIf="qdcservice.mostraTestataRicetta()">
+
+                <kendo-appbar-section>
+                    <app-multi-operazione></app-multi-operazione>
+                </kendo-appbar-section>
+
+            </ng-container>
+
+            <ng-container ButtonAppbarSection>
+                <kendo-appbar-section [ngClass]="{ 'gias-header-visite-show': qdcservice.mostraTestataVisita() }" class="gias-last-nav-buttons">
+
+                    <div class="separator white must-show"
+                         *ngIf="qdcvisibilitacontrollitestata.MostraBtnTestata(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())"></div>
+
+                    <div class="gias-qdg-verifica-container">
+                        <btn-bottoni-testata></btn-bottoni-testata>
+                    </div>
+
+                    <div class="separator white must-show"
+                         *ngIf="qdcvisibilitacontrollitestata.MostraBtnTestata(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())">
+                    </div>
+
+                    <div class="gias-qdc-invio-app-flag-container" *ngIf="qdcservice.MostraBtnSendDataToAPP()"
+                         [formGroup]="qdcservice.TestataForm">
+                        <div style="flex-direction: column;">
+
+                            <div class="gias-label-switch-container-invia-app">
+                                <gias-info-template size="lg"
+                                                    [title]="'ImpossibileModificareRibaltareRicetteDopoSalvataggio' | transloco"></gias-info-template>
+
+
+                                <label>{{'InviaAdAPP' | transloco}}:</label>
+                            </div>
+
+                            <div class="gias-label-switch-container-invia-app">
+                                <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                                <gias-switch-template giasFormControlName="InviaRicetta"
+                                                      [isBlue]="true" [hideLabel]="true">
+                                </gias-switch-template>
+                                <span class="switch-label k-label"
+                                      style="padding-left: 2px;">{{ 'Si' | transloco }}</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="separator white must-show"
+                         *ngIf="qdcvisibilitacontrollitestata.MostraBtnTestata(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())"></div>
+
+                    <div class="gias-qdg-save-container">
+                        <app-bottoni-salvataggio></app-bottoni-salvataggio>
+                    </div>
+                </kendo-appbar-section>
+            </ng-container>
+
+        </gias-update-toolbar>
+
+        <div class="editPageContent" *ngIf="MostraQdC()">
+            <div class="container">
+                <div class="row">
+                    <app-trattamento></app-trattamento>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+        <div class="gias-qdc-spacer"></div>
+        <!-- <gias-update-toolbar
+            [salva]="false"
+            [position]="'bottom'"
+            [trackChanges]="false" *ngIf="MostraQdC()">
+
+            <ng-container AppbarSection>
+                <kendo-appbar-spacer></kendo-appbar-spacer>
+                <kendo-appbar-section>
+                    <app-acqua></app-acqua>
+
+                    <div class="separator white must-show" *ngIf="qdcservice.mostraAcqua();"></div>
+
+                    <app-superfici-impianti></app-superfici-impianti>
+                </kendo-appbar-section>
+                <kendo-appbar-spacer></kendo-appbar-spacer>
+            </ng-container>
+
+        </gias-update-toolbar> -->
+
+        <div class="qdc-footer"
+             *ngIf="MostraQdC()">
+            <div class="row">
+                <div class="col" *ngIf="qdcservice.mostraAcqua();">
+                    <app-acqua></app-acqua>
+                </div>
+                <!-- <div class="separator white must-show" *ngIf="qdcservice.mostraAcqua();"></div> -->
+                <div class="col" *ngIf="!isPostRaccolta()">
+                    <app-superfici-impianti></app-superfici-impianti>
+                </div>
+
+                <div class="col" *ngIf="isPostRaccolta()">
+                    <app-quantita-prodotti></app-quantita-prodotti>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,83 @@
+<div [formGroup]="qdcservice.TestataForm">
+    <div class="mt-2 mb-2">
+        <div class="row form-row">
+            <!--<div class="col-12 col-md-4 col-xl-2">
+                &lt;!&ndash;TODO da gestire l'ora&ndash;&gt;
+                &lt;!&ndash;<gias-date-time-picker-template [name]="'Data' | transloco" [obligatory]="true"
+                                                giasFormControlName="Data"
+                                                (onBlur)="testataservice.CambioData()"
+                                                [startValue]="qdcservice.obj_Inizializza_QdC.Data_Min"
+                                                [endValue]="qdcservice.obj_Inizializza_QdC.Data_Max">
+                </gias-date-time-picker-template>&ndash;&gt;
+
+                <gias-data-template [name]="'Data' | transloco" [obligatory]="true"
+                                    giasFormControlName="Data"
+                                    (onBlur)="testataservice.CambioData()"
+                                    [startValue]="qdcservice.obj_Inizializza_QdC.Data_Min"
+                                    [endValue]="qdcservice.obj_Inizializza_QdC.Data_Max">
+                </gias-data-template>
+            </div>-->
+            <div class="col-12 col-md-4 col-xl-6">
+                <gias-drop-down-template-s [name]="'CentroAziendale' | transloco"
+                                           [obligatory]="true" [clearButton]="true"
+                                           [listItems]="testataservice.Array_CentriAziendale"
+                                           (open)="openDdlTestataForm($event, 'Centro_Aziendale')"
+                                           textField="nome"
+                                           valueField="primaryKey.codice"
+                                           giasFormControlName="Centro_Aziendale"
+                                           [valuePrimitive]="false">
+                </gias-drop-down-template-s>
+            </div>
+            <div class="col-12 col-md-4 col-xl-6">
+                <gias-drop-down-template-s *ngIf="mostraCampo()" [name]="'Campo' | transloco " [obligatory]="true"
+                                           [clearButton]="true" [listItems]="testataservice.Array_Campi"
+                                           (open)="openDdlTestataForm($event, 'Campo')"
+                                           textField="Descrizione_Concatenata"
+                                           valueField="Codice_Concatenato" giasFormControlName="Campo"
+                                           [valuePrimitive]="false">
+                </gias-drop-down-template-s>
+            </div>
+        </div>
+        <!-- <div class="row form-row">
+             <div class="col-12">
+                 <gias-drop-down-template-s [name]="'Specie' | transloco" [obligatory]="true"
+                                            [clearButton]="true"
+                                            [listItems]="testataservice.Array_UtilizziTerreno"
+                                            (open)="openDdlTestataForm($event, 'Specie')"
+                                            textField="descrizione"
+                                            valueField="codice" [filterable]="true"
+                                            giasFormControlName="Specie"
+                                            [valuePrimitive]="false">
+                 </gias-drop-down-template-s>
+             </div>
+         </div>-->
+
+        <div class="row form-row" *ngIf="MostraddlAttivitaeDescrizione()" style="display: flex; align-items: flex-end">
+
+            <!-- <div class="gias-label-switch-container-info" ngIf="true">
+                <gias-info-template size="lg"
+                                    [title]="'qdc.VisitaPianificata' | transloco"></gias-info-template>
+            </div> -->
+
+            <div class="col-12 col-sm-6">
+                <gias-drop-down-template-s [name]="'Attività' | transloco " [obligatory]="true"
+                                           [clearButton]="true"
+                                           [listItems]="testataservice.Array_AttivitaPersonalizzate"
+                                           (open)="openDdlTestataForm($event, 'Attivita_Personalizzata')"
+                                           textField="Descrizione_Concatenata"
+                                           valueField="Codice_Concatenato"
+                                           giasFormControlName="Attivita_Personalizzata"
+                                           [valuePrimitive]="false"
+                                           [hasInfo]="this.qdcservice.TestataForm.get('flagVisita').getRawValue()"
+                                           infoTitle="AttivitaVisite">
+                </gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-6">
+                <gias-text-template [name]="'Descrizione' | transloco"
+                                    giasFormControlName="Descrizione_Altre_Lavorazioni">
+                </gias-text-template>
+            </div>
+        </div>
+    </div>
+</div>

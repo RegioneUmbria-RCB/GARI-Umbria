@@ -1,0 +1,146 @@
+.operation-widget {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.operation-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.operation-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: start;
+}
+
+.widget-row-alternate-bg:nth-child(odd) {
+    background-color: #F8F8F8;
+}
+
+.operation-calendar {
+    width: 100px;
+    height: 130px;
+}
+
+.flex-small {
+    flex: 20%;
+}
+
+.flex-large {
+    flex: 80%;
+}
+
+.flex-grow {
+    flex: auto;
+}
+
+.flex-images {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.operation-giorno-n {
+    font-size: 1em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.operation-giorno-v {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.operation-mese {
+    font-size: 0.6em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.operation-specie {
+    padding-top: 10px;
+    font-size: 1em;
+    text-align: center;
+    color: #002d5a;
+}
+
+.operation-descr {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.operation-hr {
+    height: 1px;
+    background-color: #d8d8d8;
+    margin: 5px;
+    border-radius: 1px;
+}
+
+.text-small {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+p {
+    margin: 0;
+}
+
+.v-middle {
+    display: flex;
+    align-items: center;
+}
+
+.no-border {
+    border: none;
+}
+
+.align-start {
+    justify-content: start;
+}
+
+.impianto-image {
+    width: 30%;
+}
+
+/* desktop optimization (for middle size desktop) */
+@media only screen and (max-width: 1249px) {
+    .flex-small {
+        flex: 25%;
+    }
+
+    .flex-large {
+        flex: 70%;
+    }
+}
+
+/* table optimization */
+@media only screen and (max-width: 1023px) {
+    .flex-small {
+        flex: 30%;
+    }
+
+    .flex-large {
+        flex: 70%;
+    }
+}
+
+/* mobile optimization */
+@media only screen and (max-width: 767px) {
+    .flex-small {
+        flex: 35%;
+    }
+
+    .flex-large {
+        flex: 65%;
+    }
+}

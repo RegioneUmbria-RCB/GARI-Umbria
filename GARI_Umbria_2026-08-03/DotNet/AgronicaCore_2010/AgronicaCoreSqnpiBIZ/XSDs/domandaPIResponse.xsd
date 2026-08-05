@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Claudia Cipriani (FINSIEL SPA) -->
+<xs:schema targetNamespace="http://cooperazione.sian.it/schema/interscambio/" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://cooperazione.sian.it/schema/interscambio/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="domandaPIResponse">
+		<xs:annotation>
+			<xs:documentation>Risposta del Web Service all'invocazione della chiamata</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="skXml">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:minInclusive value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="identificativoFlusso">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="30"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dataRicezione" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="dataElaborazione" type="xs:dateTime" minOccurs="0"/>
+				<xs:element name="esitoRicezione" type="xs:integer"/>
+				<xs:element name="errori" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="errore" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="skTipoLog">
+											<xs:simpleType>
+												<xs:restriction base="xs:positiveInteger">
+													<xs:minInclusive value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="descrizioneErrore">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="1000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="datoErrato" minOccurs="0">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="1000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

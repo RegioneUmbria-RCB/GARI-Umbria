@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{2328685E-0F8B-44DE-B497-1BF61F76C4B1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>AgronicaGSB_Gestione_Servizi_in_Background.ConfigurazioneServizioWindows</StartupObject>
+    <RootNamespace>AgronicaGSB_Gestione_Servizi_in_Background</RootNamespace>
+    <AssemblyName>AgronicaGSB_Gestione_Servizi_in_Background</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Console</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\a\GSB\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=3.3.1.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.3.1\lib\net462\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ConfigurazioneServizioWindows.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProjectInstaller.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Selettore_Classe_Servizio.vb" />
+    <Compile Include="Agro_Servizio.vb" />
+    <Compile Include="Utility.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="appsettings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Log4net.default.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScriptBat\Install.bat" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="ScriptBat\Install_SC.bat" />
+    <None Include="ScriptBat\Uninstall_SC.bat" />
+    <None Include="ScriptBat\Unistall.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 e x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{67C6EA54-9C35-4BAA-B01D-31B11F18F735}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAcciseBIZ\AgronicaCoreAcciseBIZ.vbproj">
+      <Project>{5fdbcb3c-b4fe-4c95-850b-14dfde6affc6}</Project>
+      <Name>AgronicaCoreAcciseBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDemetraBIZ\AgronicaCoreDemetraBIZ.vbproj">
+      <Project>{5b028fa0-5a20-44d5-9392-3ad735695ac4}</Project>
+      <Name>AgronicaCoreDemetraBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEFatturaBIZ\AgronicaCoreEFatturaBIZ.vbproj">
+      <Project>{69034ed6-8dba-4570-8351-f208de925636}</Project>
+      <Name>AgronicaCoreEFatturaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{EFD63249-9CBE-4CB4-90D2-E881341C3B96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreIntegrazioneMacchine\AgronicaCoreIntegrazioneMacchine.vbproj">
+      <Project>{9cfeeefe-c3cb-4da4-b25b-6916654c2b71}</Project>
+      <Name>AgronicaCoreIntegrazioneMacchine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMeteoDAL\AgronicaCoreMeteoDAL.vbproj">
+      <Project>{F4BA9F1B-1DC9-4D06-A545-4369C9A87D86}</Project>
+      <Name>AgronicaCoreMeteoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModelliPrevisionaliBIZ\AgronicaCoreModelliPrevisionaliBIZ.vbproj">
+      <Project>{66e58f35-ad9d-48d5-af87-a7a66493d1c8}</Project>
+      <Name>AgronicaCoreModelliPrevisionaliBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreTraduzioneBIZ\AgronicaCoreTraduzioneBIZ.vbproj">
+      <Project>{4d53ec1c-19ee-466f-9104-82a042abeefa}</Project>
+      <Name>AgronicaCoreTraduzioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreTraduzioneDAL\AgronicaCoreTraduzioneDAL.vbproj">
+      <Project>{e17993de-4fdc-4f92-b925-a3cf791c9363}</Project>
+      <Name>AgronicaCoreTraduzioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Abaco_Import_DPI\Abaco_Import_DPI.vbproj">
+      <Project>{1acdf696-7f93-40cb-a09e-0e3c1a5a444a}</Project>
+      <Name>Abaco_Import_DPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccodamentoNotifiche\AccodamentoNotifiche.vbproj">
+      <Project>{2e5303c1-9037-4d36-bba6-019dcac2e549}</Project>
+      <Name>AccodamentoNotifiche</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccodamentoScadenzaProdotti\AccodamentoScadenzaProdotti.vbproj">
+      <Project>{BD161BCE-87D7-40E2-8212-EA019FDCB6D3}</Project>
+      <Name>AccodamentoScadenzaProdotti</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Aggiornamento_ISCC\Aggiornamento_ISCC.vbproj">
+      <Project>{418A3D4A-5474-46E3-864D-D236073EA7B6}</Project>
+      <Name>Aggiornamento_ISCC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgroFascicoloBA_BIZ\AgroFascicoloBA_BIZ.vbproj">
+      <Project>{D3819A40-D460-4FE5-98CD-AC2EB9D97DB7}</Project>
+      <Name>AgroFascicoloBA_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenzaProdottiDAL\AgronicaCoreScadenzaProdottiDAL.vbproj">
+      <Project>{43a1de7d-8a48-4aee-a568-25a79a8a3ed5}</Project>
+      <Name>AgronicaCoreScadenzaProdottiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenzaProdotti\AgronicaCoreScadenzaProdottiBIZ.vbproj">
+      <Project>{6b0564ca-2f3f-4918-9cab-d4803fc80324}</Project>
+      <Name>AgronicaCoreScadenzaProdottiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CaiInvioEmail\CaiInvioEmail.vbproj">
+      <Project>{7283fe5c-9bbc-4728-9779-b68a047727b7}</Project>
+      <Name>CaiInvioEmail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Compliance_ISCC_Async\Compliance_ISCC_Async.vbproj">
+      <Project>{0BC87AF2-98DE-40F8-8384-E0B20CD968B3}</Project>
+      <Name>Compliance_ISCC_Async</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CooperativaSOLE_Importatore\CooperativaSOLE_Importatore.vbproj">
+      <Project>{06efe85e-2033-4aba-bb0e-598e3b5969b4}</Project>
+      <Name>CooperativaSOLE_Importatore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataPublish_Abaco\DataPublish_Abaco.vbproj">
+      <Project>{966d35f9-44c1-4706-93c9-1985f349a80b}</Project>
+      <Name>DataPublish_Abaco</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EsecuzioneAlgoritmoProiezione\EsecuzioneAlgoritmoProiezione.vbproj">
+      <Project>{FF56F22C-D56C-443D-8F34-F6FD2098FC28}</Project>
+      <Name>EsecuzioneAlgoritmoProiezione</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esportatore_SQNPI\Esportatore_SQNPI.vbproj">
+      <Project>{CB326DB2-89A1-4508-9D2C-12B3E9715783}</Project>
+      <Name>Esportatore_SQNPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esportazione_ElasticSearch\Esportazione_ElasticSearch.vbproj">
+      <Project>{c543d2c0-dbcd-4f52-b423-03f4738f0303}</Project>
+      <Name>Esportazione_ElasticSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esportazione_Teleregistri\Esportazione_Teleregistri.vbproj">
+      <Project>{7A892EF1-5FC6-4E2D-AC92-700F5EA20E6B}</Project>
+      <Name>Esportazione_Teleregistri</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Esportazione_Visite_Analisi_Commerciali\Esportazione_Visite_Analisi_Commerciali.vbproj">
+      <Project>{8A64B680-41CC-43C4-8A58-E8B82C6B7897}</Project>
+      <Name>Esportazione_Visite_Analisi_Commerciali</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExportAnalisiTerreno\Export_AnalisiTerreno.vbproj">
+      <Project>{3a742628-a9ec-43d2-a438-cae1bd5ab135}</Project>
+      <Name>Export_AnalisiTerreno</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Attivita\Export_Attivita.vbproj">
+      <Project>{A146E83D-8854-4EA9-B5B6-3BE560A01C4B}</Project>
+      <Name>Export_Attivita</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Contatti\Export_Contatti.vbproj">
+      <Project>{7f7d3d93-a1cf-4602-bd2e-b56f788b5a83}</Project>
+      <Name>Export_Contatti</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Fabbricati\Export_Fabbricati.vbproj">
+      <Project>{DE02280C-10CA-4E64-BDB9-98E00C2B6E56}</Project>
+      <Name>Export_Fabbricati</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Macchine\Export_Macchine.vbproj">
+      <Project>{FE25E810-85AD-4748-B417-FA6B5B5931D9}</Project>
+      <Name>Export_Macchine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Squadre\Export_Squadre.vbproj">
+      <Project>{1086354B-F13B-49CD-9083-8E71FEC8E72B}</Project>
+      <Name>Export_Squadre</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Export_Stazioni\Export_Stazioni.vbproj">
+      <Project>{23C537D0-5D1C-4B48-8A47-9333EC8C645D}</Project>
+      <Name>Export_Stazioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GestioneTraduzionePOEditor\GestioneTraduzionePOEditor.vbproj">
+      <Project>{DEA7D482-7CBE-4C0F-9259-4AE054F6E659}</Project>
+      <Name>GestioneTraduzionePOEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GIAS2GIAS_LOCALE\Gias2Gias_Locale.vbproj">
+      <Project>{3347829C-184C-4123-8A16-17142BA96B6B}</Project>
+      <Name>Gias2Gias_Locale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GiasDuplicateResx\GiasDuplicateResx.vbproj">
+      <Project>{675D8A5F-EC85-48D2-AC92-4399FFE830AB}</Project>
+      <Name>GiasDuplicateResx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\iMotion\iMotion.vbproj">
+      <Project>{704E3A92-5798-4A88-98F8-5000C6078B9F}</Project>
+      <Name>iMotion</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportAnagrafiche_COPROB\ImportAnagrafiche_COPROB.vbproj">
+      <Project>{1eb2a8d3-654d-4b79-9182-46b6e0350c64}</Project>
+      <Name>ImportAnagrafiche_COPROB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportatoreMassivoPlanning\ImportatoreMassivoPlanning.vbproj">
+      <Project>{7da7d6a5-d923-4ea4-a9f0-7c5f2300a76c}</Project>
+      <Name>ImportatoreMassivoPlanning</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportatoreMeteoNT\ImportatoreMeteoNT.vbproj">
+      <Project>{e02be6e3-06f4-4018-b583-c7ef96fa7f2e}</Project>
+      <Name>ImportatoreMeteoNT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportatoreTaskDataSDF\ImportatoreTaskDataSDF.vbproj">
+      <Project>{60e506b1-8de7-4527-908a-282b2f6ec343}</Project>
+      <Name>ImportatoreTaskDataSDF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportatoreUniforma\ImportatoreUniforma.vbproj">
+      <Project>{43D5C1E9-D45F-4543-BB51-C5A4BC11BB15}</Project>
+      <Name>ImportatoreUniforma</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importatore_Calibrature\Importatore_Calibrature.vbproj">
+      <Project>{1177AB36-F960-474C-A01D-54F29F5F6556}</Project>
+      <Name>Importatore_Calibrature</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importatore_IoT_Data\Importatore_IoT_Data.vbproj">
+      <Project>{ce9e9c41-bc4e-4794-a26b-75f67a7415b0}</Project>
+      <Name>Importatore_IoT_Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importatore_UMBRIA\Importatore_UMBRIA.vbproj">
+      <Project>{a3f12535-cc73-42b8-8a66-1536e49e64ed}</Project>
+      <Name>Importatore_UMBRIA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportazioneBDN\ImportazioneBDN.vbproj">
+      <Project>{4843ba2a-1e5e-45d6-851f-d532613c0b66}</Project>
+      <Name>ImportazioneBDN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportazioneRMA_UE\ImportazioneRMA_UE.vbproj">
+      <Project>{54288f74-dc24-41fe-a23e-a02f162e3e19}</Project>
+      <Name>ImportazioneRMA_UE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importazione_Analisi_Pesticidi\Importazione_Analisi_Pesticidi.vbproj">
+      <Project>{0FD23D46-61C6-470F-B1ED-3E2DD57BE5D7}</Project>
+      <Name>Importazione_Analisi_Pesticidi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importazione_Analisi_Zootecnia\Importazione_Analisi_Zootecnia.vbproj">
+      <Project>{177d035b-9740-49da-b9d8-5be91587e67f}</Project>
+      <Name>Importazione_Analisi_Zootecnia</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importazione_Articoli_Fruttagel_JDE\Importazione_Articoli_Fruttagel_JDE.vbproj">
+      <Project>{1842af7f-5e73-4bed-81bd-141d762c81df}</Project>
+      <Name>Importazione_Articoli_Fruttagel_JDE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Importazione_Avepa\Importazione_Avepa.vbproj">
+      <Project>{82F45A6E-5F10-4F67-BDCE-FED17DAA1C85}</Project>
+      <Name>Importazione_Avepa</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportCertificatiPomodoro\ImportazioneConferimentiPomodoro.vbproj">
+      <Project>{d66cc777-ff39-4897-a3f5-1fb34b73c4fa}</Project>
+      <Name>ImportazioneConferimentiPomodoro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportExportUtility\ImportExportUtility.vbproj">
+      <Project>{716582c7-41cb-0033-07f7-44e7178e8e8a}</Project>
+      <Name>ImportExportUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImportGapZani\ImportGapZani.vbproj">
+      <Project>{1f9f8018-fa12-442a-b3cd-d6fa48757a4b}</Project>
+      <Name>ImportGapZani</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Import_Conferimenti\Import_Conferimenti_Agribologna.vbproj">
+      <Project>{018b7dff-aff9-4fe3-8d1e-d199c6c2396f}</Project>
+      <Name>Import_Conferimenti_Agribologna</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\INDICODE_EDI_BMI_Importazione\INDICODE_EDI_BMI_Import_Export.vbproj">
+      <Project>{5CEE9431-DEDA-487C-A6FA-0ADDA451BC67}</Project>
+      <Name>INDICODE_EDI_BMI_Import_Export</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\INDICODE_EDI_Euritmo_Importazione\INDICODE_EDI_Euritmo_Importazione.vbproj">
+      <Project>{50FE40CC-5838-4764-A6D8-882DB989A836}</Project>
+      <Name>INDICODE_EDI_Euritmo_Importazione</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_AnagraficaCosti\Interscambio_AnagraficaCosti.vbproj">
+      <Project>{76ffc5a7-d0eb-496b-a470-01687edeafab}</Project>
+      <Name>Interscambio_AnagraficaCosti</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Anagrafica\Interscambio_Anagrafica.vbproj">
+      <Project>{57e71879-570d-4354-af12-63b3ec438cd0}</Project>
+      <Name>Interscambio_Anagrafica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_BIOrogel\Interscambio_BIOrogel.vbproj">
+      <Project>{ED60A8B9-9124-4D56-B0F6-A30BE6688DF2}</Project>
+      <Name>Interscambio_BIOrogel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Entita\Interscambio_Entita.vbproj">
+      <Project>{503b0077-5cc3-4d93-910a-d7b76ca728b3}</Project>
+      <Name>Interscambio_Entita</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Fatture_Documentale\Interscambio_Fatture_Documentale.vbproj">
+      <Project>{7173c846-f549-41ff-b821-f585a48d844f}</Project>
+      <Name>Interscambio_Fatture_Documentale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Fatture_Pagamenti\Interscambio_Fatture_Pagamenti.vbproj">
+      <Project>{71b2eba9-9a59-444c-8660-9c3a166cb969}</Project>
+      <Name>Interscambio_Fatture_Pagamenti</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Ore\Interscambio_Ore.vbproj">
+      <Project>{b1e5f1dc-91cb-4279-bd81-5b9262a498f3}</Project>
+      <Name>Interscambio_Ore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Prodotti\Interscambio_Prodotti.vbproj">
+      <Project>{9b96dede-f923-4c51-a1ed-f5db4c07e45e}</Project>
+      <Name>Interscambio_Prodotti</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_SuperTask\Interscambio_SuperTask.vbproj">
+      <Project>{ee6da93d-1ca6-4ba6-801f-e6adf5f9b81c}</Project>
+      <Name>Interscambio_SuperTask</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interscambio_Util\Interscambio_Util.vbproj">
+      <Project>{B4667709-1A50-47CE-B930-17D2EF2B3FB5}</Project>
+      <Name>Interscambio_Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InvioNotifichePush\InvioNotifichePush.vbproj">
+      <Project>{d3933f5e-1347-460b-b224-71ed7aab767b}</Project>
+      <Name>InvioNotifichePush</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IsAlive\IsAlive.vbproj">
+      <Project>{971bd555-7087-4b6c-8e52-2c6f2cf1a4d1}</Project>
+      <Name>IsAlive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MaterialeVivaistico\MaterialeVivaistico.vbproj">
+      <Project>{7a3517dc-f4a8-42cf-9b07-0b96874bb4b6}</Project>
+      <Name>MaterialeVivaistico</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mytico\Mytico.vbproj">
+      <Project>{539b58be-a3c3-411e-97f2-eac1256ae3de}</Project>
+      <Name>Mytico</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPTA\OPTA\Importazioni_OPTA.vbproj">
+      <Project>{0B6C4081-2409-4AAA-9E31-070396B8CE8C}</Project>
+      <Name>Importazioni_OPTA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PerformaSincronizzatori\PerformaSincronizzatori.vbproj">
+      <Project>{a1a9b507-a243-4ca1-9d99-c6acf193c026}</Project>
+      <Name>PerformaSincronizzatori</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PianoColturale_Pendenze\PianoColturale_Pendenze.vbproj">
+      <Project>{6cbe5c40-34b9-45bd-a054-db3dd9db9479}</Project>
+      <Name>PianoColturale_Pendenze</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProgrammazioneNotifichePush\ProgrammazioneNotifichePush.vbproj">
+      <Project>{1af8b1bd-43b4-454c-b556-c79b1b1f488e}</Project>
+      <Name>ProgrammazioneNotifichePush</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PuliziaTabelleAgronicaLog\PuliziaTabelleAgronicaLog.vbproj">
+      <Project>{a8f35505-1ee2-4826-b15d-64cd3ca39f2c}</Project>
+      <Name>PuliziaTabelleAgronicaLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PuliziaTabelleAPP\PuliziaTabelleAPP.vbproj">
+      <Project>{51AF4D55-F0C5-4305-9A34-FC15BAA023D1}</Project>
+      <Name>PuliziaTabelleAPP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Riunite_ImportExport\Riunite_ImportExport.vbproj">
+      <Project>{3d22fd7a-9805-4f34-9bd2-11f62b5e0a1e}</Project>
+      <Name>Riunite_ImportExport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SchedeSicurezza\SchedeSicurezza.vbproj">
+      <Project>{8967c0c7-9f6d-4cf6-984a-962a3a5aecd9}</Project>
+      <Name>SchedeSicurezza</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sentinel2Sincro\Sentinel2Sincro.vbproj">
+      <Project>{4879802f-97c5-4268-b5b4-6bbc9be06dbd}</Project>
+      <Name>Sentinel2Sincro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SincroAnagrafeBA\SincroAnagrafeAgronica.vbproj">
+      <Project>{971DDFD0-1355-4868-A8C5-4B5598158059}</Project>
+      <Name>SincroAnagrafeAgronica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SincroAttivita\SincroAttivita.vbproj">
+      <Project>{e8820019-1f54-4df6-8aa8-cb073afeca3b}</Project>
+      <Name>SincroAttivita</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SincroGHG\SincroGHG.vbproj">
+      <Project>{39DC4B6B-3E93-492B-94B9-02F202A7A136}</Project>
+      <Name>SincroGHG</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sincronizzatore_Apofruit\Sincronizzatore_Apofruit.vbproj">
+      <Project>{427F6F8F-164C-4E3A-872B-5ED3851D39AA}</Project>
+      <Name>Sincronizzatore_Apofruit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sincronizzatore_InvioMail\Sincronizzatore_InvioMail.vbproj">
+      <Project>{B65EEBC6-ACEB-4A1B-A134-8D6E9119EFDB}</Project>
+      <Name>Sincronizzatore_InvioMail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SincronizzazioneEntitaInattive\SincronizzazioneEntitaInattive.vbproj">
+      <Project>{8748464D-27AD-4F73-AB3D-43A58BCA9895}</Project>
+      <Name>SincronizzazioneEntitaInattive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SincronizzazioneEsecuzioni\SincronizzazioneEsecuzioni.vbproj">
+      <Project>{FFBBE521-E085-4667-B06E-8EF8FA40A45E}</Project>
+      <Name>SincronizzazioneEsecuzioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sincronizzazione_Dati_Stazioni_Meteo\Sincronizzazione_Dati_Stazioni_Meteo.vbproj">
+      <Project>{48289EDA-ACED-45B4-B042-DA3104F8317A}</Project>
+      <Name>Sincronizzazione_Dati_Stazioni_Meteo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SmartTractors_HubIot_ImpExp\SmartTractors_HubIot_ImpExp.vbproj">
+      <Project>{4ac3d2cc-4022-4429-a8f3-9f132505fad9}</Project>
+      <Name>SmartTractors_HubIot_ImpExp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StoricizzazioneMeteoNT\StoricizzazioneMeteoNT.vbproj">
+      <Project>{296D005B-A57D-4FAC-99D5-BFA253107F2B}</Project>
+      <Name>StoricizzazioneMeteoNT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperTask_Esportazione_To_Demetra\SuperTask_Esportazione_To_Demetra.vbproj">
+      <Project>{d052f300-95f4-4d47-b27d-b8db0fbf51d4}</Project>
+      <Name>SuperTask_Esportazione_To_Demetra</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Timesheet_Calendar\Timesheet_Calendar.vbproj">
+      <Project>{4BF18CB0-4A7A-4F87-9ADF-838627ADB998}</Project>
+      <Name>Timesheet_Calendar</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UpdateChecklist_COPROB\UpdateChecklist_COPROB.vbproj">
+      <Project>{84d9e411-38f2-4064-b1ce-a0afb653bbd9}</Project>
+      <Name>UpdateChecklist_COPROB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VerificaConformitaMassivaBackground\VerificaConformitaMassivaBackground.vbproj">
+      <Project>{12EF9772-608B-490A-B147-CF9E09BF3956}</Project>
+      <Name>VerificaConformitaMassivaBackground</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GiasVersioneCorrente.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Informazioni.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition="$(TeamBuildOutDir) != '' ">
+    <OutputPath>$(TeamBuildOutDir)\$(MSBuildProjectName)</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>SET ORIGINPATH="$(SolutionDir)packages\GDAL.Native.3.9.1\build\gdal\*.*"
+SET RELEASEPATH="$(SolutionDir)Agronica_Gestione_Servizi_in_Backgroud\bin\$(ConfigurationName)\gdal"
+
+ECHO "Origine: %25ORIGINPATH%25"
+ECHO "Destinazione: %25RELEASEPATH%25"
+
+rmdir /S /Q %25RELEASEPATH%25
+mkdir %25RELEASEPATH%25
+xcopy /E %25ORIGINPATH%25 %25RELEASEPATH%25</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

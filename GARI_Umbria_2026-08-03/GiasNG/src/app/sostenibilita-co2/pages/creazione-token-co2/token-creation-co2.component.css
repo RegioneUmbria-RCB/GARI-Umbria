@@ -1,0 +1,163 @@
+.token-creation-co2-page {
+  padding: 0;
+  width: 100%;
+}
+
+gias-side-filters-template {
+  position: absolute;
+  z-index: 1000;
+  right: 0 !important;
+}
+
+.page-header {
+  border-bottom: 1px solid var(--kendo-color-border);
+
+  h2 {
+    margin: 0;
+    color: var(--kendo-color-on-surface);
+  }
+}
+
+.results-section {
+  width: 100%;
+}
+
+.grid-wrapper {
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.results-header {
+  font-size: 1rem;
+  color: var(--kendo-color-on-surface);
+}
+
+/* Match height and font of btn-primary-fill without overriding color */
+.btn-action {
+  height: 30px !important;
+  font-size: 14px !important;
+  font-family: 'Lato', Sans-serif !important;
+}
+
+/* Older (non-latest) invocation rows: visually muted and non-interactive.
+   ::ng-deep is required to pierce Angular view encapsulation into gias-kendo-grid. */
+.grid-wrapper ::ng-deep .k-grid .row-not-selectable,
+.grid-wrapper ::ng-deep .k-grid .k-alt.row-not-selectable,
+.grid-wrapper ::ng-deep .k-grid .row-not-selectable:hover,
+.grid-wrapper ::ng-deep .k-grid .k-alt.row-not-selectable:hover {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Dialog templates ──────────────────────────────────────────────────── */
+.sco2-dialog-content {
+  padding: 2px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sco2-dialog-intro {
+  font-weight: 600;
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.sco2-dialog-banner {
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.sco2-dialog-banner--success {
+  background: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  color: #1b5e20;
+}
+
+.sco2-dialog-banner--error {
+  background: #ffebee;
+  border: 1px solid #ef9a9a;
+  color: #b71c1c;
+}
+
+.sco2-dialog-scroll {
+  max-height: 350px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 4px;
+}
+
+.sco2-dialog-card {
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.sco2-dialog-card--neutral {
+  background: #f8fafb;
+  border: 1px solid #b0bec5;
+}
+
+.sco2-dialog-card--success {
+  background: #f9fffe;
+  border: 1px solid #a5d6a7;
+}
+
+.sco2-dialog-card--error {
+  background: #fff5f5;
+  border: 1px solid #ef9a9a;
+}
+
+.sco2-dialog-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.sco2-dialog-card__icon {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.sco2-dialog-card--success .sco2-dialog-card__icon { color: #2e7d32; }
+.sco2-dialog-card--error .sco2-dialog-card__icon { color: #c62828; }
+
+.sco2-dialog-card__title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a237e;
+}
+
+.sco2-dialog-card--neutral .sco2-dialog-card__title { color: #1a237e; }
+
+.sco2-dialog-card__sub {
+  font-size: 0.8rem;
+  color: #546e7a;
+  margin-top: 2px;
+}
+
+.sco2-dialog-card__label {
+  font-size: 0.78rem;
+  color: #555;
+  margin-bottom: 3px;
+}
+
+.sco2-dialog-card__value {
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.sco2-dialog-card__value--token {
+  font-family: monospace;
+  color: #1a237e;
+}
+
+.sco2-dialog-card__value--error {
+  color: #c62828;
+}

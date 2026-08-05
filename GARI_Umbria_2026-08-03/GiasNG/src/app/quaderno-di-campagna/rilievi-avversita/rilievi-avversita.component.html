@@ -1,0 +1,27 @@
+<div class="rilievi-avversita">
+  <div class="rilievi-avversita-row">
+    <div class="flex-1">
+      <kendo-label>{{'Specie' | transloco}}</kendo-label>
+      <kendo-dropdownlist [data]="species$ | async" [value]="specieSelected$ | async" textField="descrizione"
+        valueField="codice" (valueChange)="changeSpecie($event)" [filterable]="true"
+        [kendoDropDownFilter]="filterSettings">
+      </kendo-dropdownlist>
+    </div>
+
+    <div class="flex-1">
+      <kendo-label>{{'Disciplinare' | transloco}}</kendo-label>
+      <kendo-dropdownlist [data]="disciplinari$ | async" [value]="disciplinareSelected$ | async" textField="descrizione"
+        valueField="codice" (valueChange)="changeDisiplinare($event)" [kendoDropDownFilter]="filterSettings">
+      </kendo-dropdownlist>
+    </div>
+
+    <div class="flex-1">
+      <kendo-label>{{'Avversità' | transloco}}</kendo-label>
+      <kendo-dropdownlist [data]="avversita$ | async" [value]="avversitaSelected$ | async" textField="des"
+        valueField="cod" (valueChange)="changeAvversita($event)" [kendoDropDownFilter]="filterSettings">
+      </kendo-dropdownlist>
+    </div>
+  </div>
+
+  <gias-kendo-grid></gias-kendo-grid>
+</div>

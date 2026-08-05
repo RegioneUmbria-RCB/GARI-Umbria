@@ -1,0 +1,35 @@
+<div class="gis-bottom-window-container registry-container">
+    <div class="window-icon">
+        <div class="title" [class.open]=isRegistryOpen (click)="toggleRegistry()">
+            <span>
+                <i aria-hidden="true"  class="xi-registry-green"></i>
+                <span>{{ 'Anagrafiche' | transloco }}</span>
+            </span>
+            <button class="k-button-flat close-button"><i aria-hidden="true" class="xi-modal-close"></i></button>
+        </div>
+        <div
+            [class.open]=isRegistryOpen
+            class="window-content"
+            [ngClass]="visualizzazioneTotale ? 'registry-content-small' : 'registry-content'">
+            <app-kendo-tree [treeContainerContext]="treeContextGis">
+            </app-kendo-tree>
+        </div>
+    </div>
+</div>
+<!--TODO Salvo: sistemare l'if sottostante per gestire anche la possibilità della sola tabella attributi o campionamenti, dipende da cfgAlbero-->
+<!--*ngIf="agendaVisible" : tolto dalla rga sottostante perché in conflitto con gli attributi-->
+<div class="gis-bottom-window-container" [style.left]="scheduleLeft" *ngIf="isAttributiVisible$ | async">
+    <div class="window-icon">
+        <div class="title" [class.open]=isScheduleOpen (click)="toggleSchedule()">
+            <span>
+                <i aria-hidden="true" [ngClass]="isScheduleDisabled() ? 'xi-schedule-gray' : 'xi-schedule-green'"></i>
+                <span [ngClass]="isScheduleDisabled() ? 'colorGrayNotSelectable' : ''">{{ (isCampionamenti() ? ('Campionamenti' | transloco) : ('Dati' | transloco) ) }}</span>
+                <span *ngIf="agendaLoading$ | async" class="k-ml-5"><kendo-loader type="pulsing" size="small"></kendo-loader></span>
+            </span>
+            <button class="k-button-flat close-button"><i aria-hidden="true" class="xi-modal-close"></i></button>
+        </div>
+        <div [class.open]=isScheduleOpen class="window-content schedule-content scrollable">
+            <GIS-attributi *ngIf="isAttributi && !destroy" [open]="isScheduleOpen"></GIS-attributi>
+        </div>
+    </div>
+</div>

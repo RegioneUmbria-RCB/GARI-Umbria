@@ -1,0 +1,15 @@
+<kendo-formfield>
+    <div class="k-checkbox-wrap">
+        <input
+            type="checkbox"
+            kendoCheckBox
+            [disabled]="isDisabled"
+            [formControlName]="giasFormControlName"
+            (onChange)="changeValue($event)"
+            (change)="changeValue($event)"/>
+        <kendo-label
+            class="k-checkbox-label"
+            [text]="name"
+            ></kendo-label>
+    </div>
+</kendo-formfield>

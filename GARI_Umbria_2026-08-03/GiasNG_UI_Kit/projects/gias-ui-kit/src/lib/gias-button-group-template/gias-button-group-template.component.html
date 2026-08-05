@@ -1,0 +1,6 @@
+<kendo-label *ngIf="name != null" [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+<kendo-buttongroup [selection]="selection" class="kendoButtonWidth">
+  <button type="button" [id]="'kGroupButton_' + element[valueField]" *ngFor="let element of listItems index as i"
+    kendoButton class="kendoButtonWidth" [selected]="value == element[valueField]" (click)="change(element)"
+    [disabled]="disable" [toggleable]="true">{{element[textField]}}</button>
+</kendo-buttongroup>

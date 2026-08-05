@@ -1,0 +1,161 @@
+<h1 class="text_blue title_h1 text_weight_600 title">{{ 'ServiziUsati' | transloco }}</h1>
+<div id="ServicesCustomization">
+  <div class="services-customization-container card-shadow">
+    <div class="services-customization-header border_gray_light1">
+      <div class="title-container">
+        <div class="checkbox-container">
+          <span class="text_blue">{{ 'MenuStandard' | transloco }}</span>
+          <div class="item-switch">
+            <input type="checkbox" id="switch_6" class="checkbox" [checked]="isCustomChecked"
+              (click)="changeCustomSelected($event)" />
+            <label for="switch_6" class="toggle"></label>
+          </div>
+          <span class="text_blue">{{ 'Personalizza' | transloco }}</span>
+        </div>
+      </div>
+
+      <div class="actions-container">
+        <div class="action-button light border_blue text_blue text_uppercase" (click)="doServiceUndo()">
+          {{ 'Annulla' | transloco }}
+        </div>
+        <div class="action-button dark bg_blue text_uppercase" (click)="doServiceExecute()">
+          {{ 'Conferma' | transloco }}
+        </div>
+      </div>
+    </div>
+
+    <div class="services-customization-body">
+      <div id="ServicesManager" class="services-customization-item">
+        <div class="services-manager-container">
+          <div class="services-manager-header">
+            <div class="services-manager-title text_blue text_weight_800">
+              {{ 'SelezionaPreferiti' | transloco }}
+            </div>
+
+            <div class="search-services" id="searchService">
+              <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+              <input type="search" id="searchService" [placeholder]="'CercaServizi' | transloco"
+                [(ngModel)]="filterText">
+            </div>
+          </div>
+
+          <div class="services-manager-body">
+            <div class="services-container">
+              <ng-container *ngFor="let servizioPadre of allServices | filterArr: filterText">
+                <div class="service-item k-cursor-pointer" [id]="servizioPadre.idSezione"
+                  (click)="changeFavorite(servizioPadre, true)">
+                  <span
+                    [ngClass]="hasFavoriteChildren(servizioPadre) ? 'checkbox-icon readonly': 'checkbox-icon active unchecked'">
+                    <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                    <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                  </span>
+                  <div class="service-content service-card-border-left"
+                    [style]="'border-left-color:' + servizioPadre.coloreAlternativo">
+                    <div class="left">
+                      <i aria-hidden="true" [class]="'left fa fa-gias fa_gias_colors ' + servizioPadre.classeCssIcona.replaceAll('.', ' ')"
+                        [style]="'background-color: ' + servizioPadre.coloreAlternativo"></i>
+                      <div class="left service-item-text">{{servizioPadre.testo}}</div>
+                    </div>
+                    <div class="right">
+                      <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <ng-container *ngFor="let preferito of servizioPadre.Figli | filterArr: filterText">
+                  <div class="service-item k-cursor-pointer" [id]="preferito.idSezione"
+                    (click)="changeFavorite(preferito, true)">
+                    <span
+                      [ngClass]="preferito?.preferito == true ? 'checkbox-icon readonly' : 'checkbox-icon active unchecked'">
+                      <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                      <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                    </span>
+                    <div class="service-content service-card-border-left"
+                      [style]="'border-left-color:' + preferito.coloreAlternativo">
+                      <div class="left">
+                        <div class="left service-item-text">{{preferito.testo}}</div>
+                      </div>
+                      <div class="right">
+                        <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ServicesFavourite" class="services-customization-item">
+        <div class="services-favourite-container">
+          <div class="services-favourite-header bg_blue">
+            <span class="star-icon"><i aria-hidden="true" class="fa fa-star-o" aria-hidden="true"></i></span>
+            <div class="services-favourite-title text_weight_800">
+              {{ 'ITuoiPreferiti' | transloco }}
+            </div>
+          </div>
+          <div class="services-favourite-body">
+            <div class="services-container">
+              <ng-container *ngFor="let servizioPadre of allServices">
+                <ng-container *ngIf="hasFavoriteChildren(servizioPadre)">
+                  <div class="service-item k-cursor-pointer" [id]="servizioPadre.idSezione"
+                    (click)="changeFavorite(servizioPadre, false)">
+                    <span class="checkbox-icon remove text_blue">
+                      <i aria-hidden="true" class="fa fa-minus-square" aria-hidden="true"></i>
+                    </span>
+                    <div class="service-content service-card-border-left"
+                      [style]="'border-left-color:' + servizioPadre.coloreAlternativo">
+                      <div class="left">
+                        <i aria-hidden="true" [class]="'left fa fa-gias fa_gias_colors ' + servizioPadre.classeCssIcona.replaceAll('.', ' ')"
+                          [style]="'background-color: ' + servizioPadre.coloreAlternativo"></i>
+                        <div class="left service-item-text">{{servizioPadre.testo}}</div>
+                      </div>
+                      <div class="right">
+                        <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+
+                <ng-container *ngFor="let preferito of servizioPadre.Figli">
+                  <ng-container *ngIf="preferito?.preferito == true">
+                    <div class="service-item k-cursor-pointer" [id]="preferito.idSezione"
+                      (click)="changeFavorite(preferito, false)">
+                      <span class="checkbox-icon remove text_blue">
+                        <i aria-hidden="true" class="fa fa-minus-square" aria-hidden="true"></i>
+                      </span>
+                      <div class="service-content service-card-border-left"
+                        [style]="'border-left-color:' + preferito.coloreAlternativo">
+                        <div class="left">
+                          <div class="left service-item-text">{{preferito.testo}}
+                          </div>
+                        </div>
+                        <div class="right">
+                          <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<kendo-dialog *ngIf="isConfirmationOpen" (close)="isConfirmationOpen = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div>{{ 'TornarePresetIniziale' | transloco }}</div>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="isConfirmationOpen = false">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton (click)="resetConfiguration()" themeColor="primary">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

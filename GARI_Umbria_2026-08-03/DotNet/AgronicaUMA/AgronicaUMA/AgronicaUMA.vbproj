@@ -1,0 +1,1232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C01356B5-0C25-4F00-91F4-2E800CA69A1D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaUMA</RootNamespace>
+    <AssemblyName>AgronicaUMA</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <TargetFrameworkProfile />
+    <UseIISExpress>true</UseIISExpress>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>15.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\AgronicaUMA.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaUMA.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\CacheManager.asmx.vb">
+      <DependentUpon>CacheManager.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\ConfigurazioneUMA.aspx.designer.vb">
+      <DependentUpon>ConfigurazioneUMA.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\ConfigurazioneUMA.aspx.vb">
+      <DependentUpon>ConfigurazioneUMA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\BloccoParticelle.aspx.designer.vb">
+      <DependentUpon>BloccoParticelle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\BloccoParticelle.aspx.vb">
+      <DependentUpon>BloccoParticelle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\ElencoRichieste.aspx.designer.vb">
+      <DependentUpon>ElencoRichieste.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\ElencoRichieste.aspx.vb">
+      <DependentUpon>ElencoRichieste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\ReportControllo.aspx.designer.vb">
+      <DependentUpon>ReportControllo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\ReportControllo.aspx.vb">
+      <DependentUpon>ReportControllo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaAllevamenti.ascx.designer.vb">
+      <DependentUpon>RichiestaAllevamenti.ascx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaAllevamenti.ascx.vb">
+      <DependentUpon>RichiestaAllevamenti.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaAllevamenti_UF.ascx.designer.vb">
+      <DependentUpon>RichiestaAllevamenti_UF.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaAllevamenti_UF.ascx.vb">
+      <DependentUpon>RichiestaAllevamenti_UF.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaCarburanti.aspx.designer.vb">
+      <DependentUpon>RichiestaCarburanti.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaCarburanti.aspx.vb">
+      <DependentUpon>RichiestaCarburanti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaDocumenti.ascx.designer.vb">
+      <DependentUpon>RichiestaDocumenti.ascx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RichiestaDocumenti.ascx.vb">
+      <DependentUpon>RichiestaDocumenti.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RiepilogoDatiUMA.aspx.designer.vb">
+      <DependentUpon>RiepilogoDatiUMA.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RiepilogoDatiUMA.aspx.vb">
+      <DependentUpon>RiepilogoDatiUMA.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\RiepilogoRichieste.aspx.designer.vb">
+      <DependentUpon>RiepilogoRichieste.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\RiepilogoRichieste.aspx.vb">
+      <DependentUpon>RiepilogoRichieste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_Macchine.ascx.designer.vb">
+      <DependentUpon>UMA_Macchine.ascx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_Macchine.ascx.vb">
+      <DependentUpon>UMA_Macchine.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_TerzistiParziale.ascx.designer.vb">
+      <DependentUpon>UMA_TerzistiParziale.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_TerzistiParziale.ascx.vb">
+      <DependentUpon>UMA_TerzistiParziale.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_Terzisti.ascx.designer.vb">
+      <DependentUpon>UMA_Terzisti.ascx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\UMA_Terzisti.ascx.vb">
+      <DependentUpon>UMA_Terzisti.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\Utenti_Visibilita_Area.aspx.designer.vb">
+      <DependentUpon>Utenti_Visibilita_Area.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\Utenti_Visibilita_Area.aspx.vb">
+      <DependentUpon>Utenti_Visibilita_Area.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarburantiUMA\VenditeCarburantiUMA.aspx.designer.vb">
+      <DependentUpon>VenditeCarburantiUMA.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CarburantiUMA\VenditeCarburantiUMA.aspx.vb">
+      <DependentUpon>VenditeCarburantiUMA.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Custom500.aspx.designer.vb">
+      <DependentUpon>Custom500.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Custom500.aspx.vb">
+      <DependentUpon>Custom500.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.designer.vb">
+      <DependentUpon>GestioneRichieste.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.vb">
+      <DependentUpon>GestioneRichieste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Localization.aspx.designer.vb">
+      <DependentUpon>Localization.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Localization.aspx.vb">
+      <DependentUpon>Localization.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\UMABootstrap.Master.designer.vb">
+      <DependentUpon>UMABootstrap.Master.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Master\UMABootstrap.Master.vb">
+      <DependentUpon>UMABootstrap.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Versione.aspx.designer.vb">
+      <DependentUpon>Versione.aspx.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Versione.aspx.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\AgronicaUMA.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>AgronicaUMA.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Global.asax.resx">
+      <DependentUpon>Global.asax.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cache\CacheManager.asmx" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti_UF.ascx" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti_UF.js" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti_UF_ws_client.js" />
+    <Content Include="CarburantiUMA\ReportControllo.aspx" />
+    <Content Include="CarburantiUMA\ReportControllo.js" />
+    <Content Include="CarburantiUMA\ReportControllo_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\ReportControllo_ws_client.js" />
+    <Content Include="CarburantiUMA\RiepilogoDatiUMA.aspx" />
+    <Content Include="CarburantiUMA\RiepilogoDatiUMA.js" />
+    <Content Include="CarburantiUMA\RiepilogoDatiUMA_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\RiepilogoDatiUMA_ws_client.js" />
+    <Content Include="CarburantiUMA\UMA_TerzistiParziale.ascx" />
+    <Content Include="CarburantiUMA\UMA_TerzistiParziale.js" />
+    <Content Include="CarburantiUMA\UMA_TerzistiParziale_ws_client.js" />
+    <Content Include="CarburantiUMA\BloccoParticelle.aspx" />
+    <Content Include="CarburantiUMA\bloccoParticelle.js" />
+    <Content Include="CarburantiUMA\bloccoParticelle_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\bloccoParticelle_ws_client.js" />
+    <Content Include="CarburantiUMA\Utenti_Visibilita_Area.aspx" />
+    <Content Include="CarburantiUMA\Utenti_Visibilita_Area.js" />
+    <Content Include="CarburantiUMA\Utenti_Visibilita_Area_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\Utenti_Visibilita_Area_ws_client.js" />
+    <Content Include="machineKey.config" />
+    <Content Include="appsettings.config" />
+    <Content Include="Master\UMABootstrap.Master" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="ScriptsGestionali\funzioni_comuni.js" />
+    <Content Include="ScriptsGestionali\leggiArrayCostanti.js" />
+    <Content Include="ScriptsGestionali\leggiTabelle_ws_client.js" />
+    <Content Include="ScriptsGestionali\template_comuni_dropdown.js" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.css.map" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.js.map" />
+    <Content Include="Styles\bootstrap-select.css.map" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Styles\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="VersioneBranchUmbria.txt" />
+    <Content Include="web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CarburantiUMA\ConfigurazioneUMA.aspx" />
+    <Content Include="CarburantiUMA\configurazioneUMA.js" />
+    <Content Include="CarburantiUMA\configurazioneUMA_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\configurazioneUMA_ws_client.js" />
+    <Content Include="CarburantiUMA\configurazioniUMA_globali.js" />
+    <Content Include="CarburantiUMA\ElencoRichieste.aspx" />
+    <Content Include="CarburantiUMA\elencoRichieste.js" />
+    <Content Include="CarburantiUMA\elencoRichieste_globali.js" />
+    <Content Include="CarburantiUMA\elencoRichieste_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\elencoRichieste_ws_client.js" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti.ascx" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti.js" />
+    <Content Include="CarburantiUMA\RichiestaAllevamenti_ws_client.js" />
+    <Content Include="CarburantiUMA\RichiestaCarburanti.aspx" />
+    <Content Include="CarburantiUMA\richiestaCarburanti.js" />
+    <Content Include="CarburantiUMA\richiestaCarburanti_globali.js" />
+    <Content Include="CarburantiUMA\richiestaCarburanti_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\richiestaCarburanti_ws_client.js" />
+    <Content Include="CarburantiUMA\RichiestaDocumenti.ascx" />
+    <Content Include="CarburantiUMA\RichiestaDocumenti.js" />
+    <Content Include="CarburantiUMA\RichiestaDocumenti_ws_client.js" />
+    <Content Include="CarburantiUMA\RiepilogoRichieste.aspx" />
+    <Content Include="CarburantiUMA\RiepilogoRichieste.js" />
+    <Content Include="CarburantiUMA\RiepilogoRichieste_globali.js" />
+    <Content Include="CarburantiUMA\RiepilogoRichieste_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\RiepilogoRichieste_ws_client.js" />
+    <Content Include="CarburantiUMA\UMA_Macchine.ascx" />
+    <Content Include="CarburantiUMA\UMA_Macchine.js" />
+    <Content Include="CarburantiUMA\UMA_Macchine_ws_client.js" />
+    <Content Include="CarburantiUMA\UMA_Terzisti.ascx" />
+    <Content Include="CarburantiUMA\UMA_Terzisti.js" />
+    <Content Include="CarburantiUMA\UMA_Terzisti_ws_client.js" />
+    <Content Include="CarburantiUMA\VenditeCarburantiUMA.aspx" />
+    <Content Include="CarburantiUMA\VenditeCarburantiUMA.js" />
+    <Content Include="CarburantiUMA\VenditeCarburantiUMA_jQueryDocReady.js" />
+    <Content Include="CarburantiUMA\VenditeCarburantiUMA_ws_client.js" />
+    <Content Include="Custom500.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="GestioneRichieste.aspx" />
+    <Content Include="GiasVersioneCorrente.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="Localization.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Master\UmaBootstrap_Master.css" />
+    <Content Include="Master\UmaBootstrap_Master_jQueryDocReady.js" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap-switch.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootswatch.js" />
+    <Content Include="Scripts\confrontaDate.js" />
+    <Content Include="Scripts\excanvas.compiled.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\footable.min.js" />
+    <Content Include="Scripts\Funzioni.js" />
+    <Content Include="Scripts\FunzioniMie.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.min.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.min.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.min.js" />
+    <Content Include="Scripts\i18n\defaults-eu.js" />
+    <Content Include="Scripts\i18n\defaults-eu.min.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.min.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Scripts\jMsAjax.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-barcode-2.0.1.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="Scripts\jquery-ui.combobox.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.bubblepopup.v2.3.1.min.js" />
+    <Content Include="Scripts\jquery.circliful.js" />
+    <Content Include="Scripts\jquery.collapsible.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.hotkeys.js" />
+    <Content Include="Scripts\jquery.innerfade.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
+    <Content Include="Scripts\jquery.showLoading.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-it.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-pt-BR.js" />
+    <Content Include="Scripts\jquery.ui.timepicker.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.watable_modificato.js" />
+    <Content Include="Scripts\jshashset-3.0.js" />
+    <Content Include="Scripts\jstree.min_3.js" />
+    <Content Include="Scripts\linq.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Scripts\min\confrontaDate.min.js" />
+    <Content Include="Scripts\min\Funzioni.min.js" />
+    <Content Include="Scripts\min\FunzioniMie.min.js" />
+    <Content Include="Scripts\min\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\min\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="Scripts\min\jquery-ui.combobox.min.js" />
+    <Content Include="Scripts\min\jquery.bubblepopup.v2.3.1.min.js" />
+    <Content Include="Scripts\min\jquery.cookie.min.js" />
+    <Content Include="Scripts\min\jquery.hotkeys.min.js" />
+    <Content Include="Scripts\min\jquery.min.js" />
+    <Content Include="Scripts\min\jquery.showLoading.min.js" />
+    <Content Include="Scripts\min\themes\apple\bg.jpg" />
+    <Content Include="Scripts\min\themes\apple\d.png" />
+    <Content Include="Scripts\min\themes\apple\dot_for_ie.gif" />
+    <Content Include="Scripts\min\themes\apple\style.css" />
+    <Content Include="Scripts\min\themes\apple\throbber.gif" />
+    <Content Include="Scripts\min\themes\classic\d.png" />
+    <Content Include="Scripts\min\themes\classic\dot_for_ie.gif" />
+    <Content Include="Scripts\min\themes\classic\style.css" />
+    <Content Include="Scripts\min\themes\classic\throbber.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\d.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\d.png" />
+    <Content Include="Scripts\min\themes\default-rtl\dots.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\style.css" />
+    <Content Include="Scripts\min\themes\default-rtl\throbber.gif" />
+    <Content Include="Scripts\min\themes\default\d.gif" />
+    <Content Include="Scripts\min\themes\default\d.png" />
+    <Content Include="Scripts\min\themes\default\style.css" />
+    <Content Include="Scripts\min\themes\default\throbber.gif" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.css" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.min.css" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.js" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-de_DE.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-en_US.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-en_US.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-es_CL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-eu.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-eu.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-it_IT.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Scripts\plugins\jqplot.barRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.ciParser.js" />
+    <Content Include="Scripts\plugins\jqplot.ciParser.min.js" />
+    <Content Include="Scripts\plugins\jqplot.cursor.js" />
+    <Content Include="Scripts\plugins\jqplot.cursor.min.js" />
+    <Content Include="Scripts\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.dragable.js" />
+    <Content Include="Scripts\plugins\jqplot.dragable.min.js" />
+    <Content Include="Scripts\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.highlighter.js" />
+    <Content Include="Scripts\plugins\jqplot.highlighter.min.js" />
+    <Content Include="Scripts\plugins\jqplot.json2.js" />
+    <Content Include="Scripts\plugins\jqplot.json2.min.js" />
+    <Content Include="Scripts\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pointLabels.js" />
+    <Content Include="Scripts\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.trendline.js" />
+    <Content Include="Scripts\plugins\jqplot.trendline.min.js" />
+    <Content Include="Scripts\plugins\jquery.jqplot.js" />
+    <Content Include="Scripts\proto.js" />
+    <Content Include="Scripts\themes\apple\bg.jpg" />
+    <Content Include="Scripts\themes\apple\d.png" />
+    <Content Include="Scripts\themes\apple\dot_for_ie.gif" />
+    <Content Include="Scripts\themes\apple\style.css" />
+    <Content Include="Scripts\themes\apple\throbber.gif" />
+    <Content Include="Scripts\themes\classic\d.png" />
+    <Content Include="Scripts\themes\classic\dot_for_ie.gif" />
+    <Content Include="Scripts\themes\classic\style.css" />
+    <Content Include="Scripts\themes\classic\throbber.gif" />
+    <Content Include="Scripts\themes\default-rtl\d.gif" />
+    <Content Include="Scripts\themes\default-rtl\d.png" />
+    <Content Include="Scripts\themes\default-rtl\dots.gif" />
+    <Content Include="Scripts\themes\default-rtl\style.css" />
+    <Content Include="Scripts\themes\default-rtl\throbber.gif" />
+    <Content Include="Scripts\themes\default\d.gif" />
+    <Content Include="Scripts\themes\default\d.png" />
+    <Content Include="Scripts\themes\default\style.css" />
+    <Content Include="Scripts\themes\default\throbber.gif" />
+    <Content Include="Scripts\themes\default_3\32px.png" />
+    <Content Include="Scripts\themes\default_3\40px.png" />
+    <Content Include="Scripts\themes\default_3\style.css" />
+    <Content Include="Scripts\themes\default_3\style.min.css" />
+    <Content Include="Scripts\themes\default_3\throbber.gif" />
+    <Content Include="Scripts\WS.js" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Styles\bootstrap-select.css" />
+    <Content Include="Styles\bootstrap-select.min.css" />
+    <Content Include="Styles\bootstrap-select_1.12.4.min.css" />
+    <Content Include="Styles\bootstrap-switch.min.css" />
+    <Content Include="Styles\bootstrap.3.3.4.min.css" />
+    <Content Include="Styles\bootstrap.3.4.1.min.css" />
+    <Content Include="Styles\bootstrap.4.5.2.min.css" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\bootstrap.datepicker.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch.min.css" />
+    <Content Include="Styles\datepicker.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Styles\images\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-right.png" />
+    <Content Include="Styles\images\loading.gif" />
+    <Content Include="Styles\images\minus.gif" />
+    <Content Include="Styles\images\plus.gif" />
+    <Content Include="Styles\images\throbber.gif" />
+    <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_85_9fda58_500x100.png" />
+    <Content Include="Styles\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Styles\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Styles\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Styles\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Styles\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Styles\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Styles\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Styles\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Styles\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Styles\jquery-ui-1.11.1.min.css" />
+    <Content Include="Styles\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Styles\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Styles\jquery-ui-1.8.4.custom.min.css" />
+    <Content Include="Styles\jquery.bubblepopup.v2.3.1.css" />
+    <Content Include="Styles\jquery.bubblepopup.v2.3.1.min.css" />
+    <Content Include="Styles\jquery.circliful.css" />
+    <Content Include="Styles\jquery.jqplot.min.css" />
+    <Content Include="Styles\jquery.ui.timepicker.css" />
+    <Content Include="Styles\shCoreDefault.min.css" />
+    <Content Include="Styles\showLoading.css" />
+    <Content Include="Styles\showLoading.min.css" />
+    <Content Include="Styles\shThemejqPlot.min.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Styles\Site.min.css" />
+    <Content Include="Styles\visual.css" />
+    <Content Include="Styles\watable\AgronicaWaTable.css" />
+    <Content Include="Styles\watable\watable.css" />
+    <Content Include="Versione.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="WaitForm.htm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{7cc83ed9-9758-432d-8bc5-63c70f24f029}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{efd63249-9cbe-4cb4-90d2-e881341c3b96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreScadenziario\AgronicaCoreScadenziario_DAL.vbproj">
+      <Project>{ae20eaf7-05ab-40e3-a238-33454e0ce715}</Project>
+      <Name>AgronicaCoreScadenziario_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ.vbproj">
+      <Project>{c3cd5baa-f8bf-462b-8533-e1a61c376fd7}</Project>
+      <Name>AgronicaCoreScadenziario_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUmaBiz\AgronicaCoreUmaBiz.vbproj">
+      <Project>{94c6f339-d020-4fdb-b06b-a0f9116de6a5}</Project>
+      <Name>AgronicaCoreUmaBiz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUmaDal\AgronicaCoreUmaDal.vbproj">
+      <Project>{daf17cca-db03-4077-8192-afcb6e733517}</Project>
+      <Name>AgronicaCoreUmaDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtilityVersioni\AgronicaCoreUtilityVersioni.vbproj">
+      <Project>{65a1e92b-5c81-4d83-ade7-1c4af0ef9963}</Project>
+      <Name>AgronicaCoreUtilityVersioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0c28e3ab-427e-45d5-b6b3-43d3378af207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56b64bcf-a26c-4ac3-86fe-7f8114b1b3d9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GiasOnline_2010\AgronicaControlli_2010\AgronicaControlli_2010.vbproj">
+      <Project>{74c51f78-05dc-4fed-b012-40ba23e87b77}</Project>
+      <Name>AgronicaControlli_2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">16.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties scripts_4pluginbootstrap_4css_4bootstrap-select_1css_1map__JsonSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

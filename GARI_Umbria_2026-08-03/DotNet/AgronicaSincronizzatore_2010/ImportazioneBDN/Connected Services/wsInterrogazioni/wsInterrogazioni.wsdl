@@ -1,0 +1,1769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Interrogazione modelli di accompagnamento</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="getPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="getPrenotazioneModelloDettaglio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloDettaglioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrenotazioneModelloDettaglioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloDettaglioPartita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloDettaglioPartitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrenotazioneModelloDettaglioPartitaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloPartita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloPartitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrenotazioneModelloPartitaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelli">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_da" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_a" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_stato_modello" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_struttura_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_regione_codice_dest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListaPrenotazioniModelliResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliPascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_da" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_a" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_pascolo_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_stato_modello" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_struttura_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_regione_codice_dest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliPascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListaPrenotazioniModelliPascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_da" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_a" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_stato_modello" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_struttura_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_regione_codice_dest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListaPrenotazioniModelliPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFarmaco">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_aic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFarmacoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFarmacoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAllegato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAllegatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAllegatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAllegatoPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAllegatoPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAllegatoPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartiteDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_lingua" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartiteDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPartiteDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPascoloDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPascoloDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPascoloDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloFiera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloFieraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloFieraResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloFieraDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloFieraDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloFieraDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartitePascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartitePascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPartitePascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartitePascoloDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadModelloPartitePascoloDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadModelloPartitePascoloDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_azienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prov" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calcolaEstremiModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModelloPascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_pascolo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModelloPascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calcolaEstremiModelloPascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModelloFieraMercato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_fiera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="calcolaEstremiModelloFieraMercatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="calcolaEstremiModelloFieraMercatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloPascolo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPrenotazioneModelloPascoloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPrenotazioneModelloPascoloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloSingoliConDatiCorrenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloSingoliConDatiCorrentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creaModelloSingoliConDatiCorrentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloSingoliConDatiCorrentiDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloSingoliConDatiCorrentiDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creaModelloSingoliConDatiCorrentiDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloPartiteConDatiCorrenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloPartiteConDatiCorrentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creaModelloPartiteConDatiCorrentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloPartiteConDatiCorrentiDE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_prenotazione_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_grspe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="creaModelloPartiteConDatiCorrentiDEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="creaModelloPartiteConDatiCorrentiDEResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliFiera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_da" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_a" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_fm_codice_prov" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_stato_modello" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asl_codice_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_struttura_dest" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_regione_codice_dest" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getListaPrenotazioniModelliFieraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getListaPrenotazioniModelliFieraResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="elencoModelli4Modificati">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_riferimento" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="elencoModelli4ModificatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="elencoModelli4ModificatiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloDettaglio" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloDettaglioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioPartitaSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloDettaglioPartita" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioPartitaSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloDettaglioPartitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloDettaglioPartitaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPartitaSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloPartita" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPartitaSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloPartitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPartitaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliSoapIn">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelli" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliSoapOut">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliPascolo" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliPascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliPartite" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getFarmacoSoapIn">
+    <wsdl:part name="parameters" element="tns:getFarmaco" />
+  </wsdl:message>
+  <wsdl:message name="getFarmacoSoapOut">
+    <wsdl:part name="parameters" element="tns:getFarmacoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFarmacoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAllegato" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAllegatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAllegatoPartite" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAllegatoPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAllegatoPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModello" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloDESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloDE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloDESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteDESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartiteDE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteDESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartiteDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartiteDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPascolo" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloDESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPascoloDE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloDESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPascoloDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPascoloDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloFiera" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloFieraResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraDESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloFieraDE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraDESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloFieraDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloFieraDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartitePascolo" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartitePascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloDESoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartitePascoloDE" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloDESoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadModelloPartitePascoloDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadModelloPartitePascoloDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModello" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloPascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModelloPascolo" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloPascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModelloPascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloPascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloFieraMercatoSoapIn">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModelloFieraMercato" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloFieraMercatoSoapOut">
+    <wsdl:part name="parameters" element="tns:calcolaEstremiModelloFieraMercatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="calcolaEstremiModelloFieraMercatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPascoloSoapIn">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloPascolo" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPascoloSoapOut">
+    <wsdl:part name="parameters" element="tns:getPrenotazioneModelloPascoloResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPrenotazioneModelloPascoloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiSoapIn">
+    <wsdl:part name="parameters" element="tns:creaModelloSingoliConDatiCorrenti" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiSoapOut">
+    <wsdl:part name="parameters" element="tns:creaModelloSingoliConDatiCorrentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiDESoapIn">
+    <wsdl:part name="parameters" element="tns:creaModelloSingoliConDatiCorrentiDE" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiDESoapOut">
+    <wsdl:part name="parameters" element="tns:creaModelloSingoliConDatiCorrentiDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloSingoliConDatiCorrentiDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiSoapIn">
+    <wsdl:part name="parameters" element="tns:creaModelloPartiteConDatiCorrenti" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiSoapOut">
+    <wsdl:part name="parameters" element="tns:creaModelloPartiteConDatiCorrentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiDESoapIn">
+    <wsdl:part name="parameters" element="tns:creaModelloPartiteConDatiCorrentiDE" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiDESoapOut">
+    <wsdl:part name="parameters" element="tns:creaModelloPartiteConDatiCorrentiDEResponse" />
+  </wsdl:message>
+  <wsdl:message name="creaModelloPartiteConDatiCorrentiDESOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliFieraSoapIn">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliFiera" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliFieraSoapOut">
+    <wsdl:part name="parameters" element="tns:getListaPrenotazioniModelliFieraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getListaPrenotazioniModelliFieraSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="elencoModelli4ModificatiSoapIn">
+    <wsdl:part name="parameters" element="tns:elencoModelli4Modificati" />
+  </wsdl:message>
+  <wsdl:message name="elencoModelli4ModificatiSoapOut">
+    <wsdl:part name="parameters" element="tns:elencoModelli4ModificatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="elencoModelli4ModificatiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapo" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsInterrogazioniSoap">
+    <wsdl:operation name="getPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di una prenotazione.</wsdl:documentation>
+      <wsdl:input message="tns:getPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:getPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati dettagliati di una prenotazione per la movimentazione di capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:getPrenotazioneModelloDettaglioSoapIn" />
+      <wsdl:output message="tns:getPrenotazioneModelloDettaglioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglioPartita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati dettagliati di una prenotazione per la movimentazione di capi identificati per partita</wsdl:documentation>
+      <wsdl:input message="tns:getPrenotazioneModelloDettaglioPartitaSoapIn" />
+      <wsdl:output message="tns:getPrenotazioneModelloDettaglioPartitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPartita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di una prenotazione modello per partita.</wsdl:documentation>
+      <wsdl:input message="tns:getPrenotazioneModelloPartitaSoapIn" />
+      <wsdl:output message="tns:getPrenotazioneModelloPartitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelli">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae le prenotazioni dei modelli movimento che soddisfano i criteri di ricerca forniti. L'intervallo di tempo massimo è di 15 gg e il formato ammesso è dd/mm/yyyy</wsdl:documentation>
+      <wsdl:input message="tns:getListaPrenotazioniModelliSoapIn" />
+      <wsdl:output message="tns:getListaPrenotazioniModelliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae le prenotazioni dei modelli movimento da pascolo che soddisfano i criteri di ricerca forniti. L'intervallo di tempo massimo è di 15 gg e il formato ammesso è dd/mm/yyyy</wsdl:documentation>
+      <wsdl:input message="tns:getListaPrenotazioniModelliPascoloSoapIn" />
+      <wsdl:output message="tns:getListaPrenotazioniModelliPascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i modelli movimento per partita che soddisfano i criteri di ricerca forniti. L'intervallo di tempo massimo è di 15 gg e il formato ammesso è dd/mm/yyyy</wsdl:documentation>
+      <wsdl:input message="tns:getListaPrenotazioniModelliPartiteSoapIn" />
+      <wsdl:output message="tns:getListaPrenotazioniModelliPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFarmaco">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i farmaci</wsdl:documentation>
+      <wsdl:input message="tns:getFarmacoSoapIn" />
+      <wsdl:output message="tns:getFarmacoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN un allegato alla sezione ICA del modello IV per le movimentazioni dei capi singoli</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAllegatoSoapIn" />
+      <wsdl:output message="tns:DownloadAllegatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegatoPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN un allegato alla sezione ICA del modello IV per le movimentazioni dei capi per partita</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAllegatoPartiteSoapIn" />
+      <wsdl:output message="tns:DownloadAllegatoPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV in lingua italiana prodotto al momento della conferma. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloSoapIn" />
+      <wsdl:output message="tns:DownloadModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV prodotto in lingua tedesca al momento della conferma. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloDESoapIn" />
+      <wsdl:output message="tns:DownloadModelloDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV prodotto in lingua italiana al momento della conferma, potendo impostare la lingua. Si applica ai modelli dei capi identificati per partita</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPartiteSoapIn" />
+      <wsdl:output message="tns:DownloadModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartiteDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV in tedesco prodotto al momento della conferma. Si applica ai modelli dei capi identificati per partita</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPartiteDESoapIn" />
+      <wsdl:output message="tns:DownloadModelloPartiteDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV di uscita dal pascolo prodotto  in italiano al momento della conferma. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPascoloSoapIn" />
+      <wsdl:output message="tns:DownloadModelloPascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascoloDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV di uscita dal pascolo prodotto in lingua tedesca al momento della conferma. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPascoloDESoapIn" />
+      <wsdl:output message="tns:DownloadModelloPascoloDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFiera">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV di uscita da fiera prodotto in lingua italiana al momento della conferma. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloFieraSoapIn" />
+      <wsdl:output message="tns:DownloadModelloFieraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFieraDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV di uscita da fiera prodotto in lingua tedesca al momento della conferma, potendo impostare la lingua. Si applica ai modelli dei capi identificati singolarmente</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloFieraDESoapIn" />
+      <wsdl:output message="tns:DownloadModelloFieraDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV verso pascolo prodotto in italiano al momento della conferma. Si applica ai modelli dei capi identificati per partite</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPartitePascoloSoapIn" />
+      <wsdl:output message="tns:DownloadModelloPartitePascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascoloDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di scaricare dalla BDN lo stream in base 64 del modello IV verso pascolo prodotto in lingua tedesca al momento della conferma. Si applica ai modelli dei capi identificati per partite</wsdl:documentation>
+      <wsdl:input message="tns:DownloadModelloPartitePascoloDESoapIn" />
+      <wsdl:output message="tns:DownloadModelloPartitePascoloDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Compone il numero del modello sulla base della provenienza e del progressivo raggiunto in BDN </wsdl:documentation>
+      <wsdl:input message="tns:calcolaEstremiModelloSoapIn" />
+      <wsdl:output message="tns:calcolaEstremiModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloPascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Compone il numero del modello sulla base della provenienza e del progressivo raggiunto in BDN </wsdl:documentation>
+      <wsdl:input message="tns:calcolaEstremiModelloPascoloSoapIn" />
+      <wsdl:output message="tns:calcolaEstremiModelloPascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloFieraMercato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Compone il numero del modello sulla base della provenienza e del progressivo raggiunto in BDN </wsdl:documentation>
+      <wsdl:input message="tns:calcolaEstremiModelloFieraMercatoSoapIn" />
+      <wsdl:output message="tns:calcolaEstremiModelloFieraMercatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPascolo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di una prenotazione di uscita da pascolo.</wsdl:documentation>
+      <wsdl:input message="tns:getPrenotazioneModelloPascoloSoapIn" />
+      <wsdl:output message="tns:getPrenotazioneModelloPascoloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Crea il modello PDF, di capi movimentati singolarmente, sulla base dei dati correnti registrati in BDN. Il modello può differire dal documento originale e non viene salvato in BDN</wsdl:documentation>
+      <wsdl:input message="tns:creaModelloSingoliConDatiCorrentiSoapIn" />
+      <wsdl:output message="tns:creaModelloSingoliConDatiCorrentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrentiDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Crea il modello PDF, di capi movimentati singolarmente, in lingua tedesca, sulla base dei dati correnti registrati in BDN. Il modello può differire dal documento originale e non viene salvato in BDN</wsdl:documentation>
+      <wsdl:input message="tns:creaModelloSingoliConDatiCorrentiDESoapIn" />
+      <wsdl:output message="tns:creaModelloSingoliConDatiCorrentiDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Crea il modello PDF, di capi movimentati per partita, sulla base dei dati correnti registrati in BDN. Il modello può differire dal documento originale e non viene salvato in BDN</wsdl:documentation>
+      <wsdl:input message="tns:creaModelloPartiteConDatiCorrentiSoapIn" />
+      <wsdl:output message="tns:creaModelloPartiteConDatiCorrentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrentiDE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Crea il modello PDF, di capi movimentati per partita, in lingua tedesca, sulla base dei dati correnti registrati in BDN. Il modello può differire dal documento originale e non viene salvato in BDN</wsdl:documentation>
+      <wsdl:input message="tns:creaModelloPartiteConDatiCorrentiDESoapIn" />
+      <wsdl:output message="tns:creaModelloPartiteConDatiCorrentiDESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliFiera">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae le prenotazioni dei modelli movimento da fiera per capi identificati singolarmente che soddisfano i criteri di ricerca forniti. L'intervallo di tempo massimo è di 15 gg e il formato ammesso è dd/mm/yyyy</wsdl:documentation>
+      <wsdl:input message="tns:getListaPrenotazioniModelliFieraSoapIn" />
+      <wsdl:output message="tns:getListaPrenotazioniModelliFieraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="elencoModelli4Modificati">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae l'elenco dei modelli 4 validati che hanno subito modifiche nella data di input (data di riferimento) e il formato ammesso è dd/mm/yyyy. Sono ammesse solo date precedenti la data odierna.</wsdl:documentation>
+      <wsdl:input message="tns:elencoModelli4ModificatiSoapIn" />
+      <wsdl:output message="tns:elencoModelli4ModificatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoSoapIn" />
+      <wsdl:output message="tns:getCapoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsInterrogazioniSoap" type="tns:wsInterrogazioniSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglio">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloDettaglio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPrenotazioneModelloDettaglioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglioPartita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloDettaglioPartita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPrenotazioneModelloDettaglioPartitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPartita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloPartita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPrenotazioneModelloPartitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelli">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelli" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getListaPrenotazioniModelliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliPascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getListaPrenotazioniModelliPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getListaPrenotazioniModelliPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFarmaco">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getFarmaco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getFarmacoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAllegato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAllegatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegatoPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAllegatoPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAllegatoPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartiteDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartiteDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPartiteDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascoloDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPascoloDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPascoloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFiera">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloFiera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFieraDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloFieraDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloFieraDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartitePascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPartitePascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascoloDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartitePascoloDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadModelloPartitePascoloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:calcolaEstremiModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloPascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:calcolaEstremiModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloFieraMercato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModelloFieraMercato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:calcolaEstremiModelloFieraMercatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPascolo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPrenotazioneModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/creaModelloSingoliConDatiCorrenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:creaModelloSingoliConDatiCorrentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrentiDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/creaModelloSingoliConDatiCorrentiDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:creaModelloSingoliConDatiCorrentiDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/creaModelloPartiteConDatiCorrenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:creaModelloPartiteConDatiCorrentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrentiDE">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/creaModelloPartiteConDatiCorrentiDE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:creaModelloPartiteConDatiCorrentiDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliFiera">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliFiera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getListaPrenotazioniModelliFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="elencoModelli4Modificati">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/elencoModelli4Modificati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:elencoModelli4ModificatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsInterrogazioniSoap12" type="tns:wsInterrogazioniSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglio">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloDettaglio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPrenotazioneModelloDettaglioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloDettaglioPartita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloDettaglioPartita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPrenotazioneModelloDettaglioPartitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPartita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloPartita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPrenotazioneModelloPartitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelli">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelli" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getListaPrenotazioniModelliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliPascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getListaPrenotazioniModelliPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getListaPrenotazioniModelliPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFarmaco">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getFarmaco" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getFarmacoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAllegato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAllegatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAllegatoPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAllegatoPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAllegatoPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartiteDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartiteDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPartiteDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPascoloDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPascoloDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPascoloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFiera">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloFiera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloFieraDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloFieraDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloFieraDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartitePascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPartitePascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadModelloPartitePascoloDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadModelloPartitePascoloDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadModelloPartitePascoloDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:calcolaEstremiModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloPascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:calcolaEstremiModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calcolaEstremiModelloFieraMercato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/calcolaEstremiModelloFieraMercato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:calcolaEstremiModelloFieraMercatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPrenotazioneModelloPascolo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPrenotazioneModelloPascolo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPrenotazioneModelloPascoloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/creaModelloSingoliConDatiCorrenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:creaModelloSingoliConDatiCorrentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloSingoliConDatiCorrentiDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/creaModelloSingoliConDatiCorrentiDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:creaModelloSingoliConDatiCorrentiDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/creaModelloPartiteConDatiCorrenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:creaModelloPartiteConDatiCorrentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaModelloPartiteConDatiCorrentiDE">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/creaModelloPartiteConDatiCorrentiDE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:creaModelloPartiteConDatiCorrentiDESOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getListaPrenotazioniModelliFiera">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getListaPrenotazioniModelliFiera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getListaPrenotazioniModelliFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="elencoModelli4Modificati">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/elencoModelli4Modificati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:elencoModelli4ModificatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsInterrogazioni">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Interrogazione modelli di accompagnamento</wsdl:documentation>
+    <wsdl:port name="wsInterrogazioniSoap" binding="tns:wsInterrogazioniSoap">
+      <soap:address location="http://bdrizsam.izs.it/wsModelliAccompagnamento/wsInterrogazioni.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsInterrogazioniSoap12" binding="tns:wsInterrogazioniSoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsModelliAccompagnamento/wsInterrogazioni.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

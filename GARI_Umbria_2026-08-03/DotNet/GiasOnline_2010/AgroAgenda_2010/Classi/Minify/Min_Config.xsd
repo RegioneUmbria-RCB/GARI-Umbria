@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified" >
+
+  <xs:element name="MinConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Target" type="TargetType" />
+        <xs:element name="MinifyJs" type="xs:boolean" />
+        <xs:element name="MinifyCss" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="TargetType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ND"/>
+      <xs:enumeration value="Debug"/>
+      <xs:enumeration value="Release"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+

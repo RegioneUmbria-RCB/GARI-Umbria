@@ -1,0 +1,107 @@
+<div class="custom-toolbar qdc-toolbar" *ngIf="displayButton">
+    <button kendoButton look="flat"
+        (click) ="onOpenFilters()">
+        <fa-icon size="lg" [icon]="faFilters"></fa-icon>
+    </button>
+</div>
+
+<kendo-drawer-container>
+    <kendo-drawer #drawer mode="overlay" [width]="drawerWidth"
+    [position]="'end'"
+    (collapse)="onCancel()"
+    (expand)="shouldApply=true"
+    >
+        <ng-template kendoDrawerTemplate>
+            <form [formGroup]="FiltersFG">
+                <div class="btn right" style="margin-bottom: -20px;" (click)="onCancel()">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </div>
+
+                <gias-drop-down-template-s *ngIf="MostraNascondiControlli('Centro_Aziendale')"
+                    [name]="'Centro_Aziendale' | transloco"
+                    giasFormControlName="CentroAziendale"
+                    [listItems]="Centri"
+                    [textField]="'sa_nome'"
+                    [valueField]="'sa_cod'"
+                    [obligatory]="true"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultCentri">
+                </gias-drop-down-template-s>
+
+                <gias-drop-down-template-s *ngIf="MostraNascondiControlli('Specie')"
+                    [name]="'Specie' | transloco"
+                    giasFormControlName="Specie"
+                    [textField]="'veg_des'"
+                    [valueField]="'veg_cod'"
+                    [listItems]="Speci"
+                    [obligatory]="true"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultSpecie">
+                </gias-drop-down-template-s>
+
+                <gias-data-template *ngIf="MostraNascondiControlli('Da')"
+                    [name]="'Da' | transloco"
+                    giasFormControlName="Da"
+                    [nullValue]="Data_Inizio">
+                </gias-data-template>
+                <gias-data-template *ngIf="MostraNascondiControlli('A')"
+                    [name]="'A' | transloco"
+                    giasFormControlName="A"
+                    [nullValue]="Data_Fine">
+                </gias-data-template>
+
+                <gias-multiselect-template-s *ngIf="MostraNascondiControlli('Impianti')"
+                    [name]="'Impianti' | transloco"
+                    giasFormControlName="Impianti"
+                    [listItems]="Impianti"
+                    textField="des"
+                    valueField="chiave"
+                    [obligatory]="false"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [placeholder]="'Tutti' | transloco"
+                    [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+
+                <gias-multiselect-template-s *ngIf="MostraNascondiControlli('Tipo_Operazione')"
+                    [name]="'Tipo_Operazione' | transloco"
+                    [obligatory]="false"
+                    [listItems]="Operazioni"
+                    textField="gru_des"
+                    valueField="gru_cod"
+                    giasFormControlName="TipoOperazione"
+                    [filterable]="true"
+                    [placeholder]="'Tutte' | transloco"
+                    [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+
+                <!-- <div class="top-padding-10">
+                <gias-checkbox-template
+                            [name]="'MostraDDT' | transloco"
+                            giasFormControlName="MostraDDT">
+                </gias-checkbox-template>
+                </div> -->
+
+                <!--<div class="row">
+                    <div class="top-buffer">
+                        <button class="btn btn-primary btn-primary-fill" kendoButton (click)="applyFilters()">
+                            {{ 'Aggiorna' | transloco }}
+                        </button>
+                    </div>
+                </div>-->
+
+                <div class="col" style="padding-top: 20pt;">
+                    <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()">
+                        <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+                        <span>{{ 'Cerca' | transloco }}</span>
+                    </div>
+                </div>
+
+            </form>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container>

@@ -1,0 +1,39 @@
+<form [formGroup]="settingsForm">
+  <div formArrayName="sezioni">
+
+    @if (sezioniArray.controls.length === 0) {
+      <span class="no-settings-container infotext">{{ 'NessunaImpostazioneCaricata' | transloco }}</span>
+
+    } @else if (sezioniArray.controls.length === 1 && projectedTabs.length === 0) {
+      @for (sezione of sezioniArray.controls; track $index) {
+        <div [formGroupName]="$index" [title]="sezione.get('descrizione')?.value">
+          <div formArrayName="children">
+            <app-sezione-impostazioni [sezioneForm]="sezione"></app-sezione-impostazioni>
+          </div>
+        </div>
+      }
+
+    } @else {
+      <kendo-tabstrip style="margin-left: 30px; margin-right: 30px; margin-top: 10px;">
+        @for (sezione of sezioniArray.controls; track $index) {
+          <kendo-tabstrip-tab [formGroupName]="$index" [selected]="$index === 0"
+                              [title]="sezione.get('descrizione')?.value">
+            <ng-template kendoTabContent formArrayName="children">
+              <app-sezione-impostazioni [sezioneForm]="sezione"></app-sezione-impostazioni>
+            </ng-template>
+          </kendo-tabstrip-tab>
+        }
+        @for (tab of projectedTabs; track tab) {
+          <kendo-tabstrip-tab [title]="tab.title">
+            <ng-template kendoTabContent>
+              <ng-container *ngTemplateOutlet="tab.content"></ng-container>
+            </ng-template>
+          </kendo-tabstrip-tab>
+        }
+
+      </kendo-tabstrip>
+    }
+
+  </div>
+</form>
+

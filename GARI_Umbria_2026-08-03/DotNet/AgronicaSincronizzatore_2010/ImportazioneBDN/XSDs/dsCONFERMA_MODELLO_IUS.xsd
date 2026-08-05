@@ -1,0 +1,53 @@
+<xs:schema xmlns:mstns="http://bdr.izs.it/XMLSchema/dsCONFERMA_MODELLO_IUS.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns="http://bdr.izs.it/XMLSchema/dsCONFERMA_MODELLO_IUS.xsd"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bdr.izs.it/XMLSchema/dsCONFERMA_MODELLO_IUS.xsd"
+ elementFormDefault="qualified" attributeFormDefault="qualified" id="dsCONFERMA_MODELLO_IUS">
+    <xs:simpleType name="date2">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:complexType name="xmlElencoInfosan">
+        <xs:sequence>
+            <xs:element name="ELENCO_INFOSAN" type="xmlInfosan"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xmlInfosan">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="INFOSAN" type="xmlDescrInfosan"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="xmlDescrInfosan">
+        <xs:sequence>
+            <xs:element name="AZIENDA_CODICE" type="xs:string" minOccurs="0"/>
+            <xs:element name="MALATTIA_CODICE" type="xs:string" minOccurs="0"/>
+            <xs:element name="QUALSAN_CODICE" type="xs:string" minOccurs="0"/>
+            <xs:element name="DT_RILEVAZIONE" type="date2" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="dsCONFERMA_MODELLO_IUS" msdata:IsDataSet="true">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="PARAMETERS_LIST">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="P_PRENOTAZIONE_ID" type="xs:decimal" minOccurs="0"/>
+                            <xs:element name="P_AZIENDA_CODICE" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_ALLEV_ID_FISCALE" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_SPECIE_CODICE" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_ESTREMI_DOCUMENTO" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_DT_MODELLO" type="date2" minOccurs="0"/>
+                            <xs:element name="P_GIORNI_VALIDITA" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_FLAG_TIPO_NOTA" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_NOTA" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_VETERINARIO" type="xs:string" minOccurs="0"/>
+                            <xs:element name="P_XML_INFOSAN" type="xmlElencoInfosan"/>
+                            <xs:element name="P_DETEN_PAS_ID_FISCALE" type="xs:string" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

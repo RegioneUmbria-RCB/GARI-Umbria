@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/Ws_Gias_2004/Gias_Service" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" targetNamespace="http://tempuri.org/Ws_Gias_2004/Gias_Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/Ws_Gias_2004/Gias_Service">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="AggiornaDatiMeteo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnTypeServer_Sql_or_Ole" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strClientDBMS" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strConnToServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strQuadrante_o_Stazione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strId_Q_or_S" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDateUpdG" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDateUpdH" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMsgError" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AggiornaDatiMeteoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AggiornaDatiMeteoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strMsgError" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertUpdateDates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dstDates">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strConnTypeServer_Sql_or_Ole" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServerDbms" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServerAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertUpdateDatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertUpdateDatesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Download">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsTabs">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strProvider" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServerDbms" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPassWord" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strServerAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strClientProvider" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaRiquadroMappe">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="sngScala" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnDeliSuSfondo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEOut" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNomeFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPathMap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objParam" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrore" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaRiquadroMappeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreaRiquadroMappeResult" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEOut" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNomeFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrore" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaRiquadroMappeAuth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEIn" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="sngScala" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="blnDeliSuSfondo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEOut" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNomeFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPathMap" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="objParam" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrore" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsr4VirtualDir" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwd4VirtualDir" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreaRiquadroMappeAuthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreaRiquadroMappeAuthResult" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYNOOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblXSEOut" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="dblYSEOut" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNomeFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirFile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrore" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetImpersonateWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsrImp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwdImp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetImpersonateWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetImpersonateWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ResetImpersonateWS">
+        <s:complexType />
+      </s:element>
+      <s:element name="ResetImpersonateWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ResetImpersonateWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserisciDatiGrafica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strConServer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsQueries">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strProvider_Sql_or_Ole" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intInserts" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InserisciDatiGraficaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InserisciDatiGraficaResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intInserts" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DatiPedologici">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUsr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPiva" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="shrSa_Cod" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DatiPedologiciResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DatiPedologiciResult" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Versione">
+        <s:complexType />
+      </s:element>
+      <s:element name="VersioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VersioneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperaCoordinate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Id2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RecuperaCoordinateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RecuperaCoordinateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AggiornaDatiMeteoSoapIn">
+    <wsdl:part name="parameters" element="tns:AggiornaDatiMeteo" />
+  </wsdl:message>
+  <wsdl:message name="AggiornaDatiMeteoSoapOut">
+    <wsdl:part name="parameters" element="tns:AggiornaDatiMeteoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertUpdateDatesSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertUpdateDates" />
+  </wsdl:message>
+  <wsdl:message name="InsertUpdateDatesSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertUpdateDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:Download" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreaRiquadroMappeSoapIn">
+    <wsdl:part name="parameters" element="tns:CreaRiquadroMappe" />
+  </wsdl:message>
+  <wsdl:message name="CreaRiquadroMappeSoapOut">
+    <wsdl:part name="parameters" element="tns:CreaRiquadroMappeResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreaRiquadroMappeAuthSoapIn">
+    <wsdl:part name="parameters" element="tns:CreaRiquadroMappeAuth" />
+  </wsdl:message>
+  <wsdl:message name="CreaRiquadroMappeAuthSoapOut">
+    <wsdl:part name="parameters" element="tns:CreaRiquadroMappeAuthResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetImpersonateWSSoapIn">
+    <wsdl:part name="parameters" element="tns:SetImpersonateWS" />
+  </wsdl:message>
+  <wsdl:message name="SetImpersonateWSSoapOut">
+    <wsdl:part name="parameters" element="tns:SetImpersonateWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ResetImpersonateWSSoapIn">
+    <wsdl:part name="parameters" element="tns:ResetImpersonateWS" />
+  </wsdl:message>
+  <wsdl:message name="ResetImpersonateWSSoapOut">
+    <wsdl:part name="parameters" element="tns:ResetImpersonateWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="InserisciDatiGraficaSoapIn">
+    <wsdl:part name="parameters" element="tns:InserisciDatiGrafica" />
+  </wsdl:message>
+  <wsdl:message name="InserisciDatiGraficaSoapOut">
+    <wsdl:part name="parameters" element="tns:InserisciDatiGraficaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatiPedologiciSoapIn">
+    <wsdl:part name="parameters" element="tns:DatiPedologici" />
+  </wsdl:message>
+  <wsdl:message name="DatiPedologiciSoapOut">
+    <wsdl:part name="parameters" element="tns:DatiPedologiciResponse" />
+  </wsdl:message>
+  <wsdl:message name="VersioneSoapIn">
+    <wsdl:part name="parameters" element="tns:Versione" />
+  </wsdl:message>
+  <wsdl:message name="VersioneSoapOut">
+    <wsdl:part name="parameters" element="tns:VersioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaCoordinateSoapIn">
+    <wsdl:part name="parameters" element="tns:RecuperaCoordinate" />
+  </wsdl:message>
+  <wsdl:message name="RecuperaCoordinateSoapOut">
+    <wsdl:part name="parameters" element="tns:RecuperaCoordinateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Gias_ServiceSoap">
+    <wsdl:operation name="AggiornaDatiMeteo">
+      <wsdl:input message="tns:AggiornaDatiMeteoSoapIn" />
+      <wsdl:output message="tns:AggiornaDatiMeteoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertUpdateDates">
+      <wsdl:input message="tns:InsertUpdateDatesSoapIn" />
+      <wsdl:output message="tns:InsertUpdateDatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <wsdl:input message="tns:DownloadSoapIn" />
+      <wsdl:output message="tns:DownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaRiquadroMappe">
+      <wsdl:input message="tns:CreaRiquadroMappeSoapIn" />
+      <wsdl:output message="tns:CreaRiquadroMappeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaRiquadroMappeAuth">
+      <wsdl:input message="tns:CreaRiquadroMappeAuthSoapIn" />
+      <wsdl:output message="tns:CreaRiquadroMappeAuthSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetImpersonateWS">
+      <wsdl:input message="tns:SetImpersonateWSSoapIn" />
+      <wsdl:output message="tns:SetImpersonateWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetImpersonateWS">
+      <wsdl:input message="tns:ResetImpersonateWSSoapIn" />
+      <wsdl:output message="tns:ResetImpersonateWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InserisciDatiGrafica">
+      <wsdl:input message="tns:InserisciDatiGraficaSoapIn" />
+      <wsdl:output message="tns:InserisciDatiGraficaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DatiPedologici">
+      <wsdl:input message="tns:DatiPedologiciSoapIn" />
+      <wsdl:output message="tns:DatiPedologiciSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Versione">
+      <wsdl:input message="tns:VersioneSoapIn" />
+      <wsdl:output message="tns:VersioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaCoordinate">
+      <wsdl:input message="tns:RecuperaCoordinateSoapIn" />
+      <wsdl:output message="tns:RecuperaCoordinateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Gias_ServiceSoap" type="tns:Gias_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AggiornaDatiMeteo">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/AggiornaDatiMeteo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertUpdateDates">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/InsertUpdateDates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/Download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaRiquadroMappe">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/CreaRiquadroMappe" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaRiquadroMappeAuth">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/CreaRiquadroMappeAuth" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetImpersonateWS">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/SetImpersonateWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetImpersonateWS">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/ResetImpersonateWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InserisciDatiGrafica">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/InserisciDatiGrafica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatiPedologici">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/DatiPedologici" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Versione">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/Versione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperaCoordinate">
+      <soap:operation soapAction="http://tempuri.org/Ws_Gias_2004/Gias_Service/RecuperaCoordinate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Gias_Service">
+    <wsdl:port name="Gias_ServiceSoap" binding="tns:Gias_ServiceSoap">
+      <soap:address location="http://192.168.2.8/ws_gias_2004/gias_service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

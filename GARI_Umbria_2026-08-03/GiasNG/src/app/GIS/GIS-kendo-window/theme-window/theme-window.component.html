@@ -1,0 +1,67 @@
+<gis-window [windowArgs]="windowArgs$ | async" class="pb-3">
+
+  <ng-container
+    *ngIf="{ tipoLayerSelected: tipoLayerSelected$ | async, layerSelected: layerSelected$ | async, tiles: tiles$ | async } as data">
+    <div class="theme-form">
+      <div class="label-container">
+        <label for="theme-select">{{ 'gis.TemaSelezionato' | transloco }}:</label>
+      </div>
+
+      <kendo-dropdownlist *ngIf="data.tiles?.length > 0" name="theme-select" id="theme-select" [data]="data.tiles"
+        [defaultItem]="{ id: 0, nomeTradotto: ('gis.SelezionaTema' | transloco) + '...' }" textField="nomeTradotto"
+        (valueChange)="onChangeTheme($event, data.layerSelected)" [ngModel]="temaSelezionato">
+      </kendo-dropdownlist>
+
+      <button *ngIf="isFullModality()" (click)="onClickThemeSettings()">
+        <i aria-hidden="true" class="xi-settings-light"></i>
+      </button>
+    </div>
+
+    <ng-container *ngIf="temaSelezionato != null">
+      <!-- VISUALIZZAZIONE TEMA CONTINUO -->
+      <div *ngIf="!isThemeDiscrete()" class="d-flex">
+        <theme-window-band-slider class="flex-1" [theme]="temaSelezionato" [scale]="scalaColori"
+          (output)="setContinuousInterval($event, data.layerSelected)"></theme-window-band-slider>
+
+        <span (click)="focusVisibleItems(data.layerSelected)" class="info-icon" [title]="'gis.TemaFocusFeatureVisibili' | transloco"
+          kendoTooltip>
+          <i aria-hidden="true" class="xi-layer-search"></i>
+        </span>
+      </div>
+
+      <!-- VISUALIZZAZIONE TEMA DISCRETO -->
+      <ng-container *ngIf="isThemeDiscrete()">
+        <div class="theme-colors-container space-between">
+          <div class="theme-colors-section flex-1 d-flex" *ngFor="let tileLabel of temaSelezionato.tileLabels">
+            <div class="flex-1">
+              <div class="band" [ngStyle]="{ 'background': tileLabel.visible ? tileLabel.colore : '#cccccc' }"></div>
+              <div class="bottom-numbers">
+                <div class="discrete">
+                  {{ tileLabel.singleValue ? tileLabel.valore_associato : tileLabel.valore_min }}
+                </div>
+                <div class="flex-1 no-wrap"> {{ tileLabel.label }}</div>
+                <div class="discrete" *ngIf="!tileLabel.singleValue">{{ tileLabel.valore_max }}</div>
+              </div>
+            </div>
+
+            <span (click)="toggleLabel(tileLabel, data.layerSelected)" class="info-icon">
+              <i aria-hidden="true" [class]="tileLabel.visible ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'"> </i>
+            </span>
+          </div>
+
+          <span (click)="focusVisibleItems(data.layerSelected)" class="info-icon"
+            [title]="'gis.TemaFocusFeatureVisibili' | transloco" kendoTooltip>
+            <i aria-hidden="true" class="xi-layer-search"></i>
+          </span>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- IMPOSTAZIONI TEMA -->
+    <ng-container *ngIf="visualizzaImpostazioniTema && temaSelezionato?.id != 0">
+      <theme-window-settings [layerSelezionato]="data.layerSelected" [temaSelezionato]="temaSelezionato"
+        [tipoLayerSelected]="data.tipoLayerSelected" (cancel)="onSettingsClose()"
+        (save)="onSettingsSave($event, data.layerSelected, data.tipoLayerSelected)"></theme-window-settings>
+    </ng-container>
+  </ng-container>
+</gis-window>

@@ -1,0 +1,51 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '0 2 * * *' # cron syntax defining a schedule (03:00)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: false
+
+variables:
+- group: Destinations
+- template: ../../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../../templates/pipelines/net-agro-web-pipeline.yml  # Template reference
+  parameters:
+    solution: AgronicaCore_2010
+    target: AgronicaCoreWS
+    artifactName: 'AgronicaCoreWS'
+    path: 'AgronicaCore_2010'
+    artifactBasePath: AgronicaCoreWS
+    outdir: 'AgronicaCoreWS'
+    sonarExcludeDuplicates: true
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    preBuildSteps:
+      - template: ../../templates/steps/sonar-pre-build.yml
+        parameters:
+          scannerMode: 'dotnet'
+          projectKey: 'GiasDotNet-CoreWS'
+          projectName: 'GiasDotNet - CoreWS'
+          projectVersion: '$(SonarVersion)'
+          #verbose: 'true'
+    postBuildSteps:
+      - task: CopyFiles@2
+        displayName: 'Copia dei file GDAL Native non gestiti da Nuget'
+        inputs:
+          SourceFolder: '$(Build.SourcesDirectory)\AgronicaCore_2010\AgronicaCoreWS\bin\'
+          Contents: 'gdal\**'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)\AgronicaCoreWS\bin\'
+
+      - template: ../../templates/steps/sonar-post-build.yml

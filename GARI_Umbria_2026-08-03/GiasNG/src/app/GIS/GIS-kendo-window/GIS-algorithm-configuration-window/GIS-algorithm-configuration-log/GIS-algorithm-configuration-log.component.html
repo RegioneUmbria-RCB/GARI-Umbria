@@ -1,0 +1,34 @@
+﻿<ng-container *ngIf="feature == null">
+  <h6>{{ 'gis.NessunaFeatureSelezionata' | transloco }}</h6>
+</ng-container>
+
+<ng-container *ngIf="feature != null">
+  <ng-container *ngIf="{ logs: logs$ | async } as data">
+    <div class="algorithm-configuration">
+      <h5>{{ description }}</h5>
+      <h6 *ngIf="guid != null">GUID: {{ guid }}</h6>
+      <h6>{{ layer?.nome }}</h6>
+
+      <ng-container *ngIf="data.logs?.length == 0">
+        <h6>{{ 'gis.NessunaConfigurazionePerQuestaFeature' | transloco }}</h6>
+      </ng-container>
+
+      <ng-container *ngIf="data.logs?.length > 0">
+        <kendo-panelbar expandMode="single" [keepItemContent]="true">
+          <kendo-panelbar-item *ngFor="let log of data.logs"
+            [title]="'gis.ConfigurazioneXNome' | transloco: { configuration: log.description }">
+            <ng-template kendoPanelBarContent>
+              <h6 *ngIf="log.messages?.length == 0">{{ 'gis.NessunLogPerQuestaConfigurazione' | transloco }}</h6>
+              <div *ngFor="let logMessage of log.messages ?? []" class="message">
+                <p class="message-date"> {{ logMessage.date | date: 'dd MMM yy, HH:mm' }}</p>
+                <ul class="messages">
+                  <li *ngFor="let message of logMessage.messages">{{ message }}</li>
+                </ul>
+              </div>
+            </ng-template>
+          </kendo-panelbar-item>
+        </kendo-panelbar>
+      </ng-container>
+    </div>
+  </ng-container>
+</ng-container>

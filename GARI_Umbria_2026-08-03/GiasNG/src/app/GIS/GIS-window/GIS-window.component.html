@@ -1,0 +1,36 @@
+<kendo-window
+  #window
+  *ngIf="getOpenState"
+  (close)="close()"
+  (dragEnd)="onDragEnd()"
+  (dragStart)="onDragStart()"
+  [minWidth]="windowArgs.minWidth"
+  [(width)]="windowArgs.width"
+  [(height)]="windowArgs.height"
+  [(left)]="windowArgs.left"
+  [(top)]="windowArgs.top"
+  [(state)]="windowState"
+  [(draggable)]="windowArgs.isDraggable"
+  style="{{isSmartphone ? 'margin-bottom: 50px' : ''}}"
+>
+  <kendo-window-titlebar class="no-default-close-button">
+    <!-- scommentare se pinnabile -->
+    <!-- <div class="br-1 pr-1 mr-1 py-1" *ngIf="windowArgs.isPinnable">
+        <i aria-hidden="true" class="xi-modal-pin"></i>
+    </div> -->
+    <div class="py-1" *ngIf="!windowArgs.isPinnable">
+      <i aria-hidden="true" class="xi-none"></i>
+    </div>
+
+    <div class='k-window-title' [innerHtml]="windowArgs.title"></div>
+    <button kendoWindowRestoreAction [hidden]="windowArgs.isRestoreHidden"><i aria-hidden="true" class="xi-modal-expand"></i></button>
+    <button kendoWindowMinimizeAction [hidden]="windowArgs.isMinimizeHidden || windowState == 'minimized'">
+      <i aria-hidden="true" class="xi-modal-reduce"></i>
+    </button>
+    <button kendoWindowMaximizeAction [hidden]="windowArgs.isMaximizeHidden || windowState == 'maximized'">
+      <i aria-hidden="true" class="xi-modal-fullscreen"></i>
+    </button>
+    <button kendoWindowCloseAction [hidden]="windowArgs.isCloseHidden"><i aria-hidden="true" class="xi-modal-close"></i></button>
+  </kendo-window-titlebar>
+  <ng-content></ng-content>
+</kendo-window>

@@ -1,0 +1,30 @@
+<section class="">
+  <gias-kendo-grid 
+                  #zooIndicationsGrid class="kendo-grid-no-shadows"
+                  [customCommandColumnCellTemplate]="customCommandColumn">
+      <ng-container headerContentButtons>
+        @if (canEdit) {
+          <span class="separator"></span>
+          <div kendoTooltip>
+            <button class="btn btn-delete btn-sm" (click)="removeSelected()"
+                    [type]="'button'"
+                    [title]="'CancellaleOperazioniSelezionate' | transloco">
+              <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+            </button>
+          </div>
+        }
+      </ng-container>
+  </gias-kendo-grid>
+  <ng-template #customCommandColumn let-dataItem="dataItem">
+    <div class="column-commands">
+      <button
+        kendoButton
+        kendoTooltip
+        (click)="startProtocollo(dataItem)"
+        [title]="'ProtocolloStart' | transloco"
+        fillMode="flat">
+        <i aria-hidden="true" class="k-i-xi-tools-start-protocollo"></i>
+      </button>
+    </div>
+  </ng-template>
+</section>

@@ -1,0 +1,1 @@
+sc create AgronicaGSB displayname= "AgronicaGSB - Gestione Servizi Background" binpath= "C:\GIT_AAABBB19\GiasGit\GiasDotNet\AgronicaSincronizzatore_2010\Agronica_Gestione_Servizi_in_Backgroud\bin\debug\AgronicaGSB_Gestione_Servizi_in_Background.exe"

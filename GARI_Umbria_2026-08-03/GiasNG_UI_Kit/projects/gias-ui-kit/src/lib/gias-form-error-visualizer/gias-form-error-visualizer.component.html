@@ -1,0 +1,63 @@
+<kendo-card *ngIf="errorTree?.length > 0" [width]="(windowS.outerWidth * 0.5) + ''">
+    <kendo-card-header class="k-hstack error-title">
+        <div>
+            <h1 kendoCardTitle>{{ "SonoStatiRilevatiISeguentiErrori_" | transloco }}</h1>
+        </div>
+    </kendo-card-header>
+    <kendo-card-body class="error-content">
+        <div class="row">
+            <table>
+              <caption>Campi da compilare</caption>
+              <th></th>
+            <tr>
+                <td><strong>{{ "Campo" | transloco }}</strong></td>
+                <td><strong>{{ "Errore_" | transloco }}</strong></td>
+            </tr>
+            <tr *ngFor="let error of errorTree">
+                    <td style="cursor: pointer" (click)="goToAnchorTag(error.field)">
+                        <kendo-label><a routerLink="." [fragment]="error.field">{{ error.name ? error.name : error.field }}</a>:</kendo-label>
+                    </td>
+                    <td>
+                        <kendo-label *ngIf="error.errors['required'] == true">{{'Obbligatorio' | transloco}}</kendo-label>
+                        <kendo-label *ngIf="error.errors['min']">{{ 'Minimo' | transloco }} {{ error.errors['min']?.min }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['UtilizzoTerrenoNoSpecie'] == true">{{ 'SpecieObbligatoria' | transloco }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['UtilizzoTerrenoNoVarieta'] == true">{{ 'VarietàObbligatoria' | transloco }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['UtilizzoTerrenoNoDestinazione'] == true">{{ 'DestinazioneDUsoObbligatoria' | transloco }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['ddlNotSet'] == true">Selezionare un valore</kendo-label>
+                        <kendo-label *ngIf="error.errors['piva'] == true">{{ 'PartitaIvaGiàInserita' | transloco }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['invalidPiva'] == true">{{ 'InvalidPiva' | transloco }}</kendo-label>
+                        <kendo-label *ngIf="error.errors['validita'] == false">{{ 'DataNonCoerente' | transloco }}</kendo-label>
+                    </td>
+            </tr>
+            </table>
+        </div>
+    </kendo-card-body>
+</kendo-card>
+<!-- <div class="k-panel panel-danger">
+    <div class="panel-heading">{{ "SonoStatiRilevatiISeguentiErrori_" | transloco }}</div>
+    <div class="panel-body">
+        <div class="row">
+            <table>
+                <tr>
+                    <td><strong>{{ "Campo" | transloco }}</strong></td>
+                    <td><strong>{{ "Errore_" | transloco }}</strong></td>
+                </tr>
+                <tr *ngFor="let error of errorTree">
+                    <td>
+                        <kendo-label><a routerLink="." [fragment]="error.field">{{ error.name ? error.name : error.field }}</a>:
+                        </kendo-label>
+                    </td>
+                    <td>
+                        <kendo-label *ngIf="error.errors.required == true">{{'Obbligatorio' | transloco}}</kendo-label>
+                        <kendo-label *ngIf="error.errors.min">{{ 'Minimo' | transloco }} {{ error.errors.min?.min }}
+                        </kendo-label>
+                        <kendo-label *ngIf="error.errors.UtilizzoTerrenoNoSpecie == true">Specie Obbligatoria</kendo-label>
+                        <kendo-label *ngIf="error.errors.UtilizzoTerrenoNoVarieta == true">Varietà Obbligatoria</kendo-label>
+                        <kendo-label *ngIf="error.errors.UtilizzoTerrenoNoDestinazione == true">Destinazione D'uso Obbligatoria
+                        </kendo-label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div> -->

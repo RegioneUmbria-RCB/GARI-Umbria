@@ -1,0 +1,38 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Imposta via Js i filtri in un WaTable</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>waTable_ClientId</ID>
+          <ToolTip>Client ID del WaTable</ToolTip>
+          <Default>WaTableID</Default>
+        </Literal>
+        <Literal>
+          <ID>NomeColonna</ID>
+          <ToolTip>Nome Colonna da filtrare</ToolTip>
+          <Default>Descr</Default>
+        </Literal>
+        <Literal>
+          <ID>Filtro</ID>
+          <ToolTip>Valore del filtro</ToolTip>
+          <Default>abc</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">        
+        <![CDATA[
+        var Filtro = "$Filtro$";
+        waImpostaFiltro("#$waTable_ClientId$", "$NomeColonna$", Filtro);]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

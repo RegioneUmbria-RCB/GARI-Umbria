@@ -1,0 +1,30 @@
+<div id="breadcrumb-menu" class="menuGias">
+
+  <ng-container *ngIf="!isExternalLoad">
+    <div class="item" *ngIf="data != null">
+      <span class="dropdown-el input-border-area-product">
+        <div class="select-selected" [title]="data.TestoPadre" kendoTooltip
+          [style]="'border-color: ' + data.Colore + ' !important; border-left: 3px ' + data.Colore + ' solid !important;'">
+          <!--(click)="selectClicked($event)"-->
+          <div class="item-icon" *ngIf="data != null">
+            <i aria-hidden="true" [ngClass]="['fa_gias_colors', data.ClasseCssIcona]" [style]="'background-color: ' + data.Colore"></i>
+          </div>
+          <span class="breadcrumbs-info">{{data.TestoPadre}}</span>
+        </div>
+      </span>
+    </div>
+
+    <div class="item" *ngIf="data != null">
+      <span class="dropdown-el input-border-area-product">
+        <div class="select-selected" [style]="'border-color: ' + data.Colore + ' !important;'"
+          [title]="data.TestoFiglio" kendoTooltip><!--(click)="selectClicked($event)"-->
+          <span class="breadcrumbs-info">{{data.TestoFiglio}}</span>
+        </div>
+      </span>
+    </div>
+  </ng-container>
+
+  <div backButton *ngIf="ShowBackButton()" [class]="isDashboard ? 'hidden item-icon' : 'item-icon'">
+    <i aria-hidden="true" class="fa fa_gias_colors fa_gias_back pointer"></i>
+  </div>
+</div>

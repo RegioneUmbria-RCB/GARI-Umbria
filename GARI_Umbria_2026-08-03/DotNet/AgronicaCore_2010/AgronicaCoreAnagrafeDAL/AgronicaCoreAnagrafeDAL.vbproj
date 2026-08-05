@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{4489BE20-BBE8-4B33-A6C3-82B845521073}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreAnagrafeDAL</RootNamespace>
+    <AssemblyName>AgronicaCoreAnagrafeDAL</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgronicaCoreAnagrafeDAL_resx\AgronicaCoreAnagrafeDAL.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaCoreAnagrafeDAL.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AgronicaLogAnalisi.vb" />
+    <Compile Include="Agronica_Log_Contatti.vb" />
+    <Compile Include="Analisi_Tipi.vb" />
+    <Compile Include="Analisi_Correzioni.vb" />
+    <Compile Include="AppezzamentiXParcoMacchine.vb" />
+    <Compile Include="AppezzamentixParticelle.vb" />
+    <Compile Include="DatiPrevisionaliColture.vb" />
+    <Compile Include="Dtos\RelazioneCantineInterniVasche.vb" />
+    <Compile Include="Dtos\LineaProduttiva.vb" />
+    <Compile Include="EFGruppoRaccolta.vb" />
+    <Compile Include="Gruppi_Raccolta.vb" />
+    <Compile Include="LineePreparazioni.vb" />
+    <Compile Include="LineeProduttive.vb" />
+    <Compile Include="Plateau.vb" />
+    <Compile Include="ProgettiXContributi.vb" />
+    <Compile Include="Info_Verifiche_Massive.vb" />
+    <Compile Include="Reg_ImpiantiXParcoMacchine.vb" />
+    <Compile Include="Reg_Impianti_XIndiciProduttivitaAI.vb" />
+    <Compile Include="IndiciProduttivitaAi.vb" />
+    <Compile Include="Parametri_Indice..vb" />
+    <Compile Include="CAC_Codifica_Dati_SistemiEsterni.vb" />
+    <Compile Include="Cantina_Insiemi.vb" />
+    <Compile Include="CertificazioniAziendali.vb" />
+    <Compile Include="Dtos\VenditaCarburanti.vb" />
+    <Compile Include="EFAppezzamento.vb" />
+    <Compile Include="EFCampi.vb" />
+    <Compile Include="EFClassamento.vb" />
+    <Compile Include="EFEsercizi.vb" />
+    <Compile Include="EFIndirizzoTipo.vb" />
+    <Compile Include="EFReg_Impianti.vb" />
+    <Compile Include="EFZone.vb" />
+    <Compile Include="Gruppi_UtenteXGruppi_Merce.vb" />
+    <Compile Include="Imprese_Impostazioni.vb" />
+    <Compile Include="AgroBA_Fascicolo.vb" />
+    <Compile Include="AgronicaLogAnagrafe.vb" />
+    <Compile Include="AlberoAnagraficaFaster.vb" />
+    <Compile Include="AlberoAnagraficaFasterModel.vb" />
+    <Compile Include="Anagrafe_VincoliAgronomici.vb" />
+    <Compile Include="Analisi_Campione.vb" />
+    <Compile Include="Analisi_CampionexDet.vb" />
+    <Compile Include="Analisi_Certificato.vb" />
+    <Compile Include="Categorie_Configurazione.vb" />
+    <Compile Include="Imprese_Parametri_GHG.vb" />
+    <Compile Include="jDeereDataModelDAL_FieldOperation.vb" />
+    <Compile Include="jDeereDataModelDAL_FieldOperationFileRequest.vb" />
+    <Compile Include="jDeereDataModelDAL_FieldOperationMeasurement.vb" />
+    <Compile Include="jDeereDataModelDAL_FieldXBoundary.vb" />
+    <Compile Include="jDeereDataModelDAL_Account.vb" />
+    <Compile Include="jDeereDataModelDAL_Boundary.vb" />
+    <Compile Include="jDeereDataModelDAL_Client.vb" />
+    <Compile Include="jDeereDataModelDAL_Farm.vb" />
+    <Compile Include="jDeereDataModelDAL_Field.vb" />
+    <Compile Include="jDeereDataModelDAL_EntitaGias.vb" />
+    <Compile Include="jDeereDataModelDAL_Files.vb" />
+    <Compile Include="jDeereDataModelDAL_Organization.vb" />
+    <Compile Include="jDeereDataModelDAL_AccountXOrganization.vb" />
+    <Compile Include="Listini_CampionamentoConferito_X_Testata_Griglia.vb" />
+    <Compile Include="ParamEntrataXSpecieVarieta.vb" />
+    <Compile Include="Analisi_Dettagli.vb" />
+    <Compile Include="Analisi_Entita.vb" />
+    <Compile Include="Analisi_EntitaxCertificato.vb" />
+    <Compile Include="Analisi_EntitaxTestata.vb" />
+    <Compile Include="Analisi_Parametri.vb" />
+    <Compile Include="Analisi_Testata.vb" />
+    <Compile Include="AppezzamentixIndirizzi.vb" />
+    <Compile Include="AppezzamentixRubrica.vb" />
+    <Compile Include="Appezzamento.vb" />
+    <Compile Include="Appezzamento_Codici.vb" />
+    <Compile Include="Appezzamento_Storico.vb" />
+    <Compile Include="AppezzaxParticelle.vb" />
+    <Compile Include="AppezzaxParticellexMacrousi.vb" />
+    <Compile Include="AppezzaxParticellexMacrousixUtilizzo.vb" />
+    <Compile Include="Area_Omogenea.vb" />
+    <Compile Include="Area_OmogeneaxEntita.vb" />
+    <Compile Include="AttivitaXCentri_Aziendali.vb" />
+    <Compile Include="CAC_Codifica_Animali.vb" />
+    <Compile Include="CAC_Codifica_Avversita.vb" />
+    <Compile Include="CAC_Codifica_Cultivar.vb" />
+    <Compile Include="CAC_Codifica_FormeAllevamento.vb" />
+    <Compile Include="CAC_Codifica_ImpiantiIrrigazioni.vb" />
+    <Compile Include="CAC_Codifica_InfoAggiuntive.vb" />
+    <Compile Include="CAC_Codifica_OTE_R.vb" />
+    <Compile Include="CAC_Codifica_Portinnesti.vb" />
+    <Compile Include="CAC_Codifica_ProdottiAziendali.vb" />
+    <Compile Include="CAC_Codifica_UnitaMisura.vb" />
+    <Compile Include="CAC_Codifica_Veg_Cod.vb" />
+    <Compile Include="CAC_Codifica_Zone.vb" />
+    <Compile Include="Campi.vb" />
+    <Compile Include="CampixParticelle.vb" />
+    <Compile Include="Campi_codici.vb" />
+    <Compile Include="Campi_Storico.vb" />
+    <Compile Include="Cantina_Caratter.vb" />
+    <Compile Include="Cantina_Masse_Volumiche.vb" />
+    <Compile Include="Cantina_Pareti.vb" />
+    <Compile Include="Cantina_Vasche.vb" />
+    <Compile Include="CatastoModificheParticelleXAppezzamentiLog.vb" />
+    <Compile Include="CentriAziendali.vb" />
+    <Compile Include="CentrixIndirizzi.vb" />
+    <Compile Include="CentrixRubrica.vb" />
+    <Compile Include="Centri_Codici.vb" />
+    <Compile Include="Codice_Anagrafe.vb" />
+    <Compile Include="ConduzioneSuFila.vb" />
+    <Compile Include="ConduzioneTraFila.vb" />
+    <Compile Include="Contatti.vb" />
+    <Compile Include="ContattiXIndirizzi.vb" />
+    <Compile Include="ContattixRubrica.vb" />
+    <Compile Include="Contatti_Codici.vb" />
+    <Compile Include="Analisi_Tipologia.vb" />
+    <Compile Include="Allegati_Documenti.vb" />
+    <Compile Include="Allegati_EntitaxDocumenti.vb" />
+    <Compile Include="Analisi_Appoggio_Import.vb" />
+    <Compile Include="Configurazione_Imballaggi_DAL.vb" />
+    <Compile Include="EFMaterie_Prime.vb" />
+    <Compile Include="IndirizzoTipo.vb" />
+    <Compile Include="Lotto_AssegnaxRisumSpeVarQualCert_DAL.vb" />
+    <Compile Include="Mansioni.vb" />
+    <Compile Include="OTabelle.vb" />
+    <Compile Include="ParticelleCatastalixVincoliAgronomici.vb" />
+    <Compile Include="ParticelleCatastali_MetodoProduzione.vb" />
+    <Compile Include="Gruppi_Merce.vb" />
+    <Compile Include="Prodotti_Extra_Privata.vb" />
+    <Compile Include="Programmazione_EntitaXProgrammazione_Entita.vb" />
+    <Compile Include="RiferimentoTrasferimentoDati.vb" />
+    <Compile Include="RisorseUmane_Classificazioni.vb" />
+    <Compile Include="EFAgenda.vb" />
+    <Compile Include="EFCentri_Aziendali.vb" />
+    <Compile Include="EFContatti.vb" />
+    <Compile Include="EFFabbricati.vb" />
+    <Compile Include="EFImprese.vb" />
+    <Compile Include="EFIndirizzi.vb" />
+    <Compile Include="EFIst_Credito.vb" />
+    <Compile Include="EFLiquidita.vb" />
+    <Compile Include="EFMacrousi.vb" />
+    <Compile Include="EFMovimenti.vb" />
+    <Compile Include="EFMovimenti_Dettagli.vb" />
+    <Compile Include="EFMov_Destinazioni.vb" />
+    <Compile Include="EFParticelle.vb" />
+    <Compile Include="EFProgrammazione_Entita.vb" />
+    <Compile Include="EFProgrammazione_Particelle.vb" />
+    <Compile Include="EFProgrammazione_Testata.vb" />
+    <Compile Include="EFRubrica.vb" />
+    <Compile Include="EFStalla.vb" />
+    <Compile Include="EFZoo_Animali.vb" />
+    <Compile Include="ImpresexParticellexMacrousi.vb" />
+    <Compile Include="Lotto_Configurazione.vb" />
+    <Compile Include="Lotto_Configurazione_Alias.vb" />
+    <Compile Include="PDC_Varie.vb" />
+    <Compile Include="OrganismoReferente.vb" />
+    <Compile Include="Laboratori_Opzioni.vb" />
+    <Compile Include="PianoConcimazione_Elaborazioni.vb" />
+    <Compile Include="PianoConcimazione_FattoriCorrettivi.vb" />
+    <Compile Include="PS_Variabili.vb" />
+    <Compile Include="PS_Piano_Date_Raccolte_Semina.vb" />
+    <Compile Include="PS_Piano_Fabisogni.vb" />
+    <Compile Include="PS_PianoVarieta_HA.vb" />
+    <Compile Include="PS_Stabilimento.vb" />
+    <Compile Include="PS_Moltiplicatore.vb" />
+    <Compile Include="ParticelleCatastalixMacrousixUtilizzo.vb" />
+    <Compile Include="PS_Zone.vb" />
+    <Compile Include="Meteo_Dati.vb" />
+    <Compile Include="Meteo_Origine.vb" />
+    <Compile Include="PS_Zone_Specie_Varieta_Default.vb" />
+    <Compile Include="PS_PianoSeminaTestata.vb" />
+    <Compile Include="ImpresexPersone_Codici.vb" />
+    <Compile Include="Laboratori_Utenti.vb" />
+    <Compile Include="CorpiEstranei.vb" />
+    <Compile Include="CorpiEstranei_LimitiPericolosita.vb" />
+    <Compile Include="Fabbricati.vb" />
+    <Compile Include="Fabbricati_Codici.vb" />
+    <Compile Include="Fabbricati_Impostaz.vb" />
+    <Compile Include="Fabbricati_Tipi.vb" />
+    <Compile Include="GerarchiaImprese.vb" />
+    <Compile Include="GruppiOperazioni_R.vb" />
+    <Compile Include="Impresa_Progetti.vb" />
+    <Compile Include="Impresa_Progetto_Fasi.vb" />
+    <Compile Include="Imprese.vb" />
+    <Compile Include="ImpresexIndirizzi.vb" />
+    <Compile Include="ImpresexParticelle.vb" />
+    <Compile Include="ImpresexParticelle2.vb" />
+    <Compile Include="ImpresexParticelle_Codici.vb" />
+    <Compile Include="ImpresexPersone.vb" />
+    <Compile Include="Imprese_Codici.vb" />
+    <Compile Include="Imprese_Titoli_Read.vb" />
+    <Compile Include="Indirizzi.vb" />
+    <Compile Include="Materie_Prime.vb" />
+    <Compile Include="Materie_PrimexLC.vb" />
+    <Compile Include="Materie_PrimexLP.vb" />
+    <Compile Include="Materie_PrimexReport.vb" />
+    <Compile Include="Materie_Prime_Alias.vb" />
+    <Compile Include="Materie_Prime_Calibri.vb" />
+    <Compile Include="Materie_Prime_Dettagli.vb" />
+    <Compile Include="Materie_Prime_PQ.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Operazioni_R.vb" />
+    <Compile Include="OTE_Read.vb" />
+    <Compile Include="ParoleChiave.vb" />
+    <Compile Include="ParoleChiavexImprese.vb" />
+    <Compile Include="ParticelleCatastali.vb" />
+    <Compile Include="ParticelleCatastalixEleggibilitaParticelle.vb" />
+    <Compile Include="ParticelleCatastalixMacrousi.vb" />
+    <Compile Include="ParticelleCatastali_Codici.vb" />
+    <Compile Include="PianoConcimazione_Dettagli.vb" />
+    <Compile Include="PianoConcimazione_EntitaxTestata.vb" />
+    <Compile Include="PianoConcimazione_FosforoPotassio.vb" />
+    <Compile Include="PianoConcimazione_Testata.vb" />
+    <Compile Include="PortinnestixSpeVeg.vb" />
+    <Compile Include="Prodotti.vb" />
+    <Compile Include="Progetti.vb" />
+    <Compile Include="ProgettixParticelle.vb" />
+    <Compile Include="Programmazione_Entita.vb" />
+    <Compile Include="Programmazione_Entita_Codici.vb" />
+    <Compile Include="Programmazione_Entita_Eliminate.vb" />
+    <Compile Include="Programmazione_Particelle.vb" />
+    <Compile Include="Programmazione_Testata.vb" />
+    <Compile Include="Rapporti_Contabili.vb" />
+    <Compile Include="Reg_Impianti.vb" />
+    <Compile Include="Reg_Impianti_Codici.vb" />
+    <Compile Include="Reg_Impianti_Programmazioni.vb" />
+    <Compile Include="RisorseUmane.vb" />
+    <Compile Include="Rubrica_Write.vb" />
+    <Compile Include="Sementieri_LetturaAnagrafiche.vb" />
+    <Compile Include="SpecieVegetali_Default.vb" />
+    <Compile Include="Stalla.vb" />
+    <Compile Include="Stalla_Caratteristiche.vb" />
+    <Compile Include="Stalla_Configurazioni_BDN.vb" />
+    <Compile Include="Stalla_Raggruppamenti.vb" />
+    <Compile Include="UnitaMisura_Alternativa.vb" />
+    <Compile Include="UtentixAppezzamenti.vb" />
+    <Compile Include="UtentixCampi.vb" />
+    <Compile Include="UtentixFabbricati.vb" />
+    <Compile Include="UtentixImprese.vb" />
+    <Compile Include="UtentixStrutture.vb" />
+    <Compile Include="Utility\UtilityParticelle.vb" />
+    <Compile Include="VisteGrigliaDAL.vb" />
+    <Compile Include="WidgetIndiciProduttivita.vb" />
+    <Compile Include="Zone.vb" />
+    <Compile Include="ZonexParticelle_R.vb" />
+    <Compile Include="Zoo_Animali.vb" />
+    <Compile Include="Zoo_AnimalixAnomalie.vb" />
+    <Compile Include="Zoo_AnimalixStati_Accrescimento.vb" />
+    <Compile Include="Zoo_Animali_Distinte.vb" />
+    <Compile Include="Zoo_Animali_Lista_Stati_Accrescimento.vb" />
+    <Compile Include="Zoo_Animali_Lista_Tipi.vb" />
+    <Compile Include="Zoo_Animali_Stati_AccrescimentoxFabbisogno.vb" />
+    <Compile Include="Zoo_Configurazione.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AgronicaCoreAnagrafeDAL_resx\AgronicaCoreAnagrafeDAL.en.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeDAL_resx\AgronicaCoreAnagrafeDAL.fr.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeDAL_resx\AgronicaCoreAnagrafeDAL.pt.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeDAL_resx\AgronicaCoreAnagrafeDAL.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreAnagrafeDAL.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{A1F2F959-43C8-4FE6-B159-96652FF9FB2B}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabHLP\AgronicaCoreContabHLP.vbproj">
+      <Project>{03C0A225-5A83-4A65-B3AA-207E2932AEF8}</Project>
+      <Name>AgronicaCoreContabHLP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

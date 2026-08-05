@@ -1,0 +1,144 @@
+<div class="theme-colors-settings" *ngIf="impostazioniTema != null">
+  <div class="theme-colors-settings-title">
+    {{ 'gis.ImpostazioniTema' | transloco }}
+  </div>
+
+  <div class="theme-row relative">
+    <div class="theme-switch">
+      <div class="middle">{{ 'gis.TemaContinuo' | transloco }}</div>
+      <kendo-switch [(ngModel)]="impostazioniTema.discrete" style="width: 85px;"></kendo-switch>
+      <div class="middle">{{ 'gis.TemaDiscreto' | transloco }}</div>
+    </div>
+
+    <div class="discrete-commands" *ngIf="impostazioniTema.discrete">
+      <div (click)="addTileLabel()" gisTooltip>
+        <i aria-hidden="true" class="xi-plus" title="{{ 'Aggiungi' | transloco }}"></i>
+      </div>
+
+      <div (click)="onClickSettingCross($event)" gisTooltip>
+        <i aria-hidden="true" class="xi-xmark" title="{{ 'Annulla' | transloco }}"></i>
+      </div>
+
+      <div (click)="onClickSettingCheck($event)" gisTooltip>
+        <i aria-hidden="true" class="xi-check" title="{{ 'Conferma' | transloco }}"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPOSTAZIONI TEMA CONTINUO -->
+  <ng-container *ngIf="!impostazioniTema.discrete">
+    <div class="theme-colors-container" *ngIf="temaSelezionato.nome != messaggioSelezionaTema">
+      <div class="theme-colors-section flex-1">
+        <div class="band" [ngStyle]="{ 'background': impostazioniTema.colore1 }"
+          (click)="onClickTogglePicker($event, 1, impostazioniTema.colore1)">
+        </div>
+        <div class="theme-colors-section-legend">{{ 'gis.Colore' | transloco }} 1</div>
+      </div>
+      <div class="theme-colors-section flex-1">
+        <div class="band" [ngStyle]="{ 'background': impostazioniTema.colore2 }"
+          (click)="onClickTogglePicker($event, 2, impostazioniTema.colore2)">
+        </div>
+        <div class="theme-colors-section-legend">{{ 'gis.Colore' | transloco }} 2</div>
+      </div>
+      <div class="theme-colors-variance">
+        <div>
+          <kendo-textbox [style.width.px]="100" [(value)]="impostazioniTema.varianza">
+          </kendo-textbox>
+        </div>
+        <div class="theme-colors-variance-label">{{ 'gis.Varianza' | transloco }}</div>
+      </div>
+      <div (click)="onClickSettingCross($event)" gisTooltip>
+        <i aria-hidden="true" class="xi-xmark" title="{{ 'Annulla'|transloco }}"></i>
+      </div>
+      <div (click)="onClickSettingCheck($event)" gisTooltip>
+        <i aria-hidden="true" class="xi-check" title="{{ 'Conferma'|transloco }}"></i>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- IMPOSTAZIONI TEMA DISCRETO -->
+  <ng-container *ngIf="impostazioniTema.discrete">
+    <div class="theme-colors-container">
+      <div class="theme-column">
+        <div class="theme-row space-between" *ngFor="let tileLabel of impostazioniTema.tileLabels; let i = index">
+          <ng-container *ngIf="tileLabel.operation != enum_Tipo_Operazione.DELETE">
+            <div class="theme-colors-section color-discrete">
+              <div class="band" (click)="onClickTogglePickerDiscrete($event, tileLabel)"
+                [ngStyle]="{ 'background': tileLabel.colore }"></div>
+              <div class="theme-colors-section-legend">{{ 'gis.Colore' | transloco }}</div>
+            </div>
+
+            <div class="theme-colors-variance flex-1" *ngIf="!tileLabel.singleValue">
+              <div>
+                <kendo-numerictextbox (valueChange)="tileLabel.valore_min = $event; computeOverlappings()"
+                  [style.width.px]="100" [value]="tileLabel.valore_min" format="n1">
+                </kendo-numerictextbox>
+              </div>
+
+              <div *ngIf="isOverlapping(i) || isMinGreaterThanMax(tileLabel)" class="theme-colors-variance-label bg-red"
+                [title]="(isOverlapping(i) ? ('gis.TemaIntervalloSovrapposto' | transloco) + '\n' : '') + (isMinGreaterThanMax(tileLabel) ? ('gis.TemaMinMaxNonOk' | transloco) : '')"
+                kendoTooltip>
+                {{ 'gis.Minimo' | transloco }}
+              </div>
+
+              <div *ngIf="!isOverlapping(i) && !isMinGreaterThanMax(tileLabel)" class="theme-colors-variance-label">
+                {{ 'gis.Minimo' | transloco }}
+              </div>
+            </div>
+
+            <div class="theme-colors-variance flex-1" *ngIf="!tileLabel.singleValue">
+              <div>
+                <kendo-numerictextbox (valueChange)="tileLabel.valore_max = $event; computeOverlappings()"
+                  [style.width.px]="100" [value]="tileLabel.valore_max" format="n1">
+                </kendo-numerictextbox>
+              </div>
+
+              <div *ngIf="isOverlapping(i) || isMinGreaterThanMax(tileLabel)" class="theme-colors-variance-label bg-red"
+                [title]="(isOverlapping(i) ? ('gis.TemaIntervalloSovrapposto' | transloco) + '\n' : '') + (isMinGreaterThanMax(tileLabel) ? ('gis.TemaMinMaxNonOk' | transloco) : '')"
+                kendoTooltip>
+                {{ 'gis.Massimo' | transloco }}
+              </div>
+
+              <div *ngIf="!isOverlapping(i) && !isMinGreaterThanMax(tileLabel)" class="theme-colors-variance-label">
+                {{ 'gis.Massimo' | transloco }}
+              </div>
+            </div>
+
+            <div class="theme-colors-variance flex-2" *ngIf="tileLabel.singleValue">
+              <div>
+                <kendo-numerictextbox (valueChange)="tileLabel.valore_associato = $event;"
+                  [style.width.px]="100" [value]="tileLabel.valore_associato" format="n1">
+                </kendo-numerictextbox>
+
+                <div class="theme-colors-variance-label">
+                  {{ 'gis.TemaValoreAssociato' | transloco }}
+                </div>
+              </div>
+            </div>
+
+            <div class="theme-colors-variance flex-1">
+              <div>
+                <kendo-textbox [style.width.px]="100" [(value)]="tileLabel.label">
+                </kendo-textbox>
+              </div>
+              <div class="theme-colors-variance-label">{{ 'gis.Descrizione' | transloco }}</div>
+            </div>
+
+            <div class="d-flex">
+              <div (click)="changeSingleValue(tileLabel)" gisTooltip>
+                <i aria-hidden="true" class="xi-single-selection k-mt-45" *ngIf="!tileLabel.singleValue"
+                  title="{{ 'gis.TemaValoreSingolo' | transloco }}"></i>
+                <i aria-hidden="true" class="xi-double-selection k-mt-45" *ngIf="tileLabel.singleValue"
+                  title="{{ 'gis.TemaIntervallo' | transloco }}"></i>
+              </div>
+
+              <div (click)="onClickSettingDelete(impostazioniTema, i)" gisTooltip>
+                <i aria-hidden="true" class="xi-delete k-mt-3" title="{{ 'Rimuovi' | transloco }}"></i>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

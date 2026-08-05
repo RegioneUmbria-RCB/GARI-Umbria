@@ -1,0 +1,45 @@
+﻿Imports System
+Imports EnvDTE
+Imports EnvDTE80
+Imports EnvDTE90
+Imports EnvDTE90a
+Imports EnvDTE100
+Imports System.Diagnostics
+
+Public Module Module1
+    Public Sub FormattaQuery()
+
+        DTE.ActiveDocument.Selection.Text = "Stb.AppendLine(""" & DTE.ActiveDocument.Selection.text.ToString.Replace(vbCrLf, " "") " + vbCrLf + "Stb.AppendLine("" ") & """  )" & vbCrLf
+
+    End Sub
+
+    Public Sub FormattaQueryNoSTB()
+
+        DTE.ActiveDocument.Selection.Text = " """ & DTE.ActiveDocument.Selection.text.ToString.Replace(vbCrLf, " "" & vbCrLf & _  " & vbCrLf & "  "" ")
+
+    End Sub
+
+    Public Sub AddCommentWithDate()
+        Dim doc As Document = DTE.ActiveDocument
+        ' only modify the doc, if it is a text document in VS
+        Dim textDoc As TextDocument = _
+           CType(doc.Object("TextDocument"), TextDocument)
+
+        Dim comm As String
+        ' verify that the code editor is C#
+        If doc.ProjectItem.ContainingProject.Kind = _
+           VSLangProj.PrjKind.prjKindCSharpProject Then
+
+            comm = "// "
+
+        Else
+            comm = "' "
+
+
+        End If
+        textDoc.StartPoint.CreateEditPoint()
+        textDoc.Selection.Insert(comm & " Grilli, " & Date.Now & ": ")
+    End Sub
+
+
+End Module

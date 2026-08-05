@@ -1,0 +1,127 @@
+<h5>{{ 'gis.PermessiSuGruppi' | transloco}}</h5>
+
+<kendo-grid [kendoGridBinding]="data" [loading]="loading" [pageable]="true" [pageSize]="pageSize" [sortable]="true"
+            filterable="menu">
+  <ng-template kendoGridToolbarTemplate>
+    <div gisTooltip class="header">
+      <button class="btn btn-primary btn-sm btn-primary-fill btn-important" (click)="isModalOpen = true"
+              [title]="'gis.PermessiAggiungiGruppo' | transloco" type="button">
+        <fa-icon class="xi-draw-add"></fa-icon>
+      </button>
+    </div>
+  </ng-template>
+
+  <kendo-grid-command-column width="50" [title]="'Comandi' | transloco">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <button type="button" class="delete-button" kendoGridRemoveCommand size="small" [title]="'Cancella' | transloco"
+              look="bare" (click)="deletePermesso(dataItem)">
+        <fa-icon size="lg" [icon]="faDelete">
+        </fa-icon>
+      </button>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-column width="150" field="GruppoDescr" [title]="'gis.PermessiGruppo' | transloco">
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Inserimento" [title]="'gis.PermessiInserimento' | transloco"
+                     [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" [(ngModel)]="dataItem.Flag_Inserimento" (change)="updatePermesso()" />
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Modifica" [title]="'gis.PermessiModifica' | transloco" [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" [(ngModel)]="dataItem.Flag_Modifica" (change)="updatePermesso()" />
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Cancellazione" [title]="'gis.PermessiElimina' | transloco"
+                     [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" [(ngModel)]="dataItem.Flag_Cancellazione"
+                 (change)="updatePermesso()" />
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Informazioni" [title]="'gis.PermessiInformazione' | transloco"
+                     [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" [(ngModel)]="dataItem.Flag_Informazioni"
+                 (change)="updatePermesso()" />
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Amministrazione" [title]="'gis.PermessiAmministra' | transloco"
+                     [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input type="checkbox" class="checkbox" [checked]="dataItem.Flag_Amministrazione"
+                 (click)="updatePermessoAmministra($event)"/>
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column width="50" field="Flag_Rimozione" [title]="'gis.PermessiRimozione' | transloco"
+                     [filterable]="false">
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <div class="item-switch">
+        <label class="toggle">
+          <input
+            type="checkbox"
+            class="checkbox"
+            [(ngModel)]="dataItem.Flag_Rimozione"
+            (click)="updatePermesso()"
+            [disabled]="true"
+          />
+        </label>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+
+  <ng-template kendoPagerTemplate let-totalPages="totalPages" let-currentPage="currentPage">
+    <kendo-pager-prev-buttons></kendo-pager-prev-buttons>
+    <kendo-pager-numeric-buttons [buttonCount]="2"></kendo-pager-numeric-buttons>
+    <kendo-pager-next-buttons></kendo-pager-next-buttons>
+    <kendo-pager-input></kendo-pager-input>
+    <kendo-pager-info></kendo-pager-info>
+    <kendo-pager-page-sizes [pageSizes]="[5, 10, 20, 50]"></kendo-pager-page-sizes>
+  </ng-template>
+
+</kendo-grid>
+
+<kendo-dialog *ngIf="isModalOpen" class="k-dialog-center" (close)="isModalOpen = false">
+  <kendo-dialog-titlebar class="min-width">
+    <div class="font-700">{{ 'gis.PermessiAggiungiGruppo' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <kendo-dropdownlist [(ngModel)]="newGroup" [data]="groups" textField="Descrizione" valueField="Codice"
+                      [kendoDropDownFilter]="filterSettings">
+  </kendo-dropdownlist>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="isModalOpen = false">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton [disabled]="newGroup == null" (click)="addPermesso()">
+      {{ 'Aggiungi' | transloco }}
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

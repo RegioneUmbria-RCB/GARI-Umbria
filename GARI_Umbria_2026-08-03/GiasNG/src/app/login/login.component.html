@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="POST">
+                <legend class="d-flex justify-content-center">{{ 'Login' | transloco }}</legend>
+                <div class="mb-3">
+                    <label for="txtName" class="form-label">{{ 'Username' | transloco }}</label>
+                    <input type="text" [(ngModel)]="loginUser.username" name="email" class="form-control" id="txtName" />
+                </div>
+                <div class="mb-3">
+                    <label for="txtCost" class="form-label">{{ 'Password' | transloco }}</label>
+                    <input type="password" [(ngModel)]="loginUser.password" name="password" class="form-control"
+                        id="txtCost" />
+                </div>
+
+                <button type="button" (click)="login()" class="btn btn-primary">
+                    {{ 'Login' | transloco }}
+                </button>
+                <button type="button" (click)="getUt()" class="btn btn-primary">
+                    {{ 'JWT' | transloco }}
+                </button>
+                <button type="button" (click)="getVersione()" class="btn btn-primary">
+                    {{ 'Versione' | transloco }}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

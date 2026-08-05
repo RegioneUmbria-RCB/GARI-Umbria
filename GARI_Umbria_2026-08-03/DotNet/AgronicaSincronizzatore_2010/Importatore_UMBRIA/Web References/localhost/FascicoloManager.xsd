@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WS_AgroFascicoloBA" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WS_AgroFascicoloBA" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GetSchedeRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CUAA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Ente_Cod" type="xs:int" />
+          <xs:element minOccurs="0" name="Parametri_Extra" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSchedeRequest" nillable="true" type="tns:GetSchedeRequest" />
+  <xs:complexType name="GenericRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PivaSuperUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericRequest" nillable="true" type="tns:GenericRequest" />
+  <xs:complexType name="GetSchedeResponse">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="schede" nillable="true" type="tns:ArrayOfScheda" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetSchedeResponse" nillable="true" type="tns:GetSchedeResponse" />
+  <xs:complexType name="GenericResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="statusCode" type="xs:int" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GenericResponse" nillable="true" type="tns:GenericResponse" />
+  <xs:complexType name="ArrayOfScheda">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Scheda" nillable="true" type="tns:Scheda" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfScheda" nillable="true" type="tns:ArrayOfScheda" />
+  <xs:complexType name="Scheda">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data_Validazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Ente_Des" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Ente_cod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero_Validazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parametri_Extra" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Scheda" nillable="true" type="tns:Scheda" />
+  <xs:complexType name="GetFascicolo1Request">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:GenericRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CUAA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Data_Validazione" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Ente_Cod" type="xs:int" />
+          <xs:element minOccurs="0" name="Leggi_Cache" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Numero_Validazione" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Parametri_Extra" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetFascicolo1Request" nillable="true" type="tns:GetFascicolo1Request" />
+  <xs:complexType name="GetFascicolo1Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CUAA" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Data_Validazione" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ErrCOD" type="xs:int" />
+      <xs:element minOccurs="0" name="ErrMsg" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Numero_Validazione" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parametri_Extra" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fascicolo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="statusCode" type="xs:int" />
+      <xs:element minOccurs="0" name="token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetFascicolo1Response" nillable="true" type="tns:GetFascicolo1Response" />
+</xs:schema>

@@ -1,0 +1,35 @@
+
+        <h2 *ngIf="!impresaSelezionata(); else grid">{{'SelezionareUnAzienda' | transloco}}</h2>
+        <ng-template #grid>
+            <gias-kendo-grid *ngIf="impresaSelezionata()"
+                (selectionChange)="campoSelezionato($event)">
+                <ng-container headerContentEnd>
+                    <div kendoTooltip *ngIf="permessoEdit">
+                        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                                (click)="createCampoAngular()"
+                                [title]="'NuovaSchedaCompleta' | transloco"
+                                [type]="'button'">
+                            <fa-icon class="faAddSchedule"></fa-icon>
+                        </button>
+                    </div>
+                </ng-container>
+                <!-- <kendo-grid-command-column
+                [media]="'(min-width: ' + SMARTPHONE_WIDTH+ 'px)'"
+                [headerStyle]="{
+                        'background-color': '#428BCA',
+                        'color': 'white'
+                }" [title]="''" [width]="60">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                        <div *ngIf="!isNew" kendoTooltip [tooltipTemplate]="template" style="padding-top: 10px;">
+
+                            <div class="btn-group btn-group-sm btn-sm">
+                                <button [title]="'Catasto' | transloco" class="btn btn-success btn-sm" [type]="'button'"
+                                        (click)="onCatasto($event, dataItem)">
+                                    <fa-icon size="lg" [icon]="faLayerGroup" aria-hidden="true"></fa-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </kendo-grid-command-column> -->
+            </gias-kendo-grid>
+        </ng-template>

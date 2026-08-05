@@ -1,0 +1,31 @@
+﻿----------------------------------------
+Istruzioni per migrare database dell'app
+----------------------------------------
+
+Prima del punto 1) Estrarre per la modifica il file DatabaseContextModelSnapshot.cs
+1) Eseguire da Console gestione pacchetti il comando "Add-Migration GiasApp_YYYYMMDD" sostituendo la data con quella dell'ultima versione
+2) Copiare la cartella Migration generata nel progetto GiasApp della soluzione GiasAppXAM corregendo eventuali errori di compilazione realtivi al dbcontext
+3) Nel DatabaseContext dell'applicazione assicurarsi di usare Database.Migrate() al posto di Database.EnsureCreated()
+4) Eseguire l'applicazione nell'emulatore verificando che la struttura del database venga correttamente aggiornata
+
+-----------------------------------------------------------------------
+Istruzioni per copiare il db sql lite dall'emulatore Android al desktop
+-----------------------------------------------------------------------
+
+# da eseguire nel prompt dei comandi ADB Android
+# copia il file db sqlite nella sdcard
+adb shell
+su
+cp /data/user/0/it.agronica.giasapp/files/GiasDB.db /storage/emulated/0
+exit
+exit
+
+# copia il file dalla sd card sul desktop
+adb pull /storage/emulated/0/GiasDB.db %homepath%\Desktop
+
+-----------
+Riferimenti
+-----------
+
+https://docs.microsoft.com/it-it/ef/core/managing-schemas/migrations/
+https://forums.xamarin.com/discussion/101805/xamarin-android-entity-framework-core-2-and-migrations

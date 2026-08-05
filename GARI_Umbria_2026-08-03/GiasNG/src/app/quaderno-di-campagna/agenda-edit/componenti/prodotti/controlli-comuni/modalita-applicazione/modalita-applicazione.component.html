@@ -1,0 +1,11 @@
+<div [formGroup]="ProdottiForm">
+  <gias-drop-down-template-s
+    [name]="'ModalitaApplicazione' | transloco"
+    [obligatory]="false" [clearButton]="true"
+    (open)="openControlModalitaApplicazione($event)"
+    textField="descrizione"
+    valueField="codice" [filterable]="true"
+    [valuePrimitive]="false"
+    giasFormControlName="Modalita_Applicazione">
+  </gias-drop-down-template-s>
+</div>

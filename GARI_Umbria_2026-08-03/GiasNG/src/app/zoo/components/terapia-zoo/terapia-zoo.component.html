@@ -1,0 +1,144 @@
+<div class="container">
+    <form [formGroup]="terapiaFormService.formTerapiaZoo">
+        <gias-update-toolbar
+            [formGroup]="terapiaFormService.formTerapiaZoo"
+            [openInIFrame]="openInIFrame"
+            (clickEvent)="saveEditTherapy()"
+            (clickSalvaNuovoEvent)="saveEditTherapy()"
+        >
+        </gias-update-toolbar>
+
+        <div class="jumbotron paddingResponsive">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row">
+                        <h2 class="card-title mb-2 mt-2" style="text-align: center;">{{'Terapia' | transloco}}</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <gias-drop-down-template-s 
+                                [name]="'CentroAziendale' | transloco"
+                                [listItems]="terapiaFormService.Array_CentriAziendale"
+                                textField="descrizione"
+                                valueField="codice"
+                                giasFormControlName="CentroAziendale"
+                                [valuePrimitive]="false"
+                                [defaultItem]="terapiaFormService.defaultCentro"
+                            >
+                            </gias-drop-down-template-s>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <gias-drop-down-template-s 
+                                [name]="'Stalla' | transloco"
+                                [listItems]="terapiaFormService.Array_Stalle"
+                                textField="Sta_Des"
+                                valueField="Sta_Num"
+                                giasFormControlName="Stalla"
+                                [valuePrimitive]="false"
+                                [defaultItem]="terapiaFormService.defaultStalla"
+                            >
+                            </gias-drop-down-template-s>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="row mb-4">
+                        <div class="col-12 col-md-6">
+                            <div class="k-form-field">
+                                <label class="k-form-label required">{{ 'Nome' | transloco }}</label>
+                                <input kendoTextBox 
+                                    formControlName="Nome"
+                                    [readonly]="terapiaFormService.isInfoMode"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <section class="form-section">
+                        <div class="interventi-header">
+                            <h4>{{ 'Interventi' | transloco }}</h4>
+                            
+                            <button 
+                                kendoButton 
+                                type="button" 
+                                icon="plus" 
+                                (click)="addIntervento()"
+                                [disabled]="terapiaFormService.isInfoMode"
+                                [hidden]="terapiaFormService.isInfoMode"
+                                look="outline"
+                                themeColor="primary">
+                                {{ 'AddIntervento' | transloco }}
+                            </button>
+                        </div>
+
+                        <div style="display:inline-block;width:10px;"></div>
+
+                        <div formArrayName="Interventi">
+                            <kendo-tabstrip 
+                                [animate]="true" 
+                                [keepContent]="true"
+                                *ngIf="interventiFormArray.controls.length > 0"
+                            >
+                                <kendo-tabstrip-tab 
+                                    *ngFor="let interventoCtrl of interventiFormArray.controls; let i = index"
+                                    [title]="('Intervento' | transloco) + (i + 1)" 
+                                    [selected]="selectedTabIndex === i"
+                                >
+                                    
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ interventoCtrl.get('Nome').value }}</span>
+                                        <button 
+                                            kendoButton 
+                                            fillMode="flat"
+                                            icon="close"
+                                            class="tab-remove-button"
+                                            (click)="removeIntervento(i, $event)"
+                                            [disabled]="terapiaFormService.isInfoMode"
+                                            title="{{ 'RemoveIntervento' | transloco }}">
+                                        </button>
+                                    </ng-template>
+
+                                    <ng-template kendoTabContent>
+                                        <div class="intervento-form k-form" [formGroupName]="i">
+                                            
+                                            <div class="row mb-4">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="k-form-field">
+                                                        <label class="k-form-label required">{{ 'Nome' | transloco }}</label>
+                                                        <input kendoTextBox 
+                                                            formControlName="Nome"
+                                                            [readonly]="terapiaFormService.isInfoMode"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <fieldset class="k-form-fieldset grid-layout">
+                                                </fieldset>
+
+                                            <div formArrayName="Protocolli" class="protocols-grid-container">
+
+                                                <app-protocols-grid 
+                                                    [protocolsFormArray]="terapiaFormService.getProtocolsFormArray(i)"> 
+                                                </app-protocols-grid>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+
+                                </kendo-tabstrip-tab>
+                            </kendo-tabstrip>
+
+                            <div *ngIf="interventiFormArray.controls.length === 0" class="no-interventi-message">
+                                <p>Nessun intervento aggiunto. Clicca "Aggiungi Intervento" per iniziare.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

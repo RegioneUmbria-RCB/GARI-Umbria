@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DebugType>none</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+      <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.MetaSchema.DAL\AgronicaNetCore.MetaSchema.DAL.csproj" />
+      <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.ProfilazioneImprese.DAL\AgronicaNetCore.ProfilazioneImprese.DAL.csproj" />
+      <ProjectReference Include="..\AgronicaNetCore.Note.DAL\AgronicaNetCore.Note.DAL.csproj" />
+    </ItemGroup>
+
+</Project>

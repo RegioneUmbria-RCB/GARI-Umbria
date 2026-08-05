@@ -1,0 +1,32 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:wsm="http://cooperazione.sian.it/schema/wsmrga/">
+   <soapenv:Header>
+      <soap:SOAPAutenticazione>
+         <!--Credenziali rilasciate dal Ministero all'azienda-->
+         <username>AAAAAAAAAA</username>
+         <password>BBBBBBBBBB</password>
+         <nomeServizio>VisOperSiRPV</nomeServizio>
+      </soap:SOAPAutenticazione>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wsm:VisOperSiRPVInput>
+         <wsm:CodOper>
+			<!--Indicazione del Codice Fiscale dell'azienda (valorizzare persona fisica o giuridica)-->
+            <wsm:PersonaFisica>RSSMRA59M08H501S</wsm:PersonaFisica>
+         </wsm:CodOper>
+         <!--Codice ICQRF dello stabilimento nel formato AANNNN-->
+         <wsm:CodiceIcqrf>RM1234</wsm:CodiceIcqrf>
+		 <!--Data inizio operazione nel formato AAAA-MM-GG-->
+         <wsm:DataOperIni>2015-09-01</wsm:DataOperIni>
+		 <!--Data fine operazione nel formato AAAA-MM-GG-->
+         <wsm:DataOperFine>2015-09-30</wsm:DataOperFine>
+		 <!--Codice alfanumerico identificativo del soggetto fornitore/destinatario presente in ANAGRAFICA-->
+         <wsm:CodiceFornDest>AS1200</wsm:CodiceFornDest>
+		 <!--Codice alfanumerico identificativo del soggetto committente presente in ANAGRAFICA-->
+         <wsm:CodiceCommittente>CL002</wsm:CodiceCommittente>
+		 <!--Indicare il codice dell'operazione - Tabella decodifica documento tecnico "MIP-MRGA-K3-15001 v0x.x" -->
+         <wsm:CodOperazione>USSD</wsm:CodOperazione>
+		 <!--Indicare il codice della categoria del prodotto - Tabella decodifica documento tecnico "MIP-MRGA-K3-15001 v0x.x" -->
+         <wsm:Categoria>21</wsm:Categoria>
+      </wsm:VisOperSiRPVInput>
+   </soapenv:Body>
+</soapenv:Envelope>

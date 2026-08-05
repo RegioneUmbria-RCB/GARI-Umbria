@@ -1,0 +1,47 @@
+<div [formGroup]="validita">
+  <h5 class="card-title" style="text-align: center;"> {{ 'centro.Dati_Accessori' | transloco}}</h5>
+  <div class="row form-row">
+    <div class="col-12 col-sm-6 mb-3">
+        <gias-data-template name="Dal"
+          [startValue]="dataInizio"
+          [endValue]="dataFine"
+          [obligatory]="false"
+          [isDisabled]="inEditMode"
+          giasFormControlName="inizio"
+        ></gias-data-template>
+      </div>
+      <div class="col-12 col-sm-6">
+          <gias-data-template name="Al"
+            [startValue]="dataInizio"
+            [endValue]="dataFine"
+            [obligatory]="false"
+            [isDisabled]="inEditMode"
+            giasFormControlName="fine">
+          </gias-data-template>
+      </div>
+    </div>
+</div>
+
+<div class="row form-row" *ngIf="showCentroAziendaleEsternoCollegato">
+    <div class="col-12 col-sm-4">
+        <gias-drop-down-template
+            [name]="'centro.CentroAziendaleEsternoCollegato' | transloco"
+            [listItems]="store.centroAziendaleEsternoCollegato"
+            [textField]="'descrizione'"
+            [valueField]="'codice'"
+            [obligatory]="true"
+            [clearButton]="true"
+            [isDisabled]="inEditMode"
+            giasFormControlName="centroAziendaleEsternoCollegato"
+            [valuePrimitive]="false">
+        </gias-drop-down-template>
+    </div>
+</div>
+
+<div class="row form-row">
+    <div class="col-12 col-sm-12">
+        <grid-centri-codici></grid-centri-codici>
+    </div>
+</div>
+
+

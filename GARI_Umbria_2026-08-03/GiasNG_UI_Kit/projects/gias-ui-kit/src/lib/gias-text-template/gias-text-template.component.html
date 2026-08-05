@@ -1,0 +1,82 @@
+<div *ngIf="(giasFormControlName == undefined || giasFormControlName == null || giasFormControlName == '')">
+  <div *ngIf="inputType == 0" class="form-horizontal">
+    <div class="form-group">
+      <div class="input-group">
+        <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+          {{name}}
+        </span>
+        <input type="text" class="form-control valid" [ngClass]="{'required' : obligatory}" [placeholder]="placeholder"
+          [(ngModel)]="value" (ngModelChange)="changeValue($event)" [disabled]="isDisabled"
+          [attr.formControlName]="giasFormControlName ? giasFormControlName : null" />
+      </div>
+    </div>
+  </div>
+  <div *ngIf="inputType == 1">
+    <mat-form-field class="example-full-width">
+      <mat-label>{{name}}</mat-label>
+      <input matInput [formControlName]="giasFormControlName" [placeholder]="placeholder"
+        [ngClass]="{'required' : obligatory}" (ngModelChange)="changeValue($event)" [disabled]="isDisabled">
+    </mat-form-field>
+  </div>
+  <kendo-formfield
+    *ngIf="inputType == 2">
+    <kendo-label [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+    <kendo-textbox style="width: 100%;"
+    [ngClass]="{'required' : obligatory}"
+    [placeholder]="placeholder"
+    [clearButton]="clearButton"
+    [(ngModel)]="value"
+    (ngModelChange)="changeValue($event)"
+    [disabled]="isDisabled">
+      <ng-template kendoTextBoxPrefixTemplate>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+      </ng-template>
+    </kendo-textbox>
+  </kendo-formfield>
+</div>
+<div *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+<div *ngIf="inputType == 0" class="form-horizontal">
+  <div class="form-group">
+    <div class="input-group">
+      <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+        {{name}}
+      </span>
+      <input type="text"
+            class="form-control valid"
+            [ngClass]="{'required' : obligatory}"
+            [placeholder]="placeholder"
+            [formControlName]="giasFormControlName" />
+    </div>
+  </div>
+</div>
+<div *ngIf="inputType == 1">
+  <mat-form-field class="example-full-width">
+    <mat-label>{{name}}</mat-label>
+    <input matInput
+          [formControlName]="giasFormControlName"
+          [placeholder]="placeholder"
+          [ngClass]="{'required' : obligatory}"
+          (ngModelChange)="changeValue($event)"
+          [disabled]="isDisabled">
+  </mat-form-field>
+</div>
+
+  <kendo-formfield *ngIf="(inputType == 2)">
+    <kendo-label [ngClass]="{'lbl_required' : validator}" *ngIf="name != null">{{name}}{{validator ? ' *' : ''}}</kendo-label>
+<!--    <kendo-label class="lbl_required" *ngIf="validator"> *</kendo-label>-->
+    <kendo-textbox ngDefaultControl style="width: 100%" [ngClass]="{'required' : obligatory}" [placeholder]="placeholder"
+      [clearButton]="clearButton"
+      [id]="completeFormControlName"
+      [formControlName]="giasFormControlName"
+      [disabled]="isDisabled"
+      [maxlength]="maxlength"
+      [minlength]="minlength"
+      (blur)="onBlur()">
+      <ng-template kendoTextBoxPrefixTemplate>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+      </ng-template>
+    </kendo-textbox>
+  </kendo-formfield>
+</div>

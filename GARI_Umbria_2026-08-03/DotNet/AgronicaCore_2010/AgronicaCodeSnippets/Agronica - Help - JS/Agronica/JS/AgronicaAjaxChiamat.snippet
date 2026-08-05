@@ -1,0 +1,62 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>jQuery: Agronica chiamata Standard Ajax</Title>
+      <Author>Vanni</Author>
+      <Shortcut>jqajaxs</Shortcut>
+      <HelpUrl>http://jquerysnippets.codeplex.com</HelpUrl>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>funzione</ID>
+          <ToolTip>Nome della funzione</ToolTip>
+          <Default>funzione</Default>
+        </Literal>
+        <Literal>
+          <ID>indirizzohttp</ID>
+          <ToolTip>The URL for the request</ToolTip>
+          <Default>pagina</Default>
+        </Literal>
+        <Literal>
+          <ID>url</ID>
+          <ToolTip>The URL for the request</ToolTip>
+          <Default>/url</Default>
+        </Literal>
+        <Literal>
+          <ID>method</ID>
+          <ToolTip>HTTP Method to use (GET, POST, etc.)</ToolTip>
+          <Default>POST</Default>
+        </Literal>
+        <Literal>
+          <ID>data</ID>
+          <ToolTip>Data to send (querystring)</ToolTip>
+          <Default>{ Parametro: "Parametro" }</Default>
+        </Literal>        
+        <Literal>
+          <ID>NomeMetodo</ID>
+          <ToolTip>Nome Metodo da chiamare</ToolTip>
+          <Default>NomeMetodo</Default>
+        </Literal>
+        <Literal>
+          <ID>asincrono</ID>
+          <ToolTip>Chiamata Asincrona (impostare a false per chiamata sincrona)</ToolTip>
+          <Default>true</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="jscript">
+        <![CDATA[//per chiamata Standard Ajax
+        function ChiamataAjax() {
+        ajaxAgronica("$url$", JSON.stringify($data$),
+                            function (risposta) {
+                                console.log(risposta);
+                                alert(risposta);
+                            }, null);
+        }]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

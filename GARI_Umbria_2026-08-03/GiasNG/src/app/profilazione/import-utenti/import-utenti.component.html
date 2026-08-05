@@ -1,0 +1,28 @@
+<section class="import-page-container">
+  <h2>{{'prof.ImportazioneUtenti' | transloco}}</h2>
+  <section class="import-container">
+    <div class="file-chooser-container">
+      <div class="full-width">
+        <kendo-label>{{'prof.ScegliFileImportUtenti' | transloco}}</kendo-label>
+        <kendo-fileselect class="full-width" [multiple]="false" [restrictions]="fileRestrictions"
+                          (select)="onFileSelected($event)" (remove)="onFileRemoved()"
+        ></kendo-fileselect>
+      </div>
+
+      <button class="confirm-btn btn-primary-fill" [disabled]="!hasSelectedFile"
+              (click)="importUsers()"
+      >{{'prof.ImportaUtenti' | transloco}}</button>
+    </div>
+
+    <!--  Dynamically valorized after the import  -->
+    <div class="import-response" *ngIf="usersOk.length > 0">
+        <h6>{{'prof.UtentiAttivatiDaImport' | transloco}} ({{usersOk.length}}):</h6>
+        <p *ngFor="let user of usersOk">{{user}}</p>
+    </div>
+    <div class="import-error" *ngIf="usersError.length > 0">
+        <h6>{{'prof.UtentiNonAttivatiDaImport' | transloco}} ({{usersError.length}}):</h6>
+        <p *ngFor="let user of usersError">{{user}}</p>
+    </div>
+  </section>
+</section>
+

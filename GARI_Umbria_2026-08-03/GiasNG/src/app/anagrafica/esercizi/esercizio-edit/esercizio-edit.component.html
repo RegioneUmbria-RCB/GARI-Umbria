@@ -1,0 +1,536 @@
+<div>
+  <form [formGroup]="esercizioEditForm">
+    <div class="row form-row">
+      <div class="col-12 col-sm-6">
+        <gias-text-template [name]="'appezzamento.lotto' | transloco"
+                            giasFormControlName="lotto"
+                            [isDisabled]="disableLotto()">
+        </gias-text-template>
+      </div>
+      <div class="col">
+        <gias-text-template
+          [name]="'appezzamento.descrizione' | transloco"
+          giasFormControlName="descrizione">
+        </gias-text-template>
+      </div>
+      <div *ngIf="showDescriptionButton()" class="col-1 col-sm-1" style="display: flex; align-items: center; justify-content: center;">
+        <button
+          [title]="'GeneraDescrizioni' | transloco"
+          kendoButton
+          class="bottom btn btn-primary btn-primary-fill"
+          (click)="chooseDescription()"
+          fillMode="outline"
+        >
+          <i aria-hidden="true" class="xi-tools-list-light"></i>
+        </button>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row form-row">
+          <gias-validita formGroupName="validita" (onBlur)="validitaBlur$.next()"></gias-validita>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6">
+        <gias-drop-down-template
+          [name]="'GruppoRaccolta' | transloco"
+          [id]="'gruppo_raccolta'"
+          [listItems]="GruppiRaccolta"
+          textField="descrizione"
+          valueField="codice"
+          giasFormControlName="gruppoRaccolta"
+          [valuePrimitive]="false"
+          (open)="gruppoRaccoltaChanged($event)"
+        >
+        </gias-drop-down-template>
+      </div>
+
+      <div class="col-6 col-sm-6" [formGroup]="esercizioEditForm.get('apportiMassimiMacroelementi')">
+        <gias-drop-down-template-s
+          [name]="'appezzamento.fase' | transloco"
+          textField="descrizione"
+          valueField="codice"
+          giasFormControlName="fase"
+          [filterable]="true"
+          [valuePrimitive]="false"
+          (open)="openDdl($event)"
+        >
+        </gias-drop-down-template-s>
+      </div>
+      <div *ngIf="!showDescriptionButton()" class="col-6 col-sm-6">
+        <gias-drop-down-template-s
+          [name]="'Prodotto' | transloco"
+          textfield="descrizione"
+          [defaultItem]="defaultItem"
+          valueField="codice"
+          giasFormControlName="prodotto"
+          [filterable]="true"
+          [valuePrimitive]="false"
+          (open)="openDdl($event)"
+        >
+        </gias-drop-down-template-s>
+      </div>
+    </div>
+
+    <gias-expansionpanel id="datiPrevisione" *ngIf="specieSelezionata()">
+      <div class="header-content" headerContent>
+        <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+        <span><em>{{'appezzamento.datiPrevisione' | transloco}}</em></span>
+      </div>
+      <div class="content">
+        <span class="content-text">
+          <div class="row form-row">
+
+          </div>
+          <div class="row form-row">
+            <div class="col-lg-2 col-sm-3 col-md-3">
+              <gias-data-template
+                [name]="'appezzamento.data_Semina_Trapianto_Prevista' | transloco"
+                giasFormControlName="data_Semina_Trapianto_Prevista"
+                [nullValue]="AGRODATA_INIZIO"
+              >
+              </gias-data-template>
+            </div>
+            <div class="col-lg-2 col-sm-3 col-md-3">
+              <gias-data-template
+                [name]="'appezzamento.data_Raccolta_Prevista' | transloco"
+                giasFormControlName="data_Raccolta_Prevista"
+                [nullValue]="AGRODATA_FINE"
+              >
+              </gias-data-template>
+            </div>
+            <div class="col-lg-2 col-sm-3 col-md-3">
+              <gias-data-template
+                [name]="'appezzamento.data_Fioritura_Prevista' | transloco"
+                giasFormControlName="data_Fioritura_Prevista"
+                [nullValue]="AGRODATA_INIZIO"
+              >
+              </gias-data-template>
+            </div>
+            <div class="col-lg-2 col-sm-6 col-md-6" style="display: flex; align-items: center; justify-content: center;">
+              <button
+                style="width: 100%; "
+                kendoButton class="bottom btn btn-primary btn-primary-fill"
+                icon="calculator"
+                (click)="calculateResaPrevista($event)"
+                fillMode="outline"
+                [disabled]="!this.esercizioEditForm.enabled"
+              >
+                {{ 'ResaProposta' | transloco }}
+              </button>
+            </div>
+            <div class="col-lg-2 col-sm-6 col-md-4">
+              <gias-numeric-template [name]="'ResaPrevistaPerHa' | transloco"  [minValue]="0"
+                                     giasFormControlName="resa_prevista" [format]="'n2'">
+              </gias-numeric-template>
+            </div>
+            <div class="col-lg-2 col-sm-6 col-md-4">
+              <gias-numeric-template
+                [name]="'ResaTotalePrevista' | transloco"
+                [minValue]="0"
+                giasFormControlName="resa_totale_prevista"
+                [format]="'n2'"
+                [isDisabled]="true"
+              >
+              </gias-numeric-template>
+            </div>
+          </div>
+        </span>
+      </div>
+    </gias-expansionpanel>
+
+    <gias-expansionpanel id="vincoliNPK" *ngIf="specieSelezionata()">
+      <div class="header-content" headerContent>
+        <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+        <span><em>{{ 'VincoliENPK' | transloco }}</em></span>
+      </div>
+      <div class="content">
+        <span class="content-text">
+          <div class="row form-row">
+            <div class="col-12 col-sm-6 col-md-6">
+              <gias-drop-down-template-s
+                [name]="'Vincolo' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                giasFormControlName="vincolo"
+                [filterable]="true"
+                [valuePrimitive]="false"
+                (open)="openDdl($event)"
+              >
+              </gias-drop-down-template-s>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4" *ngIf="false">
+              <gias-drop-down-template-s
+                [name]="'appezzamento.regolamento' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                giasFormControlName="regolamento"
+                [filterable]="true"
+                [valuePrimitive]="false"
+                [defaultItem]="defaultItem"
+                (open)="openDdl($event)"
+              >
+              </gias-drop-down-template-s>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4" *ngIf="false">
+              <gias-drop-down-template-s
+                [name]="'appezzamento.disciplinare' | transloco"
+                textField="descrizione"
+                [defaultItem]="defaultItemDisciplinare"
+                valueField="codice"
+                giasFormControlName="disciplinare"
+                [filterable]="true"
+                [valuePrimitive]="false"
+                (open)="openDdl($event)"
+              >
+              </gias-drop-down-template-s>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6">
+              <gias-multiselect-template-s
+                [name]="'appezzamento.iaf' | transloco"
+                textField="descrizione"
+                valueField="codice"
+                giasFormControlName="iaf"
+                [filterable]="true"
+                (open)="openDdl($event)"
+                [valuePrimitive]="false"
+              >
+              </gias-multiselect-template-s>
+            </div>
+          </div>
+          <div class="row form-row"></div>
+          <div [formGroup]="esercizioEditForm.get('apportiMassimiMacroelementi')" *ngIf="specieSelezionata()">
+            <div class="row form-row">
+              <!-- <h4>{{'appezzamento.apportiMassimiMacroelementi' | transloco}}</h4> -->
+              <h6 class="card-subtitle text-muted">
+                {{ 'appezzamento.apportiMassimiMacroelementi' | transloco }}
+              </h6>
+            </div>
+            <div class="row form-row">
+              <div class="col-lg-2 col-sm-6 col-md-4" *ngIf="false">
+                <gias-drop-down-template-s
+                  [name]="'appezzamento.reg_Fert' | transloco"
+                  textField="descrizione"
+                  [defaultItem]="defaultItem"
+                  valueField="codice"
+                  giasFormControlName="pianoConcimazione"
+                  [filterable]="true"
+                  [valuePrimitive]="false"
+                  (open)="openDdl($event)"
+                >
+                  </gias-drop-down-template-s>
+              </div>
+              <div class="col-lg-4 col-md-6 col-sm-12">
+                <gias-drop-down-template-s
+                  [name]="'appezzamento.finalitaConc' | transloco"
+                  textField="descrizione"
+                  [defaultItem]="{ codice:0, descrizione:'' }"
+                  valueField="codice"
+                  giasFormControlName="tipologia"
+                  [filterable]="true"
+                  [valuePrimitive]="false"
+                  (open)="openDdl($event)"
+                >
+                </gias-drop-down-template-s>
+              </div>
+              <div class="col-lg-2 col-sm-6 col-md-4">
+                <gias-numeric-template
+                  [name]="'n' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="n"
+                  [format]="'n2'"
+                >
+                </gias-numeric-template>
+              </div>
+              <div class="col-lg-2 col-sm-6 col-md-4">
+                <gias-numeric-template
+                  [name]="'p2o5' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="p2o5"
+                  [format]="'n2'"
+                >
+                </gias-numeric-template>
+              </div>
+              <div class="col-lg-2 col-sm-6 col-md-4">
+                <gias-numeric-template
+                  [name]="'k2o' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="k2o"
+                  [format]="'n2'"
+                >
+                </gias-numeric-template>
+              </div>
+              <div class="col-lg-2 col-sm-6 col-md-4">
+                <gias-numeric-template
+                  [name]="'mgo' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="mgo"
+                  [format]="'n2'"
+                >
+                </gias-numeric-template>
+              </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </gias-expansionpanel>
+
+    <gias-expansionpanel>
+      <div class="header-content" headerContent>
+        <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+        <span><em>{{ 'DatiAggiuntiviEsercizio' | transloco }}</em></span>
+      </div>
+
+      <div class="content">
+        <span class="content-text">
+          <div class="row form-row" style="width: auto;" >
+            <div class="col-12 col-sm-6 col-md-4">
+              <gias-numeric-template [name]="'appezzamento.codice' | transloco" [format]="'#'"
+                                     giasFormControlName="codice">
+                </gias-numeric-template>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4" *ngIf="specieSelezionata()">
+              <div class="row form-row" style="display: flex;">
+                <gias-numeric-template
+                  style="width: 70%;"
+                  [name]="'appezzamento.piante_Ha' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="piante_Ha"
+                  [format]="'n2'"
+                >
+                </gias-numeric-template>
+                <button
+                  style="width: 30%;"
+                  kendoButton class="bottom btn btn-primary btn-primary-fill"
+                  icon="calculator"
+                  (click)="calcolaPianteClick()"
+                  fillMode="outline"
+                  [disabled]="!this.esercizioEditForm.enabled"
+                >
+                  {{ 'Calcola' | transloco }}
+                </button>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4" *ngIf="specieSelezionata()">
+              <div class="row form-row" style="display: flex;">
+                <gias-numeric-template
+                  style="width: 60%;"
+                  [name]="'appezzamento.piante_Impianto' | transloco"
+                  [minValue]="0"
+                  giasFormControlName="piante_Impianto"
+                  [format]="'n2'">
+                </gias-numeric-template>
+                <button
+                  style="width: 40%;"
+                  kendoButton class="bottom btn btn-primary btn-primary-fill"
+                  icon="calculator"
+                  (click)="calcolaSuperficieClick()"
+                  fillMode="outline"
+                  [disabled]="!this.esercizioEditForm.enabled"
+                >
+                  {{ 'Calcola' | transloco }} {{ 'Superficie' | transloco }}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="specieSelezionata()">
+            <div class="row form-row">
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-numeric-template [name]="'appezzamento.piante_Ha_Femmine' | transloco"  [minValue]="0"
+                                       giasFormControlName="piante_Ha_Femmine" [format]="'n2'">
+                  </gias-numeric-template>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-numeric-template [name]="'appezzamento.Piante_Ha_Impianto_Femmine' | transloco"  [minValue]="0"
+                                       giasFormControlName="Piante_Ha_Impianto_Femmine" [format]="'n2'">
+                </gias-numeric-template>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-numeric-template [name]="'appezzamento.Piante_Ha_Maschi' | transloco"  [minValue]="0"
+                                       giasFormControlName="Piante_Ha_Maschi" [format]="'n2'">
+                </gias-numeric-template>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-numeric-template [name]="'appezzamento.Piante_Ha_Impianto_Maschi' | transloco"  [minValue]="0"
+                                       giasFormControlName="Piante_Ha_Impianto_Maschi" [format]="'n2'">
+                </gias-numeric-template>
+              </div>
+            </div>
+
+            <div class="row form-row">
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-multiselect-template-s [name]="'Certificazione' | transloco" [id]="'CertificazioneAziendale'"
+                                             [isDisabled]="!formEnable" [listItems]="ListaCertificazioneAziendale" textField="descrizione"
+                                             valueField="codice" (open)="openDdl($event)" giasFormControlName="certificazioneAziendale" [filterable]="true"
+                                             [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-multiselect-template-s [name]="'Contributi' | transloco" [id]="'Contributi'"
+                                             [isDisabled]="!formEnable" textField="descrizione"
+                                             valueField="codice" (open)="openDdl($event)" giasFormControlName="contributi" [filterable]="true"
+                                             [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.CertificazioneProdotto' | transloco" textField="descrizione" [defaultItem]="defaultItemStr"
+                                           valueField="codice" giasFormControlName="certificazioneProdotto"
+                                           [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.capitolato_Privato' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="capitolato_Privato"
+                                           [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.residuo' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="residuo"
+                                           [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.licenza_Coltivazione' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="licenza_Coltivazione" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.organismo_Referente' | transloco" textField="descrizione" [defaultItem]="defaultItemContatto"
+                                           valueField="codice" giasFormControlName="organismo_Referente" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.ModalitaLiquidazione' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="modalita_liquidazione" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.OrigineProdotto' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="origine_prodotto" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.magazzino_Conferimento' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="magazzino_Conferimento" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.riferimento_Trasferimento_Dati' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="riferimento_Trasferimento_Dati" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+            </div>
+
+            <div class="row form-row">
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-multiselect-template-s [name]="'Tecnico' | transloco" [id]="'Tecnico'"
+                                             [isDisabled]="!formEnable" textField="descrizione"
+                                             valueField="codice" (open)="openDdl($event)" giasFormControlName="tecnico" [filterable]="true"
+                                             [valuePrimitive]="false">
+                </gias-multiselect-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'appezzamento.piano_Semina' | transloco" textField="descrizione" [defaultItem]="defaultItem"
+                                           valueField="codice" giasFormControlName="piano_Semina" [filterable]="true" [valuePrimitive]="false"
+                                           (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <kendo-label [text]="'appezzamento.secondoRaccolto' | transloco">
+                  <kendo-switch formControlName="flagSecondoRaccolto"></kendo-switch>
+                </kendo-label>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'Lavorazione' | transloco" textField="descrizione"
+                                           valueField="codice" giasFormControlName="lavorazione"
+                                           [filterable]="true" [valuePrimitive]="false" (open)="openDdl($event)">
+                  </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template-s [name]="'Specifica' | transloco" textField="descrizione"
+                                           valueField="codice" giasFormControlName="specifica"
+                                           [filterable]="true" [valuePrimitive]="false" (open)="openDdl($event)">
+                  </gias-drop-down-template-s>
+              </div>
+
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-multiselect-template-s
+                  [name]="'ACAContributes' | transloco"
+                  textField="description"
+                  valueField="code"
+                  giasFormControlName="acaContributes"
+                  [filterable]="true"
+                  [valuePrimitive]="false"
+                  (open)="openDdl($event)">
+                </gias-multiselect-template-s>
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-12 col-sm-6 col-md-4">
+              <kendo-label [text]="'appezzamento.esercizio_Chiuso' | transloco">
+                <kendo-switch
+                  formControlName="esercizio_Chiuso"
+                ></kendo-switch>
+              </kendo-label>
+            </div>
+          </div>
+
+          <div>
+            <div class="row form-row text-center">
+              <h5 class="card-title">{{ 'EsercizioCodiciAggiuntivi' | transloco }}</h5>
+            </div>
+            <div class="row form-row">
+              <div class="col-12">
+                    <gias-codici-template [edit]="this.esercizioEditForm.enabled"></gias-codici-template>
+                </div>
+            </div>
+          </div>
+        </span>
+      </div>
+    </gias-expansionpanel>
+  </form>
+</div>
+
+<ng-template #descriptionsDdl>
+  <div [formGroup]="descrizioneEserciziForm">
+    <gias-drop-down-template
+      [name]="'DescrizioniEsercizi' | transloco"
+      textField="descrizione"
+      valueField="codice"
+      giasFormControlName="des"
+      [filterable]="true"
+      [valuePrimitive]="false"
+      (open)="openDdl($event)"
+    >
+    </gias-drop-down-template>
+  </div>
+</ng-template>

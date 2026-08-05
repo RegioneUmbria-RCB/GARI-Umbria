@@ -1,0 +1,89 @@
+<div class="custom-toolbar" *ngIf="displayButton">
+    <button kendoButton look="flat"
+        (click) ="onOpenFilters()" 
+        [disabled]="isDisabled">
+        <fa-icon size="lg" [icon]="faFilters"></fa-icon>
+    </button>
+</div>
+
+<kendo-drawer-container>
+    <kendo-drawer #drawer mode="overlay" [width]="drawerWidth"
+                    [position]="'end'"
+                    (collapse)="onCancel()" 
+                    (expand)="shouldApply=true">
+        <ng-template kendoDrawerTemplate>
+            <form [formGroup]="filtersService.FiltersRilieviForm">
+
+                <div class="btn right" style="margin-bottom: -20px;" (click)="onCancel()">
+                    <fa-icon [icon]="faClose"></fa-icon>
+                </div>
+                
+                <gias-drop-down-template-s
+                    [name]="'Azienda' | transloco"
+                    [obligatory]="false"
+                    [listItems]="filtersService.aziendeRilievi"
+                    textField="ragioneSociale"
+                    valueField="partitaIva"
+                    giasFormControlName="AziendaRilievi"
+                    [filterable]="true"
+                    [placeholder]="'Tutte' | transloco"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultAzienda">
+                </gias-drop-down-template-s>
+
+                <gias-drop-down-template-s
+                    [name]="'Centro_Aziendale' | transloco"
+                    giasFormControlName="CentroAziendaleRilievi"
+                    [listItems]="filtersService.centriAziendaliRilievi"
+                    [textField]="'nome'"
+                    [valueField]="'primaryKey.codice'"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultCentro">
+                </gias-drop-down-template-s>
+
+                <gias-drop-down-template-s
+                    [name]="'Specie' | transloco"
+                    giasFormControlName="SpecieRilievi"
+                    [textField]="'descrizione'"
+                    [valueField]="'codice'"
+                    [listItems]="filtersService.specieRilievi"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultSpecie">
+                </gias-drop-down-template-s>
+
+                <gias-drop-down-template-s
+                    [name]="'Rilievo' | transloco"
+                    giasFormControlName="TipoRilievi"
+                    [textField]="'descrizione' | transloco"
+                    [valueField]="'codice'"
+                    [listItems]="filtersService.listaRilievi"
+                    [clearButton]="true"
+                    [filterable]="true"
+                    [valuePrimitive]="false"
+                    [defaultItem]="defaultRilievo">
+                </gias-drop-down-template-s>
+
+                <gias-data-template
+                    [name]="'Da' | transloco"
+                    giasFormControlName="Da">
+                </gias-data-template>
+                <gias-data-template
+                    [name]="'A' | transloco"
+                    giasFormControlName="A">
+                </gias-data-template>
+
+                <div class="col" style="padding-top: 20pt;">
+                    <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()">
+                        <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+                        <span>{{ 'Cerca' | transloco }}</span>
+                    </div>
+                </div>
+
+            </form>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container>

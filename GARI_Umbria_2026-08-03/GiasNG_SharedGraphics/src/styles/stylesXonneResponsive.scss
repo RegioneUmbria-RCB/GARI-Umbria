@@ -1,0 +1,1234 @@
+/* questo serve a posizionare la toolbar ed a mantenerla sotto all'header */
+.k-appbar-top {
+    top: 50px !important;
+}
+
+.gias-vertical-spacer {
+    height: 24px;
+}
+
+.container.anagraficaContainer {
+    h2 {
+        padding: 24px;
+    }
+}
+.faTabsLeft {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 20px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/navbar_ic_arrow_left_type05.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    cursor: pointer;
+
+   /* TODO implementare l'icona di hover */
+   /* &:hover { */
+   /*     background-image: url('../assets/custom-icons/icon-table/ic_table_add_schedule_02_on.svg'); */
+   /* } */
+}
+.faTabsRight {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 20px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/navbar_ic_arrow_right_type05.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    cursor: pointer;
+
+   /* TODO implementare l'icona di hover */
+   /* &:hover { */
+   /*     background-image: url('../assets/custom-icons/icon-table/ic_table_add_schedule_02_on.svg'); */
+   /* } */
+}
+
+/* topbar responsive layout */
+.k-appbar-top {
+   /* tolto per lasciare spazio di crescita al div del calendario-stampa */
+   /* flex-wrap: nowrap !important; */
+
+    #anag-top-bar-print {
+        margin-left: 4px;
+    }
+
+    .topbar-right-filler {
+        width: 10px;
+    }
+
+    #anag-top-bar-1 {
+        margin-right: -15px
+    }
+}
+#anag-top-bar-1 {
+    flex: 0 0 32px;
+}
+#anag-top-bar-2 {
+    overflow: hidden;
+    flex: 1;
+}
+
+.topbar-calendar-print {
+   /*width: 100%; */
+    display: flex;
+    justify-content: end;
+}
+
+kendo-appbar-section kendo-dropdownbutton,
+form kendo-appbar-section {
+    margin-bottom: 0px;
+}
+
+.gias-toolbar-section {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-shrink: unset !important;
+    justify-content: center !important;
+
+    .btn-group-sm {
+        display: flex !important;
+        height: 32px;
+    }
+    .gias-button-esercizi,
+    .gias-new-item-rapid-button {
+        margin-right: 0.5rem;
+    }
+
+    .must-show {
+        display: block !important;
+    }
+}
+
+.separator {
+    background: #e9ecef;
+}
+
+@media only screen and (max-width: 1650px) {
+
+    #expander {
+        margin-right: 0px !important;
+    }
+
+    kendo-appbar {
+        kendo-appbar-section {
+            ul {
+                [routerlinkactive="nav-item active"] {
+                    min-width: 120px;
+                    border-top-left-radius: 8px !important;
+                    border-top-right-radius: 8px !important;
+                    margin: 0px 4px 0px 0px;
+                    padding: 2px 30px;
+                }
+            }
+        }
+    }
+
+    form .k-appbar-section button {
+        margin-right: 4px;
+    }
+
+    .k-appbar {
+        gap: 4px !important;
+    }
+
+    kendo-appbar-section kendo-dropdownbutton, form kendo-appbar-section {
+        margin-bottom: 0px !important;
+    }
+}
+
+/* fino a 1024 (tablet optimization) */
+@media only screen and (max-width: 1024px) {
+    .k-breadcrumb {
+        padding: 0px !important;
+    }
+
+    kendo-appbar {
+        padding-top: 0px !important;
+    }
+
+    /* ottimizza la sezione breadcrumbs */
+    .k-breadcrumb-container, .k-breadcrumb-root-item-container {
+        flex-flow: row wrap !important;
+    }
+
+    .k-breadcrumb-container .k-breadcrumb-item .item {
+        font-size: 10px !important;
+        padding: 3px 3px !important;
+
+        fa-icon {
+            padding-right: 0px !important;
+
+            svg {
+                height: 28px !important;
+                width: 28px !important;
+            }
+        }
+    }
+
+    /* impostazioni relative alla toolbar e alla griglia */
+
+    .k-grid td {
+        font-size: 11px;
+        border-color: transparent !important;
+        line-height: 1.2;
+    }
+
+    .k-grid {
+        .ng-fa-icon {
+            width: 28px !important;
+        }
+
+        macchina-short-description,
+        campi-short-description {
+            p {
+                margin-bottom: 0.2rem;
+            }
+        }
+
+    }
+
+    .k-toolbar.k-grid-toolbar {
+        padding: 0.75rem 0 !important;
+        gap: 0.2rem;
+        &::before {
+            margin-inline-start: 0 !important;
+        }
+
+        .ng-fa-icon {
+            width: 28px !important;
+        }
+
+        .separator {
+            margin-right: 4px;
+            margin-left: 4px;
+        }
+        grid-customizations.p-2 {
+            gap: 0px !important;
+            flex-shrink: initial !important;
+            flex-wrap: wrap !important;
+            margin-left: 0px !important;
+        }
+
+        .gias-button-esercizi,
+        .gias-new-item-rapid-button {
+            margin-right: 0.2rem;
+        }
+    }
+}
+
+/* media css per adattare la dimensione (i padding) della topbar al contenuto */
+@media only screen and (min-width: 1000px) {
+    kendo-appbar {
+        padding-right: var(--bs-gutter-x, 0.75rem) !important;
+        padding-left: var(--bs-gutter-x, 0.75rem) !important;
+
+        #expander {
+            transform: translateX(-30px) translateY(-5px);
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    kendo-appbar {
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+
+        #expander {
+            transform: translateX(-15px) translateY(-5px);
+        }
+
+        #anag-top-bar-print {
+            button {
+                padding-right: 0px !important;
+            }
+        }
+    }
+
+    .k-appbar-top {
+        .topbar-right-filler {
+            width: 0px;
+        }
+    }
+}
+
+/* media css (tutte e tre i seguenti) per sovrascrivere i comportamenti del componente di anagrafica
+    NB se questi css non si adattano o vanno in conflitto con altre pagine
+    valutare di spostare il codice nello stile del componente
+*/
+/* fino a 600px */
+@media only screen and (max-width: 600px) {
+    .search-section {
+        display: none;
+    }
+    .appbar-items,
+    .user-actions kendo-badge-container,
+    kendo-avatar.k-avatar,
+    .k-appbar-separator {
+        display: block !important;
+    }
+
+    .overflow-button,
+    .search {
+        display: block !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .appbar-items,
+    .search,
+    kendo-avatar.k-avatar,
+    .user-actions kendo-badge-container,
+    .k-appbar-separator {
+        display: block !important;
+    }
+
+    .overflow-button {
+        display: none !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .appbar-items,
+    .user-actions kendo-badge-container,
+    .k-appbar-separator,
+    kendo-avatar.k-avatar {
+        display: block !important;
+    }
+
+    .overflow-button {
+        display: none !important;
+    }
+}
+
+/* mobile devices (until 768px) */
+@media only screen and (max-width: 768px) {
+    .topbar-calendar-print {
+        justify-content: center;
+    }
+
+    .k-toolbar.k-grid-toolbar {
+       /* .spacer { */
+       /*     display: none; */
+       /* } */
+    }
+
+    .editPageContent {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 0px;
+    }
+
+    gias-expansionpanel {
+        .k-expander-content {
+            padding: 12px;
+        }
+    }
+
+    h4.card-title {
+        font-size: 18px !important;
+        margin-bottom: 12px !important;
+        margin-top: 20px !important;
+    }
+    h5.card-title {
+        font-size: 18px !important;
+        margin-bottom: 12px !important;
+        margin-top: 20px !important;
+    }
+    h6.card-subtitle {
+        font-size: 16px !important;
+    }
+    .card .card, .k-expander-content {
+        h5.card-title {
+            font-size: 14px !important;
+        }
+
+        .card-subtitle {
+            font-size: 12px !important;
+        }
+    }
+
+}
+
+
+kendo-popup.k-animation-container.k-animation-container-fixed.k-animation-container-shown {
+    max-width: 100vw;
+}
+
+.x-outline-0 {
+    outline-width: 0!important;
+}
+
+.bg-gias-blue {
+    background-color: #002d5a;
+}
+/* mobile devices (until 500px) */
+@media only screen and (max-width: 500px) {
+
+    .gias-toolbar-section.full-width-section {
+        width: 100%;
+    }
+
+    .k-toolbar.k-grid-toolbar {
+        .spacer {
+            display: none;
+        }
+
+        .p-2 {
+            padding: 0 0.5rem !important;
+        }
+    }
+
+    .k-toolbar::before {
+        height: auto !important;
+    }
+    .separator {
+        height: 1px;
+        width: 100%;
+        margin-bottom: 4px;
+    }
+
+    .btn.btn-primary.btn-primary-fill {
+        font-size: 11px !important;
+    }
+
+    .gias-button-esercizi {
+
+        button {
+            padding-left: 0.25rem;
+            padding-right: 0.25rem;
+        }
+
+        .btn.btn-primary.btn-primary-fill {
+            font-size: 11px !important;
+        }
+    }
+
+    .k-toolbar.k-grid-toolbar .ng-fa-icon.faDoubleArrowRight {
+        width: 20px !important;
+    }
+
+    grid-customizations {
+        button.btn.btn-default.btn-sm {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+    }
+
+    kendo-grid {
+        padding: 0 0.5rem 1rem 0.5rem !important;
+    }
+
+    .k-toolbar.k-grid-toolbar {
+        justify-content: space-evenly;
+    }
+
+}
+
+/* css utilizzati per stilare il quaderno di campagna */
+app-quaderno-di-campagna {
+    .k-appbar-light {
+        background-color: #E6ECF2 !important;
+    }
+
+    kendo-expansionpanel.k-expander {
+        margin-bottom: 0px!important;
+    }
+
+    .separator.white {
+        background-color: white;
+        height: auto;
+        width: 1px;
+    }
+    .separator.white.must-show {
+        display: block!important;
+    }
+    .separator.grey {
+        background-color: #CACCCD;
+        height: auto;
+        width: 1px;
+        padding: 0px;
+    }
+    kendo-appbar {
+       /*padding: 0.5rem 0.5rem !important; */
+        padding: 0 !important;
+
+        app-multi-operazione {
+            margin-top: 0;/*0.5rem; */
+            margin-bottom: 0.5rem;
+            padding-left: 5px;
+        }
+
+        input:focus-visible {
+            outline: white  !important;
+        }
+
+        .gias-opzioni-preferiti-container {
+            display: flex;
+        }
+    }
+    .text-blue {
+        color: #002850 !important;
+    }
+    .gias-opzioni-container {
+        min-width: 210px;
+        label {
+            font-weight: bold!important;
+        }
+        gias-switch-template {
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        kendo-label {
+            display: none !important;
+        }
+        .gias-switch-two-labels {
+            display: flex;
+            align-items: flex-end;
+        }
+        .k-switch-off .k-switch-track,
+        .k-switch-on .k-switch-track {
+            background-color: #002850 !important;
+        }
+    }
+
+
+    .gias-qdg-save-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .gias-qdg-verifica-container {
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .gias-update-toolbar-before-appbar-section {
+        display: none;
+    }
+
+    .k-appbar .k-appbar-section {
+        display: inline-flex;
+        flex-wrap: nowrap;
+       /* align-items: center; */
+        align-items: stretch;
+    }
+}
+
+.btn.btn-primary {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.k-icon.k-i-imposta_selezione_predefinita {
+    &::before {
+        opacity: 0;
+    }
+    height: 32px;
+    width: 32px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_list_settings_favorite.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    cursor: pointer;
+
+    &:hover {
+        background-image: url('../assets/custom-icons/icon-general/ic_options_list_settings_favorite_on.svg');
+    }
+}
+.faRilevaFaseEpoca {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_rilevafaseepoca_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faBoxAcquaInMiscela {
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+    width: 50px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_box_acquainmiscela.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+/* sottosezione diserbi, trattamenti */
+.faDoubleArrowDown {
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    width: 28px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_double_arrow_down_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.fa_diserbo_inserisci_prodotto_in_miscela_on {
+    display: inline-block;
+    vertical-align: middle;
+    height: 28px;
+    width: 28px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_diserbo_inserisci_prodotto_in_miscela_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.faCaricoMagazzino {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_new.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faNuovoDdtRicevuto {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_btnsave_type01_savenew_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faMovimentiMagazzino {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_movimenti_magazzino_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faDoseProdotto {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_doseprodotto.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faInfestanti {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_infestanti.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faOperatoriNuovaRisorsa {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_operatori_nuovarisorsa_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.faImpostaPreferita {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-image: url('../assets/custom-icons/icon-general/ic_options_imposta_selezione_predefinita_on.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+.gias-section-title-with-icon {
+    display: flex;
+    align-items: center;
+
+    .card-title {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        line-height: 30px !important;
+    }
+}
+.gias-ex-buttons-prodotti {
+    display: none;
+}
+.gias-fertilizzanti-nitrati-container {
+    display: flex;
+    align-items: center;
+}
+/* fine sottosezione diserbi e trattamenti */
+
+
+app-menu-agenda {
+    agenda-filters {
+        .top-buffer {
+            display: flex;
+            justify-content: end;
+        }
+    }
+    .btn-delete {
+        border: 1px solid red !important;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .btn.btn-qdc {
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 0;
+    }
+
+    .lblRicetta {align-self: center;}
+}
+
+
+kendo-popup.k-animation-container.k-animation-container-fixed.k-animation-container-shown {
+    max-width: 100vw;
+}
+
+.x-outline-0 {
+    outline-width: 0!important;
+}
+
+.bg-gias-blue {
+    background-color: #002d5a;
+}
+/* fine css quaderno di campagna */
+
+
+@media only screen and (max-width: 991px) {
+    gis-layer-color-picker-window kendo-window.k-window {
+        left: 0!important;
+    }
+
+    .k-appbar-top {
+        top: 100px !important;
+    }
+
+}
+
+
+@media print {
+    gis-bottom-window,
+    gias-master-header,
+    gis-window,
+    kendo-appbar,
+    .k-appbar.k-appbar-top.k-appbar-static.k-appbar-light,
+    kendo-floatingactionbutton,
+    #zoomtextbox,
+    .gm-control-active.gm-fullscreen-control,
+    gis-toolbar {
+        display: none;
+    }
+
+    img {
+        max-width: auto!important;
+    }
+
+    #contenitore_principale {
+        padding-top: 0px!important;
+    }
+    .gis-page {
+        overflow: hidden;
+    }
+}
+
+.k-panelbar > .k-panelbar-header > .k-link,
+.k-expander-header {
+    background-color: #E6ECF2!important;
+}
+
+
+.k-panelbar-content {
+    padding: 1rem 1.5rem;
+}
+
+
+@media only screen and (min-width: 992px){
+
+    kendo-floatingactionbutton>button.k-p-2.k-fab.k-fab-solid.bg-white.x-outline-0.k-fab-md.k-rounded-full.k-fab-solid-primary {
+        padding: 0.8rem !important;
+    }
+
+    .k-p-2.bg-gias-blue.circle.floating-icon-container {
+        padding: 0 !important;
+    }
+
+    .floating-icon-container>i
+    {
+        margin: 0.8rem !important;
+    }
+
+    .xi-drawer-close,
+    .xi-drawer-open,
+    .floating-icon-container>i.xi-satellite,
+    .floating-icon-container>i.xi-roadmap  {
+        height: 2rem;
+        width: 2rem;
+    }
+
+}
+
+
+/*gias-multiselect-template-s kendo-multiselect { */
+/*    min-width: 30vw!important; */
+/*} */
+
+app-quaderno-di-campagna kendo-floatingactionbutton {
+    display: none;
+}
+
+
+/* ------------- OPTIMIZE 16012023 - HEADER WITH 4 SELECT INNER */
+#TestataForm {
+    .gias-data-specie-container {
+        display: flex;
+
+        /*.gias-data-container {
+            width: 140px;
+        }*/
+        .gias-specie-container {
+            margin-left: 5px;
+            min-width: 300px;
+            max-width: 350px;
+        }
+    }
+    .gias-attivi-preferiti-container {
+        display: flex;
+
+        gias-info-template{
+            margin-top: 6px;
+            margin-right: 5px;
+        }
+
+        .k-i-imposta_selezione_predefinita {
+            margin-left: 0;
+            height: 40px;
+            width: 40px;
+        }
+
+        .gias-label-switch-container {
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+            margin-left: 2rem;
+
+            .k-label {
+                margin-right: 0.3rem;
+                margin-left: 0.3rem;
+            }
+        }
+        .gias-multiselect-container {
+            display: flex;
+            align-items: flex-end;
+            margin-left: 0.5rem;
+            margin-bottom: 1px;
+            kendo-label {
+                display: flex;
+                white-space: nowrap;
+                align-items: center;
+            }
+        }
+    }
+}
+/* rowSecond */
+#TestataForm .row.form-row kendo-label {
+	display: block;
+}
+
+/* 4 button Funzionali Qdc */
+.gias-qdg-verifica-container .gias-button-two-rows {
+    padding-left: 2px;
+    padding-right: 2px;
+    max-width: 120px !important;
+}
+
+.gias-last-nav-buttons {
+    margin: auto;
+}
+
+@media only screen and (max-width: 2121px) {
+    #TestataForm .gias-attivi-preferiti-container gias-multiselect-template-s div div {
+        .k-chip {
+            display: flex;
+        }
+    }
+    gias-multiselect-template-s kendo-label {
+        margin-bottom: 6px;
+    }
+    .gias-last-nav-buttons{
+        min-height: 78px;
+    }
+    .gias-header-visite-show.gias-last-nav-buttons{
+        min-height: 48px;
+    }
+
+    gias-info-template{
+        margin-top: 0px;
+    }
+
+}
+@media only screen and (max-width: 1450px) {
+    .gias-qdg-save-container {
+        flex-direction: column !important;
+    }
+    .save-first-line {
+        margin-bottom: 5px !important;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+
+
+    .gias-last-nav-buttons{
+        min-height: 156px;
+    }
+
+    #TestataForm .gias-attivi-preferiti-container {
+        gias-multiselect-template-s div div {
+            display: block;
+            .k-chip {
+                display: flex;
+            }
+            kendo-label {
+                margin-bottom: 0.5rem;
+                margin-top: 1rem;
+            }
+        }
+        .gias-multiselect-container {
+            margin-left: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        max-width: 490px;
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 450px;
+    }
+}
+
+@media only screen and (max-width: 1230px) {
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 350px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+
+    app-quaderno-di-campagna kendo-appbar app-multi-operazione {
+        padding-left: 15px;
+    }
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 360px;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+
+    .gias-button-two-rows[_ngcontent-vdl-c957] .text[_ngcontent-vdl-c957] {
+        font-size: 10px;
+        line-height: 10px;
+    }
+    .gias-qdg-verifica-container .gias-button-two-rows {
+        padding-left: 2px;
+        padding-right: 2px;
+        max-width: 64px !important;
+    }
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 300px;
+    }
+}
+
+@media only screen and (max-width: 998px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container{
+        margin-bottom: 1rem;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .k-appbar-section {
+        min-height: auto;
+        width: 100%;
+        border-color: transparent
+    }
+    app-quaderno-di-campagna #TestataForm{
+        border-bottom: 1px solid #fff;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #TestataForm .gias-operazioni-container .k-input-md .k-input-values, #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 720px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container {
+        width: 100%;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-verifica-container {
+        width: 50%;
+        float: left;
+        justify-content: center;
+        border-right: 1px solid #fff;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-verifica-container .gias-qdg-verifica-container {
+        border-right: 0px solid #fff;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-verifica-container + .separator {
+        display: none !important;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-save-container {
+        width: 50%;
+        float: left;
+        justify-content: center;
+        min-height: 50px;
+    }
+    app-quaderno-di-campagna .gias-qdg-save-container, app-quaderno-di-campagna .gias-qdg-verifica-container {
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 80% !important;
+        float: left!important;
+        display: block!important;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 680px;
+    }
+}
+
+@media only screen and (max-width: 920px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values {
+        min-width: 650px;
+    }
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 880px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 550px;
+    }
+
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 71% !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 520px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 60% !important;
+    }
+    app-quaderno-di-campagna #TestataForm {
+        margin-top: -15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 320px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 40% !important;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-verifica-container {
+        width: 100%;
+        border-right: 0px solid #fff;
+        border-bottom: 1px solid #fff;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-verifica-container .gias-qdg-verifica-container {
+        width: 100%;
+        border-bottom: 0px solid #fff;
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+    app-quaderno-di-campagna .k-appbar.k-appbar-top .gias-qdg-save-container {
+        width: 100%;
+        min-height:auto;
+        padding-top: 6px;
+        padding-bottom: 2px;
+    }
+    app-quaderno-di-campagna #TestataForm {
+        margin-top: -15px;
+    }
+}
+
+@media only screen and (max-width: 610px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 260px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 34% !important;
+    }
+    #TestataForm .gias-operazioni-container .gias-opzioni-container {
+        float: left;
+        display: block;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container{
+        flex-direction: inherit;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 210px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 28% !important;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 220px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 20% !important;
+    }
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .gias-opzioni-container {
+        max-width: 134px;
+        min-width: 134px;
+    }
+    app-quaderno-di-campagna #TestataForm .k-chip-md {
+        font-size: 0.63rem;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .gias-opzioni-container {
+        max-width: 130px;
+        min-width: 122px;
+        font-size: 10px;
+    }
+    #TestataForm .row.form-row .col-lg-4 {
+        max-width: 134px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values, app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 220px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-attivi-preferiti-container .col-md-auto {
+        min-width: 230px;
+    }
+    app-quaderno-di-campagna #TestataForm .col-lg-8{
+        width: 20% !important;
+        padding-left: 0 !important;
+    }
+
+    app-quaderno-di-campagna #TestataForm .k-chip-md {
+        font-size: 0.63rem;
+    }
+
+}
+@media only screen and (max-width: 420px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .gias-opzioni-container {
+        max-width: 120px;
+        min-width: 120px;
+    }
+    #TestataForm .row.form-row .col-lg-4 {
+        max-width: 124px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values, app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-picker {
+        min-width: 200px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-attivi-preferiti-container .col-md-auto {
+        min-width: 200px;
+    }
+}
+
+@media only screen and (max-width: 390px) {
+
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .gias-opzioni-container {
+        max-width: 120px;
+        min-width: 120px;
+    }
+    #TestataForm .row.form-row .col-lg-4 {
+        max-width: 124px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-operazioni-container .k-input-md .k-input-values,
+    app-quaderno-di-campagna #TestataForm .row.form-row .k-dropdownlist.k-pickerù
+    {
+        min-width: 180px;
+    }
+    app-quaderno-di-campagna #TestataForm .gias-attivi-preferiti-container .col-md-auto {
+        min-width: 180px;
+    }
+}

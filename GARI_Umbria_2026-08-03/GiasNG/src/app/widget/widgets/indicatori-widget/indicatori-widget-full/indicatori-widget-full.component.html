@@ -1,0 +1,28 @@
+<kendo-dialog [height]="height" [width]="width" (close)="onClose()" id="dss-dialog-window">
+  <kendo-dialog-titlebar>
+    {{ 'IndicatoriDSS' | transloco }}
+  </kendo-dialog-titlebar>
+
+  <div>
+    <div class="indicatori-widget-toggle">
+      <label>
+        <input type="radio" [checked]="tabSelected == 1" (change)="tabSelected = 1">
+        <div>Visualizzazione dashboard</div>
+      </label>
+      <label>
+        <input type="radio" [checked]="tabSelected == 2" (change)="tabSelected = 2">
+        <div>Visualizzazione griglia</div>
+      </label>
+    </div>
+  </div>
+
+  <div class="scrollable" [style]="tabSelected == 1 ? '' : 'display: none'">
+    <app-indicatori-widget-dashboard [data]="data"></app-indicatori-widget-dashboard>
+  </div>
+
+  <div class="scrollable" [style]="tabSelected == 2 ? '' : 'display: none'">
+    <app-indicatori-widget-grid id="indicatori-widget-grid" [data]="data"
+      [height]="getGridHeight()"></app-indicatori-widget-grid>
+  </div>
+
+</kendo-dialog>

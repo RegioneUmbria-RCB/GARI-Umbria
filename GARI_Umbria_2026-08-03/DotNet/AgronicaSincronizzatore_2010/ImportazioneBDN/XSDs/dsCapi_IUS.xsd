@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCAPI_IUS" targetNamespace="http://bdr.izs.it/XMLSchema/dsCAPI_IUS.xsd" xmlns:mstns="http://bdr.izs.it/XMLSchema/dsCAPI_IUS.xsd" xmlns="http://bdr.izs.it/XMLSchema/dsCAPI_IUS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="dsCAPI_IUS" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CAPO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="P_CAPO_ID" type="xs:decimal" />
+              <xs:element name="P_INS_VAR" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CAPO_CODICE_IDENTIFICATIVO" type="xs:string" />
+              <xs:element name="P_SESSO" type="xs:string" />
+              <xs:element name="P_RAZZA_CODICE" type="xs:string" />
+              <xs:element name="P_DT_NASCITA" type="xs:date" />
+              <xs:element name="P_COD_MARCHIO_MADRE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_COD_MARCHIO_PADRE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_TAG" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_PRECEDENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_INIZIO_LATTAZIONE" type="xs:date" minOccurs="0" />
+              <xs:element name="P_DT_FINE_LATTAZIONE" type="xs:date" minOccurs="0" />
+              <xs:element name="P_DT_APPLICAZIONE_MARCHIO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_DT_ISCRIZIONE_IN_ANAGRAFE" type="xs:date" minOccurs="0" />
+              <xs:element name="P_DT_COMPILAZIONE_CEDOLA" type="xs:date" minOccurs="0" />
+              <xs:element name="P_FLAG_INSEMINAZIONE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_TIPO_ORIGINE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_PARTITE_ANIMO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_STATI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ALLEV_ID_FISCALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_AZIENDA_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_MARCHE_PRODOTTE_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_LIBRO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_SPECIE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ID_FISCALE_DETEN" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_AZIENDA_DETEN" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_SPECIE_DETEN" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_INGRESSO_DETEN" type="xs:date" minOccurs="0" />
+              <xs:element name="P_ASL_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DISTRETTO_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_INGRESSO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_MOTIVO_INGRESSO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_RILASCIO_PASSAPORTO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_TIPO_PASSAPORTO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_NUMERO_RIF_LOCALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ID_FISCALE_MARCATORE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_COD_MADRE_GENETICA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_RIF_MODELLO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_MODELLO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_CODICE_AZIENDA_PROV" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ID_FISCALE_PROV" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_SPECIE_PROV" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_FM_PROV" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CODICE_STATI_ORIGINE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:CAPO" />
+      <xs:field xpath="mstns:P_CAPO_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

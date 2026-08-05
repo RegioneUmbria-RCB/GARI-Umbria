@@ -1,0 +1,73 @@
+<ng-container *ngIf="formListeners$ | async"></ng-container>
+
+<div class="row form-row">
+  <kendo-formfield class="col-10">
+    <kendo-label class="agea-switch-label" text="Azienda"></kendo-label>
+    <kendo-dropdownlist [data]="data$ | async" textField="ragioneSociale" valueField="partitaIva"
+      [kendoDropDownFilter]="{ caseSensitive: false, operator: 'contains' }" [value]="impresaSelected"
+      (valueChange)="onImpresaSelected.emit($event)" [loading]="loading"
+      [virtual]="{ itemHeight: 28, pageSize: 50 }">
+      <ng-template kendoDropDownListItemTemplate let-dataItem>
+        {{ dataItem.ragioneSociale }}{{ dataItem.CUAA ? ' (' + dataItem.CUAA + ')' : '' }}
+      </ng-template>
+    </kendo-dropdownlist>
+  </kendo-formfield>
+
+  <div class="col-1 button-container">
+    <button kendoButton kendoTooltip title="Impostazioni aziende" (click)="settingsDialogOpen = true">
+      <span class="k-icon k-i-gear"></span>
+    </button>
+  </div>
+</div>
+
+<kendo-dialog *ngIf="settingsDialogOpen" (close)="settingsDialogOpen = false" title="Impostazioni aziende">
+  <form [formGroup]="form">
+    <div class="row form-row">
+      <fieldset class="k-form-fieldset col-6">
+        <legend class="k-form-legend">Fornitura</legend>
+
+        <div class="row filter-row">
+          <kendo-label class="agea-switch-label" text="Senza fornitura">
+            <kendo-switch class="agea-switch" formControlName="withoutBundles"></kendo-switch>
+          </kendo-label>
+        </div>
+
+        <div class="row filter-row">
+          <kendo-label text="Successive a">
+            <kendo-datepicker formControlName="afterDate" calendarType="classic" clear-input-button></kendo-datepicker>
+          </kendo-label>
+        </div>
+
+        <div class="row filter-row">
+          <kendo-label text="Precedenti a">
+            <kendo-datepicker formControlName="beforeDate" calendarType="classic" clear-input-button></kendo-datepicker>
+          </kendo-label>
+        </div>
+      </fieldset>
+
+      <fieldset class="k-form-fieldset col-6">
+        <legend class="k-form-legend">Trasmissione</legend>
+
+        <div class="row filter-row">
+          <kendo-label class="agea-switch-label" text="Senza trasmissioni">
+            <kendo-switch class="agea-switch" formControlName="withoutSubmissions"></kendo-switch>
+          </kendo-label>
+        </div>
+
+        <div class="row filter-row">
+          <kendo-label class="agea-switch-label" text="In errore">
+            <kendo-switch class="agea-switch" formControlName="submissionError"></kendo-switch>
+          </kendo-label>
+        </div>
+
+        <div class="row filter-row">
+          <kendo-label class="agea-switch-label" text="Completata">
+            <kendo-switch class="agea-switch" formControlName="submissionCompleted"></kendo-switch>
+          </kendo-label>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+
+  <button kendoButton (click)="exportExcel()" class="btn btn-primary btn-primary-fill"> Esporta excel </button>
+</kendo-dialog>

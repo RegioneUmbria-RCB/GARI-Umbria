@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <ApplicationIcon />
+    <Win32Resource />
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="GiasVersioneCorrente.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Humanizer.Core" Version="2.14.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.36" />
+    <PackageReference Include="Polly" Version="8.4.1" />
+    <PackageReference Include="log4net" Version="3.3.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="6.0.36" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.36" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.36" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.36" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.36">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.2.1" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.4" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageReference Include="Serilog.Sinks.Http" Version="9.1.0" />
+    <PackageReference Include="Serilog.Sinks.Map" Version="1.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="6.9.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.9.0" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
+    <PackageReference Include="System.Formats.Asn1" Version="6.0.1" />
+    <PackageReference Include="System.Runtime.Caching" Version="6.0.0" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="6.0.5" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Operazione.BIZ\AgronicaNetCore.Operazione.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.Utenti.BIZ\AgronicaNetCore.Utenti.BIZ.csproj" />
+    <ProjectReference Include="..\..\AgronicaNetCore\AgronicaNetCore.SuperServer.BIZ\AgronicaNetCore.SuperServer.BIZ.csproj" />
+    <ProjectReference Include="..\AgronicaCoreAnagrafeStdDAL\AgronicaCoreAnagrafeStdDAL.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreContabStdBIZ\AgronicaCoreContabStdBIZ.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreDataProviderSTD\AgronicaCoreDataProviderSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\AgronicaCoreEntityFrameworkSTD_POCO\AgronicaCoreEntityFrameworkSTD_POCO.csproj" />
+    <ProjectReference Include="..\AgronicaCoreModelloSTD\AgronicaCoreModelloSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\AgronicaCoreVarieBizSTD\AgronicaCoreVarieBizSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreWebServiceSTD\AgronicaCoreWebServiceSTD.vbproj" />
+    <ProjectReference Include="..\CoreApi.BusinessLayer\CoreApi.BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" properties_4launchsettings_1json__JsonSchema="" versione_3agronicacoreapi_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

@@ -1,0 +1,17 @@
+<div [formGroup]="qdcservice.TestataVisitaForm">
+
+    <gias-drop-down-template-s [name]="'Azienda' | transloco" [obligatory]="true"
+                               [clearButton]="true"
+                               textField="ragioneSociale"
+                               valueField="partitaIva" [filterable]="true"
+                               [virtual]="{ itemHeight: 28 }"
+                               giasFormControlName="Azienda_Visita"
+                               [listItems]="this.testataService.Array_Aziende"
+                               (open)="openDdlAzienda($event, 'Azienda')"
+                               [valuePrimitive]="false">
+    </gias-drop-down-template-s>
+
+    <!-- proprietà da aggiungere dopo che si conoscono le specifiche delle ddl -->
+    <!-- (open)="openDdlAzienda($event, 'Azienda')"  -->
+    <!-- [listItems]="array_Aziende" -->
+</div>

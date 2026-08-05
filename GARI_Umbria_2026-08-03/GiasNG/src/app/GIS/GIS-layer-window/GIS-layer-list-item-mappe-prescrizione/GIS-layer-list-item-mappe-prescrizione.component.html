@@ -1,0 +1,23 @@
+<div class="info-box">
+
+    <ng-content></ng-content>
+
+    <div>
+        <i aria-hidden="true" class="xi-layer-legend-raster"></i>
+    </div>
+
+    <div class="color-icon" [ngStyle]="{ 'background-color': '#' + dataItem?.colore_1 }"></div>
+
+    <div (click)="openMappePrescrizioneConfig($event, dataItem)">
+        <i aria-hidden="true" class="xi-theme-layer-dark k-mr-2"></i>
+    </div>
+
+    <span class="layer-name">{{ dataItem?.nome }}</span>
+
+</div>
+
+<ng-container *ngIf="{ visible: visible$ | async } as data">
+    <span (click)="toggleVisible($event, data.visible)" class="info-icon">
+        <i aria-hidden="true" [class]="data.visible ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'"></i>
+    </span>
+</ng-container>

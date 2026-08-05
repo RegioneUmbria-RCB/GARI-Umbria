@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\AgronicaDataProvider6\AgronicaDataProvider6.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Anagrafe.DAL\AgronicaNetCore.Anagrafe.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Agenda.DAL\AgronicaNetCore.Agenda.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Gis.DAL\AgronicaNetCore.Gis.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.RischiMeteo.DAL\AgronicaNetCore.RischiMeteo.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

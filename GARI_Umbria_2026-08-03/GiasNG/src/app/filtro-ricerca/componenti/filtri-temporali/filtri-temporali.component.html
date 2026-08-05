@@ -1,0 +1,80 @@
+<div>
+    <div class="row" *ngFor="let item of formGroupArrayInput.controls; let i = index" [formGroup]="item">
+        <div class="col-12">
+            <div class="row align-items-center mb-1">
+                <div class="col-auto">
+                    <button class="close-button" (click)="removeFilter(i)" [ngStyle]="{'visibility': i === 0 ? 'hidden' : 'visible'}">X</button>
+                </div>
+                <div class="col-12 col-md-2">
+                    <gias-drop-down-template-s  [id]="'Entita-' + i"
+                                                giasFormControlName="Entita"
+                                                [name] = "getName('EntitaPianoColturale', i)"
+                                                [textField]="'nome'"
+                                                [valueField]="'id'"
+                                                [listItems]="ListaEntita"
+                                                [valuePrimitive]="false"
+                                                [isRequired]="true"
+                                                [showStar]="false">
+                    </gias-drop-down-template-s>
+                </div>
+                <div class="col-12 col-md-2">
+                    <gias-drop-down-template-s  [id]="'ColonnaData-' + i"
+                                                giasFormControlName="ColonnaData"
+                                                [name] = "getName('ApplicaA', i)"
+                                                [textField]="'nome'"
+                                                [valueField]="'id'"
+                                                [listItems]="ListaValidita"
+                                                [valuePrimitive]="false"
+                                                [isRequired]="true"
+                                                [showStar]="false">
+                    </gias-drop-down-template-s>
+                </div>
+                <div class="col-12 col-md-2">
+                    <gias-drop-down-template-s  [id]="'TipoConfronto-' + i"
+                                                giasFormControlName="TipoConfronto"
+                                                [name] = "getName('CriteriDiConfronto', i)"
+                                                [textField]="'nome'"
+                                                [valueField]="'id'"
+                                                (open)="getListaTipoConfronto($event, i)"
+                                                [valuePrimitive]="false"
+                                                [isRequired]="true"
+                                                [showStar]="false">
+                    </gias-drop-down-template-s>
+                </div>
+                <div [formGroup]="item.get('Date')" class="col-12" [ngClass]="{'col-md-2': !showLastDateArray[i], 'col-md-4': showLastDateArray[i]}">
+                    <div class="d-flex">
+                        <div class="flex-grow-1 me-1">
+                            <gias-data-template [name]="i == 0 ? ' ' : null" giasFormControlName ="inizio">
+                            </gias-data-template>
+                        </div>
+                        <div *ngIf="showLastDateArray[i]" class="flex-grow-1">
+                            <gias-data-template [name]="i == 0 ? ' ' : null" giasFormControlName ="fine">
+                            </gias-data-template>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-1 d-flex align-items-center" [ngStyle]="{'padding-top': i === 0 ? '2%' : null}">
+                    <label class="mb-0 d-flex align-items-center">
+                        <input type="checkbox" formControlName="ModalitaFiltroData" (change)="onCheckboxChange(i)"/>
+                        <span class="left-space" *ngIf="showTodayOrAnnata[i]">{{ 'Oggi' | transloco }}</span>
+                        <span class="left-space" *ngIf="!showTodayOrAnnata[i]">{{ 'AnnataAgraria' | transloco }}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-4 left align-self-end mt-4">
+        <div class="btn btn-primary btn-primary-fill btn-primary-text filters-button" (click)="onClickAddFilters()">
+            <fa-icon [icon]="faPlus" style="margin: 5px;" size="lg"></fa-icon>
+            <span class="text"> {{ 'AggiungiFiltro' | transloco }} </span>
+        </div>
+    </div>
+    <div class="col-12 col-sm-4 left align-self-end mt-4" *ngIf="showSetDefaultFiltersButton">
+        <div class="btn btn-primary btn-primary-fill btn-primary-text filters-button" (click)="onClickAddFiltersEserciziAttivi()">
+            <fa-icon [icon]="faPlus" style="margin: 5px;" size="lg"></fa-icon>
+            <span class="text"> {{ 'AggiungiFiltroEserciziAttivi' | transloco }} </span>
+        </div>
+    </div>
+</div>

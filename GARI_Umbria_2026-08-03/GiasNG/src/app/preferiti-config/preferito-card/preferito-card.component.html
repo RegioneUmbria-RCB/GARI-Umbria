@@ -1,0 +1,20 @@
+<div class="service-item" [id]="preferito.idSezione">
+    <span [ngClass]="preferito?.preferito == true ?
+            'checkbox-icon readonly':
+            'checkbox-icon active unchecked'" (click)="clickPreferito(preferito)">
+        <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+    </span>
+    <div class="service-content service-card-border-left"
+        [ngClass]="{'color-border-left-area-green': preferito?.colore == '#92D050',
+                'color-border-left-area-product': preferito?.colore == '#990066',
+                'color-border-left-area-commercial': preferito?.colore == '#669966' }">
+        <div class="left">
+            <i aria-hidden="true" [class]="preferito.classeCssIcona"></i>
+            <div class="left service-item-text">{{preferito.testo}}</div>
+        </div>
+        <div class="right">
+            <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+        </div>
+    </div>
+</div>

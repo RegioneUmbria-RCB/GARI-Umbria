@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{8942B252-809E-4FE1-9284-A3FDD7A174EA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreGisBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreGisBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GeoAPI, Version=1.7.5.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\GeoAPI.Core.1.7.5\lib\net45\GeoAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="GeoAPI.CoordinateSystems, Version=1.7.5.0, Culture=neutral, PublicKeyToken=a1a0da7def465678, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\GeoAPI.CoordinateSystems.1.7.5\lib\net45\GeoAPI.CoordinateSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite, Version=2.0.0.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\NetTopologySuite.2.5.0\lib\netstandard2.0\NetTopologySuite.dll</HintPath>
+    </Reference>
+    <Reference Include="NetTopologySuite.CoordinateSystems, Version=1.15.3.0, Culture=neutral, PublicKeyToken=f580a05016ebada1, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\NetTopologySuite.CoordinateSystems.1.15.3\lib\net45\NetTopologySuite.CoordinateSystems.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ProjNET, Version=1.4.0.0, Culture=neutral, PublicKeyToken=a1f5bdcd9c6f5740, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\ProjNET4GeoAPI.1.4.1\lib\net45\ProjNET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CheckList_Extension.vb" />
+    <Compile Include="Compliance_ISCC.vb" />
+    <Compile Include="DatiEntita.vb" />
+    <Compile Include="DatiEntita_ProfilazioneLayers.vb" />
+    <Compile Include="DatiEntita_ProfilazioneLayers_MappaturaSementi.vb" />
+    <Compile Include="GIS_Bookmark.vb" />
+    <Compile Include="GIS_ClusterConfig_BIZ.vb" />
+    <Compile Include="GIS_Clustering.vb" />
+    <Compile Include="GIS_ClusteringCanoPy.vb" />
+    <Compile Include="GIS_CoordinateConverter.vb" />
+    <Compile Include="GIS_ElementiGrafici.vb" />
+    <Compile Include="APP_EntrateUsciteCoordinateBIZ.vb" />
+    <Compile Include="GIS_Entita.vb" />
+    <Compile Include="GIS_LayerElementiGrafici.vb" />
+    <Compile Include="GIS_LayerElementiGrafici_Permessi_Utente_GruppiUtente.vb" />
+    <Compile Include="GIS_LayerTiles.vb" />
+    <Compile Include="GIS_LayerTilesDescrizione.vb" />
+    <Compile Include="GIS_Permessi_Configurazione.vb" />
+    <Compile Include="GIS_Permessi_Layer.vb" />
+    <Compile Include="GIS_ProcessingAlgorithms_Cleaning.vb" />
+    <Compile Include="GIS_Read.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Passaggio.vb" />
+    <Compile Include="GIS_SrvAgronica.vb" />
+    <Compile Include="GoogleStaticMaps.vb" />
+    <Compile Include="Interferenze.vb" />
+    <Compile Include="MaschereLayerRaster.vb" />
+    <Compile Include="GIS_MUZ.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Permessi_Maschera.vb" />
+    <Compile Include="ProiezioniLayer.vb" />
+    <Compile Include="RipartoCatasto.vb" />
+    <Compile Include="Sat_Sentinel.vb" />
+    <Compile Include="SR_TR.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Diagrammi delle classi\AgronicaCoreGisBIZ.cd" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="XMLs\xsd\gml\3.0.0\base\basicTypes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\coordinateOperations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\coordinateReferenceSystems.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\coordinateSystems.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\coverage.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\dataQuality.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\datums.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\defaultStyle.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\dictionary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\direction.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\dynamicFeature.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\feature.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\geometryAggregates.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\geometryBasic0d1d.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\geometryBasic2d.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\geometryComplexes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\geometryPrimitives.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\gml.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\gmlBase.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\grids.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\measures.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\observation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\referenceSystems.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\temporal.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\topology.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\units.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\base\valueObjects.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\smil\smil20-language.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\smil\smil20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\smil\xml-mod.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml\3.0.0\xlink\xlinks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\gml_small.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\Grafica_New.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XMLs\xsd\xlink\1.0.0\xlinks.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XMLs\xsd\gml\3.0.0\ReadMe.txt" />
+    <Content Include="XMLs\xsd\Grafica_New.xml" />
+    <Content Include="XMLs\xsd\xlink\1.0.0\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{a1f2f959-43c8-4fe6-b159-96652ff9fb2b}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.AlgoritmiProiezione\Agronica.Helpers.AlgoritmiProiezione.vbproj">
+      <Project>{23F749CB-EBE2-4E50-8546-FDAE51E08D4F}</Project>
+      <Name>Agronica.Helpers.AlgoritmiProiezione</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GDAL\Agronica.Helpers.GDALHelper.vbproj">
+      <Project>{bf6c161c-92ea-46e5-a06d-2e1bd8c66c83}</Project>
+      <Name>Agronica.Helpers.GDALHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModelloInSviluppo\AgronicaCoreModelloInSviluppo.vbproj">
+      <Project>{a45c88be-abe7-4761-9e0c-5125a5cd94fd}</Project>
+      <Name>AgronicaCoreModelloInSviluppo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7cf14ae3-4b42-4488-a29e-e4b698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0c28e3ab-427e-45d5-b6b3-43d3378af207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.FormatsConverter\AgronicaConversioneCartografiaGias.FormatsConverter.vbproj">
+      <Project>{ab4cd9b0-7252-43ef-9efb-34ad450dd74e}</Project>
+      <Name>AgronicaConversioneCartografiaGias.FormatsConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.GeoConverter.vbproj">
+      <Project>{8FA27405-01BD-4DA3-9461-DBB8FE16DEC7}</Project>
+      <Name>AgronicaConversioneCartografiaGias.GeoConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaGIS2012.Commons\AgronicaGIS2012.Commons.vbproj">
+      <Project>{BEA06BCC-9EBB-43BC-BB37-FD4519D128D3}</Project>
+      <Name>AgronicaGIS2012.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaPianoConcimazioneVariabile\AgronicaPianoConcimazioneVariabile.csproj">
+      <Project>{ac95fa2e-5527-4eed-9a6e-05a5c958a40c}</Project>
+      <Name>AgronicaPianoConcimazioneVariabile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{D6963B76-054B-4070-8BAD-DC9CC4C6F8D7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

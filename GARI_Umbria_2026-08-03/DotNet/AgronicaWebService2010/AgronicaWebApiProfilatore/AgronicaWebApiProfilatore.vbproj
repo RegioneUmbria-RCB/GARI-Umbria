@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{9B94ADE7-89CF-4882-92B8-848C71EB8DCC}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaWebApiProfilatore</RootNamespace>
+    <AssemblyName>AgronicaWebApiProfilatore</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Default.aspx" />
+    <Content Include="Documentazione\ApiProfilatore.cd" />
+    <Content Include="appsettings.config" />
+    <Content Include="bindings.config" />
+    <None Include="jsonTest.json" />
+    <Content Include="GiasVersioneCorrente.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="IsAlive\IsAlive.asmx" />
+    <Content Include="Master\Profilatore_Bootstrap.css" />
+    <Content Include="Master\Profilatore_Bootstrap.js" />
+    <Content Include="Master\Profilatore_Bootstrap_jQueryDocReady.js" />
+    <Content Include="ProfilatoreUtenze.svc" />
+    <Content Include="ProfilatoreUtenzeUnlock.aspx" />
+    <Content Include="RichiesteCancellazioni\RichiesteCancellazioni.aspx" />
+    <Content Include="RichiesteCancellazioni\RichiesteCancellazioni.html" />
+    <Content Include="RichiesteCancellazioni\RichiesteCancellazioni_globali.js" />
+    <Content Include="RichiesteCancellazioni\RichiesteCancellazioni_jQueryDocReady.js" />
+    <Content Include="RichiesteCancellazioni\RichiesteCancellazioni_ws_client.js" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioni.aspx" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioni.html" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioniCompletata.aspx" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioni_globali.js" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioni_jQueryDocReady.js" />
+    <Content Include="RichiesteIscrizioni\RichiesteIscrizioni_ws_client.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <None Include="packages.config" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Styles\bootstrap-select.min.css" />
+    <Content Include="Styles\bootstrap-switch.min.css" />
+    <Content Include="Styles\bootstrap.datepicker.css" />
+    <Content Include="Styles\bootstrap_AGRONICA.css" />
+    <Content Include="Styles\watable\AgronicaWaTable.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Testi\HTML_EMAIL_RISPOSTA.htm" />
+    <Content Include="Testi\HTML_EMAIL_RISPOSTA_PostAttivazione.htm" />
+    <Content Include="Utility\ReimpostazionePasswordPRO.aspx" />
+    <Content Include="Versione.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Code\CostantiWebApiProfilatore.vb" />
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IProfilatoreUtenze.vb" />
+    <Compile Include="App_Code\JSonModel.vb" />
+    <Compile Include="IsAlive\IsAlive.asmx.vb">
+      <DependentUpon>IsAlive.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Master\Profilatore_Bootstrap.Master.designer.vb">
+      <DependentUpon>Profilatore_Bootstrap.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Profilatore_Bootstrap.Master.vb">
+      <DependentUpon>Profilatore_Bootstrap.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Model\UtenteColdiretti.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ProfilatoreUtenze.svc.vb">
+      <DependentUpon>ProfilatoreUtenze.svc</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilatoreUtenzeHelper.vb" />
+    <Compile Include="ProfilatoreUtenzeUnlock.aspx.designer.vb">
+      <DependentUpon>ProfilatoreUtenzeUnlock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilatoreUtenzeUnlock.aspx.vb">
+      <DependentUpon>ProfilatoreUtenzeUnlock.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RichiesteCancellazioni\RichiesteCancellazioni.aspx.designer.vb">
+      <DependentUpon>RichiesteCancellazioni.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RichiesteCancellazioni\RichiesteCancellazioni.aspx.vb">
+      <DependentUpon>RichiesteCancellazioni.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RichiesteIscrizioni\RichiesteIscrizioni.aspx.designer.vb">
+      <DependentUpon>RichiesteIscrizioni.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RichiesteIscrizioni\RichiesteIscrizioni.aspx.vb">
+      <DependentUpon>RichiesteIscrizioni.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="RichiesteIscrizioni\RichiesteIscrizioniCompletata.aspx.designer.vb">
+      <DependentUpon>RichiesteIscrizioniCompletata.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RichiesteIscrizioni\RichiesteIscrizioniCompletata.aspx.vb">
+      <DependentUpon>RichiesteIscrizioniCompletata.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Utility\ReimpostazionePasswordPRO.aspx.designer.vb">
+      <DependentUpon>ReimpostazionePasswordPRO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ReimpostazionePasswordPRO.aspx.vb">
+      <DependentUpon>ReimpostazionePasswordPRO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Versione.aspx.designer.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Versione.aspx.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\Profilatore_Bootstrap.Master" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Styles\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_variables.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{ded22abb-5bee-4a10-86a4-da84c627f822}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtilityVersioni\AgronicaCoreUtilityVersioni.vbproj">
+      <Project>{65a1e92b-5c81-4d83-ade7-1c4af0ef9963}</Project>
+      <Name>AgronicaCoreUtilityVersioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56b64bcf-a26c-4ac3-86fe-7f8114b1b3d9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisBIZ\AgronicaCoreGisBIZ.vbproj">
+      <Project>{8942b252-809e-4fe1-9284-a3fdd7a174ea}</Project>
+      <Name>AgronicaCoreGisBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GiasOnline_2010\AgronicaControlli_2010\AgronicaControlli_2010.vbproj">
+      <Project>{74c51f78-05dc-4fed-b012-40ba23e87b77}</Project>
+      <Name>AgronicaControlli_2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

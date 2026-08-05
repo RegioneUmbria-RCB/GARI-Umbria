@@ -1,0 +1,39 @@
+<kendo-drawer-container *ngIf="service.isContextAnagrafiche()">
+    <kendo-drawer
+        #drawer
+        [(expanded)]="expanded"
+        mode="push"
+        [width]="containerWidth">
+        <ng-template kendoDrawerTemplate>
+            <tree-filters
+                (filtersChanged)="reReadTree($event)" >
+            </tree-filters>
+            <div
+                id="mainContainer"
+                class="container">
+                <app-draggable (updateContainerWidth)="updateContainerWidth($event)">
+                    <app-treeview #contentResizableElement></app-treeview>
+                </app-draggable>
+            </div>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container>
+<kendo-drawer-container-gis *ngIf="service.isContextGis()">
+    <kendo-drawer
+        #drawer
+        [(expanded)]="expanded"
+        mode="push"
+        [width]="containerWidth">
+        <ng-template kendoDrawerTemplate>
+            <tree-filters-gis
+                (filtersChanged)="reReadTreeGis($event)">
+            </tree-filters-gis>
+            <div
+                *ngIf="!(visualizzazioneTotale$ | async)"
+                id="mainContainer"
+                class="container">
+                <app-treeview #contentResizableElement></app-treeview>
+            </div>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container-gis>

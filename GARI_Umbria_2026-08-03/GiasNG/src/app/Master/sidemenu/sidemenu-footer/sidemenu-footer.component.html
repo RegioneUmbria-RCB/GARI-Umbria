@@ -1,0 +1,14 @@
+<div class="row-footer">
+  <div class="text-footer">
+    <span>{{'Contattaci' | transloco}}</span>
+    <a *ngIf="info?.email != null && info?.email != ''" [href]="'mailto:' + info?.email" class="footer-link-mail">&nbsp;</a>
+    <a *ngIf="info?.tel != null && info?.tel != ''" [href]="'tel:' + info?.tel" class="footer-link-phone">&nbsp;</a>
+  </div>
+</div>
+
+<div class="row-footer" *ngIf="info?.whatsapp != null && info?.whatsapp != ''">
+  <div class="text-footer">
+    <span>{{'HaiBisognoDiAssistenza' | transloco}}</span>
+    <a [href]="'https://wa.me/' + info?.whatsapp" class="footer-link-whatsapp">&nbsp;</a>
+  </div>
+</div>

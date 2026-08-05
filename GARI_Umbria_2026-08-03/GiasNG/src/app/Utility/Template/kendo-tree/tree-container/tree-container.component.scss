@@ -1,0 +1,65 @@
+app-kendo-tree {
+  padding: 0;
+}
+
+kendo-drawer-content {
+  padding: 20px;
+}
+
+:host {
+  pointer-events: none
+}
+
+#expander {
+  pointer-events: auto;
+}
+
+kendo-drawer {
+  pointer-events: auto;
+  display:flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  padding-top:10px;
+  padding-bottom:10px;
+}
+
+kendo-drawer-container {
+  position: fixed;
+  width: 100%;
+  height: 75vh;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+kendo-drawer-container-gis {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+div .k-drawer-wrapper {
+  width: auto !important;
+  overflow-x: hidden; // Salvatore 17-03-2023: pima era "auto", ho impostato "hidden" per nascondere la scrollbar del treeGIS in modslità responsive
+  display:flex;
+  flex-direction: column;
+}
+
+#mainContainer {
+  // display:flex;
+  // flex-flow:column;
+  overflow:auto;
+  height:100%;
+}
+
+#mainContainer #treeContainer {
+  flex: 1 1 auto;
+}
+
+app-treeview {
+  display:flex;
+  flex-direction: column;
+  height:100%;
+  flex-wrap:nowrap;
+}

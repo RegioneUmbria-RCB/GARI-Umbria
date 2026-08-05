@@ -1,0 +1,164 @@
+
+<gis-toolbar-mobile class="d-flex d-lg-none"></gis-toolbar-mobile>
+
+<div class="gis-toolbar-container d-none d-lg-flex">
+    <div class="gis-toolbar" id="gis-toolbar">
+        <div class="item" *ngIf="!isCustom()"
+            gisTooltip title="{{'FiltroTemporale' | transloco}}">
+            <button kendoButton (click)="gisToolbarService.calendarioBtnClick()">
+                <i aria-hidden="true" class="xi-calendar-filter-light"></i>
+            </button>
+        </div>
+        <div class="items">
+            <div gisTooltip title="{{'Posizione' | transloco}}">
+                <button kendoButton
+                    (click)="positionToggle()"
+                    [ngClass]="gisToolbarService.getClasseGpsAttivo()">
+                    <i aria-hidden="true" class="xi-poi-base-map-light"
+                        [ngClass]="gisToolbarService.getClasseGpsAttivo()">
+                    </i>
+                </button>
+            </div>
+            <div gisTooltip title="{{'InserimentoCampione' | transloco}}" *ngIf="isAnalisiTerreno && analisiTerrenoEdit">
+                <button kendoButton
+                    (click)="toggleAddMarkersModality()"
+                    [ngClass]="{ 'gis-toolbar-btn-attivo': isMarkerPlacer$ | async }">
+                    <i aria-hidden="true" class="xi-draw-gps-plants-white"
+                        [ngClass]="{ 'gis-toolbar-btn-attivo': isMarkerPlacer$ | async }">
+                    </i>
+                </button>
+            </div>
+            <div gisTooltip title="{{'gis.MisuraDistanze' | transloco}}" *ngIf="!isCustom()">
+                <button kendoButton
+                    (click)="gisToolbarService.startStopMeasure()"
+                    [ngClass]="gisToolbarService.getClasseMisurazioneAttivo()">
+                    <i aria-hidden="true" class="xi-measure-light"
+                        [ngClass]="gisToolbarService.getClasseMisurazioneAttivo()">>
+                    </i>
+                </button>
+            </div>
+            <div gisTooltip title="{{'Informazioni' | transloco}}" *ngIf="!isCustom()">
+                <button kendoButton
+                    (click)="googleMapGeoJsonService.getProprietaFeatureSelezionata()">
+                    <i aria-hidden="true" class="xi-info-balloon-light"></i>
+                </button>
+            </div>
+            <div *ngIf="!isCustom()">
+                <kendo-dropdownbutton #toolsDropdown (open)="openTools()"
+                    [popupSettings]="{popupClass:'tools'}"
+                    [data]="gisToolbarService.toolsList"
+                    textField="description">
+                    <i aria-hidden="true" class="xi-tools-list-light"></i>
+                    <i aria-hidden="true" class="xi-arrow-down-light"></i>
+                </kendo-dropdownbutton>
+            </div>
+        </div>
+        <div class="items">
+            <div class="merged-elements">
+                <span gisTooltip title="{{'gis.CambiaFormatoCoordinate' | transloco}}">
+                    <button kendoButton class="left-rounded-full" (click)="gisToolbarService.changeMask()">
+                        <i aria-hidden="true" class="xi-coordinates-light"></i>
+                    </button>
+                </span>
+                <input id="latitude"
+                    #latitude
+                    type="text"
+                    class="border-left-0 latlng"
+                    [placeholder]="'Lat.' + gisToolbarService.latPlaceholder[gisToolbarService.maskIdx]"
+                    [inputMask]="gisToolbarService.latMask[gisToolbarService.maskIdx]"
+                    (focusin)="changeLatFocusHandler(true)"
+                    (focusout)="changeLatFocusHandler(false)"
+                    [(ngModel)]="gisToolbarService.latValue">
+                <input id="longitude"
+                    #longitude
+                    type="text"
+                    class="border-left-0 border-right-0 latlng"
+                    [placeholder]="'Lng.' + gisToolbarService.lngPlaceholder[gisToolbarService.maskIdx]"
+                    [inputMask]="gisToolbarService.lngMask[gisToolbarService.maskIdx]"
+                    (focusin)="changeLngFocusHandler(true)"
+                    (focusout)="changeLngFocusHandler(false)"
+                    [(ngModel)]="gisToolbarService.lngValue">
+                <span gisTooltip title="{{'gis.CercaCoordinate' | transloco}}">
+                    <button kendoButton #goToPosition
+                        (click)="gisToolbarService.goToPosition(latitude.value, longitude.value)">
+                            <i aria-hidden="true" class="xi-search-light"></i>
+                    </button>
+                </span>
+            </div>
+            <div class="same-element-effect" *ngIf="!isCustom()">
+                <input
+                    [(ngModel)]="gisToolbarService.searchAddressTxtBox"
+                    type="text"
+                    class="left-rounded-full border-right-0"
+                    placeholder="{{'Indirizzo' | transloco}}"
+                    (keydown.enter)="findAddress()">
+                <span gisTooltip title="{{'gis.CercaIndirizzo' | transloco}}">
+                    <button kendoButton
+                        class="border-left-0"
+                        (click)="findAddress()">
+                        <i aria-hidden="true" class="xi-search-light"></i>
+                    </button>
+                </span>
+            </div>
+            <div gisTooltip title="{{'gis.NavigaVerso' | transloco}}" *ngIf="!isCustom()">
+                <button kendoButton
+                    (click)="navigateTo()">
+                    <i aria-hidden="true" class="xi-gps-light"></i>
+                </button>
+            </div>
+        </div>
+        <div class="item" *ngIf="false">
+            <button kendoButton><span class="xo-mx-4">{{ 'FiltraImpianti' | transloco }}</span><i aria-hidden="true" class="xi-search-light"></i></button>
+        </div>
+        <div class="item" *ngIf="!isCustom()">
+            <button kendoButton #btnCentraSuAzienda (click)="centraSuAzienda()"><span class="xo-mx-4">{{ 'CentraSuAzienda' | transloco }}</span><i aria-hidden="true" class="xi-update-light"></i></button>
+        </div>
+        <div class="item" *ngIf="gisToolbarService.permessoSetupVisualizzazione && !isCustom()">
+             <button kendoButton #dropdownButton class="btn-transparent" id="dropdownButton" (click)="toggleSettingsDropdown()">
+<!--            <button kendoButton #dropdownButton class="btn-transparent" id="dropdownButton" (click)="gisToolbarService.configurazioneBtnClick()">-->
+                <i aria-hidden="true" class="xi-arrow-down-dark"></i>
+                <i aria-hidden="true" class="xi-display-settings-dark"></i>
+            </button>
+        </div>
+    </div>
+    <div *ngIf="displaySettingsDropdown===true" [style.right]="rightDropdown" class="dropdown-container">
+        <div class="m-3">
+            <button kendoButton
+                (click)="configurazioneBtnClick()">
+                <span class="xo-mx-4">{{ 'ImpostazioniGeneraliVisualizzazione' | transloco }}</span>
+                <i aria-hidden="true" class="xi-eye-edit-light"></i>
+            </button>
+        </div>
+        <hr>
+        <div class="dropdown-text-container" *ngIf="false">
+            <h6>{{ 'gis.AttivaPannelli' | transloco }}</h6>
+            <div class="options-row">
+                <p>{{ 'gis.SatelliteData' | transloco }}</p>
+                <p><i aria-hidden="true" class="xi-eye-invisible-dark"></i></p>
+            </div>
+            <div class="options-row last">
+                <p>{{ 'Themes' | transloco }}</p>
+                <p (click)="gisToolbarService.themeBtnToggle()" class="k-cursor-pointer">
+                    <i aria-hidden="true" class="xi-eye-visible-dark"
+                        *ngIf="gisToolbarService.getToggleState(windowTypes.ThemeWindow)">
+                    </i>
+                    <i aria-hidden="true" class="xi-eye-invisible-dark"
+                        *ngIf="!gisToolbarService.getToggleState(windowTypes.ThemeWindow)">
+                    </i>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--[specialCharacters]="latlngSpecialCharacters"-->
+<!--[dropSpecialCharacters]="false"-->
+<!--[allowNegativeNumbers]="true"-->
+<!--[showMaskTyped]="showLatMaskTyped"-->
+<!--[patterns]="customPattern"-->
+
+<!--[specialCharacters]="latlngSpecialCharacters"-->
+<!--[dropSpecialCharacters]="false"-->
+<!--[allowNegativeNumbers]="true"-->
+<!--[showMaskTyped]="showLngMaskTyped"-->
+<!--[patterns]="customPattern"-->

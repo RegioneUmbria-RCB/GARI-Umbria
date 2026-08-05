@@ -1,0 +1,181 @@
+/** -------------------------------------------- Sidebar menu */
+.hide {
+    display: none;
+}
+
+#GiasSidenav .sidebar #leftside-navigation {
+    overflow-x: hidden;
+}
+#GiasSidenav .sidebar #leftside-header .container-search {
+    position: relative;
+    display: block;
+    float: left;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+#GiasSidenav .sidebar #leftside-navigation ul.nano-content {
+    display: block;
+    float: left;
+}
+
+/* Sidebar header */
+#GiasSidenav .sidebar #leftside-header {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+#GiasSidenav .sidebar #leftside-header .leftside-header-row {
+    width: calc(100%);
+    display: block;
+    float: left;
+    text-align: left;
+    padding: 10px 15px 10px 15px;
+}
+
+/* Sidebar header tabs */
+.leftside-header-tabs {
+    display: flex;
+    height: 22px;
+}
+
+.leftside-header-tab {
+    font-size: 11px;
+    color: white;
+    border-bottom: 1px solid #fff;
+    flex: 1;
+    padding-bottom: 3px;
+}
+
+.leftside-header-tab.active {
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    border-bottom: 3px solid #76bc21;
+    flex: 1;
+}
+.leftside-header-tab:hover {
+    cursor: pointer;
+}
+
+/* The side navigation menu */
+#GiasSidenav.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+#GiasSidenav .sidebar {
+    width: calc(100% - 30px);
+    height: 100%;
+    position: absolute;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+    padding: 0 15px;
+}
+
+/* ---- Sidebar footer contacts */
+#GiasSidenav .sidebar {
+    height: calc(100vh - 50px);
+    width: 100%;
+    padding-left: 0;
+    padding-right: 2px;
+}
+
+#GiasSidenav .sidebar #leftside-navigation {
+    height: calc(100vh - 195px);
+    overflow-y: scroll;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#GiasSidenav .sidebar #leftside-navigation::-webkit-scrollbar-thumb {
+    background-color: #fff!important;
+    border:0;
+}
+
+#GiasSidenav .sidebar #leftside-footer {
+    width: 100%;
+    display: block;
+    position: absolute;
+    float: left;
+    bottom: 0;
+    left: 0;
+}
+
+.container-search {
+    width: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* icon search */
+.container-search .icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    z-index: 1;
+}
+
+.sidebar .container-search .icon {
+    top: 0;
+}
+
+
+/**
+Tooltip Favorite - navbar
+-61px is optimized for the label "Modifica i tuoi preferiti"
+*/
+.hContainerFavorite .tooltiptext {
+    transform: translateX(-53px);
+    top: 25px;
+}
+
+/* icon right navbar */
+.hRightElement {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    background-color: white;
+    border-radius: 8px;
+    align-items: center;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.hRightElement:hover+.tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/** Tooltip */
+.tooltiptext {
+    visibility: hidden;
+    width: auto;
+    min-width: 140px;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translateX(-50%);
+    margin-top: 24px;
+}
+
+.overbtn {
+    padding: 0;
+    padding-left: 6px;
+}
+
+.favorite-text {
+    color: #002D5A;
+}

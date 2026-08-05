@@ -1,0 +1,7 @@
+<section class="">
+  <zoo-operations-grid [filters$]="filters$" (editFavorites)="isEditingFavorites = true"></zoo-operations-grid>
+</section>
+
+@if (isEditingFavorites) {
+  <zoo-favorites-editing (done)="isEditingFavorites = false"></zoo-favorites-editing>
+}

@@ -1,0 +1,51 @@
+<div class="widget-treatments-tosend-container">
+  <div class="header-treatments-tosend">
+    <div class="button-time-stamp">
+      <!-- <kendo-datepicker #impostaTimeStamp 
+        class="datePicker"
+        (valueChange)="onChangeData($event)"
+        [(value)]="timeStart"
+      >
+      </kendo-datepicker> -->
+      
+      <button class="btn btn-primary btn-sm btn-primary-fill"
+        [title]="'ResettaTimeStamp' | transloco"
+        [type]="'button'"
+        (click) = "reimpostaTimeStamp()">
+          {{ "ResettaTimeStamp" | transloco }}
+      </button>
+    </div>
+    
+    <form [formGroup]="stallaForm">
+        <gias-drop-down-template-s 
+          id="ddlStalle"
+          [listItems]="arrayStalle"
+          textField="Sta_Des"
+          valueField="chiave"
+          [valuePrimitive]="false"
+          [defaultItem]="defaultStalla"
+          [giasFormControlName]="'stallaControl'"
+        >
+      </gias-drop-down-template-s>
+    </form>
+    
+    <div class="redirect-button">
+      <button 
+        class="btn btn-primary btn-sm btn-primary-fill"
+        [title]="'RedirectToTreatmentsToSend' | transloco"
+        [type]="'button'"
+        (click) = "redirectToTreatmentsToSend()"
+      >
+        {{ "RedirectToTreatmentsToSend" | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <gias-kendo-grid>
+    <ng-template #noRecordsTemplateRef>
+        <div>
+        <p>{{ "TrattamentiToSendNotFound" | transloco }}</p>
+        </div>
+    </ng-template>
+  </gias-kendo-grid>
+</div>

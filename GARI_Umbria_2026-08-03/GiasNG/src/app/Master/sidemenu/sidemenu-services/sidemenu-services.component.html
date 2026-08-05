@@ -1,0 +1,26 @@
+﻿<ul class="nano-content">
+  <li [ngClass]="{'clickable': true, 'active': isDashboard()}" *ngIf="!isExternalLoad">
+    <a homeButton>
+      <i aria-hidden="true" class="fa fa_gias_dashboard iconaMacro"></i>
+      <span>Dashboard</span>
+      <i aria-hidden="true" class="arrow fa fa-angle-right pull-right"></i>
+    </a>
+  </li>
+
+  <ng-container *ngFor="let parent of viewMenus">
+    <ng-container *ngIf="parent | filterChildren: filterText as children">
+      <li #submenuContainerRef
+        [ngClass]="{'clickable': isClickable(parent), 'sub-menu': true, 'open': isOpen(parent), 'hidden': parent.hidden, 'active': isActive(parent)}">
+        <a (click)="redirectMenu(parent, submenuContainerRef)">
+          <i aria-hidden="true" [class]="parent.classeCssIcona.replaceAll('.', ' ') + ' iconaMacro'"></i>
+          <span>{{parent.testo}}</span>
+          <i aria-hidden="true" *ngIf="parent.Figli.length > 0"
+            [class]="parent.open ? 'arrow fa fa-angle-down pull-down flipIcon180' : 'arrow fa fa-angle-down pull-down'"></i>
+        </a>
+
+        <app-sidemenu-child [menus]="children" [open]="parent.open"
+          (onClick)="redirectMenu($event)"></app-sidemenu-child>
+      </li>
+    </ng-container>
+  </ng-container>
+</ul>

@@ -1,0 +1,43 @@
+<div class="custom-toolbar qdc-toolbar" *ngIf="displayButton">
+  <button kendoButton look="flat" (click)="onOpenFilters()">
+    <fa-icon size="lg" [icon]="faFilters"></fa-icon>
+  </button>
+</div>
+
+<kendo-drawer-container>
+  <kendo-drawer #drawer mode="overlay" [width]="drawerWidth" [position]="'end'" (collapse)="onCancel()"
+    (expand)="shouldApply=true">
+    <ng-template kendoDrawerTemplate>
+      <section class="padded-form">
+        <div class="btn right" style="margin-bottom: -20px;" (click)="onCancel()">
+          <fa-icon [icon]="faClose"></fa-icon>
+        </div>
+
+        <ng-container *ngIf="filtersTemplate">
+          <ng-container *ngTemplateOutlet="filtersTemplate"></ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="filtersFormGroup">
+          <form [formGroup]="filtersFormGroup" class="padded-form">
+            <div *ngFor="let field of getFiltersFields(); index as i">
+              <form [formGroup]="field">
+                <gias-general-input-template giasFormControlName="value" [label]="field.value.label"
+                  [listItems]="field.value.listItems" [value]="field.value.value" [controlType]="+field.value.fieldType"
+                  [tooltip]="field.value.tooltip"></gias-general-input-template>
+              </form>
+            </div>
+          </form>
+        </ng-container>
+
+        <div class="col" style="padding-top: 20pt;">
+          <div class="btn btn-primary btn-primary-fill" (click)="applyFilters()">
+            <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+            <span>{{ 'Cerca' | transloco }}</span>
+          </div>
+        </div>
+      </section>
+
+
+    </ng-template>
+  </kendo-drawer>
+</kendo-drawer-container>

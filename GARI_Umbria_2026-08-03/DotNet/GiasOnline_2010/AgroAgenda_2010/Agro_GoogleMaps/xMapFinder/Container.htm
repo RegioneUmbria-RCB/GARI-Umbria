@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Contenitore</title>
+    
+    <SCRIPT language="vbscript" event="OnClick" for="BtnConferma">
+		'alert(document.all("TxtRitorno").value)
+		window.returnValue = document.all("TxtRitorno").value
+		window.close()
+	</SCRIPT>
+	
+</head>
+<body>
+    <iframe id="if_contenitore" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="MapFinder.htm" style="left: 33px; width: 850px; position: absolute; top: 26px; height: 450px">
+    </iframe>
+    <input id="TxtRitorno" name="TxtRitorno" style="left: 32px; width: 140px; position: absolute;
+        top: 672px" type="hidden" value="AAA~BBB~CCC" />
+    <input id="BtnConferma" name="BtnConferma" type="button" value="OK" style="left: 480px; position: absolute; top: 492px; width: 70px; font-size: 8pt; font-family: verdana, sans-serif; " />
+</body>
+</html>

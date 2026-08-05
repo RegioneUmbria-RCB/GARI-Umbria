@@ -1,0 +1,1775 @@
+﻿<script>
+    var variabile_gps = 'replace_gps';
+    var GiasBase_Domain = '__basePath__';
+    var PATH_GIASBASE = '__PATH_GIASBASE__'
+</script>
+<div style="overflow: hidden; height: 100%">
+    <div id="map" style="width: 100%; height: 100%">
+    </div>
+    <div id="mapInfo" style="width: 0px; height: 0px; display: none">
+        <input type="hidden" id="ChiaveAlberoMultiSelezione" />
+    </div>
+    <!--- ICONE, +ico - quando si aggiungono occorre aumentare dimensione toolbar-->
+    <script>
+        $(document).ready(function () {
+            var www;
+            var num = $('.img_tool:visible').length;
+            www = num * $('.img_tool:visible').width() + 250 - 125;
+            $('#tool_bar').css('right', '28px');
+            $('#tool_bar').width(www - 25);
+
+
+            $('#visualizza_Tutto').button();
+
+            $(document).on("click", "#visualizza_Tutto", function () {
+                $('#limite_inferiore_precedente').prop("checked", "");
+                $('#limita_data_da').val("");
+
+                $('#limite_superiore_sucessivo').prop("checked", "");
+
+                $('#limita_data_a').val("");
+
+                $('#limite_superiore_precedente').prop("checked", "checked");
+                $('#limite_superiore_precedente').checked = true;
+
+                $('#limite_inferiore_sucessivo').checked = true;
+                $('#limite_inferiore_sucessivo').prop("checked", "checked");
+                $('#aggiorna_date').click();
+            });
+
+        });
+
+         
+
+
+
+
+
+
+
+
+
+    </script>
+    <style type="text/css">
+        #tool_bar
+        {
+            position: absolute;
+            right: 0;
+            top: 0;
+            text-align: right;
+        }
+        
+        .sep
+        {
+            float: left;
+            width: 15px;
+        }
+        
+        #scala_colori
+        {
+            height: 200px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 150px;
+        }
+        
+        #cmb
+        {
+            width: 360px;
+            min-width: 360px;
+        }
+        
+        @media screen
+        {
+            #check-layer
+            {
+                overflow: auto;
+                height: 160px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+    <div id="tool_bar">
+        <script type="text/javascript">
+            /* Righello */
+            function clickRighello() {
+
+                if ($("#righello").is(":checked")) {
+                    $("#righello").prop("checked", "");
+
+                } else {
+                    $("#righello").prop("checked", "checked");
+
+                }
+                addruler($('#righello'));
+            }
+
+            /* AB */
+            function clickAB() {
+                if ($("#chkAB").is(":checked")) {
+                    $("#chkAB").prop("checked", "");
+                } else {
+                    $("#chkAB").prop("checked", "checked");
+                }
+                addAB($('#chkAB'), $('#hiddenA'), $('#hiddenB'), null, null, null, null);
+            }
+
+
+            /* MULTIPOINT */
+            function clickMP() {
+                if ($("#chkMP").is(":checked")) {
+                    $("#chkMP").prop("checked", "");
+                } else {
+                    $("#chkMP").prop("checked", "checked");
+                }
+
+            }
+
+
+            function gminus() {
+                var app = 0;
+                app = parseInt($("#txtAggregaEntitaGrafichePerPianificazioneScartoM").val());
+                if (app > 0)
+                    app -= 1;
+                $("#txtAggregaEntitaGrafichePerPianificazioneScartoM").val(app);
+            }
+
+            function gplus() {
+                var app = 0;
+                app = parseInt($("#txtAggregaEntitaGrafichePerPianificazioneScartoM").val());
+                if (app < 20)
+                    app += 1;
+                $("#txtAggregaEntitaGrafichePerPianificazioneScartoM").val(app);
+            }
+
+
+
+        </script>
+        <!-- stampa -->
+        <div class="img_tool" id="print">
+            <img src="replace_print" title="Stampa Immagine" />
+        </div>
+        <!-- select -->
+        <div class="img_tool" id="select_poligono">
+            <img src="replace_select" title="Ripulisci Selezione" />
+        </div>
+        <div class="img_tool" id="selectPerSpecie">
+            <img src="replace_selectPerSpecie" title="Seleziona per impianti omogeneei" />
+        </div>
+        <!-- righello -->
+        <div onclick="clickRighello();" class="img_tool" id="righello-button">
+            <img src="replace_ruler" title="Misura distanze" />
+            <input type="checkbox" id="righello" style="display: none;" />
+        </div>
+        <!-- info -->
+        <div class="img_tool" id="info_appezzamento">
+            <img src="replace_info" title="Informazioni sul poligono" />
+        </div>
+        <!-- spazio -->
+        <div class="sep">
+            &nbsp;</div>
+        <!-- nuovo -->
+        <div class="img_tool" id="containerdisenga_poligono">
+            <div class="img_tool" id="disenga_poligono">
+                <div id="img_poligono">
+                    <img src="replace_poligono" title="Disegna un nuovo poligono" alt="Disegna un nuovo poligono" /></div>
+                <div id="img_multipoint" style="display: none">
+                    <img src="replace_multipoint" title="Disegna un nuovo insieme di punti" alt="Disegna un nuovo insieme di punti" /></div>
+                <input type="hidden" id="hiddenMultipoint" />
+                <input type="hidden" id="hiddenMultipointModifica" />
+                <input type="checkbox" id="chkMP" style="display: none;" />
+            </div>
+            <div id="divCosaDisegno" style="display: none; float: left">
+                <div id="selSep" style="width: 30px">
+                    &nbsp;</div>
+                <div id="selimg_poligono" style="display: none;">
+                    <img src="replace_poligono" title="Disegna un nuovo poligono" alt="Disegna un nuovo poligono" /></div>
+                <div id="selimg_multipoint" style="display: none;">
+                    <img src="replace_multipoint" title="Disegna un nuovo insieme di punti" alt="Disegna un nuovo insieme di punti" /></div>
+            </div>
+        </div>
+        <!-- salva -->
+        <div class="img_tool" id="save-button">
+            <img src="replace_save" title="Salva le modifiche" />
+        </div>
+        <!-- delete -->
+        <div class="img_tool" id="delete-button">
+            <img src="replace_trash" title="Elimina un poligono" />
+        </div>
+        <!-- spazio -->
+        <div class="sep">
+            &nbsp;</div>
+        <!-- importa -->
+        <div class="img_tool" id="import-button">
+            <img src="replace_import" title="Importa poligoni" />
+        </div>
+        <!-- importa -->
+        <div class="img_tool" id="export-button">
+            <img src="replace_export" title="Esporta dati" />
+        </div>
+        <!-- nuova ricetta -->
+        <div class="img_tool" id="nuova_ricetta">
+            <img src="replace_img_agenda" title="Crea Ricetta (occorre selezionare prima uno o più impianti colturali, una pianificazione (Testata) oppure un campo)" />
+        </div>
+        <!-- Visita Ispettiva -->
+        <div class="img_tool" id="nuova_visita">
+            <img src="replace_img_visita" title="Visita" />
+        </div>
+        <!-- Agenda -->
+        <div class="img_tool" id="nuova_agenda">
+            <img src="replace_img_opAgenda" title="Crea Operazione di Agenda" />
+        </div>
+        <!-- AB -->
+        <div onclick="clickAB();" class="img_tool" id="ab-button">
+            <img src="replace_ab" title="Inserisci A-B direzione movimento" />
+            <input type="checkbox" id="chkAB" style="display: none;" />
+            <input type="hidden" id="hiddenA" />
+            <input type="hidden" id="hiddenB" />
+            <input type="hidden" id="hiddenCurrentSelectedAB" />
+        </div>
+        <div class="img_tool" id="PianoRateoVariabile">
+            <img src="replace_pfRateo" title="Genera un piano a rateo variabile sul poligono" />
+        </div>
+        <!-- riparto catasto -->
+        <div class="img_tool" id="ripartoCatasto-button">
+            <img src="replace_img_catasto" title="Apri Strumento di Riparto Catasto (impostata eventualmente sugli impianti selezionati)" />
+        </div>
+        <!-- ritaglio sfondo -->
+        <div class="img_tool" id="ritaglio-sfondo">
+            <img src="replace_img_ritaglia_sfondo" title="ritaglia sfondo" />
+        </div>
+        <!-- work in progress -->
+        <!-- edit dei punti scomponi/ricomponi -->
+        <div class="img_tool" id="ritaglio-edit-punti-gps-button">
+            <img src="replace_img_edit_punti" title="scomponi e modifica per punti" />
+        </div>
+        <div class="img_tool" id="CopiaOggetto">
+            <img src="replace_img_CopiaOggetto" title="copia/incolla oggetto grafico" />
+        </div>
+        <div class="img_tool" id="GeneraPlanning">
+            <img src="replace_img_GeneraPlanning" title="Genera una nuova pianificazione da selezione" />
+        </div>
+        <div class="img_tool" id="BufferZone">
+            <img src="replace_BufferZone" title="Strumento di gestione fascia di rispetto da selezione" />
+        </div>
+        <div class="img_tool" id="AnalisiMeteo">
+            <img src="replace_AnalisiMeteo" title="Strumento di gestione analisi dati meteo da selezione" />
+        </div>
+        <div style="clear:both"></div>
+        <div id="lblMessaggiFiltri" style="float: left; color:red; font-size:13px; font-weight:bold; background-color: rgba(255, 255, 255, 0.8)" class=""></div><br />
+    </div>
+    <div id="SetBack" onclick="SetBack();" style="height: 10px; width: 50px;">
+        mostra/nascondi
+    </div>
+    <!--scala colori-->
+    <div id="scala_colori_contenitore">
+        <div style='height: 40px; color: white; background-color: rgba(63,72,204,0.8); text-align: center'>
+            <div>
+                <div style="width: 3px; float: left">
+                </div>
+                <div style="float: left">
+                    Seleziona una vista:
+                </div>
+                <div id="cmbScalaColori" style="float: left">
+                    <select id="cmbViste" onchange="cmbViste_change()">
+                    </select>
+                </div>
+                <div style="width: 3px; float: left">
+                </div>
+                <div style="float: left">
+                    <img src="replace_gestisci_layer" title='replace_gestisci_dettagli_layer' id="gestisci_dettagli_layer"
+                        style="float: left; width: 20px; cursor: pointer;" title="Gestisci Layer Dettagli" />
+                </div>
+                <div id="scala_colori_descrizione" style="width: 3px; float: left">
+                </div>
+            </div>
+        </div>
+        <div id="scala_colori" style="position: relative">
+        </div>
+    </div>
+    <!-- TOOL -->
+    <div id="contenitore_tool" style="display: none; width: 65px">
+        <script type="text/javascript">
+
+
+            $(document).ready(function () {
+                $('#NascondiMarkerIndirizzo').hide();
+
+                $("#accordion").accordion({
+                    collapsible: true
+                });
+            });
+
+            /* gestione del click sul più per espandere e chiudere il pannello dei tool */
+
+            function clickPiu() {
+
+                if ($("#espandi_contenuti").attr("alt") == 'piu') {
+                    $("#espandi_contenuti").attr("alt", 'meno');
+                    var src = $("#espandi_contenuti").attr('title').split("|")[1];
+
+                    $("#espandi_contenuti").attr("src", src);
+
+                    $("#contenitore_tool").css({
+                        left: w - 221,
+                        width: 221
+                    }).show();
+
+                    $("#sidebar").css({
+                        width: 200
+                    });
+                } else {
+                    $("#espandi_contenuti").attr("alt", 'piu');
+                    var src = $("#espandi_contenuti").attr('title').split("|")[0];
+                    $("#espandi_contenuti").attr("src", src);
+                    $("#contenitore_tool").css({
+                        width: 65
+                    }).show();
+                    $("#sidebar").css({
+                        width: 20
+                    });
+
+                    PosizionaTool();
+                }
+            }
+        </script>
+        <div id="pulsantieraEsterna_tool" style="float: left; width: 100%;">
+            <img src="replace_piu" id="espandi_contenuti" style="cursor: pointer; float: left;
+                width: 32px; height: 32px;" alt="piu" title="replace_piu_meno" />
+            <img src="replace_LayerDoveDisegno" id="LayerDoveDisegno" style="cursor: pointer;
+                float: left" alt="piu" title="cosa sto disegnando" />
+            <div style="clear: both">
+            </div>
+            <span id="testoLayerDoveDisegno" class="layerDoveDisegno">Nessun layer selezionato.</span>
+            <div id="numero_identita">
+            </div>
+        </div>
+        <div id="sidebar" style="overflow: hidden; width: 65px; float: left; font-family: Sans-Serif;
+            font-size: 11px;">
+            <div style="display: block; width: 200px;">
+                <div id="layerFinestraTemporale">
+                    <div>Limita Visualizzazione</div>
+                    <div style="clear: both">
+                    </div>
+                    <div style="width: 100%; margin-top:4px">
+                        <div>
+                            <div>
+                                <div style="float:left; min-width:65px">Data inizio: </div>
+                                <div style="float:left"><input type="text" id="limita_data_da" class="datepiker" style="float: right; width: 105px;" /></div>
+                            </div>
+                            <div style="clear: both">
+                            </div>
+                            <div style="margin-top:4px">
+                                <div style="float:left;min-width:65px">Data fine: </div>
+                                <div style="float:left"><input type="text" id="limita_data_a" class="datepiker" style="float: right; width: 105px;" /></div>
+                            </div>
+                        </div>
+                        <div style="clear: both">
+                        </div>
+                    </div>
+
+                    <div style="float: left; display:none">
+                        <input type="radio" name="limite_inferiore" id="limite_inferiore_sucessivo" value="sucessivo"
+                               checked />Sucessivo al<br>
+                        <input type="radio" name="limite_inferiore" id="limite_inferiore_precedente" value="precedente" />Precedente
+                        al<br>
+                    </div>
+
+                    <div style="clear: both">
+                    </div>
+
+                    <div style="float: left; display:none">
+                        <input type="radio" name="limite_superiore" id="limite_superiore_sucessivo" value="sucessivo" />Sucessivo
+                        al<br>
+                        <input type="radio" name="limite_superiore" id="limite_superiore_precedente" value="precedente"
+                               checked />Precedente al<br>
+                    </div>
+
+                    <div style="clear: both">
+                    </div>
+                    <div style="margin-top: 4px">
+                        <div style="float:left">
+                            <div id="aggiorna_date" class="bottone">
+                                Aggiorna
+                            </div>
+                        </div>
+                        <div style="float:left">
+                            <div style="float: right" id="visualizza_Tutto">Mostra Tutto</div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                    <hr />
+                </div>
+                <div id="layerGPSIcona">
+                    Mostra icona GPS
+                    <input type="checkbox" id="chk_mostra_GPS" />
+                    <hr />
+                </div>
+
+                <div id="descrizioneImpiantoIcona">
+                    Mostra descrizione sintetica
+                    <input type="checkbox" id="chk_mostra_descrizioneImpianto" checked="checked" />
+                    <hr />
+                </div>
+                <div id="layerTipologie">
+                    <div style="width: 80%; float: left">
+                        <label>
+                            Tipologia Layer
+                        </label>
+                        <img src="replace_gestisci_layer" title='Gestione Colori layer principale' id="gestisci_layer_principale"
+                             style="float: left; width: 20px; cursor: pointer;" alt="Gestisci Layer" />
+                        <span style="font-size: 8px">
+                            <br />
+                            replace_x_tipologia_layer
+                            <br />
+                        </span>
+                    </div>
+                    <div style="width: 19% float:left">
+                        <div id="LayerSelezionaTutto">
+                            <img src="replace_LayerSelezionaTutto" title='Seleziona Tutto' id="imgLayerSelezionaTutto"
+                                 style="" alt="Seleziona Tutto" />
+                        </div>
+                        <div id="LayerDeSelezionaTutto">
+                            <img src="replace_LayerDeSelezionaTutto" title='Deseleziona Tutto' id="imgLayerSelezionaTutto"
+                                 style="" alt="Deseleziona Tutto" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div style="clear: both;">
+                    </div>
+                </div>
+                <div id="check-layer">
+                </div>
+            </div>
+        </div>
+        <div style="clear: both;">
+        </div>
+    </div>
+    <!-- Ricerca Indirizzo -->
+    <div id="dialog_Ricerca" style="display: none; width: 420px">
+        
+        <script type="text/javascript">
+            /* gestione del click sul più per espandere e chiudere il pannello dei tool */
+
+            //https://github.com/perfectline/geopoint
+            GeoPoint = function (lon, lat) {
+
+
+                switch (typeof (lon)) {
+
+                    case 'number':
+
+                        this.lonDeg = this.dec2deg(lon, this.MAX_LON);
+                        this.lonDec = lon;
+
+                        break;
+
+                    case 'string':
+
+                        if (this.decode(lon)) {
+                            this.lonDeg = lon;
+                        }
+
+                        this.lonDec = this.deg2dec(lon, this.MAX_LON);
+
+                        break;
+                }
+
+                switch (typeof (lat)) {
+
+                    case 'number':
+
+                        this.latDeg = this.dec2deg(lat, this.MAX_LAT);
+                        this.latDec = lat;
+
+                        break;
+
+                    case 'string':
+
+                        if (this.decode(lat)) {
+                            this.latDeg = lat;
+                        }
+
+                        this.latDec = this.deg2dec(lat, this.MAX_LAT);
+
+                        break;
+
+                }
+            };
+
+            GeoPoint.prototype = {
+
+                CHAR_DEG: "\u00B0",
+                CHAR_MIN: "\u0027",
+                CHAR_SEC: "\u0022",
+                CHAR_SEP: "\u0020",
+
+                MAX_LON: 180,
+                MAX_LAT: 90,
+
+                // decimal
+                lonDec: NaN,
+                latDec: NaN,
+
+                // degrees
+                lonDeg: NaN,
+                latDeg: NaN,
+
+                dec2deg: function (value, max) {
+
+                    var sign = value < 0 ? -1 : 1;
+
+                    var abs = Math.abs(Math.round(value * 1000000));
+
+                    if (abs > (max * 1000000)) {
+                        return NaN;
+                    }
+
+                    var dec = abs % 1000000 / 1000000;
+                    var deg = Math.floor(abs / 1000000) * sign;
+                    var min = Math.floor(dec * 60);
+                    var sec = (dec - min / 60) * 3600;
+
+                    var result = "";
+
+                    result += deg;
+                    result += this.CHAR_DEG;
+                    result += this.CHAR_SEP;
+                    result += min;
+                    result += this.CHAR_MIN;
+                    result += this.CHAR_SEP;
+                    result += sec.toFixed(2);
+                    result += this.CHAR_SEC;
+
+                    return result;
+
+                },
+
+                deg2dec: function (value) {
+
+                    var matches = this.decode(value);
+
+                    if (!matches) {
+                        return NaN;
+                    }
+
+                    var deg = parseFloat(matches[1]);
+                    var min = parseFloat(matches[2]);
+                    var sec = parseFloat(matches[3]);
+
+                    if (isNaN(deg) || isNaN(min) || isNaN(sec)) {
+                        return NaN;
+                    }
+
+                    return deg + (min / 60.0) + (sec / 3600);
+                },
+
+                decode: function (value) {
+                    var pattern = "";
+
+                    // deg
+                    pattern += "(-?\\d+)";
+                    pattern += this.CHAR_DEG;
+                    pattern += "\\s*";
+
+                    // min
+                    pattern += "(\\d+)";
+                    pattern += this.CHAR_MIN;
+                    pattern += "\\s*";
+
+                    // sec
+                    pattern += "(\\d+(?:\\.\\d+)?)";
+                    pattern += this.CHAR_SEC;
+
+                    return value.match(new RegExp(pattern));
+                },
+
+                getLonDec: function () {
+                    return this.lonDec;
+                },
+
+                getLatDec: function () {
+                    return this.latDec;
+                },
+
+                getLonDeg: function () {
+                    return this.lonDeg;
+                },
+
+                getLatDeg: function () {
+                    return this.latDeg;
+                }
+
+            };
+
+
+
+            function AggiornaLatLon() {
+                var tipo = "";
+                tipo = $("#tipoGrado").val();
+
+                var Lat_Degrees, Lat_Minutes, Lat_Seconds, Lon_Degrees, Lon_Minutes, Lon_Seconds, sLat, sLon;
+                var Lat = 0;  
+                var Lon = 0;
+
+
+                if (tipo == "TG") {
+
+                    Lat_Degrees = $("#Lat_Degrees").val();
+                    Lat_Minutes = $("#Lat_Minutes").val();
+                    Lat_Seconds = $("#Lat_Seconds").val();
+
+                    Lon_Degrees = $("#Lon_Degrees").val();
+                    Lon_Minutes = $("#Lon_Minutes").val();
+                    Lon_Seconds = $("#Lon_Seconds").val();
+
+                    if (Lat_Degrees != "" && Lat_Minutes != "" && Lat_Seconds != "" &&
+                        Lon_Degrees != "" && Lon_Minutes != "" && Lon_Seconds != "") {
+
+
+                        var point1 = new GeoPoint(Lon_Degrees + '° ' + Lon_Minutes + '\' ' + Lon_Seconds + '"', Lat_Degrees + '° ' + Lat_Minutes + '\' ' + Lat_Seconds + '"');
+
+                        $("#lat_cerca").val(point1.getLatDec());
+                        $("#long_cerca").val(point1.getLonDec());
+
+                    }
+
+                } else {
+
+                    sLat = $("#lat_cerca").val();
+                    sLon = $("#long_cerca").val();
+
+                    Lat = parseFloat(sLat);
+                    Lon = parseFloat(sLon);
+
+                    if (Lat != "" && Lon != "") {
+
+                        var point2 = new GeoPoint(Lat, Lon);
+
+                        var sDegMinSec_Long = point2.lonDeg;
+                        interpretaLatLong(sDegMinSec_Long, "Lat");
+
+                        var sDegMinSec_Lat = point2.latDeg;
+                        interpretaLatLong(sDegMinSec_Lat, "Lon");
+
+                    }
+
+                }
+
+            }
+
+            
+            function interpretaLatLong(sLatLong, DoveImpostareIlValore) {
+
+                var ss1 = "";
+                ss1 = sLatLong.toString();
+                var vLatLong = ss1.split(" ");
+
+                $("#" + DoveImpostareIlValore + "_Degrees").val(vLatLong[0].replace( "°", ""));
+                $("#" + DoveImpostareIlValore + "_Minutes").val(vLatLong[1].replace( "'", ""));
+                $("#" + DoveImpostareIlValore + "_Seconds").val(vLatLong[2].replace( "\"", ""));
+
+
+            }
+
+
+            function CambiaGradi() {
+
+                var tipo = "";
+                tipo = $("#tipoGrado").val();
+
+                $("#decimalDegree").hide();
+                $("#TimeMinuteDegree").hide();
+
+                if (tipo == "TG") {
+                    $("#TimeMinuteDegree").show();
+                } else {
+                    $("#decimalDegree").show();
+                }
+
+
+            }
+
+
+
+            function clickPiu_Indirizzi() {
+
+                var indirBottomAperto = 20;
+                var indirBottomChiuso = 0;
+
+                var indirHeighAperto = 140;
+                var indirHeighChiuso = 35;
+
+
+                if ($("#espandi_indirizzo").attr("alt") == 'piu') {
+
+                    /* era chiuso, lo apri */
+                    $("#espandi_indirizzo").attr("alt", 'meno');
+                    var src = $("#espandi_indirizzo").attr('title').split("|")[1];
+                    $("#espandi_indirizzo").attr("src", src);
+
+                    $("#dialog_Ricerca").css({
+                        height: indirHeighAperto,
+                        bottom: indirBottomAperto
+                    }).show(); -$("#dialog_Ricerca").css({
+                        bottom: indirBottomAperto
+                    }).show();
+                    $("#sitebar_indirizzo").css({
+                        bottom: indirBottomAperto,
+                        height: indirHeighAperto - 5
+                    });
+
+                } else {
+                    /* era aperto, lo chiudi */
+                    $("#espandi_indirizzo").attr("alt", 'piu');
+                    var src = $("#espandi_indirizzo").attr('title').split("|")[0];
+                    $("#espandi_indirizzo").attr("src", src);
+
+                    $("#dialog_Ricerca").css({
+                        bottom: indirBottomChiuso,
+                        height: indirHeighChiuso
+                    }).show();
+
+                    $("#sitebar_indirizzo").css({
+                        height: 20
+                    });
+                    PosizionaRicercaIndirizzo();
+                }
+            }
+
+
+            function CoordFromGPS() {
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        $("#lat_cerca").val(pos.lat);
+                        $("#long_cerca").val(pos.lng);
+                        AggiornaLatLon();
+
+                    }, function () {
+                        //handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    //handleLocationError(false, infoWindow, map.getCenter());
+                }
+
+
+            }
+
+            function IndirizzoLatLong() {
+   
+                var sLat = $("#lat_cerca").val();
+                var sLon = $("#long_cerca").val();
+
+                if (sLat != '' && sLon != '') {
+
+                    var Lat = parseFloat(sLat);
+                    var Lon = parseFloat(sLon);
+                    
+                    mappa.identificaIndirizziLatLong(Lat, Lon, "#address");
+
+                    
+                }
+            }
+           
+        </script>
+
+        <div id="btn_sitebar_indirizzo">
+            <img src="replace_piu" title='replace_piu_meno' id="espandi_indirizzo" style="float: left;
+            cursor: pointer;" alt="piu" />
+        </div>
+
+        <div id="sitebar_indirizzo" style="overflow: hidden; width: 420px; float: left; font-family: Sans-Serif;
+            font-size: 11px; height: 7px;">
+
+
+            <div style="margin: 5px; float: left; height: 20px;">
+                <select id="tipoGrado" style="display: inline; float: left; width: 90px;" onchange="CambiaGradi()">
+                    <option value="DG">Gradi Dec.</option>
+                    <option value="TG">Gradi M.S.</option>
+                </select></div>
+
+                     
+
+            <div id="decimalDegree">
+                <div style="margin: 5px; float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">lat</span>
+                    <input id="lat_cerca" type="text" style="display: inline; float: left; width: 70px;"  onchange="AggiornaLatLon()" /></div>
+                <div style="margin: 5px; float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">long</span>
+                    <input id="long_cerca" type="text" style="display: inline; float: left; width: 70px;"  onchange="AggiornaLatLon()" /></div>
+            </div>
+
+
+            <div id="TimeMinuteDegree" style="display: none;">
+                <!--lat-->
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">Lat °</span>
+                    <input id="Lat_Degrees" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" />
+                </div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">'</span>
+                    <input id="Lat_Minutes" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" />
+                </div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">"</span>
+                    <input id="Lat_Seconds" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" />
+                </div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">N</span>
+                </div>
+                <!--Lon-->
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">- Lon °</span>
+                    <input id="Lon_Degrees" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" /></div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">'</span>
+                    <input id="Lon_Minutes" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" />
+                </div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">"</span>
+                    <input id="Lon_Seconds" type="text" style="display: inline; float: left; width: 15px;"  onchange="AggiornaLatLon()" />
+                </div>
+                <div style="float: left; height: 20px;">
+                    <span style="float: left; margin-top: 5px; margin-right: 5px;">W</span>
+                </div>
+            </div>
+
+
+            <div id="coordBTNS">
+                <div id="CoordDaSelezione" class="bottone" onclick="CoordDaSelezione();AggiornaLatLon()" style="font-size: 0.9em;
+                    float: right;">
+                    Imposta Coordinate da impianto</div>
+                <div id="CercaCoordinate" class="bottone" onclick="ricercaCoordinate()" style="font-size: 0.9em;
+                    float: right;">
+                    Cerca queste Coordinate</div>
+                <div id="btnGetCoordFromGPS" class="bottone" onclick="CoordFromGPS()" style="font-size: 0.9em;
+                    float: right;">
+                    Posizione GPS</div>
+            </div>
+
+
+            <div id="indirizzoTB">
+                <span style="margin: 5px; float: left;">Indirizzo( <span style="font-size: 0.8em">via
+                    , città</span>):</span>
+                <input id="address" type="text" value="Via Calcinaro, Cesena" style="display: inline;
+                    float: left; width: 298px;" />
+                <br />
+                <div id="divGoogleMaps" class="bottone" onclick="ApriGoogleMaps()" style="font-size: 0.9em;
+                    float: right;">
+                    App Google Maps (su SmartPhone)</div>
+                <div id="CercaIndirizzo" class="bottone" onclick="ricercaIndirizzo()" style="font-size: 0.9em;
+                    float: right;">
+                    Cerca questo Indirizzo</div>
+                <div id="IndirizzoDaCoordinate" class="bottone" onclick="IndirizzoLatLong()" style="font-size: 0.9em; float: right;">
+                    Da Coordinate</div>
+                <div id="NascondiMarkerIndirizzo" class="bottone" onclick="nascondiAddress()" style="display: none;
+                    font-size: 0.9em; float: right;">
+                    Nascondi Pin</div>
+            </div>
+
+            <div style="clear: both">
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<style type="text/css">
+    .heading
+    {
+        margin: 1px;
+        color: #fff;
+        padding: 3px 10px;
+        cursor: pointer;
+        position: relative;
+        background-color: #c30;
+    }
+    .content
+    {
+        padding: 5px 10px;
+        background-color: #fafafa;
+    }
+    p
+    {
+        padding: 5px 0;
+    }
+    label
+    {
+        display: inline-block;
+        width: 85px;
+    }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".content").hide();
+        //toggle the componenet with class msg_body
+        $(".heading").click(function () {
+            $(this).next(".content").slideToggle(500);
+        });
+    });
+</script>
+<!-- Dialog Nuovo Impianto -->
+<div id="pop_up_impianto" title="Aggiungi un nuovo elemento">
+    <div id="contenutoImpianto" style="float: left; width: 490px">
+        <div id="pop_up_impianto_layer">
+            <div style="float: left; width: 30%" id="layerContainer">
+                <div style="float: left; width: 25%;" id="pop_up_impianto_icolayer">
+                    <img id="imgpop_up_impianto_icolayer" src="" alt="" style="width: 100%" /></div>
+                <div style="float: right; width: 70%; font-weight: bold" id="pop_up_impianto_nomelayer">
+                </div>
+            </div>
+            <div style="float: right; width: 59%" id="pop_up_impiantoxDescr">
+                <label for="">
+                    Descrizione elemento:</label>
+                <input type="text" id="txtElementoGrafico_Des" style="width: 200px" />
+            </div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div>
+            <hr style="border: solid 1px #ff0000" />
+        </div>
+        <div>
+            <label for="pop_up_impianto_azienda">
+                Azienda</label>
+            <select id="pop_up_impianto_azienda" name="pop_up_impianto_azienda" style="width: 360px">
+            </select>
+            <br />
+            <div id="PopupNuovaImpresa-Button" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                <img src="replace_piu" />
+            </div>
+            <br />
+            <input type="text" id="stringaIndirizzo" style="width: 440px" />
+            <br />
+            <br />
+            <label for="pop_up_centro" id="lblpop_up_centro">
+                Centro Aziendale</label>
+            <select id="pop_up_centro" name="pop_up_centro" style="width: 360px">
+            </select>
+            <br />
+            <div id="PopupNuovoSa-Button" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                <img src="replace_piu" />
+            </div>
+            <br />
+            <div id="divpop_up_specie">
+                <label for="pop_up_specie">
+                    Specie</label>
+                <select id="pop_up_specie" name="pop_up_specie" class="cmb">
+                </select>
+            </div>
+            <br />
+            <br />
+            <div id="placeTipologia">
+            </div>
+            <div style="clear: both">
+            </div>
+            <div id="righelloSpecie" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                <img src="replace_ruler" />
+            </div>
+            <div id="righelloCampoVicino" style="float: right; margin-top: -15px; margin-bottom: -15px;">
+                <img src="replace_ruler-info" />
+            </div>
+            <div style="clear: both">
+            </div>
+            <label for="pop_up_sup_google">
+                Sup. calcolata:</label>
+            <input type="text" id="pop_up_sup_google" name="pop_up_sup_google" value="" disabled="disabled"
+                style="width: 50px" />
+            ha <span style="margin-left: 35px"></span>
+            <label for="pop_up_sup_app">
+                Superficie:</label>
+            <input type="text" id="pop_up_sup_app" name="pop_up_sup_app" value="" style="width: 55px" />
+            ha
+            <br />
+            <br />
+            <div id="placeData_Inizio_Fine">
+            </div>
+            <br />
+            <br />
+            <div id="divOpzioni_pop_up_impianto">
+                <p class="heading">
+                    Opzioni</p>
+                <div class="content">
+                    <div id="Dati_data_inizio_fine">
+                        <label for="pop_up_data_inizio" id="lblpop_up_data_inizio">
+                            Data Inizio:</label>
+                        <input type="text" id="pop_up_data_inizio" name="pop_up_data_inizio" value="" style="width: 95px"
+                            class="datepiker" />
+                        <span style="margin-left: 15px"></span>
+                        <label for="pop_up_data_fine" id="lblpop_up_data_fine">
+                            Data Fine:</label>
+                        <input type="text" id="pop_up_data_fine" name="pop_up_data_fine" value="" style="width: 95px"
+                            class="datepiker" />
+                    </div>
+                    <input type="hidden" id="hiddenPunti_Nuovo" />
+                    <br />
+                    <br />
+                    <label for="pop_up_varieta">
+                        Varietà</label>
+                    <select id="pop_up_varieta" name="pop_up_varieta" style="width: 360px">
+                    </select>
+                    <br />
+                    <br />
+                    <label for="pop_up_finalita">
+                        Finalità</label>
+                    <select id="pop_up_finalita" name="pop_up_finalita" style="width: 360px">
+                    </select>
+                    <br />
+                    <br />
+                    <label for="pop_up_disciplinare">
+                        Disciplinare</label>
+                    <select id="pop_up_disciplinare" name="pop_up_disciplinare" style="width: 360px">
+                    </select>
+                    <br />
+                    <br />
+                    <div id="DatiTipologia">
+                        <label for="pop_up_tipologia">
+                            Tipologia</label>
+                        <select id="pop_up_tipologia" name="pop_up_tipologia" style="width: 360px">
+                        </select>
+                        <br />
+                        <br />
+                    </div>
+                    <label for="pop_up_nome">
+                        Nome</label>
+                    <input type="text" id="pop_up_nome" name="pop_up_nome" value="" style="width: 360px" />
+                    <br />
+                    <br />
+                    <div id="kws_appezza">
+                        <label for="pop_up_app_originale">
+                            N. Originale</label>
+                        <input type="text" id="pop_up_app_originale" name="pop_up_app_originale" value=""
+                            style="width: 360px" />
+                        <br />
+                        <br />
+                        <label for="pop_up_app_n_appezza">
+                            N. Impianto</label>
+                        <input type="text" id="pop_up_app_n_appezza" name="pop_up_app_n_appezza" value=""
+                            style="width: 360px" />
+                        <br />
+                        <br />
+                    </div>
+                    <div id="div_lotto">
+                        <label for="pop_up_lotto">
+                            Lotto</label>
+                        <input type="text" id="pop_up_lotto" name="pop_up_lotto" value="" style="width: 360px" />
+                        <br />
+                        <br />
+                    </div>
+                    <label for="pop_up_d_semina">
+                        Data Semina Prevista</label>
+                    <input type="text" id="pop_up_d_semina" name="pop_up_d_semina" value="" style="width: 75px"
+                        class="datepiker" />
+                    <br />
+                    <br />
+                    <label for="pop_up_d_raccolta">
+                        Data Raccolta Prevista</label>
+                    <input type="text" id="pop_up_d_raccolta" name="pop_up_d_raccolta" value="" style="width: 75px"
+                        class="datepiker" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="responseInterferenze" style="float: right; margin-left: 20px; width: 0px">
+    </div>
+    <div style="clear: both">
+    </div>
+</div>
+<!-- Dialog -->
+<div id="dialogCultivarRicette" title="Selezione per Specie e Varietà">
+    <label for="lblCultivarRicette" style="min-width: 300px">
+        Selezione per Specie e Varietà:</label>
+    <div id="tblCultivarRicette">
+    </div>
+    <input type="hidden" id="hidCultivarRicette" />
+    <input type="hidden" id="hidCultivarRicetteNodoPartenza" />
+    <hr />
+    <input type="checkbox" id="ckRibaltaGrafica" /><label id="lblRibaltaGrafica" style="min-width: 300px">Copia
+        elementi grafici sul layer impianti leggendo da:</label>
+    <select id="cmbLayerRibaltaGrafica">
+        <option value="1">Appezzamenti</option>
+    </select>
+    <br />
+</div>
+<div id="dialogRateo" title="parametri mappa di prescrizione">
+    <label for="lblDialogRateo">
+        Dimensione in metri delle celle:</label>
+    <input type="text" id="txtCellSize" name="txtCellSize" value="10" style="width: 75px"
+        class="" /><br />
+</div>
+<div id="dialogGeneraPlanning" title="genera una nuova pianificazione in base a selezione">
+    <label for="lblNomePlanning">
+        Nome della pianificazione:</label>
+    <input type="text" id="txtNomePlanning" name="txtNomePlanning" value="" style="width: 266px"
+        class="" /><br />
+    <hr />
+    <input type="checkbox" id="ckAggregaEntitaGrafichePerPianificazione" />
+    <label for="lblAggregaEntitaGrafichePerPianificazione" style="min-width: 200px">
+        Aggrega la grafica (se possibile), con uno scarto pari a:</label>
+    <input type="text" id="txtAggregaEntitaGrafichePerPianificazioneScartoM" disabled="disabled"
+        name="txtNomePlanning" value="0" style="width: 30px" class="" />
+    <div id="gplus" class="bottone" onclick="gplus();" style="font-size: 0.9em; float: right;">
+        +</div>
+    <div id="gminus" class="bottone" onclick="gminus();" style="font-size: 0.9em; float: right;">
+        -</div>
+    <br />
+</div>
+<div id="dialogAB" title="imposta linee guida">
+    <label for="lblAB">
+        Conferma salvataggio?</label>
+</div>
+<div id="dialogMultipoint" title="Salvataggio dei punti inseriti">
+    <label for="lbldialogMultipointDes">
+        Assegna questa descrizione:</label>
+    <input type="text" id="txtDialogMultipointDes" class="textUI" /><br />
+    <label for="lbldialogMultipoint">
+        Conferma salvataggio?</label>
+</div>
+<div id="dialogConfermaAssociazione" title="Associa la superficie">
+    <span>Associare la superficie calcolata di <b>
+        <label id="lblDialogSup">
+        </label>
+    </b>[ha] a?</span>
+    <select id="option_associa">
+        <option value="1">Nessuno</option>
+        <option value="2">Impianto</option>
+        <option value="3">Impianto e Appezzamento</option>
+    </select>
+</div>
+<div id="dialogAllertOperazioniAppezza" title="Continuare?">
+    <label id="lbl_alert_operazioni_Appezza" style="width: 240px">
+    </label>
+</div>
+<div id="dialogAllertOperazioni" title="Continuare?">
+    <label id="lbl_alert_operazioni" style="width: 240px">
+    </label>
+    <input type="hidden" id="dialogAllertOperazioni_hidden" />
+</div>
+<!-- Dialog Modifica Impianto -->
+<div id="pop_up_modificaImpianto" title="modifica impianto">
+    <fieldset>
+        <label for="pop_up_via_modifica">
+            Via</label>
+        <input type="text" id="via_stringa_modifica" style="width: 300px" />
+        <br />
+        <br />
+        <div id="pop_up_modificaImpianto_DatiImp">
+            <label for="pop_up_nome_appezza_modifica">
+                Nome</label>
+            <input type="text" id="pop_up_nome_appezza_modifica" name="pop_up_nome_appezza_modifica"
+                value="" style="width: 300px" />
+            <br />
+            <br />
+            <label for="pop_up_specie_modifica">
+                Specie</label>
+            <select id="pop_up_specie_modifica" name="pop_up_specie_modifica" style="width: 300px">
+            </select>
+            <br />
+            <br />
+            <label for="pop_up_tipologia_modifica">
+                Tipologia</label>
+            <select id="pop_up_tipologia_modifica" name="pop_up_tipologia_modifica" style="max-width: 400px">
+            </select>
+            <br />
+            <br />
+        </div>
+        <label for="pop_up_sup_precedente">
+            Sup. Originale [ha]:</label><input type="text" id="pop_up_sup_precedente" name="pop_up_sup_precedente"
+                value="" disabled="disabled" style="width: 50px" />
+        <br />
+        <label for="pop_up_sup_google_modifica">
+            Sup. calcolata [ha]:</label>
+        <input type="text" id="pop_up_sup_google_modifica" name="pop_up_sup_google_modifica"
+            value="" disabled="disabled" style="width: 50px" />
+        <span id="arrow" style="font-size: 25px; cursor: pointer;">&rarr;</span>
+        <label for="pop_up_sup_app_modifica">
+            Sup. Nuova [ha]:</label>
+        <input type="text" id="pop_up_sup_app_modifica" name="pop_up_sup_app_modifica" value=""
+            style="width: 55px" />ha
+        <br />
+        <span>Associare la superficie calcolata a?</span>
+        <select id="opt_associa_modifica">
+            <option value="1">Nessuno</option>
+            <option value="2">Impianto</option>
+            <option value="3">Impianto e Appezzamento</option>
+        </select>
+        <br />
+        <br />
+        <div id="Dati_data_inizio_fine_modifica">
+            <label for="pop_up_m_data_inizio" id="lblpop_up_m_data_inizio_modifica">
+                Data Inizio:</label>
+            <input type="text" id="pop_up_m_data_inizio" name="pop_up_m_data_inizio" value=""
+                style="width: 75px" class="datepiker" />
+            <span style="margin-left: 15px"></span>
+            <label for="pop_up_m_data_fine" id="lblpop_up_m_data_fine">
+                Data Fine:</label>
+            <input type="text" id="pop_up_m_data_fine" name="pop_up_m_data_fine" value="" style="width: 75px"
+                class="datepiker" />
+            <br />
+            <br />
+            <p class="heading">
+                Opzioni</p>
+            <div class="content">
+                <label for="pop_up_varieta_modifica">
+                    Varietà</label>
+                <select id="pop_up_varieta_modifica" name="pop_up_varieta_modifica" style="width: 300px">
+                </select>
+                <br />
+                <br />
+                <label for="pop_up_finalita_modifica">
+                    Finalità</label>
+                <select id="pop_up_finalita_modifica" name="pop_up_finalita_modifica" style="width: 300px">
+                </select>
+                <br />
+                <div id="div_m_CodiceSocio">
+                    <label for="txt_m_CodiceSocio">
+                        Codice Socio:</label>
+                    <input type="text" id="txt_m_CodiceSocio" name="txt_m_CodiceSocio" value="" style="width: 295px" />
+                </div>
+                <br />
+                <div id="kws_m_appezza">
+                    <label for="pop_up_m_app_originale">
+                        N. Originale</label>
+                    <input type="text" id="pop_up_m_app_originale" name="pop_up_m_app_originale" value=""
+                        style="width: 360px" />
+                    <br />
+                    <br />
+                    <label for="pop_up_app_m_n_appezza">
+                        N. Impianto</label>
+                    <input type="text" id="pop_up_app_m_n_appezza" name="pop_up_app_m_n_appezza" value=""
+                        style="width: 360px" />
+                    <br />
+                    <br />
+                </div>
+                <div id="div_m_lotto">
+                    <label for="pop_up_m_lotto" id="Label1">
+                        Lotto:</label>
+                    <input type="text" id="pop_up_m_lotto" name="pop_up_m_lotto" value="" style="width: 300px" />
+                </div>
+                <br />
+            </div>
+        </div>
+        <input type="hidden" id="hiddenPunti_modifica" />
+        <input type="hidden" id="hiddenID" />
+    </fieldset>
+</div>
+<!-- Dialog Elimina Multipoint -->
+<div id="dialogEliminaMultipoint" title="conferma eliminazione">
+    <fieldset>
+        <br />
+        <label for="ckConfermaEliminaMultipoint">
+            conferma eliminazione:</label>
+        <input type="checkbox" id="ckConfermaEliminaMultipoint" style="width: 150px" />
+    </fieldset>
+</div>
+<!-- Dialog Elimina punti scomposti -->
+<div id="dialogEliminaImpiantoPuntiScomposti" title="conferma conclusione lavoro">
+    <fieldset>
+        <br />
+        <label for="ckConfermaEliminaPuntiScomposti">
+            conferma conclusione:</label>
+        <input type="checkbox" id="ckConfermaEliminaPuntiScomposti" style="width: 150px" />
+    </fieldset>
+</div>
+<!-- Dialog Elimina Impianto -->
+<div id="dialogEliminaImpianto" title="conferma eliminazione">
+    <fieldset>
+        <div id="divEliminaGrafica" style="margin-bottom: -6px">
+            <label for="ckEliminaGrafica" style="width: 150px">
+                - Elimina Entità Grafiche</label>
+            <input type="checkbox" id="ckEliminaGrafica" checked="checked" />
+        </div>
+        <br />
+        <div id="divEliminaPrecision" style="margin-bottom: -6px">
+            <label for="ckEliminaPrecision" style="width: 150px">
+                - Elimina i dati raccolti con la Precision Farming</label>
+            <input type="checkbox" id="ckEliminaPrecision" /></div>
+        <br />
+        <div id="divEliminaPrecisionAB" style="margin-bottom: -6px">
+            <label for="ckEliminaPrecisionABLine" style="width: 150px">
+                - Elimina linee guida AB di Precision Farming</label>
+            <input type="checkbox" id="ckEliminaPrecisionABLine" /></div>
+        <br />
+        <div id="divEliminaDatoPalm" style="margin-bottom: -6px">
+            <label for="ckEliminaDatoPalm" style="width: 150px">
+                - Elimina il dato misurato con Gias PALM</label>
+            <input type="checkbox" id="ckEliminaDatoPalm" />
+        </div>
+        <br />
+        <div id="divEliminaEntitaGIAS" style="margin-bottom: -6px">
+            <label for="ckEliminaImpianto" style="width: 150px">
+                - Elimina Entità Gias (Appezzamento/Impianto)</label>
+            <input type="checkbox" id="ckEliminaImpianto" />
+        </div>
+        <br />
+        <br />
+        <label for="ckConfermaElimina" style="width: 150px">
+            <b>conferma eliminazione:</b></label>
+        <input type="checkbox" id="ckConfermaElimina" />
+    </fieldset>
+</div>
+<!--Dialog sessione scaduta-->
+<div id="dialogSessioneScaduta" title="La sessione è scaduta.">
+    <fieldset>
+        <div id="lblManualLogin">
+            <p>
+                <b>La sessione è scaduta. Eseguire di nuovo il login.</b>
+                <br />
+                Se non appare in automatico la finestra di login <a href="../GST_Autenticazione/Autenticazione.aspx">
+                    fare click qui.</a></p>
+        </div>
+        <div id="lblAutoLogin">
+        </div>
+    </fieldset>
+</div>
+<!-- DIALOG Gestion Colori Layer -->
+<div id="dialogGestioneColoriLayer" title="">
+    <fieldset>
+        <div id="Div2">
+            <input type="hidden" runat="server" id="hiddenPrincipale_1_Dettagli_2" />
+            <select id="ddlTipologiaLayer" name="ddlTipologiaLayer" onchange="Cambia_ddlTipologiaLayer()"
+                style="width: 300px">
+            </select>
+            <br />
+            <div id="place_tabella" style="overflow: auto; max-height: 300px">
+            </div>
+        </div>
+    </fieldset>
+</div>
+<!-- Nuova Azienda-->
+<div data-role="page" id="popup_nuova_azienda" title="Nuova Azienda">
+    <fieldset>
+        <div data-role="content">
+            <label for="txt_rag_Soc">
+                Ragione Sociale:</label>
+            <input type="text" id="txt_rag_Soc" name="txt_rag_Soc" value="" style="width: 295px" />
+            <br />
+            <br />
+            <label for="txt_Piva">
+                PIVA:</label>
+            <input type="text" id="txt_Piva" maxlength="11" name="txt_Piva" value="" style="width: 295px" />
+            <div class="img_tool" id="nuovapiva-button" style="float: right; margin-top: -15px;
+                margin-bottom: -15px;">
+                <img src="replace_piu" />
+            </div>
+            <br />
+            <label for="txt_Piva">
+                Codice Socio:</label>
+            <input type="text" id="txt_CodiceSocio" name="txt_CodiceSocio" value="" style="width: 295px" />
+            <br />
+            <br />
+            <div id="indirizzoImprese">
+            </div>
+            <div data-role="collapsible" id="OpzioniNuovaImpresa">
+                <p class="heading">
+                    Opzioni</p>
+                <div class="content">
+                    <label for="Cmb_Imprese_Padre">
+                        Impresa Padre
+                    </label>
+                    <select id="Cmb_Imprese_Padre" name="Cmb_Imprese_Padre" style="width: 300px">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<script type="text/javascript">
+    var imprese_ID_ind = 'indirizzoImprese';
+    var centro_ID_ind = 'indirizzoCentro';
+
+    $(document).ready(function () {
+        generaIndirizzo(imprese_ID_ind);
+        generaIndirizzo(centro_ID_ind);
+
+        CaricaStatiISO(imprese_ID_ind, "");
+        CaricaStatiISO(centro_ID_ind, "");
+
+        ascoltaStato(imprese_ID_ind);
+        ascoltaStato(centro_ID_ind);
+
+        inizializzaDDLProvincie('ddl_Provincia_', imprese_ID_ind);
+        inizializzaDDLProvincie('ddl_Provincia_', centro_ID_ind);
+
+        ascoltaProvincia(imprese_ID_ind);
+        ascoltaProvincia(centro_ID_ind);
+    });
+
+
+    function impostaValoriIndirizzo(via, numero, frazione, citta, provincia, sigla, nazione, nazioneISO) {
+
+        if (numero == 0) {
+            $('#txt_Via_' + imprese_ID_ind).val(via);
+            $('#txt_Via_' + centro_ID_ind).val(via);
+        }
+        else {
+            $('#txt_Via_' + imprese_ID_ind).val(via + ", " + numero);
+            $('#txt_Via_' + centro_ID_ind).val(via + ", " + numero);
+        }
+
+        $('#txt_Frazione_' + imprese_ID_ind).val(frazione);
+        $('#txt_Frazione_' + centro_ID_ind).val(frazione);
+
+        $('#txt_Stato_' + imprese_ID_ind).val(nazione);
+        $('#txt_Stato_' + centro_ID_ind).val(nazione);
+
+        $('#txt_ISO_Stato_' + imprese_ID_ind).val(nazioneISO);
+        $('#txt_ISO_Stato_' + centro_ID_ind).val(nazioneISO);
+
+        $('#ddl_Stato_' + imprese_ID_ind).val(nazioneISO);
+        $('#ddl_Stato_' + centro_ID_ind).val(nazioneISO);
+
+
+        inizializzaDDLProvincie('ddl_Provincia_', imprese_ID_ind);
+        inizializzaDDLProvincie('ddl_Provincia_', centro_ID_ind);
+
+        if (nazioneISO == 'IT') {
+            $('#ddl_Provincia_' + imprese_ID_ind).val(sigla);
+            $('#ddl_Provincia_' + centro_ID_ind).val(sigla);
+        } else {
+            $('#ddl_Provincia_' + imprese_ID_ind).val("000");
+            $('#ddl_Provincia_' + centro_ID_ind).val("000");
+        }
+
+        caricaComune(imprese_ID_ind, citta);
+        caricaComune(centro_ID_ind, citta);
+
+        //se la città è vuota o nulla evidenzio in rosso
+        if (!citta) {
+            console.log("Selezionare la città");
+            $('#txt_Frazione_' + imprese_ID_ind).css({ 'background-color': 'red' });
+            $('#txt_Frazione_' + centro_ID_ind).css({ 'background-color': 'red' });
+        } else {
+            $('#txt_Frazione_' + imprese_ID_ind).css({ 'background-color': '' });
+            $('#txt_Frazione_' + centro_ID_ind).css({ 'background-color': '' });
+        }
+
+    }
+
+    function ascoltaStato(id) {
+        $('#ddl_Stato_' + id).change(function () {
+            $("#txt_Stato_" + id).val($('#ddl_Stato_' + id + ' option:selected').text());
+            $("#txt_ISO_Stato_" + id).val($('#ddl_Stato_' + id).val());
+        });
+    }
+
+    function ascoltaProvincia(id) {
+        $('#ddl_Provincia_' + id).change(function () {
+            var Chiave = $(this).val();
+            var pag;
+            pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaComuni";
+
+            $.ajax({
+                type: "POST",
+                url: pag,
+                data: "{ Chiave: '" + Chiave + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                    $('#ddl_Comune_' + id).html(msg.d);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        });
+    }
+
+
+    function CaricaStatiISO(id, selezione) {
+
+        var pag;
+        pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaStatiISO";
+        $.ajax({
+            type: "POST",
+            url: pag,
+            data: "{}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                $('#ddl_Stato_' + id).html(msg.d);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    }
+
+    function caricaComune(id, selezione) {
+        var Chiave = $('#ddl_Provincia_' + id).val();
+        var pag;
+        pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/CaricaComuni";
+        $.ajax({
+            type: "POST",
+            url: pag,
+            data: "{ Chiave: '" + Chiave + "'}",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                $('#ddl_Comune_' + id).html(msg.d);
+                //seleziono
+                var i = 0;
+                $('#ddl_Comune_' + id + ' option').each(function () {
+                    if ($(this).text().toString().toUpperCase() == selezione.toString().toUpperCase()) {
+                        $(this).attr('selected', 'selected');
+                    }
+                });
+
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    }
+
+
+    function inizializzaDDLProvincie(id, imprese_ID_ind) {
+        var indirizzohttp = location.pathname;
+        indirizzohttp = indirizzohttp.split("/")[indirizzohttp.split("/").length - 1];
+
+
+        var ISO_Stato = $("#txt_ISO_Stato_" + imprese_ID_ind).val();
+        utility.log("#txt_ISO_Stato_" + imprese_ID_ind);
+        utility.log("ISO_Stato = " + ISO_Stato);
+
+
+        $.ajax({
+            type: "POST",
+            url: indirizzohttp + "/CaricaProvince",
+            async: false,
+            data: "{'ISO_Stato': '" + ISO_Stato + "' }",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (msg) {
+                $('#' + id + imprese_ID_ind).html(msg.d);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(xhr.status);
+                alert(thrownError);
+            }
+        });
+    }
+
+
+
+    function generaIndirizzo(tipo) {
+        $('<label for="' + 'txt_Via_' + tipo + '">Via</label>').appendTo('#' + tipo);
+
+        //via   
+        $('<input />', {
+            id: 'txt_Via_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //frazione
+        $('<label for="' + 'txt_Frazione_' + tipo + '">Frazione</label>').appendTo('#' + tipo);
+        $('<input />', {
+            id: 'txt_Frazione_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //provincia
+        $('<label for="' + 'ddl_Provincia_' + tipo + '">Provincia</label>').appendTo('#' + tipo);
+        $('<select />', {
+            id: 'ddl_Provincia_' + tipo
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //comuni
+        $('<label for="' + 'ddl_Comune_' + tipo + '">Comune</label>').appendTo('#' + tipo);
+        $('<select />', {
+            id: 'ddl_Comune_' + tipo
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //stato (ddl)
+        $('<label for="' + 'ddl_Stato_' + tipo + '">Stato</label>').appendTo('#' + tipo);
+        $('<select />', {
+            id: 'ddl_Stato_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //stato
+        $('<label for="' + 'txt_Stato_' + tipo + '">Stato</label>').appendTo('#' + tipo);
+        $('<input />', {
+            id: 'txt_Stato_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+
+        //stato (sigla iso 3166)
+        $('<div style="">').appendTo('#' + tipo);
+        $('<label for="' + 'txt_ISO_Stato_' + tipo + '">Stato iso</label>').appendTo('#' + tipo);
+        $('<input />', {
+            id: 'txt_ISO_Stato_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('</div>').appendTo('#' + tipo);
+
+        //note
+        $('<label for="' + 'txt_Note_' + tipo + '">Note</label>').appendTo('#' + tipo);
+        $('<input />', {
+            id: 'txt_Note_' + tipo,
+            type: 'text'
+        }).appendTo('#' + tipo);
+        $('<br />').appendTo('#' + tipo);
+    }
+</script>
+<!-- Nuovo Centro Aziendale-->
+<div data-role="page" id="popup_nuovo_centro" title="Nuovo Centro Aziendale">
+    <fieldset>
+        <div data-role="content">
+            <label for="txt_rag_Soc">
+                Nome:</label>
+            <input type="text" id="txt_sa_nome" name="txt_sa_nome" value="" style="width: 295px" />
+            <br />
+            <br />
+            <div id="indirizzoCentro">
+            </div>
+            <div data-role="collapsible" id="Div3">
+                <p class="heading">
+                    Opzioni</p>
+                <div class="content">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+
+<script language="javascript" type="text/javascript">
+
+    function dialogBufferZoneIntersection_tools_Change() {
+        
+        //reset iniziale..
+        $("#dialogBufferZoneIntersection_disegna").hide();
+        $("#dialogBufferZoneIntersection_salva").hide();
+
+        if ($("#dialogBufferZoneIntersection_tools").val() == 0) {
+            $("#dialogBufferZoneIntersection_disegna").show();            
+        } else {            
+            $("#dialogBufferZoneIntersection_salva").show();
+        }
+
+    }
+
+</script>
+
+    <div id="dialogScomponiPunti" title="Strumento di scomposizione e ricomposizione poligoni">
+        <div id="dialogScomponiPunti_Punti">
+            <div>1. Punti selezionati</div>
+            <div id="btnDialogScomponiPunti_AnnullaVtx" class="bottone" onclick="DialogScomponiPunti_AnnullaVtx()" style="font-size: 0.9em;">Annulla ultimo</div>
+            <div id="btnDialogScomponiPunti_AnnullaTutti" class="bottone" onclick="DialogScomponiPunti_AnnullaTutti()" style="font-size: 0.9em;">Annulla tutti</div>
+        </div>
+        <hr />
+        <div id="dialogScomponiPunti_Associazione">
+            <div>2. Seleziona un elemento</div>
+            <div id="btnDialogScomponiPunti_Associa" class="bottone" onclick="DialogScomponiPunti_Associa()" style="font-size: 0.9em;">Genera poligono da punti selezionati</div>
+        </div>
+        <hr />
+        <div id="dialogScomponiPunti_Fine">
+            <div>3. Termina il lavoro</div>
+            <div id="btnDialogScomponiPunti_Termina" class="bottone" onclick="DialogScomponiPunti_Termina()" style="font-size: 0.9em;">Concludi il lavoro</div>
+        </div>
+        <hr />
+    </div>
+
+    <div id="dialogBufferZoneIntersection" title="Strumento di gestione fasce di rispetto non trattate">
+        <div id="dialogBufferZoneIntersection_tool_bar">
+            <select id="dialogBufferZoneIntersection_tools" onchange="dialogBufferZoneIntersection_tools_Change()">
+                <option value="0">Associazione dei dati</option>
+                <option value="1">Strumenti di disegno</option>
+            </select>
+        </div>
+        <div id="dialogBufferZoneIntersection_disegna"></div>
+        <div id="dialogBufferZoneIntersection_salva">
+            <br />
+            <div id="dialogBufferZoneIntersection_DatoLetto" style="font-weight: bold"></div> <br /><br />
+            <div>Informazioni appezzamento che saranno memorizzate:</div> <br />
+            <hr />
+
+            <!--
+            Distanza (m) da :
+            -	Corpi idrici superficiali
+            -	Aree residenziali/pubbliche
+            -	Allevamenti
+            -	Vegetazione naturale/non coltivata
+
+            -->
+
+            <div style="font-weight:bold">Distanza (m) da :</div><br />
+            <div style="clear:both"></div>
+            <div><span style="min-width: 180px; float:left">Corpi idrici superficiali:</span><span id="txtDistBZ_CorpiIdrici_a" /><span><input style="width: 40px" type="text" id="txtDistBZ_CorpiIdrici" /></span><span> [m]</span></div>
+            <div><span style="min-width: 180px; float:left">Aree residenziali/pubbliche:</span><span id="txtDistBZ_AreeResPub_a" /><span><input style="width: 40px" type="text" id="txtDistBZ_AreeResPub" /></span><span> [m]</span></div>
+            <div><span style="min-width: 180px; float:left">Allevamenti:</span><span id="txtDistBZ_Allevamenti_a" /><span><input style="width: 40px" type="text" id="txtDistBZ_Allevamenti" /></span><span> [m]</span></div>
+            <div><span style="min-width: 180px; float:left">Vegetazione naturale/non coltivata:</span><span id="txtDistBZ_VegNatNonColt_a" /><span><input style="width: 40px" type="text" id="txtDistBZ_VegNatNonColt" /></span><span> [m]</span></div>
+
+            <hr />
+
+            <div>
+                <span style="min-width: 70px; float:left; font-weight: bold; margin-top: 11px">Superficie:</span>
+                <span id="txtSupBZ_Riduzione_Ricalcolata" style="float:left; margin-top: 11px"></span>
+                <span id="arrowBufferZone" style="float:left; font-size: 25px; cursor: pointer;">→</span>
+                <input style="float:left; width: 40px; margin-top: 9px" type="text" id="txtSupBZ_Riduzione" /><span style="float: left; margin-top: 11px"> [ha]</span><br />
+            </div>
+            <div style="clear: both"></div>
+            <br />
+
+            <hr />
+
+            <div id="btnBufferZoneIntersection_salva" class="bottone" onclick="BufferZoneIntersection_salva()" style="font-size: 0.9em;">Salva su appezzamento</div>
+
+        </div>
+    </div>
+
+    <div id="pop_up_opAgenda_Preselezione" title="Selezione Operazione di Agenda">
+        <div id="contentpop_up_opAgenda_Preselezione">
+        </div>
+    </div>
+    <!-- Dialog Import -->
+    <div id="pop_up_import_shape" title="Gestione sincronizzazioni ed importazioni">
+        <iframe src="" id="frameShape" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+    </div>
+    <div id="pop_up_export_shape" title="Gestione esportazioni">
+        <iframe src="" id="frameShapePF" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+    </div>
+    <div id="pop_up_Ricette" title="Gestione Ricette">
+        <iframe src="" id="frameRicette" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+    </div>
+    <div id="pop_up_Catasto" title="Gestione Catasto">
+        <iframe src="" id="frameCatasto" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0"></iframe>
+    </div>
+    <!-- -->
+    <div id="pop_up_Ritaglia" title="Ritaglia Immagine">
+        <iframe src="" id="frameRitaglia" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="pop_up_opAgenda" title="Operazione di Agenda">
+        <iframe src="" id="framepop_up_opAgenda" style="width: 100%; height: 100%; display: block;
+        border: 0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="pop_up_Meteo" title="Analisi Dati">
+        <iframe src="" id="framepop_up_Meteo" style="width: 100%; height: 100%; display: block;
+            border: 0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="pop_up_visite" title="Visite">
+        <iframe src="" id="framepop_up_visite" style="width: 100%; height: 100%; display: block;
+                border: 0" frameborder="0" allowfullscreen></iframe>
+    </div>

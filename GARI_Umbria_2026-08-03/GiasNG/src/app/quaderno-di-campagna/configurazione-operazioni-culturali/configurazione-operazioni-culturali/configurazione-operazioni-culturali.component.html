@@ -1,0 +1,40 @@
+<kendo-tabstrip id="CostiAccessori_tabstrip">
+    
+    <kendo-tabstrip-tab [title]="'AnagraficheRilieviIndiciColtura' | transloco">
+        <ng-template kendoTabContent>
+            <app-anagrafiche-indici-maturita></app-anagrafiche-indici-maturita>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'ConfigurazioneAnagraficheRilievi' | transloco">
+
+        <ng-template kendoTabContent>
+            <!-- <app-rilievi-avversita></app-rilievi-avversita> -->
+            <app-anagrafiche-rilievi-avversita></app-anagrafiche-rilievi-avversita>
+        </ng-template>
+
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'GestioneGHG' | transloco" [selected]="true">
+        <ng-template kendoTabContent>
+            <app-imprese-parametri-ghg></app-imprese-parametri-ghg>
+        </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'Causali' | transloco">
+
+        <ng-template kendoTabContent>
+            <app-operazione-causale></app-operazione-causale>
+        </ng-template>
+
+    </kendo-tabstrip-tab>
+
+</kendo-tabstrip>
+
+<div class="container anagraficaContainer">
+    <div class="row">
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

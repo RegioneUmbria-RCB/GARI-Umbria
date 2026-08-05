@@ -1,0 +1,15 @@
+<gis-window *ngIf="windowArgs?.openState" #window [windowArgs]="windowArgs" class="pb-3">
+  <kendo-tabstrip [scrollable]="true" keepTabContent="true">
+    <kendo-tabstrip-tab [title]="'gis.PermessiSuUtenti' | transloco" [selected]="true">
+      <ng-template kendoTabContent>
+        <gis-layer-users-permissions></gis-layer-users-permissions>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.PermessiSuGruppi' | transloco">
+      <ng-template kendoTabContent>
+        <gis-layer-groups-permissions></gis-layer-groups-permissions>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</gis-window>

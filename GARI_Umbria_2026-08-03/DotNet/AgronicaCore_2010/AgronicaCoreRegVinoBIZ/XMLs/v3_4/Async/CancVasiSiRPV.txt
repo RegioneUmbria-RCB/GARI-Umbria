@@ -1,0 +1,29 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:wsm="http://cooperazione.sian.it/schema/wsmrga/">
+   <soapenv:Header>
+      <soap:SOAPAutenticazione>
+         <!--Credenziali rilasciate dal Ministero all'azienda-->
+         <username>AAAAAAAAAA</username>
+         <password>BBBBBBBBBB</password>
+         <nomeServizio>CancVasiSiRPV</nomeServizio>
+      </soap:SOAPAutenticazione>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wsm:CancVasiSiRPVInput>
+         <wsm:CodOper>
+            <!--Indicazione del Codice Fiscale dell'azienda (valorizzare persona fisica o giuridica)-->
+            <wsm:PersonaGiuridica>01234567890</wsm:PersonaGiuridica>
+         </wsm:CodOper>
+		 <!--Codice ICQRF dello stabilimento nel formato AANNNN-->
+         <wsm:CodiceIcqrf>RM1234</wsm:CodiceIcqrf>
+         <!--Specificare una o piu vasi da cancellare-->
+         <wsm:VasoElimina>
+			<!--Codice alfanumerico del vaso presente in ANAGRAFICA VASI VINARI -->
+            <wsm:CodVaso>0001V</wsm:CodVaso>
+         </wsm:VasoElimina>
+         <wsm:VasoElimina>
+			<!--Codice alfanumerico del vaso presente in ANAGRAFICA VASI VINARI -->
+            <wsm:CodVaso>VASO2233</wsm:CodVaso>
+         </wsm:VasoElimina>
+      </wsm:CancVasiSiRPVInput>
+   </soapenv:Body>
+</soapenv:Envelope>

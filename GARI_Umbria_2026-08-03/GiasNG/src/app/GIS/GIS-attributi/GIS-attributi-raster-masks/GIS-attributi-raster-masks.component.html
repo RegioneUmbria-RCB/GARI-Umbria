@@ -1,0 +1,39 @@
+<ng-container *ngIf="masks$ | async as masks">
+  <gias-kendo-grid #kendoGrid [customCommandColumnCellTemplate]="customCommandColumn">
+    <!--<kendo-grid-command-column width="100">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <div class="column-commands">
+          <button kendoButton kendoTooltip (click)="viewOnMap(dataItem)" [title]="'gis.VisualizzaSuMappa' | transloco"
+            fillMode="flat">
+            <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+          </button>
+
+          <button kendoButton kendoTooltip (click)="editPermissions(dataItem, masks)"
+            [title]="'ModificaPermessi' | transloco" fillMode="flat">
+            <i aria-hidden="true" class="fa fa-user color-std"></i>
+          </button>
+        </div>
+      </ng-template>
+    </kendo-grid-command-column>-->
+  </gias-kendo-grid>
+
+  <ng-template #customCommandColumn let-dataItem="dataItem">
+    <div class="column-commands">
+      <button kendoButton kendoTooltip (click)="viewOnMap(dataItem)" [title]="'gis.VisualizzaSuMappa' | transloco"
+              fillMode="flat">
+        <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+      </button>
+
+      <button kendoButton kendoTooltip (click)="editPermissions(dataItem, masks)"
+              [title]="'ModificaPermessi' | transloco" fillMode="flat">
+        <i aria-hidden="true" class="fa fa-user color-std"></i>
+      </button>
+    </div>
+  </ng-template>
+</ng-container>
+
+
+
+<gis-attributi-raster-masks-permissions *ngIf="openPermissionDialog" (close)="closeAndReload()" [mask]="selectedMask">
+</gis-attributi-raster-masks-permissions>
+

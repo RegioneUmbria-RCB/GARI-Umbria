@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:intf="http://webservices.ftp.telematico.dogana.dogane.ag_dogane.finanze.it" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://webservices.ftp.telematico.dogana.dogane.ag_dogane.finanze.it" targetNamespace="http://webservices.ftp.telematico.dogana.dogane.ag_dogane.finanze.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webservices.ftp.telematico.dogana.dogane.ag_dogane.finanze.it">
+      <xsd:element name="lsResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="lsReturn" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dir">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="pattern" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dirResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="dirReturn" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getlog">
+        <xsd:complexType>
+          <xsd:sequence />
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getlogResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getlogReturn" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="get">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fileName" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getReturn" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="put">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="fileMsg_Content" type="xsd:base64Binary" />
+            <xsd:element name="fileMsg_Nome" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="putResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="putReturn" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mget">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="mGetInput_Nome" nillable="true" type="xsd:string" />
+            <xsd:element name="mGetInput_Prog" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="mgetResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="mgetReturn" type="xsd:base64Binary" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ls">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="pattern" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dirIvistoAnnullati">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="dataDa" nillable="true" type="xsd:date" />
+            <xsd:element name="dataA" nillable="true" type="xsd:date" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dirIvistoAnnullatiResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="pattern" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getIvistoAnnullati">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nomeFile" nillable="true" type="xsd:string" />
+            <xsd:element name="codiceFile" nillable="true" type="xsd:string" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getIvistoAnnullatiResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getIvistoAnnullatiReturn" type="impl:getIvistoAnnullatiResponseType" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="getIvistoAnnullatiResponseType">
+        <xsd:sequence>
+          <xsd:element name="msg" nillable="true" type="xsd:string" />
+          <xsd:element name="nomeFile" nillable="true" type="xsd:string" />
+          <xsd:element name="codiceFile" nillable="true" type="xsd:string" />
+          <xsd:element name="getByteStream" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="mgetRequest">
+    <wsdl:part name="parameters" element="impl:mget" />
+  </wsdl:message>
+  <wsdl:message name="lsResponse">
+    <wsdl:part name="parameters" element="impl:lsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getResponse">
+    <wsdl:part name="parameters" element="impl:getResponse" />
+  </wsdl:message>
+  <wsdl:message name="getIvistoAnnullatiRequest">
+    <wsdl:part name="parameters" element="impl:getIvistoAnnullati" />
+  </wsdl:message>
+  <wsdl:message name="dirIvistoAnnullatiResponse">
+    <wsdl:part name="parameters" element="impl:dirIvistoAnnullatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="dirResponse">
+    <wsdl:part name="parameters" element="impl:dirResponse" />
+  </wsdl:message>
+  <wsdl:message name="dirIvistoAnnullatiRequest">
+    <wsdl:part name="parameters" element="impl:dirIvistoAnnullati" />
+  </wsdl:message>
+  <wsdl:message name="mgetResponse">
+    <wsdl:part name="parameters" element="impl:mgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="putResponse">
+    <wsdl:part name="parameters" element="impl:putResponse" />
+  </wsdl:message>
+  <wsdl:message name="getlogResponse">
+    <wsdl:part name="parameters" element="impl:getlogResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRequest">
+    <wsdl:part name="parameters" element="impl:get" />
+  </wsdl:message>
+  <wsdl:message name="putRequest">
+    <wsdl:part name="parameters" element="impl:put" />
+  </wsdl:message>
+  <wsdl:message name="dirRequest">
+    <wsdl:part name="parameters" element="impl:dir" />
+  </wsdl:message>
+  <wsdl:message name="getIvistoAnnullatiResponse">
+    <wsdl:part name="parameters" element="impl:getIvistoAnnullatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="getlogRequest">
+    <wsdl:part name="parameters" element="impl:getlog" />
+  </wsdl:message>
+  <wsdl:message name="lsRequest">
+    <wsdl:part name="parameters" element="impl:ls" />
+  </wsdl:message>
+  <wsdl:portType name="TelematicoFtpWsBindingImpl">
+    <wsdl:operation name="ls">
+      <wsdl:input name="lsRequest" message="impl:lsRequest" />
+      <wsdl:output name="lsResponse" message="impl:lsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dir">
+      <wsdl:input name="dirRequest" message="impl:dirRequest" />
+      <wsdl:output name="dirResponse" message="impl:dirResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getlog">
+      <wsdl:input name="getlogRequest" message="impl:getlogRequest" />
+      <wsdl:output name="getlogResponse" message="impl:getlogResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="get">
+      <wsdl:input name="getRequest" message="impl:getRequest" />
+      <wsdl:output name="getResponse" message="impl:getResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="put">
+      <wsdl:input name="putRequest" message="impl:putRequest" />
+      <wsdl:output name="putResponse" message="impl:putResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="mget">
+      <wsdl:input name="mgetRequest" message="impl:mgetRequest" />
+      <wsdl:output name="mgetResponse" message="impl:mgetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="dirIvistoAnnullati">
+      <wsdl:input name="dirIvistoAnnullatiRequest" message="impl:dirIvistoAnnullatiRequest" />
+      <wsdl:output name="dirIvistoAnnullatiResponse" message="impl:dirIvistoAnnullatiResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getIvistoAnnullati">
+      <wsdl:input name="getIvistoAnnullatiRequest" message="impl:getIvistoAnnullatiRequest" />
+      <wsdl:output name="getIvistoAnnullatiResponse" message="impl:getIvistoAnnullatiResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TelematicoFtpWsBindingImplSoapBinding" type="impl:TelematicoFtpWsBindingImpl">
+    <wsaw:UsingAddressing wsdl:required="false" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" />
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ls">
+      <wsdlsoap:operation soapAction="ls" />
+      <wsdl:input name="lsRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="lsResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dir">
+      <wsdlsoap:operation soapAction="dir" />
+      <wsdl:input name="dirRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dirResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getlog">
+      <wsdlsoap:operation soapAction="getlog" />
+      <wsdl:input name="getlogRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getlogResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get">
+      <wsdlsoap:operation soapAction="get" />
+      <wsdl:input name="getRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="put">
+      <wsdlsoap:operation soapAction="put" />
+      <wsdl:input name="putRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="putResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mget">
+      <wsdlsoap:operation soapAction="mget" />
+      <wsdl:input name="mgetRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="mgetResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dirIvistoAnnullati">
+      <wsdlsoap:operation soapAction="dirIvistoAnnullati" />
+      <wsdl:input name="dirIvistoAnnullatiRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dirIvistoAnnullatiResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getIvistoAnnullati">
+      <wsdlsoap:operation soapAction="getIvistoAnnullati" />
+      <wsdl:input name="getIvistoAnnullatiRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getIvistoAnnullatiResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TelematicoFtpWsBindingImplService">
+    <wsdl:port name="TelematicoFtpWsBindingImpl" binding="impl:TelematicoFtpWsBindingImplSoapBinding">
+      <wsdlsoap:address location="https://ws-telematicoprova.adm.gov.it:443/TelematicoFtpEjbHttpRouter/TelematicoFtpWsBindingImplService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

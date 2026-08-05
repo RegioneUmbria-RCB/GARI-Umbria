@@ -1,0 +1,12 @@
+<div [formGroup]="qdcservice.TestataForm">
+    <gias-drop-down-template-s [name]="(qdcservice.TestataForm.get('flagVisita').value ? 'SpecieVegetale' : 'Specie') | transloco" 
+                               [obligatory]="!qdcservice.TestataForm.get('flagVisita').value"
+                               [clearButton]="true"
+                               [listItems]="testataservice.Array_UtilizziTerreno"
+                               (open)="openDdlSpecie($event, 'Specie')"
+                               textField="descrizione"
+                               valueField="codice" [filterable]="true"
+                               giasFormControlName="Specie"
+                               [valuePrimitive]="false">
+    </gias-drop-down-template-s>
+</div>

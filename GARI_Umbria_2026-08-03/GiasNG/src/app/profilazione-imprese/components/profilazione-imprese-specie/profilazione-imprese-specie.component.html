@@ -1,0 +1,6 @@
+<div class="prof-imprese-column prof-imprese-specie">
+  <p>{{ 'profImprese.SelezionaUnaSpecie' | transloco }} </p>
+  <kendo-dropdownlist [data]="specie$ | async" textField="Veg_Des" valueField="Veg_Cod"
+    [kendoDropDownFilter]="dropdownSettings" (valueChange)="specieSubject.next($event)" [value]="specieSubject | async"
+    [valuePrimitive]="true"></kendo-dropdownlist>
+</div>

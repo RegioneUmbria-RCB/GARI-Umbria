@@ -1,0 +1,12 @@
+<div class="resizer-container">
+  <span (click)="isVisible = !isVisible" class="fa_widget_resize resizer-handle">
+  </span>
+  <div class="resizer-grid" *ngIf="isVisible">
+    <ng-container *ngFor="let col of matrix; let i = index; trackBy: trackByIndex">
+      <ng-container *ngFor="let cell of col; let j = index; trackBy: trackByIndex">
+        <div [class]="cell ? 'resizer-cell selected': 'resizer-cell'" (click)="saveWidget(j + 1, i + 1)"
+          (mouseover)="computeMatrix(j + 1, i + 1)" [title]="getTooltip(j + 1, i + 1)" kendoTooltip></div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

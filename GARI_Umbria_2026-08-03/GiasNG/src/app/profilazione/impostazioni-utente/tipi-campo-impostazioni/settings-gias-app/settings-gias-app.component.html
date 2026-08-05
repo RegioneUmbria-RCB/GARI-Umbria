@@ -1,0 +1,27 @@
+<div *ngFor="let imp of getSettings; index as j">
+    <form [formGroup]="imp">
+        @if (+imp.value.guida.Tipo_Campo !== 0) {
+            <gias-general-input-template
+                    giasFormControlName="valoreCorrente"
+                    [label]="('prof.AppLabel' + imp.value.guida.Impostazione_Des) | transloco"
+                    [listItems]="imp.value.valori"
+                    [value]="imp.value.valoreCorrente"
+                    [controlType]="+imp.value.guida.Tipo_Campo"
+                    [tooltip]="imp.value.guida.Note ? (imp.value.guida.Note | transloco) : ''"
+                    (valueChange)="onValueChange($event, j)"
+            ></gias-general-input-template>
+            @if (!imp.valid) {
+                 @if (imp.get('valoreCorrente').errors?.max != undefined) {
+                    <!-- TODO: cambiare modo di visualizzazione errore pre consentire riusabilita -->
+                     <span class="error">{{'prof.ValoreMassimoConsentitoE' | transloco}}  {{ imp.get('valoreCorrente').errors?.max?.max }}Mb.</span>
+                 }
+            }
+        } @else {
+            <!-- Add eventual custom handling below -->
+            @if (imp.value.guida.Impostazione_Des == "Importazioni") {
+                <p style="margin: 0;">{{('prof.AppLabel' + imp.value.guida.Impostazione_Des) | transloco}}</p>
+                <app-settings-categorie-magazzino [formGroup]="imp"></app-settings-categorie-magazzino>
+            }
+        }
+    </form>
+</div>

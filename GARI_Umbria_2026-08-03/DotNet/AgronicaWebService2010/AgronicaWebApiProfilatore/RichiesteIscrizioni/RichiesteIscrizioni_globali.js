@@ -1,0 +1,1 @@
+﻿var indirizzohttp = "./RichiesteIscrizioni.aspx";

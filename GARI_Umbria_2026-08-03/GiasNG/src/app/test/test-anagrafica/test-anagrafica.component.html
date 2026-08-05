@@ -1,0 +1,71 @@
+<form [formGroup]="impreseTestForm">
+    <gias-drop-down-template-s [name]="'Impresa Test'" textField="descrizione" (open)="openDdl($event)"
+        giasFormControlName="impresa"
+        valueField="codice" [filterable]="true" [valuePrimitive]="false">
+    </gias-drop-down-template-s>
+</form>
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Imprese</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-imprese></app-test-anagrafica-imprese>
+        </span>
+    </div>
+</gias-expansionpanel>
+
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Centri</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-centri></app-test-anagrafica-centri>
+        </span>
+    </div>
+</gias-expansionpanel>
+
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Catasto</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-catasto></app-test-anagrafica-catasto>
+        </span>
+    </div>
+</gias-expansionpanel>
+
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Campi</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-campi></app-test-anagrafica-campi>
+        </span>
+    </div>
+</gias-expansionpanel>
+
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Impianti</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-impianti></app-test-anagrafica-impianti>
+        </span>
+    </div>
+</gias-expansionpanel>
+
+<gias-expansionpanel>
+    <div class="header-content" headerContent>
+        <span><strong>Test Macchine</strong></span>
+    </div>
+    <div class="content">
+        <span class="content-text">
+            <app-test-anagrafica-macchine></app-test-anagrafica-macchine>
+        </span>
+    </div>
+</gias-expansionpanel>

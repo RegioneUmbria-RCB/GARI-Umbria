@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="dati">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="configurazione">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="urlWsimportaGias" type="xs:string" />
+              <xs:element name="connessioni">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="connessione">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Connessione_SERVER_ORIGINE" type="xs:string" />
+                          <xs:element name="Connessione_SERVER_DESTINAZIONE" type="xs:string" />
+                          <xs:element name="Connessione_UTENTI_ORIGINE" type="xs:string" />
+                          <xs:element name="Connessione_UTENTI_DESTINAZIONE" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="parametri">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="ProgressivoGIAS_ORIGINE" type="xs:unsignedShort" />
+                    <xs:element name="ProgressivoGIAS_DESTINAZIONE" type="xs:unsignedShort" />
+                    <xs:element name="PivaSuperUser_ORIGINE" type="xs:unsignedInt" />
+                    <xs:element name="PivaSuperUser_DESTINAZIONE" type="xs:unsignedInt" />
+                    <xs:element name="UsernameSuperUser_Origine" type="xs:string" />
+                    <xs:element name="UsernameSuperUser_Destinazione" type="xs:string" />
+                    <xs:element name="Import_CodFiscale_ORIGINE" type="xs:string" />
+                    <xs:element name="Import_CodFiscale_DESTINAZIONE" type="xs:string" />
+                    <xs:element name="Import_Username_ORIGINE" type="xs:string" />
+                    <xs:element name="Import_Username_DESTINAZIONE" type="xs:string" />
+                    <xs:element name="CodiceImpresa_ORIGINE" type="xs:unsignedShort" />
+                    <xs:element name="CodiceImpresa_DESTINAZIONE" type="xs:unsignedShort" />
+                    <xs:element name="percorsoConnessioni" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="imprese">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TipoUtilizzoFiltroneInG2G" type="xs:unsignedByte" />
+              <xs:element name="filtrone" type="xs:string" />
+              <xs:element name="filtronerisultato_azienda" type="xs:string" />
+              <xs:element name="filtronerisultato" type="xs:string" />
+              <xs:element name="datiimpresa">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="flagimporta_audit" />
+                    <xs:element name="flagimporta_audit_interviste" />
+                    <xs:element name="flagimporta_agenda">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                          <xs:element name="configurazione" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_pap" />
+                    <xs:element name="flagimporta_papz" />
+                    <xs:element name="flagimporta_notificabio" />
+                    <xs:element name="flagimporta_planning" />
+                    <xs:element name="flagimporta_distinta" />
+                    <xs:element name="flagimporta_ricette">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_materieprime" />
+                    <xs:element name="flagimporta_pianocolturale">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_gis" />
+                    <xs:element name="flagimporta_profilazione" />
+                    <xs:element name="flagimporta_catasto" />
+                    <xs:element name="flagimporta_pua" />
+                    <xs:element name="flagimporta_lineeproduttive" />
+                    <xs:element name="flagimporta_piani_di_campionamento" />
+                    <xs:element name="flagimporta_analisi">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_pratiche">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                          <xs:element name="configurazione" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_pratiche_pull">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                          <xs:element name="configurazione" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="datiglobali">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="flagallinea_recodes" />
+                    <xs:element name="flagimporta_note" />
+                    <xs:element name="flagimporta_profilazione" />
+                    <xs:element name="flagimporta_cac_codifica" />
+                    <xs:element name="flagimporta_pianicampionamento" />
+                    <xs:element name="flagimporta_contatti">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" />
+                          <xs:element name="validita_fine" />
+                          <xs:element name="configurazione" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_macchine" />
+                    <xs:element name="flagimporta_materieprime">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_materieprimecampionature" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element maxOccurs="unbounded" name="impresa">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="origine" type="xs:unsignedInt" />
+                    <xs:element name="rag_soc" type="xs:string" />
+                    <xs:element name="destinazione" type="xs:unsignedInt" />
+                    <xs:element name="sa_cod" type="xs:unsignedInt" />
+                    <xs:element name="padre" type="xs:unsignedByte" />
+                    <xs:element name="Livello" type="xs:unsignedByte" />
+                    <xs:element name="flagimporta_agenda">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_pap" />
+                    <xs:element name="flagimporta_papz" />
+                    <xs:element name="flagimporta_notificabio" />
+                    <xs:element name="flagimporta_planning" />
+                    <xs:element name="flagimporta_distinta" />
+                    <xs:element name="flagimporta_ricette">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validita_inizio" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="flagimporta_pua" />
+                    <xs:element minOccurs="0" name="impianti">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="impianto">
+                            <xs:complexType>
+                              <xs:attribute name="piva" type="xs:unsignedInt" use="required" />
+                              <xs:attribute name="sa_cod" type="xs:unsignedInt" use="required" />
+                              <xs:attribute name="appezza" type="xs:unsignedInt" use="required" />
+                              <xs:attribute name="id_reg" type="xs:unsignedInt" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

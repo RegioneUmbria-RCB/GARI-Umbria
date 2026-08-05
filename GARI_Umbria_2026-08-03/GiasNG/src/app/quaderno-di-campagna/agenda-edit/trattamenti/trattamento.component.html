@@ -1,0 +1,173 @@
+<div [formGroup]="qdcservice.QdCForm.get('Trattamento')">
+    <!--<div class="row text-blue" *ngIf="true">
+        <div id="GiasQdcBreadcrumbs">
+            <div class="breadcrumbs-root">
+                OPERAZIONI
+            </div>
+            &lt;!&ndash; si possono ciclare gli elementi mantenendo questa classe &ndash;&gt;
+            <div class="breadcrumbs-path">
+                -> todo
+            </div>
+        </div>
+    </div>-->
+
+    <!--    <div class="row">
+            <app-testata-ricetta></app-testata-ricetta>
+        </div>-->
+    <div class="row">
+        <app-testata></app-testata>
+    </div>
+    <gias-panelbar #GISPanel
+                   [headerTemplate]="headerTemplateGIS"
+                   [contentTemplate]="contentTemplateGIS"
+                   [id]="'GIS'"
+                   [expand]="qdcservice.GISPanel.ExpandPanel"
+                   [disabled]="!qdcservice.GISPanel.Polygon"
+                   [willStoreCookies]="false"
+                   [keepItemContent]="true"
+                   *ngIf="mostraGis()"
+                   (OnExpandPanel)="OnExpandGISPanel($event)">
+
+        <ng-template #headerTemplateGIS>
+            {{ HeaderTextGISPanelBar() }}
+        </ng-template>
+
+        <ng-template #contentTemplateGIS>
+            <ng-container>
+                <div>
+                    <GIS id="trattamentoGis" [_modality]="GISModality.Trattamento" [showToolbar]="showToolbar" [forRilievi]="showToolbar" #GIS></GIS>
+                </div>
+            </ng-container>
+        </ng-template>
+
+    </gias-panelbar>
+
+    <div class="row mt-2 mb-2" *ngIf="mostraImpianti()">
+        <gias-panelbar #ImpiantiPanel
+                       [headerTemplate]="headerTemplateImpianti"
+                       [contentTemplate]="contentTemplateImpianti"
+                       [loadContent]="true"
+                       [keepItemContent]="true"
+                       (OnExpandPanel)="qdcservice.OnExpandPanel('Impianti')"
+                       [willStoreCookies]="false"
+                       [id]="'Impianti'">
+
+            <ng-template #headerTemplateImpianti>
+                {{ 'Impianti' | transloco }}
+            </ng-template>
+
+
+            <ng-template #contentTemplateImpianti>
+
+                <app-grid-impianti></app-grid-impianti>
+
+                <!--<kendo-tabstrip id="Impianti_tabstrip" (tabSelect)="onTabSelect($event)" [keepTabContent]="true">
+
+                    <kendo-tabstrip-tab [title]="'PianoColturale' | transloco" [selected]="tabSelected == 0">
+
+                        <ng-template kendoTabContent>
+                            <div class="row mt-2 mb-2">
+                                <app-grid-impianti></app-grid-impianti>
+                            </div>
+                        </ng-template>
+
+                    </kendo-tabstrip-tab>
+
+                    <kendo-tabstrip-tab *ngIf="isSpecieSelected" [title]="'PianoColturaleGrafico' | transloco">
+
+                        <ng-template kendoTabContent>
+                            <ng-container *ngIf="isTabLoaded[1]">
+                                <div>
+                                    <GIS [modality]="GISModality.Trattamento"></GIS>
+                                </div>
+                            </ng-container>
+                        </ng-template>
+
+                    </kendo-tabstrip-tab>
+                </kendo-tabstrip>-->
+            </ng-template>
+
+        </gias-panelbar>
+    </div>
+
+    <div class="row mt-2 mb-2" *ngIf="showRilievoPiogge">
+        <gias-panelbar #RilievoPioggePanel
+                       [headerTemplate]="headerTemplateRilievoPiogge"
+                       [contentTemplate]="contentTemplateRilievoPiogge"
+                       [loadContent]="true"
+                       [keepItemContent]="true"
+                       (OnExpandPanel)="qdcservice.OnExpandPanel('RilievoPiogge')"
+                       [id]="'RilievoPiogge'">
+
+            <ng-template #headerTemplateRilievoPiogge>
+                {{ 'RilievoPiogge' | transloco }}
+            </ng-template>
+            <ng-template #contentTemplateRilievoPiogge>
+                <app-rilievo-piogge></app-rilievo-piogge>
+            </ng-template>
+        </gias-panelbar>
+    </div>
+    <div class="row mt-2 mb-2" *ngIf="mostraProdottiMagazzino()">
+        <gias-panelbar [headerTemplate]="headerTemplateProdottiMagazzino"
+                       [contentTemplate]="contentTemplateProdottiMagazzino"
+                       [loadContent]="true"
+                       [keepItemContent]="true"
+                       (OnExpandPanel)="qdcservice.OnExpandPanel('ProdottiMagazzino')"
+                       [id]="'ProdottiMagazzino'">
+
+            <ng-template #headerTemplateProdottiMagazzino>
+                {{ 'ProdottiMagazzino' | transloco }}
+            </ng-template>
+
+
+            <ng-template #contentTemplateProdottiMagazzino>
+                <app-grid-prodotti-da-trattare></app-grid-prodotti-da-trattare>
+            </ng-template>
+
+        </gias-panelbar>
+    </div>
+
+    <div class="row">
+        <app-disciplinare></app-disciplinare>
+    </div>
+
+    <div class="row">
+        <app-prodotti></app-prodotti>
+    </div>
+    <div class="row">
+        <app-sezioni-no-prodotto></app-sezioni-no-prodotto>
+    </div>
+
+    <div class="row" *ngIf="!qdcservice.TestataForm.get('flagVisita').value">
+        <app-costi-accessori></app-costi-accessori>
+    </div>
+
+
+    <!--<gias-expansionpanel [id]="'Note'" (action)="qdcservice.OnActionExpansionPanel($event,'Note')">
+        <div headerContent class="header-content">
+            <span><strong>{{ 'Note' | transloco }}</strong></span>
+        </div>
+
+        <app-nota-testuale></app-nota-testuale>
+        <div class="row">
+            <app-grid-note></app-grid-note>
+        </div>
+    </gias-expansionpanel>-->
+
+    <gias-panelbar [headerTemplate]="headerTemplateNote" [contentTemplate]="contentTemplateNote" [id]="'Note'" *ngIf="!qdcservice.TestataForm.get('flagVisita').value">
+
+        <ng-template #headerTemplateNote>
+            {{ 'Note' | transloco }}
+        </ng-template>
+
+
+        <ng-template #contentTemplateNote>
+            <app-nota-testuale></app-nota-testuale>
+            <div class="row">
+                <app-grid-note></app-grid-note>
+            </div>
+        </ng-template>
+
+    </gias-panelbar>
+
+</div>

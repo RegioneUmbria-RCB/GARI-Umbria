@@ -1,0 +1,64 @@
+﻿// -------------------------------------------------------------------------------------
+// Json contenente le configurazioni dei servizi import / export
+// che va messo nel campo parametri_extra della configurazione_servizi 
+// per tipo_sincro 98 (Integrazione Macchine)
+// -------------------------------------------------------------------------------------
+
+{
+  "Configurazioni": [
+    {
+      "PercorsoInput": "C:\\Progetti\\Lorenzini\\RSBilance",
+      "PercorsoOutput": null,
+      "PercorsoLog": "C:\\Progetti\\Lorenzini\\RSBilance\\Log",
+      "Abilitato": true,
+      "OnDemand": false,
+      "IntervalloPollingInSecondi": 300,
+      "IdServizio": "Imp_RSBilance",
+      "Type": "AgronicaCoreIntegrazioneMacchine.Importatore_RsService_Ulma"
+    },
+    {
+      "PercorsoInput": "C:\\Progetti\\Lorenzini\\Unitec",
+      "PercorsoOutput": null,
+      "PercorsoLog": "C:\\Progetti\\Lorenzini\\Unitec\\Log",
+      "Abilitato": true,
+      "OnDemand": false,
+      "IntervalloPollingInSecondi": 300,
+      "Type": "AgronicaCoreIntegrazioneMacchine.Importatore_Unitec",
+      "IdServizio": "Imp_Unitec",
+      "ParametriAgg": "{\"LottoFittizio\":\"FINEGIORNATA\",\"ClasseUscita\":\"ocalibro\"}"
+    },
+    {
+      "PercorsoInput": "C:\\Progetti\\Lorenzini\\Malavasi",
+      "PercorsoOutput": null,
+      "PercorsoLog": "C:\\Progetti\\Lorenzini\\Malavasi\\Log",
+      "Abilitato": true,
+      "OnDemand": false,
+      "IntervalloPollingInSecondi": 300,
+      "Type": "AgronicaCoreIntegrazioneMacchine.Importatore_Malavasi",
+      "IdServizio": "Imp_Malavasi",
+      "ParametriAgg": "{\"QualitaPrimaScelta\":\"I^\",\"QualitaSecondaScelta\":\"II^\",\"CalibroSecondaScelta\":\"F100\",\"EtichettaSecondaScelta\":\"SCARTO:\",\"IntestazioneLotto\":\"Lots\",\"IntestazioneCalibri\":\"Calibro;Total(Kg);Min(Kg);Max(Kg)\"}"
+    },
+    {
+      "PercorsoInput": "",
+      "PercorsoOutput": "\\\\agro-pcl-galass\\Condivisione\\Malavasi1",
+      "PercorsoLog": "C:\\Progetti\\Lorenzini\\Malavasi\\Output\\Log",
+      "Abilitato": true,
+      "OnDemand": true,
+      "IntervalloPollingInSecondi": -1,
+      "IdServizio": "Exp_Malavasi_1",
+      "Type": "AgronicaCoreIntegrazioneMacchine.Esportatore_Malavasi",
+      "ParametriAgg": "{\"NomeFilePrimoIngresso\":\"PrimoIngresso_1.txt\",\"NomeFileOrdine\":\"[IDAGENDA]_1.txt\"}"
+    },
+    {
+      "PercorsoInput": "",
+      "PercorsoOutput": "\\\\agro-pcl-galass\\Condivisione\\Malavasi2",
+      "PercorsoLog": "C:\\Progetti\\Lorenzini\\Malavasi\\Output\\Log",
+      "Abilitato": true,
+      "OnDemand": true,
+      "IntervalloPollingInSecondi": -1,
+      "IdServizio": "Exp_Malavasi_2",
+      "Type": "AgronicaCoreIntegrazioneMacchine.Esportatore_Malavasi",
+      "ParametriAgg": "{\"NomeFilePrimoIngresso\":\"PrimoIngresso_2.txt\",\"NomeFileOrdine\":\"[IDAGENDA]_2.txt\"}"
+    }
+  ]
+}

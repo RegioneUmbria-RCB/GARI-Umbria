@@ -1,0 +1,71 @@
+<div class="raccolta-container">
+    <form [formGroup]="form">
+        <div class="right-btn-group" *ngIf="!isInInfoMode">
+                    <!-- <button kendoTooltip class="btn-danger-icon" kendoButton
+            (click)="onRemove()"
+            [title]="'qdc.RimuoviProdottoRaccolto' | transloco">
+            <span class="k-icon k-i-trash"></span>
+        </button> -->
+        <button class="btn btn-primary btn-delete btn-sm"
+                [title]="'qdc.RimuoviProdottoRaccolto' | transloco"
+                (click)="onRemove()"
+        >
+            <div class="k-icon k-i-btn_elimina_dose_prodotto"></div>
+        </button>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-sm-4">
+                <gias-drop-down-template-s
+                    [name]="'qdc.ProdottoRaccolto' | transloco"
+                    id="prodotto"
+                    textField="descrizione"
+                    valueField="codice"
+                    giasFormControlName="Prodotto"
+                    [valuePrimitive]="false"
+                    (open)="onOpenDdl($event)"
+                    [virtual]="{ pageSize: 20,itemHeight: 30}"
+                ></gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-2" *ngIf="isProductSelected">
+                <gias-drop-down-template-s
+                    [name]="'qdc.um' | transloco"
+                    id="udm"
+                    textField="descrizione"
+                    valueField="codice"
+                    giasFormControlName="UM"
+                    [valuePrimitive]="false"
+                    (open)="onOpenDdl($event)"
+                ></gias-drop-down-template-s>
+            </div>
+
+            <div class="col-12 col-sm-2" *ngIf="isProductSelected">
+                <gias-numeric-template [name]="'qdc.qtaTot' | transloco "
+                    [isDisabled]="false"
+                    [readonly]="true"
+                    [placeholder]="0"
+                    giasFormControlName="Qta_Tot">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col-12 col-sm-4" *ngIf="carichiAttivi && isProductSelected">
+                <gias-drop-down-template-s
+                    [name]="'qdc.Magazzino' | transloco"
+                    id="magazzino"
+                    textField="descrizione"
+                    valueField="chiaveMagazzino"
+                    giasFormControlName="Magazzino"
+                    [valuePrimitive]="false"
+                    (open)="onOpenDdl($event)"
+                ></gias-drop-down-template-s>
+            </div>
+        </div>
+    </form>
+
+    <div class="row mt-2 mb-2">
+        <app-grid-ripartizione-manuale #grid></app-grid-ripartizione-manuale>
+    </div>
+
+    <hr style="margin-bottom: 35px">
+</div>

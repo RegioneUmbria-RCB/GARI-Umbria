@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Utility.DAL\AgronicaNetCore.Utility.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.UtilityDB.DAL\AgronicaNetCore.UtilityDB.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.1" />
+  </ItemGroup>
+
+</Project>

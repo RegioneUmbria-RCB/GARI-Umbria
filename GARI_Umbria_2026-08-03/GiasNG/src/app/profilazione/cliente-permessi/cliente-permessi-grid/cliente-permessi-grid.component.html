@@ -1,0 +1,45 @@
+<gias-kendo-grid #permessiAmministratoreGrid>
+    <ng-container headerContent>
+        <form [formGroup]="profiliForm">
+            <div style="display: flex; justify-content: flex-end; align-items: flex-end;">
+                <div kendoTooltip [title]="this.bloccaSbloccaTooltip">
+                    <button kendoButton #unlockPermissionsEditBtn [type]="'button'" (click)="onEditPermissions()" *ngIf="permessoEdit">
+                        <fa-icon [icon]="lockIcon" aria-hidden="true"></fa-icon>
+                    </button>
+                </div>
+                <div kendoTooltip [title]="'AbilitaGestioneCompleta' | transloco" *ngIf="this.isEditingPermessi">
+                    <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Write)">
+                        <fa-icon [icon]="faPen" aria-hidden="true"></fa-icon>
+                    </button>
+                </div>
+                <div kendoTooltip [title]="'AbilitaSolaVisualizzazione' | transloco" *ngIf="this.isEditingPermessi">
+                    <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Read)">
+                        <fa-icon [icon]="faBook" aria-hidden="true"></fa-icon>
+                    </button>
+                </div>
+                <div kendoTooltip [title]="'DisabilitaPermesso' | transloco" *ngIf="this.isEditingPermessi">
+                    <button kendoButton [type]="'button'" (click)="onSetPermissions(permission.Disabled)">
+                        <fa-icon [icon]="faBan" aria-hidden="true"></fa-icon>
+                    </button>
+                </div>
+<!--                <gias-drop-down-template-s style="min-width: 250px; padding-right: 5px; padding-left: 5px;"-->
+<!--                    textField="descrizione" valueField="codice" [filterable]="true"-->
+<!--                    (open) = "openDdl($event)"-->
+<!--                    giasFormControlName="profili"-->
+<!--                    [valuePrimitive]="false"-->
+<!--                    *ngIf="this.isEditingPermessi">-->
+<!--                </gias-drop-down-template-s>-->
+<!--                <button-->
+<!--                        kendoButton class="bottom btn btn-primary btn-primary-fill"-->
+<!--                        icon="calculator"-->
+<!--                        fillMode="outline"-->
+<!--                        (click)="applicaProfilo($event)"-->
+<!--                        [disabled]="profiloSelezionato == undefined"-->
+<!--                        *ngIf="this.isEditingPermessi"-->
+<!--                        >-->
+<!--                        {{ 'ApplicaProfilo' | transloco }}-->
+<!--                </button>-->
+            </div>
+        </form>
+    </ng-container>
+</gias-kendo-grid>

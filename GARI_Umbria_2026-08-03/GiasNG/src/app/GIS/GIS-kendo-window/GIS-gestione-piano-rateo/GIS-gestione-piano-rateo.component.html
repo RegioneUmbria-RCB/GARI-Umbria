@@ -1,0 +1,29 @@
+﻿<kendo-dialog *ngIf="isOpen$ | async" (close)="close()">
+
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'gis.GestionePianoRateo' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <kendo-tabstrip [scrollable]="true" keepTabContent="true" (tabSelect)="tabSelected = $event.index">
+    <kendo-tabstrip-tab [title]="'gis.GestioneRateoVariabileNuovo' | transloco" [selected]="tabSelected == 0">
+      <ng-template kendoTabContent>
+        <gis-gestione-piano-rateo-picker #picker (loading)="loading = $event"
+          (close)="close()"></gis-gestione-piano-rateo-picker>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.GestioneRateoVariabilCarica' | transloco" [selected]="tabSelected == 1"
+      *ngIf="hasUploadPermission">
+      <ng-template kendoTabContent>
+        <gis-gestione-piano-rateo-loader #loader (loading)="loading = $event"
+          (close)="close()"></gis-gestione-piano-rateo-loader>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton [disabled]="isLoading" (click)="close()">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton [disabled]="isLoading || !isValid()" (click)="submit()">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+
+</kendo-dialog>

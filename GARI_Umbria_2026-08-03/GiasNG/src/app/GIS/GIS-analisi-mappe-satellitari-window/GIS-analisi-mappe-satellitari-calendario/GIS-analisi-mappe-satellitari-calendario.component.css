@@ -1,0 +1,50 @@
+.analisi-mappe-satellitari-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.event-data, .event-no-data {
+    position: relative;
+}
+
+.event-data:after {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin-left: -18px;
+    left: 50%;
+    top: -29%;
+    content: "";
+    border: 3px solid #74af0e;
+    border-radius: 50%;
+}
+
+.event-no-data:after {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    margin-left: -18px;
+    left: 50%;
+    top: -29%;
+    content: "";
+    border: 3px solid red;
+    border-radius: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+.loader {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1000px) {
+    ::ng-deep .custom-window>kendo-window>.k-content.k-window-content {
+        padding: 0px;
+    }
+}

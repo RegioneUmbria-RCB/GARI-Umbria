@@ -1,0 +1,35 @@
+<div id="DashboardTitleContainer" class="title row">
+  <div style="padding-left: 25px">
+    <h1 class="text_blue title_h1 text_weight_600" style="display: none">{{ 'GestisciAttivita' | transloco }}</h1>
+    <!-- <h2 class="text_gray_dark2 title_h2 text_weight_300">{{ 'TieniSottoControlloGiacenze' | transloco }}</h2> -->
+  </div>
+
+</div>
+
+<!--START dashboard content container -->
+<div id="DashboardWidgetContainer" class="dashboard dashboard-container row">
+  <!-- START WIDGETS SECTION-->
+  <div class="widgets-container">
+    <app-widgets (loaded)="widgetsLoaded()"></app-widgets>
+  </div>
+
+  <!-- START SERVICES CONTAINER (CONTAINS 3 COLUMNS) -->
+  <!-- TODO HIDE SERVICES FOR NOW -->
+  <!-- Vedi file dashboard-servizi.commented.txt -->
+
+  <div class="dashboard-customization bg_blue" (click)="openWidgetConfig()">
+    <span class="icon customization-arrow">
+      <i aria-hidden="true" class="fa fa-gias fa_gias_arrow_navbar_ic_arrow_left_type03"></i>
+    </span>
+    <span class="icon customization-image">
+      <i aria-hidden="true" class="fa fa-gias fa_gias_dashboard_label_configure_widgets"></i>
+    </span>
+  </div>
+</div>
+
+@if (showWidgetsConfigDialog && user) {
+  <kendo-dialog class="k-dialog-centered" [title]="'ConfigurazioneWidget' | transloco"
+                (close)="closeWidgetConfig()">
+    <app-widget-config [user]="user"></app-widget-config>
+  </kendo-dialog>
+}

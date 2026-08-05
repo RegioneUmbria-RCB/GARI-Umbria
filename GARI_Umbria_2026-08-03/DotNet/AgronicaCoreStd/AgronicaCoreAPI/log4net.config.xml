@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+	<!-- File log-->
+	<appender name="RequestRollingFile" type="log4net.Appender.RollingFileAppender">
+		<file value="C:/GIASLAN/Log/CoreAPI/Requests.log"/>
+		<appendToFile value="true"/>
+		<maximumFileSize value="100MB"/>
+		<maxSizeRollBackups value="2" />
+		<layout type="log4net.layout.PatternLayout">
+			<conversionPattern value="%date{MM/dd/yyyy hh:mm:ss tt} %property{ipAddress} %level %thread %logger - %message%newline" />
+		</layout>
+	</appender>
+	<appender name="ResponseRollingFile" type="log4net.Appender.RollingFileAppender">
+		<file value="C:/GIASLAN/Log/CoreAPI/Log/Responses.log"/>
+		<appendToFile value="true"/>
+		<maximumFileSize value="100MB"/>
+		<maxSizeRollBackups value="2" />
+		<layout type="log4net.layout.PatternLayout">
+			<conversionPattern value="%date{MM/dd/yyyy hh:mm:ss tt} %property{ipAddress} %level %thread %logger - %message%newline" />
+		</layout>
+	</appender>
+	<appender name="CoreAPIRollingFile" type="log4net.Appender.RollingFileAppender">
+		<file value="C:/GIASLAN/Log/CoreAPI/Log/CoreAPI.log"/>
+		<appendToFile value="true"/>
+		<maximumFileSize value="100MB"/>
+		<maxSizeRollBackups value="2" />
+		<layout type="log4net.layout.PatternLayout">
+			<conversionPattern value="%date{MM/dd/yyyy hh:mm:ss tt} %property{ipAddress} %level %thread %logger - %message%newline" />
+		</layout>
+	</appender>
+	
+	<logger name="Request">
+		<level value="ALL"/>
+		<appender-ref ref="RequestRollingFile" />
+	</logger>
+	<logger name="Response">
+		<level value="ALL"/>
+		<appender-ref ref="ResponseRollingFile" />
+	</logger>
+	<logger name="CoreAPI">
+		<level value="ALL"/>
+		<appender-ref ref="CoreAPIRollingFile" />
+	</logger>
+</log4net>

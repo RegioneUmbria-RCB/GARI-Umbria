@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{74C51F78-05DC-4FED-B012-40BA23E87B77}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaControlli_2010</RootNamespace>
+    <AssemblyName>AgronicaControlli_2010</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\AgronicaCore_2010\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\debug</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="AngleSharp, Version=0.17.1.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\AngleSharp.0.17.1\lib\net472\AngleSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="AngleSharp.Css, Version=0.17.0.0, Culture=neutral, PublicKeyToken=e83494dcdc6d31ea, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\AngleSharp.Css.0.17.0\lib\net472\AngleSharp.Css.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizer, Version=9.0.0.0, Culture=neutral, PublicKeyToken=61c49a1a9e79cc28, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\HtmlSanitizer.9.0.892\lib\net47\HtmlSanitizer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Collections.Immutable.10.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\System.Text.Encoding.CodePages.6.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgroControlliCommons.vb" />
+    <Compile Include="AgroVersioneHeader.vb" />
+    <Compile Include="AgroVersioneMaster.vb" />
+    <Compile Include="AgroKendo.vb" />
+    <Compile Include="AgroMasterPage.vb" />
+    <Compile Include="AgroMeteo.vb" />
+    <Compile Include="AgroTree.vb" />
+    <Compile Include="AlberoAnagrafica2017.vb" />
+    <Compile Include="AlberoAnagrafica2017cfg.vb" />
+    <Compile Include="AlberoGerarchiaImprese2021.vb" />
+    <Compile Include="CoreAPI\CoreApiController.vb" />
+    <Compile Include="GlobalAsax_Helper.vb" />
+    <Compile Include="JS\AgronicaMessaggi.vb" />
+    <Compile Include="JS\AgroTimezone.vb" />
+    <Compile Include="Rilievi.vb" />
+    <Compile Include="STD_Farmaci.vb" />
+    <Compile Include="STD_InsettiUtili.vb" />
+    <Compile Include="STD_PianoConcimazione.vb" />
+    <Compile Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.en.Designer.vb">
+      <DependentUpon>headerMenuUC.ascx.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>headerMenuUC.ascx.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ComboSementi.vb" />
+    <Compile Include="ComboMateriePrime.vb" />
+    <Compile Include="ComboPianificazioni.vb" />
+    <Compile Include="ComboPrincipiAttivi.vb" />
+    <Compile Include="UserControls\Headers\headerHelper.vb" />
+    <Compile Include="UserControls\Headers\headerMenuUC.ascx.vb">
+      <DependentUpon>headerMenuUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="iAgronicaControlliCommons.vb" />
+    <Compile Include="JS\AgroPako.vb" />
+    <Compile Include="Minify.vb" />
+    <Compile Include="SalvataggioWebControl.vb" />
+    <Compile Include="JS\AgroWATable.vb" />
+    <Compile Include="AlberoAgenda.vb" />
+    <Compile Include="AlberoAnalisiCosti.vb" />
+    <Compile Include="AlberoPermessi.vb" />
+    <Compile Include="CalendarioAperto.vb" />
+    <Compile Include="AlberoAnagraficaDettaglio.vb" />
+    <Compile Include="ComboCampo.vb" />
+    <Compile Include="ComboEpocheFertilizzazione.vb" />
+    <Compile Include="ComboEtichetta.vb" />
+    <Compile Include="ComboFaseFenologica.vb" />
+    <Compile Include="ComboMisuraXAvversitaInputData.vb" />
+    <Compile Include="ComboOperazioni.vb" />
+    <Compile Include="ComboRapportiContabili.vb" />
+    <Compile Include="ComboRicette.vb" />
+    <Compile Include="ComboSpecie.vb" />
+    <Compile Include="ComboCentroAziendale.vb" />
+    <Compile Include="ComboMagazzini.vb" />
+    <Compile Include="ComboDisciplinari.vb" />
+    <Compile Include="ComboFiltriAggiuntiviAgenda.vb" />
+    <Compile Include="ComboFomulati.vb" />
+    <Compile Include="ComboFertilizzanti.vb" />
+    <Compile Include="ComboEpocheDPI.vb" />
+    <Compile Include="ComboImprese.vb" />
+    <Compile Include="ComboVarieta.vb" />
+    <Compile Include="ComboUtenti.vb" />
+    <Compile Include="ComboSpecie_con_Tutte.vb" />
+    <Compile Include="ComboImprese_no_Foglie.vb" />
+    <Compile Include="Albero_Gerarchia_imprese.vb" />
+    <Compile Include="ComboEpocheFertilizzazione_SMART.vb" />
+    <Compile Include="Albero_Gerarchia_imprese_FAST.vb" />
+    <Compile Include="AgroTree_FAST.vb" />
+    <Compile Include="JS\bootstrap-select.vb" />
+    <Compile Include="JS\bootstrap-WaitFrame.vb" />
+    <Compile Include="JS\bootstrap.vb" />
+    <Compile Include="JS\bootstrap-datepicker.vb" />
+    <Compile Include="JS\bootbox.vb" />
+    <Compile Include="JS\AgronicaBase.vb" />
+    <Compile Include="JS\jAgroHelper.vb" />
+    <Compile Include="JS\javascript_helper.vb" />
+    <Compile Include="JS\jquery.cookie.vb" />
+    <Compile Include="JS\jquery_watable_modificato.vb" />
+    <Compile Include="JS\jquery.vb" />
+    <Compile Include="JS\JsonStat\jsonStat.vb" />
+    <Compile Include="JS\Visual\visual.vb" />
+    <Compile Include="ListControl_PianoConcimazione_WS.vb" />
+    <Compile Include="PopUpInformativi_Fertilizzante.vb" />
+    <Compile Include="DefaultPropertyAttribute.vb" />
+    <Compile Include="DialogAvvertimenti.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="AgronicaControlli_2010_resx\AgronicaControlli_2010.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaControlli_2010.resx</DependentUpon>
+    </Compile>
+    <Compile Include="STD_Disciplinari.vb" />
+    <Compile Include="STD_Limitazioni.vb" />
+    <Compile Include="STD_TrasformatiVegetali.vb" />
+    <Compile Include="STD_UnitaDiMisura.vb" />
+    <Compile Include="STD_Note.vb" />
+    <Compile Include="STD_DosiEtichetta.vb" />
+    <Compile Include="STD_Epoche.vb" />
+    <Compile Include="STD_Avversita.vb" />
+    <Compile Include="STD_Sementi.vb" />
+    <Compile Include="STD_Utility.vb" />
+    <Compile Include="STD_Fertilizzanti.vb" />
+    <Compile Include="STD_Formulati.vb" />
+    <Compile Include="ui_Controls_Helper.vb" />
+    <Compile Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.Designer.vb">
+      <DependentUpon>SidebarUC.ascx.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.en.Designer.vb">
+      <DependentUpon>SidebarUC.ascx.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="UserControls\Sidebar\sidebarHelper.vb" />
+    <Compile Include="UserControls\Sidebar\SidebarUC.ascx.vb">
+      <DependentUpon>SidebarUC.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UtilityPersonalizzazioniGraficheCliente.vb" />
+    <Compile Include="virtualPathProvider.vb" />
+    <Compile Include="Web References\WS_Disciplinari\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WS_Fitofarmaci\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AgronicaControlli_2010_resx\AgronicaControlli_2010.en.resx" />
+    <EmbeddedResource Include="AgronicaControlli_2010_resx\AgronicaControlli_2010.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaControlli_2010_resx\AgronicaControlli_2010.pt.resx" />
+    <EmbeddedResource Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>headerMenuUC.ascx.en.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.fr.resx" />
+    <EmbeddedResource Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.pt.resx" />
+    <EmbeddedResource Include="UserControls\Headers\App_LocalResources\headerMenuUC.ascx.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>headerMenuUC.ascx.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientControl1.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaControlli_2010_resx\AgronicaControlli_2010.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaControlli_2010.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="JS\bootstrap-select.js.map" />
+    <None Include="DiagrammaClassi\AlberoAnagrafica2017.cd" />
+    <None Include="DiagrammaClassi\Controlli.cd" />
+    <None Include="JS\Moment\moment-with-locales.min.js.map" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.wsdl" />
+    <None Include="Web References\WS_Disciplinari\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\WS_Fitofarmaci\AgroWS_Fitofarmaci.wsdl" />
+    <None Include="Web References\WS_Fitofarmaci\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ClientControl1.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:60310/AgroWS_Disciplinari.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Disciplinari\</RelPath>
+      <UpdateFromURL>http://localhost:60310/AgroWS_Disciplinari.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AgronicaControlli_2010_WS_Disciplinari_AgroWS_Disciplinari</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/AgronicaWebService2010/AgroWS_Fitofarmaci.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Fitofarmaci\</RelPath>
+      <UpdateFromURL>http://localhost/AgronicaWebService2010/AgroWS_Fitofarmaci.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AgronicaControlli_2010_WS_Fitofarmaci_AgroWS_Fitofarmaci</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{A1F2F959-43C8-4FE6-B159-96652FF9FB2B}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{22b97611-6aa7-4e56-aacd-549cfa05381d}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415C-E4F0-4EE5-BF6A-C0BD9BF3276B}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDpiBIZ\AgronicaCoreDpiBIZ.vbproj">
+      <Project>{D0A726B3-FB25-4885-981E-4E741B35B843}</Project>
+      <Name>AgronicaCoreDpiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{EFD63249-9CBE-4CB4-90D2-E881341C3B96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{DFE81D0F-EB19-4E60-A58D-4D21363C6B6A}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModelloInSviluppo\AgronicaCoreModelloInSviluppo.vbproj">
+      <Project>{a45c88be-abe7-4761-9e0c-5125a5cd94fd}</Project>
+      <Name>AgronicaCoreModelloInSviluppo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30FDD803-F95C-4F68-BE23-6538127E149D}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePianoConcimazioneBIZ\AgronicaCorePianoConcimazioneBIZ.vbproj">
+      <Project>{8e64885e-19ad-4476-9094-1b5ef239cd43}</Project>
+      <Name>AgronicaCorePianoConcimazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21FDABC5-4CAF-43DE-800A-1AE7B4CB7CBB}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{C72BDD2D-2D24-41AF-B4FC-1D71060BDE58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Fitofarmaci\AgroWS_Fitofarmaci.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SidebarUC.ascx.en.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.fr.resx" />
+    <EmbeddedResource Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.pt.resx" />
+    <EmbeddedResource Include="UserControls\Sidebar\App_LocalResources\SidebarUC.ascx.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SidebarUC.ascx.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Sidebar\SidebarUC.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JS\Visual\visual.js" />
+    <EmbeddedResource Include="JS\Visual\visual_agronica.setup.js" />
+    <EmbeddedResource Include="JS\D3\d3.v3.js" />
+    <EmbeddedResource Include="JS\Flot\jquery.flot.categories.js" />
+    <EmbeddedResource Include="JS\Flot\jquery.flot.js" />
+    <EmbeddedResource Include="JS\Flot\jquery.flot.orderbars.js" />
+    <EmbeddedResource Include="JS\Flot\jquery.flot.pyramid.js" />
+    <EmbeddedResource Include="JS\Flot\jquery.flot.stack.js" />
+    <EmbeddedResource Include="JS\Lazy\lazyload.js" />
+    <EmbeddedResource Include="JS\Visual\lib\excanvas.js" />
+    <EmbeddedResource Include="JS\Visual\maps\visual.maps.js" />
+    <EmbeddedResource Include="JS\Visual\maps\visual.maps.max.js" />
+    <EmbeddedResource Include="JS\jquery.watable_modificato1.10.2.js" />
+    <EmbeddedResource Include="JS\jquery.watable_modificato1.10.3.js" />
+    <EmbeddedResource Include="JS\AgronicaBase.js" />
+    <EmbeddedResource Include="JS\jquery.watable.js" />
+    <EmbeddedResource Include="JS\bootstrap-datepicker._it.js" />
+    <EmbeddedResource Include="JS\jquery.min.1.12.3.js" />
+    <EmbeddedResource Include="JS\bootstrap-select_1.12.4.js" />
+    <EmbeddedResource Include="JS\jquery.min.3.5.1.js" />
+    <EmbeddedResource Include="JS\bootstrap.4.5.2.min.js" />
+    <EmbeddedResource Include="JS\bootstrap.3.3.4.min.js" />
+    <EmbeddedResource Include="JS\bootstrap.3.4.1.min.js" />
+    <EmbeddedResource Include="JS\bootstrap.3.3.4.min.css" />
+    <EmbeddedResource Include="JS\bootstrap.3.4.1.min.css" />
+    <EmbeddedResource Include="JS\bootstrap.4.5.2.min.css" />
+    <EmbeddedResource Include="JS\bootstrap.css" />
+    <EmbeddedResource Include="JS\bootstrap.3.3.2.min.css" />
+    <EmbeddedResource Include="img\rotella.gif" />
+    <EmbeddedResource Include="JS\pako.min.js" />
+    <EmbeddedResource Include="UserControls\Headers\headerMenuUC.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JS\AgronicaMessaggi.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone-utils.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone-with-data-2012-2022.min.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone-with-data.min.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone.min.js" />
+    <EmbeddedResource Include="JS\Moment\moment-with-locales.min.js" />
+    <EmbeddedResource Include="JS\Moment\moment.min.js" />
+    <EmbeddedResource Include="AgroTimezone.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone.js" />
+    <EmbeddedResource Include="JS\Moment\moment.js" />
+    <EmbeddedResource Include="JS\Moment\moment-timezone-with-data.js" />
+    <EmbeddedResource Include="JS\Moment\moment-with-locales.js" />
+    <EmbeddedResource Include="JS\bootstrap.5.3.3.min.css" />
+    <EmbeddedResource Include="JS\bootstrap.5.3.3.min.js" />
+    <Content Include="JS\Visual\visual.max.js" />
+    <EmbeddedResource Include="JS\Visual\visual.setup.js" />
+    <EmbeddedResource Include="JS\JsonStat\json-stat.js" />
+    <EmbeddedResource Include="JS\Visual\lazyvisualsetup.js" />
+    <EmbeddedResource Include="JS\jquery.watable_modificato1.10.1.js" />
+    <EmbeddedResource Include="JS\jAgroHelper.js" />
+    <EmbeddedResource Include="JS\bootstrap.3.3.2.min.js" />
+    <EmbeddedResource Include="JS\jquery.min.1.11.2.js" />
+    <EmbeddedResource Include="JS\bootstrap-select.js" />
+    <EmbeddedResource Include="JS\bootstrap-WaitFrame.js" />
+    <EmbeddedResource Include="JS\jquery.cookie.js" />
+    <EmbeddedResource Include="JS\jquery.watable_modificato.js" />
+    <EmbeddedResource Include="JS\bootbox.min.js" />
+    <EmbeddedResource Include="JS\waTableHelper.js" />
+    <EmbeddedResource Include="JS\jquery-1.11.1.min.js" />
+    <EmbeddedResource Include="JS\bootstrap.min.js" />
+    <EmbeddedResource Include="JS\bootstrap-datepicker.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SonarQubeSetting Include="sonar.exclusions">
+      <Value>JS/Visual/*,JS/jquery.watable.js,JS/jquery.watable_modificato.js,JS/jquery.watable_modificato1.10.1.js,JS/jquery.watable_modificato1.10.2.js,JS/jquery.watable_modificato1.10.3.js,JS/waTableHelper.js</Value>
+    </SonarQubeSetting>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

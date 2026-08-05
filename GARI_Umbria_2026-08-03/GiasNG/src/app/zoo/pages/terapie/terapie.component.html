@@ -1,0 +1,66 @@
+<section class="">
+    <gias-kendo-grid 
+      #zooTherapiesGrid 
+      class="kendo-grid-no-shadows"
+      [customCommandColumnCellTemplate]="customCommandColumn">
+      <!-- <ng-container headerContentButtons>
+        <div kendoTooltip>
+          <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+                  [type]="'button'"
+                  [title]="'CancellaleOperazioniSelezionate' | transloco">
+            <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+          </button>
+        </div>
+      </ng-container> -->
+      <ng-container headerContentButtons>
+        @if (canEdit) {
+          <span class="separator"></span>
+          <div kendoTooltip>
+            <button 
+              style="margin-right: 5px"
+              class="btn btn-delete btn-sm" 
+              (click)="removeSelected()"
+              [type]="'button'"
+              [title]="'CancellaleOperazioniSelezionate' | transloco"
+            >
+              <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+            </button>
+          </div>
+          
+          <div kendoTooltip>
+            <button 
+              class="btn btn-sm btn-primary-fill" 
+              (click)="openNewTherapy()" 
+              [type]="'button'"
+              [title]="'NuovaOperazione' | transloco"
+            >
+              <div class="ng-fa-icon faAddSchedule" aria-hidden="true"></div>
+            </button>
+          </div>
+        }
+      </ng-container>
+    </gias-kendo-grid>
+
+    <ng-template #customCommandColumn let-dataItem="dataItem">
+      <div>
+        <button
+          kendoButton
+          kendoTooltip
+          (click)="toTherapy(dataItem, Enum_DBTypeOperation.Info)"
+          [title]="'Info' | transloco"
+          fillMode="flat">
+          <i aria-hidden="true" class="k-i-xi-tools-info"></i>
+        </button>
+      </div>
+      <div>
+        <button
+          kendoButton
+          kendoTooltip
+          (click)="toTherapy(dataItem, Enum_DBTypeOperation.Update)"
+          [title]="'Edit' | transloco"
+          fillMode="flat">
+          <i aria-hidden="true" class="k-i-xi-tools-update"></i>
+        </button>
+      </div>
+    </ng-template>
+  </section> 

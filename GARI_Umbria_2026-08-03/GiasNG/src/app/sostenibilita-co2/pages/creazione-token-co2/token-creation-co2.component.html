@@ -1,0 +1,91 @@
+<gias-side-filters-template [filtersTemplate]="filtersTpl" (search)="onSidebarSearch()">
+</gias-side-filters-template>
+
+<div class="token-creation-co2-page">
+
+  <!-- Error State -->
+  <div *ngIf="!isLoading && hasError" class="k-p-4">
+    <div class="k-messagebox k-messagebox-error">
+      <strong>{{ 'sco2_error_title' | transloco }}</strong>
+      <p>{{ 'sco2_error_message' | transloco }}</p>
+      <button kendoButton [fillMode]="'outline'" (click)="retryLoad()">
+        {{ 'sco2_btn_riprova' | transloco }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && !hasError && searchInitiated && !hasData" class="k-p-4">
+    <div class="k-messagebox k-messagebox-info">
+      {{ 'sco2_tc_empty_message' | transloco }}
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div *ngIf="searchInitiated" class="results-section">
+    <div *ngIf="hasData" class="results-header k-px-2 k-pt-2 k-mb-1">
+      <strong>{{ 'sco2_tc_section_token_generabili' | transloco }}</strong>
+    </div>
+
+    <div class="grid-wrapper">
+      <gias-kendo-grid
+        [gridId]="'token-creation-data-co2-grid'"
+        class="kendo-grid-no-shadow"
+        (rowsLoaded)="onRowsLoaded()"
+        (selectionChange)="onSelectionChange($event)">
+      </gias-kendo-grid>
+    </div>
+
+    <div *ngIf="hasData" class="action-buttons k-px-4 k-py-3 k-d-flex k-align-items-center k-justify-content-end k-gap-2">
+      <kendo-loader *ngIf="isProcessingTokens" type="pulsing" themeColor="primary" size="small"></kendo-loader>
+      <button class="btn btn-secondary btn-action" [disabled]="isProcessingTokens" (click)="onAnnulla()">
+        {{ 'sco2_btn_annulla' | transloco }}
+      </button>
+      <button class="btn btn-primary btn-primary-fill" [disabled]="!canPredisponi" (click)="onPredisponi()">
+        {{ 'sco2_tc_btn_predisponi' | transloco }}
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Sidebar filter template -->
+<ng-template #filtersTpl>
+  <app-filtri-token-creation-co2></app-filtri-token-creation-co2>
+</ng-template>
+
+<!-- Confirm token generation dialog -->
+<ng-template #confirmDialogTpl>
+  <div class="sco2-dialog-content">
+    <p class="sco2-dialog-intro">{{ confirmMessage }}</p>
+    <div class="sco2-dialog-scroll">
+      <div *ngFor="let t of confirmTokens" class="sco2-dialog-card sco2-dialog-card--neutral">
+        <div class="sco2-dialog-card__title">{{ t.aziendaLabel }}</div>
+        <div class="sco2-dialog-card__sub">ID: {{ t.idInvocazione }}</div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Results dialog -->
+<ng-template #resultsDialogTpl>
+  <div class="sco2-dialog-content">
+    <div class="sco2-dialog-banner" [class.sco2-dialog-banner--success]="allResultsSuccess" [class.sco2-dialog-banner--error]="!allResultsSuccess">
+      {{ (allResultsSuccess ? 'sco2_pt_results_all_success' : 'sco2_pt_results_has_errors') | transloco }}
+    </div>
+    <div class="sco2-dialog-scroll">
+      <div *ngFor="let r of processingResults" class="sco2-dialog-card" [class.sco2-dialog-card--success]="r.success" [class.sco2-dialog-card--error]="!r.success">
+        <div class="sco2-dialog-card__header">
+          <span class="sco2-dialog-card__icon">{{ r.success ? '✓' : '✗' }}</span>
+          <span class="sco2-dialog-card__title">{{ r.aziendaLabel }}</span>
+        </div>
+        <div class="sco2-dialog-card__label">
+          {{ (r.success ? 'sco2_tc_dialog_risultati_label_token' : 'sco2_tc_dialog_risultati_label_errore') | transloco }}
+        </div>
+        <div class="sco2-dialog-card__value" [class.sco2-dialog-card__value--token]="r.success" [class.sco2-dialog-card__value--error]="!r.success">
+          {{ r.success ? (r.token ?? '') : (r.errorMessage ?? '') }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

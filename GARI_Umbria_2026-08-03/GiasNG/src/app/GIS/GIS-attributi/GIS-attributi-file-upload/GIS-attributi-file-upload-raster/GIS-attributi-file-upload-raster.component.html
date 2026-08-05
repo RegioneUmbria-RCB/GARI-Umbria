@@ -1,0 +1,41 @@
+<ng-container *ngIf="submit$ | async"></ng-container>
+
+<div class="attributi-column" *ngIf="data$ | async as data">
+  <div>
+    <kendo-label>{{'gis.AttributiWindowCentroAziendale' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="centroAziendale$ | async" [value]="data.centro" textField="name" valueField="id"
+      (valueChange)="changeCentroAziendale($event)" [filterable]="true" [kendoDropDownFilter]="filterSettings">
+    </kendo-dropdownlist>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.AttributiWindowCaricaFile' | transloco}}</kendo-label>
+    <kendo-fileselect class="full-width" [multiple]="false" [restrictions]="data.origine?.restrictions ?? []"
+      (select)="onFileSelected($event)" (remove)="onFileRemoved()"></kendo-fileselect>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.Descrizione' | transloco}}</kendo-label>
+    <kendo-textbox (valueChange)="changeDescription($event)" [clearButton]="true"></kendo-textbox>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.ValiditaInizio' | transloco}}</kendo-label>
+    <kendo-datepicker (valueChange)="changeValidityStart($event)" calendarType="classic"></kendo-datepicker>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.ValiditaFine' | transloco}}</kendo-label>
+    <kendo-datepicker (valueChange)="changeValidityEnd($event)" calendarType="classic"></kendo-datepicker>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.AttributiWindowGrandezzaPixel' | transloco}}</kendo-label>
+    <kendo-numerictextbox (valueChange)="changePixelSize($event)" [clearButton]="true"></kendo-numerictextbox>
+  </div>
+
+  <div [ngClass]="{'loading-spinner': data.loading}">
+    <button kendoButton class="submit-button" (click)="submit()" [disabled]="data.loading">
+      {{ 'gis.AttributiWindowCaricaDati' | transloco }}</button>
+  </div>
+</div>

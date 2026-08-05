@@ -1,0 +1,48 @@
+<section class="">
+    <gias-kendo-grid 
+      #zooProtocolsInProgressGrid 
+      class="kendo-grid-no-shadows"
+      [customCommandColumnCellTemplate]="customCommandColumn">
+      <!-- <ng-container headerContentButtons>
+        <div kendoTooltip>
+          <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+                  [type]="'button'"
+                  [title]="'CancellaleOperazioniSelezionate' | transloco">
+            <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+          </button>
+        </div>
+      </ng-container> -->
+      <ng-container toolbarStart>
+        <div style="display: flex; flex-direction: column;">
+          <p style="margin: 0; padding: 0;">{{selectedStable()}}</p>
+          <p style="margin: 0; padding: 0;">{{lastDateFiltered()}}</p>
+        </div>
+      </ng-container>
+
+      <ng-container headerContentButtons>
+        @if (canEdit) {
+          <span class="separator"></span>
+          <div kendoTooltip>
+            <button class="btn btn-delete btn-sm" (click)="removeSelected()"
+                    [type]="'button'"
+                    [title]="'CancellaleOperazioniSelezionate' | transloco">
+              <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+            </button>
+          </div>
+        }
+      </ng-container>
+    </gias-kendo-grid>
+
+    <ng-template #customCommandColumn let-dataItem="dataItem">
+      <div>
+        <button
+          kendoButton
+          kendoTooltip
+          (click)="toAgenda(dataItem)"
+          [title]="'ProtocolloToAgenda' | transloco"
+          fillMode="flat">
+          <i aria-hidden="true" class="k-i-xi-tools-to-agenda"></i>
+        </button>
+      </div>
+    </ng-template>
+  </section> 

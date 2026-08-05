@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:kml="http://www.opengis.net/kml/2.2"
+           xmlns:gx="http://www.google.com/kml/ext/2.2"
+           xmlns:atom="http://www.w3.org/2005/Atom"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           targetNamespace="http://www.opengis.net/kml/2.2"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.google.com/kml/ext/2.2" />
+  <xs:element name="kml">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Document">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice maxOccurs="unbounded">
+                <xs:element name="name" type="xs:string" />
+                <xs:element maxOccurs="unbounded" name="Style">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element name="IconStyle">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="scale" type="xs:decimal" />
+                            <xs:element name="Icon">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="href" type="xs:string" />
+                                </xs:sequence>
+                              </xs:complexType>
+                            </xs:element>
+                            <xs:element name="hotSpot">
+                              <xs:complexType>
+                                <xs:attribute name="x" type="xs:unsignedByte" use="required" />
+                                <xs:attribute name="y" type="xs:unsignedByte" use="required" />
+                                <xs:attribute name="xunits" type="xs:string" use="required" />
+                                <xs:attribute name="yunits" type="xs:string" use="required" />
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="id" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="StyleMap">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:element maxOccurs="unbounded" name="Pair">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="key" type="xs:string" />
+                            <xs:element name="styleUrl" type="xs:string" />
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="id" type="xs:string" use="required" />
+                  </xs:complexType>
+                </xs:element>
+                <xs:element name="Folder">
+                  <xs:complexType>
+                    <xs:sequence>
+                      <xs:choice maxOccurs="unbounded">
+                        <xs:element name="name" type="xs:string" />
+                        <xs:element name="open" type="xs:unsignedByte" />
+                        <xs:element name="Style">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="ListStyle">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="listItemType" type="xs:string" />
+                                    <xs:element maxOccurs="unbounded" name="ItemIcon">
+                                      <xs:complexType>
+                                        <xs:sequence>
+                                          <xs:element name="state" type="xs:string" />
+                                          <xs:element name="href" type="xs:string" />
+                                        </xs:sequence>
+                                      </xs:complexType>
+                                    </xs:element>
+                                    <xs:element name="bgColor" type="xs:string" />
+                                    <xs:element name="maxSnippetLines" type="xs:unsignedByte" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element maxOccurs="unbounded" name="Placemark">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="name" type="xs:string" />
+                              <xs:element minOccurs="0" name="Camera">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="longitude" type="xs:decimal" />
+                                    <xs:element name="latitude" type="xs:decimal" />
+                                    <xs:element name="altitude" type="xs:decimal" />
+                                    <xs:element name="heading" type="xs:decimal" />
+                                    <xs:element name="tilt" type="xs:decimal" />
+                                    <xs:element name="roll" type="xs:decimal" />
+                                    <xs:element ref="gx:altitudeMode" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element minOccurs="0" name="LookAt">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element minOccurs="0" ref="gx:TimeStamp" />
+                                    <xs:element name="longitude" type="xs:decimal" />
+                                    <xs:element name="latitude" type="xs:decimal" />
+                                    <xs:element name="altitude" type="xs:unsignedByte" />
+                                    <xs:element name="heading" type="xs:double" />
+                                    <xs:element name="tilt" type="xs:decimal" />
+                                    <xs:element name="range" type="xs:decimal" />
+                                    <xs:element ref="gx:altitudeMode" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="styleUrl" type="xs:string" />
+                              <xs:element name="Point">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element minOccurs="0" name="altitudeMode" type="xs:string" />
+                                    <xs:element minOccurs="0" ref="gx:drawOrder" />
+                                    <xs:element name="coordinates" type="xs:string" />
+                                  </xs:sequence>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Document">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:choice maxOccurs="unbounded">
+                                <xs:element name="name" type="xs:string" />
+                                <xs:element maxOccurs="unbounded" name="Style">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="IconStyle">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="scale" type="xs:decimal" />
+                                            <xs:element name="Icon">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="href" type="xs:string" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="hotSpot">
+                                              <xs:complexType>
+                                                <xs:attribute name="x" type="xs:unsignedByte" use="required" />
+                                                <xs:attribute name="y" type="xs:unsignedByte" use="required" />
+                                                <xs:attribute name="xunits" type="xs:string" use="required" />
+                                                <xs:attribute name="yunits" type="xs:string" use="required" />
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="LineStyle">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="color" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="PolyStyle">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="fill" type="xs:unsignedByte" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element maxOccurs="unbounded" name="StyleMap">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Pair">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="key" type="xs:string" />
+                                            <xs:element name="styleUrl" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Placemark">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="name" type="xs:string" />
+                                      <xs:element minOccurs="0" name="Camera">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="longitude" type="xs:decimal" />
+                                            <xs:element name="latitude" type="xs:decimal" />
+                                            <xs:element name="altitude" type="xs:decimal" />
+                                            <xs:element name="heading" type="xs:decimal" />
+                                            <xs:element name="tilt" type="xs:decimal" />
+                                            <xs:element name="roll" type="xs:decimal" />
+                                            <xs:element ref="gx:altitudeMode" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="LookAt">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" ref="gx:TimeStamp" />
+                                            <xs:element name="longitude" type="xs:decimal" />
+                                            <xs:element name="latitude" type="xs:decimal" />
+                                            <xs:element name="altitude" type="xs:unsignedByte" />
+                                            <xs:element name="heading" type="xs:double" />
+                                            <xs:element name="tilt" type="xs:decimal" />
+                                            <xs:element name="range" type="xs:decimal" />
+                                            <xs:element minOccurs="0" name="altitudeMode" type="xs:string" />
+                                            <xs:element minOccurs="0" ref="gx:altitudeMode" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="styleUrl" type="xs:string" />
+                                      <xs:element minOccurs="0" name="Polygon">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="tessellate" type="xs:unsignedByte" />
+                                            <xs:element name="outerBoundaryIs">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="LinearRing">
+                                                    <xs:complexType>
+                                                      <xs:sequence>
+                                                        <xs:element name="coordinates" type="xs:string" />
+                                                      </xs:sequence>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element minOccurs="0" name="Point">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element minOccurs="0" ref="gx:drawOrder" />
+                                            <xs:element minOccurs="0" name="altitudeMode" type="xs:string" />
+                                            <xs:element name="coordinates" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Folder">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:choice maxOccurs="unbounded">
+                                <xs:element name="name" type="xs:string" />
+                                <xs:element maxOccurs="unbounded" name="Document">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:choice maxOccurs="unbounded">
+                                        <xs:element name="name" type="xs:string" />
+                                        <xs:element name="open" type="xs:unsignedByte" />
+                                        <xs:element name="Style">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element minOccurs="0" name="LineStyle">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="color" type="xs:string" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element minOccurs="0" name="PolyStyle">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="color" type="xs:string" />
+                                                    <xs:element name="fill" type="xs:unsignedByte" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element minOccurs="0" name="ListStyle">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="listItemType" type="xs:string" />
+                                                    <xs:element name="bgColor" type="xs:string" />
+                                                    <xs:element name="maxSnippetLines" type="xs:unsignedByte" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element minOccurs="0" name="IconStyle">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="scale" type="xs:decimal" />
+                                                    <xs:element name="Icon">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="href" type="xs:string" />
+                                                        </xs:sequence>
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="hotSpot">
+                                                      <xs:complexType>
+                                                        <xs:attribute name="x" type="xs:unsignedByte" use="required" />
+                                                        <xs:attribute name="y" type="xs:unsignedByte" use="required" />
+                                                        <xs:attribute name="xunits" type="xs:string" use="required" />
+                                                        <xs:attribute name="yunits" type="xs:string" use="required" />
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="id" type="xs:string" use="optional" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="StyleMap">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element maxOccurs="unbounded" name="Pair">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="key" type="xs:string" />
+                                                    <xs:element name="styleUrl" type="xs:string" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                            <xs:attribute name="id" type="xs:string" use="required" />
+                                          </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Placemark">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="name" type="xs:string" />
+                                              <xs:element minOccurs="0" name="Camera">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="longitude" type="xs:decimal" />
+                                                    <xs:element name="latitude" type="xs:decimal" />
+                                                    <xs:element name="altitude" type="xs:decimal" />
+                                                    <xs:element name="heading" type="xs:decimal" />
+                                                    <xs:element name="tilt" type="xs:decimal" />
+                                                    <xs:element name="roll" type="xs:decimal" />
+                                                    <xs:element ref="gx:altitudeMode" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element minOccurs="0" name="LookAt">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="longitude" type="xs:decimal" />
+                                                    <xs:element name="latitude" type="xs:decimal" />
+                                                    <xs:element name="altitude" type="xs:unsignedByte" />
+                                                    <xs:element name="heading" type="xs:double" />
+                                                    <xs:element name="tilt" type="xs:decimal" />
+                                                    <xs:element name="range" type="xs:decimal" />
+                                                    <xs:element ref="gx:altitudeMode" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                              <xs:element name="styleUrl" type="xs:string" />
+                                              <xs:element name="Point">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element minOccurs="0" name="altitudeMode" type="xs:string" />
+                                                    <xs:element minOccurs="0" ref="gx:drawOrder" />
+                                                    <xs:element name="coordinates" type="xs:string" />
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                          </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="Folder">
+                                          <xs:complexType>
+                                            <xs:sequence>
+                                              <xs:element name="name" type="xs:string" />
+                                              <xs:element name="description" type="xs:string" />
+                                              <xs:element maxOccurs="unbounded" name="Placemark">
+                                                <xs:complexType>
+                                                  <xs:sequence>
+                                                    <xs:element name="name" type="xs:unsignedByte" />
+                                                    <xs:element name="description" type="xs:string" />
+                                                    <xs:element name="styleUrl" type="xs:string" />
+                                                    <xs:element name="Polygon">
+                                                      <xs:complexType>
+                                                        <xs:sequence>
+                                                          <xs:element name="outerBoundaryIs">
+                                                            <xs:complexType>
+                                                              <xs:sequence>
+                                                                <xs:element name="LinearRing">
+                                                                  <xs:complexType>
+                                                                    <xs:sequence>
+                                                                      <xs:element name="coordinates" type="xs:string" />
+                                                                    </xs:sequence>
+                                                                  </xs:complexType>
+                                                                </xs:element>
+                                                              </xs:sequence>
+                                                            </xs:complexType>
+                                                          </xs:element>
+                                                        </xs:sequence>
+                                                      </xs:complexType>
+                                                    </xs:element>
+                                                  </xs:sequence>
+                                                </xs:complexType>
+                                              </xs:element>
+                                            </xs:sequence>
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:choice>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Placemark">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="name" type="xs:string" />
+                                      <xs:element name="LookAt">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="longitude" type="xs:decimal" />
+                                            <xs:element name="latitude" type="xs:decimal" />
+                                            <xs:element name="altitude" type="xs:unsignedByte" />
+                                            <xs:element name="heading" type="xs:decimal" />
+                                            <xs:element name="tilt" type="xs:decimal" />
+                                            <xs:element name="range" type="xs:decimal" />
+                                            <xs:element ref="gx:altitudeMode" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="styleUrl" type="xs:string" />
+                                      <xs:element name="Point">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element ref="gx:drawOrder" />
+                                            <xs:element name="coordinates" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:choice>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:choice>
+                    </xs:sequence>
+                  </xs:complexType>
+                </xs:element>
+              </xs:choice>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="when" type="xs:dateTime" />
+</xs:schema>

@@ -1,0 +1,21 @@
+
+    <h2 *ngIf="!impresaSelezionata();else displayContent">{{'SelezionareUnAzienda' | transloco}}</h2>
+    <ng-template #displayContent>
+        <div class="row" >
+            <gias-kendo-grid *ngIf="impresaSelezionata()"
+                (selectionChange)="MacchinaSelezionata($event)">
+                <ng-container headerContentEnd>
+                    <div class="btn-group btn-sm">
+                        <div kendoTooltip *ngIf="permessoEdit">
+                            <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                                    (click)="nuovaMacchinaAngular(true)"
+                                    [title]="'NuovaSchedaCompleta' | transloco"
+                                    [type]="'button'">
+                                <fa-icon class="faAddSchedule"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+            </gias-kendo-grid>
+        </div>
+    </ng-template>

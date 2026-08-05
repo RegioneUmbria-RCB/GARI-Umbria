@@ -1,0 +1,19 @@
+<gias-kendo-grid #GridFiltroRicerca 
+                [gridId]="'FiltroRicercaGridId'"
+                class="kendo-grid-no-shadows"
+                style="background-color: #ffffff"
+                [showSwitchViewsPrivatePublic]="hideSwitchPrivatePublicView()"
+                >
+    <ng-container headerContentButtons>
+        <div class="btn-group btn-sm">
+            <div kendoTooltip>
+                <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                        (click)="onApriDatiAggiuntivi()"
+                        [title]="'DatiAggiuntivi' | transloco"
+                        [type]="'button'">
+                        <fa-icon size="lg" [icon]="faGears"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </ng-container>
+</gias-kendo-grid>

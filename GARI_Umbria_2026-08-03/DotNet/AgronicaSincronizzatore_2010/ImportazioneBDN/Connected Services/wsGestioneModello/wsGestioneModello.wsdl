@@ -1,0 +1,2748 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gestione modelli di accompagnamento </wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="insPrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="insPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confermaPrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confermaPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rifiutoPrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rifiutoPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="annullaPrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="annullaPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaIngressoModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaIngressoModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaIngressoModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaIngressoModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaIngressoModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaIngressoModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaPrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaPrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deletePrenotazioneModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deletePrenotazioneModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAllegato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAllegatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAllegatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confermaPrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="confermaPrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="confermaPrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rifiutoPrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="rifiutoPrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rifiutoPrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="annullaPrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="annullaPrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="annullaPrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaPrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaPrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaPrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModelloPartite_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModelloPartite_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deletePrenotazioneModelloPartite_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModelloPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deletePrenotazioneModelloPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deletePrenotazioneModelloPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaPartiteModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaPartiteModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaPartiteModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaPartiteModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="registraUscitaPartiteModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registraUscitaPartiteModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAllegatoPartite">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UploadAllegatoPartiteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UploadAllegatoPartiteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloOvi_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloOvi_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloOvi_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloOvi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloOviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloOviResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloSui_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloSui_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloSui_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloSui">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloSuiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloSuiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloEqui_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloEqui_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloEqui_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloEqui">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertCapoModelloEquiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertCapoModelloEquiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloOvi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloOviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloOviResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloOvi_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloOvi_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloOvi_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloEqui">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloEquiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloEquiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloEqui_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloEqui_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloEqui_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloSui">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="deleteCapoModelloSuiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="deleteCapoModelloSuiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaModelloCorrente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaModelloCorrenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SalvaModelloCorrenteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaModelloCorrente_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalvaModelloCorrente_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SalvaModelloCorrente_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaTrasportoModello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaTrasportoModelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaTrasportoModelloResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaTrasportoModello_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="aggiornaTrasportoModello_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="aggiornaTrasportoModello_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloFiera_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloFiera_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModelloFiera_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloFiera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insPrenotazioneModelloFieraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insPrenotazioneModelloFieraResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="insPrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaModello" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaIngressoModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaIngressoModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaIngressoModello" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaIngressoModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaIngressoModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModello" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAllegato" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAllegatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:confermaPrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="confermaPrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:rifiutoPrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="rifiutoPrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:annullaPrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="annullaPrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaPrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaPrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartite_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModelloPartite_STR" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartite_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModelloPartite_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartite_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModelloPartite" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:deletePrenotazioneModelloPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePrenotazioneModelloPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaPartiteModello" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaPartiteModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:registraUscitaPartiteModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:registraUscitaPartiteModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="registraUscitaPartiteModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoPartiteSoapIn">
+    <wsdl:part name="parameters" element="tns:UploadAllegatoPartite" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoPartiteSoapOut">
+    <wsdl:part name="parameters" element="tns:UploadAllegatoPartiteResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadAllegatoPartiteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModello" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOvi_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloOvi_STR" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOvi_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloOvi_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOvi_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOviSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloOvi" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOviSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloOviResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloOviSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSui_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloSui_STR" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSui_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloSui_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSui_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSuiSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloSui" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSuiSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloSuiResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloSuiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEqui_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloEqui_STR" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEqui_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloEqui_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEqui_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEquiSoapIn">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloEqui" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEquiSoapOut">
+    <wsdl:part name="parameters" element="tns:insertCapoModelloEquiResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertCapoModelloEquiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModello" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOviSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloOvi" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOviSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloOviResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOviSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOvi_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloOvi_STR" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOvi_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloOvi_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloOvi_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEquiSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloEqui" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEquiSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloEquiResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEquiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEqui_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloEqui_STR" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEqui_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloEqui_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloEqui_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSuiSoapIn">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloSui" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSuiSoapOut">
+    <wsdl:part name="parameters" element="tns:deleteCapoModelloSuiResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCapoModelloSuiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrenteSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaModelloCorrente" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrenteSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaModelloCorrenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrenteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrente_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:SalvaModelloCorrente_STR" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrente_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:SalvaModelloCorrente_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalvaModelloCorrente_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModelloSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaTrasportoModello" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModelloSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaTrasportoModelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModelloSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModello_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:aggiornaTrasportoModello_STR" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModello_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:aggiornaTrasportoModello_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="aggiornaTrasportoModello_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFiera_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloFiera_STR" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFiera_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloFiera_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFiera_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFieraSoapIn">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloFiera" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFieraSoapOut">
+    <wsdl:part name="parameters" element="tns:insPrenotazioneModelloFieraResponse" />
+  </wsdl:message>
+  <wsdl:message name="insPrenotazioneModelloFieraSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsGestioneModelloSoap">
+    <wsdl:operation name="insPrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 presso la ASL di competenza dell'allevamento di provenienza; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 presso la ASL di competenza dell'allevamento di provenienza.</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la conferma della ASL di competenza ad una prenotazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:confermaPrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:confermaPrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la conferma della ASL di competenza ad una prenotazione</wsdl:documentation>
+      <wsdl:input message="tns:confermaPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:confermaPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce il rifiuto della ASL di competenza ad una richiesta di prenotazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:rifiutoPrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:rifiutoPrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce il rifiuto della ASL di competenza ad una richiesta di prenotazione</wsdl:documentation>
+      <wsdl:input message="tns:rifiutoPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:rifiutoPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Effettua la cancellazione di una prenotazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:annullaPrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:annullaPrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Effettua la cancellazione di una prenotazione</wsdl:documentation>
+      <wsdl:input message="tns:annullaPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:annullaPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'uscita sulla base del modello approvato; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaModello_STRSoapIn" />
+      <wsdl:output message="tns:registraUscitaModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'uscita sulla base del modello approvato</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaModelloSoapIn" />
+      <wsdl:output message="tns:registraUscitaModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'uscita dall'allevamento di proveninza e l'ingresso nella struttura di destinazione sulla base del modello approvato; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaIngressoModello_STRSoapIn" />
+      <wsdl:output message="tns:registraUscitaIngressoModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'uscita dall'allevamento di proveninza e l'ingresso nella struttura di destinazione sulla base del modello approvato</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaIngressoModelloSoapIn" />
+      <wsdl:output message="tns:registraUscitaIngressoModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiorna un modello di accompagnamento prima della conferma della ASL; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:aggiornaPrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:aggiornaPrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiorna un modello di accompagnamento prima della conferma della ASL</wsdl:documentation>
+      <wsdl:input message="tns:aggiornaPrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:aggiornaPrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di eliminare la prenotazione di un modello o non ancora confermato/rifiutato dalla ASL o confermato automaticamente; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:deletePrenotazioneModello_STRSoapIn" />
+      <wsdl:output message="tns:deletePrenotazioneModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di eliminare la prenotazione di un modello o non ancora confermato/rifiutato dalla ASL o confermato automaticamente</wsdl:documentation>
+      <wsdl:input message="tns:deletePrenotazioneModelloSoapIn" />
+      <wsdl:output message="tns:deletePrenotazioneModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di caricare in BDN un allegato relativo alla sezione ICA del modello IV per le movimentazioni dei capi singoli</wsdl:documentation>
+      <wsdl:input message="tns:UploadAllegatoSoapIn" />
+      <wsdl:output message="tns:UploadAllegatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 per la movimentazione di animali di specie ovicaprina e suina per partita. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 per la movimentazione di animali di specie ovicaprina e suina per partita.</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la conferma di un modello 4 per la movimentazione di animali per partita. Le specie gestite sono ovini e suini; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:confermaPrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:confermaPrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la conferma di un modello 4 per la movimentazione di animali per partita. Le specie gestite sono ovini e suini</wsdl:documentation>
+      <wsdl:input message="tns:confermaPrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:confermaPrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce il rifiuto della ASL di competenza ad una richiesta di prenotazione per la movimentazione di animali per partita. Le specie gestite sono ovini e suini; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:rifiutoPrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:rifiutoPrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce il rifiuto della ASL di competenza ad una richiesta di prenotazione per la movimentazione di animali per partita. Le specie gestite sono ovini e suini </wsdl:documentation>
+      <wsdl:input message="tns:rifiutoPrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:rifiutoPrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Effettua la cancellazione di una prenotazione per la movimentazione di animali per partita. Le specie gestite sono ovini e suini; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:annullaPrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:annullaPrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Effettua la cancellazione di una prenotazione per la movimentazione di animali per partita. Le specie gestite sono ovini e suini </wsdl:documentation>
+      <wsdl:input message="tns:annullaPrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:annullaPrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiorna un modello di accompagnamento per partita prima della conferma della ASL. Le specie gestite sono ovini e suini </wsdl:documentation>
+      <wsdl:input message="tns:aggiornaPrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:aggiornaPrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiorna un modello di accompagnamento per partita prima della conferma della ASL. Le specie gestite sono ovini e suini; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:aggiornaPrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:aggiornaPrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un modello di accompagnamento per la movimentazione di animali per partita prima della conferma della ASL. Le specie gestiTe sono ovini e suini; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:deletePrenotazioneModelloPartite_STRSoapIn" />
+      <wsdl:output message="tns:deletePrenotazioneModelloPartite_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un modello di accompagnamento per la movimentazione di animali per partita prima della conferma della ASL. Le specie gestiTe sono ovini e suini </wsdl:documentation>
+      <wsdl:input message="tns:deletePrenotazioneModelloPartiteSoapIn" />
+      <wsdl:output message="tns:deletePrenotazioneModelloPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di registrare la movimentazione di ovicaprini o suini per partita in BDN, se il modello è stato confermato dalla ASL, e contestualmente permette di completare la sezione ICA e la sezione trasporto del modello stesso; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaPartiteModelloSoapIn" />
+      <wsdl:output message="tns:registraUscitaPartiteModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di registrare la movimentazione di ovicaprini o suini per partita in BDN, se il modello è stato confermato dalla ASL, e contestualmente permette di completare la sezione ICA e la sezione trasporto del modello stesso</wsdl:documentation>
+      <wsdl:input message="tns:registraUscitaPartiteModello_STRSoapIn" />
+      <wsdl:output message="tns:registraUscitaPartiteModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegatoPartite">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di caricare in BDN un allegato relativo alla sezione ICA del modello IV per le movimentazioni dei capi per partita</wsdl:documentation>
+      <wsdl:input message="tns:UploadAllegatoPartiteSoapIn" />
+      <wsdl:output message="tns:UploadAllegatoPartiteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo BOVINO alla lista capi del modello prima dell'autorizzazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModello_STRSoapIn" />
+      <wsdl:output message="tns:insertCapoModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo BOVINO alla lista capi del modello prima dell'autorizzazione</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo OVICAPRINO alla lista capi del modello prima dell'autorizzazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloOvi_STRSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloOvi_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo OVICAPRINO alla lista capi del modello prima dell'autorizzazione</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloOviSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloOviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo SUINO alla lista capi del modello prima dell'autorizzazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloSui_STRSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloSui_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo SUINO alla lista capi del modello prima dell'autorizzazione</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloSuiSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloSuiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo EQUIDE alla lista capi del modello prima dell'autorizzazione; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloEqui_STRSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloEqui_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Aggiunge un capo EQUIDE alla lista capi del modello prima dell'autorizzazione</wsdl:documentation>
+      <wsdl:input message="tns:insertCapoModelloEquiSoapIn" />
+      <wsdl:output message="tns:insertCapoModelloEquiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo BOVINO dalla lista capi del modello</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo BOVINO dalla lista capi del modello. Restituisce unba stringa</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModello_STRSoapIn" />
+      <wsdl:output message="tns:deleteCapoModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo OVICAPRINO dalla lista capi del modello</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloOviSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloOviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo OVICAPRINO dalla lista capi del modello. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloOvi_STRSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloOvi_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo EQUIDE dalla lista capi del modello</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloEquiSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloEquiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo EQUIDE dalla lista capi del modello. Restituisce unba stringa</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloEqui_STRSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloEqui_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloSui">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Elimina un capo SUINO dalla lista capi del modello</wsdl:documentation>
+      <wsdl:input message="tns:deleteCapoModelloSuiSoapIn" />
+      <wsdl:output message="tns:deleteCapoModelloSuiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di salvare in BDN lo stream in base 64 del modello IV in formato PDF corrispondente ai dati correnti della prenotazione indicata.Il modello PDF viene salvato e prodotto solo se non presente in BDN</wsdl:documentation>
+      <wsdl:input message="tns:SalvaModelloCorrenteSoapIn" />
+      <wsdl:output message="tns:SalvaModelloCorrenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di salvare in BDN modello IV in formato PDF corrispondente ai dati correnti della prenotazione indicata.Il modello PDF viene salvato e prodotto solo se non presente in BDN</wsdl:documentation>
+      <wsdl:input message="tns:SalvaModelloCorrente_STRSoapIn" />
+      <wsdl:output message="tns:SalvaModelloCorrente_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di aggiornare la sezione del modello relativa al trasportatore</wsdl:documentation>
+      <wsdl:input message="tns:aggiornaTrasportoModelloSoapIn" />
+      <wsdl:output message="tns:aggiornaTrasportoModelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permette di aggiornare la sezione del modello relativa al trasportatore. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:aggiornaTrasportoModello_STRSoapIn" />
+      <wsdl:output message="tns:aggiornaTrasportoModello_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 di capi provenienti da fiera; restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModelloFiera_STRSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModelloFiera_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce la prenotazione di un modello 4 di capi provenienti da fiera.</wsdl:documentation>
+      <wsdl:input message="tns:insPrenotazioneModelloFieraSoapIn" />
+      <wsdl:output message="tns:insPrenotazioneModelloFieraSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsGestioneModelloSoap" type="tns:wsGestioneModelloSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="insPrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:confermaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:confermaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:rifiutoPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:rifiutoPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:annullaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:annullaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaIngressoModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaIngressoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaIngressoModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaIngressoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deletePrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deletePrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/UploadAllegato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UploadAllegatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:confermaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:confermaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:rifiutoPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:rifiutoPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:annullaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:annullaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deletePrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deletePrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaPartiteModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaPartiteModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/registraUscitaPartiteModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:registraUscitaPartiteModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegatoPartite">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/UploadAllegatoPartite" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UploadAllegatoPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloOvi_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloOvi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloOvi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloOviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloSui_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloSui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloSui" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloSuiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloEqui_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloEqui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloEqui" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insertCapoModelloEquiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloOvi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloOviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloOvi_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloOvi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloEqui" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloEquiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloEqui_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloEqui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloSui">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloSui" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:deleteCapoModelloSuiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/SalvaModelloCorrente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SalvaModelloCorrenteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/SalvaModelloCorrente_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SalvaModelloCorrente_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaTrasportoModello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaTrasportoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/aggiornaTrasportoModello_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:aggiornaTrasportoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloFiera_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModelloFiera_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloFiera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:insPrenotazioneModelloFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsGestioneModelloSoap12" type="tns:wsGestioneModelloSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="insPrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:confermaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:confermaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:rifiutoPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:rifiutoPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:annullaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:annullaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaIngressoModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaIngressoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaIngressoModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaIngressoModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaIngressoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaPrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaPrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deletePrenotazioneModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deletePrenotazioneModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/UploadAllegato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UploadAllegatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:confermaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confermaPrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/confermaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:confermaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:rifiutoPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rifiutoPrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/rifiutoPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:rifiutoPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:annullaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="annullaPrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/annullaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:annullaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaPrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaPrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaPrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaPrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModelloPartite_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deletePrenotazioneModelloPartite_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePrenotazioneModelloPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deletePrenotazioneModelloPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deletePrenotazioneModelloPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaPartiteModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaPartiteModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="registraUscitaPartiteModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/registraUscitaPartiteModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:registraUscitaPartiteModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadAllegatoPartite">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/UploadAllegatoPartite" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UploadAllegatoPartiteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloOvi_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloOvi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloOvi">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloOvi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloOviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloSui_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloSui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloSui">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloSui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloSuiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloEqui_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloEqui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertCapoModelloEqui">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insertCapoModelloEqui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insertCapoModelloEquiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloOvi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloOviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloOvi_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloOvi_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloOvi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloEqui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloEquiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloEqui_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloEqui_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloEqui_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCapoModelloSui">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/deleteCapoModelloSui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:deleteCapoModelloSuiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/SalvaModelloCorrente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SalvaModelloCorrenteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalvaModelloCorrente_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/SalvaModelloCorrente_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SalvaModelloCorrente_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaTrasportoModello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaTrasportoModelloSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="aggiornaTrasportoModello_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/aggiornaTrasportoModello_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:aggiornaTrasportoModello_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloFiera_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModelloFiera_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insPrenotazioneModelloFiera">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/insPrenotazioneModelloFiera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:insPrenotazioneModelloFieraSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsGestioneModello">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gestione modelli di accompagnamento </wsdl:documentation>
+    <wsdl:port name="wsGestioneModelloSoap" binding="tns:wsGestioneModelloSoap">
+      <soap:address location="http://bdrizsam.izs.it/wsModelliAccompagnamento/wsGestioneModello.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsGestioneModelloSoap12" binding="tns:wsGestioneModelloSoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsModelliAccompagnamento/wsGestioneModello.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

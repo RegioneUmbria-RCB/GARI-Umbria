@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{856CD54C-15F1-4FBE-9DBB-B793E5330C05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Gias2Gias_LIB</RootNamespace>
+    <AssemblyName>Gias2Gias_LIB</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="clsOpzioni.vb" />
+    <Compile Include="EnumFunzioni.vb" />
+    <Compile Include="Funzioni_Attivita.vb" />
+    <Compile Include="Funzioni_MateriePrimeCampionature.vb" />
+    <Compile Include="Funzioni.vb" />
+    <Compile Include="FunzioniGLOBAL.vb" />
+    <Compile Include="Funzioni_Agenda.vb" />
+    <Compile Include="Funzioni_Agenda_Riferimenti.vb" />
+    <Compile Include="Funzioni_Allegati.vb" />
+    <Compile Include="Funzioni_Anagrafica.vb" />
+    <Compile Include="Funzioni_Analisi.vb" />
+    <Compile Include="Funzioni_Analisi_Tipologia.vb" />
+    <Compile Include="Funzioni_Bio.vb" />
+    <Compile Include="Funzioni_CAC_Codifica.vb" />
+    <Compile Include="Funzioni_Catasto.vb" />
+    <Compile Include="Funzioni_Contatti.vb" />
+    <Compile Include="Funzioni_Distinta.vb" />
+    <Compile Include="Funzioni_Fabbricati.vb" />
+    <Compile Include="Funzioni_Grafica.vb" />
+    <Compile Include="Funzioni_Indirizzi.vb" />
+    <Compile Include="Funzioni_LineeProduttive.vb" />
+    <Compile Include="Funzioni_Liquidita.vb" />
+    <Compile Include="Funzioni_Lotto_Configurazione.vb" />
+    <Compile Include="Funzioni_MasterG2G.vb" />
+    <Compile Include="Funzioni_MateriePrime.vb" />
+    <Compile Include="Funzioni_ParcoMacchine.vb" />
+    <Compile Include="Funzioni_Anagrafe_VincoliAgronomici.vb" />
+    <Compile Include="Funzioni_PUA_Effluente_PeriodoDivieto.vb" />
+    <Compile Include="Funzioni_PUA_LetamazioniPrecedenti.vb" />
+    <Compile Include="Funzioni_Piani_di_campionamento.vb" />
+    <Compile Include="Funzioni_PianoColturale.vb" />
+    <Compile Include="Funzioni_PianoConcimazione.vb" />
+    <Compile Include="Funzioni_Planning.vb" />
+    <Compile Include="Funzioni_Pratiche.vb" />
+    <Compile Include="Funzioni_Profilazione.vb" />
+    <Compile Include="Funzioni_ParticelleCatastalixVincoliAgronomicia.vb" />
+    <Compile Include="Funzioni_PUA.vb" />
+    <Compile Include="Funzioni_Recodes.vb" />
+    <Compile Include="Funzioni_Ricette.vb" />
+    <Compile Include="Funzioni_Vasche.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="recode_classes\recode_AllegatiDocumenti.vb" />
+    <Compile Include="recode_classes\Recode_Analisi.vb" />
+    <Compile Include="recode_classes\recode_Analisi_Tipologia.vb" />
+    <Compile Include="recode_classes\recode_areeOmogenee.vb" />
+    <Compile Include="recode_classes\recode_campo.vb" />
+    <Compile Include="recode_classes\recode_distinta.vb" />
+    <Compile Include="recode_classes\recode_LFO.vb" />
+    <Compile Include="recode_classes\recode_ParcoMacchine.vb" />
+    <Compile Include="recode_classes\recode_particelle.vb" />
+    <Compile Include="recode_classes\recode_planning.vb" />
+    <Compile Include="recode_classes\recode_ProfilazioneDati.vb" />
+    <Compile Include="recode_classes\recode_SpecieVegetaliDefault.vb" />
+    <Compile Include="Web References\WS_Importa_GIAS_2014\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Web References\WS_Importa_GIAS_2014\ImportaWS.wsdl" />
+    <None Include="Web References\WS_Importa_GIAS_2014\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23F6D423-BC4F-4D05-A52A-67FA593234C8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreBiologicoDAL\AgronicaCoreBiologicoDAL.vbproj">
+      <Project>{04FC431E-B891-49A7-B044-BDEE8F4C1674}</Project>
+      <Name>AgronicaCoreBiologicoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09C9A140-71E4-430E-9E87-73C69E876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415C-E4F0-4EE5-BF6A-C0BD9BF3276B}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreG2GLocalDal\AgronicaCoreG2GLocalDal.vbproj">
+      <Project>{e51a575e-861a-4e5e-bf1a-528c9483122f}</Project>
+      <Name>AgronicaCoreG2GLocalDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGraficaBIZ\AgronicaCoreGraficaBIZ.vbproj">
+      <Project>{F7E29145-114D-4520-B0AB-112ABBF72226}</Project>
+      <Name>AgronicaCoreGraficaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePianidiCampionamentoDAL\AgronicaCorePianidiCampionamentoDAL.vbproj">
+      <Project>{E144D815-9B57-4554-9BC2-10557D382982}</Project>
+      <Name>AgronicaCorePianidiCampionamentoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812BE209-57AC-45DB-9BFC-A4D64BFA29D8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5A441011-0F08-4535-85B6-36031C54CAE2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56B64BCF-A26C-4AC3-86FE-7F8114B1B3D9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Importa_GIAS_2014\ImportaWS.disco" />
+    <Content Include="XMLs\Agenda.xml" />
+    <Content Include="XMLs\Agenda_Rielaborato.xml" />
+    <Content Include="XMLs\Appezzamenti.xml" />
+    <Content Include="XMLs\Appezzamento_Small.xml" />
+    <Content Include="XMLs\CentroAziendale.xml" />
+    <Content Include="XMLs\CentroAziendale_elaborato.xml" />
+    <Content Include="XMLs\Contatti.xml" />
+    <Content Include="XMLs\Distinta.xml" />
+    <Content Include="XMLs\Fabbricati.xml" />
+    <Content Include="XMLs\Grafica.xml" />
+    <Content Include="XMLs\GraficaElaborato.xml" />
+    <Content Include="XMLs\Impianto1.xml" />
+    <Content Include="XMLs\Impianto_singolo_preElaborazione.xml" />
+    <Content Include="XMLs\Imprese.xml" />
+    <Content Include="XMLs\ImpresePub_Det_ABOCA.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XMLs\ImpresePub_Det_Apofruit.xslt" />
+    <Content Include="XMLs\ImpresePUB_Det_FULL.xml" />
+    <Content Include="XMLs\ImpresePub_Det_SmartAgri.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XMLs\ImpresePub_Det_SP.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XMLs\ImpresePub_Det_TOPFRUIT.xslt" />
+    <Content Include="XMLs\ImpresePub_List_Apofruit.xslt" />
+    <Content Include="XMLs\ImpresePub_List_SmartAgri.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="XMLs\ImpresePub_List_TOPFRUIT.xslt" />
+    <Content Include="XMLs\ImpresePub_SP.xml" />
+    <Content Include="XMLs\ImpresePub_SP.xslt" />
+    <Content Include="XMLs\MasterG2G.xml" />
+    <Content Include="XMLs\MasterG2G_Risposta.xml" />
+    <Content Include="XMLs\MateriePrime.xml" />
+    <Content Include="XMLs\ParticelleCatastali.xml" />
+    <Content Include="XMLs\particelleCatastali_W.xml" />
+    <Content Include="XMLs\Ricette.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/WS_ImportaGias_2014/ImportaWS.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Importa_GIAS_2014\</RelPath>
+      <UpdateFromURL>http://localhost/WS_ImportaGias_2014/ImportaWS.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Gias2Gias_LIB_wsG2G_ImportaWS</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

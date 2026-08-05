@@ -1,0 +1,18 @@
+<div [formGroup]="ProdottiForm"
+     *ngIf="prodottiservice.controlli_Giacenze_Lotti.flag_visualizza_solo_prodotti_in_giacenza.visibile">
+    <div id="parent">
+        <div style="display: inline-block; padding-right:5pt;">
+            <label [for]="Visualizza_Solo_Prodotti_in_Giacenza">{{'SoloProdottiInGiacenza' | transloco}}:</label>
+        </div>
+        <div style="display: inline-block;">
+            <div class="gias-switch-two-labels" #Visualizza_Solo_Prodotti_in_Giacenza>
+                <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                <gias-switch-template #Visualizza_Solo_Operazioni_Preferite
+                                      giasFormControlName="Visualizza_Solo_Prodotti_in_Giacenza"
+                                      [isBlue]="true" [hideLabel]="true">
+                </gias-switch-template>
+                <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+            </div>
+        </div>
+    </div>
+</div>

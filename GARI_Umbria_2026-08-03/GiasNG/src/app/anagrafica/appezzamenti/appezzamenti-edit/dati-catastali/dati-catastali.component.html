@@ -1,0 +1,29 @@
+<!-- <div class="row">
+    {{ formValue }}
+</div> -->
+<div class="row form-row k-form">
+
+</div>
+<div class="row form-row">
+  <div class="container">
+    <gias-kendo-grid class="kendo-grid-no-shadows">
+        <ng-container headerContentButtons>
+            <div>
+                <kendo-label *ngIf="mostraMacrousiSwitch()" [text]="'appezzamento.Visualizza_Macrousi' | transloco">
+                    <kendo-switch (valueChange)="onChangeMacrousi($event)" [(ngModel)]="Visualizza_Macrousi"></kendo-switch>
+                </kendo-label>
+            </div>
+            <div  *ngIf="Visualizza_Macrousi">
+                <kendo-label [text]="'appezzamento.Visualizza_Utilizzi' | transloco">
+                    <kendo-switch (valueChange)="onChangeUtilizzi($event)" [(ngModel)]="Visualizza_Utilizzi"></kendo-switch>
+                </kendo-label>
+            </div>
+            <div *ngIf="false" [ngStyle]="{'text-align': 'right'}">
+                <kendo-label [text]="'appezzamento.Visualizza_Varieta' | transloco">
+                    <kendo-switch (valueChange)="onChangeVarieta($event)" [(ngModel)]="Visualizza_Varieta"></kendo-switch>
+                </kendo-label>
+            </div>
+        </ng-container>
+    </gias-kendo-grid>
+  </div>
+</div>

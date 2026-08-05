@@ -1,0 +1,22 @@
+<div class="attributi-column" *ngIf="{ origine: origine$ | async } as data">
+  <div>
+    <kendo-label>{{'gis.AttributiWindowOrigineDati' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="origineDati$ | async" [value]="data.origine" textField="descrizione" valueField="codice"
+      (valueChange)="changeOrigine($event)" [filterable]="true" [kendoDropDownFilter]="filterSettings">
+    </kendo-dropdownlist>
+  </div>
+
+  <ng-container [ngSwitch]="data.origine?.codice">
+    <ng-container *ngSwitchCase="4">
+      <gis-attributi-file-upload-catasto [origineDati]="data.origine"></gis-attributi-file-upload-catasto>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="100">
+      <gis-attributi-file-upload-raster [origineDati]="data.origine"></gis-attributi-file-upload-raster>
+    </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <gis-attributi-file-upload-standard [origineDati]="data.origine"></gis-attributi-file-upload-standard>
+    </ng-container>
+  </ng-container>
+</div>

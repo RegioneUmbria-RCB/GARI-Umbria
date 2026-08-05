@@ -1,0 +1,41 @@
+<div class="gestione-co2-page">
+
+  <!-- Page Header -->
+  <div class="page-header k-p-4">
+  </div>
+
+  <!-- Riepilogo Perimetro (read-only reference) -->
+  <div class="k-p-4">
+    <div class="k-messagebox k-messagebox-info">
+      <strong>{{ 'gco2_riepilogo_perimetro' | transloco }}:</strong>
+      {{ riepilogoLabel }}
+    </div>
+  </div>
+
+  <!-- Sezione Consumi Carburanti -->
+  <div class="consumi-section k-p-4">
+    <div class="section-header k-mb-3">
+      <strong>{{ 'gco2_section_carburanti' | transloco }}</strong>
+    </div>
+    <app-carburanti-grid></app-carburanti-grid>
+  </div>
+
+  <!-- Sezione Consumi Energia -->
+  <div class="consumi-section k-p-4">
+    <div class="section-header k-mb-3">
+      <strong>{{ 'gco2_section_energia' | transloco }}</strong>
+    </div>
+    <app-energia-grid></app-energia-grid>
+  </div>
+
+  <!-- Sticky Footer Actions -->
+  <div class="sticky-footer k-d-flex k-justify-content-end k-gap-2 k-p-4">
+    <button class="btn btn-primary btn-primary-fill btn-important" (click)="onIndietro()" [disabled]="isProcessing">
+      {{ 'gco2_btn_indietro' | transloco }}
+    </button>
+    <button class="btn btn-primary btn-primary-fill btn-important" (click)="onProsegui()" [disabled]="isProcessing">
+      {{ isProcessing ? ('gco2_loading_validazione' | transloco) : ('gco2_btn_prosegui' | transloco) }}
+    </button>
+  </div>
+
+</div>

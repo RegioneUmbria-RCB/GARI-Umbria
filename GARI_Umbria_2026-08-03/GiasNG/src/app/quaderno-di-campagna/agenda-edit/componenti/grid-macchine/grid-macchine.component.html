@@ -1,0 +1,31 @@
+<div class="row">
+    <gias-kendo-grid #GridMacchine [gridId]="'MacchineGridId'" class="kendo-grid-no-shadows">
+        <ng-container headerContentButtons>
+            <ng-container custom_title_save_button>
+                <div kendoTooltip>
+                    <button class="btn btn-primary btn-sm btn-primary-fill"
+                            [title]="'ImpostaSelezionePreferitaText' | transloco"
+                            [type]="'button'"
+                            style="margin-right: 5px"
+                            [disabled]="disabilitaBtnSalvaDefaultMacchine()"
+                            (click)="gridmacchinehttpService.SalvaDefaultMacchine()"
+                    >
+                        <fa-icon class="faImpostaPreferita"></fa-icon>
+                    </button>
+                </div>
+            </ng-container>
+
+            <div kendoTooltip *ngIf="qdcservice.Scrittura_Modifica_Anagrafica_Macchina">
+                <button class="btn btn-primary btn-sm btn-primary-fill"
+                        (click)="gridmacchinehttpService.ApriAnagraficaMacchina(null,true)"
+                        [title]="'NuovaRisorsaText' | transloco"
+                        [type]="'button'"
+                        [disabled]="disabilitaBtnNuovaMacchina()"
+                >
+                    <fa-icon class="faMacchinaNuovaRisorsa"></fa-icon>
+                </button>
+            </div>
+            <span class="separator"></span>
+        </ng-container>
+    </gias-kendo-grid>
+</div>

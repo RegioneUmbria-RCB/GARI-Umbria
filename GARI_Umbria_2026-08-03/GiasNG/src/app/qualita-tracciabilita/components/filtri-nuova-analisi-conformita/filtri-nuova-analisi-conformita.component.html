@@ -1,0 +1,57 @@
+<!-- <h3>{{'NuovaRichiestaVerificaConformita' | transloco}}</h3> -->
+
+<form [formGroup]="innerForm">
+  <fieldset>
+    <gias-data-template giasFormControlName="data_da" [name]="'DataInizio' | transloco"></gias-data-template>
+    <gias-data-template giasFormControlName="data_a" [name]="'DataFine' | transloco"></gias-data-template>
+    <gias-info-template size="lg" [title]="'InfoDateRichiestaAnalisi' | transloco"></gias-info-template>
+  </fieldset>
+
+  <gias-drop-down-template-s #company giasFormControlName="piva" textField="descrizione" valueField="codice"
+    [name]="'Azienda' | transloco" [obligatory]="true" [valuePrimitive]="true"
+    [listItems]="companies"></gias-drop-down-template-s>
+
+  <gias-multiselect-template-s #sacod giasFormControlName="sa_cod" textField="descrizione" valueField="codice"
+    [name]="'CentroAziendale' | transloco" [defaultItem]="defaultBusinessCenter" [valuePrimitive]="true"
+    [listItems]="businessCenters"></gias-multiselect-template-s>
+
+  <gias-multiselect-template-s #vegcod giasFormControlName="veg_cod" textField="descrizione" valueField="codice"
+    [name]="'SpecieVegetale' | transloco" [valuePrimitive]="true" [defaultItem]="defaultSpecie" [listItems]="species"
+    [obligatory]="true"></gias-multiselect-template-s>
+
+  <!-- <gias-multiselect-template-s #impianti giasFormControlName="impianti" textField="descrizione" valueField="codice"
+    [name]="'Impianti' | transloco" [valuePrimitive]="true" [defaultItem]="defaultPlots"
+    [listItems]="plots" [obligatory]="true"
+  ></gias-multiselect-template-s> -->
+
+  <gias-multiselect-template-s #operazioni giasFormControlName="operazioni" textField="descrizione" valueField="codice"
+    [name]="'TipoOperazioni' | transloco" [valuePrimitive]="true" [defaultItem]="defaultOperation"
+    [listItems]="operations" [obligatory]="true"></gias-multiselect-template-s>
+
+  <gias-drop-down-template-s #protocolli giasFormControlName="dpi" textField="descrizione" valueField="codice"
+    [name]="'Disciplinare' | transloco" [defaultItem]="defaultProtocol" [valuePrimitive]="true"
+    [listItems]="protocols"></gias-drop-down-template-s>
+
+  <fieldset>
+    <span>
+      <gias-switch-template giasFormControlName="flagNormative" [isBlue]="false"></gias-switch-template>
+      <label>{{'VerificaConformitaNormative' | transloco}}</label>
+    </span>
+    <span>
+      <gias-switch-template giasFormControlName="flagMagazzino" [isBlue]="false"></gias-switch-template>
+      <label>{{'VerificaConformitaMagazzino' | transloco}}</label>
+    </span>
+    <!-- <span>
+      <gias-switch-template giasFormControlName="flagIaf" [isBlue]="false"></gias-switch-template>
+      <label>{{'VerificaImpegniFacoltativiAggiuntivi' | transloco}}</label>
+    </span> -->
+    <span>
+      <gias-switch-template giasFormControlName="flagImpostazioni" [isBlue]="false"></gias-switch-template>
+      <label>{{'VerificaSoloControlliImpostatiUtente' | transloco}}</label>
+    </span>
+  </fieldset>
+</form>
+
+<button type="button" class="btn btn-primary-fill" (click)="onSubmit()">
+  {{ 'InoltraRichiesta' | transloco }}
+</button>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="http://emcs.dgtaxud.ec/v10/types" xmlns:tms="http://emcs.dgtaxud.ec/v10/tms" xmlns:tcl="http://emcs.dgtaxud.ec/v10/tcl" xmlns:ie="http://emcs.dgtaxud.ec/v10/cd810/ie" targetNamespace="http://emcs.dgtaxud.ec/v10/cd810/ie" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<!--=========================================-->
+	<!--===== IE810:N_AAD_SUB -->
+	<!--===== SUBMITTED DRAFT OF E-AAD -->
+	<!--=========================================-->
+	<!--===== Imports =====-->
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/types" schemaLocation="types_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tms" schemaLocation="tms_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tcl" schemaLocation="tcl_2.xsd"/>
+	<!--xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.71" schemaLocation="tcl.xsd"/-->
+	<!--===== Root Element =====-->
+	<xs:element name="CD810A" type="ie:CD810AType"/>
+	<xs:complexType name="CD810AType">
+		<xs:sequence>
+			<xs:element ref="tms:HeaderMessage"/>
+			<xs:element name="BodyMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CancellationOfEAD" type="ie:CancellationOfEADType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--===== IE Specific Data Groups Declarations =====-->
+	<xs:complexType name="CancellationOfEADType">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element ref="ie:Cancellation"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Cancellation" type="ie:CancellationType"/>
+	<xs:complexType name="CancellationType">
+		<xs:sequence>
+			<xs:element name="CancellationReasonCode" type="emcs:CancellationReasonCodeType"/>
+			<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LSDComplementaryInformationType">
+		<xs:simpleContent>
+			<xs:extension base="emcs:ComplementaryInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

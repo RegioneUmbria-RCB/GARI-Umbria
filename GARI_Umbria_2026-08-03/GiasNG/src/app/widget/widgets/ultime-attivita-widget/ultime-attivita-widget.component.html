@@ -1,0 +1,10 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<app-operazioni-template-widget *ngIf="!loading && piva != null" [operations]="data"
+  (onNavigate)="navigate($event)"></app-operazioni-template-widget>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

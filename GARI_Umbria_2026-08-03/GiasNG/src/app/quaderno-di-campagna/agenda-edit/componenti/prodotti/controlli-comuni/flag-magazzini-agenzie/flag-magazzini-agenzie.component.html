@@ -1,0 +1,17 @@
+<div [formGroup]="ProdottiForm" *ngIf="mostraFlagMagazziniAgenzie()">
+    <div id="parent">
+        <div style="display: inline-block; padding-right:5pt;">
+            <label [for]="Visualizza_Magazzini_Agenzie">{{'MagazziniAgenzie' | transloco}}:</label>
+        </div>
+        <div style="display: inline-block;">
+            <div class="gias-switch-two-labels" #Visualizza_Magazzini_Agenzie>
+                <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                <gias-switch-template #Visualizza_Magazzini_Agenzie
+                                      giasFormControlName="Visualizza_Magazzini_Agenzie"
+                                      [isBlue]="true" [hideLabel]="true">
+                </gias-switch-template>
+                <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+            </div>
+        </div>
+    </div>
+</div>

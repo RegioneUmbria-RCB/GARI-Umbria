@@ -1,0 +1,14 @@
+<div>
+    <form [formGroup]="formOperazione" *ngIf="mostraForm">
+        <gias-drop-down-template
+        name=""
+        [obligatory]="true"
+        textField="descrizione"
+        [listItems]="ListOperazioni"
+        valueField="codice"
+        [filterable]="true"
+        giasFormControlName="Operazione"
+        [valuePrimitive]="false">
+        </gias-drop-down-template>
+    </form>
+</div>

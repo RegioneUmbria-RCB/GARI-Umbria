@@ -1,0 +1,21 @@
+<div class="proziezioni-layer">
+  <h4>{{ title }}</h4>
+
+  <div class="w-100">
+    <kendo-label>{{'gis.Layer' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="layers" textField="nome" valueField="id"
+      [value]="getSelectedLayer(inputLayer.LayerElementiGrafici_Cod)" (valueChange)="onLayerSelected(+$event.id)"
+      [kendoDropDownFilter]="filterSettings"></kendo-dropdownlist>
+  </div>
+
+  <div class="columns">
+    <h6>{{ 'gis.ListaDiColonne' | transloco }}</h6>
+    <div class="param" *ngFor="let param of inputLayer.Params">
+      <h6 class="w-50">{{ param.parameter.Parametro_Des }}</h6>
+
+      <kendo-dropdownlist class="w-50" [data]="param.layerAttributes" textField="NomeAttributo"
+        valueField="ProgressivoDataStruct" [value]="param.selectedAttribute" [kendoDropDownFilter]="filterSettings"
+        (selectionChange)="onAttributeSelected(inputLayer, $event, param.Parametro_Cod)"></kendo-dropdownlist>
+    </div>
+  </div>
+</div>

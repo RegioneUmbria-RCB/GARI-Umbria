@@ -1,0 +1,1008 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{2C1BB62A-AFF0-4F6C-85AD-33B52386F891}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PianoConcimazione_2017</RootNamespace>
+    <AssemblyName>PianoConcimazione_2017</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>true</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <ExcludeGeneratedDebugSymbol>false</ExcludeGeneratedDebugSymbol>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.12.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cache\CacheManager.asmx" />
+    <Content Include="Default.aspx" />
+    <Content Include="File_Temporanei\NonCancellarePerStampe.txt" />
+    <Content Include="GestioneRichieste.aspx" />
+    <Content Include="GiasVersioneCorrente.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="IsAlive\IsAlive.asmx" />
+    <Content Include="Localization.aspx" />
+    <Content Include="Master\MasterConcimazione.css" />
+    <Content Include="Master\MasterConcimazione.js" />
+    <Content Include="PC_Bilancio\PCB_Inserimento.aspx" />
+    <Content Include="PC_Bilancio\PCB_InserimentoMultiplo.aspx" />
+    <Content Include="PC_Stampe\agronica_logo_nopayoff - 5,50mm %28usato nelle stampe%29.jpg" />
+    <Content Include="PC_Stampe\Filtro_StampaScadenza.aspx" />
+    <Content Include="PC_Stampe\PC_Bilancio\Bilancio_NPK.aspx" />
+    <Content Include="PC_Stampe\PC_PUA_FiltraEsporta.aspx" />
+    <Content Include="PC_Stampe\PC_Schede\Scheda_NPK.aspx" />
+    <Content Include="PC_Stampe\PianoNutrizionale_Bilancio\PianoNutrizionale_StampaBilancio.aspx" />
+    <Content Include="PC_Stampe\PianoNutrizionale_Schede\PianoNutrizionale_StampaSchede.aspx" />
+    <Content Include="PC_Stampe\PUA_Stampa\PUA_Stampa.aspx" />
+    <Content Include="PC_Stampe\VisualizzatoreReport.aspx" />
+    <Content Include="PianoConcimazione_MenuBS.aspx" />
+    <Content Include="appsettings.config" />
+    <Content Include="MeteoWS.aspx" />
+    <Content Include="machineKey.config" />
+    <Content Include="httpCookies.config" />
+    <Content Include="sessionState.config" />
+    <None Include="packages.config" />
+    <Content Include="PC_Stampe\PianoNutrizionale_Schede\Dataset\DS_ValoriAmmessi.xsc">
+      <DependentUpon>DS_ValoriAmmessi.xsd</DependentUpon>
+    </Content>
+    <Content Include="PC_Stampe\PianoNutrizionale_Bilancio\Dataset\DS_PianoNutrizionale_StampaBilancio.xsc">
+      <DependentUpon>DS_PianoNutrizionale_StampaBilancio.xsd</DependentUpon>
+    </Content>
+    <Content Include="PC_Stampe\GestioneLoghiFooter\DS_LogoFooter.xsc">
+      <DependentUpon>DS_LogoFooter.xsd</DependentUpon>
+    </Content>
+    <None Include="PC_Stampe\GestioneLoghiFooter\DS_LogoFooter.xsd" />
+    <Content Include="PC_Stampe\GestioneLoghiFooter\DS_LogoFooter.xss">
+      <DependentUpon>DS_LogoFooter.xsd</DependentUpon>
+    </Content>
+    <Content Include="PC_Stampe\GestioneLoghiFooter\FooterLogo.rpt" />
+    <None Include="PC_Stampe\PianoNutrizionale_Bilancio\Dataset\DS_PianoNutrizionale_StampaBilancio.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PianoNutrizionale_StampaBilancio.Designer.vb</LastGenOutput>
+    </None>
+    <Content Include="PC_Stampe\PianoNutrizionale_Bilancio\Dataset\DS_PianoNutrizionale_StampaBilancio.xss">
+      <DependentUpon>DS_PianoNutrizionale_StampaBilancio.xsd</DependentUpon>
+    </Content>
+    <None Include="PC_Stampe\PianoNutrizionale_Schede\Dataset\DS_ValoriAmmessi.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ValoriAmmessi.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="PC_Stampe\PianoNutrizionale_Schede\Dataset\DS_ValoriAmmessi.xss">
+      <DependentUpon>DS_ValoriAmmessi.xsd</DependentUpon>
+    </Content>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_Effluenti.xsc">
+      <DependentUpon>DS_PUA_Effluenti.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_Effluenti.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PUA_Effluenti.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_Effluenti.xss">
+      <DependentUpon>DS_PUA_Effluenti.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_Pua_Fertilizzazioni.xsc">
+      <DependentUpon>DS_Pua_Fertilizzazioni.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_Pua_Fertilizzazioni.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Pua_Fertilizzazioni.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_Pua_Fertilizzazioni.xss">
+      <DependentUpon>DS_Pua_Fertilizzazioni.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_PianoDistribuzione.xsc">
+      <DependentUpon>DS_PUA_PianoDistribuzione.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_PianoDistribuzione.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_PUA_PianoDistribuzione.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_PianoDistribuzione.xss">
+      <DependentUpon>DS_PUA_PianoDistribuzione.xsd</DependentUpon>
+    </None>
+    <None Include="Web References\WS_Meteo\Meteo.disco" />
+    <Content Include="PianoConcimazione_MenuBS.js" />
+    <Content Include="PianoConcimazione_MenuBS_globali.js" />
+    <Content Include="PianoConcimazione_MenuBS_jQueryDocReady.js" />
+    <Content Include="PianoConcimazione_MenuBS_ws_client.js" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale_IBF_globali.js" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale_IBF_ws_client.js" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale_IBF_jQueryDocReady.js" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale_IBF.aspx" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale.aspx" />
+    <Content Include="PianoNutrizionale\PianoNutrizionale_IBF.js" />
+    <Content Include="PUA\PUA_Dichiarazione_Effluenti.aspx" />
+    <Content Include="PUA\PUA_Letamazioni_Precedenti.aspx" />
+    <Content Include="PUA\PUA_Letamazioni_Precedenti.js" />
+    <Content Include="PUA\PUA_Letamazioni_Precedenti_jQueryDocReady.js" />
+    <Content Include="PUA\PUA_Letamazioni_Precedenti_ws_client.js" />
+    <Content Include="PUA\PUA_Piano_Distribuzione.aspx" />
+    <Content Include="PUA\PUA_Piano_Distribuzione.js" />
+    <Content Include="PUA\PUA_Piano_Distribuzione_jQueryDocReady.js" />
+    <Content Include="PUA\PUA_Piano_Distribuzione_ws_client.js" />
+    <Content Include="PUA\PUA_Verifica_Bilancio.aspx" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Versione.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web References\WS_Meteo\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_GlobalResources\PianoConcimazione_2017.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PianoConcimazione_2017.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\PianoConcimazione_2017.en.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PianoConcimazione_2017.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\PianoConcimazione_2017.fr.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PianoConcimazione_2017.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\PianoConcimazione_2017.pt.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PianoConcimazione_2017.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\CacheManager.asmx.vb">
+      <DependentUpon>CacheManager.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.designer.vb">
+      <DependentUpon>GestioneRichieste.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.vb">
+      <DependentUpon>GestioneRichieste.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IsAlive\IsAlive.asmx.vb">
+      <DependentUpon>IsAlive.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Localization.aspx.designer.vb">
+      <DependentUpon>Localization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization.aspx.vb">
+      <DependentUpon>Localization.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Master\MasterConcimazione.Master.designer.vb">
+      <DependentUpon>MasterConcimazione.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\MasterConcimazione.Master.vb">
+      <DependentUpon>MasterConcimazione.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="PC_Bilancio\Meteo.vb" />
+    <Compile Include="PC_Bilancio\PCB_Inserimento.aspx.designer.vb">
+      <DependentUpon>PCB_Inserimento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Bilancio\PCB_Inserimento.aspx.vb">
+      <DependentUpon>PCB_Inserimento.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PC_Bilancio\PCB_InserimentoMultiplo.aspx.designer.vb">
+      <DependentUpon>PCB_InserimentoMultiplo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Bilancio\PCB_InserimentoMultiplo.aspx.vb">
+      <DependentUpon>PCB_InserimentoMultiplo.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\CrystalHelper.vb" />
+    <Compile Include="PC_Stampe\Filtro_StampaScadenza.aspx.designer.vb">
+      <DependentUpon>Filtro_StampaScadenza.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\Filtro_StampaScadenza.aspx.vb">
+      <DependentUpon>Filtro_StampaScadenza.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\GestioneLoghiFooter\DS_LogoFooter.Designer.vb" />
+    <Compile Include="PC_Stampe\GestioneLoghiFooter\FooterLogo.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Bilancio_NPK.aspx.designer.vb">
+      <DependentUpon>Bilancio_NPK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Bilancio_NPK.aspx.vb">
+      <DependentUpon>Bilancio_NPK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Dataset\DS_Fattori.Designer.vb">
+      <DependentUpon>DS_Fattori.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Report\RPT_Bilancio_NPK.vb">
+      <DependentUpon>RPT_Bilancio_NPK.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Report\RPT_Disponibilita.vb">
+      <DependentUpon>RPT_Disponibilita.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Bilancio\Report\RPT_Necessita.vb">
+      <DependentUpon>RPT_Necessita.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_PUA_FiltraEsporta.aspx.designer.vb">
+      <DependentUpon>PC_PUA_FiltraEsporta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_PUA_FiltraEsporta.aspx.vb">
+      <DependentUpon>PC_PUA_FiltraEsporta.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Dataset\DS_Decrementi_N.Designer.vb">
+      <DependentUpon>DS_Decrementi_N.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Dataset\DS_FattoriCorrettivi.Designer.vb">
+      <DependentUpon>DS_FattoriCorrettivi.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Dataset\DS_Incrementi_N.Designer.vb">
+      <DependentUpon>DS_Incrementi_N.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_K.vb">
+      <DependentUpon>RPT_Decrementi_K.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_N.vb">
+      <DependentUpon>RPT_Decrementi_N.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_P.vb">
+      <DependentUpon>RPT_Decrementi_P.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_K.vb">
+      <DependentUpon>RPT_Incrementi_K.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_N.vb">
+      <DependentUpon>RPT_Incrementi_N.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_P.vb">
+      <DependentUpon>RPT_Incrementi_P.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_SchedaMultipla_NPK.vb">
+      <DependentUpon>RPT_SchedaMultipla_NPK.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Report\RPT_Scheda_NPK.vb">
+      <DependentUpon>RPT_Scheda_NPK.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Scheda_NPK.aspx.designer.vb">
+      <DependentUpon>Scheda_NPK.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PC_Schede\Scheda_NPK.aspx.vb">
+      <DependentUpon>Scheda_NPK.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Bilancio\Dataset\DS_PianoNutrizionale_StampaBilancio.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PianoNutrizionale_StampaBilancio.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Bilancio\PianoNutrizionale_StampaBilancio.aspx.designer.vb">
+      <DependentUpon>PianoNutrizionale_StampaBilancio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Bilancio\PianoNutrizionale_StampaBilancio.aspx.vb">
+      <DependentUpon>PianoNutrizionale_StampaBilancio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Bilancio\Report\RPT_PianoNutrizionale_StampaBilancio.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PianoNutrizionale_StampaBilancio.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Schede\Dataset\DS_ValoriAmmessi.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ValoriAmmessi.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Schede\PianoNutrizionale_StampaSchede.aspx.designer.vb">
+      <DependentUpon>PianoNutrizionale_StampaSchede.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Schede\PianoNutrizionale_StampaSchede.aspx.vb">
+      <DependentUpon>PianoNutrizionale_StampaSchede.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PianoNutrizionale_Schede\Report\RPT_PianoNutrizionale_StampaSchede.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PianoNutrizionale_StampaSchede.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_Effluenti.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PUA_Effluenti.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Dataset\DS_Pua_Fertilizzazioni.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Pua_Fertilizzazioni.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Dataset\DS_PUA_PianoDistribuzione.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_PUA_PianoDistribuzione.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\PUA_Stampa.aspx.designer.vb">
+      <DependentUpon>PUA_Stampa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\PUA_Stampa.aspx.vb">
+      <DependentUpon>PUA_Stampa.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PUA.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_Bilancio.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PUA_Bilancio.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_Effluenti.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PUA_Effluenti.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_EffluentiDistribuiti.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PUA_EffluentiDistribuiti.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_Pua_Fertilizzazioni.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_Pua_Fertilizzazioni.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_PianoDistribuzione.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RPT_PUA_PianoDistribuzione.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PC_Stampe\VisualizzatoreReport.aspx.designer.vb">
+      <DependentUpon>VisualizzatoreReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PC_Stampe\VisualizzatoreReport.aspx.vb">
+      <DependentUpon>VisualizzatoreReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PianoConcimazione_MenuBS.aspx.designer.vb">
+      <DependentUpon>PianoConcimazione_MenuBS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PianoConcimazione_MenuBS.aspx.vb">
+      <DependentUpon>PianoConcimazione_MenuBS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PianoNutrizionale\PianoNutrizionale_IBF.aspx.designer.vb">
+      <DependentUpon>PianoNutrizionale_IBF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PianoNutrizionale\PianoNutrizionale_IBF.aspx.vb">
+      <DependentUpon>PianoNutrizionale_IBF.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PianoNutrizionale\PianoNutrizionale.aspx.designer.vb">
+      <DependentUpon>PianoNutrizionale.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PianoNutrizionale\PianoNutrizionale.aspx.vb">
+      <DependentUpon>PianoNutrizionale.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PUA\PUA_Dichiarazione_Effluenti.aspx.designer.vb">
+      <DependentUpon>PUA_Dichiarazione_Effluenti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PUA\PUA_Dichiarazione_Effluenti.aspx.vb">
+      <DependentUpon>PUA_Dichiarazione_Effluenti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PUA\PUA_Letamazioni_Precedenti.aspx.designer.vb">
+      <DependentUpon>PUA_Letamazioni_Precedenti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PUA\PUA_Letamazioni_Precedenti.aspx.vb">
+      <DependentUpon>PUA_Letamazioni_Precedenti.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PUA\PUA_Piano_Distribuzione.aspx.designer.vb">
+      <DependentUpon>PUA_Piano_Distribuzione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PUA\PUA_Piano_Distribuzione.aspx.vb">
+      <DependentUpon>PUA_Piano_Distribuzione.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="PUA\PUA_Verifica_Bilancio.aspx.designer.vb">
+      <DependentUpon>PUA_Verifica_Bilancio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PUA\PUA_Verifica_Bilancio.aspx.vb">
+      <DependentUpon>PUA_Verifica_Bilancio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Versione.aspx.designer.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Versione.aspx.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web References\WS_Meteo\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="MeteoWS.aspx.designer.vb">
+      <DependentUpon>MeteoWS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MeteoWS.aspx.vb">
+      <DependentUpon>MeteoWS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\PianoConcimazione_2017.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PianoConcimazione_2017.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\PianoConcimazione_2017.en.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PianoConcimazione_2017.en.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\PianoConcimazione_2017.fr.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PianoConcimazione_2017.fr.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_GlobalResources\PianoConcimazione_2017.pt.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>PianoConcimazione_2017.pt.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <EmbeddedResource Include="Default.aspx.resx">
+      <DependentUpon>Default.aspx.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestioneRichieste.aspx.resx">
+      <DependentUpon>GestioneRichieste.aspx.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Bilancio\Report\RPT_Bilancio_NPK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Bilancio_NPK.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Bilancio\Report\RPT_Disponibilita.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Disponibilita.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Bilancio\Report\RPT_Necessita.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Necessita.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_K.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Decrementi_K.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_N.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Decrementi_N.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Decrementi_P.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Decrementi_P.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_K.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Incrementi_K.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_N.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Incrementi_N.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Incrementi_P.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Incrementi_P.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_SchedaMultipla_NPK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_SchedaMultipla_NPK.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PC_Schede\Report\RPT_Scheda_NPK.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Scheda_NPK.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PianoNutrizionale_Bilancio\Report\RPT_PianoNutrizionale_StampaBilancio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PianoNutrizionale_StampaBilancio.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PianoNutrizionale_Schede\Report\RPT_PianoNutrizionale_StampaSchede.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PianoNutrizionale_StampaSchede.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PUA.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_Bilancio.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PUA_Bilancio.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_Effluenti.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PUA_Effluenti.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_EffluentiDistribuiti.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PUA_EffluentiDistribuiti.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_Pua_Fertilizzazioni.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_Pua_Fertilizzazioni.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PC_Stampe\PUA_Stampa\Report\RPT_PUA_PianoDistribuzione.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RPT_PUA_PianoDistribuzione.vb</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="PianoNutrizionale\App_LocalResources\PianoNutrizionale_IBF.aspx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="PianoNutrizionale\App_LocalResources\PianoNutrizionale_IBF.aspx.en.resx" />
+    <Content Include="PianoNutrizionale\App_LocalResources\PianoNutrizionale_IBF.aspx.pt.resx" />
+    <Content Include="PianoNutrizionale\App_LocalResources\PianoNutrizionale_IBF.aspx.fr.resx" />
+    <EmbeddedResource Include="Versione.aspx.resx">
+      <DependentUpon>Versione.aspx.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\MasterConcimazione.Master" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\WS_Meteo\Meteo.wsdl" />
+    <None Include="PC_Stampe\PC_Bilancio\Dataset\DS_Fattori.xsc">
+      <DependentUpon>DS_Fattori.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Bilancio\Dataset\DS_Fattori.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Fattori.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PC_Stampe\PC_Bilancio\Dataset\DS_Fattori.xss">
+      <DependentUpon>DS_Fattori.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Decrementi_N.xsc">
+      <DependentUpon>DS_Decrementi_N.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Decrementi_N.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Decrementi_N.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Decrementi_N.xss">
+      <DependentUpon>DS_Decrementi_N.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_FattoriCorrettivi.xsc">
+      <DependentUpon>DS_FattoriCorrettivi.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_FattoriCorrettivi.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_FattoriCorrettivi.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_FattoriCorrettivi.xss">
+      <DependentUpon>DS_FattoriCorrettivi.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Incrementi_N.xsc">
+      <DependentUpon>DS_Incrementi_N.xsd</DependentUpon>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Incrementi_N.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Incrementi_N.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PC_Stampe\PC_Schede\Dataset\DS_Incrementi_N.xss">
+      <DependentUpon>DS_Incrementi_N.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{e8dd046c-044f-492a-a8c3-92d8db1ba845}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{fa3654fa-ef11-4744-9554-95e0f4d9670d}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23F6D423-BC4F-4D05-A52A-67FA593234C8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDpiBIZ\AgronicaCoreDpiBIZ.vbproj">
+      <Project>{d0a726b3-fb25-4885-981e-4e741b35b843}</Project>
+      <Name>AgronicaCoreDpiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreFiltroneBIZ\AgronicaCoreFiltroneBIZ.vbproj">
+      <Project>{c4e18f90-eda2-4a6b-aa07-2f9a40ffc27f}</Project>
+      <Name>AgronicaCoreFiltroneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{EFD63249-9CBE-4CB4-90D2-E881341C3B96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMapper\AgronicaCoreMapper.vbproj">
+      <Project>{ee5fa564-529b-4ee7-beb9-4d2080755642}</Project>
+      <Name>AgronicaCoreMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMeteoDAL\AgronicaCoreMeteoDAL.vbproj">
+      <Project>{f4ba9f1b-1dc9-4d06-a545-4369c9a87d86}</Project>
+      <Name>AgronicaCoreMeteoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePianoConcimazioneBIZ\AgronicaCorePianoConcimazioneBIZ.vbproj">
+      <Project>{8E64885E-19AD-4476-9094-1B5EF239CD43}</Project>
+      <Name>AgronicaCorePianoConcimazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePianoConcimazioneDAL\AgronicaCorePianoConcimazioneDAL.vbproj">
+      <Project>{068260CC-54BB-4E8D-8538-09CEB2503C0E}</Project>
+      <Name>AgronicaCorePianoConcimazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreScadenziario\AgronicaCoreScadenziario_DAL.vbproj">
+      <Project>{AE20EAF7-05AB-40E3-A238-33454E0CE715}</Project>
+      <Name>AgronicaCoreScadenziario_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ.vbproj">
+      <Project>{C3CD5BAA-F8BF-462B-8533-E1A61C376FD7}</Project>
+      <Name>AgronicaCoreScadenziario_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21fdabc5-4caf-43de-800a-1ae7b4cb7cbb}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtilityVersioni\AgronicaCoreUtilityVersioni.vbproj">
+      <Project>{65a1e92b-5c81-4d83-ade7-1c4af0ef9963}</Project>
+      <Name>AgronicaCoreUtilityVersioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{C72BDD2D-2D24-41AF-B4FC-1D71060BDE58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{d6963b76-054b-4070-8bad-dc9cc4c6f8d7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.GeoConverter.vbproj">
+      <Project>{8fa27405-01bd-4da3-9461-dbb8fe16dec7}</Project>
+      <Name>AgronicaConversioneCartografiaGias.GeoConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GiasOnline_2010\AgronicaControlli_2010\AgronicaControlli_2010.vbproj">
+      <Project>{74C51F78-05DC-4FED-B012-40BA23E87B77}</Project>
+      <Name>AgronicaControlli_2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/AgronicaMeteoWebService/Meteo.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Meteo\</RelPath>
+      <UpdateFromURL>http://localhost/AgronicaMeteoWebService/Meteo.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>PianoConcimazione_2017_WS_Meteo_Meteo</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

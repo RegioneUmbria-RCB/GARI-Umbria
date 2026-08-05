@@ -1,0 +1,63 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '0 0 * * *' # cron syntax defining a schedule (01:00)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: true
+
+variables:
+- group: Destinations
+- template: ../../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+- name: BranchPipe
+  value: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../../templates/pipelines/net-agro-core-pipeline.yml  # Template reference
+  parameters:
+    targets: "AgronicaNetCoreApi\\AgronicaNetCoreApi\\AgronicaNetCoreApi.csproj"
+    projectName: AgronicaNetCoreApi
+    workDir: "AgronicaNetCoreApi\\AgronicaNetCoreApi"
+    artifactName: AgronicaNetCoreApi
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    ${{ if eq(variables['build.reason'], 'Manual') }}:
+      postCheckoutSteps:
+        - template: ../../templates/steps/git-checkout.yml
+          parameters:
+            branch: $(BranchPipe)
+      preBuildSteps:
+        - template: ../../templates/steps/update-version-file.yml
+          parameters:
+            path: 'AgronicaNetCoreApi\\AgronicaNetCoreApi'
+            name: 'GiasVersioneCorrente.txt'
+            version: '$(Build.BuildNumber)'
+      postBuildSteps:
+        - task: CmdLine@2
+          displayName: 'git add Versione.txt'
+          inputs:
+            script: 'git add AgronicaNetCoreApi\\AgronicaNetCoreApi\\GiasVersioneCorrente.txt'
+        - task: CmdLine@2
+          displayName: 'git config user'
+          inputs:
+            script: |
+              git config user.name "$(Build.RequestedFor)"
+              git config user.email "$(Build.RequestedForEmail)"
+        - task: CmdLine@2
+          displayName: 'git commit'
+          inputs:
+            script: 'git commit -m "aggiornamento file versione AgronicaNetCoreApi [skip ci]"'
+        - task: CmdLine@2
+          displayName: 'git push'
+          inputs:
+            script: 'git push origin $(BranchPipe)'

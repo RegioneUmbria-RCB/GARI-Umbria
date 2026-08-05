@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+xmlns="http://bdr.izs.it/dsDECESSI_IUS.xsd"
+xmlns:mstns="http://bdr.izs.it/XMLschema/dsDECESSI_IUS.xsd" attributeFormDefault="qualified"
+elementFormDefault="qualified"
+targetNamespace="http://bdr.izs.it/XMLSchema/dsDECESSI_IUS.xsd" id="dsDECESSI_IUS"
+xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element msdata:IsDataSet="true" name="dsDECESSI_IUS">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="DECESSO">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="P_DECESSO_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="P_INS_VAR" type="xs:string" />
+							<xs:element minOccurs="0" name="P_MOVIMENTO_ID" type="xs:decimal" />
+							<xs:element name="P_ALLEV_ID_FISCALE" type="xs:string" />
+							<xs:element name="P_AZIENDA_CODICE" type="xs:string" />
+							<xs:element name="P_SPECIE_CODICE" type="xs:string" />
+							<xs:element name="P_CAPO_CODICE" type="xs:string" />
+							<xs:element name="P_CAUSALE_CODICE" type="xs:string" />
+							<xs:element name="P_DATA_MORTE" type="xs:date" />
+							<xs:element minOccurs="0" name="P_DATA_TEST_BSE" type="xs:date" />
+							<xs:element minOccurs="0" name="P_DATA_COMUNICAZIONE" type="xs:date" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique msdata:PrimaryKey="true" name="Constraint1">
+			<xs:selector xpath=".//mstns:DECESSO" />
+			<xs:field xpath="mstns:P_DECESSO_ID" />
+		</xs:unique>
+	</xs:element>
+</xs:schema>

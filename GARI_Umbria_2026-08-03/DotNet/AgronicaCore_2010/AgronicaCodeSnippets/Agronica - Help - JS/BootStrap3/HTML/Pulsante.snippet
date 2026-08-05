@@ -1,0 +1,55 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.1.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Pulsante Piccolo</Title>
+			<Author>Fabrizio Paglierani</Author>
+			<Shortcut>bsbtn</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>id</ID>
+					<ToolTip>id del pulsante</ToolTip>
+					<Default>id</Default>
+				</Literal>
+				<Literal>
+					<ID>Titolo</ID>
+					<ToolTip>testo del pulsante</ToolTip>
+					<Default>testo</Default>
+				</Literal>
+				<Literal>
+					<ID>Colore</ID>
+					<ToolTip>colore del pulsante (success: verde - Primary: Azzurro - Secondary: - Grigio chiaro - Danger: Rosso- Warning: Giallo- Info: blu-</ToolTip>
+					<Default>success</Default>
+				</Literal>
+				<Literal>
+					<ID>fa</ID>
+					<ToolTip>icona font awesome</ToolTip>
+					<Default>fa fa-info</Default>
+				</Literal>
+				<Literal>
+					<ID>NumeroGriglia</ID>
+					<ToolTip>numero nella griglia</ToolTip>
+					<Default>1</Default>
+				</Literal>
+			</Declarations>
+
+			<!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+			<Code Language="html">
+				<![CDATA[
+				<%-- $Titolo$ --%>				
+				<div class="col-lg-$NumeroGriglia$ col-md-$NumeroGriglia$ col-sm-12 col-xs-12" id="divBtn$id$">
+                    <div class="btn btn-$Colore$" id="Btn$id$">
+                        <span class="$fa$"></span>
+						<span class="">
+                            <asp:Localize meta:resourcekey="lblBtn$id$" runat="server">$Titolo$</asp:Localize>
+						</span>
+                    </div>
+                </div>]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

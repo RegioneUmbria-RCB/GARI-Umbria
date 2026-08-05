@@ -1,0 +1,156 @@
+<div class="gis-toolbar-container">
+    <div class="gis-toolbar" [class.open]="isToolbarOpen">
+        <div class="panel-header">
+            <div>
+                <div
+                    (click)="selectPanel(1)"
+                    [class.active]="selectedPanel === 1">
+                    Strumenti GIS
+                </div>
+                <div
+                    *ngIf="gisToolbarService.permessoSetupVisualizzazione"
+                    (click)="selectPanel(2)"
+                    [class.active]="selectedPanel === 2">
+                    Opzioni
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedPanel === 1">
+            <div class="d-flex button-row">
+                <div>
+                    <button kendoButton (click)="gisToolbarService.calendarioBtnClick()">
+                        <i aria-hidden="true" class="xi-calendar-filter-light"></i>
+                    </button>
+                </div>
+                <div>
+                    <button kendoButton
+                        (click)="positionToggle()"
+                        [ngClass]="gisToolbarService.getClasseGpsAttivo()">
+                        <i aria-hidden="true" class="xi-poi-base-map-light"
+                            [ngClass]="gisToolbarService.getClasseGpsAttivo()">
+                        </i>
+                    </button>
+                </div>
+                <div>
+                    <button kendoButton
+                        (click)="gisToolbarService.startStopMeasure()"
+                        [ngClass]="gisToolbarService.getClasseMisurazioneAttivo()">
+                        <i aria-hidden="true" class="xi-measure-light"
+                            [ngClass]="gisToolbarService.getClasseMisurazioneAttivo()">>
+                        </i>
+                    </button>
+                </div>
+                <div>
+                    <button kendoButton
+                        (click)="googleMapGeoJsonService.getProprietaFeatureSelezionata()">
+                        <i aria-hidden="true" class="xi-info-balloon-light"></i>
+                    </button>
+                </div>
+                <div>
+                    <kendo-dropdownbutton
+                        [popupSettings]="{popupClass:'tools'}"
+                        [data]="gisToolbarService.toolsList"
+                        textField="description">
+                        <i aria-hidden="true" class="xi-tools-list-light"></i>
+                        <i aria-hidden="true" class="xi-arrow-down-light"></i>
+                    </kendo-dropdownbutton>
+                </div>
+            </div>
+            <div class="items">
+                <div class="merged-elements">
+                    <button kendoButton class="left-rounded-full" (click)="gisToolbarService.changeMask()"><i aria-hidden="true" class="xi-coordinates-light"></i></button>
+                    <input id="latitude"
+                        #latitude
+                        type="text"
+                        class="border-left-0 latlng"
+                        [placeholder]="'Lat.' + gisToolbarService.latPlaceholder[gisToolbarService.maskIdx]"
+                        [inputMask]="gisToolbarService.latMask[gisToolbarService.maskIdx]"
+                        (focusin)="changeLatFocusHandler(true)"
+                        (focusout)="changeLatFocusHandler(false)"
+                        [(ngModel)]="gisToolbarService.latValue"
+                    >
+                    <input id="longitude"
+                        #longitude
+                        type="text"
+                        class="border-left-0 border-right-0 latlng"
+                        [placeholder]="'Lng.' + gisToolbarService.lngPlaceholder[gisToolbarService.maskIdx]"
+                        [inputMask]="gisToolbarService.lngMask[gisToolbarService.maskIdx]"
+                        (focusin)="changeLngFocusHandler(true)"
+                        (focusout)="changeLngFocusHandler(false)"
+                        [(ngModel)]="gisToolbarService.lngValue"
+                    >
+                    <button kendoButton (click)="gisToolbarService.goToPosition(latitude.value, longitude.value)"><i aria-hidden="true" class="xi-search-light"></i></button>
+                </div>
+            </div>
+            <div class="items border-bottom-1">
+                <!-- OLD -->
+                <!-- <input id="searchAddressTxtBox"  type="text" class="left-rounded-full border-right-0" placeholder="Indirizzo">
+                <button kendoButton class="border-left-0 mr-1"><i aria-hidden="true" class="xi-search-light"></i></button>
+                <button kendoButton><i aria-hidden="true" class="xi-gps-light"></i></button> -->
+                <!-- NEW -->
+                <input
+                id="searchAddressTxtBox"
+                [(ngModel)]="gisToolbarService.searchAddressTxtBox"
+                type="text"
+                class="left-rounded-full border-right-0"
+                placeholder="{{'Indirizzo' | transloco}}"
+                (keydown.enter)="findAddress()">
+                <span gisTooltip title="{{'gis.CercaIndirizzo' | transloco}}">
+                    <button kendoButton
+                        class="border-left-0 mr-1"
+                        (click)="findAddress()">
+                        <i aria-hidden="true" class="xi-search-light"></i>
+                    </button>
+                </span>
+                <span gisTooltip title="{{'gis.NavigaVerso' | transloco}}">
+                    <button kendoButton
+                        (click)="navigateTo()">
+                        <i aria-hidden="true" class="xi-gps-light"></i>
+                    </button>
+                </span>
+            </div>
+            <div class="bottom-buttons">
+                <div class="button" *ngIf="false">
+                    <button kendoButton><span class="xo-mx-4">{{ 'FiltraImpianti' | transloco }}</span><i aria-hidden="true" class="xi-search-light"></i></button>
+                </div>
+                <div class="button">
+                    <button kendoButton (click)="centraSuAzienda()"><span class="xo-mx-4">{{ 'CentraSuAzienda' | transloco }}</span><i aria-hidden="true" class="xi-update-light"></i></button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="selectedPanel === 2">
+            <div [style.right]="rightDropdown" class="dropdown-container">
+                <div class="m-3">
+                    <button kendoButton
+                        (click)="gisToolbarService.configurazioneBtnClick()">
+                        <span class="xo-mx-4">{{ 'ImpostazioniGeneraliVisualizzazione' | transloco }}</span>
+                        <i aria-hidden="true" class="xi-eye-edit-light"></i>
+                    </button>
+                </div>
+                <hr>
+                <div class="dropdown-text-container" *ngIf="false">
+                    <h6>{{ 'gis.AttivaPannelli' | transloco }}</h6>
+                    <div class="options-row">
+                        <p>{{ 'gis.SatelliteData' | transloco }}</p>
+                        <p><i aria-hidden="true" class="xi-eye-invisible-dark"></i></p>
+                    </div>
+                    <div class="options-row last">
+                        <p>{{ 'Themes' | transloco }}</p>
+                        <p (click)="gisToolbarService.themeBtnToggle()" class="k-cursor-pointer">
+                            <i aria-hidden="true" class="xi-eye-visible-dark"
+                                *ngIf="gisToolbarService.getToggleState(windowTypes.ThemeWindow)">
+                            </i>
+                            <i aria-hidden="true" class="xi-eye-invisible-dark"
+                                *ngIf="!gisToolbarService.getToggleState(windowTypes.ThemeWindow)">
+                            </i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-open-close" [class.open]="isToolbarOpen" (click)="toggleToolbar()">
+        <i aria-hidden="true" class="xi-open_double_arrow" *ngIf="!isToolbarOpen"></i>
+        <i aria-hidden="true" class="xi-close_double_arrow" *ngIf="isToolbarOpen"></i>
+    </div>
+</div>

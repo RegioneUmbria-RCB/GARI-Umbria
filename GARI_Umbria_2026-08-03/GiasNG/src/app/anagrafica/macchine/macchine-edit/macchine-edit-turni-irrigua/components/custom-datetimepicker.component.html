@@ -1,0 +1,14 @@
+<ng-container
+    [ngTemplateOutlet]="edit ? oraEdit : placeholder"
+></ng-container>
+
+<ng-template #placeholder>
+    <span>{{ this.input[this.field]  | date: 'HH:mm' }}</span>
+</ng-template>
+
+<ng-template #oraEdit>
+    <div [formGroup]="form">
+            <gias-time-picker-template [giasFormControlName]="field">
+            </gias-time-picker-template>
+    </div>
+</ng-template>

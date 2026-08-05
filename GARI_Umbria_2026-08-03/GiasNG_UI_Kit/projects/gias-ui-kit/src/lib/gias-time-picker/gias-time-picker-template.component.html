@@ -1,0 +1,7 @@
+<div class="time-picker"
+  *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+  <kendo-label [ngClass]="{'lbl_required' : validator}" *ngIf="name != null">{{name}}</kendo-label>
+  <kendo-label class="lbl_required" *ngIf="validator"> *</kendo-label>
+  <kendo-timepicker #datetimepicker [formControlName]="giasFormControlName">
+  </kendo-timepicker>
+</div>

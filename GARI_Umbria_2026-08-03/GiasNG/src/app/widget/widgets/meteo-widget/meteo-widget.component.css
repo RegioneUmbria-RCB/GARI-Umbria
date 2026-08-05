@@ -1,0 +1,80 @@
+.meteo-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.image-container {
+  width: 30%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: 50%;
+  display: block;
+}
+
+.image-container p {
+  text-align: center;
+}
+
+.items-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hours-container {
+  overflow-x: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+  width: 100%;
+  height: 50%;
+  gap: 10px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  height: 40%; 
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.meteo-hour {
+  flex: 0 0 auto;
+}
+
+.text-hour {
+  font-weight: bold;
+  margin: 0;
+}
+
+.meteo-btn {
+  border: 0px;
+  border-radius: 5px;
+  font-size: small;
+  background-color: #002d5a10;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.meteo-btn img {
+  max-width: 100%;
+  height: 70%;
+  display: block;
+}
+
+.meteo-btn-selected {
+  background-color: #002d5a30;
+}

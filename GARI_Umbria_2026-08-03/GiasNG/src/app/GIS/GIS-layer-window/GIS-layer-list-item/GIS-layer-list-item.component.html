@@ -1,0 +1,95 @@
+<div class="info-box">
+
+    <ng-content></ng-content>
+
+    <!-- Layer Wms -->
+    <div *ngIf="fixedLayer">
+        <span *ngIf="fixedLayerWms" (click)="toggleFixedLayerEntita($event, dataItem, type)" class="menu-icon">
+            <i aria-hidden="true" class="xi-settings-dark"></i>
+        </span>
+    </div>
+
+    <!-- Tipologia Layer Entità -->
+    <ng-container *ngIf="!fixedLayer">
+        <div *ngIf="tipologiaLayerEntita && dataItem.FeatureTypeId === enumFeatureType.Polygon.toString()"
+            (click)="centraMappaLayer($event, dataItem)">
+            <tr><i aria-hidden="true" class="xi-layer-legend-polygon"></i></tr>
+            <tr><i aria-hidden="true" class="xi-layer-search-small"></i></tr>
+        </div>
+        <div *ngIf="tipologiaLayerEntita && dataItem.FeatureTypeId === enumFeatureType.LineString.toString()"
+            (click)="centraMappaLayer($event, dataItem)">
+            <tr><i aria-hidden="true" class="xi-layer-legend-line"></i></tr>
+            <tr><i aria-hidden="true" class="xi-layer-search-small"></i></tr>
+        </div>
+        <div *ngIf="tipologiaLayerEntita && dataItem.FeatureTypeId === enumFeatureType.Point.toString()"
+            (click)="centraMappaLayer($event, dataItem)">
+            <tr><i aria-hidden="true" class="xi-layer-legend-point"></i></tr>
+            <tr><i aria-hidden="true" class="xi-layer-search-small"></i></tr>
+        </div>
+        <div *ngIf="tipologiaLayerEntita && dataItem.FeatureTypeId === enumFeatureType.Raster.toString()"
+            (click)="centraMappaLayer($event, dataItem)">
+            <tr><i aria-hidden="true" class="xi-layer-legend-raster"></i></tr>
+            <tr><i aria-hidden="true" class="xi-layer-search-small"></i></tr>
+        </div>
+    </ng-container>
+
+    <!-- Altre Tipologie Layer -->
+<!--    !fixedLayer &&-->
+    <div *ngIf="!fixedLayer && !tipologiaLayerEntita" (click)="centraMappaLayer($event, dataItem)">
+        <i aria-hidden="true" class="xi-layer-search"></i>
+    </div>
+    <div *ngIf="fixedLayer && !tipologiaLayerEntita" (click)="centraMappaLayer($event, dataItem)">
+        <span class="menu-icon ng-star-inserted">
+            <i aria-hidden="true" class="xi-layer-search"></i>
+        </span>
+    </div>
+
+    <!-- Icona colore -->
+    <div *ngIf="!fixedLayerWms" class="color-icon" [ngStyle]="{ 'background-color': '#' + dataItem.colore_1 }"
+        (click)="togglePicker($event, dataItem, type)">
+    </div>
+
+    <div *ngIf="fixedLayerWms" class="color-icon" [ngStyle]="{ 'background-color': '#ffffff' }"
+        (click)="toggleFixedLayerEntita($event, dataItem, type)">
+    </div>
+
+    <!-- Icona tematizzazioni -->
+    <div *ngIf="tilesPresenti(dataItem)" (click)="openThemeWindow($event, dataItem)">
+        <i aria-hidden="true" class="xi-theme-layer-dark add-margin-right"></i>
+    </div>
+    <div *ngIf="!tilesPresenti(dataItem) && !layerService.esistonoLayerConTemi" class="add-margin-right">
+    </div>
+    <div *ngIf="+dataItem.FeatureTypeId == enumFeatureType.Raster" (click)="openRasterConfig($event)">
+        <i aria-hidden="true" class="xi-theme-layer-dark"></i>
+    </div>
+    <div *ngIf="!tilesPresenti(dataItem) && layerService.esistonoLayerConTemi && +dataItem.FeatureTypeId != enumFeatureType.Raster">
+        <i aria-hidden="true" class="xi-theme-layer-empty add-margin-right"></i>
+    </div>
+
+    <!-- Nome layer -->
+    <div *ngIf="+dataItem.id >= 0;else fixed_layer" class="layer-info">
+        <span class="layer-name">{{ dataItem.nome }}</span>
+        <span class="layer-feature-data">Totale: {{ numberOfFeatures }}, Visibili ora: {{ dataItem.flagvisibile ===
+            '1' ? numberOfVisibleFeatures : 0 }}</span>
+    </div>
+
+    <ng-template #fixed_layer><span>{{ dataItem.nome }}</span></ng-template>
+
+</div>
+
+<span *ngIf="!fixedLayer" (click)="toggleDesc($event, dataItem, type)" class="info-icon">
+    <i aria-hidden="true"
+       [class]="dataItem.MostraDescrizioneAssociata == '1' ? 'xi-layer-callout-ab-visible' : 'xi-layer-callout-ab-invisible'">
+    </i>
+</span>
+
+<span *ngIf="!fixedLayer" (click)="toggleGrouping($event, dataItem)" class="info-icon">
+    <i aria-hidden="true"
+       [class]="dataItem.RaggruppaDescrizioneAssociata == '1' ? 'xi-layer-callout-46-visible' : 'xi-layer-callout-46-invisible'">
+    </i>
+</span>
+
+<span (click)="toggleVisible($event, dataItem)" class="info-icon">
+    <i aria-hidden="true" [class]="dataItem.flagvisibile == '1' ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'">
+    </i>
+</span>

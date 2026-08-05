@@ -1,0 +1,177 @@
+<div [formGroup]="FertilizzantiForm">
+    <ng-container
+        [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateDettagliFertilizzantiGridDosi : TemplateDettagliFertilizzantiSenzaGridDosi"
+        [ngTemplateOutletContext]="{Fertilizzanti:FertilizzantiForm}">
+    </ng-container>
+</div>
+
+<ng-template #TemplateDettagliFertilizzantiGridDosi let-Fertilizzanti='Fertilizzanti'>
+    <div [formGroup]="Fertilizzanti" style="width: 100%">
+        <div class="row form-row gias-fertilizzanti-nitrati-container"
+             *ngIf="qdcfertilizzantiservice.mostraDivDirettivaNitrati(Fertilizzanti)">
+            <div class="col-12 col-md-4">
+                <div id="parent_FertilizzantiGridDosi">
+                    <div class="col" style="display: inline-block;padding-right:5pt;">
+                        <label
+                            [for]="Utilizza_Direttiva_Nitrati">{{'qdc.Utilizza_Direttiva_Nitrati' | transloco}}
+                            :</label>
+                    </div>
+                    <div class="col" style="display: inline-block;">
+                        <div class="gias-switch-two-labels" #Utilizza_Direttiva_Nitrati>
+                            <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                            <gias-switch-template #Visualizza_Solo_Operazioni_Preferite
+                                                  giasFormControlName="Utilizza_Direttiva_Nitrati"
+                                                  [isBlue]="true" [hideLabel]="true">
+                            </gias-switch-template>
+                            <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <gias-drop-down-template-s *ngIf="qdcfertilizzantiservice.mostraddlDirettivaNitrati(FertilizzantiForm)"
+                                           [name]="'qdc.Direttiva_Nitrati' | transloco"
+                                           [obligatory]="true" [clearButton]="true"
+                                           [listItems]="qdcfertilizzantiservice.Array_Direttive_Nitrati"
+                                           (open)="openControlFertilizzanti($event, 'Direttiva_Nitrati')"
+                                           textField="regolamentoConcimazione.descrizione"
+                                           valueField="regolamentoConcimazione.codice" [filterable]="true"
+                                           [valuePrimitive]="false"
+                                           giasFormControlName="Direttiva_Nitrati">
+                </gias-drop-down-template-s>
+            </div>
+        </div>
+
+        <div *ngIf="qdcfertilizzantiservice.mostraEpocaFertilizzazione()">
+            <div class="row form-row">
+                <div class="col-12 col-sm-12">
+                    <gias-drop-down-template-s
+                        [name]="'Epoca' | transloco"
+                        [clearButton]="true"
+                        [listItems]="qdcfertilizzantiservice.Array_EpocheFertilizzazione"
+                        (open)="openControlFertilizzanti($event, 'EpocaFertilizzazione')"
+                        textField="descrizione"
+                        valueField="codice"
+                        [filterable]="true"
+                        giasFormControlName="EpocaFertilizzazione"
+                        [valuePrimitive]="false"
+                        [obligatory]="qdcfertilizzantiservice.ObbligatoryEpocaFertilizzazione(Fertilizzanti.get('Operazione').getRawValue())">
+                    </gias-drop-down-template-s>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="qdcservice.mostraModalitaApplicazione(Fertilizzanti.get('Operazione').getRawValue())">
+          <app-modalita-applicazione></app-modalita-applicazione>
+        </div>
+
+        <app-dettagli-fertilizzanti></app-dettagli-fertilizzanti>
+    </div>
+</ng-template>
+
+
+<ng-template #TemplateDettagliFertilizzantiSenzaGridDosi let-Fertilizzanti='Fertilizzanti'>
+    <div [formGroup]="Fertilizzanti" style="width: 100%">
+
+        <div class="col-12 col-sm-12">
+
+          <div class="row form-row">
+            <div class="switch-direttiva-nitrati-min-width"
+                 *ngIf="qdcfertilizzantiservice.mostraDivDirettivaNitrati(Fertilizzanti)">
+              <div id="parent_switch">
+                <div class="col" style="display: inline-block;">
+                  <label
+                    [for]="Utilizza_Direttiva_Nitrati">{{'qdc.Utilizza_Direttiva_Nitrati' | transloco}}
+                    :</label>
+                </div>
+                <div class="row form-row">
+                  <div class="col" style="display: inline-block;">
+                    <div class="gias-switch-two-labels" #Utilizza_Direttiva_Nitrati>
+                      <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                      <gias-switch-template #Visualizza_Solo_Operazioni_Preferite
+                                            giasFormControlName="Utilizza_Direttiva_Nitrati"
+                                            [isBlue]="true" [hideLabel]="true">
+                      </gias-switch-template>
+                      <span class="switch-label k-label">{{ 'Si' | transloco }}</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="col" *ngIf="qdcfertilizzantiservice.mostraddlDirettivaNitrati(FertilizzantiForm)">
+              <gias-drop-down-template-s
+                [name]="'qdc.Direttiva_Nitrati' | transloco"
+                [obligatory]="true" [clearButton]="true"
+                [listItems]="qdcfertilizzantiservice.Array_Direttive_Nitrati"
+                (open)="openControlFertilizzanti($event, 'Direttiva_Nitrati')"
+                textField="regolamentoConcimazione.descrizione"
+                valueField="regolamentoConcimazione.codice" [filterable]="true"
+                [valuePrimitive]="false"
+                giasFormControlName="Direttiva_Nitrati">
+              </gias-drop-down-template-s>
+            </div>
+
+            <div class="col" *ngIf="qdcfertilizzantiservice.mostraEpocaFertilizzazione()">
+              <gias-drop-down-template-s
+                [name]="'Epoca' | transloco"
+                [clearButton]="true"
+                [listItems]="qdcfertilizzantiservice.Array_EpocheFertilizzazione"
+                (open)="openControlFertilizzanti($event, 'EpocaFertilizzazione')"
+                textField="descrizione"
+                valueField="codice"
+                [filterable]="true"
+                giasFormControlName="EpocaFertilizzazione"
+                [valuePrimitive]="false">
+              </gias-drop-down-template-s>
+            </div>
+
+            <div class="col"
+                 *ngIf="qdcservice.mostraModalitaApplicazione(Fertilizzanti.get('Operazione').getRawValue())">
+              <app-modalita-applicazione></app-modalita-applicazione>
+            </div>
+
+            <div class="col"
+                 *ngIf="qdcservice.mostraPercentualeN(Fertilizzanti.get('Operazione').getRawValue())">
+              <div style="padding-right: 5px;">
+                <label id="Lbl_PercentualeNUtilizzabile">
+                  {{ get_Descrizione_PercentualeN_Utilizzabile() }}
+                </label>
+              </div>
+
+              <div>
+                <label id="Lbl_PercentualeNUtilizzata">
+                  {{ get_Descrizione_PercentualeN_Utilizzata() }}
+                </label>
+              </div>
+            </div>
+
+            <div class="bottone-aggiunta-container-min-width" *ngIf="qdcservice.Mostra_Btn_AggiungiDoseProdotto()">
+              <div class="col" style="display: inline-block;">
+                &nbsp;
+              </div>
+              <div class="row form-row">
+                <div class="col" style="display: inline-block;">
+                  <app-bottone-aggiunta-prodotto></app-bottone-aggiunta-prodotto>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div [id]="'Dettagli_Fertilizzanti_' + i"
+             *ngFor="let Dettagli_Fertilizzanti of Fertilizzanti.get('DosiProdotti').controls; index as i">
+            <div [formGroup]="Dettagli_Fertilizzanti">
+                <div class="row form-row"
+                     [ngClass]="Dettagli_Fertilizzanti.get('Riga_Salvata').value ? 'salvata' : 'non-salvata'">
+                    <app-dettagli-fertilizzanti></app-dettagli-fertilizzanti>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

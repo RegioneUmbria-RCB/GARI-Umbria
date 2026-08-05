@@ -1,0 +1,106 @@
+<div [formGroup]="qdcservice.TestataVisitaForm">
+
+    <div class="gias-testata-container-top">
+
+            <div class="gias-testata-section-data">
+                <div class="gias-data-container date-time">
+                    <app-data-operazione></app-data-operazione>
+                </div>
+            </div>
+
+            <div class="gias-testata-section-data">
+                <div class="gias-data-container visita-time">
+                    <gias-time-picker-template [name]="'qdc.Ora_Inizio_Visita' | transloco"
+                                            giasFormControlName="Ora_Inizio_Visita">
+                    </gias-time-picker-template>
+                </div>
+            </div>
+
+            <ng-container *ngIf="qdcservice.TestataVisitaForm.get('impOrarioFine_Visita').value === 1">
+                <div class="gias-testata-section-data">
+                    <div class="gias-data-container visita-time">
+                            <gias-time-picker-template [name]="'qdc.Ora_Fine_Visita' | transloco"
+                                                    giasFormControlName="Ora_Fine_Visita">
+                            </gias-time-picker-template>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="qdcservice.TestataVisitaForm.get('impOrarioFine_Visita').value === 0">
+                    <gias-text-template class="gias-ore-totali"
+                                        [name]="'qdc.Ora_Totali_Visita' | transloco"
+                                        giasFormControlName="NrOreTotali_Visita">
+                    </gias-text-template>
+            </ng-container>
+                <div class="gias-testata-section">
+                    <div class="visita-operatore">
+                        <app-operatore></app-operatore>
+                    </div>
+                </div>
+    </div>
+
+    <div class="gias-testata-container">
+            <div class="gias-testata-section">
+                <div class="visita-azienda">
+                    <app-azienda></app-azienda>
+                </div>
+            </div>
+            <div class="gias-label-switch-container gias-mb-2px" *ngIf="testataservice.showSwitchAziende">
+                <span class="switch-label k-label gias-switch-left-label">{{ 'Aziende' | transloco }}</span>
+                    <gias-switch-template #AziendeAgenzie
+                                        [hideLabel]="true"
+                                        giasFormControlName="Aziende_Agenzie"
+                                        [isBlue]="true"
+                                        (valueChange)="changeAziendeAgenzie($event)"
+                                        [hideformfield]="true">
+                    </gias-switch-template>
+                <span class="switch-label k-label gias-switch-right-label">{{ 'Agenzie' | transloco }}</span>
+            </div>
+    </div>
+
+    <div class="gias-testata-container-switch">
+
+        <div class="gias-label-switch-container-bottom">
+            <span class="switch-label k-label gias-switch-left-label">{{ 'qdc.SpecieAziendali' | transloco }}</span>
+                <gias-switch-template #SpecieAziendali
+                                    [hideLabel]="true"
+                                    giasFormControlName="Visualizza_Specie"
+                                    (valueChange)="changeDominioSpecie($event)"
+                                    [isBlue]="true"
+                                    [hideformfield]="true">
+                </gias-switch-template>
+            <span class="switch-label k-label gias-switch-right-label">{{ 'qdc.Tutte_Le_Specie' | transloco }}</span>
+        </div>
+
+        <div class="gias-label-switch-container-bottom">
+            <span class="switch-label k-label gias-switch-left-label">{{ 'qdc.InPresenza' | transloco }}</span>
+                <gias-switch-template #DaRemotoVisita
+                                    [hideLabel]="true"
+                                    giasFormControlName="Da_Remoto_Visita"
+                                    [isBlue]="true"
+                                    [hideformfield]="true">
+                </gias-switch-template>
+            <span class="switch-label k-label gias-switch-right-label">{{ 'qdc.Da_Remoto' | transloco }}</span>
+        </div>
+
+            <div class="gias-label-switch-container-bottom">
+
+                <div class="gias-label-switch-container-info">
+                    <gias-info-template size="lg"
+                                        [title]="'qdc.VisitaPianificata' | transloco"></gias-info-template>
+                </div>
+
+                <div class="gias-label-switch-container-info">
+                    <span class="switch-label k-label gias-switch-left-label">{{ 'qdc.Pianificata' | transloco }}</span>
+                        <gias-switch-template #statoWorkflowVisita
+                                            [hideLabel]="true"
+                                            giasFormControlName="statoWorkflow_Visita"
+                                            [isBlue]="true"
+                                            [hideformfield]="true">
+                        </gias-switch-template>
+                    <span class="switch-label k-label gias-switch-right-label">{{ 'qdc.Eseguita' | transloco }}</span>
+                </div>
+            </div>
+
+    </div>
+</div>

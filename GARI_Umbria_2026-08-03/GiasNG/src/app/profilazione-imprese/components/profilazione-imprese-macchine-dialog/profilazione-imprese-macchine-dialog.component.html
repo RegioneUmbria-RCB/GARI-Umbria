@@ -1,0 +1,41 @@
+<div class="prof-imprese-column gap-20" *ngIf="macchine$ != null">
+  <div class="prof-imprese-row gap-20">
+    <kendo-grid [kendoGridBinding]="macchine$ | async" [loading]="loading">
+      <kendo-grid-command-column [width]="100">
+        <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+          <div class="prof-imprese-row">
+            <button [title]="'Info' | transloco" (click)="info(dataItem)">
+              <div class="faGridRowIcon faInfo"></div>
+            </button>
+            <button [title]="'Modifica' | transloco" (click)="edit(dataItem)">
+              <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+            </button>
+          </div>
+        </ng-template>
+      </kendo-grid-command-column>
+
+      <kendo-grid-column field="mac_des" [title]="'MacchinaAttrezzatura' | transloco"></kendo-grid-column>
+      <kendo-grid-column field="dettagli" [title]="'Dettagli' | transloco">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div [innerHTML]="dataItem.dettagli"></div>
+        </ng-template>
+      </kendo-grid-column>
+
+      <kendo-grid-column field="caratteristiche" [title]="'profImprese.CaratteristicheVariabili' | transloco">
+        <ng-template kendoGridCellTemplate let-dataItem>
+          <div [innerHTML]="dataItem.caratteristiche"></div>
+        </ng-template>
+      </kendo-grid-column>
+    </kendo-grid>
+  </div>
+
+  <div class="prof-imprese-column gap-20" *ngIf="modality != null">
+    <kendo-label *ngFor="let detail of details" [text]="detail.mac_car_des">
+      <kendo-textbox [(ngModel)]="detail.valore" [readonly]="modality == 'info'"></kendo-textbox>
+    </kendo-label>
+    
+    <button [title]="'Salva' | transloco" (click)="save()" *ngIf="modality == 'edit'">
+      <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+    </button>
+  </div>
+</div>

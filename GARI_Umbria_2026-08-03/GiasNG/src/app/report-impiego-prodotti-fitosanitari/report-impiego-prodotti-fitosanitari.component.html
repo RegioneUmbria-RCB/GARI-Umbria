@@ -1,0 +1,107 @@
+<div class="filters-container">
+    <div class="custom-toolbar">
+        <button kendoButton look="flat"
+            (click) ="onOpenFilters()"
+            [ngClass]="{ 'with-margin-top': true }">
+            <fa-icon size="lg" [icon]="faSliders"></fa-icon>
+        </button>
+    </div>
+
+    <form [formGroup]="inputForm" (ngSubmit)="onSubmit(false)">
+
+        <kendo-drawer-container [hidden]="!shouldApply">
+            <kendo-drawer [ngClass]="{ 'with-padding-top': true }" #drawer mode="overlay" [width]="drawerWidth"
+                [position]="'end'"
+                (collapse)="shouldApply=false"
+                (expand)="shouldApply=true">
+
+                <ng-template kendoDrawerTemplate>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <gias-data-template
+                                    [name]="'Da' | transloco"
+                                    giasFormControlName ="Data_Da">
+                                </gias-data-template>
+
+                            </div>
+                            <div class="col-sm-4">
+                                <gias-data-template
+                                    [name]="'A' | transloco"
+                                    giasFormControlName ="Data_A">
+                                </gias-data-template>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <gias-multiselect-template-s
+                                    [name]="'Imprese' | transloco" [obligatory]="false"
+                                    textField="Rag_Soc" valueField="Piva" [filterable]="true"
+                                    giasFormControlName="ImpreseMultiSelect"
+                                    [listItems]="imprese"
+                                    [filterable]="true" [valuePrimitive]="false">
+                                </gias-multiselect-template-s>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <app-provincia-comune-multiselect class = "col-sm-8"[formGroupInput]="inputForm"></app-provincia-comune-multiselect>
+                            <div class="col-sm-4">
+                                <gias-switch-template [name]="'ZVN' | transloco"
+                                    giasFormControlName="ZVN">
+                                </gias-switch-template>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <gias-drop-down-template-s class="col-sm-4"
+                                [name]="'SostanzaAttiva' | transloco" textField="Pa_Des"
+                                valueField="Pa_Cod" giasFormControlName="SostanzeAttiveDropdown"
+                                [filterable]="true" [valuePrimitive]="false"
+                                [defaultItem]="defaultItemSostanzaAttiva"
+                                [listItems]="sostanzeAttive">
+                             </gias-drop-down-template-s>
+
+                            <div class="col-sm-4 ">
+                                <gias-switch-template [name]="'VisualizzaProdotti' | transloco"
+                                    giasFormControlName="VisualizzaProdotti">
+                                </gias-switch-template>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <gias-switch-template [name]="'IncludiFertilizzanti' | transloco"
+                                    giasFormControlName="IncludiFertilizzanti">
+                                </gias-switch-template>
+                            </div>
+                        </div>
+
+                        <div class="row k-content justify-content-center">
+                            <div class="col-12 col-sm-2 left align-self-end">
+                                <ng-container [ngTemplateOutlet]="cercaButton">
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </ng-template>
+            </kendo-drawer>
+        </kendo-drawer-container>
+
+    </form>
+
+    <ng-template #cercaButton>
+        <div class="btn btn-primary btn-primary-fill btn-primary-text filters-button mt-3 mb-3" (click)="onSubmit(false)">
+            <fa-icon [icon]="faMagnifyingGlass" style="margin: 5px;" size="lg"></fa-icon>
+            <span class="text"> {{ 'Cerca' | transloco }} </span>
+        </div>
+    </ng-template>
+</div>
+
+<div class="container mt-5">
+    <div class="row" *ngIf="showGrid" >
+        <gias-kendo-grid [gridId]="'ReportFitoGridId'">
+
+        </gias-kendo-grid>
+    </div>
+</div>

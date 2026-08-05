@@ -1,0 +1,44 @@
+<div [formGroup]="ProdottiForm" class="row form-row">
+    <div class="btn-group" style="display:flex;justify-content: flex-end;">
+
+        <div kendoTooltip *ngIf="Mostra_Btn_Salva_DoseProdotto()">
+            <button class="btn btn-primary btn-sm btn-primary-fill btn-important"
+                    (click)="SalvaDoseProdotto()"
+                    [title]="'SalvaProdotto' | transloco"
+            >
+                <div class="k-icon k-i-btn_salva_dose_prodotto"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="Mostra_Btn_Annulla_DoseProdotto()">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    [title]="'Annulla_Modifiche' | transloco"
+                    (click)="AnnullaDoseProdotto()"
+            >
+                <div class="k-icon k-i-btn_annulla_dose_prodotto"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="Mostra_Btn_Edit_DoseProdotto()">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    [title]="'ModificaProdotto' | transloco"
+                    (click)="ModificaDoseProdotto()"
+            >
+                <div class="k-icon k-i-btn_modifica_dose_prodotto"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip class="btn-danger-icon" *ngIf="Mostra_Btn_Elimina_DoseProdotto()">
+            <button class="btn btn-primary btn-delete btn-sm"
+                    [title]="'EliminaProdotto' | transloco"
+                    (click)="EliminaDoseProdotto(true)"
+            >
+                <div class="k-icon k-i-btn_elimina_dose_prodotto"></div>
+            </button>
+        </div>
+        <div *ngIf="Mostra_Btn_Elimina_DoseProdotto()" style="
+            width: 9px;
+            height: 15px;
+        "></div>
+    </div>
+</div>

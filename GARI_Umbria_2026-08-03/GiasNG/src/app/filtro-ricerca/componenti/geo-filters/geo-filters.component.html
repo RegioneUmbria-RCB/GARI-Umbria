@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-12 col-md-3">
+        <gias-multiselect-template-s [name]="'Stati' | transloco" [obligatory]="false"
+                                    textField="Descrizione" valueField="Codice" [filterable]="true"
+                                    giasFormControlName="Stati"
+                                    (open)="openMultiSelectStati($event)"
+                                    (removeItem)="onRemoveItemStati($event)"
+                                    (selectionItem)="onRemoveAll($event, ['Regioni','Province', 'Comuni'])"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+    <div class="col-12 col-md-3">
+        <gias-multiselect-template-s [name]="'Regioni' | transloco" [obligatory]="false"
+                                    textField="Regione_Des" valueField="REG" [filterable]="true"
+                                    giasFormControlName="Regioni"
+                                    (open)="openMultiSelectRegioni($event)"
+                                    (removeItem)="onRemoveItemRegioni($event)"
+                                    (selectionItem)="onRemoveAll($event, ['Province', 'Comuni'])"
+                                    [groupBy]="true"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+    <div class="col-12 col-md-3">
+        <gias-multiselect-template-s [name]="'Province' | transloco" [obligatory]="false"
+                                    textField="PROVINCIA" valueField="PROV" [filterable]="true"
+                                    giasFormControlName="Province"
+                                    (open)="openMultiSelectProvince($event)"
+                                    (removeItem)="onRemoveItemProvince($event)"
+                                    (selectionItem)="onRemoveAll($event, ['Comuni'])"
+                                    [groupBy]="true"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+    <div class="col-12 col-md-3">
+        <gias-multiselect-template-s [name]="'Comuni' | transloco" [obligatory]="false"
+                                    textField="LOCALITA" valueField="CHIAVE" [filterable]="true"
+                                    giasFormControlName="Comuni"
+                                    (open)="openMultiSelectComuni($event)"
+                                    [groupBy]="true"
+                                    [valuePrimitive]="false">
+        </gias-multiselect-template-s>
+    </div>
+</div>

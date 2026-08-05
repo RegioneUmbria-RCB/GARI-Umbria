@@ -1,0 +1,120 @@
+<div class="prof-imprese-column gap-20">
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-global [globalSubject]="globalSubject"></app-profilazione-imprese-global>
+
+    <app-profilazione-imprese-specie [specieSubject]="specieSubject" [globalSubject]="globalSubject"
+      [additionalElement]="additionalSpecie"></app-profilazione-imprese-specie>
+
+    <div class="spacer"></div>
+  </div>
+
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-gruppo-operazione
+      [gruppoOperazioneSubject]="gruppoOperazioneSubject"></app-profilazione-imprese-gruppo-operazione>
+
+    <app-profilazione-imprese-lavorazione [gruppoOperazioneSubject]="gruppoOperazioneSubject"
+      [lavorazioneSubject]="lavorazioneSubject"></app-profilazione-imprese-lavorazione>
+  </div>
+
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-macchine [globalSubject]="globalSubject"
+      [macchineSelectedSubject]="macchineSelectedSubject"></app-profilazione-imprese-macchine>
+
+    <app-profilazione-imprese-contatti [globalSubject]="globalSubject"
+      [contattiSelectedSubject]="contattiSelectedSubject"></app-profilazione-imprese-contatti>
+  </div>
+
+  <ng-container *ngIf="{ specie: specieSubject | async, 
+    lavorazione: lavorazioneSubject | async, 
+    macchine: macchineSelectedSubject | async, 
+    contatti: contattiSelectedSubject | async, 
+    global: globalSubject | async,
+    piva: piva$ | async } as data">
+    <div class="prof-imprese-row">
+      <button kendoButton
+        class="save-button btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+        (click)="save(data.specie, data.lavorazione, data.macchine, data.contatti, data.global, data.piva)">{{
+        'Salva' | transloco }}</button>
+    </div>
+
+    <div>
+      <kendo-grid [kendoGridBinding]="data$ | async" id="macchine-operatori-grid" [loading]="dataLoading"
+        [pageable]="{ type: 'input', pageSizes: true }" [pageSize]="10" [rowClass]="rowCallback">
+        <kendo-grid-command-column [width]="50">
+          <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+            <div class="cmd-row" kendoTooltip>
+              <button [title]="'Modifica' | transloco" *ngIf="!isRowSelected(dataItem)"
+                (click)="edit(dataItem)">
+                <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+              </button>
+
+              <button [title]="'Salva' | transloco" *ngIf="isRowSelected(dataItem)"
+                (click)="save(data.specie, data.lavorazione, data.macchine, data.contatti, data.global, data.piva)"
+                look="bare" size="small" class="btn btn-success k-button k-rounded-md k-button-bare-base k-button-bare">
+                <i class="fa-save-check" aria-hidden="true"></i>
+              </button>
+
+              <button [title]="'Elimina' | transloco" (click)="delete(dataItem, data.global, data.piva)">
+                <i aria-hidden="true" class="k-icon k-i-trash"></i>
+              </button>
+
+              <button [title]="'profImprese.PropagaSuTutteLeOperazioni' | transloco"
+                (click)="propagate(dataItem, data.global, data.piva)">
+                <i aria-hidden="true" class="xi-settings-dark"></i>
+              </button>
+
+              <button [title]="'profImprese.DefinisciCaratteristicheVariabiliMacchine' | transloco"
+                (click)="idProfilazione = dataItem.Id_Profilo_Dati">
+                <div class="faGridRowIcon faInfo"></div>
+              </button>
+            </div>
+          </ng-template>
+        </kendo-grid-command-column>
+
+        <kendo-grid-column [width]="75" field="lav_des"
+          [title]="'profImprese.Lavorazione' | transloco"></kendo-grid-column>
+        <kendo-grid-column [width]="75" field="veg_des" [title]="'Specie' | transloco"></kendo-grid-column>
+        <kendo-grid-column [width]="100" field="mac_des" [title]="'profImprese.Macchine' | transloco">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div [innerHTML]="dataItem.mac_des"></div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [width]="100" field="cont_des" [title]="'profImprese.Contatti' | transloco">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div [innerHTML]="dataItem.cont_des"></div>
+          </ng-template>
+        </kendo-grid-column>
+        <kendo-grid-column [width]="50" field="oreEttaro" [title]="'profImprese.OreXEttaro' | transloco">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div class="prof-imprese-hours">
+              <p>h:</p>
+              <kendo-textbox [value]="dataItem.ore" [disabled]="!isTimeBeingEdited"></kendo-textbox>
+              <p>min:</p>
+              <kendo-textbox [value]="dataItem.minuti" [disabled]="!isTimeBeingEdited"></kendo-textbox>
+
+              <button kendoTooltip [title]="'Salva' | transloco" *ngIf="isTimeBeingEdited"
+                (click)="updateTimes(dataItem)" look="bare" size="small"
+                class="btn btn-success k-button k-rounded-md k-button-bare-base k-button-bare">
+                <i class="fa-save-check" aria-hidden="true"></i>
+              </button>
+
+              <button kendoTooltip [title]="'Modifica' | transloco" *ngIf="!isTimeBeingEdited"
+                (click)="isTimeBeingEdited = true" class="row-button-time-lock">
+                <i aria-hidden="true" class="fa custom-lock" aria-hidden="true"></i>
+              </button>
+            </div>
+          </ng-template>
+        </kendo-grid-column>
+
+      </kendo-grid>
+    </div>
+  </ng-container>
+</div>
+
+<kendo-dialog [title]="'profImprese.DefinisciCaratteristicheVariabiliMacchine' | transloco"
+  *ngIf="idProfilazione != null" [minWidth]="500" [minHeight]="600" (close)="idProfilazione = null">
+  <div class="imprese-macchine-dialog">
+    <app-profilazione-imprese-macchine-dialog
+      [idProfilazione]="idProfilazione"></app-profilazione-imprese-macchine-dialog>
+  </div>
+</kendo-dialog>

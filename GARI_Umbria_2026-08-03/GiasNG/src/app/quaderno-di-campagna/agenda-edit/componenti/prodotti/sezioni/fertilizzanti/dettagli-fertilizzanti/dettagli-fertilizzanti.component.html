@@ -1,0 +1,140 @@
+<div [formGroup]="FertilizzantiForm">
+    <div class="col-12 col-sm-12">
+
+        <div class="row form-row">
+            <app-ricerca-fertilizzanti></app-ricerca-fertilizzanti>
+        </div>
+
+
+        <div class="row">
+            <app-magazzino-lotto></app-magazzino-lotto>
+        </div>
+
+        <div class="row form-row N-P-K-Cu-container">
+            <div class="col"
+                 *ngIf="qdcservice.mostraPercentualeN(Operazione)">
+                <gias-numeric-template
+                        [name]="'qdc.PercentualeNUtilizzataConSimbolo' | transloco"
+                        [clearButton]="true"
+                        giasFormControlName="N_Percentuale_X_Prodotto"
+                        [format]="'#.##'"
+                        [minValue]="0"
+                        (onBlur)="changePercentuale_N($event)">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col">
+                <gias-numeric-template
+                        [name]="getNome_N_P_K_Cu('N')"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                        [step]="qdcservice.get4DecimalNumericSettings().step"
+                        [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                        [obligatory]="true"
+                        giasFormControlName="N"
+                        (onBlur)="qdcdettaglifertilizzantiservice.changeN(FertilizzantiForm)">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col" *ngIf="qdcfertilizzantiservice.mostraEpocaFertilizzazione()">
+                <gias-numeric-template
+                        [name]="'qdc.lblNUtileResource1.Text' | transloco"
+                        [obligatory]="true"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        giasFormControlName="N_Utile">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col" *ngIf="qdcfertilizzantiservice.mostraEpocaFertilizzazione()">
+                <gias-numeric-template
+                        [name]="'qdc.lblEfficienzaResource1.Text' | transloco"
+                        [obligatory]="true"
+                        [clearButton]="true"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        [minValue]="0"
+                        [maxValue]="1"
+                        [autoCorrect]="true"
+                        (onBlur)="qdcdettaglifertilizzantiservice.changeEfficienza(FertilizzantiForm)"
+                        giasFormControlName="Efficienza">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col">
+                <gias-numeric-template
+                        [name]="getNome_N_P_K_Cu('P')"
+                        [obligatory]="true"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                        [step]="qdcservice.get4DecimalNumericSettings().step"
+                        [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                        giasFormControlName="P">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col">
+                <gias-numeric-template
+                        [name]="getNome_N_P_K_Cu('K')"
+                        [obligatory]="true"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                        [step]="qdcservice.get4DecimalNumericSettings().step"
+                        [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                        giasFormControlName="K">
+                </gias-numeric-template>
+            </div>
+
+            <div class="col">
+                <gias-numeric-template
+                        [name]="getNome_N_P_K_Cu('Cu')"
+                        [obligatory]="true"
+                        [format]="qdcservice.get4DecimalNumericSettings().format"
+                        giasFormControlName="Cu">
+                </gias-numeric-template>
+            </div>
+        </div>
+
+        <div class="row form-row"
+             *ngIf="mostraLbl_Dose_Consigliata() || mostraLbl_Dose_Consigliata_Ricetta() || qdcdettaglifertilizzantiservice.mostraLbl_Disponibilita_Attuale()">
+
+            <h5>
+                {{'qdc.DoseProdotto.text' | transloco}}
+            </h5>
+
+            <div class="col">
+                <label id="Lbl_Dose_Consigliata" *ngIf="mostraLbl_Dose_Consigliata()" style="padding-right: 20px;">
+                    {{ 'qdc.DoseHaProdottoResidua' | transloco}} {{ this.qdcdettaglifertilizzantiservice.Qta_Ha_Distribuibile_Prodotto | number:undefined: locale_id}}
+                </label>
+
+                <label id="Lbl_Dose_Consigliata_Ricetta" *ngIf="mostraLbl_Dose_Consigliata_Ricetta()" style="padding-right: 20px;">
+                    {{ 'qdc.DoseHaProdottoResiduaPreventivato' | transloco}} {{ this.qdcdettaglifertilizzantiservice.Qta_Ha_Distribuibile_Prodotto_Ricette | number:undefined: locale_id}}
+                </label>
+
+                <label id="Lbl_Dose_Disponibilita_Attuale" *ngIf="qdcdettaglifertilizzantiservice.mostraLbl_Disponibilita_Attuale()">
+                    {{ 'qdc.Disponibilita_Odierna_prevista_da_stoccaggio' | transloco}} {{ this.qdcdettaglifertilizzantiservice.Disponibilita_Attuale_Fertilizzante | number: qdcservice.digitsInfo_QdC_4_Decimal : locale_id}}
+                </label>
+            </div>
+        </div>
+
+        <div class="row form-row inserisci-dose-container">
+            <div class="udm-container">
+                <app-unita-di-misura></app-unita-di-misura>
+            </div>
+            <div class="dosi-container">
+                <app-dosi></app-dosi>
+            </div>
+            <div class="btn-dose-container"
+                 *ngIf="prodottiservice.mostrabtnInserisciDoseProdotto() && qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+                <div class="btn btn-primary btn-inserisci-dose-prodotto btn-primary-fill"
+                     (click)="InserisciFertilizzante()">
+                    <div class="fa_diserbo_inserisci_prodotto_in_miscela_on"></div>
+                    <span>{{ prodottiservice.btn_Inserisci_Modifica_Prodotto_Text }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12" *ngIf="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+            <app-grid-dosi-prodotti></app-grid-dosi-prodotti>
+        </div>
+
+    </div>
+</div>

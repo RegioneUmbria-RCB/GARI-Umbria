@@ -1,0 +1,24 @@
+<gias-kendo-grid #GridAnalisiTerreno
+                [gridId]="'AnalisiTerrenoGridId'"
+                class="kendo-grid-no-shadows"
+                style="background-color: #ffffff"
+                >
+
+    <ng-container headerContentEnd>
+        <div kendoTooltip *ngIf="gridAnalisiTerrenoHttpService.permessoEdit">
+            <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+                    [type]="'button'"
+                    [title]="'CancellaleOperazioniSelezionate' | transloco">
+                <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+            </button>
+        </div>
+        <div kendoTooltip *ngIf="gridAnalisiTerrenoHttpService.permessoEdit">
+            <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                    (click)="onNuovo()"
+                    [title]="'NuovaOperazione' | transloco" [type]="'button'">
+                <fa-icon class="faAddSchedule"></fa-icon>
+            </button>
+        </div>
+    </ng-container>
+
+</gias-kendo-grid>

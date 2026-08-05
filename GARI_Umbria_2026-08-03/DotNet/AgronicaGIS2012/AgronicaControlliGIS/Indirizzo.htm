@@ -1,0 +1,88 @@
+﻿<script type="text/javascript">
+    var chiave_p = "";
+    $(document).ready(function () {
+        $('#<%=ddl_provincia.ClientID %>').change(function () {
+
+            var valoreP;
+            valoreP = $(this).val();
+            $.mobile.loading('show'); 
+
+            var Chiave;
+            Chiave = 'PRO|' + valoreP;
+            if (chiave_p != Chiave) {
+                chiave_p = Chiave;
+                var pag;
+                pag = location.pathname.split("/")[location.pathname.split("/").length - 1] + "/x_Indirizzo";
+
+                $.ajax({
+                    type: "POST",
+                    url: pag,
+                    data: "{ Chiave: '" + Chiave + "'}",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (msg) {
+                        $('#ddl_Comuni').html(msg.d);
+                        $('#page').page('destroy').page();
+                        $.mobile.loading('hide');
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status);
+                        alert(thrownError);
+                        $.mobile.loading('hide');
+                    }
+                });
+            }
+        });
+
+
+
+        $('#ddl_Comuni').change(function () {
+            $('#<%=valore_DDL_Comuni.ClientID %>').val($('#ddl_Comuni').val());
+        });
+    });
+        
+</script>
+<li data-role="fieldcontain">
+    <label for="<%=txt_Via.ClientID %>">
+        Via
+    </label>
+
+    <asp:TextBox ID="txt_Via" runat="server">
+    </asp:TextBox>
+</li>
+<li data-role="fieldcontain">
+    <label for="<%=txt_Frazione.ClientID %>">
+        Frazione
+    </label>
+    <asp:TextBox ID="txt_frazione" runat="server">
+    </asp:TextBox>
+</li>
+<li data-role="fieldcontain">
+    <label for="<%=ddl_provincia.ClientID %>">
+        Provincia
+    </label>
+    <asp:DropDownList ID="ddl_provincia" runat="server">
+    </asp:DropDownList>
+</li>
+<li data-role="fieldcontain">
+    <label for="ddl_Comuni">
+        Comune
+    </label>
+    <select id="ddl_Comuni">
+    </select>
+    <asp:HiddenField ID="valore_DDL_Comuni" runat="server" />
+</li>
+<li data-role="fieldcontain">
+    <label for="<%=txt_stato.ClientID %>">
+        Stato
+    </label>
+    <asp:TextBox ID="txt_stato" runat="server">
+    </asp:TextBox>
+</li>
+<li data-role="fieldcontain">
+    <label for="<%=txt_note.ClientID %>">
+        Note
+    </label>
+    <asp:TextBox ID="txt_note" runat="server">
+    </asp:TextBox>
+</li>

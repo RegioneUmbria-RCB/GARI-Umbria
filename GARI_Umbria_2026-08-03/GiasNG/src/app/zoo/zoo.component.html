@@ -1,0 +1,83 @@
+@if (isImpresaSelezionata) {
+<gias-side-filters-template [filtersTemplate]="filtersForm" (search)="applyFilters()"></gias-side-filters-template>
+
+<kendo-tabstrip [scrollable]="{ enabled: true }" (tabSelect)="onTabSelect($event)">
+  @if (hasZooReadPermission) {
+  <kendo-tabstrip-tab [selected]="isTabSelected(0)">
+    <ng-template kendoTabTitle>
+      <div class="faTabsIcon faMenuZoo"></div>
+      <span class="clickable">{{ 'OperazioniZootecniche' | transloco }}</span>
+    </ng-template>
+    <ng-template kendoTabContent>
+      <zoo-menu [filters$]="searchFilters$">
+      </zoo-menu>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  }
+  @if (hasProtocolsReadPermission) {
+  <kendo-tabstrip-tab [selected]="isTabSelected(1)">
+    <ng-template kendoTabTitle>
+      <div class="faTabsIcon faMenuOrdiniDiLavoro"></div>
+      <span class="clickable"> {{ 'Protocolli' | transloco }}</span>
+    </ng-template>
+    <ng-template kendoTabContent>
+      <zoo-protocolli [filters$]="searchFilters$"></zoo-protocolli>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  }
+  @if (hasProtocolsReadPermission) {
+    <kendo-tabstrip-tab [selected]="isTabSelected(2)">
+      <ng-template kendoTabTitle>
+        <div class="faTabsIcon faMenuOrdiniDiLavoro"></div>
+        <span class="clickable"> {{ 'ProtocolliInCorso' | transloco }}</span>
+      </ng-template>
+      <ng-template kendoTabContent>
+        <zoo-protocolli-in-corso [filters$]="searchFilters$"></zoo-protocolli-in-corso>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    }
+  @if (hasTherapeuticIndicationsReadPermission) {
+  <kendo-tabstrip-tab [selected]="isTabSelected(3)">
+    <ng-template kendoTabTitle>
+      <div class="faTabsIcon faMenuBrogliaccio"></div>
+      <span class="clickable"> {{ 'PrescrizioniVeterinarie' | transloco }}</span>
+    </ng-template>
+    <ng-template kendoTabContent>
+      <zoo-indicazioni [filters$]="searchFilters$"></zoo-indicazioni>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  }
+  
+  @if (hasTherapiesReadPermission) {
+  <kendo-tabstrip-tab [selected]="isTabSelected(4)">
+    <ng-template kendoTabTitle>
+      <div class="faTabsIcon faMenuBrogliaccio"></div>
+      <span class="clickable"> {{ 'Terapie' | transloco }}</span>
+    </ng-template>
+    <ng-template kendoTabContent>
+      <zoo-terapie [filters$]="searchFilters$"></zoo-terapie>
+    </ng-template>
+  </kendo-tabstrip-tab>
+  }
+
+</kendo-tabstrip>
+
+
+<!-- Filters' Form -->
+<ng-template #filtersForm>
+  <form [formGroup]="filters">
+    <gias-drop-down-template-s giasFormControlName="center" [name]="'CentroAziendale' | transloco" [listItems]="centers"
+      textField="descrizione" valueField="codice"></gias-drop-down-template-s>
+    <gias-drop-down-template-s giasFormControlName="stable" [name]="'Stalla' | transloco" [listItems]="stables"
+      textField="descrizione" valueField="key" [clearButton]="true"></gias-drop-down-template-s>
+    <gias-data-template giasFormControlName="from" [name]="'Da' | transloco"></gias-data-template>
+    <gias-data-template giasFormControlName="to" [name]="'A' | transloco"></gias-data-template>
+
+    @if (isTabSelected(0)) {
+    <gias-multiselect-template-s giasFormControlName="operations" textField="descrizione" valueField="codice"
+      [name]="'Operazioni' | transloco" [listItems]="zooOperations"></gias-multiselect-template-s>
+    }
+  </form>
+</ng-template>
+
+}

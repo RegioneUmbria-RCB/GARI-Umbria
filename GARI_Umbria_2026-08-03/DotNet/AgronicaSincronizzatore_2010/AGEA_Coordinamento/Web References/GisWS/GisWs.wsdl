@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns3="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cooperazione.sian.it/wsTOAST/services" xmlns:tns2="http://cooperazione.sian.it/schema/gisws" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:egov="http://www.cnipa.it/schemas/2003/eGovIT/Busta1_0/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" name="GisWs" targetNamespace="http://cooperazione.sian.it/wsTOAST/services" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema targetNamespace="http://cooperazione.sian.it/schema/SoapAutenticazione">
+      <xsd:element name="SOAPAutenticazione" type="tns3:SOAPAutenticazione" />
+      <xsd:complexType name="SOAPAutenticazione">
+        <xsd:sequence>
+          <xsd:element name="username" type="xsd:string" />
+          <xsd:element name="password" type="xsd:string" />
+          <xsd:element name="nomeServizio" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://cooperazione.sian.it/schema/gisws">
+      <xsd:simpleType name="Int4Type">
+        <xsd:restriction base="xsd:int">
+          <xsd:totalDigits value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Decim10Type">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="10" />
+          <xsd:fractionDigits value="0" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Char4Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="4" />
+          <xsd:maxLength value="4" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Char5Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="5" />
+          <xsd:maxLength value="5" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="Varchar3Type">
+        <xsd:restriction base="xsd:string">
+          <xsd:maxLength value="3" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="EfaRefreshType">
+        <xsd:restriction base="xsd:integer">
+          <xsd:pattern value="[1-2]" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="RequestParticellaCatasto" type="tns2:ParticellaCatastoType" />
+      <xsd:complexType name="ParticellaCatastoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="codiceNazionale" type="tns2:Char4Type" />
+          <xsd:element minOccurs="1" name="numeroFoglio" type="tns2:Int4Type" />
+          <xsd:element minOccurs="1" name="numeroParticella" type="tns2:Char5Type" />
+          <xsd:element minOccurs="0" name="codiceSubalterno" nillable="true" type="tns2:Varchar3Type" />
+          <xsd:element minOccurs="1" name="dataRiferimento" type="xsd:date" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ResponseParticellaCatasto" type="tns2:ResponseParticellaCatastoType" />
+      <xsd:complexType name="ResponseParticellaCatastoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="esito" type="tns2:EsitoType" />
+          <xsd:element minOccurs="0" name="particellaGis" nillable="true" type="tns2:ParticellaGisType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ParticellaGisType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="idParticella" type="xsd:int" />
+          <xsd:element minOccurs="1" name="superficieGrafica" type="tns2:Decim10Type" />
+          <xsd:element minOccurs="1" name="dataInizioValGis" type="xsd:date" />
+          <xsd:element minOccurs="1" name="shape" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="EsitoType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="codRet" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="segnalazione" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RequestEfaRefreshGis" type="tns2:GeometriaGisType" />
+      <xsd:complexType name="GeometriaGisType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="shape" type="xsd:string" />
+          <xsd:element minOccurs="1" name="dataRiferimento" type="xsd:date" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ResponseEfaRefreshGis" type="tns2:ResponseEfaRefreshGisType" />
+      <xsd:complexType name="ResponseEfaRefreshGisType">
+        <xsd:sequence>
+          <xsd:element minOccurs="1" name="esito" type="tns2:EsitoType" />
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="usoSuolo" nillable="true" type="tns2:UsoSuoloType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="UsoSuoloType">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="codiUsoSuolo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descUsoSuolo" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="1" name="codiProdotto" type="xsd:string" />
+          <xsd:element minOccurs="0" name="descProdotto" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="superficie" nillable="true" type="tns2:Decim10Type" />
+          <xsd:element minOccurs="1" name="shape" type="xsd:string" />
+          <xsd:element minOccurs="1" name="tipo" type="tns2:EfaRefreshType" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="intestazione">
+    <part name="header" element="tns3:SOAPAutenticazione" />
+  </message>
+  <message name="richiesta_recuperaParticellaCatasto_Msg">
+    <part name="body" element="tns2:RequestParticellaCatasto" />
+  </message>
+  <message name="risposta_recuperaParticellaCatasto_Msg">
+    <part name="body" element="tns2:ResponseParticellaCatasto" />
+  </message>
+  <message name="richiesta_recuperaEFARefreshGIS_Msg">
+    <part name="body" element="tns2:RequestEfaRefreshGis" />
+  </message>
+  <message name="risposta_recuperaEFARefreshGIS_Msg">
+    <part name="body" element="tns2:ResponseEfaRefreshGis" />
+  </message>
+  <portType name="InterService">
+    <operation name="recuperaParticellaCatasto">
+      <input message="tns:richiesta_recuperaParticellaCatasto_Msg" />
+      <output message="tns:risposta_recuperaParticellaCatasto_Msg" />
+    </operation>
+    <operation name="recuperaEFARefreshGIS">
+      <input message="tns:richiesta_recuperaEFARefreshGIS_Msg" />
+      <output message="tns:risposta_recuperaEFARefreshGIS_Msg" />
+    </operation>
+  </portType>
+  <binding name="InterscambioSOAPBinding" type="tns:InterService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="recuperaParticellaCatasto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+    <operation name="recuperaEFARefreshGIS">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:header message="tns:intestazione" part="header" use="literal" />
+        <soap:body use="literal" parts="body" />
+      </input>
+      <output>
+        <soap:body use="literal" parts="body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="GisWs">
+    <port name="GisWs" binding="tns:InterscambioSOAPBinding">
+      <soap:address location="https://cooperazione.sian.it/wsTOAST/services/GisWs" />
+    </port>
+  </service>
+</definitions>

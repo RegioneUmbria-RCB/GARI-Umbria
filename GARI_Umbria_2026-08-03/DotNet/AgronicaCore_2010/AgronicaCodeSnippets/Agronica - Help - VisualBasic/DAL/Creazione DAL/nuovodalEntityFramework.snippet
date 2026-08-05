@@ -1,0 +1,168 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Creazione di un nuovo DAL via Entity Framework</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>agEFdal</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Nome</ID>
+          <ToolTip>Nome del dal</ToolTip>
+          <Default>NomeDal</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="vb">
+        <![CDATA[Imports AgronicaCoreDataProvider.UtilityProvider
+Imports AgronicaCoreDataProvider.AgronicaCoreParametri
+Imports AgronicaCoreEntityFramework
+Imports AgronicaCoreEntityFramework_POCO
+Imports System.Data.EntityClient
+Imports AgronicaCoreDataProvider
+Imports System.Transactions
+Imports System.Data.Objects
+Imports System.Dynamic
+
+
+Public Class $Nome$_R
+    Inherits AgronicaCoreDataProvider.DataProvider
+
+    Public Function Leggi(
+                ByVal COD As String,
+                ByVal IDTestataGriglia As Integer,
+                ByRef objParametri As AgronicaCoreDataProvider.AgronicaCoreParametri
+        ) As $Nome$
+
+        Dim TestataElem As $Nome$ = Nothing
+
+        Dim Piva_SuperUser = objParametri.PivaSuperUser
+
+        '----- Descrizione
+        Dim NomeRoutine As String = "$Nome$_R.Leggi()"
+
+        Dim gefutils As New Gias_EF_Utility
+
+        Dim EFConnString As String = gefutils.GetEntityConnectionString(objParametri.StringaConnessione)
+        Using GiasContext As New Gias_DeveloperServer_Entities(EFConnString)
+
+            TestataElem =
+           (From m In GiasContext.$Nome$
+            Where m.COD = COD
+            Select m).FirstOrDefault()
+
+        End Using
+
+        Return TestataElem
+
+
+    End Function
+End Class
+
+
+Public Class $Nome$_W
+    Inherits AgronicaCoreDataProvider.DataProvider
+
+
+    Public Function Aggiorna_$Nome$(
+                ByVal EFArrayToInsert As ArrayList,
+                ByVal EFArrayToUpdate As ArrayList,
+                ByVal EFArrayToDelete As ArrayList,
+                ByRef objParametri As AgronicaCoreDataProvider.AgronicaCoreParametri
+                ) As String
+
+        Dim Piva_SuperUser = objParametri.PivaSuperUser
+
+        Dim ObjSequenze = New AgronicaCoreDataProvider.Agro_Sequenze
+
+        Dim retries As Integer = 3
+        Dim success As Boolean = True
+
+        Dim NomeRoutine As String = "AgronicaCoreContabDAL.AgronicaCoreMetaschemaDAL.Aggiorna_$Nome$()"
+        Dim MessaggioErrore As String = ""
+
+        Dim gefutils As New Gias_EF_Utility
+        Dim EFConnString As String = gefutils.GetEntityConnectionString(objParametri.StringaConnessione)
+
+        Try
+
+            Using scope As New TransactionScope()
+
+                Using GiasContext As New Gias_DeveloperServer_Entities(EFConnString)
+
+                    Dim idSeq As Integer = 0
+
+                    For Each cur$Nome$ As $Nome$ In EFArrayToInsert
+
+                        success = False
+                        For i As Integer = 0 To retries - 1
+
+                            Try
+
+                                'Richiedo un nuovo id sequenza
+                                idSeq = ObjSequenze.NuovoId_Tabella_EF(GiasContext,
+                                               "$Nome$", 0, 2000000000, objParametri)
+
+                                cur$Nome$.COD = idSeq
+                                GiasContext.$Nome$.AddObject(cur$Nome$)
+                                GiasContext.SaveChanges()
+                                success = True
+
+                                Exit For
+                            Catch ex As Exception
+                                Threading.Thread.Sleep(500) ' 500 milliseconds = 0.5 seconds
+                            End Try
+                        Next
+                        ' Al primo errore evito di continuare le modifiche
+                        If Not success Then
+                            MessaggioErrore = "Non sono riuscito ad aggiornare i dati dopo " & retries & " tentativi."
+                            Exit For
+                        End If
+                    Next
+
+                    If success Then
+                        For Each listFattVar As $Nome$ In EFArrayToUpdate
+                            GiasContext.$Nome$.Attach(listFattVar)
+                            GiasContext.ObjectStateManager.ChangeObjectState(listFattVar, EntityState.Modified)
+                            GiasContext.SaveChanges()
+                        Next
+
+                        For Each listFattVar As $Nome$ In EFArrayToDelete
+                            GiasContext.AttachTo("$Nome$", listFattVar)
+                            GiasContext.DeleteObject(listFattVar)
+
+                            GiasContext.SaveChanges()
+                        Next
+
+                        ' COMIT Effettivo
+                        scope.Complete()
+                    End If
+
+                End Using
+            End Using
+
+
+        Catch ex As Exception
+
+            MessaggioErrore = ex.Message
+            Scrivi_LOG(objParametri, NomeRoutine, MessaggioErrore)
+            Throw New Exception("[" & NomeRoutine & "] : " & MessaggioErrore, ex)
+
+        End Try
+
+        Return MessaggioErrore
+
+    End Function
+
+
+
+End Class]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

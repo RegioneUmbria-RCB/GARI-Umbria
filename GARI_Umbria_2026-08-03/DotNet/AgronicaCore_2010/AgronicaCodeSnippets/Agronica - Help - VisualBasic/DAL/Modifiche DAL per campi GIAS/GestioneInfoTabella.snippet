@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Data Creazione, modifica, ecc.. (Assegna valori da parametri o da default)</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Aggiunge l'assegnazione di data creazione, modifica, username (Assegna valori da parametri o da default)</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Data Creazione, modifica, ecc..(Assegna valori da parametri o da default)</ID>
+          <Default>Data Creazione, modifica, ecc..(Assegna valori da parametri o da default)</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[If Data_creazione = #2/1/1900# Then
+	Data_creazione = Date.Now
+End If
+
+If Data_modifica = #2/1/1900# Then
+	Data_modifica = Date.Now
+End If
+
+If username_creazione = "" Then
+	username_creazione = objParametri.UsernameOperazione
+End If
+
+If username_modifica = "" Then
+	username_modifica = objParametri.UsernameOperazione
+End If]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

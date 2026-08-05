@@ -1,0 +1,128 @@
+<ng-template #itemListRef>
+    <table style="width: 100%">
+      <caption></caption>
+      <th></th>
+<!--        <tr>-->
+<!--            <th>Referente</th>-->
+<!--            <th>Indirizzo</th>-->
+<!--            <th>Specie Vegetale</th>-->
+<!--            <th>Distanza</th>-->
+<!--        </tr>-->
+        <div *ngFor="let item of prossimitaList">
+            <tr>
+                <td>{{item.Referente}}</td>
+                <td>{{item.Indirizzo}}</td>
+                <td>{{item.Veg_Des}}</td>
+                <td>{{item.Distanza}}</td>
+            </tr>
+        </div>
+    </table>
+</ng-template>
+
+<div [formGroup]="PresaveForm" *ngIf="!createFrom">
+    <div *ngIf="isNew">
+        <div class="row form-row">
+            <div class="col-6 col-sm-6">
+                <gias-drop-down-template-s
+                    [name]="'appezzamento.GeneraSuiLayer' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    textField="descrizione"
+                    valueField="codice"
+                    [filterable]="true"
+                    [listItems]="tipoPoligono"
+                    giasFormControlName="generaSuiLayer"
+                    [valuePrimitive]="false">
+                </gias-drop-down-template-s>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!isNew">
+        <div class="row form-row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <gias-drop-down-template-s
+                    [name]="'appezzamento.Memorizza' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    textField="descrizione"
+                    valueField="codice"
+                    [filterable]="true"
+                    [listItems]="memorizza"
+                    giasFormControlName="memorizza"
+                    [valuePrimitive]="false"
+                >
+                </gias-drop-down-template-s>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <gias-drop-down-template-s
+                    [name]="'appezzamento.AssociaSup' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    textField="descrizione"
+                    valueField="codice"
+                    [filterable]="true"
+                    [listItems]="associa"
+                    giasFormControlName="associa"
+                    [valuePrimitive]="false"
+                >
+                </gias-drop-down-template-s>
+            </div>
+        </div>
+        <div class="row form-row" *ngIf="this.PresaveForm.controls['associa'].value.codice !== nessunaAssociazione">
+            <div></div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <gias-numeric-template
+                    [name]="'appezzamento.SupOriginale' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    [isDisabled]="true"
+                    giasFormControlName="supOriginale"
+                    [format]="'n4'">
+                </gias-numeric-template>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <gias-numeric-template
+                    [name]="'appezzamento.SupCalcolata' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    [isDisabled]="true"
+                    giasFormControlName="supCalcolata"
+                    [format]="'n4'"
+                >
+                </gias-numeric-template>
+<!--                <button kendoButton class="bottom btn btn-primary" iconClass="xi-arrow-up-dark" (click)="setSupNuova()"></button>-->
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <gias-numeric-template
+                    [name]="'appezzamento.SupNuova' | transloco " [obligatory]="true"
+                    [clearButton]="true"
+                    giasFormControlName="supNuova"
+                    [format]="'n4'">
+                </gias-numeric-template>
+            </div>
+        </div>
+        <div class="row form-row">
+            <div class="col-3 col-md-3 col-sm-12">
+                <button
+                    kendoButton
+                    [textContent]="'appezzamento.ModificaDatiAnagrafici' | transloco "
+                    fillMode="outline"
+                    [primary]="false"
+                    (click)="modificaDatiAnagrafici()">
+                    <fa-icon size="lg" [icon]="['fas', 'times']" aria-hidden="true" style="color: red;">
+                    </fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row form-row" *ngIf="isSementi()">
+        <div class="col-3 col-md-3 col-sm-12">
+            <button
+                kendoButton
+                [textContent]="'appezzamento.VerificaProssimita' | transloco "
+                fillMode="outline"
+                [primary]="false"
+                (click)="verficaVicini(itemListRef)">
+                <fa-icon size="lg" [icon]="['fas', 'times']" aria-hidden="true" style="color: red;">
+                </fa-icon>
+            </button>
+        </div>
+    </div>
+</div>
+
+

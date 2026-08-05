@@ -1,0 +1,12 @@
+<button kendoButton #target class="target">
+  Sel. Colonne
+</button>
+<kendo-contextmenu
+      [target]="target"
+      [items]="columns"
+    >
+    <ng-template kendoMenuItemTemplate let-item="item">
+      <input type="checkbox" [id]="item.field" [checked]="!item.hidden" kendoCheckBoxc (click)="onChange(item)" />
+      <label class="k-checkbox-label" >{{ item.title }}</label>
+    </ng-template>
+    </kendo-contextmenu>

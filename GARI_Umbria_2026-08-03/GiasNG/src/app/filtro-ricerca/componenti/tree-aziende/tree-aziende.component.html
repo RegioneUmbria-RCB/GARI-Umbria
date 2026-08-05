@@ -1,0 +1,76 @@
+<kendo-drawer-container [hidden]="!shouldApplyTreeAziende">
+    <kendo-drawer
+        #drawer
+        [(expanded)]="expanded"
+        mode="overlay"
+        [width]="containerWidth"
+        [ngStyle]="{'overflow-x': 'visible !important', 'overflow-y': 'visible !important'}"
+        (collapse)="onCancel()"
+        [ngClass]="{ 'with-padding-top': withPadding }">
+        <ng-template kendoDrawerTemplate>
+            <app-tree-aziende-filters (onExpandTree)="expandAll($event)" (onCancelTree)="onCancel()"></app-tree-aziende-filters>
+            <div
+                id="mainContainer">
+                <kendo-treeview
+                                #treeview
+                                [nodes]="service.filteredNodes"
+                                textField="Text"
+                        
+                                kendoTreeViewHierarchyBinding
+                                childrenField="Items"
+                                
+                                kendoTreeViewExpandable
+                                [kendoTreeViewSelectable]="true"
+                                [(kendoTreeViewSelectedKeys)]="selectedKeys"
+                                [(expandedKeys)]="expandedKeys"
+                                kendoTreeViewSelectBy="id"
+                                
+                                [hasChildren]="hasChildren"
+                                [children]="fetchChildren"
+                                (selectionChange)="handleSelection($event)"
+                                
+                                kendoTreeViewVirtualization>
+                    <ng-template kendoTreeViewNodeTemplate let-dataItem>
+                        <div style="padding-right: 5px;" (click)="togglePopup()">
+
+                            <fa-icon class="treeviewIconElement" *ngIf="isIconDefinition(getIconForTree(dataItem))" [icon]="getIconForTree(dataItem)" aria-hidden="true"></fa-icon>
+                            <i *ngIf="!isIconDefinition(getIconForTree(dataItem))" aria-hidden="true" [class]="getIconForTree(dataItem)"></i>
+
+                            <span>{{ dataItem.Text }}</span>
+                            <div *ngIf="isSelected(dataItem)" class="actions-dropdown">
+                              
+                                <kendo-popup *ngIf="isPopupOpen" 
+                                             [anchor]="anchor" 
+                                             (close)="isPopupOpen = false"
+                                             [popupAlign]="{ horizontal: 'left', vertical: 'bottom' }"
+                                             [collision]="{ horizontal: 'fit', vertical: 'flip' }"
+                                             [offset]="{ left: -20, top: 0 }"
+                                             [appendTo]="'body'">
+                                  <div class="dropdown-menu show">
+                                    <button
+                                      class="dropdown-item"
+                                      *ngIf="showImpresaReferente(dataItem.TipoNodo)"
+                                      (click)="onClickImpresaReferente(dataItem)">
+                                      <!-- <fa-icon class="icon icon-popup" [icon]="faArrowRight"></fa-icon> -->
+                                      <i aria-hidden="true" class="icon icon-popup icon-impresa-ref"></i> <span class="test-button-popup">{{ 'ImpostaImpresaReferente' | transloco }}</span>
+                                    </button>
+                                    <button class="dropdown-item" (click)="onClickImpostaPIVA(dataItem)">
+                                      <!-- <fa-icon class="icon icon-popup" [icon]="faArrowDown"></fa-icon> -->
+                                      <i aria-hidden="true" class="icon icon-popup icon-impresa"></i> <span class="test-button-popup">{{ 'ImpostaPivaRagSoc' | transloco }}</span>
+                                    </button>
+                                    <button
+                                      class="dropdown-item"
+                                      *ngIf="showImpostaAziendaCorrente"
+                                      (click)="onClickImpostaAzienda(dataItem)">
+                                      <fa-icon class="icon icon-popup" [icon]="faCheckCircle"></fa-icon> <span class="test-button-popup">{{ 'ImpostaAziendaCorrente' | transloco }}</span>
+                                    </button>
+                                  </div>
+                                </kendo-popup>
+                            </div>
+                        </div>
+                    </ng-template>
+                </kendo-treeview>
+            </div>
+        </ng-template>
+    </kendo-drawer>
+</kendo-drawer-container>

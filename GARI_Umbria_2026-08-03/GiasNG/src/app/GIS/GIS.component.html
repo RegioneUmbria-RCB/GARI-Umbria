@@ -1,0 +1,63 @@
+﻿<div *ngIf="apiLoaded | async">
+  <kendo-appbar position="top" *ngIf="isToolbarDisplayed$ | async">
+    <gis-toolbar [forRilievi]="forRilievi" [isAnalisiTerreno]="isAnalisiTerreno()" [analisiTerrenoEdit]="analisiTerrenoEdit"></gis-toolbar>
+  </kendo-appbar>
+  <div>
+    <gias-google-map [modality]="_modality" (loaded)="initMap()"></gias-google-map>
+  </div>
+</div>
+
+<ng-container *ngIf="isFullModality()">
+  <app-gis-configuration-modal #GISConfigurationModalComponent></app-gis-configuration-modal>
+  <app-gis-calendar-modal #GISCalendarModalComponent></app-gis-calendar-modal>
+  <gis-layer-color-picker-window></gis-layer-color-picker-window>
+  <gis-fixed-layer-property-window></gis-fixed-layer-property-window>
+  <gis-layer-visibility-configuration-window></gis-layer-visibility-configuration-window>
+  <gis-layer-permissions-window></gis-layer-permissions-window>
+  <gis-layer-advanced-settings-window></gis-layer-advanced-settings-window>
+  <gis-delete-feature-window></gis-delete-feature-window>
+  <gis-gestione-piano-rateo></gis-gestione-piano-rateo>
+  <gis-analisi-mappe-satellitari-window></gis-analisi-mappe-satellitari-window>
+  <gis-algorithm-configuration-window></gis-algorithm-configuration-window>
+  <gis-clustering-algorithm-configuration-window></gis-clustering-algorithm-configuration-window>
+  <gis-raster-configuration-window></gis-raster-configuration-window>
+  <gis-bookmarks-window></gis-bookmarks-window>
+  <!-- <tree-window></tree-window> -->
+  <gis-bottom-window></gis-bottom-window>
+</ng-container>
+
+<div *ngIf="!isTrattamento() && !isAnalisiTerreno()">
+  <gis-layer-window [modality]="_modality"></gis-layer-window>
+</div>
+
+<theme-window [modality]="_modality"></theme-window>
+
+<kendo-floatingactionbutton
+  icon="close"
+  [dialItems]="contacts"
+  (open)="onDialOpen()"
+  (close)="onDialClose()"
+  buttonClass="k-p-2 bg-white x-outline-0"
+  (dialItemClick)="onDialItemClick($event)"
+>
+  <ng-template kendoFloatingActionButtonTemplate>
+    <i aria-hidden="true" [class]="icon"></i>
+  </ng-template>
+  <ng-template kendoDialItemTemplate let-item let-isFocused="isFocused">
+    <div
+      [ngClass]="{
+                    'k-p-2':true,
+                    'bg-white':(item.icon=='xi-satellite' || item.icon=='xi-roadmap'),
+                    'bg-gias-blue':(item.icon!='xi-satellite' || item.icon!='xi-roadmap'),
+                    'circle':true,
+                    'floating-icon-container':true,
+                    'TipologiaMappaSelected': ((item.icon=='xi-satellite' && satelliteFocused) || (item.icon=='xi-roadmap' && !satelliteFocused))
+                }"
+    >
+      <i aria-hidden="true" [class]="item.icon"></i>
+    </div>
+
+  </ng-template>
+</kendo-floatingactionbutton>
+
+

@@ -1,0 +1,31 @@
+<div>
+    <div class="row">
+        <app-opzioni-raccolta></app-opzioni-raccolta>
+        <div class="col-12 gias-aggiungi-prodotto-container">
+            <button class="btn btn-primary btn-primary-fill btn-sm btn-primary-text btn-add-prod right"
+                *ngIf="ripartizione === MANUALE"
+                (click)="onAdd()">
+                <!-- [disabled]="Disabilita_Btn_AggiungiDoseProdotto(Sezione_Prodotto)" -->
+                <fa-icon size="lg" [icon]="['fas', 'plus']" aria-hidden="true"></fa-icon>
+                <span >
+                    {{"AggiungiProdotto" | transloco}}
+                </span>
+            </button>
+        </div>
+    </div>
+    <hr style="margin-top: 30px; margin-bottom: 15px">
+    <div class="row raccolta-container">
+
+        <div *ngIf="ripartizione === MANUALE; else Ripartizione_Automatica">
+            <app-ripartizione-manuale
+                *ngFor="let prodotto of Risorse.controls; let i = index"
+                [Prodotto]="prodotto"
+                [index]="i">
+            </app-ripartizione-manuale>
+        </div>
+
+        <ng-template #Ripartizione_Automatica>
+                <app-grid-raccolta-auto #gridAuto></app-grid-raccolta-auto>
+        </ng-template>
+    </div>
+</div>

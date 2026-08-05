@@ -1,0 +1,54 @@
+<kendo-window
+    *ngIf="opened"
+    (close)="toggle(false)"
+    [left]="10"
+    [top]="70"
+    [draggable]="true"
+>
+
+<kendo-window-titlebar>
+    <div class='k-window-title'>{{'gis.Test' | transloco}}</div>
+    <button kendoWindowRestoreAction [disabled]="true" [hidden]="true"></button>
+    <button kendoWindowMinimizeAction [disabled]="true" [hidden]="true"></button>
+    <button kendoWindowMaximizeAction [disabled]="true" [hidden]="true"></button>
+    <button kendoWindowCloseAction [disabled]="true" [hidden]="true"></button>
+</kendo-window-titlebar>
+
+<!--
+<div class="row" class="titoloTest">Raggruppa Etichette Layer</div>
+<div class="row">
+    <span>
+        <label for="idLayer">Layer&nbsp;</label>
+        <select id="idLayer" class="ddlTest">
+            <option value="3">Catasto</option>
+            <option value="1">Appezzamento</option>
+            <option value="19">Impianto</option>
+        </select>
+        <label for="raggruppaLayer" style="vertical-align: middle;">&nbsp;Raggr.&nbsp;</label>
+        <input type="checkbox" id="raggruppaLayer" class="checkboxTest">
+        &nbsp;
+        <button
+            kendoButton
+            fillMode="outline"
+            [primary]="false"
+            (click)="testSetLayerItemGrouping()">
+            <fa-icon size="lg" [icon]="['fas', 'object-group']" aria-hidden="true" style="color: green;"></fa-icon>
+        </button>
+    </span>
+</div>
+-->
+
+<div class="row" class="titoloTest">{{'gis.Albero' | transloco}}</div>
+<div class="row">
+    <button
+        kendoButton
+        fillMode="outline"
+        [primary]="false"
+        (click)="expandPanel()"
+    >
+        <fa-icon size="lg" [icon]="['fas', 'tree']" aria-hidden="true" style="color: green;"></fa-icon>
+    </button>
+</div>
+
+<app-kendo-tree [treeContainerContext]="treeContextGis">
+</app-kendo-tree>

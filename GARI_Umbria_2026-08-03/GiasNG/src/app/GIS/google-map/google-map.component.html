@@ -1,0 +1,69 @@
+<google-map id="map" [center]="center" [height]="calcHeight" width="100%" [zoom]="zoom"
+            (mapInitialized)="mapInitializedHandler()">
+
+  <div id="zoomtextbox" style="
+            background-color: white;
+            border-radius: 3px;
+            box-shadow: 0 2px 6px rgba(0,0,0,.3);
+            color: black;
+            /*margin: 8px 0 60px;*/
+            cursor: default;
+            text-align: center;
+            font-size: 16px;
+            z-index: 50;
+
+            margin: 5px;
+            position: absolute;
+            bottom: 8%;
+            left: 42.5%;
+        ">
+    <kendo-textbox *ngIf="modality == GISModality.Full" [(ngModel)]="labelZoom" readonly="true"
+                   style="font-family: Arial, sans-serif; font-size: 14px; font-weight: bold;"></kendo-textbox>
+  </div>
+
+  <div *ngIf="modality == GISModality.Full">
+    <draw-window [modality]="modality"></draw-window>
+    <app-marker-window></app-marker-window>
+    <gis-polygon-merge-window></gis-polygon-merge-window>
+    <app-linee-guida-ab-window></app-linee-guida-ab-window>
+    <app-gestione-piano-rateo-window></app-gestione-piano-rateo-window>
+  </div>
+  <polygon-window></polygon-window>
+  <!-- <map-heatmap-layer></map-heatmap-layer> -->
+</google-map>
+
+<kendo-dialog *ngIf="dialogListaAllegatiOpen" (close)="closeAllegatiDaRicettaDialog(null)"
+              [width]="500">
+
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'gis.DatiAgricolturaPrecisone' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <p>{{ 'gis.DatiAgricolturaPrecisoneSeleziona' | transloco }}</p>
+
+  <kendo-dropdownlist [data]="listaAllegati" textField="Allegati_Documenti_Des" valueField="Allegati_Documenti_Cod"
+                      [(ngModel)]="allegatoSelected">
+  </kendo-dropdownlist>
+
+  <kendo-dialog-actions>
+    <!-- <button kendoButton (click)="closeAllegatiDaRicettaDialog(null)">{{ 'Annulla' | tranloco }}</button> -->
+    <button kendoButton (click)="closeAllegatiDaRicettaDialog(allegatoSelected)" themeColor="primary">{{ 'Conferma'
+      | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+<!--SALVATORE ZAMMATARO 05-06-2023: il btn sottostante è necessario al funzionamento dei btns per la copia di oggetti WKT e GeoJson dalla infowindow-->
+<button
+  id="copyGeoJsonBtnInfoWindow"
+  kendoButton
+  style="display: none"
+  (click)="quickGeoJson()"
+>
+</button>
+<button
+  id="copyWKTBtnInfoWindow"
+  kendoButton
+  style="display: none"
+  (click)="quickWKT()"
+>
+</button>

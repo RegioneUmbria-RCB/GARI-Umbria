@@ -1,0 +1,554 @@
+/* Services Customization Cascade Style Sheet */
+
+/* reusable items (reusable across the entire application?) */
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+
+.card-shadow {
+    -webkit-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px  rgba(0,0,0,0.08); 
+    -moz-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px  rgba(0,0,0,0.08); 
+    -o-box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08), 0px 6px 6px 0px  rgba(0,0,0,0.08); 
+    box-shadow:  0px 6px 6px 0px  rgba(0,0,0,0.08),  0px 6px 6px 0px rgba(0,0,0,0.08); 
+}
+
+.action-button {
+    height: 28px;
+    line-height: 28px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 14px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.action-button.dark {
+    color: white;
+    border: 1px solid #205771;
+}
+.action-button.light {
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/* layout */
+#ServicesCustomization {
+    width: 100%;
+    background-color: white;
+}
+
+#ServicesCustomization,
+.services-customization-container,
+.services-manager-container,
+.services-favourite-container
+{
+    border-radius: 8px;
+}
+
+.services-customization-container .services-customization-item {
+    flex: 1;
+    margin: 15px;
+}
+
+/* main card */
+.services-customization-header {
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.services-customization-header .actions-container {
+    display: flex;
+    align-items: center;
+}
+
+.services-customization-header .actions-container .action-button {
+    cursor: pointer;
+}
+
+.services-customization-header .title-container {
+    display: flex;
+    align-items: center;
+}
+
+.services-customization-header .title-container .title {
+    line-height: 58px;
+    margin: 0;
+    margin-left: 30px;
+}
+
+.services-customization-header .checkbox-container {
+    display: inline-block;
+}
+
+.services-customization-header .title-container .checkbox {
+    margin-left: 30px;
+    color: #002D5A;
+}
+.services-customization-header .title-container .checkbox:hover {
+    cursor: pointer;
+}
+
+.services-customization-header .title-container .checkbox .checkbox-icon.active .fa.fa-square-o{
+    display: none;
+}
+.services-customization-header .title-container .checkbox .checkbox-icon.active .fa.fa-check-square{
+    display: inline-block;
+}
+
+.services-customization-header .title-container .checkbox .checkbox-icon.unchecked .fa.fa-square-o{
+    display: inline-block;
+    color: #BABABA;
+}
+.services-customization-header .title-container .checkbox .checkbox-icon.unchecked .fa.fa-check-square{
+    display: none;
+}
+
+.services-customization-body {
+    display: flex;
+}
+
+
+/* Services manager card */
+#ServicesManager {
+    min-height: 100px;
+}
+
+.services-manager-body {
+    padding-bottom: 25px;
+}
+
+.services-manager-container {
+    border: 1px solid #F0F0F0;
+}
+.services-manager-title {
+    margin-top: 25px;
+    margin-left: 40px;
+}
+.services-manager-header .search-services {
+    margin-top: 17px;
+    margin-left: 40px;
+    margin-bottom: 25px;
+    margin-right: 40px;
+    display: flex;
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    height: 34px;
+    line-height: 34px;
+}
+
+.services-manager-header .search-services .icon {
+    margin-top: -4px;
+    z-index: 1;
+}
+
+.services-manager-header .search-services input#searchService {
+    background-color: #F5F5F5;
+    border: none;
+    width: 100%;
+    margin-right: 17px;
+}
+.services-manager-header .search-services input#searchService:focus {
+    outline: none;
+}
+
+/* service manager scrollbar */
+.services-manager-body .services-container {
+    overflow-y: auto;
+    margin-right: 10px;
+}
+
+.services-favourite-body .services-container {
+    overflow-y: auto;
+    margin-right: 10px;
+}
+
+.services-container::-webkit-scrollbar {
+    left:-100px;
+    width: 10px;
+    /* width of the entire scrollbar */
+}
+
+.services-container::-webkit-scrollbar-track {
+    background: #F5F5F5; /* color of the tracking area */
+}
+
+.services-container::-webkit-scrollbar-thumb {
+    background-color: #002D5A;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid white;  /* creates padding around scroll thumb */
+}
+
+
+/* Services favourite card */
+#ServicesFavourite {
+    min-height: 300px;
+}
+
+.services-favourite-header {
+    height: 48px;
+    line-height: 48px;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+.services-favourite-header .star-icon {
+    float: left;
+    margin-left: 10px;
+    font-size: 28px;
+}
+.services-favourite-header .services-favourite-title {
+    float: left;
+    margin-left: 10px;
+}
+
+.services-favourite-body {
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #BABABA;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    background-color: #F5F5F5;
+}
+
+/***************
+ Service item 
+ ****************/
+.services-container .service-item {
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    display: flex;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.services-container .service-item .checkbox-icon {
+    margin-left: 10px;
+    margin-right: 15px;
+}
+.services-container .service-item .checkbox-icon .fa {
+    width: 14px;
+}
+
+.services-container .service-item .checkbox-icon.readonly {
+    color: #BABABA;
+}
+.services-container .service-item .checkbox-icon.readonly .fa.fa-square-o{
+    display: none;
+}
+.services-container .service-item .checkbox-icon.readonly .fa.fa-check-square{
+    display: inline-block;
+    color: #BABABA;
+}
+
+.services-container .service-item .checkbox-icon.active.unchecked {
+    cursor: pointer;
+}
+.services-container .service-item .checkbox-icon.active.unchecked:hover .fa.fa-square-o{
+    display: none;
+}
+.services-container .service-item .checkbox-icon.active.unchecked:hover .fa.fa-check-square{
+    display: inline-block;
+    color: #002D5A;
+}
+.services-container .service-item .checkbox-icon.active.unchecked .fa.fa-square-o{
+    cursor: pointer;
+    color: #BABABA;
+}
+.services-container .service-item .checkbox-icon.active.unchecked .fa.fa-check-square{
+    display: none;
+}
+
+.services-container .service-item .checkbox-icon.remove .fa:hover {
+    cursor: pointer;
+}
+
+.services-container .service-content {
+    width: 100%;
+    margin-right: 20px;
+    background-color: white;
+}
+
+.services-container .service-content .service-item-text {
+    color: #2B2B2B;
+    font-size: 12px;
+    margin-left: 3px;
+}
+
+.service-content i.fa:first-child {
+    color: #1A1A1A;
+    font-size: 20px;
+}
+
+.service-content i {
+    color: #1A1A1A;
+}
+
+.service-content i.fa.fa-gias {
+    width: 30px;
+    height: 30px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 32px auto;
+}
+
+.service-content i.fa.fa-gias.fa-angle-right {
+    display: none; /* attualmente la freccia di navigazione è disabilitata perchè non è prevista la navigazione */
+    width: 12px;
+    height: 25px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+/* table optimization */
+@media only screen and (max-width: 1023px) {
+    /*  */
+    .services-customization-container {
+        padding-bottom: 5px;
+    }
+
+    .services-customization-header .title-container {
+        display: inline-block;
+    }
+
+    .services-customization-header .title-container .title,
+    .services-customization-header .title-container .checkbox-container {
+        line-height: 30px;
+        margin-left: 20px;
+    }
+
+    .services-customization-header .title-container .checkbox {
+        margin-left: 0px;
+        margin-right: 30px;
+    }
+
+    .services-manager-body .services-container {
+        max-height: 125px;
+    }
+
+    .services-customization-body {
+        display: block;
+    }
+
+    .services-customization-header .actions-container {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+    }
+}
+
+/* mobile optimization */
+@media only screen and (max-width: 767px) {
+    #ServicesCustomization {
+        margin-top: 15px;
+    }
+
+    .services-customization-header {
+        display: flex;
+    }
+
+    .services-manager-title {
+        font-size: 14px;
+        margin-left: 20px;
+        margin-top: 15px;
+    }
+    .services-manager-header .search-services {
+        margin-left: 20px;
+        margin-bottom: 15px;
+    }
+
+    .services-favourite-header .star-icon {
+        font-size: 22px;
+    }
+    .services-favourite-header {
+        font-size: 14px;
+    }
+
+    .services-customization-header .actions-container {
+        margin-bottom: 5px;
+        margin-left: 20px;
+        justify-content: start;
+    }
+    .services-favourite-body {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .services-manager-body {
+        padding-bottom: 15px;
+    }
+
+    .services-customization-header .actions-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .services-customization-header .checkbox-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .action-button {
+        margin-top: 10px;
+    }
+}
+
+/* optimization heght scroll */
+@media screen and (min-width: 1023px) and (max-height: 1010px) {
+
+    .services-manager-body .services-container {
+        max-height: 600px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 730px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 960px) {
+
+    .services-manager-body .services-container {
+        max-height: 550px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 580px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 910px) {
+
+    .services-manager-body .services-container {
+        max-height: 500px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 530px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 860px) {
+
+    .services-manager-body .services-container {
+        max-height: 450px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 480px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 810px) {
+
+    .services-manager-body .services-container {
+        max-height: 400px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 430px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 760px) {
+
+    .services-manager-body .services-container {
+        max-height: 350px;
+    }
+
+    .services-favourite-body .services-container {
+        max-height: 380px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 710px) {
+    .services-manager-body .services-container {
+        max-height: 300px;
+    }
+    .services-favourite-body .services-container {
+        max-height: 330px;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-height: 660px) {
+    .services-manager-body .services-container {
+        max-height: 250px;
+    }
+    .services-favourite-body .services-container {
+        max-height: 280px;
+    }
+}
+
+/*********************************
+ **** services shared style   ****
+ *********************************/
+
+ /* used with color-border-area-*
+    create a card left border colored
+    and all other borders in grey
+ */
+.service-card-border-left {
+    border: 1px solid #E8E8E8;
+    border-radius: 4px;
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+/** ------------------ icon custom sidebar menu - legend color */
+
+/* blu #002D5A
+Dashboard
+*/
+.color-area-general {color:#002D5A !important;}
+.color-bg-area-general {background-color:#002D5A !important;}
+.color-border-area-general {border-color:#002D5A !important;}
+.color-border-left-area-general {border-left-color:#002D5A !important;}
+.color-border-area-general.dropdown-el {border-color:transparent !important;}
+.input-border-area-general .select-selected, .item-icon + .item .input-border-area-general .select-selected {border-color:#002D5A !important;}
+
+/* verde #6FB783
+Anagrafiche e Piano Colturale, Quaderno di Campagna, Stampe e Statistiche, Conferimento, Campionamento e Liquidazioni, Lavorazioni
+*/
+.color-area-green {color:#6FB783 !important;}
+.color-bg-area-green {background-color:#6FB783 !important;}
+.color-border-area-green {border-color:#6FB783 !important;}
+.color-border-left-area-green {border-left-color:#6FB783 !important;}
+.color-border-area-green.dropdown-el {border-color:transparent !important;}
+.input-border-area-green .select-selected, .item-icon + .item .input-border-area-green .select-selected {border-color:#6FB783 !important;}
+
+/* grigio #575757
+Magazzini Movimenti Prodotti, Qualità e Tracciabilità, Controllo di Gestione
+*/
+.color-area-product {color:#575757 !important;}
+.color-bg-area-product {background-color:#575757 !important;}
+.color-border-area-product {border-color:#575757 !important;}
+.color-border-left-area-product {border-left-color:#575757 !important;}
+.color-border-area-product.dropdown-el {border-color:transparent !important;}
+.input-border-area-product .select-selected, .item-icon + .item .input-border-area-product .select-selected {border-color:#575757 !important;}
+
+/* giallo #D0AD5E
+Contabilità, Scadenze Documentale, Acquisti, Vendite
+*/
+.color-area-commercial {color:#D0AD5E !important;}
+.color-bg-area-commercial {background-color:#D0AD5E !important;}
+.color-border-area-commercial {border-color:#D0AD5E !important;}
+.color-border-left-area-commercial {border-left-color:#D0AD5E !important;}
+.color-border-area-commercial.dropdown-el {border-color:transparent !important;}
+.input-border-area-commercial .select-selected, .item-icon + .item .input-border-area-commercial .select-selected {border-color:#D0AD5E !important;}
+
+/* rosso #D90D1D
+Amm. del Sistema
+*/
+.color-area-settings {color:#D90D1D !important;}
+.color-bg-area-settings {background-color:#D90D1D !important;}
+.color-border-area-settings {border-color:#D90D1D !important;}
+.color-border-left-area-settings {border-left-color:#D90D1D !important;}
+.color-border-area-settings.dropdown-el {border-color:transparent !important;}
+.input-border-area-settings .select-selected, .item-icon + .item .input-border-area-settings .select-selected {border-color:#D90D1D !important;}

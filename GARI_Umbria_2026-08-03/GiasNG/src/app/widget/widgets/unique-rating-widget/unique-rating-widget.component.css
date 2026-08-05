@@ -1,0 +1,139 @@
+.widget-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px;
+}
+
+.widget-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.widget-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.widget-row.data>div {
+    padding: 8px;
+}
+
+.semaphores {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.semaphore {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    vertical-align: middle;
+    box-shadow: inset 0 0 1px #999, inset 0 0 8px rgba(0, 0, 0, .2);
+    margin-top: 2px;
+    filter: brightness(1.05);
+}
+
+.semaphore.green {
+    background-color: lightgreen;
+}
+
+.semaphore.yellow {
+    background-color: gold;
+}
+
+.semaphore.red {
+    background-color: orangered;
+}
+
+.semaphore.disabled {
+    background-color: #ccd4db;
+}
+
+.widget-row.header>div {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.w-kpi {
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+.w-kpi .kpi-img {
+    flex: 1
+}
+
+.w-kpi .kpi-name {
+    flex: 4
+}
+
+.w-kpi.colored {
+    color: white;
+    background-color: #002850;
+    border-radius: 5px;
+}
+
+.w-description {
+    width: 65%;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.w-value {
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 4px;
+}
+
+.w-value .info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.w-error {
+    color: #ffc000;
+    padding-left: 16px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 50%;
+    border-color: #002850;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.scaled {
+    scale: 2 1 1
+}
+
+hr {
+    border-top: 1px solid #002850 !important;
+}
+
+.info-print{
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('assets/fonts/Lato-Regular.ttf') format('truetype');
+}

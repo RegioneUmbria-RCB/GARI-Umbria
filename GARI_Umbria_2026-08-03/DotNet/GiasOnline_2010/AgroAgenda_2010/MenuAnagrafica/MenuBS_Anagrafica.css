@@ -1,0 +1,189 @@
+﻿/*.jstree-apple.jstree-focused {
+    background: #F1F3F7;
+    overflow: auto;
+    margin: 5px;
+    margin-top: 15px;
+}
+
+.jstree-apple li {
+    width: 110%;
+}
+
+/*.k-grid .btn {
+    margin-bottom: 5px;
+}*/
+
+/*Dato che l'albero si vede sono su desktop e non in mobile, non voglio grandi spazi tra un elemento e l'altro*/
+/*.k-treeview .k-in {
+    padding: 0px;
+}*/
+
+/*.toggleEspandi {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}*/
+
+/*cellulare*/
+@media (min-width: 300px) {
+    #slide-in-share {
+        width: 400px;
+        margin-left: -400px;
+    }
+
+    #slide-in-share > #container > #top-panel > .k-window {
+        width: 400px;
+    }
+
+    #slide-in-handle {
+        left: 400px;
+    }
+}
+
+/*schermo ipdad*/
+@media (min-width: 760px) {
+    #slide-in-share {
+        width: 500px;
+        margin-left: -500px;
+    }
+
+        #slide-in-share > #container > #top-panel > .k-window {
+            width: 500px;
+            left: 0px;
+        }
+
+
+    #drag {
+        left: 500px;
+        margin-left:0px;
+    }
+
+    #slide-in-handle {
+        left: 500px;
+        margin-left:0px;
+    }
+
+}
+
+/*schermo laptop piccolo*/
+@media (min-width: 1300px) {
+    #slide-in-share {
+        width: 600px;
+        margin-left: -600px;
+    }
+
+        #slide-in-share > #container > #top-panel > .k-window {
+            width: 600px;
+            left: 0px;
+        }
+
+    #drag {
+        left: 600px;
+        margin-left:0px;
+    }
+
+    #slide-in-handle {
+        left: 600px;
+        margin-left:0px;
+    }
+
+}
+
+/*schermo desktop grande*/
+@media (min-width: 1900px) {
+    #slide-in-share {
+        width: 700px;
+        margin-left:-700px;
+    }
+
+        #slide-in-share > #container > #top-panel > .k-window {
+            width: 700px;
+            left: 0px;
+        }
+
+    #drag {
+        left: 700px;
+        margin-left:0px;
+    }
+
+    #slide-in-handle {
+        left: 700px;
+        margin-left:0px;
+    }
+
+}
+
+.slideInShareCommon {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border: solid #e9e9e9;
+    border-width: 1px 1px 1px 0;
+}
+
+.slideInHandleCommon {
+    position: absolute;
+    width: 30px;
+    height: 150px !important;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/*fine slide-in-share*/
+
+.filter-loader-hidden { display: none; }
+
+.search-or-loader-hidden { display: none; }
+
+.k-group .k-in {
+    padding: 0px;
+    min-height: 25px;
+    line-height: 25px;
+}
+
+.window-content {
+    overflow: auto;
+    height: calc(100% - 90px);
+    padding: 10px
+}
+
+.window-footer {
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 95%;
+    margin-top: 150px;
+    padding: 19px 0 20px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+.breadcrumb {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#drag {
+    background-color: #fff;
+    float: right;
+    height: 760px;
+    width: 3px;
+    cursor: col-resize;
+}
+
+#container {
+
+    display: flex;
+}
+
+#bottom-panel {
+    width: 0px;
+}
+
+#top-panel {
+    flex: 1;
+    /* Grow to rest of container */
+}

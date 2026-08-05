@@ -1,0 +1,97 @@
+<p class="text_blue title_h1" style="margin-top: -20px;">{{ 'GestionePresetNoteInterventoCorrente' | transloco }}</p>
+<!-- <h2 class="text_gray_dark2 title_h2 text_weight_300">{{ 'ScegliOpPreferite' | transloco }}</h2> -->
+
+<section class="card-shadow">
+    <!-- PAGE HEADER -->
+    <div class="row operations-customization-header">
+        <div class="col col-md-6 title-container">
+            <div class="title title_h1 text_blue text_weight_500">
+                {{ 'TipoVisualizzazione' | transloco }}
+            </div>
+            <form [formGroup]="form">
+            <div class="mode-switch">
+                <span class="text_blue">{{ 'PresetIniziale' | transloco }}</span>
+                <gias-switch-template class="inline-switch"
+                    [isBlue]="true"
+                    giasFormControlName="canCustomize">
+                </gias-switch-template>
+                <span class="text_blue">{{ 'Personalizza' | transloco }}</span>
+            </div>
+            </form>
+        </div>
+        <div class="col col-md-6 actions-container">
+            <button kendobutton class="action-button light border_blue text_blue text_uppercase"
+                (click)="undoAction()">
+                {{ 'Annulla' | transloco }}
+            </button>
+            <button kendobutton class="action-button dark bg_blue text_uppercase"
+                (click)="execute()">
+                {{ 'Conferma' | transloco }}
+            </button>
+        </div>
+    </div>
+
+    <div class="row operations-customization-body">
+        <!-- OPERATION SERACH -->
+         <div class="col col-md-6 operations-manager-container rounded">
+            <div class="operations-manager-header">
+                <div class="operations-manager-title text_blue text_weight_800">
+                    {{ 'SelezionaGruppoNote' | transloco }}
+                </div>
+                <div class="search-op" id="searchOp" style="width: 90%">
+                    <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+                    <input type="search" id="searchOp"
+                        [placeholder]="'CercaGruppiNote' | transloco"
+                        [(ngModel)]="filter">
+                </div>
+            </div>
+
+            <div class="operations-manager-body scrollable">
+                <ng-container *ngFor="let gruppo of listaGruppiNote">
+                    <div class="op-item" (click)="onSelectGroup(gruppo)">
+                        <span [ngClass]="gruppo['Selected'] ?
+                           'checkbox-icon readonly':
+                           'checkbox-icon active unchecked'"
+                        >
+
+                            <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                            <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                        </span>
+                        <div class="op-card-border-left" [style]="'border-left-color: green'">
+                            <div class="left op-item-text">
+                                <p>{{gruppo.Gruppo_Des}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+        <!-- FAVOURITES -->
+        <div class="col col-md-6 operations-favourites-container rounded">
+            <div class="operations-favourites-header bg_blue">
+                <span class="star-icon text_white "><i aria-hidden="true" class="fa fa-star-o" aria-hidden="true"></i></span>
+                <div class="operations-favourites-title text_weight_800 text_white inline-switch">
+                    {{ 'DefaultNote' | transloco }}
+                </div>
+            </div>
+            <div class="operations-favourites-body scrollable">
+                <ng-container *ngFor="let fav of listaNote">
+                    <div class="op-item" (click)="setDefault(fav)">
+                        <span [ngClass]="fav['Selected'] ?
+                            'checkbox-icon checked':
+                            'checkbox-icon active unchecked'">
+                            <i *ngIf="!fav['Selected']" aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                            <i *ngIf="fav['Selected']" aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                        </span>
+                        <div class="op-card-border-right" [style]="'border-left-color: green'">
+                            <div class="left op-item-text">
+                                <p>{{fav.descrizione}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</section>

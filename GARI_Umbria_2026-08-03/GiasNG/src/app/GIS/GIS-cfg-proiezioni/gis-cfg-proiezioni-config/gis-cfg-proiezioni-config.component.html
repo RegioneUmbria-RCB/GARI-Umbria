@@ -1,0 +1,15 @@
+
+<kendo-dialog [width]="width">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700">
+      {{ (inputConfiguration == null ? 'gis.NuovaConfigurazione' : 'gis.ModificaConfigurazione') | transloco }}
+    </div>
+  </kendo-dialog-titlebar>
+
+  <gias-kendo-grid></gias-kendo-grid>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeDialog()">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton (click)="submit()">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

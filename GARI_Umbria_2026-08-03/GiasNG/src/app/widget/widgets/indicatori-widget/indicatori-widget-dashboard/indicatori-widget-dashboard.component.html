@@ -1,0 +1,65 @@
+<div *ngFor="let group of groups" style="padding:10px 5px 10px 5px;">
+  <div class="indicatori-widget-header">
+    <div style="text-align: center; font-size:medium;">
+      <span>{{group}}</span>
+    </div>
+  </div>
+
+  <div class="indic-grid">
+    <ng-container *ngFor="let indic of data">
+      <div *ngIf="indic.Stazione == group" class="indic">
+        <div class="indic-title">
+          <span class="indic-title-old-style">{{indic.Modello}}</span>
+          <div><span>{{indic.DescrParametri}}</span></div>
+        </div>
+
+        <div [class]="'indic-wrapper ' + getStatusString(indic.Risultato.Status) + '-indic'">
+          <div *ngIf="indic.Risultato.Status == -1 || indic.Risultato.Status == 2" class="indic-elem indic-error-msg">
+            <div class="vertical-center full-width">{{indic.Risultato.StatusMsg}}</div>
+          </div>
+
+          <div *ngIf="indic.Risultato.Status != -1 && indic.Risultato.Status != 2">
+            <ng-container *ngIf="indic.Risultato.Status == 3">
+              <div class="indic-elem indic-progress-msg">
+                <div class="vertical-center full-width">{{indic.Risultato.StatusMsg}}</div>
+              </div>
+
+              <div class="indic-elem progress-gauge">
+                <div style="top: 5px; height: calc(100% - 10px); position:relative;">
+                  <div class="result-overlay"></div>
+                  <div class="result-indic" [style]="'width: ' + indic.Risultato.Value + '%'"></div>
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="indic.Risultato.Status != 3">
+              <div class="indic-elem indic-msg" (click)="gaugeClick(indic)">
+                <div *ngIf="indic.Risultato.AuxMsg === ''" class="vertical-center mightOverflow">
+                  {{indic.Risultato.StatusMsg}}
+                </div>
+
+                <div *ngIf="indic.Risultato.AuxMsg !== ''" class="vertical-center">
+                  <div style="padding:0px 30px"></div>
+                  <div class="mightOverflow" style="width:100%; overflow:hidden;"></div>
+                </div>
+              </div>
+              <div class="indic-elem indic-gauge" (click)="gaugeClick(indic)">
+                <div class="ripple"></div>
+
+                <div
+                  [style]="'height: calc(100% - 36px); position: relative; border-radius: 5px; background-size:100% 100%; background-repeat:no-repeat; background-image: ' + indic.BackgroundColor">
+                  <div class="gauge-indic" [style]="'width: ' + getValuePerc(indic) + '%'"></div>
+                  <div class="gauge-overlay"></div>
+                </div>
+
+                <div style="height: 36px; position:relative;">
+                  <div *ngFor="let band of indic.Risultato.Bands" [style]="getBandStyle(band)"></div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

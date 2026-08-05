@@ -1,0 +1,94 @@
+<h1 class="text_blue title_h1 text_weight_600"
+    style="margin-top: -20px;">{{ 'GestioneOpCampagna' | transloco }}</h1>
+<!-- <h2 class="text_gray_dark2 title_h2 text_weight_300">{{ 'ScegliOpPreferite' | transloco }}</h2> -->
+
+<section class="card-shadow">
+    <!-- PAGE HEADER -->
+    <div class="row operations-customization-header">
+        <div class="col col-md-6 title-container">
+            <div class="title title_h1 text_blue text_weight_500">
+                {{ 'TipoVisualizzazione' | transloco }}
+            </div>
+            <form [formGroup]="form">
+            <div class="mode-switch">
+                <span class="text_blue">{{ 'PresetIniziale' | transloco }}</span>
+                <gias-switch-template class="inline-switch"
+                    [isBlue]="true"
+                    giasFormControlName="canCustomize">
+                </gias-switch-template>
+                <span class="text_blue">{{ 'Personalizza' | transloco }}</span>
+            </div>
+            </form>
+        </div>
+        <div class="col col-md-6 actions-container">
+            <div class="action-button light border_blue text_blue text_uppercase"
+            (click)="undoAction()">
+                {{ 'Annulla' | transloco }}
+            </div>
+            <div class="action-button dark bg_blue text_uppercase"
+            (click)="execute()">
+                {{ 'Conferma' | transloco }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row operations-customization-body">
+        <!-- OPERATION SERACH -->
+        <div class="col col-md-6 operations-manager-container rounded">
+            <div class="operations-manager-header">
+                <div class="operations-manager-title text_blue text_weight_800">
+                    {{ 'SelezionaOpPreferite' | transloco }}
+                </div>
+                <div class="search-op" id="searchOp" style="width: 90%">
+                    <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+                    <input type="search" id="searchOp"
+                        [placeholder]="'CercaOperazioni' | transloco"
+                        [(ngModel)]="filter">
+                </div>
+            </div>
+
+            <div class="operations-manager-body scrollable">
+                <ng-container *ngFor="let op of Operazioni">
+                    <div class="op-item" (click)="setFavorite(op)">
+                        <span [ngClass]="op.preferito ?
+                                'checkbox-icon readonly':
+                                'checkbox-icon active unchecked'"
+                            >
+                            <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                            <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                        </span>
+                        <div class="op-card-border-left" [style]="'border-left-color: green'">
+                            <div class="left op-item-text">
+                                <p>{{op.descrizione}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+        <!-- FAVOURITES -->
+        <div class="col col-md-6 operations-favourites-container rounded">
+            <div class="operations-favourites-header bg_blue">
+                <span class="star-icon text_white "><i aria-hidden="true" class="fa fa-star-o" aria-hidden="true"></i></span>
+                <div class="operations-favourites-title text_weight_800 text_white inline-switch">
+                    {{ 'OperazioniPreferite' | transloco }}
+                </div>
+            </div>
+            <div class="operations-favourites-body scrollable">
+                <ng-container *ngFor="let fav of Preferite">
+                    <div class="op-item" (click)="unsetFavorite(fav)">
+                        <span class="checkbox-icon remove text_blue">
+                            <i aria-hidden="true" class="fa fa-minus-square" aria-hidden="true"></i>
+                        </span>
+                        <div class="op-card-border-right" [style]="'border-left-color: green'">
+                            <div class="left op-item-text">
+                                <p>{{fav.descrizione}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</section>

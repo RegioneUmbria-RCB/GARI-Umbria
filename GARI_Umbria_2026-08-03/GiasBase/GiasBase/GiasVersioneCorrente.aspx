@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="GiasVersioneCorrente.aspx.vb" Inherits="GiasBase.GiasVersioneCorrente" %>

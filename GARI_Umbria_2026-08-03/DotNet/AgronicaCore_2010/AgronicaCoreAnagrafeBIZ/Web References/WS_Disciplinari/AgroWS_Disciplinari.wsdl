@@ -1,0 +1,2355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/AbstractTypes" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari">
+      <s:element name="Verifica_Collegamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Num_1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num_2" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_CollegamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Verifica_CollegamentoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_Collegamento_new">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Num_1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Num_2" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_Collegamento_newResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Leggi_Disciplinari">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Reg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Privato_Pubblico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_DisciplinariResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_DisciplinariResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Reg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Privato_Pubblico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Disciplinari2Result" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_Elenco">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Reg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Privato_Pubblico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="PivaSuperuser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_ElencoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Disciplinari_ElencoResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_xTestata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Reg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Privato_Pubblico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoTestata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_xTestataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Disciplinari_xTestataResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_Elenco_xTestata">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Reg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Privato_Pubblico" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoTestata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="FinestraTemp_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="PivaSuperuser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Disciplinari_Elenco_xTestataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Disciplinari_Elenco_xTestataResult" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_RaggruppamentiDPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Grfi_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Protetto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_RaggruppamentiDPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_RaggruppamentiDPIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_RaggruppamentiDPI2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Grfi_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Flag_Protetto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_RaggruppamentiDPI2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_RaggruppamentiDPI2Result" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_EpocheDifesa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_EpocheDifesaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_EpocheDifesaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_EpocheDiserbo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_EpocheDiserboResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_EpocheDiserboResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoTestata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Paa" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_InfestantiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_InfestantiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_conDescrizioniAvversita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoTestata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Paa" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xFiltroAggiuntivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xOrderBy" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_conDescrizioniAvversitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Infestanti_conDescrizioniAvversitaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_conDescrizioniAvversita_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Infestanti_conDescrizioniAvversita_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Infestanti_conDescrizioniAvversita_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SoglieIntervento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SoglieInterventoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_SoglieInterventoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_IAFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stringa_PA_Validi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_rcdpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="stravversita" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Stringa_PA_ValidiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Stringa_PA_ValidiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Username_Crypt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Password_Crypt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProgressivoGIAS" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_rcdpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Opt_Singola_Gruppo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Gru" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Cod" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestoRicerca" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoRichiesto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Leggi_Formulati_DPIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Username_Crypt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Password_Crypt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProgressivoGIAS" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_rcdpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Opt_Singola_Gruppo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Gru" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Cod" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestoRicerca" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoRichiesto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Filtro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPI_2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Username_Crypt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Password_Crypt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProgressivoGIAS" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_rcdpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Opt_Singola_Gruppo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Gru" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Cod" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestoRicerca" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoRichiesto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Filtro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPI_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Username_Crypt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SuperUser_Password_Crypt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ProgressivoGIAS" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cod_Disciplinare" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_rcdpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Tipo_Testata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Opt_Singola_Gruppo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Gru" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="Av_Cod" type="tns:ArrayOfInt" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Ep_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="TestoRicerca" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoRichiesto" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Filtro" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="grfi_Cod" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPI_DT_2Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_New">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_NewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPI_DT_NewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Dose_Etichetta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Pro_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoTestata" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Epoca_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Udm_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dose_min" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dose_Max" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descrizione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Dose_EtichettaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Udm_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dose_min" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Dose_Max" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="Descrizione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperAdmin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DPI_Verifica_DifesaDiserboWSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWS_New">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiWS" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWS_NewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DPI_Verifica_DifesaDiserboWS_NewResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWS_Livello">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiWS" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Livello" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Verifica_DifesaDiserboWS_LivelloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DPI_Verifica_DifesaDiserboWS_LivelloResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DiverseOperazioni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DatiOperazioni" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Verifica_DiverseOperazioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Verifica_DiverseOperazioniResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Consultazione_Difesa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperAdmin" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RcDpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Consultazione_DifesaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DPI_Consultazione_DifesaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Consultazione_Diserbo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SuperAdmin" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RcDpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDpi" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Epoca" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DPI_Consultazione_DiserboResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DPI_Consultazione_DiserboResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SoglieInterventoxConsultazione">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_RCDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Id_GaDPI" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Gru" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Av_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Gru_Pa_Cod" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strAvversita" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Modulo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_SoglieInterventoxConsultazioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_SoglieInterventoxConsultazioneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_ImpegniAggiuntiviFacoltativi_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Iaf_Cod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_ImpegniAggiuntiviFacoltativi_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_ImpegniAggiuntiviFacoltativi_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAF_DT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xFiltroAggiuntivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xOrderBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAF_DTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_IAF_DTResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAF_DT_Controlli">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Disciplinare_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Bio" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Inizio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Validita_Fine" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xFiltroAggiuntivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xOrderBy" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_IAF_DT_ControlliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_IAF_DT_ControlliResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_Profitosan">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametri" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Formulati_DPI_DT_ProfitosanResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Formulati_DPI_DT_ProfitosanResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema targetNamespace="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Verifica_CollegamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_CollegamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_CollegamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento_new" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_Collegamento_newResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_DisciplinariSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_DisciplinariSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_DisciplinariResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_ElencoSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_Elenco" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_ElencoSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_ElencoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_xTestataSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_xTestata" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_xTestataSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_xTestataResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_Elenco_xTestataSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_Elenco_xTestata" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Disciplinari_Elenco_xTestataSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Disciplinari_Elenco_xTestataResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPISoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_RaggruppamentiDPI" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPISoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_RaggruppamentiDPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPI2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_RaggruppamentiDPI2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPI2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_RaggruppamentiDPI2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDifesaSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_EpocheDifesa" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDifesaSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_EpocheDifesaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDiserboSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_EpocheDiserbo" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDiserboSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_EpocheDiserboResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_InfestantiSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_InfestantiSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_InfestantiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversitaSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_conDescrizioniAvversita" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversitaSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_conDescrizioniAvversitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversita_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_conDescrizioniAvversita_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversita_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Infestanti_conDescrizioniAvversita_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_SoglieIntervento" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_SoglieInterventoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAFSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_IAF" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAFSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_IAFResponse" />
+  </wsdl:message>
+  <wsdl:message name="Stringa_PA_ValidiSoapIn">
+    <wsdl:part name="parameters" element="tns:Stringa_PA_Validi" />
+  </wsdl:message>
+  <wsdl:message name="Stringa_PA_ValidiSoapOut">
+    <wsdl:part name="parameters" element="tns:Stringa_PA_ValidiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPISoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPISoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPIResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_2SoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_2" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_2SoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_2Response" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_NewSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_New" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_NewSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_NewResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Dose_EtichettaSoapIn">
+    <wsdl:part name="parameters" element="tns:Dose_Etichetta" />
+  </wsdl:message>
+  <wsdl:message name="Dose_EtichettaSoapOut">
+    <wsdl:part name="parameters" element="tns:Dose_EtichettaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWSSoapIn">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWS" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWSSoapOut">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWSResponse" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_NewSoapIn">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWS_New" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_NewSoapOut">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWS_NewResponse" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_LivelloSoapIn">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWS_Livello" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_LivelloSoapOut">
+    <wsdl:part name="parameters" element="tns:DPI_Verifica_DifesaDiserboWS_LivelloResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DiverseOperazioniSoapIn">
+    <wsdl:part name="parameters" element="tns:Verifica_DiverseOperazioni" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DiverseOperazioniSoapOut">
+    <wsdl:part name="parameters" element="tns:Verifica_DiverseOperazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DifesaSoapIn">
+    <wsdl:part name="parameters" element="tns:DPI_Consultazione_Difesa" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DifesaSoapOut">
+    <wsdl:part name="parameters" element="tns:DPI_Consultazione_DifesaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DiserboSoapIn">
+    <wsdl:part name="parameters" element="tns:DPI_Consultazione_Diserbo" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DiserboSoapOut">
+    <wsdl:part name="parameters" element="tns:DPI_Consultazione_DiserboResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoxConsultazioneSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_SoglieInterventoxConsultazione" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoxConsultazioneSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_SoglieInterventoxConsultazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_ImpegniAggiuntiviFacoltativi_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_ImpegniAggiuntiviFacoltativi_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_ImpegniAggiuntiviFacoltativi_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_ImpegniAggiuntiviFacoltativi_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAF_DTSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_IAF_DT" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAF_DTSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_IAF_DTResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAF_DT_ControlliSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_IAF_DT_Controlli" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAF_DT_ControlliSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_IAF_DT_ControlliResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_ProfitosanSoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_Profitosan" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_DT_ProfitosanSoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Formulati_DPI_DT_ProfitosanResponse" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newHttpGetIn">
+    <wsdl:part name="Num_1" type="s:string" />
+    <wsdl:part name="Num_2" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_Collegamento_newHttpGetOut" />
+  <wsdl:message name="Leggi_DisciplinariHttpGetIn">
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Veg_Cod" type="s:string" />
+    <wsdl:part name="Reg_Cod" type="s:string" />
+    <wsdl:part name="Flag_Privato_Pubblico" type="s:string" />
+    <wsdl:part name="FinestraTemp_Inizio" type="s:string" />
+    <wsdl:part name="FinestraTemp_Fine" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_DisciplinariHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPIHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Veg_Cod" type="s:string" />
+    <wsdl:part name="Grfi_Cod" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Flag_Protetto" type="s:string" />
+    <wsdl:part name="Tipo_Testata" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_RaggruppamentiDPIHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDifesaHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDifesaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDiserboHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_EpocheDiserboHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_InfestantiHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="TipoTestata" type="s:string" />
+    <wsdl:part name="Id_GaDPI" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="Id_Paa" type="s:string" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="Ep_Cod" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_InfestantiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversitaHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="TipoTestata" type="s:string" />
+    <wsdl:part name="Id_GaDPI" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="Id_Paa" type="s:string" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="Ep_Cod" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="xFiltroAggiuntivo" type="s:string" />
+    <wsdl:part name="xOrderBy" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Infestanti_conDescrizioniAvversitaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="Id_GaDPI" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAFHttpGetIn">
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="Veg_Cod" type="s:string" />
+    <wsdl:part name="Validita_Inizio" type="s:string" />
+    <wsdl:part name="Validita_Fine" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_IAFHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Stringa_PA_ValidiHttpGetIn">
+    <wsdl:part name="Id_rcdpi" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Tipo_Testata" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Ep_Cod" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="stravversita" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Stringa_PA_ValidiHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPIHttpGetIn">
+    <wsdl:part name="SuperUser_Username_Crypt" type="s:string" />
+    <wsdl:part name="SuperUser_Password_Crypt" type="s:string" />
+    <wsdl:part name="ProgressivoGIAS" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Veg_Cod" type="s:string" />
+    <wsdl:part name="Id_rcdpi" type="s:string" />
+    <wsdl:part name="Tipo_Testata" type="s:string" />
+    <wsdl:part name="Opt_Singola_Gruppo" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s1:StringArray" />
+    <wsdl:part name="Av_Cod" type="s1:StringArray" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Ep_Cod" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="TestoRicerca" type="s:string" />
+    <wsdl:part name="TipoRichiesto" type="s:string" />
+    <wsdl:part name="Data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPIHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_2HttpGetIn">
+    <wsdl:part name="SuperUser_Username_Crypt" type="s:string" />
+    <wsdl:part name="SuperUser_Password_Crypt" type="s:string" />
+    <wsdl:part name="ProgressivoGIAS" type="s:string" />
+    <wsdl:part name="Cod_Disciplinare" type="s:string" />
+    <wsdl:part name="Veg_Cod" type="s:string" />
+    <wsdl:part name="Id_rcdpi" type="s:string" />
+    <wsdl:part name="Tipo_Testata" type="s:string" />
+    <wsdl:part name="Opt_Singola_Gruppo" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s1:StringArray" />
+    <wsdl:part name="Av_Cod" type="s1:StringArray" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Ep_Cod" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="TestoRicerca" type="s:string" />
+    <wsdl:part name="TipoRichiesto" type="s:string" />
+    <wsdl:part name="Filtro" type="s:string" />
+    <wsdl:part name="Data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Formulati_DPI_2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWSHttpGetIn">
+    <wsdl:part name="SuperAdmin" type="s:string" />
+    <wsdl:part name="DatiWS" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWSHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_NewHttpGetIn">
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="DatiWS" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_NewHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_LivelloHttpGetIn">
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="DatiWS" type="s:string" />
+    <wsdl:part name="Livello" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Verifica_DifesaDiserboWS_LivelloHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DiverseOperazioniHttpGetIn">
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="DatiOperazioni" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Verifica_DiverseOperazioniHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DifesaHttpGetIn">
+    <wsdl:part name="SuperAdmin" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="Id_RcDpi" type="s:string" />
+    <wsdl:part name="Id_GaDpi" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DifesaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DiserboHttpGetIn">
+    <wsdl:part name="SuperAdmin" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="Gru_Cod" type="s:string" />
+    <wsdl:part name="Id_RcDpi" type="s:string" />
+    <wsdl:part name="Id_GaDpi" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Epoca" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DPI_Consultazione_DiserboHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoxConsultazioneHttpGetIn">
+    <wsdl:part name="Id_RCDPI" type="s:string" />
+    <wsdl:part name="Disciplinare_Cod" type="s:string" />
+    <wsdl:part name="Id_GaDPI" type="s:string" />
+    <wsdl:part name="Av_Gru" type="s:string" />
+    <wsdl:part name="Av_Cod" type="s:string" />
+    <wsdl:part name="Pa_Cod" type="s:string" />
+    <wsdl:part name="Gru_Pa_Cod" type="s:string" />
+    <wsdl:part name="strAvversita" type="s:string" />
+    <wsdl:part name="Modulo" type="s:string" />
+    <wsdl:part name="NomeUtente" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_SoglieInterventoxConsultazioneHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="AgroWS_DisciplinariSoap">
+    <wsdl:operation name="Verifica_Collegamento">
+      <wsdl:input message="tns:Verifica_CollegamentoSoapIn" />
+      <wsdl:output message="tns:Verifica_CollegamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <wsdl:input message="tns:Verifica_Collegamento_newSoapIn" />
+      <wsdl:output message="tns:Verifica_Collegamento_newSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari">
+      <wsdl:input message="tns:Leggi_DisciplinariSoapIn" />
+      <wsdl:output message="tns:Leggi_DisciplinariSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari2">
+      <wsdl:input message="tns:Leggi_Disciplinari2SoapIn" />
+      <wsdl:output message="tns:Leggi_Disciplinari2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco">
+      <wsdl:input message="tns:Leggi_Disciplinari_ElencoSoapIn" />
+      <wsdl:output message="tns:Leggi_Disciplinari_ElencoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_xTestata">
+      <wsdl:input message="tns:Leggi_Disciplinari_xTestataSoapIn" />
+      <wsdl:output message="tns:Leggi_Disciplinari_xTestataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco_xTestata">
+      <wsdl:input message="tns:Leggi_Disciplinari_Elenco_xTestataSoapIn" />
+      <wsdl:output message="tns:Leggi_Disciplinari_Elenco_xTestataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI">
+      <wsdl:input message="tns:Leggi_RaggruppamentiDPISoapIn" />
+      <wsdl:output message="tns:Leggi_RaggruppamentiDPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI2">
+      <wsdl:input message="tns:Leggi_RaggruppamentiDPI2SoapIn" />
+      <wsdl:output message="tns:Leggi_RaggruppamentiDPI2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDifesa">
+      <wsdl:input message="tns:Leggi_EpocheDifesaSoapIn" />
+      <wsdl:output message="tns:Leggi_EpocheDifesaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDiserbo">
+      <wsdl:input message="tns:Leggi_EpocheDiserboSoapIn" />
+      <wsdl:output message="tns:Leggi_EpocheDiserboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti">
+      <wsdl:input message="tns:Leggi_InfestantiSoapIn" />
+      <wsdl:output message="tns:Leggi_InfestantiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita">
+      <wsdl:input message="tns:Leggi_Infestanti_conDescrizioniAvversitaSoapIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_conDescrizioniAvversitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita_DT">
+      <wsdl:input message="tns:Leggi_Infestanti_conDescrizioniAvversita_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_conDescrizioniAvversita_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieIntervento">
+      <wsdl:input message="tns:Leggi_SoglieInterventoSoapIn" />
+      <wsdl:output message="tns:Leggi_SoglieInterventoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF">
+      <wsdl:input message="tns:Leggi_IAFSoapIn" />
+      <wsdl:output message="tns:Leggi_IAFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Stringa_PA_Validi">
+      <wsdl:input message="tns:Stringa_PA_ValidiSoapIn" />
+      <wsdl:output message="tns:Stringa_PA_ValidiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI">
+      <wsdl:input message="tns:Leggi_Formulati_DPISoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_2">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_2SoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_2">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_DT_2SoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_DT_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_New">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_DT_NewSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_DT_NewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DT">
+      <wsdl:input message="tns:Leggi_Formulati_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Dose_Etichetta">
+      <wsdl:input message="tns:Dose_EtichettaSoapIn" />
+      <wsdl:output message="tns:Dose_EtichettaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWSSoapIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_New">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWS_NewSoapIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWS_NewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_Livello">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWS_LivelloSoapIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWS_LivelloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DiverseOperazioni">
+      <wsdl:input message="tns:Verifica_DiverseOperazioniSoapIn" />
+      <wsdl:output message="tns:Verifica_DiverseOperazioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Difesa">
+      <wsdl:input message="tns:DPI_Consultazione_DifesaSoapIn" />
+      <wsdl:output message="tns:DPI_Consultazione_DifesaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Diserbo">
+      <wsdl:input message="tns:DPI_Consultazione_DiserboSoapIn" />
+      <wsdl:output message="tns:DPI_Consultazione_DiserboSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieInterventoxConsultazione">
+      <wsdl:input message="tns:Leggi_SoglieInterventoxConsultazioneSoapIn" />
+      <wsdl:output message="tns:Leggi_SoglieInterventoxConsultazioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_ImpegniAggiuntiviFacoltativi_DT">
+      <wsdl:input message="tns:Leggi_ImpegniAggiuntiviFacoltativi_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_ImpegniAggiuntiviFacoltativi_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT">
+      <wsdl:input message="tns:Leggi_IAF_DTSoapIn" />
+      <wsdl:output message="tns:Leggi_IAF_DTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT_Controlli">
+      <wsdl:input message="tns:Leggi_IAF_DT_ControlliSoapIn" />
+      <wsdl:output message="tns:Leggi_IAF_DT_ControlliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_Profitosan">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_DT_ProfitosanSoapIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_DT_ProfitosanSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="AgroWS_DisciplinariHttpGet">
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <wsdl:input message="tns:Verifica_Collegamento_newHttpGetIn" />
+      <wsdl:output message="tns:Verifica_Collegamento_newHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari">
+      <wsdl:input message="tns:Leggi_DisciplinariHttpGetIn" />
+      <wsdl:output message="tns:Leggi_DisciplinariHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI">
+      <wsdl:input message="tns:Leggi_RaggruppamentiDPIHttpGetIn" />
+      <wsdl:output message="tns:Leggi_RaggruppamentiDPIHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDifesa">
+      <wsdl:input message="tns:Leggi_EpocheDifesaHttpGetIn" />
+      <wsdl:output message="tns:Leggi_EpocheDifesaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDiserbo">
+      <wsdl:input message="tns:Leggi_EpocheDiserboHttpGetIn" />
+      <wsdl:output message="tns:Leggi_EpocheDiserboHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti">
+      <wsdl:input message="tns:Leggi_InfestantiHttpGetIn" />
+      <wsdl:output message="tns:Leggi_InfestantiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita">
+      <wsdl:input message="tns:Leggi_Infestanti_conDescrizioniAvversitaHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Infestanti_conDescrizioniAvversitaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieIntervento">
+      <wsdl:input message="tns:Leggi_SoglieInterventoHttpGetIn" />
+      <wsdl:output message="tns:Leggi_SoglieInterventoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF">
+      <wsdl:input message="tns:Leggi_IAFHttpGetIn" />
+      <wsdl:output message="tns:Leggi_IAFHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Stringa_PA_Validi">
+      <wsdl:input message="tns:Stringa_PA_ValidiHttpGetIn" />
+      <wsdl:output message="tns:Stringa_PA_ValidiHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI">
+      <wsdl:input message="tns:Leggi_Formulati_DPIHttpGetIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPIHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_2">
+      <wsdl:input message="tns:Leggi_Formulati_DPI_2HttpGetIn" />
+      <wsdl:output message="tns:Leggi_Formulati_DPI_2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWSHttpGetIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_New">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWS_NewHttpGetIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWS_NewHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_Livello">
+      <wsdl:input message="tns:DPI_Verifica_DifesaDiserboWS_LivelloHttpGetIn" />
+      <wsdl:output message="tns:DPI_Verifica_DifesaDiserboWS_LivelloHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DiverseOperazioni">
+      <wsdl:input message="tns:Verifica_DiverseOperazioniHttpGetIn" />
+      <wsdl:output message="tns:Verifica_DiverseOperazioniHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Difesa">
+      <wsdl:input message="tns:DPI_Consultazione_DifesaHttpGetIn" />
+      <wsdl:output message="tns:DPI_Consultazione_DifesaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Diserbo">
+      <wsdl:input message="tns:DPI_Consultazione_DiserboHttpGetIn" />
+      <wsdl:output message="tns:DPI_Consultazione_DiserboHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieInterventoxConsultazione">
+      <wsdl:input message="tns:Leggi_SoglieInterventoxConsultazioneHttpGetIn" />
+      <wsdl:output message="tns:Leggi_SoglieInterventoxConsultazioneHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgroWS_DisciplinariSoap" type="tns:AgroWS_DisciplinariSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Verifica_Collegamento">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_Collegamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_Collegamento_new" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_Elenco" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_xTestata">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_xTestata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco_xTestata">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_Elenco_xTestata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_RaggruppamentiDPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_RaggruppamentiDPI2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDifesa">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_EpocheDifesa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDiserbo">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_EpocheDiserbo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti_conDescrizioniAvversita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti_conDescrizioniAvversita_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieIntervento">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_SoglieIntervento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stringa_PA_Validi">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Stringa_PA_Validi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_2">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_New">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_New" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Dose_Etichetta">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Dose_Etichetta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_New">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS_New" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_Livello">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS_Livello" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DiverseOperazioni">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_DiverseOperazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Difesa">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Consultazione_Difesa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Diserbo">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Consultazione_Diserbo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieInterventoxConsultazione">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_SoglieInterventoxConsultazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_ImpegniAggiuntiviFacoltativi_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_ImpegniAggiuntiviFacoltativi_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF_DT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT_Controlli">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF_DT_Controlli" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_Profitosan">
+      <soap:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroWS_DisciplinariSoap12" type="tns:AgroWS_DisciplinariSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Verifica_Collegamento">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_Collegamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_Collegamento_new" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_Elenco" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_xTestata">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_xTestata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari_Elenco_xTestata">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Disciplinari_Elenco_xTestata" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_RaggruppamentiDPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_RaggruppamentiDPI2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDifesa">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_EpocheDifesa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDiserbo">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_EpocheDiserbo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti_conDescrizioniAvversita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Infestanti_conDescrizioniAvversita_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieIntervento">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_SoglieIntervento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stringa_PA_Validi">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Stringa_PA_Validi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_2">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_New">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_New" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Dose_Etichetta">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Dose_Etichetta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_New">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS_New" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_Livello">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Verifica_DifesaDiserboWS_Livello" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DiverseOperazioni">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Verifica_DiverseOperazioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Difesa">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Consultazione_Difesa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Diserbo">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/DPI_Consultazione_Diserbo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieInterventoxConsultazione">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_SoglieInterventoxConsultazione" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_ImpegniAggiuntiviFacoltativi_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_ImpegniAggiuntiviFacoltativi_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF_DT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF_DT_Controlli">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_IAF_DT_Controlli" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_DT_Profitosan">
+      <soap12:operation soapAction="http://tempuri.org/AgronicaWebService/AgroWS_Disciplinari/Leggi_Formulati_DPI_DT_Profitosan" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroWS_DisciplinariHttpGet" type="tns:AgroWS_DisciplinariHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Verifica_Collegamento_new">
+      <http:operation location="/Verifica_Collegamento_new" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Disciplinari">
+      <http:operation location="/Leggi_Disciplinari" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_RaggruppamentiDPI">
+      <http:operation location="/Leggi_RaggruppamentiDPI" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDifesa">
+      <http:operation location="/Leggi_EpocheDifesa" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_EpocheDiserbo">
+      <http:operation location="/Leggi_EpocheDiserbo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti">
+      <http:operation location="/Leggi_Infestanti" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Infestanti_conDescrizioniAvversita">
+      <http:operation location="/Leggi_Infestanti_conDescrizioniAvversita" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieIntervento">
+      <http:operation location="/Leggi_SoglieIntervento" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_IAF">
+      <http:operation location="/Leggi_IAF" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Stringa_PA_Validi">
+      <http:operation location="/Stringa_PA_Validi" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI">
+      <http:operation location="/Leggi_Formulati_DPI" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Formulati_DPI_2">
+      <http:operation location="/Leggi_Formulati_DPI_2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS">
+      <http:operation location="/DPI_Verifica_DifesaDiserboWS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_New">
+      <http:operation location="/DPI_Verifica_DifesaDiserboWS_New" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Verifica_DifesaDiserboWS_Livello">
+      <http:operation location="/DPI_Verifica_DifesaDiserboWS_Livello" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Verifica_DiverseOperazioni">
+      <http:operation location="/Verifica_DiverseOperazioni" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Difesa">
+      <http:operation location="/DPI_Consultazione_Difesa" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DPI_Consultazione_Diserbo">
+      <http:operation location="/DPI_Consultazione_Diserbo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_SoglieInterventoxConsultazione">
+      <http:operation location="/Leggi_SoglieInterventoxConsultazione" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgroWS_Disciplinari">
+    <wsdl:port name="AgroWS_DisciplinariSoap" binding="tns:AgroWS_DisciplinariSoap">
+      <soap:address location="http://localhost/AgronicaWebService2010/AgroWS_Disciplinari.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroWS_DisciplinariSoap12" binding="tns:AgroWS_DisciplinariSoap12">
+      <soap12:address location="http://localhost/AgronicaWebService2010/AgroWS_Disciplinari.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroWS_DisciplinariHttpGet" binding="tns:AgroWS_DisciplinariHttpGet">
+      <http:address location="http://localhost/AgronicaWebService2010/AgroWS_Disciplinari.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,19 @@
+<div [formGroup]="qdcservice.TestataForm" *ngIf="mostraDisciplinare();">
+    <div class="row form-row">
+        <div class="col-12 col-sm-12">
+            <gias-drop-down-template-s [name]="'Disciplinare' | transloco" [obligatory]="true"
+                                        [clearButton]="true" [listItems]="testataservice.Array_Disciplinari"
+                                        (open)="openDdlDisciplinare($event, 'Disciplinare')"
+                                        textField="Descrizione_Concatenata"
+                                        valueField="Codice_Concatenato" [filterable]="true"
+                                        [valuePrimitive]="false"
+                                        giasFormControlName="Disciplinare">
+            </gias-drop-down-template-s>
+        </div>
+    </div>
+
+    <div class="row form-row" *ngIf="MostradivAlertTerrenoNudo()">
+        <label style="color: red;">{{ "qdc.Attenzione_selezione_di_destinazione" | transloco }}</label>
+    </div>
+
+</div>

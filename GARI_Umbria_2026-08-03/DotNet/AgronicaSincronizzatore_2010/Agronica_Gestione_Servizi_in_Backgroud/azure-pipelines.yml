@@ -1,0 +1,50 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '15 22 * * *' # cron syntax defining a schedule (23:15)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: true
+
+variables:
+- group: Destinations
+- template: ../../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../../templates/pipelines/net-agro-exe-pipeline.yml  # Template reference
+  parameters:
+    solution: AgronicaSincronizzatore_2010
+    target: "Interfaccia Utente\\AgronicaGSB_Gestione_Servizi_in_Background"
+    artifactName: 'AgronicaGSB_Gestione_Servizi_in_Background'
+    path: 'AgronicaSincronizzatore_2010'
+    artifactBasePath: AgronicaGSB_Gestione_Servizi_in_Background
+    outdir: 'AgronicaGSB_Gestione_Servizi_in_Background\bin\Release'
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)
+    preBuildSteps:
+      - template: ../../templates/steps/restore-gias2gias.yml
+    postBuildSteps:
+      - task: CopyFiles@2
+        displayName: 'Copia ScriptBat'
+        inputs:
+          SourceFolder: '$(Build.SourcesDirectory)\AgronicaSincronizzatore_2010\Agronica_Gestione_Servizi_in_Backgroud\ScriptBat'
+          TargetFolder: '$(Build.ArtifactStagingDirectory)\AgronicaGSB_Gestione_Servizi_in_Background\ScriptBat'
+          OverWrite: true
+      - task: CopyFiles@2
+        displayName: 'Copia file Versione'
+        inputs:
+          SourceFolder: '$(Build.SourcesDirectory)\AgronicaSincronizzatore_2010\Agronica_Gestione_Servizi_in_Backgroud\'
+          Contents: |
+            GiasVersioneCorrente.txt
+            Informazioni.txt
+          TargetFolder: '$(Build.ArtifactStagingDirectory)\AgronicaGSB_Gestione_Servizi_in_Background\'

@@ -1,0 +1,33 @@
+
+    <kendo-appbar position="top" class="container">
+        <gias-breadcrumbs></gias-breadcrumbs>
+        <kendo-appbar-spacer></kendo-appbar-spacer>
+        <div class="topbar-calendar-print">
+            <form [formGroup]="filtroForm">
+                <kendo-appbar-section>
+                    <!--<input type="checkbox" formControlName="filter" />-->
+                    <button kendoButton (click)="setOggi()">{{ 'Oggi' | transloco }}</button>
+                    <gias-data-template giasFormControlName="Data"></gias-data-template>
+                </kendo-appbar-section>
+            </form>
+        </div>
+    </kendo-appbar>
+    <div class="container grid-content">
+        <div class="row">
+            <ng-container>
+                <kendo-tabstrip
+                    id="tabstrip"
+                    #tabstrip>
+                    <kendo-tabstrip-tab [selected]="true">
+                        <ng-template kendoTabTitle>
+                            <fa-icon class="icona-analisi" size="lg" [icon]="faFlask" aria-hidden="true"></fa-icon>
+                            <span style="cursor: pointer;">{{'Analisi' | transloco}}</span>
+                        </ng-template>
+                        <ng-template kendoTabContent>
+                            <app-griglia-analisi-terreno></app-griglia-analisi-terreno>
+                        </ng-template>
+                    </kendo-tabstrip-tab>
+                </kendo-tabstrip>
+            </ng-container>
+        </div>
+    </div>

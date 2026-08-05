@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:gml="http://www.opengis.net/gml" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.agronica.it/pub/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.opengis.net/gml" />
+  <xs:element name="Utente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Impresa">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CentroAziendale">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Appezzamento">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Impianto">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="geodata">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element ref="gml:Polygon" />
+                                    </xs:sequence>
+                                    <xs:attribute name="Flag_GPS" type="xs:unsignedByte" use="required" />
+                                    <xs:attribute name="ElementoGrafico_Cod" type="xs:unsignedByte" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="tipo_operazione" type="xs:unsignedByte" use="required" />
+                              <xs:attribute name="codice_impianto" type="xs:unsignedByte" use="required" />
+                              <xs:attribute name="codice_specie_gias" type="xs:string" use="required" />
+                              <xs:attribute name="codice_finalita_gias" type="xs:string" use="required" />
+                              <xs:attribute name="codice_varieta_gias" type="xs:string" use="required" />
+                              <xs:attribute name="codice_tipologia_varieta_gias" type="xs:string" use="required" />
+                              <xs:attribute name="validita_inizio" type="xs:string" use="required" />
+                              <xs:attribute name="validita_fine" type="xs:string" use="required" />
+                              <xs:attribute name="data_semina_prevista" type="xs:string" use="required" />
+                              <xs:attribute name="data_raccolta_prevista" type="xs:string" use="required" />
+                              <xs:attribute name="sup_imp" type="xs:unsignedByte" use="required" />
+                              <xs:attribute name="imp_chiave_cliente" type="xs:unsignedByte" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="tipo_operazione" type="xs:unsignedByte" use="required" />
+                        <xs:attribute name="codice_appezzamento" type="xs:unsignedByte" use="required" />
+                        <xs:attribute name="appezzamento_denominazione" type="xs:string" use="required" />
+                        <xs:attribute name="sup_appezzamento" type="xs:unsignedByte" use="required" />
+                        <xs:attribute name="validita_inizio" type="xs:string" use="required" />
+                        <xs:attribute name="validita_fine" type="xs:string" use="required" />
+                        <xs:attribute name="app_chiave_cliente" type="xs:string" use="required" />
+                        <xs:attribute name="partita_iva_padre" type="xs:unsignedInt" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="tipo_operazione" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="codice_centro" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="nome_centro" type="xs:string" use="required" />
+                  <xs:attribute name="c_indirizzo" type="xs:string" use="required" />
+                  <xs:attribute name="c_frazione" type="xs:string" use="required" />
+                  <xs:attribute name="c_cap" type="xs:unsignedShort" use="required" />
+                  <xs:attribute name="c_comune" type="xs:string" use="required" />
+                  <xs:attribute name="c_provincia" type="xs:string" use="required" />
+                  <xs:attribute name="c_stato" type="xs:string" use="required" />
+                  <xs:attribute name="c_note_indirizzo" type="xs:string" use="required" />
+                  <xs:attribute name="c_codice_istat_provincia" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="c_codice_istat_comune" type="xs:unsignedByte" use="required" />
+                  <xs:attribute name="c_chiave_cliente" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="tipo_operazione" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="partita_iva" type="xs:unsignedLong" use="required" />
+            <xs:attribute name="ragione_sociale" type="xs:string" use="required" />
+            <xs:attribute name="codice_cuaa" type="xs:unsignedLong" use="required" />
+            <xs:attribute name="i_indirizzo" type="xs:string" use="required" />
+            <xs:attribute name="i_frazione" type="xs:string" use="required" />
+            <xs:attribute name="i_cap" type="xs:unsignedShort" use="required" />
+            <xs:attribute name="i_comune" type="xs:string" use="required" />
+            <xs:attribute name="i_provincia" type="xs:string" use="required" />
+            <xs:attribute name="i_stato" type="xs:string" use="required" />
+            <xs:attribute name="i_note_indirizzo" type="xs:string" use="required" />
+            <xs:attribute name="i_codice_istat_provincia" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="i_codice_istat_comune" type="xs:unsignedByte" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="username" type="xs:string" use="required" />
+      <xs:attribute name="password" type="xs:string" use="required" />
+      <xs:attribute name="codice" type="xs:unsignedByte" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

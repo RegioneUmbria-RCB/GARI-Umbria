@@ -1,0 +1,75 @@
+<ng-container *ngIf="data | async as data">
+  <h6 class="k-p-5" *ngIf="!isAnyVisible(data.tabs)">{{ 'gis.SelezionareImpiantoInformazioni' | transloco }}</h6>
+
+  <kendo-tabstrip *ngIf="isAnyVisible(data.tabs)" [keepTabContent]="true"
+    (tabSelect)="changeTab($event, data.tabs, data.agendaVisible)">
+
+    <kendo-tabstrip-tab [title]="'Agenda' | transloco" *ngIf="data.tabs?.agenda != -1"
+      [selected]="data.tab == data.tabs?.agenda && data.agendaVisible">
+      <ng-template kendoTabContent>
+        <app-menu-agenda [opzioniAgenda]="opzioniAgendaGis"
+          *ngIf="open && data.tab == data.tabs?.agenda"></app-menu-agenda>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.AttributiWindowDati' | transloco" *ngIf="data.tabs?.data != -1"
+      [selected]="data.tab == data.tabs?.data">
+      <ng-template kendoTabContent>
+        <GIS-attributi-grid *ngIf="!isMuz(data.layer, data.tipoLayer)"></GIS-attributi-grid>
+        <GIS-attributi-muz-grid *ngIf="isMuz(data.layer, data.tipoLayer)"></GIS-attributi-muz-grid>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.AttributiWindowImpostazioni' | transloco" *ngIf="data.tabs?.settings != -1"
+      [selected]="data.tab == data.tabs?.settings">
+      <ng-template kendoTabContent>
+        <gis-attributi-settings></gis-attributi-settings>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.AttributiWindowCaricamentoFile' | transloco" *ngIf="data.tabs?.upload != -1"
+      [selected]="data.tab == data.tabs?.upload">
+      <ng-template kendoTabContent>
+        <gis-attributi-file-upload></gis-attributi-file-upload>
+        <!--        <gis-attributi-file-upload-raster-->
+        <!--          *ngIf="data.layer?.FeatureTypeId == featureType.Raster"></gis-attributi-file-upload-raster>-->
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.ConfigurazioneAlgoritmi' | transloco" *ngIf="data.tabs?.algorithms != -1"
+      [selected]="data.tab == data.tabs?.algorithms">
+      <ng-template kendoTabContent>
+        <gis-attributi-algorithm-configuration [tipoLayer]="data.tipoLayer" [layer]="data.layer"
+          [configurations]="data.configurations"></gis-attributi-algorithm-configuration>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.AttributiWindowEsporta' | transloco" *ngIf="data.tabs?.export != -1"
+      [selected]="data.tab == data.tabs?.export">
+      <ng-template kendoTabContent>
+        <gis-attributi-export [layer]="data.layer"></gis-attributi-export>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.Maschere' | transloco" *ngIf="data.tabs?.rasterMasks != -1"
+      [selected]="data.tab == data.tabs?.rasterMasks">
+      <ng-template kendoTabContent>
+        <gis-attributi-raster-masks [raster]="data.layer"></gis-attributi-raster-masks>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+  </kendo-tabstrip>
+</ng-container>
+
+<kendo-dialog *ngIf="agendaOptionDialog" (close)="agendaOptionDialog = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'gis.Opzioni' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <p>{{ 'gis.VisualizzazioneAziendaDisattivataWarning' | transloco }}</p>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="agendaOptionDialog = false">{{ 'No' | transloco }}</button>
+    <button kendoButton (click)="setAgendaVisible()">{{ 'Si' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

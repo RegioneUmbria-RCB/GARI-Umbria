@@ -1,0 +1,13 @@
+<div class="prof-imprese-column prof-imprese-macchine" *ngIf="macchine$ != null">
+  <p>{{ 'profImprese.SelezionaUnaOPiuMacchine' | transloco }} </p>
+  <kendo-grid [kendoGridBinding]="macchine$ | async" [loading]="macchineLoading" [filterable]="true">
+    <kendo-grid-command-column [width]="70">
+      <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+        <kendo-switch (valueChange)="selectMacchina($event, dataItem)"
+          [checked]="isMacchinaSelected(dataItem)"></kendo-switch>
+      </ng-template>
+    </kendo-grid-command-column>
+
+    <kendo-grid-column field="Mac_Des" [title]="'MacchinaAttrezzatura' | transloco"></kendo-grid-column>
+  </kendo-grid>
+</div>

@@ -1,0 +1,101 @@
+<div class="gias-qdg-save-container" *ngIf="MostraBtn()">
+
+    <div class="save-first-line">
+        <div kendoTooltip *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_e_Nuovo)">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    (click)="preSalvataggioQdC(Enum_Tipo_Salvataggio_QdC.Salva_e_Nuovo)"
+                    [title]="'SalvaENuovo' | transloco"
+                    [type]="'submit'" [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_e_Nuovo)">
+                <div class="k-icon k-i-btnsave_type01_savenew"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_e_Duplica)">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    (click)="preSalvataggioQdC(Enum_Tipo_Salvataggio_QdC.Salva_e_Duplica)"
+                    [title]="'btnSalvaEDuplica' | transloco"
+                    [type]="'submit'" [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_e_Duplica)">
+                <div class="k-icon k-i-btnsave_type02_saveduplicate"></div>
+            </button>
+        </div>
+    </div>
+    <div class="save-second-line">
+        <div kendoTooltip *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_e_CDG)">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    (click)="preSalvataggioQdC(Enum_Tipo_Salvataggio_QdC.Salva_e_CDG)"
+                    [title]="'qdc.btnSalvaECDG' | transloco"
+                    [type]="'submit'" [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_e_CDG)">
+                <div class="k-icon k-i-btnsave_type04_savegoprice"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_ed_Esci)">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    (click)="preSalvataggioQdC(Enum_Tipo_Salvataggio_QdC.Salva_ed_Esci)"
+                    [title]="'SalvaEdEsci' | transloco"
+                    [type]="'submit'" [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_ed_Esci)">
+                <div class="k-icon k-i-btnsave_type03_saveexit"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip
+             *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_Ricetta_e_Nuovo_Dettaglio)">
+            <kendo-dropdownbutton
+                #BtnMenuRicette
+                [data]="dataMenuRicette"
+                (open)="OpenMenuRicette($event)"
+                [buttonClass]="'btn btn-primary btn-sm btn-primary-fill gias-m-a-0'"
+                [title]="'Salvae' | transloco"
+                (itemClick)="ClickMenuRicette($event)"
+                [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_Ricetta_e_Nuovo_Dettaglio)">
+
+                <div class="k-icon k-i-btnsave_type05_saveand"></div>
+
+                <ng-template kendoDropDownButtonItemTemplate let-ddlItem>
+                    <span>{{ ddlItem.text }}</span>
+                </ng-template>
+
+            </kendo-dropdownbutton>
+        </div>
+
+      <div kendoTooltip
+           *ngIf="inizializzazionePulsanteSalvataggio(Enum_Tipo_Salvataggio_QdC.Salva_Visita_Aggiungi_Operazione)">
+          <kendo-dropdownbutton
+            #BtnMenuSalvaVisite
+            [data]="dataMenuOperazioni_Compatibili_Visite"
+            (open)="OpenMenuOperazioni_Compatibili_Visite($event,true)"
+            [buttonClass]="'btn btn-primary btn-sm btn-primary-fill gias-m-a-0'"
+            [title]="'Salvae' | transloco"
+            (itemClick)="ClickMenuOperazioni_Compatibili_Visite($event,true)"
+            [disabled]="disabilitaBtn(Enum_Tipo_Salvataggio_QdC.Salva_Visita_Aggiungi_Operazione)">
+
+            <div class="k-icon k-i-btnsave_go_rilievi"></div>
+
+            <ng-template kendoDropDownButtonItemTemplate let-ddlItem>
+              <span>{{ ddlItem.text }}</span>
+            </ng-template>
+
+          </kendo-dropdownbutton>
+      </div>
+
+      <!--Solo navigazione non salvataggio della visita-->
+      <div kendoTooltip
+           *ngIf="Mostra_Pulsante_Solo_Navigazione_Menu_Operazioni_Compatibili_Visite()">
+        <kendo-dropdownbutton
+          #BtnMenuVaiVisite
+          [data]="dataMenuOperazioni_Compatibili_Visite"
+          (open)="OpenMenuOperazioni_Compatibili_Visite($event,false)"
+          [buttonClass]="'btn btn-primary btn-sm btn-primary-fill gias-m-a-0'"
+          [title]="'VaiADuePunti' | transloco"
+          (itemClick)="ClickMenuOperazioni_Compatibili_Visite($event,false)">
+
+          <div class="k-icon k-i-btnsave_go_rilievi"></div>
+
+          <ng-template kendoDropDownButtonItemTemplate let-ddlItem>
+            <span>{{ ddlItem.text }}</span>
+          </ng-template>
+
+        </kendo-dropdownbutton>
+      </div>
+    </div>
+</div>

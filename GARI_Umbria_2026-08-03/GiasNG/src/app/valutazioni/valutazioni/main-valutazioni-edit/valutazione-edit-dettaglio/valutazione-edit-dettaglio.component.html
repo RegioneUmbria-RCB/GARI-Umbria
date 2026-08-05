@@ -1,0 +1,38 @@
+
+<kendo-dialog-actions *ngIf="permessoEdit">
+    <button kendoButton (click)="aggiornatiDatiDettaglio()">{{ 'AggiornatiDatiDettaglio' | transloco }}</button>
+</kendo-dialog-actions>
+
+<kendo-appbar position="top" class="container">
+
+    <div #valTopTar id="val-top-bar">
+        <kendo-appbar-section class="appbar-items">
+            <div>
+                <ul #topTabsContainer>
+                    <li (click)="setPage(1)" class="nav-item" [className]="page==1 ? 'k-active' : ''" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faLeaf" [icon]="faLeaf"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'StatoPatrimoniale' | transloco }}</span>
+                    </li>
+                    <li (click)="setPage(2)" class="nav-item" [className]="page==2 ? 'k-active' : ''"  routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faProfili" [icon]="faProfili"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'ContoEconomico' | transloco }}</span>
+                    </li>
+                </ul>
+            </div>
+        </kendo-appbar-section>
+    </div>
+    <div class="topbar-right-filler"></div>
+</kendo-appbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <app-valutazioni-stato-patrimoniale *ngIf="page==1" ></app-valutazioni-stato-patrimoniale>   
+            <app-valutazioni-conto-economico *ngIf="page==2"></app-valutazioni-conto-economico>
+         </div>
+    </div>
+</div>

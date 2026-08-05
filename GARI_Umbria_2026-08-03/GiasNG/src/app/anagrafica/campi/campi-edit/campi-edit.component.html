@@ -1,0 +1,151 @@
+<div *ngIf="campoSelezionato && datiCaricati" class="container">
+    <form [formGroup]="campiEditForm" (keydown.enter)="$event.preventDefault()">
+        <gias-update-toolbar [TipoOperazioneDB]="objParametriAgenda.TipoOperazioneDB" [formGroup]="campiEditForm"
+                            [disabled]="saving"
+                            [submit]="false" [salvaNuovo]="salvaNuovo" (clickEvent)="SalvaCampo()"
+            (clickSalvaNuovoEvent)="SalvaNuovoCampo()">
+        </gias-update-toolbar>
+
+
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row">
+                        <h4 class="card-title mb-2 mt-2" style="text-align: center;">{{'campo.DatiCampo' | transloco}}</h4>
+                    </div>
+                    <div class="row form-row" *ngIf="objParametriAgenda.TipoOperazioneDB == 1">
+                        <div class="col-12 col-md-6" [formGroup]="campiEditForm.get('primaryKey').get('centroAziendalePK')">
+                            <gias-drop-down-template-s [name]="'Centro' | transloco" [obligatory]="true" [clearButton]="true"
+                                textField="descrizione" (open)="openDdl($event)" valueField="codice" [filterable]="true"
+                                giasFormControlName="codice" [listItems]="lista_Centri" [defaultItem]="defaultItem"
+                                [valuePrimitive]="true">
+                            </gias-drop-down-template-s>
+                        </div>
+                    </div>
+                    <div class="row form-row">
+                        <div class="col-12 col-md-3">
+                            <gias-text-template [name]="'campo.descrizione' | transloco" [obligatory]="true"
+                                                [clearButton]="true"
+                                                [placeholder]="'campo.descrizione_Placeholder' | transloco"
+                                                giasFormControlName="descrizione">
+                            </gias-text-template>
+                        </div>
+                        <gias-validita formGroupName="validita"></gias-validita>
+                        <div class="col-12 col-md-3">
+                            <gias-text-template [name]="'RifAlfanumerico' | transloco" [obligatory]="true"
+                                                [clearButton]="false"
+                                                [placeholder]="'campo.codice_Placeholder' | transloco"
+                                                giasFormControlName="campo_Codice">
+                            </gias-text-template>
+                        </div>
+                    </div>
+
+                    <gias-expansionpanel [id]="'Dati_Aggiuntivi'">
+                        <div class="header-content" headerContent>
+                            <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                            <span><em>{{ 'campo.Ulteriori_Dati_Campo' | transloco }}</em></span>
+                        </div>
+
+                        <div class="row form-row">
+                            <div class="content">
+                                <span class="content-text">
+                                    <div class="row ">
+                                        <div class="card">
+                                            <div class="col-lg-12 text-center">
+                                                <h5 class="card-title">
+                                                    {{ 'campo.Orientamento_Colturale' | transloco }}
+                                                </h5>
+                                            </div>
+                                            <div class="row form-row">
+                                                <div class="col-12 col-sm-5">
+                                                    <gias-drop-down-template
+                                                        [name]="'campo.orientamento_colturale' | transloco"
+                                                        [id]="'orientamento_colturale'" [obligatory]="true"
+                                                        [listItems]="OrientamentoColturale"
+                                                        (valueChange)="enableSpecieDdl()" textField="name"
+                                                        valueField="value" giasFormControlName="orientamento_Colturale"
+                                                        [valuePrimitive]="true">
+                                                    </gias-drop-down-template>
+                                                </div>
+                                                <div class="col-12 col-sm-5">
+                                                    <gias-drop-down-template
+                                                        [name]="'campo.specie_vegetale' | transloco"
+                                                        [id]="'specie_vegetale'" [obligatory]="true"
+                                                        [listItems]="SpecieVegetali" textField="descrizione"
+                                                        valueField="codice" giasFormControlName="specie"
+                                                        [valuePrimitive]=false>
+                                                    </gias-drop-down-template>
+                                                </div>
+                                                <div class="col-12 col-sm-2">
+                                                    <div [formGroup]="campiEditForm">
+                                                        <gias-switch-template [name]="'Serra'" giasFormControlName="serra">
+                                                        </gias-switch-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="content">
+                                <span class="content-text">
+                                    <div class="row ">
+                                        <div class="col-lg-12 text-center">
+                                            <h5 class="card-title">
+                                                {{ 'campo.Codici' | transloco }}
+                                            </h5>
+                                            <div class="card-text">
+                                                <div class="row form-row">
+                                                    <gias-codici-template></gias-codici-template>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Parte relativa agli Appezzamenti-->
+                        <!-- credo dia errore se non ho alcun record -->
+                        <div class="row form-row">
+                            <div class="col-12 col-sm-12">
+                                <div [formGroup]="campiEditForm">
+                                    <app-appezzamento-campo-edit formGroupName="appezzamentoCampo">
+                                    </app-appezzamento-campo-edit>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row form-row">
+                            <div class="col-12 col-sm-12">
+                                <gias-binary-button-group-template [name]="binaryButtonName" [value]="binaryButtonValue"
+                                    [disablednobutton]="this.objParametriAgenda.TipoOperazioneDB == 0"
+                                    [disabledsibutton]="this.objParametriAgenda.TipoOperazioneDB == 0"
+                                    [silabel]="'campo.conCatasto' | transloco"
+                                    [nolabel]="'campo.senzaCatasto' | transloco"
+                                    (valueChange)="onChangeChkConCatasto($event)">
+                                </gias-binary-button-group-template>
+                            </div>
+                        </div>
+
+                        <!-- Parte relativa al Catasto-->
+                        <div class="row form-row" *ngIf="binaryButtonValue">
+                            <div class="col-12 col-sm-12">
+                                <div [formGroup]="campiEditForm">
+                                    <app-catasto-campo-edit formGroupName="catastoCampo">
+
+                                    </app-catasto-campo-edit>
+                                </div>
+                            </div>
+                        </div>
+
+                    </gias-expansionpanel>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

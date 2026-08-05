@@ -1,0 +1,115 @@
+.k-appbar {
+    align-items: center;
+}
+
+.gias-operazioni-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.gias-opzioni-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gias-attivi-preferiti-container {
+    display: flex;
+
+    .col-md-auto {
+        min-width: 250px;
+    }
+}
+
+gias-info-template {
+    float: left;
+    margin-right: 10px;
+}
+
+.gias-salva-preferiti-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+}
+
+.gias-opzioni-container {
+    min-width: 210px;
+
+    label {
+        font-weight: bold !important;
+    }
+
+    gias-switch-template {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
+
+    kendo-label {
+        display: none !important;
+    }
+
+    .gias-switch-two-labels {
+        display: flex;
+        align-items: flex-end;
+    }
+}
+
+.gias-qdg-save-container,
+.gias-qdg-verifica-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.gias-update-toolbar-before-appbar-section {
+    display: none;
+}
+
+.k-appbar .k-appbar-section {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    // align-items: center;
+    align-items: stretch;
+}
+
+.gias-multi-op-section {
+    display: flex;
+}
+
+.gias-label-switch-container-invia-app {
+    display: flex;
+    align-items: center;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+
+    .k-label {
+        margin-right: 0.3rem;
+        margin-left: 0.3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .gias-operazioni-container {
+        flex-direction: column;
+    }
+
+    .gias-opzioni-container {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+// @media only screen and (max-width: 1686px) {
+//     .gias-operazioni-container{
+//         display: block;
+//     }
+// }
+@media only screen and (max-width: 1300px) {
+    .gias-operazioni-container {
+        display: block;
+    }
+}
+

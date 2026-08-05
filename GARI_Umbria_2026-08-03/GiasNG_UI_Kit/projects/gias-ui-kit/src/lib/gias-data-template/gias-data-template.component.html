@@ -1,0 +1,101 @@
+<div *ngIf="(giasFormControlName == undefined || giasFormControlName == null || giasFormControlName == '')">
+  <div *ngIf="inputType == 0">
+    <div class="form-group">
+      <div [class]="getCssClass('input-group')">
+        <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+          {{ name  }}
+        </span>
+        <kendo-datepicker
+          #datetimepicker
+          (valueChange)="onChange($event)"
+          [format]="format"
+          placeholder=""
+          (focus)="handleFocus()"
+          (blur)="handleBlur()"
+          (close)="onClose($event)"
+          (open)="onOpen()"
+          [(ngModel)]="value"
+          [fillMode]="'flat'"
+          [min]="startValue"
+          [max]="endValue"
+          calendarType="classic"
+          [disabledDates]="disabledDates"
+        >
+        </kendo-datepicker>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="inputType == 2" [class]="getCssClass('')">
+    <div class="row">
+      <kendo-label [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+    </div>
+    <div class="row">
+      <kendo-datepicker
+        #datetimepicker
+        placeholder=""
+        [name]="name"
+        (focus)="handleFocus()"
+        (blur)="handleBlur()"
+        (valueChange)="onChange($event)"
+        (close)="onClose($event)"
+        (open)="onOpen()"
+        [format]="format"
+        [(ngModel)]="value"
+        [fillMode]="'flat'"
+        [min]="startValue"
+        [max]="endValue" calendarType="classic"
+        [disabledDates]="disabledDates"
+      >
+      </kendo-datepicker>
+    </div>
+  </div>
+</div>
+<div *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+  <div *ngIf="inputType == 0">
+    <div class="form-group">
+      <div [class]="getCssClass('input-group')">
+        <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+          {{name}}
+        </span>
+        <kendo-datepicker
+          #datetimepicker
+          placeholder=""
+          (focus)="handleFocus()"
+          (blur)="handleBlur()"
+          (valueChange)="onChange($event)"
+          (close)="onClose($event)"
+          (open)="onOpen()"
+          [format]="format"
+          [formControlName]="giasFormControlName"
+          [fillMode]="'flat'"
+          [min]="startValue"
+          [max]="endValue" calendarType="classic"
+          [disabledDates]="disabledDates"
+        >
+        </kendo-datepicker>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="inputType == 2" [class]="getCssClass('')">
+    <kendo-label [ngClass]="{'lbl_required' : validator}" *ngIf="name != null">{{name}}</kendo-label>
+    <kendo-label class="lbl_required" *ngIf="validator"> *</kendo-label>
+    <kendo-datepicker
+      #datetimepicker
+      [readOnlyInput]="readOnlyInput"
+      (valueChange)="onChange($event)"
+      style="width: 100%"
+      [format]="format"
+      placeholder=""
+      (focus)="handleFocus()"
+      (blur)="handleBlur()"
+      (close)="onClose($event)"
+      (open)="onOpen()"
+      [formControlName]="giasFormControlName"
+      [min]="startValue"
+      [disabledDatesValidation]="true"
+      [max]="endValue" calendarType="classic"
+      [disabledDates]="disabledDates"
+    >
+    </kendo-datepicker>
+  </div>
+</div>

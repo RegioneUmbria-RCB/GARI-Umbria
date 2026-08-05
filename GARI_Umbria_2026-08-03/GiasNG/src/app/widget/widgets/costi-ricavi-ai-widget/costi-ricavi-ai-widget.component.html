@@ -1,0 +1,132 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data && reportBalance.length > 0" class="row">
+
+    <div class="col-3">
+        <kendo-chart>
+            <kendo-chart-title [text]="'CostiEricavi' | transloco" 
+                               [color]="'#002d5a'"
+                               [font]="'bold 16px Arial, sans-serif'"></kendo-chart-title>
+            <kendo-chart-series>
+            <kendo-chart-series-item type="column" *ngFor="let d of reportBalance" [data]="[d]" field="values" [name]="d.name">
+                <kendo-chart-series-item-labels [rotation]="30" [content]="formatCurrency"></kendo-chart-series-item-labels>
+            </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+    </div>
+
+    <div class="col-3">
+        <kendo-chart>
+            <kendo-chart-title  [text]="'Costi' | transloco"
+                                [color]="'#002d5a'"
+                                [font]="'bold 16px Arial, sans-serif'"></kendo-chart-title>
+            <!-- <ng-template kendoChartDonutCenterTemplate>
+                <h3>{{ allCosts }}</h3>
+            </ng-template> -->
+            <kendo-chart-legend [visible]="false" position="bottom"></kendo-chart-legend>
+            <kendo-chart-series>
+                <kendo-chart-series-item type="pie" [autoFit]="true" [data]="data.CostsCrops" field="costs" categoryField="description">
+                    <!-- <kendo-chart-series-item-labels [content]="labelContent"
+                                                    [align]="'circle'" 
+                                                    [position]="'outsideEnd'"
+                                                    [overflow]="'clip'">
+                    </kendo-chart-series-item-labels> -->
+                    <kendo-chart-series-item-tooltip>
+                        <ng-template let-category="category" let-dataItem="dataItem"> 
+                            {{ category }}: {{ dataItem.costs | currency:'EUR' }}
+                            <br>
+                            <em>{{ dataItem.explanation }}</em>
+                        </ng-template>
+                    </kendo-chart-series-item-tooltip>
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+
+        <div class="text-center mt-2">
+            <span>{{ 'Totale' | transloco }}: {{ allCosts | currency:'EUR' }}</span>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <kendo-chart>
+            <kendo-chart-title [text]="'Ricavi' | transloco"
+                               [color]="'#002d5a'"
+                               [font]="'bold 16px Arial, sans-serif'"></kendo-chart-title>
+            <!-- <ng-template kendoChartDonutCenterTemplate>
+                <h3>{{ allRevenues }}</h3>
+            </ng-template> -->
+            <kendo-chart-legend [visible]="false" position="bottom"></kendo-chart-legend>
+            <kendo-chart-series>
+                <kendo-chart-series-item type="pie" [autoFit]="true" [data]="data.RevenuesCrops" field="revenues" categoryField="description">
+                    <!-- <kendo-chart-series-item-labels [content]="labelContent"
+                                                    [align]="'circle'" 
+                                                    [position]="'outsideEnd'"
+                                                    [overflow]="'clip'">
+                    </kendo-chart-series-item-labels> -->
+                    <kendo-chart-series-item-tooltip>
+                        <ng-template let-category="category" let-dataItem="dataItem"> 
+                            {{ category }}: {{ dataItem.revenues | currency:'EUR' }}
+                            <br>
+                            <em>{{ dataItem.explanation }}</em>
+                        </ng-template>
+                    </kendo-chart-series-item-tooltip>
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+
+        <div class="text-center mt-2">
+            <span>{{ 'Totale' | transloco }}: {{ allRevenues | currency:'EUR' }}</span>
+        </div>
+    </div>
+
+    <div class="col-3">
+        <kendo-chart [categoryAxis]="{ field: 'year', title: { text: 'Anno' } }">
+            <kendo-chart-title [text]="'BilancioPluriennale' | transloco"
+                               [color]="'#002d5a'"
+                               [font]="'bold 16px Arial, sans-serif'"></kendo-chart-title>
+        
+            <kendo-chart-legend position="top"></kendo-chart-legend>
+        
+            <kendo-chart-series>
+                <!-- Serie per i costi -->
+                <kendo-chart-series-item 
+                    [data]="data.Balances" 
+                    type="line" 
+                    field="costs" 
+                    categoryField="year"
+                    [name]="'Costi' | transloco">
+                    <kendo-chart-series-item-tooltip>
+                        <ng-template let-point="point">
+                            <strong>{{ ('Anno' | transloco) + ":" }}</strong> {{ point.category }} <br>
+                            <strong>{{ ('Costi' | transloco) + ":" }}</strong> {{ point.value | currency:'EUR' }} <br>
+                            <strong>{{ ('Info' | transloco) + ":" }}</strong> {{ point.dataItem.explanation }}
+                        </ng-template>
+                    </kendo-chart-series-item-tooltip>
+                </kendo-chart-series-item>
+        
+                <!-- Serie per i ricavi -->
+                <kendo-chart-series-item 
+                    [data]="data.Balances" 
+                    type="line" 
+                    field="revenues" 
+                    categoryField="year"
+                    [name]="'Ricavi' | transloco">
+                    <kendo-chart-series-item-tooltip>
+                        <ng-template let-point="point">
+                            <strong>{{ ('Anno' | transloco) + ":" }}</strong> {{ point.category }} <br>
+                            <strong>{{ ('Ricavi' | transloco) + ":" }}</strong> {{ point.value | currency:'EUR' }} <br>
+                            <strong>{{ ('Info' | transloco) + ":" }}</strong> {{ point.dataItem.explanation }}
+                        </ng-template>
+                    </kendo-chart-series-item-tooltip>
+                </kendo-chart-series-item>
+            </kendo-chart-series>
+        </kendo-chart>
+    </div>
+
+</div>
+
+<div *ngIf="!loading && !data && reportBalance.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunDatoRegistrato' | transloco }}</p>
+</div>

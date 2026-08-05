@@ -1,0 +1,47 @@
+<div>
+    <h5>{{'TabellaInformativaRilieviPiogge' | transloco }}</h5>
+</div>
+<div class="info-message">
+    <fa-icon [icon]="faInfoCircle" size="lg"></fa-icon>
+    <div class="container">
+        <span class="row">
+            {{'TabellaInformativaRilieviPiogge_info1' | transloco }}
+        </span>
+        <span class="row">
+            {{'TabellaInformativaRilieviPiogge_info2' | transloco }}
+        </span>
+        <span class="row">
+            {{'TabellaInformativaRilieviPiogge_info3' | transloco }}
+        </span>
+        <span class="row">
+            {{'TabellaInformativaRilieviPiogge_info4' | transloco }}
+        </span>
+    </div>
+</div>
+
+<form [formGroup]="inputForm" class="container">
+    <div class="row">
+        <div class="col-4">
+            <gias-data-template
+                [name]="'DataInizio' | transloco"
+                [giasFormControlName]="'DataInizio'">
+            </gias-data-template>
+        </div>
+        <div class="col-4">
+            <gias-data-template
+                [name]="'DataFine' | transloco"
+                [giasFormControlName]="'DataFine'">
+            </gias-data-template>
+        </div>
+    </div>
+    <div class="row mt-2 mb-2">
+        <div class="col-4">
+            <button class="btn btn-primary" (click)="onSubmit()">
+                {{ 'Cerca' | transloco }}
+            </button>
+        </div>
+    </div>
+</form>
+<gias-kendo-grid [gridId]="'RilievoPioggeGridId'" *ngIf="showGridRilievoPiogge">
+
+</gias-kendo-grid>

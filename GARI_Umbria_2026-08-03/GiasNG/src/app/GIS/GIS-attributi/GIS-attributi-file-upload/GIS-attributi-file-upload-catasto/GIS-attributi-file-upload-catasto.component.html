@@ -1,0 +1,120 @@
+<ng-container *ngIf="submit$ | async"></ng-container>
+
+<div class="attributi-column" *ngIf="data$ | async as data">
+
+  <div>
+    <kendo-label>{{'gis.FormatoDeiDati' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="formatoDati$ | async" [value]="data.fileCatasto" textField="descrizione"
+      valueField="codice" (valueChange)="formatoDatiSubject.next($event)">
+    </kendo-dropdownlist>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.AttributiWindowCaricaFile' | transloco}}</kendo-label>
+    <kendo-fileselect class="full-width" [multiple]="false" [restrictions]="data.origine?.restrictions ?? []"
+      (select)="onFileSelected($event)" (remove)="onFileRemoved()"></kendo-fileselect>
+  </div>
+
+  <ng-container *ngIf="data.fileCatasto == tipoFileCatasto.CatastoDXF">
+    <div>
+      <kendo-label>{{'gis.AttributiWindowFiltroParticelleCatastali' | transloco}}</kendo-label>
+      <kendo-textbox (valueChange)="filtroParticelleCatastaliSubject.next($event)" [clearButton]="true"></kendo-textbox>
+    </div>
+
+    <div class="k-mt-3">
+      <h6>{{ 'gis.LayersDaImportare' | transloco }}</h6>
+
+      <div class="catasto-switch" *ngFor="let layer of layers$ | async">
+          <ng-container *ngIf="isLayerSelectable(layer)">
+            <kendo-switch (valueChange)="changeListaLayersSubject($event, layer)" [checked]="isLayerChecked(layer)"></kendo-switch>
+            <div class="middle">{{ layer }}</div>
+          </ng-container>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="data.fileCatasto == tipoFileCatasto.CatastoSHP">
+    <div class="k-mt-3">
+      <h6>{{ 'gis.AttributiWindowCorrispondenzaDatiCatastali' | transloco }} </h6>
+
+      <div>
+        <kendo-label>{{'gis.CodiceBelfiore' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="codiceBelfioreSubject.next($event)" [value]="data.codBelfiore"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'Provincia' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="provinciaSubject.next($event)" [value]="data.provincia"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'Comune' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="comuneSubject.next($event)" [value]="data.comune"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'gis.SezioneCatastale' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="sezioneCatastaleSubject.next($event)" [value]="data.sezione"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'Foglio' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="foglioSubject.next($event)" [value]="data.foglio"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'Particella' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="particellaSubject.next($event)" [value]="data.particella"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'Subalterno' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="subalternoSubject.next($event)" [value]="data.subalterno"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+
+      <div>
+        <kendo-label>{{'gis.IdentificativoEsterno' | transloco}}</kendo-label>
+        <kendo-textbox (valueChange)="identificativoEsternoSubject.next($event)" [value]="data.identificativoEsterno"
+          [clearButton]="true"></kendo-textbox>
+      </div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="false"> <!-- Nascosto perché non più utilizzato -->
+    <div class="catasto-switch">
+      <kendo-switch [disabled]="true"></kendo-switch>
+      <div class="middle">{{ 'gis.AttributiWindowGeneraDescrizioniParticelle' | transloco }}</div>
+    </div>
+  </div>
+
+  <div class="k-mt-3">
+    <h6>{{ 'gis.DatiInArchivio' | transloco }} </h6>
+
+    <div class="catasto-switch always-on">
+      <div class="middle">{{ 'gis.AttributiWindowNonImportareParticelle' | transloco }}</div>
+      <kendo-switch (valueChange)="sovrascriviSubject.next($event ? 1 : 2)"
+        [checked]="data.comportamentoImportazione == 1"></kendo-switch>
+      <div class="middle">{{ 'gis.AttributiWindowSovrascriviParticelle' | transloco }}</div>
+    </div>
+  </div>
+
+  <div>
+    <kendo-label>{{'gis.AttributiWindowSceltaSistemaRifermento' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="sistemaRiferimento$ | async" [value]="data.sistema" textField="Text" valueField="Value"
+      (valueChange)="sistemaRiferimentoSubject.next($event)" [filterable]="true" [kendoDropDownFilter]="filterSettings">
+    </kendo-dropdownlist>
+  </div>
+
+  <div [ngClass]="{'loading-spinner': data.loading}">
+    <button kendoButton class="submit-button" (click)="submit()" [disabled]="data.loading">
+      {{ 'gis.AttributiWindowCaricaDati' | transloco }}</button>
+  </div>
+</div>

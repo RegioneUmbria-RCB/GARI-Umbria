@@ -1,0 +1,354 @@
+:host ::ng-deep #ImpiantiGridId tr .k-grid-content-sticky,
+#ImpiantiGridId tr .k-grid-content-sticky:hover {
+  background-color: inherit;
+}
+
+:host ::ng-deep #ImpiantiGridId .k-grid tr.k-selected>td {
+  background-color: rgb(153 184 217);
+}
+
+:host ::ng-deep #ImpiantiGridId tr {
+  background-color: #f5f5f5;
+}
+
+
+:host ::ng-deep .dato_non_coerente,
+tr.k-selected.dato_non_coerente td,
+:host ::ng-deep .dpiOn,
+tr.k-selected.dpiOn td,
+tr.k-selected.dichiarazione_non_utilizzo td {
+  background-color: #fcf6dd !important;
+}
+
+:host ::ng-deep .dato_non_coerente td:first-child,
+:host ::ng-deep .dpiOn td:first-child {
+  border-left: 2px solid #f2d177 !important;
+}
+
+:host ::ng-deep .dichiarazione_non_utilizzo {
+  background-color: #cccccc !important;
+  border: 1px solid black;
+}
+
+:host ::ng-deep .dichiarazione_non_utilizzo td:first-child {
+  border-left: 2px solid black !important;
+}
+
+.dialog-title {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.dialog-body {
+  padding: 8px;
+  background: #fafbfc;
+  max-height: 570px;
+  overflow: auto;
+}
+
+
+.appezzamenti-title {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.impianto-section {
+  margin-bottom: 16px;
+}
+
+.impianto-section-title {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.impianto-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+
+.impianto-field-row {
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.impianto-field-label {
+  width: 200px;
+  font-weight: 500;
+}
+
+.impianto-field-value {
+  flex: 1;
+}
+
+.impianto-edit-input {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .appezzamenti-grid-responsive {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 900px) {
+  .appezzamenti-grid-responsive {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .appezzamenti-grid-responsive {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* New styles moved from inline */
+.dialog-main-container {
+  padding: 2px;
+  background: #fafbfc;
+  overflow-x: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.dialog-title-span {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.detail-dialog-title-span {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.massive-edit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.appezzamenti-title-section {
+  margin-bottom: 8px;
+}
+
+.appezzamenti-title-h4 {
+  margin: 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.appezzamenti-scroll-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.appezzamenti-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px;
+}
+
+.impianto-section-clickable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fff;
+  min-height: 48px;
+}
+
+.impianto-name-span {
+  display: flex;
+  align-items: center;
+}
+
+.impianto-actions-span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.impianto-edited-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #d32f2f;
+  border-radius: 50%;
+  margin-right: 2px;
+}
+
+.impianto-remove-button {
+  min-width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.impianto-remove-icon {
+  font-size: 14px;
+}
+
+.detail-dialog-content {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px 24px;
+  padding: 12px 0;
+  align-items: start;
+  background: #fafbfc;
+  border-radius: 8px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.impianto-field-row-grid {
+  margin-bottom: 14px;
+  padding: 0 8px;
+  min-width: 0;
+}
+
+.impianto-field-label-grid {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 4px;
+  font-size: 1em;
+}
+
+.impianto-field-value-grid {
+  word-break: break-word;
+  font-size: 0.98em;
+}
+
+.full-width-input {
+  width: 100%;
+  min-width: 0;
+}
+
+.dialog-action-button-primary {
+  margin-right: 8px;
+}
+
+.dialog-action-button-secondary {
+  margin-right: 8px;
+}
+
+.validation-error {
+  color: #d32f2f;
+  font-size: 0.75rem;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.impianto-field-with-separator {
+  border-right: 1px solid #e0e0e0;
+  padding-right: 12px;
+  margin-right: 12px;
+}
+
+.detail-dialog-content {
+  position: relative;
+}
+
+.detail-dialog-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(33.33% - 0.5px);
+  width: 1px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+.detail-dialog-content::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(66.66% - 0.5px);
+  width: 1px;
+  background-color: #e0e0e0;
+  z-index: 1;
+}
+
+/* Validation styles for superficie trattata */
+.superficie-validation-error {
+  border-color: #f44336 !important;
+  background-color: #ffebee !important;
+}
+
+.superficie-validation-error:focus {
+  border-color: #f44336 !important;
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.2) !important;
+}
+
+.validation-error-tooltip {
+  background-color: #f44336;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.dialog-content-scroll {
+  max-height: 270px;
+  margin-top: 4px;
+  padding-right: 8px;
+  overflow-y: auto;
+  margin-bottom: 35px;
+}
+
+.turno-item {
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: background 0.2s;
+  font-size: 14px;
+}
+
+.turno-item:hover {
+  background-color: #eef5ff;
+}
+
+.subtitle{
+  font-size: 16px;
+}
+
+.gridButton {
+  display: flex;
+  align-items: center;
+  background-color: transparent !important;
+  color: #002850 !important;
+  border: 1px solid #002850 !important;
+  border-radius: 4px !important;
+  font-family: "Lato", Sans-serif !important;
+  font-size: 14px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  height: 30px;
+}
+
+.gridButton:hover {
+  background-color: #E6ECF2 !important;
+}
+

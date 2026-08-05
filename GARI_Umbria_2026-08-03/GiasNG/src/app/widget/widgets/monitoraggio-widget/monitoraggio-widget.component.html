@@ -1,0 +1,51 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<ng-container *ngIf="!loading">
+  <ng-container *ngFor="let station of widgetData; let i = index">
+
+    <div *ngIf="page == i" class="station-container" (click)="onClickWidget($event, station)">
+      <!-- [style]="page == i ? 'display: flex' : 'display: none'" -->
+
+      <div class="station-header">
+        <span>{{ station.Descrizione }}</span>
+      </div>
+
+      <div [class]="widgetData.length > 1 ? 'station-chart station-scrollable' : 'station-chart'">
+        <div *ngIf="station.Series.length == 0" class="station-na">
+          <span class="dot"></span>
+        </div>
+
+        <kendo-sparkline *ngIf="station.Series.length > 0" style="width: 100%; height: 100%" type="area"
+          [series]="station.Series" [valueAxis]="{ min: 0, max: 1.2 }"
+          [chartArea]="{ background: '', margin: { left: 3, top: 0, right: 3, bottom: 0 } }" [plotArea]="{ margin: 0 }"
+          [categoryAxis]="{ visible: true, color: '#4169E1', majorTicks: { visible: false }, minorTicks: { visible: true, skip: 1, step: 2, width: 3, size: 3, color: '#4169E1' }, crosshair: { visible: false } }"
+          [tooltip]="{ visible: false }">
+        </kendo-sparkline>
+      </div>
+
+      <div class="station-footer">
+        <ng-container *ngIf="station.AlertSerie.length > 0">
+          <span>{{ station.AlertSerie[0].data | date: 'dd MMM yyyy' }}</span>
+          <div style="flex: auto"></div>
+          <span>{{ station.AlertSerie[station.AlertSerie.length - 1].data | date: 'dd MMM yyyy' }}</span>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="widgetData.length > 1">
+        <span class="station-scroller-arrow fa fa-angle-left fa-3x" (click)="navigate(-1)"></span>
+        <span class="station-scroller-arrow fa fa-angle-right fa-3x" style="right: 0px;" (click)="navigate(1)"></span>
+      </ng-container>
+    </div>
+
+  </ng-container>
+</ng-container>
+
+<div *ngIf="!loading && piva != null && widgetData.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunMonitoraggio' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

@@ -1,0 +1,173 @@
+<ng-container *ngIf="!destroyGrid">
+    <gias-kendo-grid [id]="'qdcTableId'" #grid class="kendo-grid-no-shadows">
+    <ng-container headerContent>
+      <span class="separator"></span>
+      <div style="display:flex; flex-flow:column;">
+        <div style="display:flex; flex-flow:row;">
+          <div style="display:flex; align-items: center; margin-right: 10px;">
+            <div class="agendaOperazBloccata legend-spacing"></div>
+            <div class="text-spacing">{{ "Bloccata" | transloco }}</div>
+            <gias-info-template [title]="'OperazioneBloccataInfo' | transloco"></gias-info-template>
+          </div>
+          <div style="display:flex; align-items: center; margin-right: 10px;">
+            <div class="agendaOperazDaRevisionare legend-spacing"></div>
+            <div class="text-spacing">{{ "DaVerificare" | transloco }}</div>
+            <gias-info-template [title]="'OperazioneDaVerificareInfo' | transloco"></gias-info-template>
+          </div>
+          <div style="display:flex; align-items: center;">
+            <span class="agendaOperazPianificata legend-spacing"></span>
+            <span class="text-spacing">{{ "Pianificata" | transloco }}</span>
+            <gias-info-template [title]="'OperazionePianificataInfo' | transloco"></gias-info-template>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container headerContentButtons *ngIf="!datastore.isMenuAgendaCalledFromGis">
+      <div kendoTooltip>
+        <button class="btn btn-primary btn-sm btn-primary-fill" (click)="importaAgendaDaTabelleAPP()"
+                [title]="'CaricaDatiAPP' | transloco" style="margin-right: 5px" [type]="'button'">
+          <div class="faGridToolbarIcon faQdCImportByApp"></div>
+        </button>
+      </div>
+      <div kendoTooltip>
+        <button class="btn btn-primary btn-sm btn-primary-fill" (click)="massiveRecipe($event)"
+                [title]="'CreaRicettadalleOperazioniSelezionate' | transloco" [type]="'button'">
+          <div class="faGridToolbarIcon faQdCGoToReciepeOn"></div>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="permessoEdit">
+        <button class="btn btn-primary btn-sm btn-primary-fill" (click)="massiveCopy()"
+                [title]="'CopiaOperazioniSelezionateSelezionati' | transloco" style="margin-left: 5px;"
+                [type]="'button'">
+          <div class="faGridToolbarIcon faCopySingle02"></div>
+        </button>
+      </div>
+
+      <span class="separator"></span>
+      <div class="btn-group-sm">
+        <div kendoTooltip *ngIf="permessoSblocca">
+          <button style="margin-right: .5rem" class="btn btn-primary btn-sm" (click)="onSbloccaAttivita()"
+                  [type]="'button'" [title]="'Sblocca' | transloco">
+            <fa-icon size="lg" [icon]="faLockOpen" aria-hidden="true"></fa-icon>
+          </button>
+        </div>
+        <div kendoTooltip *ngIf="permessoBlocca">
+          <button class="btn btn-primary btn-sm" (click)="onBloccaAttivita()" [type]="'button'"
+                  [title]="'Blocca' | transloco">
+            <fa-icon size="lg" [icon]="faLock" aria-hidden="true"></fa-icon>
+          </button>
+        </div>
+
+        <span class="separator"></span>
+      </div>
+    </ng-container>
+
+    <ng-container headerContentEnd *ngIf="!datastore.isMenuAgendaCalledFromGis">
+
+      <ng-container *ngTemplateOutlet="stampeRef; context: {$implicit: dataItem}"></ng-container>
+
+      <div kendoTooltip *ngIf="true">
+        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill" style="margin-right: 5px"
+                [type]="'button'" [title]="'VerificaConformita' | transloco" (click)="verificaConformita()">
+          <div class="faGridToolbarIcon xi-check-compliance"></div>
+        </button>
+      </div>
+
+      <div kendoTooltip *ngIf="permessoExportQdCToAgea">
+        <button (click)="ExportQdCToAgea()"
+                [title]="'InviaAdAGEA' | transloco" class="btn btn-primary btnDisabledInModifica  btn-primary-fill"
+                style="margin-right: 5px">
+          <fa-icon [icon]="['fas', 'arrow-up-from-bracket']" aria-hidden="true" size="sm"
+                   style="color: white; margin-left: 6px;"></fa-icon>
+        </button>
+      </div>
+
+      <div kendoTooltip *ngIf="permessoMultiModifica">
+        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill" style="margin-right: 5px"
+                [type]="'button'" [title]="'ModificaleOperazioniSelezionate' | transloco"
+                (click)="editSelected()">
+          <div class="faGridToolbarIcon faQdCEditMultioperationsOn"></div>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="permessoMultiCancellazione">
+        <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+                [type]="'button'"
+                [title]="'CancellaleOperazioniSelezionate' | transloco">
+          <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="permessoEdit">
+        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                (click)="onNuovo()"
+                [title]="'NuovaOperazione' | transloco" [type]="'button'">
+          <fa-icon class="faAddSchedule"></fa-icon>
+        </button>
+      </div>
+    </ng-container>
+    </gias-kendo-grid>
+</ng-container>
+
+<kendo-dialog [title]="'ImportazioniDatiApp' | transloco" *ngIf="openModalImportazioniApp"
+              (close)="closeDatiApp('ImportazioniDatiApp')" [minWidth]="250" [width]="450">
+  <p style="margin: 30px; text-align: center;">
+    {{ messageCaricaDatiApp }}
+  </p>
+</kendo-dialog>
+
+<kendo-dialog [title]="'CreaRicettadalleOperazioniSelezionate' | transloco" *ngIf="openModalRicette"
+              (close)="closeRicette('back')"
+              [minWidth]="250" [width]="650">
+  <form [formGroup]="ricettaForm">
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <gias-text-template [name]="'Descrizione' | transloco " [obligatory]="true" [clearButton]="true"
+                            [placeholder]="'Descrizione' | transloco " giasFormControlName="descrizione">
+        </gias-text-template>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <gias-text-template [name]="'Numero' | transloco " [obligatory]="true" [clearButton]="true"
+                            [placeholder]="'Numero' | transloco " giasFormControlName="numero">
+        </gias-text-template>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <gias-data-template [name]="'Da' | transloco" giasFormControlName="dataInizio" [readOnlyInput]="true">
+        </gias-data-template>
+      </div>
+      <div class="col-12 col-md-6">
+        <gias-data-template [name]="'A' | transloco" giasFormControlName="dataFine" [readOnlyInput]="true">
+        </gias-data-template>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-12">
+        <gias-text-template [name]="'Nota' | transloco " [obligatory]="true" [clearButton]="true"
+                            [placeholder]="'Nota' | transloco " giasFormControlName="nota">
+        </gias-text-template>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-lg-12" #creaRicettaInfo>
+      {{ 'RicettaConterraOperazioni' | transloco }}
+    </div>
+  </div>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeRicette('back')">{{ 'Indietro' | transloco }}</button>
+    <button kendoButton (click)="closeRicette('create')" themeColor="primary"
+            [disabled]="ricettaForm.invalid">
+      {{ 'CreaRicetta' | transloco }}
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+<kendo-dialog [title]="'ModificaleOperazioniSelezionate' | transloco" *ngIf="openMultipleEdit"
+              (close)="onCloseMultiEdit()"
+              [width]="'80%'" [maxHeight]="'80%'">
+  <app-operations-mass-edit [activities]="selected"></app-operations-mass-edit>
+</kendo-dialog>

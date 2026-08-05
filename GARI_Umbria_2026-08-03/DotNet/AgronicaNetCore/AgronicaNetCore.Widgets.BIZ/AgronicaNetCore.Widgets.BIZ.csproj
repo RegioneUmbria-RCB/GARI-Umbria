@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Magazzino.BIZ\AgronicaNetCore.Magazzino.BIZ.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.OperazioniZoo.BIZ\AgronicaNetCore.OperazioniZoo.BIZ.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Utenti.DAL\AgronicaNetCore.Utenti.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Widgets.DAL\AgronicaNetCore.Widgets.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Zoo.BIZ\AgronicaNetCore.Zoo.BIZ.csproj" />
+  </ItemGroup>
+
+</Project>

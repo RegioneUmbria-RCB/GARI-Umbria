@@ -1,0 +1,92 @@
+<div class="container filtersContainer">
+    <ng-container>
+        <ng-container *ngIf="type === STRING || type === DROPDOWNLIST || type === NUMBER || type === MULTI_DROPDOWNLIST">
+            <div class="row">
+              <ul>
+                <li *ngIf="showFilter">
+                  <input class="k-textbox" (input)="onInput($event)"
+                         [disabled]="searchDisabled"
+                         [placeholder]="searchDisabled?
+          ('giasgrid.Caricamento' | transloco): ('giasgrid.Ricerca'| transloco)"/>
+                </li>
+              </ul>
+                <ng-container *ngIf="filterText.length != 0">
+                    <div
+                        (click)="onSelectAll()"
+                        [ngClass]="{ 'k-selected': manager.selectAllChecked }"
+                        class="multicheck-item multicheck-item-select-all">
+                        <input
+                            type="checkbox"
+                            id="chk-selectAll"
+                            class="k-checkbox fixedSize"
+                            [checked]="manager.selectAllChecked"
+                        />
+                        <label
+                            class="k-multiselect-checkbox k-checkbox-label"
+                            for="chk-selectAll"
+                        >
+                            {{ 'giasgrid.Select_All' | transloco }}
+                        </label>
+                    </div>
+                </ng-container>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="type === DATE">
+            <gias-date-range-filter-cell
+                [filterService]="filterService"
+                [manager]="manager"
+                [field]="field"
+                (filterChange)="filterItems($event)"
+            >
+            </gias-date-range-filter-cell>
+        </ng-container>
+
+      <ng-container *ngIf="type === DATETIME">
+          <gias-date-range-filter-cell
+              [filterService]="filterService"
+              [manager]="manager"
+              [field]="field"
+              (filterChange)="filterItems($event)"
+          >
+          </gias-date-range-filter-cell>
+      </ng-container>
+
+        <cdk-virtual-scroll-viewport
+            (scrolledIndexChange)="handler($event)"
+            autosize
+            class="multicheck-viewport">
+            <div
+                #itemElement
+                *cdkVirtualFor="let item of manager.shownData; let i = index"
+                (click)="onSelectionChange(manager.valueAccessor(item), itemElement)"
+                [ngClass]="{ 'k-selected': manager.isItemSelected(item) }"
+                class="multicheck-item pb-2">
+                <div class="row">
+                    <div class="col-12 oneline">
+                        <input
+                            type="checkbox"
+                            id="chk-{{ manager.valueAccessor(item) }}"
+                            class="k-checkbox fixedSize"
+                            [checked]="manager.isItemSelected(item)"
+                        />
+                        <label
+                            class="k-multiselect-checkbox k-checkbox-label"
+                            for="chk-{{ manager.valueAccessor(item) }}"
+                            *ngIf="showHTMLAsString">
+                            <div [innerHtml]="manager.textAccessor(item)"></div>
+                        </label>
+
+                        <label
+                            class="k-multiselect-checkbox k-checkbox-label"
+                            for="chk-{{ manager.valueAccessor(item) }}"
+                            *ngIf="!showHTMLAsString">
+                            {{ manager.textAccessor(item) }}
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </cdk-virtual-scroll-viewport>
+    </ng-container>
+</div>

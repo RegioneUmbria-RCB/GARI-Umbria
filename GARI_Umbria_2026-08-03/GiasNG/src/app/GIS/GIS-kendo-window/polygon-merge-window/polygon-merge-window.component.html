@@ -1,0 +1,16 @@
+<gis-window [windowArgs]="windowArgs$ | async" class="pb-3">
+  <app-tool-polygon-merge (onReset)="reset($event)"></app-tool-polygon-merge>
+</gis-window>
+
+<kendo-dialog *ngIf="isCloseConfirmationOpen" (close)="isCloseConfirmationOpen = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div class="exit-text">{{ 'gis.CloseDrawingUnisciWindow' | transloco }}</div>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="doReset()">{{ 'Si' | transloco }}</button>
+    <button kendoButton (click)="isCloseConfirmationOpen = false">{{ 'No' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

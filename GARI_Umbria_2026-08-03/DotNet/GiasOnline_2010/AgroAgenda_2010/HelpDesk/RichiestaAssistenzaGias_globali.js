@@ -1,0 +1,34 @@
+﻿         
+
+
+var Elenco_Motivo_Richiesta = [
+    { "TipoMotivo_Cod": 0, "TipoMotivo_Des": "Richiesta inserimento su banche dati" },
+    { "TipoMotivo_Cod": 1, "TipoMotivo_Des": "Richiesta assistenza campagna" },
+    { "TipoMotivo_Cod": 2, "TipoMotivo_Des": "Richiesta assistenza conferimenti, controllo di gestione, laboratorio analisi e qualità: " },
+    { "TipoMotivo_Cod": 3, "TipoMotivo_Des": "Richiesta assistenza cantine e costi" },
+    { "TipoMotivo_Cod": 4, "TipoMotivo_Des": "Altro" }];
+var Elenco_RichiestaInsBancaDati = [
+    { "RichiestaInsBancaDati_Cod": 0, "RichiestaInsBancaDati_Des": "Fertilizzante", "Flag": 1, "Subject": "Richiesta inserimento Fertilizzante da parte dell'azienda:", "Body": "RICHIEDENTE Nome: _____________________  %0D%0A %0D%0A Si richiede inserimento su GIAS del seguente Fertilizzante:__________________________ %0D%0A Ditta:___________________ %0D%0A Concimazione effettuata (es. fogliare, fertirrigazione, pieno campo):_____________________" },
+    { "RichiestaInsBancaDati_Cod": 1, "RichiestaInsBancaDati_Des": "Specie Vegetale", "Flag": 1, "Subject": "Richiesta inserimento Specie Vegetale da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________ %0D%0A %0D%0A Si richiede inserimento su GIAS della seguente Specie Vegetale:_____________________ " },
+    { "RichiestaInsBancaDati_Cod": 2, "RichiestaInsBancaDati_Des": "Varietà", "Flag": 1, "Subject": "Richiesta inserimento Varietà da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Varietà:_______________________ %0D%0A Specie di appartenenza:_______________________ " },
+    { "RichiestaInsBancaDati_Cod": 3, "RichiestaInsBancaDati_Des": "Prodotto Fitosanitario", "Flag": 1, "Subject": "Richiesta inserimento Prodotto Fitosanitario da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A %0D%0A Si richiede inserimento su GIAS del seguente Prodotto Fitosanitario: __________________ %0D%0A N° di registrazione:_________________________ %0D%0A Colture di interesse:_________________________ %0D%0A Avversità di interesse:________________________ " },
+    { "RichiestaInsBancaDati_Cod": 4, "RichiestaInsBancaDati_Des": "Finalità", "Flag": 1, "Subject": "Richiesta inserimento Finalità da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Finalità:_____________________ %0D%0A relativa alla seguente specie vegetale:_____________________" },
+    { "RichiestaInsBancaDati_Cod": 5, "RichiestaInsBancaDati_Des": "Tipologia Varietale", "Flag": 1, "Subject": "Richiesta inserimento Tipologia Varietale da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Tipologia Varietale:_____________________ %0D%0A relativa alla seguente specie vegetale:_______________________ " },
+    { "RichiestaInsBancaDati_Cod": 6, "RichiestaInsBancaDati_Des": "Coadiuvante", "Flag": 1, "Subject": "Richiesta inserimento Coadiuvante da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS del seguente Coadiuvante:___________________ %0D%0A n° di registrazione:_____________________ %0D%0A Ditta:______________________" },
+    { "RichiestaInsBancaDati_Cod": 7, "RichiestaInsBancaDati_Des": "Portainnesto", "Flag": 1, "Subject": "Richiesta inserimento Portinnesto da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS del seguente Portinnesto:_____________________ %0D%0A relativo alla seguente specie vegetale:________________________" },
+    { "RichiestaInsBancaDati_Cod": 9, "RichiestaInsBancaDati_Des": "Trappola e Innesco Trappola", "Flag": 1, "Subject": "Richiesta inserimento Trappola da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Trappola: _________________ %0D%0A Ditta:___________________ %0D%0A Colture d'interesse:_________________________  " },
+    { "RichiestaInsBancaDati_Cod": 10, "RichiestaInsBancaDati_Des": "Forma Allevamento", "Flag": 1, "Subject": "Richiesta inserimento Forma Allevamento da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Forma Allevamento:_____________________ %0D%0A relativa alla seguente specie vegetale:________________________ " },
+    { "RichiestaInsBancaDati_Cod": 11, "RichiestaInsBancaDati_Des": "Calibro", "Flag": 1, "Subject": "Richiesta inserimento Calibro da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS del seguente Calibro:_____________________ %0D%0A relativo alla seguente specie vegetale:________________________ " },
+    { "RichiestaInsBancaDati_Cod": 12, "RichiestaInsBancaDati_Des": "Insetti Utili e Ausiliari", "Flag": 1, "Subject": "Richiesta inserimento Insetti Utili da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS del seguente Insetto Utile / Ausiliare:_____________________ %0D%0A Ditta:_________________________ %0D%0A Colture di interesse:__________________ " },
+    { "RichiestaInsBancaDati_Cod": 13, "RichiestaInsBancaDati_Des": "Impianto Irrigazione", "Flag": 1, "Subject": "Richiesta inserimento Impianto Irrigazione da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS del seguente Impianto Irrigazione:_____________________ %0D%0A relativo alla seguente specie vegetale:________________________" },
+    { "RichiestaInsBancaDati_Cod": 14, "RichiestaInsBancaDati_Des": "Fase Fenologica", "Flag": 1, "Subject": "Richiesta inserimento Fase Fenologica da parte dell'azienda:", "Body":"RICHIEDENTE Nome: _____________________  %0D%0A  %0D%0A Si richiede inserimento su GIAS della seguente Fase Fenologica: %0D%0A alla seguente specie vegetale:________________________ " }];
+
+var BodNomeRichiedente = "RICHIEDENTE Nome: _____________________ %0D%0A %0D%0A"
+
+var MailAssistenza = "assistenza@agronica.it";                       //Richiesta assistenza
+var MailBancheDati = "banchedati@agronica.it";                  //Richiesta Banche Dati
+var MailCampagna = "assistenza@agronica.it";                    //Richiesta assistenza campagna
+var MailConf_Gest_LabAnalisi_Qual = "assistenza@agronica.it";      //Richiesta assistenza conferimenti,controllo di gestione , laboratorio analisi e qualità
+var MailCantine = "assistenza@agronica.it";                     //Richiesta assistenza Cantine e costi
+var MailAltro = "assistenza@agronica.it";                       //Altro
+

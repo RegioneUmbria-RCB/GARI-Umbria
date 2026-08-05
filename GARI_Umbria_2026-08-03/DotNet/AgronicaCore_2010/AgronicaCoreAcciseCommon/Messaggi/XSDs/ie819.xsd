@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="http://emcs.dgtaxud.ec/v10/types" xmlns:tms="http://emcs.dgtaxud.ec/v10/tms" xmlns:tcl="http://emcs.dgtaxud.ec/v10/tcl" xmlns:ie="http://emcs.dgtaxud.ec/v10/cd819/ie" xmlns:ns1="http://emcs.dgtaxud.ec/v10/types" targetNamespace="http://emcs.dgtaxud.ec/v10/cd819/ie" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<!--=========================================-->
+	<!--===== IE819:N_AAD_SUB -->
+	<!--===== SUBMITTED DRAFT OF E-AAD -->
+	<!--=========================================-->
+	<!--===== Imports =====-->
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/types" schemaLocation="types_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tms" schemaLocation="tms_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tcl" schemaLocation="tcl_2.xsd"/>
+	<!--===== Root Element =====-->
+	<xs:element name="CD819A" type="ie:CD819AType"/>
+	<!--===== EMCS Data Groups Declarations =====-->
+	<xs:complexType name="CD819AType">
+		<xs:sequence>
+			<xs:element ref="tms:HeaderMessage"/>
+			<xs:element name="BodyMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AlertOrRejectionOfEAD" type="ie:AlertOrRejectionOfEADType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AlertOrRejectionOfEADType">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordR">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:ConsigneeTrader"/>
+						<xs:element ref="ie:ExciseMovementEad"/>
+						<xs:element ref="ie:DestinationOffice"/>
+						<xs:element ref="ie:AlertOrRejection"/>
+						<xs:element ref="ie:AlertOrRejectionOfEadReason"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType"/>
+	<xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType"/>
+	<xs:element name="DestinationOffice" type="ie:DestinationOfficeType"/>
+	<xs:element name="AlertOrRejection" type="ie:AlertOrRejectionType"/>
+	<xs:element name="AlertOrRejectionOfEadReason" type="ie:AlertOrRejectionOfEadReasonType"/>
+	<xs:complexType name="ConsigneeTraderType">
+		<xs:sequence>
+			<xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0"/>
+			<xs:element name="TraderName" type="emcs:TraderNameType"/>
+			<xs:element name="StreetName" type="emcs:StreetNameType"/>
+			<xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="emcs:CityType"/>
+			<xs:element name="EoriNumber" type="emcs:EoriNumberType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ExciseMovementEadType">
+		<xs:sequence>
+			<xs:element name="SequenceNumber" type="emcs:SequenceNumber818Type"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DestinationOfficeType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AlertOrRejectionType">
+		<xs:sequence>
+			<xs:element name="DateOfAlertOrRejection" type="emcs:DateFlatType"/>
+			<xs:element name="EadRejectedFlag" type="tcl:Flag"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AlertOrRejectionOfEadReasonType">
+		<xs:sequence>
+			<xs:element name="IterationTotal" type="tcl:IterationTotal9Type"/>
+			<xs:element name="AlertOrRejectionOfEadBodyReason" minOccurs="0" maxOccurs="9">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode" type="tcl:IterationCodeType" minOccurs="0"/>
+						<xs:element name="IterationNumber" type="tcl:IterationNumber9Type" minOccurs="0"/>
+						<xs:element name="AlertOrRejectionOfEadReasonCode" type="emcs:AlertOrRejectionOfEadReasonCodeType" minOccurs="0"/>
+						<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LSDComplementaryInformationType">
+		<xs:simpleContent>
+			<xs:extension base="emcs:ComplementaryInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

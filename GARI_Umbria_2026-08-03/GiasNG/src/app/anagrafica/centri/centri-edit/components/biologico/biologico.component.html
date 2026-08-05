@@ -1,0 +1,74 @@
+<div [formGroup]="form">
+  <div class="content">
+    <span class="content-text">
+      <div class="row ">
+        <div class="col-12">
+          <h5 class="card-title" style="text-align: center;"> {{ 'centro.Biologico' | transloco}}</h5>
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <gias-text-template
+                [name]="'centro.CodiceOperatore' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                [isDisabled]="isFormDisabled"
+                giasFormControlName="codiceOperatore">
+              </gias-text-template>
+            </div>
+            <div class="col-12 col-sm-6">
+              <gias-drop-down-template
+                [name]="'centro.Tipo_Attività' | transloco"
+                [listItems]="store.tipoAttivita"
+                [textField]="'descrizione'"
+                [valueField]="'codice'"
+                [obligatory]="true"
+                [clearButton]="true"
+                [isDisabled]="isFormDisabled"
+                giasFormControlName="bioTipoAttivita"
+                [valuePrimitive]="false">
+              </gias-drop-down-template>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              <gias-drop-down-template
+                [name]="'centro.Ordganismo_di_controllo' | transloco"
+                [listItems]="store.organismiControllo"
+                [textField]="'descrizione'"
+                [valueField]="'codice'"
+                [obligatory]="true"
+                [clearButton]="true"
+                [isDisabled]="isFormDisabled"
+                giasFormControlName="bioOrganismoDiControllo"
+                [valuePrimitive]="false">
+              </gias-drop-down-template>
+            </div>
+            <div class="col-12 col-sm-6">
+              <kendo-label
+                class="k-checkbox-label"
+                [for]="notification"
+                [text]="'centro.Automatico' | transloco"
+            ></kendo-label>
+            <input type="checkbox" #notification kendoCheckBox />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <gias-multiselect-template-s
+                [name]="'centro.OrientamentoTecnicoEconomico' | transloco"
+                [obligatory]="true"
+                [listItems]="store.otes"
+                textField="descrizione"
+                valueField="codice"
+                giasFormControlName="orientamentoTecnicoEconomico"
+                [filterable]="true"
+                [valuePrimitive]="false"
+                [isDisabled]="isFormDisabled">
+              </gias-multiselect-template-s>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+

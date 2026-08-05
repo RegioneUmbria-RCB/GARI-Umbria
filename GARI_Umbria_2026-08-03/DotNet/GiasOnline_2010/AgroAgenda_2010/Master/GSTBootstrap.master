@@ -1,0 +1,124 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Master/AgendaBootstrap.Master" AutoEventWireup="false" CodeBehind="GSTBootstrap.master.vb" Inherits="AgroAgenda_2010.GSTBootstrap" %>
+
+<%@ MasterType VirtualPath="~/Master/AgendaBootstrap.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+
+
+    <link href="<%= ResolveClientUrl("GSTBootstrap_master.css?" & Application("GiasVersioneCorrente").ToString) %>" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="GST_HeadContent" runat="server" />
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div style="display: flex">
+                <span id="spanSportello" style="font-size:15px;">&nbsp;</span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+
+            <div style="display: flex">
+
+                <%--voce di menu--%>
+                <asp:panel runat="server" ID="Pannello_BTN_Filtro" style="display: flex" cssclass="RiquadroPulsanteNav">
+                    <div>
+                        <asp:ImageButton ID="ImgBtn_Filtro" runat="server" 
+                            ToolTip="Imposta i criteri di selezione degli impianti colturali ..." />
+                    </div>
+                    <div>
+                        <span class="Testo_08_Blue_Bold">Imposta filtro impianti</span>
+                    </div>
+
+                </asp:panel>
+
+                <%--separatore freccia--%>
+                <div>
+                    <img src="<%=PATH_GIASBASE %>Agronica/AB_Immagini/Icone24/Freccia24VerdeDX.ico" style="height: 24px; width: 24px" />
+                </div>
+                <%--fine voce di menu--%>
+
+
+                <%--voce di menu--%>
+                <asp:panel runat="server" ID="Pannello_BTN_Risultato" style="display: flex" cssclass="RiquadroPulsanteNav">
+                    <div>
+                        <asp:ImageButton ID="ImgBtn_Risultato" runat="server" 
+                            ToolTip="Cerca gli impianti che soddisfano i criteri di filtraggio ..." Style="float: left;" CssClass="btn_per_load" />
+                    </div>
+                    <div>
+                        <span class="Testo_08_Blue_Bold">Applica filtro impianti</span>
+                    </div>
+
+                </asp:panel>
+
+                <%--separatore freccia--%>
+                <div>
+                    <img src="<%=PATH_GIASBASE %>Agronica/AB_Immagini/Icone24/Freccia24VerdeDX.ico" style="height: 24px; width: 24px" />
+                </div>
+                <%--fine voce di menu--%>
+
+
+
+                <%--voce di menu--%>
+                <asp:panel runat="server" ID="Pannello_BTN_Interferenze" style="display: flex" cssclass="RiquadroPulsanteNav">
+                    <div>
+                        <asp:ImageButton ID="ImgBtn_Interferenze" runat="server" 
+                            ToolTip="Cerca le interferenze tra impianti selezionati ..." Style="float: left" CssClass="btn_per_load" />
+                    </div>
+                    <div>
+                        <span class="Testo_08_Blue_Bold">Verifica Interferenze</span>
+                    </div>
+
+                </asp:panel>
+
+                <%--separatore freccia--%>
+                <div>
+                    <img src="<%=PATH_GIASBASE %>Agronica/AB_Immagini/Icone24/Freccia24VerdeDX.ico" style="height: 24px; width: 24px" />
+                </div>
+                <%--fine voce di menu--%>
+
+
+                <%--voce di menu--%>
+                <asp:panel runat="server" ID="Pannello_BTN_Stampa" style="display: flex" cssclass="RiquadroPulsanteNav">
+                    <div>
+                        <asp:ImageButton ID="ImgBtn_Stampa" runat="server" 
+                            ToolTip="Stampa i risultati ottenuti ..."
+                            Style="float: left; height: 32px;" />
+                    </div>
+                    <div>
+                        <span class="Testo_08_Blue_Bold">Stampa i Risultati Ottenuti</span>
+                    </div>
+
+                </asp:panel>
+
+
+                <%--fine voce di menu--%>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+    <%--contenitore per pagine figlie--%>
+    
+    <asp:ContentPlaceHolder ID="GST_MainContent" runat="server" />
+    
+
+    <%--contenitore script--%>
+    <asp:ContentPlaceHolder ID="GST_ScriptContent" runat="server" />
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentScript" runat="server">
+
+    <script type="text/javascript">
+        var ImgBtn_Risultato_ClientID = "<%= ImgBtn_Risultato.ClientID %>";
+        var ImgBtn_Interferenze_ClientID = "<%= ImgBtn_Interferenze.ClientID %>";
+        var PATH_GIASBASE = '<%=PATH_GIASBASE %>';
+    </script>
+
+</asp:Content>

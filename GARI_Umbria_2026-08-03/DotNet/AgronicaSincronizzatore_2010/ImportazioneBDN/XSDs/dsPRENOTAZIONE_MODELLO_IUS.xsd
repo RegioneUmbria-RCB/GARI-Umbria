@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsPRENOTAZIONE_MODELLO_IUS" targetNamespace="http://bdr.izs.it/XMLSchema/dsPRENOTAZIONE_MODELLO_IUS.xsd" xmlns:mstns="http://bdr.izs.it/XMLSchema/dsPRENOTAZIONE_MODELLO_IUS.xsd" xmlns="http://bdr.izs.it/XMLSchema/dsPRENOTAZIONE_MODELLO_IUS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:simpleType name="EstremiNumero">
+    <xs:restriction base="xs:int" />
+  </xs:simpleType>
+  <xs:complexType name="xmlElencoCapi">
+    <xs:sequence>
+      <xs:element name="ELENCO_CAPI" type="mstns:xmlCapo" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlCapo">
+    <xs:sequence>
+      <xs:element name="CAPO" type="mstns:xmlDescrCapo" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlDescrCapo">
+    <xs:sequence>
+      <xs:element name="CAPO_CODICE" type="xs:string" minOccurs="0" />
+      <xs:element name="CODICE_ELETTRONICO" type="xs:string" minOccurs="0" />
+      <xs:element name="IDENT_NOME" type="xs:string" minOccurs="0" />
+      <xs:element name="PASSAPORTO" type="xs:string" minOccurs="0" />
+      <xs:element name="CODICE_UELN" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlTrattamenti">
+    <xs:sequence>
+      <xs:element name="ELENCO_TRATTAMENTI" type="mstns:xmlTrattamento" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlTrattamento">
+    <xs:sequence>
+      <xs:element name="TRATTAMENTO" type="mstns:xmlDescrTrattamento" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlDescrTrattamento">
+    <xs:sequence>
+      <xs:element name="TRATTAMENTO_FLAG_PRONTUARIO" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_CAPO_CODICE" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_TIPO" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_AIC" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_DENOMINAZIONE" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_CONFEZIONE" type="xs:string" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_DT_SOMM" type="xs:date" minOccurs="0" />
+      <xs:element name="TRATTAMENTO_PERIODO_SOSP" type="xs:decimal" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlEsami">
+    <xs:sequence>
+      <xs:element name="ELENCO_ESAMI" type="mstns:xmlEsame" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlEsame">
+    <xs:sequence>
+      <xs:element name="ESAME" type="mstns:xmlDescrEsame" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlDescrEsame">
+    <xs:sequence>
+      <xs:element name="ESAME_COD_ESAME" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_DESCR_ESAME" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_ALTRO_DESCR" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_DT_ESAME" type="xs:date" minOccurs="0" />
+      <xs:element name="ESAME_COD_RISULTATO" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_DESCR_RISULTATO" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_CAPO_CODICE" type="xs:string" minOccurs="0" />
+      <xs:element name="ESAME_FLAG_TUTTI" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlTrasportatore">
+    <xs:sequence>
+      <xs:element name="TRASPORTATORE" type="mstns:xmlDatiTrasportatore" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlDatiTrasportatore">
+    <xs:sequence>
+      <xs:element name="DATI" type="mstns:xmlListaDatiTrasportatore" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="xmlListaDatiTrasportatore">
+    <xs:sequence>
+      <xs:element name="TARGA_MOTRICE" type="xs:string" minOccurs="0" />
+      <xs:element name="TARGA" type="xs:string" minOccurs="0" />
+      <xs:element name="CONDUCENTE" type="xs:string" minOccurs="0" />
+      <xs:element name="TARGA_RIMORCHIO" type="xs:string" minOccurs="0" />
+      <xs:element name="NUM_AUTORIZZAZIONE" type="xs:string" minOccurs="0" />
+      <xs:element name="DT_PARTENZA" type="xs:date" minOccurs="0" />
+      <xs:element name="ORA_PARTENZA" type="xs:string" minOccurs="0" />
+      <xs:element name="DURATA_VIAGGIO" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string" />
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="FLAG_MEZZO_PROPRIO" type="xs:string" minOccurs="0" />
+      <xs:element name="COD_ASL_TRASP" type="xs:string" minOccurs="0" />
+      <xs:element name="DENOM_TRASPORTATORE" type="xs:string" minOccurs="0" />
+      <xs:element name="SL_COD_FISCALE" type="xs:string" minOccurs="0" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="dsPRENOTAZIONE_MODELLO_IUS" msdata:IsDataSet="true" msdata:Locale="en-US">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PARAMETERS_LIST">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="P_PRENOTAZIONE_ID" type="xs:decimal" />
+              <xs:element name="P_DOCUMENTO_ID" type="xs:decimal" minOccurs="0" />
+              <xs:element name="P_AZIENDA_CODICE" type="xs:string" />
+              <xs:element name="P_ALLEV_ID_FISCALE" type="xs:string" />
+              <xs:element name="P_SPECIE_CODICE" type="xs:string" />
+              <xs:element name="P_DEST_AZIENDA_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DEST_ALLEV_ID_FISCALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DEST_SPECIE_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FIERA_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_PASCOLO_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_MACELLO_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_REGIONE_CODICE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ESTREMI_DOCUMENTO" type="mstns:EstremiNumero" />
+              <xs:element name="P_DT_USCITA" type="xs:date" />
+              <xs:element name="P_CAUSALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_TIPO_STAMPA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_1" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_2" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_2A" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_2B" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_2C" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_ENTERICI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_RESPIRATORI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_CUTANEI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_LOCOMOTORI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_ALTRO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_3_ALTRO_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_4" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_5" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_ELEMENTI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_RILEVAZIONI" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_ALTRO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_ALTRO_DESC" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_UPLOAD" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_MACELLO_6" type="xs:string" minOccurs="0" />
+              <xs:element name="P_VET_AZIENDALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_INDIRIZZO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_TELEFONO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ISTAT" type="xs:string" minOccurs="0" />
+              <xs:element name="P_SIGLA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_NUM_ISCR_ALBO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_USCITA_AUTOMATICA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_CONFERMA_BDR" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_DOCUMENTO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_GIORNI_VALIDITA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_FLAG_TIPO_NOTA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_NOTA" type="xs:string" minOccurs="0" />
+              <xs:element name="P_VETERINARIO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DETEN_PAS_ID_FISCALE" type="xs:string" minOccurs="0" />
+              <xs:element name="P_SIGLA_AUTOC" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ISTAT_AUTOC" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ID_FISCALE_AUTOC" type="xs:string" minOccurs="0" />
+              <xs:element name="P_DT_RIENTRO" type="xs:date" minOccurs="0" />
+              <xs:element name="P_DESCR_PERCORSO" type="xs:string" minOccurs="0" />
+              <xs:element name="P_SIGLA_DEST" type="xs:string" minOccurs="0" />
+              <xs:element name="P_ISTAT_DEST" type="xs:string" minOccurs="0" />
+              <xs:element name="P_XML_CAPO" type="mstns:xmlElencoCapi" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="P_XML_TRATTAMENTI" type="mstns:xmlTrattamenti" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="P_XML_ESAMI" type="mstns:xmlEsami" minOccurs="0" maxOccurs="unbounded" />
+              <xs:element name="P_XML_TRASPORTATORE" type="mstns:xmlTrasportatore" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1">
+      <xs:selector xpath=".//mstns:PARAMETERS_LIST" />
+      <xs:field xpath="mstns:P_PRENOTAZIONE_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

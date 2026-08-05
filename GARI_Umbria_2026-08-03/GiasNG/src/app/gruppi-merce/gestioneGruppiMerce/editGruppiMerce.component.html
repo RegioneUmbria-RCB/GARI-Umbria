@@ -1,0 +1,32 @@
+
+
+<div class="container">
+  <h3 class="centerHeader topBuffer">
+      {{ 'grMerci.AnagraficaGruppiMerce' | transloco }}
+  </h3>
+
+  <div class="topBuffer"></div>
+
+
+  <div class="topBuffer"></div>
+  <gias-expansionpanel
+      [isExpanded]="true">
+
+      <div class="header-content" headerContent>
+          <span><strong>{{ 'grMerci.Impostazioni' | transloco }}</strong></span>
+      </div>
+
+      <div class="row form-row mt-2 mb-2 card card-body">
+          <h5 class="card-title center">{{ 'grMerci.GruppiMerce' | transloco }}</h5>
+          <div class="card-text">
+              <div class="row">
+                  <div class="offset-md-1 col-md-10">
+                    <gruppi-merce-grid></gruppi-merce-grid>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </gias-expansionpanel>
+
+  <div class="topBuffer"></div>
+</div>

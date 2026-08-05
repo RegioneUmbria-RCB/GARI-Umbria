@@ -1,0 +1,36 @@
+<kendo-appbar position="top" class="container">
+
+    <div #valTopTar id="val-top-bar">
+        <kendo-appbar-section class="appbar-items">
+            <div>
+                <ul #topTabsContainer>
+                    <li #testataComponent (click)="setPage(1)" [className]="page==1 ? 'k-active' : ''" class="nav-item" routerLinkActive="nav-item active">
+                        <!-- <fa-icon style="padding-right: 5px;" size="lg" class="faImpresa" [icon]="faIndustry"
+                            aria-hidden="true">
+                        </fa-icon> -->
+                        <span style="cursor: pointer;">{{ 'Testata' | transloco }}</span>
+                    </li>
+                    <li *ngIf="!writeMode" #dettaglioComponent  (click)="setPage(2)" [className]="page==2 ? 'k-active' : ''" class="nav-item" routerLinkActive="nav-item active">
+                        <!-- <fa-icon style="padding-right: 5px;" size="lg" class="faCentri" [icon]="faHome"
+                            aria-hidden="true">
+                        </fa-icon> -->
+                        <span style="cursor: pointer;">{{ 'Dettaglio' | transloco }}</span>
+                    </li>
+                </ul>
+            </div>
+        </kendo-appbar-section>
+    </div>
+    <div class="topbar-right-filler"></div>
+</kendo-appbar>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+
+            <app-valutazioni-edit *ngIf="page==1"></app-valutazioni-edit>
+            <app-valutazione-edit-dettaglio *ngIf="page==2" ></app-valutazione-edit-dettaglio>
+
+        </div>
+    </div>
+</div>
+

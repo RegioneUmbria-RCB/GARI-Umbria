@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\AgronicaDataProvider6\AgronicaDataProvider6.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Base\AgronicaNetCore.Base.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.Utenti.DAL\AgronicaNetCore.Utenti.DAL.csproj" />
+    <ProjectReference Include="..\AgronicaNetCore.UtilityDB.DAL\AgronicaNetCore.UtilityDB.DAL.csproj" />
+  </ItemGroup>
+
+</Project>

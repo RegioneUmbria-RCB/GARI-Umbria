@@ -1,0 +1,27 @@
+
+           <h2 *ngIf="!impresaSelezionata(); else grid">{{'SelezionareUnAzienda' | transloco}}</h2>
+            <ng-template #grid>
+                <gias-kendo-grid (selectionChange)="ParticellaSelezionata($event)" #grid>
+                <ng-container headerContentEnd>
+                    <div kendoTooltip *ngIf="permessoEdit">
+                        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                                (click)="onNuovo()"
+                                [title]="'NuovaSchedaCompleta' | transloco"
+                                [type]="'button'">
+                            <fa-icon class="faAddSchedule"></fa-icon>
+                        </button>
+                    </div>
+                </ng-container>
+                <!-- <kendo-grid-command-column [headerStyle]="{
+                                                        'background-color': '#428BCA',
+                                                        'color': 'white'
+                                                      }" [title]="''" [width]="50">
+                    <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                        <button kendoTooltip [title]="'Impianti'" *ngIf="!isNew"  class="btn btn-success btn-sm" [type]="'button'" (click)="onInvestimentoCatastale($event, dataItem)">
+                            <fa-icon size="lg" [icon]="faLeaf" aria-hidden="true">
+                            </fa-icon>
+                        </button>
+                    </ng-template>
+                </kendo-grid-command-column> -->
+                </gias-kendo-grid>
+            </ng-template>

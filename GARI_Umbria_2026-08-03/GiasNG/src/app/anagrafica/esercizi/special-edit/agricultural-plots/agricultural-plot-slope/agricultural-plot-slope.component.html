@@ -1,0 +1,42 @@
+<h5 class="card-title">{{ 'GroundSlope' | transloco }}</h5>
+<div class="row form-row" style="">
+  <form [formGroup]="slopeForm">
+    <div class="col-3 col-sm-12">
+      <gias-numeric-template
+        [name]="'Pendenza' | transloco"
+        [placeholder]="'GroundSlope' | transloco"
+        giasFormControlName="slope"
+        [format]="'n2'"
+        [decimals]="2"
+        [minValue]="0"
+      >
+      </gias-numeric-template>
+    </div>
+  </form>
+</div>
+
+<div class="agricultural-plots-slope-msg-text">
+  <h5>{{ 'SelectedAgriculturalPlots' | transloco }}</h5>
+</div>
+
+<app-listview
+  [data$]="rows$"
+  [height$]="listViewHeight$"
+  [removeDataItem$]="removeDataItem$"
+  [resetStates$]="resetStates$"
+  [showDeleteBtn]="showListViewDeleteBtn"
+  [loading$]="loading$"
+  removeBtnTitle="RemoveRowFromList"
+></app-listview>
+
+<div class="agricultural-plot-slope-btn">
+  <button
+    kendoButton
+    class="bottom btn btn-primary btn-primary-fill"
+    fillMode="outline"
+    (click)="submit()"
+    [disabled]="!slopeForm.valid"
+  >
+    {{ 'UpdateSlope' | transloco }}
+  </button>
+</div>

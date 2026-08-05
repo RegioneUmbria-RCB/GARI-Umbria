@@ -1,0 +1,48 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Recupera i filtri in un WaTable e li passa ad $ajax()</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>waTable_ClientId</ID>
+          <ToolTip>Client ID del WaTable</ToolTip>
+          <Default>WaTableID</Default>
+        </Literal>
+        <Literal>
+          <ID>urlWS</ID>
+          <ToolTip>url del web Service</ToolTip>
+          <Default>url</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">
+        <![CDATA[
+        
+        
+        var myFiltro = waEsportaFiltri($waTable_ClientId$);
+        var url1 = "$urlWS$";
+        
+        $.ajax({
+                type: 'POST',
+                url: url1,
+                data: "{filtro: " + myFiltro + "}",
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (r) {
+                    window.open(r.d);
+                }
+            });
+
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

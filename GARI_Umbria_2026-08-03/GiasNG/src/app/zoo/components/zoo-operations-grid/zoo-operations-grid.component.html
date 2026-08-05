@@ -1,0 +1,95 @@
+<gias-kendo-grid #zooOpGrid class="kendo-grid-no-shadows">
+  <ng-container toolbarStart>
+    <div style="display: flex; flex-direction: column;">
+      <p style="margin: 0; padding: 0;">{{selectedStable()}}</p>
+      <p style="margin: 0; padding: 0;">{{lastDateFiltered()}}</p>
+    </div>
+  </ng-container>
+  <ng-container headerContentButtons>
+    <span class="separator"></span>
+    <div kendoTooltip *ngIf="canUnlockOperations">
+      <button style="margin-right: .5rem" class="btn btn-primary btn-sm" (click)="unlockOperation()"
+              [type]="'button'" [title]="'Sblocca' | transloco">
+        <fa-icon size="lg" [icon]="faLockOpen" aria-hidden="true"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip *ngIf="canLockOperations">
+      <button class="btn btn-primary btn-sm" (click)="lockOperation()" [type]="'button'"
+              [title]="'Blocca' | transloco">
+        <fa-icon size="lg" [icon]="faLock" aria-hidden="true"></fa-icon>
+      </button>
+    </div>
+    <span class="separator"></span>
+    <div kendoTooltip *ngIf="canBDNwrite">
+      <kendo-dropdownbutton fillMode="flat"
+                            (itemClick)="onRedirectToBDNoperations($event)"
+                            [title]="'zoo.BDN' | transloco"
+                            [data]="commandsBDN"
+                            class="btn btn-primary btn-sm btn-primary-fill"
+                            style="margin-left: -10px; margin-right: 5px;">
+        <div class="ng-fa-icon">
+          <span class="faBDNIcon white lg"></span>
+        </div>
+        <ng-template kendoDropDownButtonItemTemplate let-ddlItem class="transparentBg">
+          <div class="faGridRowIcon" [ngClass]="ddlItem.iconClass"
+              *ngIf="!ddlItem.fontawesomeIcon && ddlItem.iconClass"></div>
+          <fa-icon [icon]="ddlItem.fontawesomeIcon"
+                  *ngIf="ddlItem.fontawesomeIcon && !ddlItem.iconClass"></fa-icon>
+          <span>{{ ddlItem.actionName | transloco }}</span>
+        </ng-template>
+      </kendo-dropdownbutton>
+    </div>
+    <span class="separator"  *ngIf="canBDNwrite"></span>
+    <div kendoTooltip *ngIf="canEdit">
+      <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+              [type]="'button'"
+              [title]="'CancellaleOperazioniSelezionate' | transloco">
+        <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+      </button>
+    </div>
+    <div kendoTooltip *ngIf="canEdit">
+      <button class="btn btn-sm btn-primary-fill" (click)="newOperation()" [type]="'button'"
+              [title]="'NuovaOperazione' | transloco">
+        <div class="ng-fa-icon faAddSchedule" aria-hidden="true"></div>
+      </button>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+
+<ng-template #addOperationTemplate>
+  <form [formGroup]="innerForm">
+    <gias-switch-template *ngIf="SHOW_FAVORITES_SETTINGS"
+                          giasFormControlName="favorites"
+                          [noLabel]="'Tutte' | transloco"
+                          [siLabel]="'Preferite' | transloco"
+    ></gias-switch-template>
+    <div class="form-row">
+      <gias-drop-down-template-s
+        id="operationType" giasFormControlName="operationType"
+        textField="descrizione" valueField="codice"
+        [name]="'SelezionaTipoAttivitaDaCreare' | transloco"
+        [listItems]="operationTypes"
+        [obligatory]="true" [valuePrimitive]="true"
+      ></gias-drop-down-template-s>
+
+      <div kendoTooltip [title]="'GestioneOperazioniPreferite' | transloco"
+           class="k-icon k-i-imposta_selezione_predefinita"
+           (click)="editFavorites.next()"
+           *ngIf="SHOW_FAVORITES_SETTINGS"
+      ></div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #selectCentreAndStableTemplate>
+  <div>
+    <h3>{{ 'zoo.SelezionaCentroStalla' | transloco }}</h3>
+    <form [formGroup]="formCenterAndStable">
+      <gias-drop-down-template-s giasFormControlName="center" [name]="'CentroAziendale' | transloco" [listItems]="centers"
+        textField="descrizione" valueField="codice"></gias-drop-down-template-s>
+      <gias-drop-down-template-s giasFormControlName="stable" [name]="'Stalla' | transloco" [listItems]="stables"
+        textField="descrizione" valueField="codice" [clearButton]="true"></gias-drop-down-template-s>
+    </form>
+  </div>
+</ng-template>

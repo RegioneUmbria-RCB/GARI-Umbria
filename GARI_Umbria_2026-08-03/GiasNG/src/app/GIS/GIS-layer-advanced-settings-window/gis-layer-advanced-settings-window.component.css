@@ -1,0 +1,92 @@
+.row-new-attribute {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 95%;
+}
+
+.textbox {
+    height: 2rem;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.save-button > button {
+    height: 1.8rem;
+    width: 100%;
+    border-radius: 25px;
+    border: solid 1px #002d5a;
+    color: #002d5a;
+    background: none;
+    text-transform: uppercase;
+}
+
+.save-button {
+    height: 1.8rem;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item-switch .checkbox {
+    display: none;
+}
+
+.item-switch .toggle:has(.checkbox:checked)::after {
+    left: 15px;
+}
+
+.item-switch .toggle:has(.checkbox:checked) {
+    background-color: #002D5A;
+    border: 2px solid #002D5A;
+}
+
+.item-switch .toggle {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 17px;
+    background-color: #575757;
+    border-radius: 30px;
+    border: 2px solid #575757;
+    box-sizing: unset;
+    cursor: pointer;
+}
+
+.item-switch .toggle:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: white;
+    top: 1px;
+    left: 1px;
+    transition: all 0.5s;
+}
+
+button {
+    border: none;
+}
+
+button>.fa {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+button[disabled] {
+    cursor: not-allowed; 
+    color: #b2b6bb !important;
+}
+
+.delete-button {
+    color: #D41E1A;
+}
+
+.edit-button {
+    color: #002d5a;
+    background-color: transparent;
+    width: 20px;
+}

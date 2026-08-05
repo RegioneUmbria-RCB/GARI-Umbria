@@ -1,0 +1,39 @@
+
+<div class="widget-alert-documenti-container">
+
+    <div class="header-alert-documenti">
+        <div class="button-time-stamp">
+
+            <label [for]="impostaTimeStamp" class="label-reset"> {{ "LabelReset" | transloco }} </label>
+
+            <kendo-datetimepicker #impostaTimeStamp 
+                                class="dateTimePicker"
+                                (valueChange)="onChange($event)"
+                                [(value)]="valueDateTimePicker"
+                                >
+            </kendo-datetimepicker>
+
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    [title]="'ResettaTimeStamp' | transloco"
+                    [type]="'button'"
+                    (click) = "reimpostaTimeStamp()"
+            >
+                {{ "ResettaTimeStamp" | transloco }}
+            </button> 
+
+        </div>
+
+        <div class="redirect-button">
+            <button class="btn btn-primary btn-sm btn-primary-fill"
+                    [title]="'GestioneDocumenti' | transloco"
+                    [type]="'button'"
+                    (click) = "redirectToScadLista()">
+                {{ "GestioneDocumenti" | transloco }}
+            </button>
+        </div>
+    </div>
+
+    <gias-kendo-grid>  
+    </gias-kendo-grid>
+
+</div>

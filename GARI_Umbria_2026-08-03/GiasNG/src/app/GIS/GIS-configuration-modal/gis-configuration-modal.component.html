@@ -1,0 +1,165 @@
+<kendo-dialog *ngIf="isModalOpen" class="k-dialog-centered gis-configuration-modal">
+
+    <h4>{{ 'ImpostazioneVisualizzazione' | transloco }}</h4>
+
+    <i aria-hidden="true" class="xi-modal-close close-button" (click)="close()"></i>
+
+    <form [formGroup]="form" *ngIf="form">
+
+        <gis-checkbox
+            [name]="'gis.MostraAnagrafica' | transloco"
+            [giasFormControl]="form.controls.chkMostraAnagrafica"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraCatastoAziendale' | transloco"
+            [giasFormControl]="form.controls.chkMostraCatasto"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraRipartoCatastoSuAppezzamenti' | transloco"
+            [giasFormControl]="form.controls.chkMostraCatastoAppezzamento"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraAnalisi' | transloco"
+            [giasFormControl]="form.controls.chkMostraAnalisi"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraPianificazioni' | transloco"
+            [giasFormControl]="form.controls.ckMostraPlanning"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraOperazioniDiAgenda' | transloco"
+            [giasFormControl]="form.controls.ckMostraOperazioniAgenda"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraRicette' | transloco"
+            [giasFormControl]="form.controls.ckMostraRicette"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraFabbricati' | transloco"
+            [giasFormControl]="form.controls.ckMostraFabbricati"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraGrigliaGMaps' | transloco"
+            [giasFormControl]="form.controls.ckGrigliaTiles_Sviluppo"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraMeteoEDSSInFinestraModale' | transloco"
+            [giasFormControl]="form.controls.ckViewModal"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.GestioneAnalisiMappeSatellitariConTecnologiaPrecedente' | transloco"
+            [giasFormControl]="form.controls.ckGestioneAnalisiMappeLegacy"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <gis-checkbox
+            [name]="'gis.MostraAvversitaUsaPuntoInterno' | transloco"
+            [giasFormControl]="form.controls.ckAvversitaUsaPuntoInterno"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <!-- <gis-checkbox
+            [name]="'gis.MostraAvversitaPuntoPoligono' | transloco"
+            [giasFormControl]="form.controls.ckAvversitaPuntoPoligono"
+            (gisChange)="submit()">
+        </gis-checkbox> -->
+
+        <gis-checkbox
+            [name]="'CambiaHeatmapCluster' | transloco"
+            [giasFormControl]="form.controls.chkMostraHeatmap"
+            (gisChange)="submit()">
+        </gis-checkbox>
+
+        <div class="options-row">
+            <div [style.width.px]="400">
+                {{ 'gis.UsaOggettoPerCompletareInformazioneMancante' | transloco }}
+            </div>
+            <kendo-dropdownlist
+                [disabled]="form.controls.ckAvversitaUsaPuntoInterno.value ? false : true"
+                [style.width.px]="115"
+                [data]="elencoTipiOggettoGrafici"
+                textField="descrizione"
+                valueField="sePunto"
+                [valuePrimitive]="true"
+                [formControl]="form.get('ckAvversitaPuntoPoligono')"
+                (valueChange)="submit()">
+            </kendo-dropdownlist>
+        </div>
+
+        <div class="options-row">
+            {{ 'gis.VisualizzazioneTotaleLivelloZoom' | transloco }}
+            <kendo-switch
+                [checked]="autoZoomVisTotChecked"
+                (valueChange)="onToggleChangeZoomVisTotale()">
+                {{ 'Si' | transloco }}
+            </kendo-switch>
+            <div *ngIf="autoZoomVisTotChecked">
+                <kendo-label
+                    [text]="'gis.Livello' | transloco">
+                </kendo-label>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <kendo-numerictextbox
+                    [style.width.px]="60"
+                    [formControl]="form.get('iAutoZoomSuVisualizzazioneTotale')"
+                    format="n0"
+                    [min]="this.noZoom"
+                    [max]="this.maxZoom"
+                    [maxlength]="2"
+                    [spinners]="true"
+                    (afterValueChanged)="onAfterValueChangedZoomVisTotale()">
+                </kendo-numerictextbox>
+            </div>
+            <div *ngIf="!autoZoomVisTotChecked">
+                <kendo-label
+                    [text]="'gis.Livello' | transloco">
+                </kendo-label>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <kendo-numerictextbox
+                    [disabled]="true"
+                    [style.width.px]="60"
+                    [spinners]="true">
+                </kendo-numerictextbox>
+            </div>
+        </div>
+
+        <div class="options-row">
+            {{ 'LivelloClusterizzazione' | transloco }}
+            <div>
+                <kendo-label
+                    [text]="'gis.Livello' | transloco">
+                </kendo-label>
+                <span>&nbsp;&nbsp;&nbsp;</span>
+                <kendo-numerictextbox
+                    [style.width.px]="60"
+                    [formControl]="form.get('LivelloClusterizzazione')"
+                    format="n0"
+                    [min]="0"
+                    [max]="20"
+                    [maxlength]="2"
+                    [spinners]="true"
+                    (afterValueChanged)="onAfterValueChangedZoomCluster()">
+                </kendo-numerictextbox>
+            </div>
+        </div>
+    </form>
+</kendo-dialog>

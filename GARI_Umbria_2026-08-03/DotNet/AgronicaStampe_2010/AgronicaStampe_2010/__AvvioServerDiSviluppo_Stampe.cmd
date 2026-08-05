@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Common Files\microsoft shared\DevServer\10.0\WebDev.WebServer40.exe" /port:52549 /path:"C:\Agrosorgenti\AgronicaStampe_2010" /vpath:"/AgronicaStampe_2010"

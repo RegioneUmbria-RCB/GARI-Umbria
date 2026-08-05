@@ -1,0 +1,20 @@
+<ng-container [formGroup]="form" *ngIf="form != null">
+  <div [class]="controlClass">
+    <gias-data-template
+      (onBlur)="handleBlur(inizio)"
+      [name]="'Validita_Inizio' | transloco"
+      [giasFormControlName]="inizio"
+      [nullValue]="AGRODATA_INIZIO"
+      [inlineLabels]="inlineLabels"
+    ></gias-data-template>
+  </div>
+  <div [class]="controlClass">
+    <gias-data-template
+      (onBlur)="handleBlur(fine)"
+      [name]="'Validita_Fine' | transloco"
+      [giasFormControlName]="fine"
+      [nullValue]="AGRODATA_FINE"
+      [inlineLabels]="inlineLabels"
+    ></gias-data-template>
+  </div>
+</ng-container>

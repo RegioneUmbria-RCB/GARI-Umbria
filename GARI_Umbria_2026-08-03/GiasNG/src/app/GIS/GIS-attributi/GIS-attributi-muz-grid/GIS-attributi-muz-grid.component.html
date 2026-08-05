@@ -1,0 +1,108 @@
+<ng-container *ngIf="newMuz$ | async"></ng-container>
+<ng-container *ngIf="editMuz$ | async"></ng-container>
+<ng-container *ngIf="featureSelection$ | async"></ng-container>
+<ng-container *ngIf="data$ | async as data">
+  <gias-kendo-grid #kendoGrid (selectionChange)="selectionChange($event)" [customCommandColumnCellTemplate]="customCommandColumn">
+
+    <ng-container headerContent>
+      <div class="btn-group btn-sm" gisTooltip *ngIf="true">
+        <button class="btn btn-primary btn-lg" (click)="findSelecetedItem()"
+          [title]="'gis.TrovaElementoSelezionato' | transloco" [type]="'button'">
+          <span class="info-icon">
+            {{'gis.TrovaElementoSelezionato' | transloco}}
+            <i aria-hidden="true" [class]="'xi-eye-visible-dark'"></i>
+          </span>
+        </button>
+      </div>
+    </ng-container>
+
+    <ng-container headerContent>
+      <kendo-dropdownlist id="anagrafica-ddl" [data]="data.anagrafica" textField="Desc" [filterable]="true"
+        [kendoDropDownFilter]="filterSettings" [value]="data.selectedPlot"
+        (valueChange)="selectPlot($event)"></kendo-dropdownlist>
+    </ng-container>
+
+    <ng-container headerContent>
+      <div class="btn-group btn-sm" *ngIf="data.selectedPlot.Appezza != -1">
+        <h6 *ngIf="data.selectedPlot.Group != null"> {{ data.selectedPlot.Group }} </h6>
+        <button *ngIf="data.selectedPlot.Group == null" class="btn btn-primary btn-lg"
+          (click)="initMuzDialogOpen = true" type="button">
+          <span class="info-icon">{{'gis.InizializzaMuz' | transloco}}<i aria-hidden="true" class="xi-add-inline"></i></span>
+        </button>
+      </div>
+    </ng-container>
+
+    <!--<kendo-grid-command-column [headerStyle]="{
+            'background-color': '#428BCA',
+            'color': 'white'
+        }" [title]="''" [width]="120">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <button gisTooltip title="Focus" class="btn btn-success btn-sm" type="button"
+          (click)="focusOnFeature(dataItem)">
+          <span class="info-icon">
+            <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+          </span>
+        </button>
+
+        <button gisTooltip title="Edit" class="btn btn-success btn-sm" type="button"
+          (click)="editMuz(dataItem, data.selectedPlot)" [disabled]="data.selectedPlot?.Group == null">
+          <span class="info-icon">
+            <i aria-hidden="true" class="xi-eye-edit-dark"></i>
+          </span>
+        </button>
+
+        <button type="button" class="btn btn-sm delete-button" [title]="'Cancella' | transloco" look="bare"
+          style="color: #D41E1A;" (click)="deleteMuz(dataItem, data.selectedPlot, data.muzs)" size="small"
+          [disabled]="data.selectedPlot?.Group == null">
+          <fa-icon size="lg" [icon]="faDelete"></fa-icon>
+        </button>
+      </ng-template>
+    </kendo-grid-command-column>-->
+  </gias-kendo-grid>
+
+  <kendo-dialog *ngIf="initMuzDialogOpen" (close)="initMuzDialogOpen = false">
+    <kendo-dialog-titlebar>
+      <div class="text_uppercase font-700"> {{ 'gis.InizializzaMuzSuAppezzamento' | transloco }}:
+        {{ data.selectedPlot.Desc }}</div>
+    </kendo-dialog-titlebar>
+
+    <gis-init-muz-group [inputPlot]="data.selectedPlot"
+      (onNewGroup)="this.initMuzDialogOpen = false"></gis-init-muz-group>
+  </kendo-dialog>
+
+  <ng-container *ngIf="muzToEdit$ | async as muzToEdit">
+    <kendo-dialog id="muz-edit-dialog" *ngIf="muzToEdit != null" (close)="onMuzEdited(null)">
+      <kendo-dialog-titlebar>
+        <div class="text_uppercase font-700"> {{ 'gis.ModificaMuz' | transloco }}</div>
+      </kendo-dialog-titlebar>
+
+      <gis-edit-muz [inputMuz]="muzToEdit" [inputPlot]="data.selectedPlot"
+        (onMuzEdit)="onMuzEdited($event)"></gis-edit-muz>
+    </kendo-dialog>
+  </ng-container>
+
+  <ng-template #customCommandColumn let-dataItem="dataItem">
+    <button gisTooltip title="Focus" class="btn btn-success btn-sm" type="button"
+            (click)="focusOnFeature(dataItem)">
+          <span class="info-icon">
+            <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+          </span>
+    </button>
+
+    <button gisTooltip title="Edit" class="btn btn-success btn-sm" type="button"
+            (click)="editMuz(dataItem, data.selectedPlot)" [disabled]="data.selectedPlot?.Group == null">
+          <span class="info-icon">
+            <i aria-hidden="true" class="xi-eye-edit-dark"></i>
+          </span>
+    </button>
+
+    <button type="button" class="btn btn-sm delete-button" [title]="'Cancella' | transloco" look="bare"
+            style="color: #D41E1A;" (click)="deleteMuz(dataItem, data.selectedPlot, data.muzs)" size="small"
+            [disabled]="data.selectedPlot?.Group == null">
+      <fa-icon size="lg" [icon]="faDelete"></fa-icon>
+    </button>
+  </ng-template>
+</ng-container>
+
+
+

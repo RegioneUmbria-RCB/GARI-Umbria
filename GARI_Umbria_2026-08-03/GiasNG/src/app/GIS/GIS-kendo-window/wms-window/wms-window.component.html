@@ -1,0 +1,13 @@
+<kendo-window *ngIf="opened" (close)="toggle(false)">
+
+    <kendo-window-titlebar>
+        <div class='k-window-title'>{{"gis.WMS" | transloco}}</div>
+        <button kendoWindowRestoreAction [disabled]="true" [hidden]="true"></button>
+        <button kendoWindowMinimizeAction [disabled]="true" [hidden]="true"></button>
+        <button kendoWindowMaximizeAction [disabled]="true" [hidden]="true"></button>
+        <button kendoWindowCloseAction></button>
+    </kendo-window-titlebar>
+
+
+
+</kendo-window>

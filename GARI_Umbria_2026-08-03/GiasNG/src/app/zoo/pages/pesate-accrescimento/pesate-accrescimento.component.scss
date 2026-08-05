@@ -1,0 +1,65 @@
+/* ── Page layout (mirrors zoo.component kendo-tabstrip margins) ─────────────────────────────── */
+:host {
+  display: block;
+  margin: 75px 20px;
+}
+
+@media only screen and (min-width: 992px) {
+  :host {
+    margin: 20px;
+  }
+}
+
+/* ── Row coloring (see UIDS001 — "Colorazione Condizionale per Riga") ──────────────────────── */
+:host ::ng-deep .row-alert-yellow td {
+  background-color: #fff9c4;
+}
+
+:host ::ng-deep .row-alert-red td {
+  background-color: #ffcdd2;
+}
+
+/* ── Side filter positioning ────────────────────────────────────────────────────────────────── */
+gias-side-filters-template {
+  position: absolute;
+  z-index: 1000;
+  right: 0 !important;
+}
+
+/* ── Alert badge ────────────────────────────────────────────────────────────────────────────── */
+.alert-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  &--on {
+    background-color: var(--kendo-color-error);
+    color: #fff;
+  }
+
+  &--off {
+    background-color: var(--kendo-color-success);
+    color: #fff;
+  }
+}
+
+/* ── Export bar ─────────────────────────────────────────────────────────────────────────────── */
+.export-bar {
+  border: 1px solid var(--kendo-color-border);
+  border-radius: 4px;
+  background-color: var(--kendo-color-surface);
+}
+
+/* ── Chart section ──────────────────────────────────────────────────────────────────────────── */
+.chart-section kendo-chart {
+  height: 400px;
+  display: block;
+}
+
+/* ── Chart tooltip ──────────────────────────────────────────────────────────────────────────── */
+.chart-tooltip {
+  font-size: 0.85rem;
+  line-height: 1.6;
+}

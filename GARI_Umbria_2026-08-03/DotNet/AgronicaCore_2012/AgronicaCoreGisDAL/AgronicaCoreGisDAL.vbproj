@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{D6963B76-054B-4070-8BAD-DC9CC4C6F8D7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreGisDAL</RootNamespace>
+    <AssemblyName>AgronicaCoreGisDAL</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\AgronicaCore_2010\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgronicaCoreGisDAL_resx\AgronicaCoreGisDAL.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaCoreGisDAL.resx</DependentUpon>
+    </Compile>
+    <Compile Include="GIS_ElementiGrafici_Clustering.vb" />
+    <Compile Include="CheckList_Extension.vb" />
+    <Compile Include="CheckList_GIS.vb" />
+    <Compile Include="Compliance_ISCC.vb" />
+    <Compile Include="EF_GIS_ElementiGrafici.vb" />
+    <Compile Include="EF_GIS_Entita.vb" />
+    <Compile Include="ElementiGias_NonGis2012.vb" />
+    <Compile Include="APP_EntrateUsciteCoordinateDAL.vb" />
+    <Compile Include="GIS_Allegati_Documenti.vb" />
+    <Compile Include="GIS_Bookmark.vb" />
+    <Compile Include="GIS_ElementiGrafici_CatastoSimplyfied.vb" />
+    <Compile Include="GIS_EstrattoreGrafica.vb" />
+    <Compile Include="GIS_LayerElementiGraficiXGruppiUtente.vb" />
+    <Compile Include="GIS_LayerElementiGraficiXTipoOggetto.vb" />
+    <Compile Include="GIS_LayerElementiGraficiXUtente.vb" />
+    <Compile Include="GIS_LayerElementiGrafici_Anagrafica.vb" />
+    <Compile Include="GIS_LayerElementiGrafici_Anagrafica_DataStruct.vb" />
+    <Compile Include="GIS_LayerElementiGrafici_Clustering_Config.vb" />
+    <Compile Include="GIS_LayerElementiGrafici_Clustering_Threasholds.vb" />
+    <Compile Include="GIS_LayerTilesDescrizione.vb" />
+    <Compile Include="GIS_MUZ.vb" />
+    <Compile Include="GIS_OperazioniAgendaXGrafica.vb" />
+    <Compile Include="GIS_Permessi_Configurazione.vb" />
+    <Compile Include="GIS_Permessi_Layer.vb" />
+    <Compile Include="GIS_ProcessingAlgorithms_Cleaning.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Passaggio.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Passaggio_Sensori.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Passaggio_Sensori_User_Config.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Tile.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Overlay_Tile_SuperUser.vb" />
+    <Compile Include="Gis_Sat_Sentinel_Search_CFG.vb" />
+    <Compile Include="Gis_Sat_Sentinel_User_Config.vb" />
+    <Compile Include="GIS_Tiles.vb" />
+    <Compile Include="GIS_TipologiaLayer_cod.vb" />
+    <Compile Include="GIS_ElementiGrafici.vb" />
+    <Compile Include="GIS_Entita.vb" />
+    <Compile Include="GIS_LayerElementiGrafici.vb" />
+    <Compile Include="GIS_LayerTiles.vb" />
+    <Compile Include="GIS_OperazioniCartograficheDB.vb" />
+    <Compile Include="GIS_SistemiRiferimentoCartografia.vb" />
+    <Compile Include="GIS_Tiles_LayerTiles.vb" />
+    <Compile Include="GIS_TipoEntita.vb" />
+    <Compile Include="GIS_TipoOggetto.vb" />
+    <Compile Include="GIS_Utility.vb" />
+    <Compile Include="GIS_Vertici.vb" />
+    <Compile Include="LayerElementiGrafici_Allegati.vb" />
+    <Compile Include="MaschereLayerRaster.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Permessi_Maschera.vb" />
+    <Compile Include="PrecisionFarming.vb" />
+    <Compile Include="ProiezioniLayer.vb" />
+    <Compile Include="RichiesteEngine_Impianto_Ricetta.vb" />
+    <Compile Include="viewmodel\ElementiGrafici.vb" />
+    <Compile Include="viewmodel\Entita.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AgronicaCoreGisDAL_resx\AgronicaCoreGisDAL.en.resx" />
+    <EmbeddedResource Include="AgronicaCoreGisDAL_resx\AgronicaCoreGisDAL.fr.resx" />
+    <EmbeddedResource Include="AgronicaCoreGisDAL_resx\AgronicaCoreGisDAL.pt.resx" />
+    <EmbeddedResource Include="AgronicaCoreGisDAL_resx\AgronicaCoreGisDAL.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreGisDAL.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7cf14ae3-4b42-4488-a29e-e4b698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746D560-498B-435B-B197-FAA7FF9BD0DA}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.FormatsConverter\AgronicaConversioneCartografiaGias.FormatsConverter.vbproj">
+      <Project>{AB4CD9B0-7252-43EF-9EFB-34AD450DD74E}</Project>
+      <Name>AgronicaConversioneCartografiaGias.FormatsConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaGIS2012.Commons\AgronicaGIS2012.Commons.vbproj">
+      <Project>{BEA06BCC-9EBB-43BC-BB37-FD4519D128D3}</Project>
+      <Name>AgronicaGIS2012.Commons</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="SqlServerTypes\Loader.cs" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\AgronicaCore_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

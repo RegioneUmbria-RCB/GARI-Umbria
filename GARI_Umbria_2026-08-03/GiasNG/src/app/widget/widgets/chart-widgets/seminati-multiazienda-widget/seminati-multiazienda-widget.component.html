@@ -1,0 +1,21 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="colture-full-width">
+
+    <!-- <app-chart-widget [data]="data" field="Superficie" [unit]="unit" [chartPie]="chartPie"
+    style="height: 85%"></app-chart-widget> -->
+    <kendo-chart>
+        <kendo-chart-series>
+          <kendo-chart-series-item type="column" *ngFor="let d of data" [data]="[d]" field="Superficie" [name]="d.Veg_Des">
+            <kendo-chart-series-item-labels [font]="'11px sans-serif'" [content]="labelContent"></kendo-chart-series-item-labels>
+          </kendo-chart-series-item>
+        </kendo-chart-series>
+        <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+      </kendo-chart>
+</div>
+
+<div *ngIf="!loading && data.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunaSemina' | transloco }}</p>
+</div>

@@ -1,0 +1,27 @@
+<gias-kendo-grid [id]="'GridTrappoleService'" #gridTrappole
+                 [customCommandColumnCellTemplate]="customCommandColumn"  class="kendo-grid-no-shadows">
+  <ng-container headerContent>
+    <span class="separator"></span>
+    <div style="display:flex; flex-flow:column;">
+      <div style="display:flex; flex-flow:row;">
+        <div style="display:flex; align-items: center; margin-right: 10px;">
+          <div class="OperazInneschiInScadenza legend-spacing"></div>
+          <div class="text-spacing">{{ "InScadenza" | transloco }}</div>
+          <gias-info-template [title]="GetTitleInneschiInScadenza()"></gias-info-template>
+        </div>
+
+        <div style="display:flex; align-items: center; margin-right: 10px;">
+          <div class="OperazInneschiScaduti legend-spacing"></div>
+          <div class="text-spacing">{{ "Scaduti" | transloco }}</div>
+          <gias-info-template [title]="GetTitleInneschiScaduti()"></gias-info-template>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #customCommandColumn let-dataItem="dataItem">
+  <button kendoButton type="button" (click)="reindirizzaReinnesco($event, dataItem)" class="mb-2">
+    {{ 'Reinnesco' | transloco }}
+  </button>
+</ng-template>

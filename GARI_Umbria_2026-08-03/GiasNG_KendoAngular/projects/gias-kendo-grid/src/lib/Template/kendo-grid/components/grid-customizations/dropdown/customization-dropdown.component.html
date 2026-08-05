@@ -1,0 +1,18 @@
+<!-- <span class="caption">{{ 'giasgrid.ScegliUnaVistaCaption' | transloco}}</span> -->
+<kendo-dropdownlist [id]="dropdown?.id" [data]="dropdown?.data" [textField]="dropdown?.textField"
+  [valueField]="dropdown?.valueField" [valuePrimitive]="false" (ngModelChange)="changeValue($event)"
+  [ngModel]="selected" [defaultItem]="dropdown?.defaultValue" [ngModelOptions]="{standalone: true}"
+  [filterable]="filterable" (filterChange)="handleFilter($event)">
+  <ng-template kendoDropDownListNoDataTemplate>
+    <div>
+      {{ 'giasgrid.No_Dati' | transloco }}
+      <!-- <ng-container *ngIf="filter">
+      {{ 'giasgrid.Nuovo_Elemento' | transloco }} "{{ filter }}" ?
+    </ng-container> -->
+      <br />
+      <button *ngIf="filter" class="k-button btn-sm" (click)="addNew()">
+        {{ 'giasgrid.Nuovo_Elemento' | transloco }}
+      </button>
+    </div>
+  </ng-template>
+</kendo-dropdownlist>

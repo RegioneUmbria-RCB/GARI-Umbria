@@ -1,0 +1,35 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:wsm="http://cooperazione.sian.it/schema/wsmrga/">
+   <soapenv:Header>
+      <soap:SOAPAutenticazione>
+         <!--Credenziali rilasciate dal Ministero all'azienda-->
+         <username>AAAAAAAAAA</username>
+         <password>BBBBBBBBBB</password>
+         <nomeServizio>VigneSiRPV</nomeServizio>
+      </soap:SOAPAutenticazione>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wsm:VigneSiRPVInput>
+         <wsm:CodOper>
+            <!--Indicazione del Codice Fiscale dell'azienda (valorizzare persona fisica o giuridica)-->
+            <wsm:PersonaGiuridica>01234567890</wsm:PersonaGiuridica>
+         </wsm:CodOper>
+         <!--Codice ICQRF dello stabilimento nel formato AANNNN-->
+         <wsm:CodiceIcqrf>RM1234</wsm:CodiceIcqrf>
+		 <!--Tipologia di richiesta I=Inserimento A=Aggiornamento-->
+         <wsm:TipoRichiesta>I</wsm:TipoRichiesta>
+         <!--Specificare una o piu vigna da inserire/aggiornare in ANAGRAFICA VIGNE-->
+         <wsm:Vigne>
+			<!--Codice alfanumerico identificativo della vigna-->
+            <wsm:CodVigna>VIGNA01</wsm:CodVigna>
+			<!--Descrizione della vigna-->
+            <wsm:Descrizione>VIGNA MARIA</wsm:Descrizione>
+         </wsm:Vigne>
+         <wsm:Vigne>
+			<!--Codice alfanumerico identificativo della vigna-->
+            <wsm:CodVigna>VIGNA02</wsm:CodVigna>
+			<!--Descrizione della vigna-->
+            <wsm:Descrizione>VIGNA FRANCESCA</wsm:Descrizione>
+         </wsm:Vigne>		 
+      </wsm:VigneSiRPVInput>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -1,0 +1,112 @@
+<div id="TestataForm" *ngIf="qdcservice.TestataForm" [formGroup]="qdcservice.TestataForm">
+    <div class="gias-operazioni-container">
+        <div class="gias-multi-op-section">
+            <div class="gias-data-specie-container">
+                <div class="gias-data-container" *ngIf="!qdcservice.TestataForm.get('flagVisita').value">
+                    <!-- se arriva dal menù visite, sposta il componente sottostante nella testata-visita -->
+                    <app-data-operazione></app-data-operazione>
+                </div>
+                <div class="gias-specie-container">
+                    <app-specie></app-specie>
+                </div>
+            </div>
+        </div>
+        <div class="gias-multi-op-section">
+            <div class="gias-data-specie-container">
+                <div class="gias-specie-container" *ngIf="qdcservice.TestataForm.get('flagVisita').value && showDDLSpecieAnimale">
+                    <app-specie-animale></app-specie-animale>
+                </div>
+            </div>
+        </div>
+        <div class="gias-multi-op-section">
+            <div class="gias-attivi-preferiti-container" *ngIf="!qdcservice.TestataForm.get('flagVisita').value">
+                <div class="gias-multiselect-container">
+                    <gias-multiselect-template-s
+                        #MultiSelectOperazioni
+                        [placeholder]="'SelezionaDaLista' | transloco"
+                        [name]="'ScegliOperazioni' | transloco"
+                        textField="descrizione"
+                        [hasInfo]="true"
+                        valueField="primaryKey.codice"
+                        (open)="multioperazioniservice.openMultiOperazione($event)"
+                        giasFormControlName="Operazioni"
+                        [valuePrimitive]="false"
+                        [clearButton]="false"
+                        [autoClose]="true"
+                        (removeItem)="multioperazioniservice.onRemoveOperazione($event)"
+                        [showRedAsterisk]="true"
+                        [labelTemplate]="labelTemplate">
+                    </gias-multiselect-template-s>
+                </div>
+                <div class="gias-salva-preferiti-container" *ngIf="!qdcservice.TestataForm.get('flagVisita').value && mostraBtnGestioneOperazioniPreferite()">
+                    <div kendoTooltip [title]="'GestioneOperazioniPreferite' | transloco"
+                         class="k-icon k-i-imposta_selezione_predefinita"
+                         (click)="Gestione_Operazioni_PopUp = true"
+                    ></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- [TODO_QDC] questo blocco viene spostato vicino ai bottoni di slavataggio -->
+        <!-- <div class="gias-multi-op-section" *ngIf="qdcservice.mostraTestataRicetta()">
+            <div style="flex-direction: column;">
+
+                <div class="gias-label-switch-container-invia-app">
+                    <gias-info-template size="lg"
+                                        [title]="'ImpossibileModificareRicetteDopoSalvataggio' | transloco"></gias-info-template>
+
+
+                    <label>{{'InviaAdAPP' | transloco}}:</label>
+                </div>
+
+                <div class="gias-label-switch-container-invia-app">
+                    <span class="switch-label k-label">{{ 'No' | transloco }}</span>
+                    <gias-switch-template giasFormControlName="InviaRicetta"
+                                          [isBlue]="true" [hideLabel]="true">
+                    </gias-switch-template>
+                    <span class="switch-label k-label" style="padding-left: 2px;">{{ 'Si' | transloco }}</span>
+                </div>
+            </div>
+
+        </div> -->
+
+    </div>
+    <kendo-dialog [title]="'GestioneOperazioniPreferite' | transloco"
+                  *ngIf="Gestione_Operazioni_PopUp"
+                  [width]="'80%'" [height]="630"
+                  (close)="closePopUp()">
+        <app-gestione-operazioni></app-gestione-operazioni>
+    </kendo-dialog>
+
+</div>
+
+
+<ng-template #labelTemplate>
+    <ng-container
+        *ngIf="qdcservice.TestataForm && !qdcservice.TestataForm.get('flagVisita').value && visibilitacontrollitestataservice.MostraFiltroVisualizza_Solo_Operazioni_Preferite()"
+        [formGroup]="qdcservice.TestataForm">
+        <div class="gias-label-switch-container">
+            <span class="switch-label k-label" style="padding-left: 10px;">{{ 'Tutte' | transloco }}</span>
+            <gias-switch-template #Visualizza_Solo_Operazioni_Preferite
+                                  [hideLabel]="true"
+                                  giasFormControlName="Visualizza_Solo_Operazioni_Preferite"
+                                  (valueChange)="changeVisualizzaOperazioni($event)"
+                                  [isBlue]="true"
+                                  [hideformfield]="true">
+            </gias-switch-template>
+            <span class="switch-label k-label">{{ 'Preferite' | transloco }}</span>
+        </div>
+    </ng-container>
+
+    <!--    <ng-container
+            [formGroup]="qdcservice.TestataForm">
+            <div style="padding-left: 200px;">
+                <gias-info-template size="lg"
+                                    [title]="'ImpossibileModificareRicetteDopoSalvataggio' | transloco"></gias-info-template>
+
+
+                <label>{{'InviaAdAPP' | transloco}}:</label>
+            </div>
+        </ng-container>-->
+
+</ng-template>

@@ -1,0 +1,19 @@
+<div [formGroup]="qdcservice.TestataForm">
+  <div class="gias-testata-qdc">
+    <div class="gias-data-container-qdc">
+      <gias-data-template [name]="'Data' | transloco" [obligatory]="true"
+                          giasFormControlName="Data"
+                          (onBlur)="testataservice.CambioData()"
+                          [startValue]="qdcservice.obj_Inizializza_QdC.Data_Min"
+                          [endValue]="qdcservice.obj_Inizializza_QdC.Data_Max">
+      </gias-data-template>
+    </div>
+
+    <div class="gias-time-container-qdc" *ngIf="mostraOraOperazione()">
+      <gias-time-picker-template [name]="'Ora' | transloco"
+                                giasFormControlName="Ora">
+      </gias-time-picker-template>
+    </div>
+
+  </div>
+</div>

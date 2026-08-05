@@ -1,0 +1,17 @@
+@if (this.edit) {
+<form [formGroup]="innerForm">
+  <kendo-textbox [formControlName]="this.field" #textBox (inputBlur)="inputBlur()">
+    @if (canAutogenCF) {
+      <ng-template kendoTextBoxSuffixTemplate>
+        <button kendoButton class="fill-height" (click)="generateCF()">
+          <kendo-icon name="sparkles" class="blue"></kendo-icon>
+        </button>
+      </ng-template>  
+    }
+  </kendo-textbox>
+</form>
+
+} @else {
+{{this.input[this.field]}}
+
+}

@@ -1,0 +1,46 @@
+<div class="charts">
+  <h6><strong>Grafici</strong></h6>
+</div>
+
+<div *ngIf="loading" class="loader">
+  <kendo-loader type="converging-spinner" size="large"></kendo-loader>
+</div>
+
+<ng-container *ngIf="reloader$ | async"></ng-container>
+
+<ng-container *ngIf="result$ | async as result; else noData">
+  <kendo-chart *ngIf="!loading" (click)="openCalendar()">
+    <kendo-chart-category-axis>
+      <kendo-chart-category-axis-item [categories]="result.dates" [title]="{ text: 'Date' }">
+        <kendo-chart-category-axis-item-labels [rotation]="30">
+        </kendo-chart-category-axis-item-labels>
+      </kendo-chart-category-axis-item>
+    </kendo-chart-category-axis>
+
+    <kendo-chart-tooltip [shared]="true" background="#002850" [border]="{ color: '#002850'}" color="white">
+      <ng-template kendoChartSharedTooltipTemplate let-category="category" let-points="points">
+        <div>{{ category }}</div>
+        <div *ngFor="let point of points">
+          {{ point.value | number: '1.2-4' }}
+        </div>
+      </ng-template>
+    </kendo-chart-tooltip>
+
+    <kendo-chart-series>
+      <kendo-chart-series-item type="line" [data]="result.values">
+      </kendo-chart-series-item>
+    </kendo-chart-series>
+
+    <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+  </kendo-chart>
+</ng-container>
+
+<ng-template #noData>
+  <h6 *ngIf="!loading" class="k-text-center">
+    <strong>{{ 'gis.DatiSatellitariNonDisponibili' | transloco }}</strong>
+  </h6>
+</ng-template>
+
+<gis-analisi-mappe-satellitari-calendario #calendar [onlyDialog]="true" selection="range"
+  [selectedDate]="dates$ | async" (selectedDateChange)="changeDates($event)">
+</gis-analisi-mappe-satellitari-calendario>

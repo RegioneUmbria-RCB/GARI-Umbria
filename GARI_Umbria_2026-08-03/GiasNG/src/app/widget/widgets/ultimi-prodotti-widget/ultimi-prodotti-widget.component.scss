@@ -1,0 +1,32 @@
+.widget-ultimi-prodotti-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    background-color: #fafafa;
+
+    .fix-margin {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .navigation-text {
+        cursor: pointer;
+    }
+
+    gias-kendo-grid {
+        /* Space for navigation button */
+        height: 95%;
+    }
+
+    ::ng-deep gias-kendo-grid>div {
+        height: 100% !important;
+    }
+
+    ::ng-deep gias-kendo-grid>div>kendo-grid {
+        height: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+}

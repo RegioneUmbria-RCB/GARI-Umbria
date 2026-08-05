@@ -1,0 +1,266 @@
+// .k-tabstrip-items .k-link {
+//   border-color: #c7cdd5;
+//   background-color: #ced3db;
+// }
+
+.k-active {
+  color: #007bff;
+}
+
+#tabstrip {
+  z-index: 0;
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.k-tabstrip-items-wrapper {
+  z-index: 1;
+}
+
+// .container {
+//   width: 94%;
+// }
+
+app-root, gias-sidemenu, .menu-agenda-page {
+    height: 100% !important;
+    display: block;
+}
+
+all-operations-table, grid-ricette, brogliaccio-table {
+    height: inherit;
+    max-height: inherit;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.filters-container {
+    align-self: flex-end;
+}
+
+.operations-container {
+    height: 100%;
+    margin: 20px;
+}
+
+kendo-drawer-container {
+    z-index: 3;
+    position: absolute;
+}
+
+.k-tabstrip-items-wrapper .k-active .k-link {
+  font-weight: bold;
+  border-bottom-style: solid;
+  overflow: hidden;
+}
+
+.padding-right {
+  margin-right: 10px;
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+
+.legend-spacing{
+  width:14px;
+  height:14px;
+  margin-right: 1px;
+  border-radius: 20px;
+}
+
+/* Esempi pulsanti già creati (https://getcssscan.com/css-buttons-examples) */
+
+.faTabsIcon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    &.faMenuQuadernoDiCampagna {
+        background-image: url('../../assets/custom-icons/icon-general/ic_qdc_tab_qdc.svg');
+    }
+    &.faMenuOrdiniDiLavoro {
+        background-image: url('../../assets/custom-icons/icon-general/ic_qdc_tab_ordinidilavororicette.svg');
+    }
+    &.faMenuBrogliaccio {
+        background-image: url('../../assets/custom-icons/icon-general/ic_qdc_tab_brogliaccio.svg');
+    }
+    &.faMenuZoo {
+        background-image: url('../../assets/custom-icons/icon-general/ic_qdc_tab_zoo.svg');
+    }
+    &.faMenuTrappole {
+      background-image: url('../../assets/custom-icons/icon-general/ic_qdc_tab_gestione_trappole.svg');
+    }
+
+}
+
+.faGridToolbarIcon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    &.faCopySingle02 {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_copy_single_02_on.svg');
+    }
+    &.faQdCCancellazioneMultipla {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_multiple_delete.svg');
+    }
+    &.faQdCImportByApp {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_import_byapp.svg');
+    }
+    &.faQdCCodeProductsByApp {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_code_products_byapp.svg');
+    }
+    &.faQdCGoToReciepeOn {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_receipt_on.svg');
+    }
+    &.faQdCEditMultioperationsOn {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_edit_multioperations_on.svg');
+    }
+}
+
+button.btn-warning {
+    background-color: transparent;
+    border-color: transparent;
+    &:hover {
+        background-color: transparent;
+        border-color: transparent;
+    }
+    .faQdCSaveGoCost {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts_warning.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts_warning_on.svg');
+        }
+    }
+}
+
+.k-menu-button, .k-dropdown-button {
+    margin-left: 5px;
+}
+
+.k-menu-button, .k-dropdown-button button {
+    width: 33px;
+    padding-right: 0px;
+}
+.k-menu-button, .k-dropdown-button button:hover {
+    width: 33px;
+    padding-right: 0px;
+    background-color: transparent !important;
+}
+
+.faGridRowIcon {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    color: transparent;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    &.faCopySingle02 {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_copy_single_02.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_copy_single_02_on.svg');
+        }
+    }
+    &.faQdCGoToReciepe {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_receipt.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_receipt_on.svg');
+        }
+    }
+    &.faQdCGoToReciepe2 {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_receipt_02.svg');
+    }
+    &.faQdCUploadFile {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_upload_file.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_upload_file_on.svg');
+        }
+    }
+    &.faQdCSearchDocument {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_search_documents.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_search_documents_on.svg');
+        }
+    }
+    &.faQdCSaveGoCost {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts_on.svg');
+        }
+        &.btn-warning {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts_warning.svg');
+            &:hover {
+                background-image: url('../../assets/custom-icons/icon-general/ic_options_save_gotocosts_warning_on.svg');
+            }
+        }
+    }
+    &.faQdCRowBrogliaccio {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_brogliaccio.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_brogliaccio_on.svg');
+        }
+    }
+    &.faQdCRowQdC {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_qdc.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_qdc_on.svg');
+        }
+    }
+    &.faQdCRowGotoQdC {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_qdc.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_qdc_on.svg');
+        }
+    }
+    &.faQdCRowGotoBrogliaccio {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_brogliaccio.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_goto_brogliaccio_on.svg');
+        }
+    }
+    &.faQdCRowPrintReceipt {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_print_receipt.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_print_receipt_on.svg');
+        }
+    }
+    &.faQdCRowPrintOdL {
+        background-image: url('../../assets/custom-icons/icon-general/ic_options_print_ordinidilavoro.svg');
+        &:hover {
+            background-image: url('../../assets/custom-icons/icon-general/ic_options_print_ordinidilavoro_on.svg');
+        }
+    }
+}
+
+/** grid buttons menu*/
+.k-menu-group .k-item.k-focus > .k-link {
+    box-shadow: none;
+}
+.k-menu-group-md .k-menu-link {
+    background-color: #f8f8f8;
+}
+
+@media (min-width: 600px) {
+    .k-popup.k-grid-filter-popup {
+      width: 500px;
+    }
+  }

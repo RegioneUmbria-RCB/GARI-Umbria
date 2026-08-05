@@ -1,0 +1,79 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!error && !loading && data != null" class="indicatori-container">
+  <ng-container>
+    <p class="indicatori-widget-title">
+      {{'RiepilogoIndicatoriEmergenzeDSS' | transloco}}
+    </p>
+
+    <kendo-chart class="indicatori-widget-chart" *ngIf="series.length > 0 else gaugesMsg" (click)="onClickChart()">
+      <kendo-chart-area [margin]="0" [height]="95"></kendo-chart-area>
+
+      <kendo-chart-series>
+        <kendo-chart-series-item type="pie" [data]="series"></kendo-chart-series-item>
+      </kendo-chart-series>
+
+      <kendo-chart-legend [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+    </kendo-chart>
+
+    <div *ngIf="areDateControlsVisible()">
+      <ng-container *ngTemplateOutlet="dateFilterBtns"></ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<div *ngIf="error">
+  <p class="widget-no-data widget-loading-container">{{ 'IndicatoriDSSNonDisponibili' | transloco }}</p>
+
+  @if (areDateControlsVisible()) {
+    <ng-container *ngTemplateOutlet="dateFilterBtns"></ng-container>
+  }
+</div>
+
+
+<app-indicatori-widget-full
+  *ngIf="fullWidgetOpened"
+  [data]="data"
+  (closeEvent)="fullWidgetOpened = false"
+>
+</app-indicatori-widget-full>
+
+<ng-template #timeIntervalTemplate>
+  <form [formGroup]="timeIntervalForm">
+    <gias-validita
+      [inizioFormControlName]="'start'"
+      [fineFormControlName]="'end'"
+    ></gias-validita>
+  </form>
+</ng-template>
+
+<ng-template #gaugesMsg>
+  <p class="widget-no-data" *ngFor="let msg of gaugesMessges">{{ msg }}</p>
+</ng-template>
+
+<ng-template #dateFilterBtns>
+  <div class="indicatori-widget-dates">
+    <span
+      class="fa-stack fa-1x pointer"
+      (click)="onSetTimeInterval()"
+      [title]="'CambiaDate' | transloco"
+      kendoTooltip
+    >
+      <i aria-hidden="true" class="fa fa-calendar-o fa-stack-1x" style="font-size: 1.6em"></i>
+    </span>
+
+    <p style="margin-bottom: 0">{{ startDate | date }} - {{ endDate | date }}</p>
+
+    <span
+      class="fa-stack fa-1x pointer"
+      (click)="resetDates()"
+      [title]="'ReimpostaDate' | transloco"
+      kendoTooltip
+    >
+      <i aria-hidden="true" class="fa fa-calendar-o fa-stack-1x" style="font-size: 1.6em"></i>
+      <i aria-hidden="true" class="fa fa-ban fa-stack-2x" style="color: red"></i>
+    </span>
+  </div>
+</ng-template>

@@ -1,0 +1,41 @@
+<kendo-card *ngIf="!!imp">
+    <kendo-card-header>
+        <h6>{{imp.value.guida.Impostazione_Des}}</h6>
+        <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+                (click)="onSave()"
+        >{{'prof.Salva' | transloco}}</button>
+    </kendo-card-header>
+
+    <kendo-card-body>
+        <ng-container
+            [ngTemplateOutlet]="+imp.value.guida.Tipo_Campo === 0
+                ? personalized_setting
+                : general_setting"
+            [ngTemplateOutletContext]="{imp:imp}"
+        ></ng-container>
+    </kendo-card-body>
+</kendo-card>
+
+<!-- Gestione impostazioni generiche -->
+<ng-template #general_setting let-imp='imp'>
+    <form [formGroup]="imp">
+        <gias-general-input-template #generalInput
+             giasFormControlName="valoreCorrente"
+             [label]="imp.value.guida.Impostazione_Des"
+             [listItems]="imp.value.valori"
+             [value]="imp.value.valoreCorrente"
+             [controlType]="+imp.value.guida.Tipo_Campo"
+        ></gias-general-input-template>
+    </form>
+</ng-template>
+
+<!-- Gestione impostazioni specifiche e personalizzate -->
+<ng-template #personalized_setting let-imp='imp'>
+    <form [formGroup]="imp">
+        <app-settings-general-field #generalSetting
+            giasFormControlName="valoreCorrente"
+            [label]="imp.value.guida.Impostazione_Des"
+            [value]="imp.value.valoreCorrente"
+        ></app-settings-general-field>
+    </form>
+</ng-template>

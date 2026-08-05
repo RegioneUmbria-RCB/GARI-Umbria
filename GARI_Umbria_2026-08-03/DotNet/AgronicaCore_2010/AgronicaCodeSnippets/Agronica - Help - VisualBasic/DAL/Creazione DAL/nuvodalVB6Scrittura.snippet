@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Creazione di un nuovo DAL vb6 in scrittura</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Crea le classi ed i metodi base per un nuovo DAL</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Crea le classi ed i metodi base per un nuovo DAL</ID>
+          <Default>Crea le classi ed i metodi base per un nuovo DAL</Default>
+        </Literal>
+        <Literal>
+          <ID>NomeDal</ID>
+          <Type/>
+          <ToolTip>Sostituire con il dal.</ToolTip>
+          <Default>DAL</Default>
+          <Function/>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[    
+'############################################################################
+'############################################################################
+'####################  $NomeDal$ WRITE  ###################################
+'############################################################################
+'############################################################################
+
+Option Base 0
+Option Explicit
+Implements COMSVCSLib.ObjectControl
+Private Const ClasseNome = "$NomeDal$_W"          ' #### CLASSE ####
+'
+
+'############################################################################
+'############################################################################
+'############################################################################
+
+'============================================================================
+Public Function Scrivi(ByVal idle As Long, _
+                               ByVal UserName_Creazione As String, _
+                      Optional ByVal Data_creazione As Date = #2/1/1900#, _
+                      Optional ByVal Validita_Inizio As Date = CDate("01/01/1900"), _
+                      Optional ByVal Validita_Fine As Date = CDate("31/12/2100"), _
+                      Optional ByRef objCnManager As Object, _
+                      Optional ByVal ConnessioneAlternativa As String = "", _
+                      Optional ByVal Blocco_Flag As Integer = 0, _
+                      Optional ByVal Blocco_Username As String = "", _
+                      Optional ByVal Blocco_Data As Date = CDate("01/01/1900") _
+                          ) As long
+'============================================================================
+   
+   Dim Connessione            As ADODB.Connection
+   Dim rs                     As ADODB.Recordset
+   Dim sSql                   As String
+   Dim objCnManagerLocal      As AgronicaConnessioni.CManagerConnessioni
+
+   Dim NomeConnessione        As String
+   Dim TipoFonteConnessione   As AgronicaConnessioni.enFontiConnessioni
+   Dim FonteConnessione       As String
+
+   '------------------------------
+
+   'Nome del metodo
+   Const MetodoNome = "Scrivi:"
+
+   '------------------------------
+   
+   'Gestione degli errori
+   On Error GoTo GestioneErrori
+   
+   '------------------------------
+   
+    If Data_creazione = #2/1/1900# Then
+        Data_creazione = Now()
+    End If
+            
+   
+   'Query per l'inserimento dei dati                 ' #### CLASSE ####
+   Dim stb As New cStringBuilder
+   stb.append("insert ..." & vbcrlf)
+
+    sSql = stb.tostring()
+
+   
+   '------------------------------
+   
+   'Prelevo le informazioni sulla connessione dal modulo di personalizzazione
+   
+   If ConnessioneAlternativa = "" Then
+           
+           NomeConnessione = AgroSet_Cn_cnGIAS_Super_Server_Agronica_ini       ' #### CLASSE ####
+           
+   Else
+           
+           NomeConnessione = ConnessioneAlternativa
+             
+   End If
+      
+   TipoFonteConnessione = AgroSet_Cn_TipoFonte
+   FonteConnessione = AgroSet_Cn_NomeFonte
+   
+   '------------------------------
+   
+   'Verifico se ho una connessione gia' attiva
+   If Not (objCnManager Is Nothing) Then
+   
+      'Richiedo una connessione 'SET
+      Set objCnManagerLocal = objCnManager
+      
+   Else
+      
+      'Creo un oggetto objCnManager 'SET
+      Set objCnManagerLocal = CreateObject("AgronicaConnessioni.CManagerConnessioni")
+      
+   End If
+            
+   '------------------------------
+   
+   'Richiedo una connessione 'SET
+   Set Connessione = objCnManagerLocal.OttieniConnessione(NomeConnessione, TipoFonteConnessione, FonteConnessione)
+   
+   '------------------------------
+
+   'Eseguo la query di inserimento
+   Connessione.Execute sSql
+   
+   '------------------------------
+   
+   If Not (GetObjectContext Is Nothing) Then
+      'Voto per il commit della transazione COM+
+      GetObjectContext.SetComplete
+   End If
+   
+   '------------------------------
+   
+   'Rilascio la connessione se sono in COM+
+   objCnManagerLocal.RilasciaConnessione Connessione
+   
+   'Distruggo l'oggetto che ho creato 'SET
+   Set objCnManagerLocal = Nothing
+   
+   '------------------------------
+   
+   'Esco dalla funzione
+   Exit Function
+
+'/////////////////////////////////
+GestioneErrori:
+
+   'Restituisco un valore dummy
+   Scrivi = -1
+
+   If Not (GetObjectContext Is Nothing) Then
+      'Voto per il rollback della transazione COM+
+      GetObjectContext.SetAbort
+   End If
+   
+   'Se ho una connessione aperta devo chiuderla
+   objCnManagerLocal.RilasciaConnessione Connessione
+   
+   'Distruggo l'oggetto che ho creato 'SET
+   Set objCnManagerLocal = Nothing
+   
+   'Attivo una condizione di errore
+   'Agro_GestioneErrore ClasseNome, MetodoNome, Err.Number, Err.Description & " { " & sSql & " } ", AgroSet_Flag_Errore
+
+End Function
+
+
+'############################################################################
+'############################################################################
+'############################################################################
+'============================================================================
+Public Sub Modifica(ByVal idle1 As String, _
+        Optional ByRef objCnManager As Object, _
+        Optional ByVal ConnessioneAlternativa As String = "")
+'============================================================================
+   
+   Dim Connessione         As ADODB.Connection
+   Dim rs                  As ADODB.Recordset
+   Dim sSql                As String
+   Dim objCnManagerLocal   As AgronicaConnessioni.CManagerConnessioni
+
+   Dim NomeConnessione        As String
+   Dim TipoFonteConnessione   As AgronicaConnessioni.enFontiConnessioni
+   Dim FonteConnessione       As String
+
+   '------------------------------
+
+   'Nome del metodo
+   Const MetodoNome = "Modifica_Campo_Numerico:"
+
+   '------------------------------
+   
+   'Gestione degli errori
+   On Error GoTo GestioneErrori
+   
+   '------------------------------
+   
+   'Query per l'inserimento dei dati                 ' #### CLASSE ####
+   
+   dim stb as new cStringBuilder
+   stb.append("update " & vbcrlf)
+   
+   sSql = stb.toString()
+          
+          
+   '------------------------------
+   
+   'Prelevo le informazioni sulla connessione dal modulo di personalizzazione
+   
+   If ConnessioneAlternativa = "" Then
+           
+      NomeConnessione = AgroSet_Cn_cnGIAS_Super_Server_Agronica_ini       ' #### CLASSE ####
+           
+   Else
+           
+      NomeConnessione = ConnessioneAlternativa
+             
+   End If
+      
+   TipoFonteConnessione = AgroSet_Cn_TipoFonte
+   FonteConnessione = AgroSet_Cn_NomeFonte
+   
+   '------------------------------
+   
+   'Verifico se ho una connessione gia' attiva
+   If Not (objCnManager Is Nothing) Then
+   
+      'Richiedo una connessione 'SET
+      Set objCnManagerLocal = objCnManager
+      
+   Else
+      
+      'Creo un oggetto objCnManager 'SET
+      Set objCnManagerLocal = CreateObject("AgronicaConnessioni.CManagerConnessioni")
+      
+   End If
+   
+   '------------------------------
+   
+   'Richiedo una connessione 'SET
+   Set Connessione = objCnManagerLocal.OttieniConnessione(NomeConnessione, TipoFonteConnessione, FonteConnessione)
+   
+   '------------------------------
+
+   'Eseguo la query di inserimento
+   Connessione.Execute sSql
+   
+   '------------------------------
+   
+   If Not (GetObjectContext Is Nothing) Then
+      'Voto per il commit della transazione COM+
+      GetObjectContext.SetComplete
+   End If
+   
+   '------------------------------
+   
+   'Rilascio la connessione se sono in COM+
+   objCnManagerLocal.RilasciaConnessione Connessione
+   
+   'Distruggo l'oggetto che ho creato 'SET
+   Set objCnManagerLocal = Nothing
+   
+   '------------------------------
+   
+   'Esco dalla funzione
+   Exit Sub
+
+'/////////////////////////////////
+GestioneErrori:
+
+   If Not (GetObjectContext Is Nothing) Then
+      'Voto per il rollback della transazione COM+
+      GetObjectContext.SetAbort
+   End If
+   
+   'Se ho una connessione aperta devo chiuderla
+   objCnManagerLocal.RilasciaConnessione Connessione
+   
+   'Distruggo l'oggetto che ho creato 'SET
+   Set objCnManagerLocal = Nothing
+   
+   'Attivo una condizione di errore
+   Agro_GestioneErrore ClasseNome, MetodoNome, Err.Number, Err.Description & " { " & sSql & " } ", AgroSet_Flag_Errore
+
+End Sub
+
+
+
+
+'############################################################################
+'##########  COM+  ##########################################################
+'############################################################################
+
+'============================================================================
+Private Function ObjectControl_CanBePooled() As Boolean
+'============================================================================
+   ObjectControl_CanBePooled = False
+End Function
+
+'============================================================================
+Private Sub ObjectControl_Activate()
+'============================================================================
+End Sub
+
+'============================================================================
+Private Sub ObjectControl_Deactivate()
+'============================================================================
+End Sub
+
+'############################################################################
+'############################################################################
+'############################################################################
+
+
+
+
+
+
+
+
+]]>
+        
+        
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,201 @@
+<header *ngIf="headerModel != null && headerModel.visible">
+  <div id="headerColLeft" *ngIf="ShowColLeft()" [class]="!showDashboardBtn() ? 'headerCol-2-hidden' : 'headerCol-2'">
+    <div id="hContentBars">
+      <a class="menuBars " (click)="openNav();" id="openMenu"><i aria-hidden="true" class="fa fa-bars" aria-hidden="true"></i></a>
+      <a class="menuBars hide" (click)="closeNav();" id="closeMenu"><i aria-hidden="true" class="fa fa-bars" aria-hidden="true"></i></a>
+    </div>
+
+    <div id="hContentLogo" homeButton *ngIf="showDashboardBtn() && headerModel?.logo !== ''">
+      <a class="linkLogo">
+        <img alt="" src="{{headerModel?.logo}}" alt="Agronica" width="34" height="34"class="logo_navbar">
+      </a>
+    </div>
+  </div>
+
+  <div id="headerColCenter" class="headerCol-7">
+    <app-breadcrumb class="full-width" [isDashboard]="isDashboard"></app-breadcrumb>
+  </div>
+
+  <div id="headerColRight" *ngIf="ShowColRight()" class="headerCol-3">
+    <!-- Selettore lingua per testare traduzioni. -->
+    <!-- <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{ language }}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button (click)="changeLanguage('it')" ngbDropdownItem>IT</button>
+        <button (click)="changeLanguage('pt')" ngbDropdownItem>PT</button>
+        <button (click)="changeLanguage('en')" ngbDropdownItem>EN</button>
+        <button (click)="changeLanguage('fr')" ngbDropdownItem>FR</button>
+      </div>
+    </div> -->
+    <!-- BC error height -->
+    <div *ngIf="showCompany()" id="navbar_company" class="hRightElement dropdown-container hContainerCompany">
+      <a (click)="showToggleDropdown('hCompaniesDrop');" class="dropbtn">
+        <span class="hCurrentCompanyName text_align_right">
+          {{company.ragioneSociale}} {{company.desc}}
+          <span class="tooltiptext">{{company?.ragioneSociale}} {{company?.desc}} </span>
+        </span>
+        <i aria-hidden="true" class="fa fa-chevron-down" aria-hidden="true" *ngIf="companySelectionAllowed()"></i>
+      </a>
+
+      <div id="hCompaniesDrop" class="dropdown-content" [ngClass]="{ 'k-mr-0': isExternalLoad }">
+        <table class="hCompanyTableSelect">
+          <caption style="caption-side: top; margin-left: 15px;" class="dropTitleRed text_blue text_weight_600 label_text_small text_uppercase">
+            {{ 'UltimeAziendeGestite' | transloco}}
+          </caption>
+
+          <th></th>
+
+          <tbody>
+            <tr
+              *ngFor="let azienda of lastSelectedCompanies"
+              class="k-cursor-pointer trCompany"
+              (click)="azienda.partitaIva == company?.piva ? null : cambiaAzienda(azienda, true)"
+            >
+              <td class="tdCompanyName text_medium custom_text_blue">{{headerCompanyName(azienda, lastSelectedCompanies)}}</td>
+              <td class="tdCheck text_align_right">
+                <div kendoTooltip>
+                  <img
+                    [src]="azienda.partitaIva == company?.piva ? 'assets/img_giasng/checkbox/checkbox_on.svg' : 'assets/img_giasng/checkbox/checkbox_off.svg'"
+                    alt="Non selezionato"
+                    width="24"
+                    height="24"
+                    [class]="azienda.partitaIva == company?.piva ? 'check_on' : 'check_off'"
+                    [title]="(azienda.partitaIva == company?.piva ? 'AziendaSelezionata' : 'CambiaAzienda') | transloco ">
+                </div>
+              </td>
+            </tr>
+          <tbody>
+        </table>
+
+        <hr>
+        <span class="dropTitleRed text_blue text_weight_600 label_text_small text_uppercase">{{ 'RicercaVeloce' | transloco }}</span>
+
+        <div class="hBoxSearch">
+          <div class="container-search">
+            <span class="icon"><i aria-hidden="true" class="fa fa-search"></i></span>
+            <input
+              type="search"
+              id="search"
+              autocomplete="off"
+              [placeholder]="'CercaAzienda' | transloco"
+              [(ngModel)]="searchBoxAzienda"
+              (ngModelChange)="ricercaAzienda()"
+            />
+          </div>
+        </div>
+
+        <ng-container *ngIf="searchedCompanies?.length > 0">
+          <table class="hCompanyTableSelect">
+            <caption
+              style="caption-side: top; margin-left: 15px;"
+              class="dropTitleRed text_blue text_weight_600 label_text_small text_uppercase"
+            >
+              {{ 'Risultati' | transloco }}
+            </caption>
+
+            <th></th>
+
+            <tbody class="max-height">
+              <tr
+                *ngFor="let azienda of searchedCompanies"
+                class="k-cursor-pointer trCompany"
+                (click)="azienda.partitaIva == company?.piva ? null : cambiaAzienda(azienda, true)"
+              >
+                <td class="tdCompanyName text_medium custom_text_blue" colspan="5">{{ headerCompanyName(azienda, searchedCompanies) }}</td>
+                <td class="tdCompanyName text_medium custom_text_blue text_align_right" colspan="3"><i>{{ headerCompanyCuaa(azienda) }}</i></td>
+                <td class="tdCheck text_align_right" colspan="1">
+                  <div kendoTooltip>
+                    <img
+                      [src]="azienda.partitaIva == company?.piva ? 'assets/img_giasng/checkbox/checkbox_on.svg' : 'assets/img_giasng/checkbox/checkbox_off.svg'"
+                      alt="Non selezionato" width="24" height="24"
+                      [class]="azienda.partitaIva == company?.piva ? 'check_on' : 'check_off'"
+                      [title]="(azienda.partitaIva == company?.piva ? 'AziendaSelezionata' : 'CambiaAzienda') | transloco"
+                    >
+                  </div>
+                </td>
+              </tr>
+            <tbody>
+          </table>
+        </ng-container>
+
+        <hr>
+        <div class="hInternalLink">
+          <span class="dropTitleRed text_small text_blue font_weight_600 text_uppercase text_align_center">
+            <a (click)="filtrinoImprese()" class="text_align_center text_weight_600 ic_arrow navbar_ic_arrow_right_type01">{{ 'RicercaAvanzata' | transloco}}</a>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!isExternalLoad" id="navbar_user" class="hRightElement dropdown-container hFloatRight hContainerUser">
+      <a (click)="showToggleDropdown('userAccount');" class="dropbtn">
+        <i aria-hidden="true" class="fa fa-chevron-down" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-user-circle-o" aria-hidden="true"></i>
+      </a>
+
+      <div id="userAccount" class="dropdown-content">
+        <a class="goToUserProfile" style="display: inline-block;pointer-events: none;">
+          <div class="hUserProfileName text_blue label_text_normal text_weight_400">
+            {{user?.Nome}} {{user?.Cognome}} {{user?.Rag_Soc}}
+          </div>
+
+          <span class="hUserProfileName text_blue label_text_normal text_weight_400">
+            {{user?.UserNameCommerciale}}
+          </span>
+
+          <hr />
+          <span class="hUserProfileEmail text_gray_light3 text_small text_weight_400">mail: {{user?.Email}}</span>
+
+          <hr />
+          <span class="hUserProfileEmail text_gray_light3 text_small text_weight_400">username: {{user?.UserName}}</span>
+        </a>
+
+        <hr />
+
+        <div class="hUserVisibility">
+          <div class="label_text_small text_gray_light3 text_uppercase">{{ 'Visibilita' | transloco }}</div>
+          <div class="text_small text_blue">{{user?.Visibilita}}</div>
+        </div>
+
+        <div class="hUserVisibility">
+          <div class="label_text_small text_gray_light3 text_uppercase">{{ 'UltimoAccesso' | transloco }}</div>
+          <div class="text_small text_blue">{{user?.UltimoAccesso}}</div>
+        </div>
+
+        <hr />
+
+        <div class="hIconLink" id="smsLicenza" [style.display]="(validitaPermessiLicenza?.Permessi_Scaduti_O_In_Scadenza || validitaPermessiLicenza?.Licenza_Scaduta_O_In_Scadenza) ? 'block' : 'none' ">
+          <div class="hIconText text_medium text_red text_align_left"><a href="#" style="display: inline-block;pointer-events: none;">{{ validitaPermessiLicenza?.Messaggio }}</a></div>
+        </div>
+
+        <hr />
+
+        <div class="hIconLink">
+          <div class="hIcon text_align_left">
+            <a (click)="logout()" href="javascript:;" class="text_align_left">
+              <i aria-hidden="true" class="fa fa-sign-out" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <div class="hIconText text_medium text_blue text_align_left">
+            <a (click)="logout()" href="javascript:;">{{'Esci' | transloco }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<kendo-dialog *ngIf="isLogoutConfirmationOpen" (close)="isLogoutConfirmationOpen = false">
+  <kendo-dialog-titlebar id="exit-dialog-title">
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div class="exit-text">{{ 'SicuroDiVolerUscire' | transloco }}</div>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="doLogout()">{{ 'Si' | transloco }}</button>
+    <button kendoButton (click)="isLogoutConfirmationOpen = false">{{ 'No' | transloco }}</button>
+    <button kendoButton style="display:none"></button>
+  </kendo-dialog-actions>
+</kendo-dialog>

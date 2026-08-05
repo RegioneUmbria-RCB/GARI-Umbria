@@ -1,0 +1,244 @@
+﻿
+body {
+    background-color: #ffffff !important;
+}
+
+#kendoWindowiFrameGeneric {
+    display: none;
+}
+
+.meteo-transparent {
+    opacity: 0 !important;
+}
+
+.meteo-hidden {
+    display: none !important;
+}
+
+.meteo-tabstrip {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.meteo-tabstrip .k-tabstrip-content:focus {
+    outline: none;
+}
+
+.k-tabstrip:focus {
+    box-shadow: none;
+}
+
+.k-tabstrip-items > .k-item {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.k-tabstrip > .k-content {
+    padding: 10px !important;
+}
+
+.responsive-container-centered {
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+}
+
+/* Extra Small*/
+@media (max-width: 767px) {
+    .responsive-content {
+        min-width: 100%;
+    }
+}
+
+/* Small*/
+@media (min-width: 768px) and (max-width: 991px) {
+    .responsive-content {
+        min-width: 100%;
+    }
+}
+
+/* Medium*/
+@media (min-width: 992px) and (max-width: 1199px) {
+    .responsive-content {
+        min-width: 75%;
+    }
+}
+
+/* Large*/
+@media (min-width: 1200px) {
+    .responsive-content {
+        min-width: 50%;
+    }
+}
+
+
+
+.form-label {
+    color: #9e9e9e;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+
+    .form-label:not(:first-child) {
+        margin-top: 20px;
+    }
+
+    .form-label {
+        margin-bottom: 5px;
+    }
+
+    .form-separator {
+        margin: 20px 0px;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .form-layout {
+        display: grid;
+        grid-template-columns: minmax(0, auto) 1fr;
+        grid-gap: 20px 10px;
+        align-items: center;
+    }
+
+    .form-label {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-align: end;
+    }
+
+    .form-separator {
+        grid-column: 1 / span 2;
+        border-bottom: 1px solid #ddd;
+    }
+
+}
+
+
+
+
+
+.k-grid .k-grid-header .k-header {
+    vertical-align: middle;
+}
+
+.allineadestra {
+    text-align: right !important;
+}
+
+.allineacentro {
+    text-align: center !important;
+}
+
+.bordosinistro {
+    border-left-width: 2px !important;
+}
+
+.bordoinferiore {
+    border-bottom-width: 2px !important;
+}
+
+.groupheader {
+    text-align: center !important;
+}
+
+.grassetto {
+    font-weight: bold !important;
+}
+
+:root {
+    --tooltip-background: #e5f5fa;
+    --tooltip-color: #2498bc;
+}
+
+.grid-tooltip.k-widget.k-tooltip {
+    text-align: left;
+    background-color: var(--tooltip-background);
+    border-color: var(--tooltip-background);
+    color: var(--tooltip-color);
+}
+
+.grid-tooltip > .k-callout-n {
+    border-bottom-color: var(--tooltip-background);
+}
+
+.grid-tooltip > .k-callout-s {
+    border-top-color: var(--tooltip-background);
+}
+
+.grid-tooltip > .k-callout-e {
+    border-left-color: var(--tooltip-background);
+}
+
+.grid-tooltip > .k-callout-w {
+    border-right-color: var(--tooltip-background);
+}
+
+.grid-tooltip > .k-tooltip-content {
+    margin: 20px 20px 15px 15px;
+    padding-right: 0px;
+    white-space: nowrap;
+}
+
+.hasToolTip:hover {
+    /*color: #e5f5fa;*/
+    /*-moz-box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 0 15px rgba(0,0,0,0.5);
+    -moz-transition: -moz-box-shadow .3s;
+    -webkit-transition: -webkit-box-shadow .3s;
+    transition: box-shadow .3s;*/
+}
+
+dl.table-display {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.table-display dt {
+    float: left;
+    font-weight: bold;
+    width: 2.25em;
+    text-align: right;
+}
+
+.table-display dd {
+    margin-left: 3.25em;
+}
+
+.k-header > .k-grid-filter {
+    border-radius: 4px;
+}
+
+.k-grid-filter.k-state-active,
+.k-grid-filter.k-active {
+    color: inherit !important;
+    background-color: rgb(45, 118, 181);
+    /*border-color: inherit;*/
+    /*-webkit-box-shadow: inherit;*/
+    /*box-shadow: inherit;*/
+}
+
+
+
+/*per valueTemplate in kendoDropDownList */
+
+.k-dropdown-wrap .k-input:before {
+    display: inline !important;
+}
+
+
+
+/*
+devo evitare che lo show del WaitFrame "nasconda" la scrollbar del body 
+altrimenti la dimensione orizzontale del grafico risulterebbe maggiore di quello che dovrebbe essere
+*/
+.modal-open {
+    overflow: inherit;
+}
+
+.overflow_hidden {
+    overflow: hidden;
+}

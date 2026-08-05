@@ -1,0 +1,30 @@
+<div [formGroup]="ProdottiForm" *ngIf="prodottiservice.controlli_Giacenze_Lotti_Innesco.ddl_UdM.visibile">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <gias-drop-down-template-s
+        [name]= "'UdMInnesco' | transloco"
+        [clearButton]="true"
+        [listItems]="qdcdettagliformulatiService.Array_Udm_Inneschi"
+        (open)="openControlUdM($event, 'UdM_Innesco')"
+        textField="simbolo"
+        valueField="codice"
+        [filterable]="true"
+        giasFormControlName="UdM_Innesco"
+        [valuePrimitive]="false">
+      </gias-drop-down-template-s>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <gias-numeric-template
+        [name]="'QuantitàTalQualeInnesco' | transloco"
+        [obligatory]="true"
+        [clearButton]="true"
+        giasFormControlName="DoseTot_Ha_Innesco"
+        [format]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM_Innesco').value).format"
+        [minValue]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM_Innesco').value).min"
+        [step]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM_Innesco').value).step"
+        [decimals]="qdcservice.getProductNumericSettings(ProdottiForm.get('UdM_Innesco').value).decimals">
+      </gias-numeric-template>
+    </div>
+  </div>
+</div>

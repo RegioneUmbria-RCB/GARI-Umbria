@@ -1,0 +1,33 @@
+<kendo-dialog [width]="width">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700">
+      {{ 'ModificaPermessi' | transloco }}
+    </div>
+  </kendo-dialog-titlebar>
+
+  <kendo-tabstrip *ngIf="{ tab: tabSelected$ | async } as data" [keepTabContent]="true"
+    (tabSelect)="tabSelectedSubject.next($event.index)">
+
+    <kendo-tabstrip-tab [title]="'gis.PermessiSuUtenti' | transloco" [selected]="data.tab == 0">
+      <ng-template kendoTabContent>
+        <gis-cfg-proiezioni-users-permissions #gisCfgProiezioniUsersPermissions
+          [configurationCode]="inputConfiguration.ConfigurazioneProiezione_Cod">
+        </gis-cfg-proiezioni-users-permissions>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.PermessiSuGruppi' | transloco" [selected]="data.tab == 1">
+      <ng-template kendoTabContent>
+        <gis-cfg-proiezioni-groups-permissions #gisCfgProiezioniGroupsPermissions
+          [configurationCode]="inputConfiguration.ConfigurazioneProiezione_Cod">
+        </gis-cfg-proiezioni-groups-permissions>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+  </kendo-tabstrip>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="closeDialog()">{{ 'Annulla' | transloco }}</button>
+    <button kendoButton (click)="submit()">{{ 'Conferma' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

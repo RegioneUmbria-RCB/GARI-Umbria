@@ -1,0 +1,51 @@
+<div style="display: flex; align-items: center; justify-content: center;">
+    <form [formGroup]="form" style="width: 90%;">
+        <div *ngIf="settings.controlType === enum_TipoControllo.CALENDARIO">
+            <gias-data-template
+                [giasFormControlName]="settings.realField"
+                [nullValue]="AGRODATA_INIZIO"
+                (valueChange)="update($event)"
+            ></gias-data-template>
+        </div>
+        <div *ngIf="settings.controlType === enum_TipoControllo.CASELLA_SPUNTA" class="centered">
+            <span class="switch-label k-label">{{settings.boolean.leftLabel}}</span>
+            <gias-switch-template
+                [giasFormControlName]="settings.realField"
+                [hideLabel]="true"
+                (valueChange)="update($event)"
+            ></gias-switch-template>
+            <span class="switch-label k-label">{{settings.boolean.rightLabel}}</span>
+        </div>
+        <div *ngIf="settings.controlType === enum_TipoControllo.NUMERO_INTERO">
+            <kendo-numerictextbox
+                [formControl]="fieldControl"
+                format="n0"
+                [min]="settings.numeric.min" [max]="settings.numeric.max"
+                [autoCorrect]="settings.numeric.autoCorrect"
+                [step]="settings.numeric.step"
+                (blur)="update($event)"
+            ></kendo-numerictextbox>
+        </div>
+        <div *ngIf="settings.controlType === enum_TipoControllo.NUMERO_DECIMALE">
+            <kendo-numerictextbox
+                [formControl]="fieldControl"
+                [min]="settings.numeric.min" [max]="settings.numeric.max" [format]="settings.numeric.format"
+                [spinners]="false"
+                [autoCorrect]="settings.numeric.autoCorrect"
+                [decimals]="settings.numeric.decimals"
+                [step]="settings.numeric.step"
+                (blur)="update($event)"
+            ></kendo-numerictextbox>
+        </div>
+        <div *ngIf="settings.controlType === enum_TipoControllo.MENU_DISCESA">
+            <gias-drop-down-template
+                textField="name"
+                valueField="id"
+                [giasFormControlName]="settings.realField"
+                [listItems]="settings.ddl.data"
+                [valuePrimitive]="false"
+                (valueChange)="update($event)"
+            ></gias-drop-down-template>
+        </div>
+    </form>
+</div>

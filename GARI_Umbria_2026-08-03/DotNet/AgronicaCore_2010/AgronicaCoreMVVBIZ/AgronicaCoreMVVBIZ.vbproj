@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC26A5F5-5DA5-4388-88D7-4ABE72251150}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreMVVBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreMVVBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\Integrazione.SIAN.MVV\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\Extensions.vb" />
+    <Compile Include="FileManager.vb" />
+    <Compile Include="IFIleManager.vb" />
+    <Compile Include="Integrazione.SIAN\MVV\SoapController_MVV.vb" />
+    <Compile Include="MatriceCampi.vb" />
+    <Compile Include="MVVController.vb" />
+    <Compile Include="MVVLogger.vb" />
+    <Compile Include="MVVService.vb" />
+    <Compile Include="MVVServiceConfigMin.vb" />
+    <Compile Include="MVV_XmlGenerator.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Persisters\FileSystemPersister.vb" />
+    <Compile Include="Persisters\MemoryPersister.vb" />
+    <Compile Include="StampaController.vb" />
+    <Compile Include="TabelleDecoficaOnline.vb" />
+    <Compile Include="Validatori\XMLValidator.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="Entita\XSDs\wsmrga.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.AggNoteMVVSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.AnnMVVSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.AnnullaPrevArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.AnnullaPrevcumArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.AnnullaPrevSpumantizzazioneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.ChiudiCampagnaPrecSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancAzieSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancOperSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancProdSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancSoggSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancTrasSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancVasiSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetCancVigneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetGiacenza31luglioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetOperSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetProdSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetSoggSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetStatoChiusuraCampagnaPrecSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetTrasSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetVasiSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.GetVigneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.InsAggProdSincrSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.InsPrevArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.InsPrevcumArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.InsPrevSpumantizzazioneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.InsRicMvvSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.MVVEmergenzaSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.MVVSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.PrnMVVODCSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.PrnMVVSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.StatoRegistroMVVDestinatarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.StatoRegistroMVVSpeditoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VarMvvSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisDettMVVDestSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisDopIgpSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisEbacchusSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisGiacSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisMenzioneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisMVVDestSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisMVVODCSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisMVVSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisOperAttiveOdcSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisOperOdcSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisOperSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisOperStoricizzateOdcSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisPrevArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisPrevcumArricchimentoSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisPrevSpumantizzazioneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisProdSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisSoggSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisSottozonaSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisStabSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisTrasSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisVarietaSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisVasiSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisVigneSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\AgronicaCoreMVVBIZ.Integrazione.SIAN.MVV.VisZonaViticolaSiRPVResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\wsRegVinoAsync.wsdl" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="WSDLs\wsRegVino.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMVVCommon\AgronicaCoreMVVCommon.vbproj">
+      <Project>{fa626696-b046-46af-89d6-fea795dd6e97}</Project>
+      <Name>AgronicaCoreMVVCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMVVDal\AgronicaCoreMVVDal.vbproj">
+      <Project>{32070aaf-0ed0-4424-86be-bbea1d1b8c16}</Project>
+      <Name>AgronicaCoreMVVDal</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\Integrazione.SIAN.MVV\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\Integrazione.SIAN.MVV\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

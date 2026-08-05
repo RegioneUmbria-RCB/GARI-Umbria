@@ -1,0 +1,38 @@
+<div [formGroup]="qdcservice.QuantitaForm" *ngIf="loaded">
+
+    <div class="row form-row">
+
+        <div class="col-12 col-md-6">
+            <div class="acqua-title">
+                {{'QtaProdottiMagazzinoSelezionati' | transloco}}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <gias-numeric-template
+                [name]="'QtaTotaleQuintaliSelezionata' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Qta_Selezionata"
+                [format]="qdcservice.get4DecimalNumericSettings().format">
+            </gias-numeric-template>
+        </div>
+        <div class="col-12 col-md-3">
+            <!-- [errorMsg]="'LaSuperficieImpiegataDeveEssereMinoreOUgua' | transloco" -->
+            <gias-numeric-template
+                [name]="'QtaTotaleQuintaliTrattata' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Qta_Trattata"
+                [format]="qdcservice.get4DecimalNumericSettings().format"
+                [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                [step]="qdcservice.get4DecimalNumericSettings().step"
+                [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                (valueChange)="supTrattataValueChange()"
+                [autoCorrect]="autocorrect"
+                [maxValue]="qdcservice.QuantitaForm.get('Qta_Selezionata').value">
+            </gias-numeric-template>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,56 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.1.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>Agronica - Etichetta Checkbox (bootstrap)</Title>
+			<Author>Vanni</Author>
+			<Shortcut>aect</Shortcut>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>id</ID>
+					<ToolTip>id controllo</ToolTip>
+					<Default>id</Default>
+				</Literal>
+				<Literal>
+					<ID>titolo</ID>
+					<ToolTip>titolo</ToolTip>
+					<Default>Titolo</Default>
+				</Literal>
+				<Literal>
+					<ID>note</ID>
+					<ToolTip>note</ToolTip>
+					<Default></Default>
+				</Literal>
+				<Literal>
+					<ID>body</ID>
+					<ToolTip>Contenuto</ToolTip>
+					<Default>Contenuto</Default>
+				</Literal>
+				<Literal>
+					<ID>NumeroGriglia</ID>
+					<ToolTip>numero nella griglia</ToolTip>
+					<Default>1</Default>
+				</Literal>
+
+			</Declarations>
+
+			<!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+			<Code Language="html">
+				<![CDATA[<!-- $titolo$ -->
+					<div class="col-lg-$NumeroGriglia$ col-md-$NumeroGriglia$ col-sm-12 col-xs-12">
+						<div class="input-group">
+							<span class="input-group-addon" style="width: 100%; text-align: left !important;" id="lbl_$id$">$titolo$</span>
+							<div class="form-control k-content" style="width:auto;">
+								<input type="checkbox" id="chk_$id$" class="k-checkbox" checked="checked">
+								<label class="k-checkbox-label" for="lbl_$id$" style="padding-left: 12.6px;"></label>
+							</div>
+						</div>
+					</div>]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

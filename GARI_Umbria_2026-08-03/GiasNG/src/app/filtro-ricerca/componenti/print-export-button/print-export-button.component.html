@@ -1,0 +1,9 @@
+<div class="container-print">
+    <div class="btn btn-primary btn-primary-fill btn-primary-text" (click)="printReports()" *ngIf="checkIfSomethingSelected()">
+        <fa-icon *ngIf="!showPrint" [icon]="faIcon" size="lg"></fa-icon>
+        <div *ngIf="showPrint" class="ng-fa-icon">
+            <span class="fa-print white lg"></span>
+        </div>
+        <span> {{ title }} </span>
+    </div>
+</div>

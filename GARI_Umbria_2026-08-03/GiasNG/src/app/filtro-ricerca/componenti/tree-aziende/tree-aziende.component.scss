@@ -1,0 +1,153 @@
+@use '../../filtro-ricerca.component';
+
+.treeviewIconElement {
+    height: 32px;
+    width: 32px;
+    color: grey;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+app-kendo-tree {
+    padding: 0;
+}
+
+// kendo-drawer-content {
+//     padding: 20px;
+// }
+
+kendo-drawer {
+    pointer-events: auto;
+    display:flex;
+    flex-direction: column;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+
+kendo-drawer-container {
+    position: fixed;
+    pointer-events: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    //pointer-events: none;
+}
+
+#mainContainer {
+    overflow: auto;
+    height: 100%;
+}
+
+// .container {
+//     width: 100%;
+//     // overflow-x: auto;
+//     overflow: visible;
+//     white-space: nowrap;
+// }
+
+
+div .k-drawer-wrapper {
+    all: unset;
+    width: 550px !important;
+    //overflow-x: hidden; // Salvatore 17-03-2023: pima era "auto", ho impostato "hidden" per nascondere la scrollbar del treeGIS in modslità responsive
+    // display: flex;
+    // flex-direction: column;
+}
+
+.actions-dropdown {
+    position: relative;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+kendo-treeview {
+    height: 75vh;
+    //overflow: visible;
+    padding-left: 3%;
+}
+
+.test-button-popup {
+    font-size: 0.73rem;
+    line-height: 2;
+}
+
+.k-popup .dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 2000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    //color: transparent;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+.icon-popup {
+    height: 30px;
+    width: 30px;
+    margin: 0 5px 0 0;
+}
+
+.icon-tree {
+    height: 1.8rem;
+    width: 1.8rem;
+}
+
+.icon-consorzio {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_CONSORZIO.svg');
+}
+
+.icon-consorzio-off {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_CONSORZIO_off.svg');
+}
+
+.icon-coop {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_COOP.svg');
+}
+
+.icon-coop-off {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_COOP_off.svg');
+}
+
+.icon-op {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_OP.svg');
+}
+
+.icon-op-off {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_anagrafica_tab_imprese_OP_off.svg');
+}
+
+.icon-impresa-ref {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_filtro_ricerca_albero_imposta_impresa_referente.svg');
+}
+
+.icon-impresa {
+    background-image: url('../../../../assets/custom-icons/icon-tree-coop/ic_filtro_ricerca_albero_imposta_impresa.svg');
+}
+
+.dropdown-item {
+    gap: 0.5rem;
+    align-items: center;
+}
+
+// // .k-popup .dropdown-item {
+// //     display: flex;
+// //     align-items: center;
+// //     padding: 5px 10px;
+// //     cursor: pointer;
+// // }
+
+// // .k-popup .dropdown-item:hover {
+// //     background-color: #f8f9fa;
+// // }

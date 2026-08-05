@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "baseUrl": "src",
+    "module": "esnext",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": false,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "project": "./tsconfig.json",
+    "paths": {
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ]
+    },
+    "lib": [
+      "es2022",
+      "dom"
+    ],
+    "useDefineForClassFields": false
+  },
+  "exclude": [
+      "dist",
+      "node_modules"
+    ]
+}

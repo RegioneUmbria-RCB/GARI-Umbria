@@ -1,0 +1,164 @@
+<div class="analisi-mappe-satellitari-column">
+  <ng-container *ngIf="!(active$ | async); else checkFeatures">
+    <p class="h5 text-center k-mt-3">{{ 'gis.DatiSatellitariNonAttivi' | transloco }}</p>
+  </ng-container>
+
+  <ng-template #checkFeatures>
+    <ng-container *ngIf="(noFeaturesSelected$ | async); else checkData">
+      <p class="h5 text-center k-mt-3">{{ 'gis.SelezionaDeiPoligoniPerCaricareEVisualizzareIDati' | transloco }}</p>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkData>
+    <ng-container *ngIf="featuresWithNoDataSubject | async as codes">
+      <ng-container *ngIf="codes.length > 0; else viewData">
+        <p class="h5 text-center k-mt-3">{{ 'gis.QuestoPoligonoConCodiceNonHaDatiSatellitari'| transloco : { codes:
+          codes } }}</p>
+        <button kendoButton (click)="getSatelliteData()">{{ 'Conferma'| transloco }}</button>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #viewData>
+    <ng-container *ngIf="overlaysLoader$ | async"></ng-container>
+    <ng-container *ngIf="animationLoader$ | async"></ng-container>
+    <ng-container *ngIf="animationUpdater$ | async"></ng-container>
+
+    <ng-container *ngIf="animation$ | async as data">
+      <gis-analisi-mappe-satellitari-calendario [disabled]="data.status != animationStatus.ToBeLoaded" selection="range"
+        [selectedDate]="dates$ | async" (selectedDateChange)="changeDates($event)">
+      </gis-analisi-mappe-satellitari-calendario>
+
+      <ng-container *ngIf="sensors$ | async as sensors">
+        <kendo-dropdownlist [data]="sensors"
+          [disabled]="data.status != animationStatus.ToBeLoaded || sensors.length <= 1" [value]="data.sensor"
+          (valueChange)="changeSensor($event)"></kendo-dropdownlist>
+      </ng-container>
+
+      <div class="animation-row-spaced">
+        <ng-container>
+          <button kendoButton kendoTooltip [title]="'gis.AnimazionePrimo' | transloco"
+            *ngIf="data.status != animationStatus.ToBeLoaded; else AnimazionePrimoDis" (click)="goToFirstStep()"
+            class="small">
+            <span class="k-icon k-i-gm_player_firstoflist"></span>
+          </button>
+
+          <ng-template #AnimazionePrimoDis>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazionePrimo' | transloco" [disabled]=" true"
+              class="small">
+              <span class="k-icon k-i-gm_player_firstoflist disabled"></span>
+            </button>
+          </ng-template>
+        </ng-container>
+
+        <ng-container>
+          <button kendoButton kendoTooltip [title]="'gis.AnimazionePrecedente' | transloco"
+            *ngIf="data.status != animationStatus.ToBeLoaded; else AnimazionePrecedenteDis" (click)="previousStep()"
+            class="small">
+            <span class="k-icon k-i-gm_player_previous"></span>
+          </button>
+
+          <ng-template #AnimazionePrecedenteDis>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazionePrecedente' | transloco" [disabled]=" true"
+              class="small">
+              <span class="k-icon k-i-gm_player_previous disabled"></span>
+            </button>
+          </ng-template>
+        </ng-container>
+
+        <ng-container>
+          <button kendoButton kendoTooltip [title]="'gis.AnimazionePlay' | transloco"
+            *ngIf="data.status != animationStatus.ToBeLoaded && data.status != animationStatus.Started; else AnimazionePlayDis"
+            (click)="nextStatus(animationStatus.Started)">
+            <span class="k-icon k-i-gm_player_play"></span>
+          </button>
+
+          <ng-template #AnimazionePlayDis>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazionePausa' | transloco"
+              *ngIf="data.status == animationStatus.Started; else AnimazionePausaDis"
+              (click)="nextStatus(animationStatus.Stopped)">
+              <span class="k-icon k-i-gm_player_pause"></span>
+            </button>
+            <!-- <button kendoButton kendoTooltip [title]="'gis.AnimazionePlay' | transloco" [disabled]=" true">
+            <span class="k-icon k-i-gm_player_play disabled"></span>
+        </button>-->
+          </ng-template>
+        </ng-container>
+
+        <!-- <ng-container>
+      <button kendoButton kendoTooltip [title]="'gis.AnimazionePausa' | transloco"
+        *ngIf="data.status == animationStatus.Started; else AnimazionePausaDis"
+        (click)="nextStatus(animationStatus.Stopped)">
+        <span class="k-icon k-i-gm_player_pause"></span>
+      </button>
+
+      <ng-template #AnimazionePausaDis>
+        <button kendoButton kendoTooltip [title]="'gis.AnimazionePausa' | transloco" [disabled]=" true">
+            <span class="k-icon k-i-gm_player_pause disabled"></span>
+        </button>
+      </ng-template>
+    </ng-container> -->
+
+        <ng-container *ngIf="{ value: masks$ | async } as masks">
+          <button kendoButton kendoTooltip *ngIf="data.status != animationStatus.ToBeLoaded; else AnimazioneCarica"
+            [title]="'gis.AnimazioneStop' | transloco" (click)="reset()" class="small">
+            <span class="k-icon k-i-gm_player_stop"></span>
+          </button>
+
+          <ng-template #AnimazioneCarica>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazioneCarica' | transloco" (click)="reload(masks.value)"
+              class="small">
+              <span class="k-icon k-i-gm_player_stop disabled"></span>
+            </button>
+          </ng-template>
+        </ng-container>
+
+        <ng-container>
+          <button kendoButton kendoTooltip [title]="'gis.AnimazioneProssimo' | transloco"
+            *ngIf="data.status != animationStatus.ToBeLoaded; else AnimazioneProssimoDis" (click)="nextStep()"
+            class="small">
+            <span class="k-icon k-i-gm_player_next"></span>
+          </button>
+
+          <ng-template #AnimazioneProssimoDis>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazioneProssimo' | transloco" [disabled]=" true"
+              class="small">
+              <span class="k-icon k-i-gm_player_next disabled"></span>
+            </button>
+          </ng-template>
+        </ng-container>
+
+        <ng-container>
+          <button kendoButton kendoTooltip [title]="'gis.AnimazioneUltimo' | transloco"
+            *ngIf="data.status != animationStatus.ToBeLoaded; else AnimazioneUltimoDis" (click)="goToLastStep()"
+            class="small">
+            <span class="k-icon k-i-gm_player_last"></span>
+          </button>
+
+          <ng-template #AnimazioneUltimoDis>
+            <button kendoButton kendoTooltip [title]="'gis.AnimazioneUltimo' | transloco" [disabled]=" true"
+              class="small">
+              <span class="k-icon k-i-gm_player_last disabled"></span>
+            </button>
+          </ng-template>
+        </ng-container>
+      </div>
+
+      <ng-container *ngIf="true">
+        <div class="k-textbox k-rounded-md k-input-solid k-focus k-disabled k-font-size-md k-pl-3"
+          [title]="'gis.DatiNonPresentiPerScarsaVisibilita' | transloco">
+          <span> {{ 'gis.DataCorrente' | transloco}}: </span>
+          <ng-container *ngIf="isCloudy$ | async else NoCloudy">
+            <span class="isCloudy"> {{ data.overlays[data.step]?.overlay?.DataRiferimento }} <span
+                class="k-icon k-i-cloud cloudy-icon" kendoTooltip></span>
+            </span>
+          </ng-container>
+
+          <ng-template #NoCloudy>
+            <span> {{ data.overlays[data.step]?.overlay?.DataRiferimento }} </span>
+          </ng-template>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+</div>

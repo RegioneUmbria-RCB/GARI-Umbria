@@ -1,0 +1,34 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="produzione-colture-full-width">
+  <div class="horizontal-scroll">
+    <div *ngFor="let element of data" class="produzione-colture-item produzione-colture-item-responsive">
+      <div class="produzione-colture-title">{{element.Veg_Des}}</div>
+      <div class="produzione-colture-body">
+        <div class="produzione-colture-superficie"> {{ 'Superficie' | transloco }}: {{element.Superficie | number:
+          '1.2-2'}} {{ 'Ha' |
+          transloco }} </div>
+        <div class="produzione-colture-data-container">
+          <div>
+            <div> {{ 'Seminati' | transloco }}</div>
+            <div class="produzione-colture-data">{{element.PercentualeSeminata}} %</div>
+          </div>
+          <div>
+            <div> {{ 'Raccolto' | transloco }}</div>
+            <div class="produzione-colture-data">{{element.PercentualeRaccolta}} %</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!loading && piva != null && data.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunaColtura' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

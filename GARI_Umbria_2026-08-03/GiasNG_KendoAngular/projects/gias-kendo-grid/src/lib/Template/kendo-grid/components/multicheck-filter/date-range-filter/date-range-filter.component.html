@@ -1,0 +1,129 @@
+
+<ng-container *ngIf="filters.activeMode === filters.basicFilteringMode;
+    then showBasicFilters else showExtendedFilters">
+</ng-container>
+
+<ng-template #showBasicFilters>
+    <div class="row">
+        <div class="col-6">
+            {{ 'giasgrid.DA' | transloco }}
+        </div>
+        <div class="col-6">
+            {{ 'giasgrid.A' | transloco }}
+        </div>
+    </div>
+    <ng-container *ngTemplateOutlet="showDates"></ng-container>
+    <ng-container *ngTemplateOutlet="settingsFooter"></ng-container>
+</ng-template>
+
+<ng-template #showExtendedFilters>
+    <div class="row mb-2">
+        <div style="width: 40%;">
+            <kendo-dropdownlist
+                class="k-widget k-dropdown k-header"
+                [data]="values.operators"
+                textField="name"
+                valueField="id"
+                [valuePrimitive]="false"
+                [(value)]="values.firstOperator"
+                (valueChange)="refreshFilters()"
+                [popupSettings]="{width: 'auto'}"
+                style="width: auto;"
+            >
+            </kendo-dropdownlist>
+        </div>
+        <div style="width: 20%;">
+            <kendo-dropdownlist
+                class="k-widget k-dropdown k-header"
+                [data]="values.logicOperators"
+                textField="name"
+                valueField="id"
+                [valuePrimitive]="false"
+                [(value)]="values.logicOperator"
+                (valueChange)="refreshFilters()"
+                [popupSettings]="{width: 'auto'}"
+                style="width: auto;"
+            >
+            </kendo-dropdownlist>
+        </div>
+        <div style="width: 40%;">
+            <kendo-dropdownlist
+                class="k-widget k-dropdown k-header"
+                [data]="values.operators"
+                textField="name"
+                valueField="id"
+                [valuePrimitive]="false"
+                [(value)]="values.secondOperator"
+                (valueChange)="refreshFilters()"
+                [popupSettings]="{width: 'auto'}"
+                style="width: auto;"
+            >
+            </kendo-dropdownlist>
+        </div>
+    </div>
+    <ng-container *ngTemplateOutlet="showDates"></ng-container>
+    <ng-container *ngTemplateOutlet="settingsFooter"></ng-container>
+</ng-template>
+
+<ng-template #showDates>
+    <div class="row">
+        <div class="col-6" >
+            <kendo-datepicker *ngIf="values.firstOperator.id !== 'isnull' &&
+                                    values.firstOperator.id !== 'isnotnull'"
+                [popupSettings]="popupManager.settings"
+                class="k-widget range-filter"
+                [(value)]="values.start"
+                (valueChange)="filterRange($event, values.end)"
+                style="width:auto;" calendarType="classic">
+            </kendo-datepicker>
+        </div>
+        <div class="col-6">
+            <kendo-datepicker *ngIf="values.secondOperator.id !== 'isnull' &&
+                                     values.secondOperator.id !== 'isnotnull'"
+                [popupSettings]="popupManager.settings"
+                class="k-widget range-filter"
+                [(value)]="values.end"
+                (valueChange)="filterRange(values.start, $event)"
+                style="width:auto;" calendarType="classic">
+            </kendo-datepicker>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #settingsFooter>
+    <div style="display: flex; align-items: center;" class="mt-1">
+        <div *ngIf="values.hasFilters()">
+            <div
+            (click)="onSelectAll()"
+            [ngClass]="{ 'k-selected': manager.selectAllChecked }"
+            class="multicheck-item multicheck-item-select-all">
+                <input
+                    type="checkbox"
+                    id="chk-selectAll"
+                    class="k-checkbox"
+                    [checked]="manager.selectAllChecked"
+                />
+                <label
+                    class="k-multiselect-checkbox k-checkbox-label"
+                    for="chk-selectAll"
+                >
+                    {{ 'giasgrid.Select_All' | transloco }}
+                </label>
+            </div>
+        </div>
+        <div style="flex: 1 1 auto" class="d-flex justify-content-end">
+            <div style="cursor: pointer;" class="highlightOnHover" (click)="switchActiveMode()">
+                <fa-icon style="padding-right: 5px;"
+                        [title]="'giasgrid.SwitchFilterModes' | transloco"
+                        [ngStyle]="{'color': filters.switchColor}"
+                        size="lg"
+                        [icon]="filters.faCog"
+                        aria-hidden="true">
+                </fa-icon>
+                <span>{{ filters.activeMode === filters.extendedFilteringMode
+                    ? ('giasgrid.BasicFilters' | transloco): 'giasgrid.ExtendedFilters' | transloco }}
+                </span>
+            </div>
+        </div>
+    </div>
+</ng-template>

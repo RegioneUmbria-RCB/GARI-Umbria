@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:EMCS:V1.51"
+ xmlns:tms="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TMS:V1.51" 
+ xmlns:tcl="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.51" 
+ xmlns:doc="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:DOC:V1.51" 
+ elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<!--===== Root Element =====-->
+	<xs:element name="CD906" type="CD906Type"/>
+	<!--===== EMCS Data Groups Declarations =====-->
+	<xs:complexType name="CD906Type">
+		<xs:sequence>
+			<xs:element name="Header" type="HeaderType"/>
+			<xs:element name="Body" type="BodyType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HeaderType">
+		<xs:sequence>
+			<xs:element name="MessageCode" type="MessageCodeType"/>
+			<xs:element name="dCode" type="dCodeType"/>
+			<xs:element name="LocalIdNumber" type="LocalIdNumberType"/>
+			<xs:element name="MainRecordType" type="MainRecordTypes"/>
+			<xs:element name="SequenceMainRecordType" type="SequenceMainRecordTypes"/>
+			<xs:element name="ActionResult" type="ActionResultType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BodyType">
+		<xs:sequence>
+			<xs:element name="FunctionalError" type="FunctionalErrorType" minOccurs="0"/>
+			<xs:element name="DaaMessageOk" type="DaaMessageOkType" minOccurs="0"/>
+			<xs:element name="ComplementaryInformation" type="ComplementaryInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- FunctionalError_template -->
+	<xs:complexType name="FunctionalErrorType">
+		<xs:sequence>
+			<xs:element name="MainIterationType" type="MainIterationTypes" minOccurs="0"/>
+			<xs:element name="SecondaryRecordTypeSequence" type="SecondaryRecordTypeSequenceType"/>
+			<xs:element name="SecondaryIterationType" type="SecondaryIterationTypes" minOccurs="0"/>
+			<xs:element name="ProgNumber" type="ProgNumberType"/>
+			<xs:element name="RowSequence" type="RowSequenceType"/>
+			<xs:element name="FieldProgDesc" type="FieldProgDescType"/>
+			<xs:element name="ErrorType" type="ErrorTypes"/>
+			<xs:element name="CheckNumber" type="CheckNumberType"/>
+			<xs:element name="ErrorDesc" type="ErrorDescType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- DaaMessageOk_template -->
+	<xs:complexType name="DaaMessageOkType">
+		<xs:sequence>
+			<xs:element name="ArcCode" type="ArcCodeType"/>
+			<xs:element name="ValidationDate" type="ValidationDateType"/>
+			<xs:element name="ArcSequence" type="ArcSequenceType"/>
+			<xs:element name="ArcMaster" type="ArcCodeType"/>
+			<xs:element name="Note" type="NoteType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComplementaryInformationType">
+		<xs:sequence>
+			<xs:element name="ConsignorTraderNameSEED" type="CITraderNameType" minOccurs="0"/>
+			<xs:element name="ConsignorTraderStreetSEED" type="CIStreetNameType" minOccurs="0"/>
+			<xs:element name="ConsigneeTraderNameSEED" type="CITraderNameType" minOccurs="0"/>
+			<xs:element name="ConsigneeTraderStreetSEED" type="CIStreetNameType" minOccurs="0"/>
+			<xs:element name="DeliveryPlaceTraderNameSEED" type="CITraderNameType" minOccurs="0"/>
+			<xs:element name="DeliveryPlaceTraderStreetSEED" type="CIStreetNameType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="CITraderNameType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Complementary Information Trader Name"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="250"/>
+			<xs:pattern value=".{1,250}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CIStreetNameType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Complementary Information Street Name"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="250"/>
+			<xs:pattern value=".{1,250}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArcCodeType">
+		<xs:restriction base="xs:token">
+			<xs:length value="21"/>
+			<xs:pattern value="[a-zA-Z0-9]{21}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ValidationDateType">
+		<xs:restriction base="xs:token">
+			<xs:length value="13"/>
+			<xs:pattern value="[a-zA-Z0-9]{13}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ArcSequenceType">
+		<xs:restriction base="xs:token">
+			<xs:length value="5"/>
+			<xs:pattern value="[0-9]{5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NoteType">
+		<xs:restriction base="xs:token">
+			<xs:length value="50"/>
+			<xs:pattern value="[a-zA-Z0-9]{50}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageCodeType">
+		<xs:restriction base="xs:token">
+			<xs:length value="5"/>
+			<xs:pattern value="[a-zA-Z0-9]{5}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="18"/>
+			<xs:pattern value="[a-zA-Z0-9]{1,18}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LocalIdNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="22"/>
+			<xs:pattern value="[a-zA-Z0-9]{1,22}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MainRecordTypes">
+		<xs:restriction base="xs:token">
+			<xs:length value="1"/>
+			<xs:pattern value="[a-zA-Z]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SequenceMainRecordTypes">
+		<xs:restriction base="xs:token">
+			<xs:length value="4"/>
+			<xs:pattern value="[a-zA-Z0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActionResultType">
+		<xs:restriction base="xs:token">
+			<xs:length value="1"/>
+			<xs:pattern value="[a-zA-Z]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MainIterationTypes">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="1"/>
+			<xs:pattern value="[a-zA-Z]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SecondaryRecordTypeSequenceType">
+		<xs:restriction base="xs:token">
+			<xs:length value="3"/>
+			<xs:pattern value="[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SecondaryIterationTypes">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="1"/>
+			<xs:pattern value="[a-zA-Z0-9]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ProgNumberType">
+		<xs:restriction base="xs:token">
+			<xs:length value="3"/>
+			<xs:pattern value="[0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RowSequenceType">
+		<xs:restriction base="xs:token">
+			<xs:length value="4"/>
+			<xs:pattern value="[a-zA-Z0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FieldProgDescType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="50"/>
+			<xs:pattern value=".{1,50}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ErrorTypes">
+		<xs:restriction base="xs:token">
+			<xs:length value="1"/>
+			<xs:pattern value="[a-zA-Z0-9]{1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CheckNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[0-9]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ErrorDescType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="300"/>
+			<xs:pattern value=".{1,300}"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,154 @@
+<gias-kendo-grid #grid>
+  <ng-container headerContent>
+    <div *ngIf="dataShare.userPermissions.canReadAllUsers">
+      <ng-container *ngTemplateOutlet="btnCaricaTutti"></ng-container>
+    </div>
+    <div kendoTooltip [title]="'prof.AssociaAProfilo' | transloco" *ngIf="dataShare.userPermissions.canEditAllUsers">
+      <button kendoButton type="button" (click)="assignProfile()">
+        <fa-icon size="lg" [icon]="faUser"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip [title]="'prof.ModificaValiditaPermessi' | transloco" *ngIf="dataShare.userPermissions.canEditAllUsers">
+      <button kendoButton type="button" (click)="editValidityDates()">
+        <fa-icon size="lg" [icon]="faCalendar"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip [title]="'prof.AssociaAGruppi' | transloco" *ngIf="dataShare.userPermissions.canEditAllUsers">
+      <button kendoButton type="button" (click)="assignGroups()">
+        <fa-icon size="lg" [icon]="faGroup"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip [title]="'prof.AssegnaVisibilita' | transloco" *ngIf="dataShare.userPermissions.canEditAllUsers">
+      <button kendoButton type="button" (click)="editVisibilita()">
+        <fa-icon size="lg" [icon]="faToEye"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip [title]="'prof.ModificaImpostazioni' | transloco">
+      <button kendoButton type="button" (click)="editSettings()" *ngIf="canManageSettings">
+        <fa-icon size="lg" [icon]="faUserGear"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip [title]="'prof.ModificaFinestraTemporale' | transloco" *ngIf="dataShare.userPermissions.canEditAllUsers">
+      <button kendoButton type="button" (click)="editUserWindow()">
+        <fa-icon size="lg" [icon]="faCalendarClock"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #noRecordsTemplateRef>
+    <div class="no-records-template" *ngIf="!isAddingNew">
+      <p>{{ 'prof.noUsersLoadedInfoMessage' | transloco }}</p>
+      <ng-container *ngTemplateOutlet="btnCaricaTutti"></ng-container>
+    </div>
+  </ng-template>
+</gias-kendo-grid>
+
+<ng-template #btnCaricaTutti>
+  <div kendoTooltip [title]="'prof.CaricaTuttiUtenti' | transloco">
+    <button kendoButton type="button" (click)="loadAll()">
+      <fa-icon size="lg" [icon]="faUserGroup"></fa-icon>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #assignProfileForm>
+  <p>{{ 'prof.SelezionaProfiloDaAssegnare' | transloco }}</p>
+  <form [formGroup]="form">
+    <gias-drop-down-template
+      [name]="'SelezionaProfilo' | transloco"
+      [listItems]="listProfiles"
+      textField="descrizione"
+      valueField="codice"
+      [defaultItem]="placeholderSelezioneProfilo"
+      [valuePrimitive]="true"
+      giasFormControlName="profilo"
+      (valueChange)="changeValue($event)">
+    </gias-drop-down-template>
+    <gias-checkbox-template
+      [name]="'prof.ApplicaImpostazioniProfilo' | transloco"
+      giasFormControlName="copySettings"
+    ></gias-checkbox-template>
+    <span *ngIf="form.value.copySettings">{{'prof.ImpostazioniProfiloSovrascrivonoAttuali' | transloco}}</span>
+    <span *ngIf="profileHasNoPermission" class="error">{{'prof.ProfiloNonHaPermessiSelezionaAltro' | transloco}}</span>
+  </form>
+</ng-template>
+
+<ng-template #assignGroupsForm>
+  <p>{{ 'prof.SelezionaGruppiDaAssegnare' | transloco }}</p>
+  <form [formGroup]="form">
+    <gias-multiselect-template-s
+      id="groupsMultisel"
+      [name]="'prof.SelezioneGruppi' | transloco"
+      [listItems]="listGroups"
+      textField="descrizione"
+      valueField="codice"
+      giasFormControlName="gruppi"
+      [valuePrimitive]="true">
+    </gias-multiselect-template-s>
+  </form>
+</ng-template>
+
+<ng-template #visibilitaRef>
+  <app-visibilita-utente></app-visibilita-utente>
+</ng-template>
+
+<ng-template #impostazioniRef>
+  <div class="settings-window">
+    <div class="btn-container" *ngIf="dataShare.userPermissions.canEditBaseUserSettings">
+      <div kendoTooltip [title]="'prof.ReimpostaPredefiniti' | transloco">
+        <button kendoButton type="button" (click)="onResetSettings()">
+          <fa-icon class="icon-size" [icon]="faDelete"></fa-icon></button>
+      </div>
+      <div kendoTooltip [title]="'prof.CopiaImpostazioniDa' | transloco" *ngIf="this.dataShare.userPermissions.canReadAllUsers">
+        <button kendoButton type="button" (click)="openCopySettingsDialog()">
+          <fa-icon size="lg" [icon]="faCopy"></fa-icon></button>
+      </div>
+      <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+            (click)="saveSettings(true)">{{'Salva' | transloco}}</button>
+    </div>
+    <p *ngIf="!dataShare.userPermissions.canEditBaseUserSettings">{{'prof.readonlyMode' | transloco}}</p>
+    <app-form-impostazioni #formImpostazioni [disable]="!dataShare.userPermissions.canEditBaseUserSettings"></app-form-impostazioni>
+  </div>
+</ng-template>
+
+<ng-template #copySettingsRef>
+  <div class="settings-window">
+    <form [formGroup]="form">
+      <gias-drop-down-template-s #copyFromUserDdl id="utente" [obligatory]="true"
+                                 [name]="'prof.SelezionaUtenteCopiaImpostazioni' | transloco"
+                                 textField="descrizione" valueField="codice"
+                                 [listItems]="utentiDdl"
+                                 giasFormControlName="utente"
+                                 [virtual]="virtual"
+      ></gias-drop-down-template-s>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #validitaTemplate>
+  <div class="validity-edit-container">
+    <p>{{'prof.SelezionaIntervalloValidita' | transloco }}</p>
+    <form [formGroup]="form">
+      <kendo-label [text]="'InizioValidità' | transloco">
+        <kendo-datepicker calendarType="classic"
+          [min]="AGRODATA_INIZIO" [max]="AGRODATA_FINE"
+          [formControl]="form.get('validitaInizio')"
+        ></kendo-datepicker>
+      </kendo-label>
+      <kendo-label [text]="'FineValidità' | transloco">
+        <kendo-datepicker calendarType="classic"
+          [min]="AGRODATA_INIZIO" [max]="AGRODATA_FINE"
+          [formControl]="form.get('validitaFine')"
+        ></kendo-datepicker>
+      </kendo-label>
+      <gias-general-input-template
+        giasFormControlName="applyMode"
+        name="applyMode"
+        label="{{'prof.ModalitàApplicazione' | transloco}}:"
+        [listItems]="dateRadioChoice"
+        [controlType]="10"
+        [value]="0"
+      ></gias-general-input-template>
+    </form>
+  </div>
+</ng-template>

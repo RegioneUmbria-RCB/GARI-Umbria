@@ -1,0 +1,46 @@
+<gias-side-filters-template [filtersTemplate]="filtersTpl" (search)="onSidebarSearch()">
+</gias-side-filters-template>
+
+<div class="calcolo-rischi-page">
+
+  <!-- Empty State -->
+  <div *ngIf="searchInitiated && !hasData" class="k-p-4">
+    <div class="k-messagebox k-messagebox-info">
+      {{ 'rischim_empty_message' | transloco }}
+    </div>
+  </div>
+
+  <!-- Grid Section -->
+  <div *ngIf="searchInitiated" class="results-section">
+    <div *ngIf="hasData" class="section-header k-px-2 k-pt-2 k-pb-1">
+      <strong>{{ 'rischim_section_riepilogo' | transloco }}</strong>
+    </div>
+
+    <div class="grid-wrapper">
+      <gias-kendo-grid
+        [gridId]="'riepilogo-rischi-meteo-grid'"
+        class="kendo-grid-no-shadow"
+        [selectedKeys]="selectedRowKeys"
+        (rowsLoaded)="onRowsLoaded()"
+        (selectionChange)="onSelectionChange($event)">
+      </gias-kendo-grid>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div *ngIf="hasData" class="sticky-footer k-px-4 k-py-3 k-d-flex k-justify-content-end">
+    <button
+      class="btn btn-primary btn-primary-fill btn-important"
+      [disabled]="!canValutaRischi"
+      (click)="onValutaRischi()">
+      <span *ngIf="isCalcoloInProgress" class="k-icon k-i-loading k-mr-2"></span>
+      {{ 'rischim_btn_valuta_rischi' | transloco }}
+    </button>
+  </div>
+
+</div>
+
+<!-- Sidebar filter template -->
+<ng-template #filtersTpl>
+  <app-filtri-calcolo-rischi></app-filtri-calcolo-rischi>
+</ng-template>

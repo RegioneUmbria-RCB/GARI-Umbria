@@ -1,0 +1,30 @@
+<section>
+    <kendo-expansionpanel [expanded]="true" title="{{ 'prof.Profili' | transloco }}">
+        <p>{{'SelezionaProfiloPerVisualizzarePermessi' | transloco }}</p>
+        <app-grid-profili></app-grid-profili>
+    </kendo-expansionpanel>
+
+    <kendo-expansionpanel #PanelPermessi [expanded]="false"
+                          title="{{ 'prof.PermessiProfilo' | transloco }}">
+        <div *ngIf="profileCod !== 0; else select_profile">
+            <span class="infotext">{{ 'PermessiDelProfilo' | transloco }}: {{ profiloSelezionato.descrizione }}</span>
+            <div *ngIf="isEditing; else ReadOnlyVisualization">
+                <app-grid-permessi-edit></app-grid-permessi-edit>
+            </div>
+            <ng-template #ReadOnlyVisualization>
+                <app-grid-permessi></app-grid-permessi>
+            </ng-template>
+        </div>
+    </kendo-expansionpanel>
+
+    <ng-template #select_profile>
+        <div class="dash-border">
+            <span class="infotext">{{ 'SelezionaProfiloPerVisualizzarePermessi' | transloco }}</span>
+        </div>
+    </ng-template>
+</section>
+<section class="v-spaced">
+    <kendo-expansionpanel [(expanded)]="isRecapTableExpanded" title="{{ 'prof.TabellaRiepilogo' | transloco }}">
+        <app-grid-profili-permessi *ngIf="isRecapTableExpanded"></app-grid-profili-permessi>
+    </kendo-expansionpanel>
+</section>

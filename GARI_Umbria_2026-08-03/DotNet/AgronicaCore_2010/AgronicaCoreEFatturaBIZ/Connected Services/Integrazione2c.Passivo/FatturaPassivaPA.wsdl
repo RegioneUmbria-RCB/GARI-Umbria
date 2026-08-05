@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://www.2csolution.it/FatturaPassivaPA/V1.0" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IFatturaPassivaPA_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="http://www.2csolution.it/FatturaPassivaPA/V1.0" location="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="BasicHttpsBinding_IFatturaPassivaPA" type="i0:IFatturaPassivaPA">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IFatturaPassivaPA_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Contatto">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/Contatto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutorizzazioni">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetAutorizzazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFatture">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFattureParam">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFattureFilter">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureFilter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFattura">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFatturaDisinbustata">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatturaDisinbustata" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEsito">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetEsito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProtocollo">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocollo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetProtocolloSezionale">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocolloSezionale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiProtocollo">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocollo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiProtocolloLottoIntero">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocolloLottoIntero" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiRegistrazione">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiRegistrazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaEsitoCommittente">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreaEsitoCommittenteSingolaFattura">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittenteSingolaFattura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetData">
+      <soap:operation soapAction="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/ResetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>

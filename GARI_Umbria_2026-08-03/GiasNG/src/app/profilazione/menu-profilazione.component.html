@@ -1,0 +1,17 @@
+<body>
+<div class="container" *ngIf="canAccessPage">
+    <kendo-tabstrip #tabstrip id="tabstrip" (tabSelect)="onTabSelect($event)">
+
+        <kendo-tabstrip-tab class="customTheme" *ngFor="let pagina of pagineProfilazione"
+                            [title]="pagina.titolo" [selected]="isPageSelected(pagina)">-->
+            <ng-template kendoTabTitle>
+                <span style="cursor: pointer;">{{pagina.titolo | transloco}}</span>
+            </ng-template>
+            <ng-template kendoTabContent>
+                <router-outlet></router-outlet>
+            </ng-template>
+        </kendo-tabstrip-tab>
+
+    </kendo-tabstrip>
+</div>
+</body>

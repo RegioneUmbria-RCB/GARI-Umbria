@@ -1,0 +1,84 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Griglia Kendo - Predisposizione JSON</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>IDGriglia</ID>
+          <ToolTip>Nome della griglia</ToolTip>
+          <Default>Griglia</Default>
+        </Literal>
+        <Literal>
+          <ID>isShared</ID>
+          <ToolTip>Funzione Shared</ToolTip>
+          <Default>Shared</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="vb">
+        <![CDATA[
+    <Script.Services.ScriptMethod()> _
+    <WebMethod(EnableSession:=True)> _
+    Public $isShared$ Function letturaDati$IDGriglia$Kendo(ByVal param As String) As RispostaStandard
+    Dim r As New rispostaStandard
+
+    Dim objParametri_Server As AgronicaCoreParametri = HttpContext.Current.Session("ASG_objParametri_Server")
+
+    If HttpContext.Current.Session.IsNewSession OrElse IsNothing(objParametri_Server) Then
+        r.Sessione = False
+        r.RispostaOK = False
+        Return r
+    End If
+
+    Dim dt_$IDGriglia$ as new DataTable
+
+    Try
+        r.RispostaOK = True
+        r.RispostaStringa = JSON_Datatable_$IDGriglia$(dt_$IDGriglia$)
+
+
+        Throw New NotImplementedException
+    ' ---------------------------------------------- 
+    ' Inserire nel dt_$IDGriglia$ la griglia
+    ' ---------------------------------------------- 
+
+    Catch ex As Exception
+        r.RispostaOK = False
+        r.Errore = "Errore durante l'operazione: " & vbCrLf & _
+            AgronicaCoreDataProvider.Gestione_Eccezioni_2015.MessaggioCompletoDataEccezione(ex, True, source:=True)
+    End Try
+
+    Return r
+    End Function
+    
+    Private $isShared$ Function JSON_Datatable_$IDGriglia$(ByVal dt As DataTable) as string
+
+    'creo la lista delle colonne da visualizzare
+    Dim l As New List(Of ColonneNome)
+    Dim c As ColonneNome
+
+    c = New ColonneNome("kendoKey", "kendoKey", "string")
+    c._Display = False
+    l.Add(c)
+
+    c = New ColonneNome("rag_soc", "Ragione Sociale", "string")
+    l.Add(c)
+
+    'ritorno la tabella trasformata in json (aggiustando anche le colonne)
+    Dim js As New AgronicaCoreDataProvider.JSON_DataTable
+        
+    return js.JSON_DataTable_Kendo(dt, l, AssegnaAutomaticamenteTipoFiltro_daTipoDato:=True, tipoFiltroKendo:=TipoFiltroKendo_colonne.CasellaDiscesa)        
+
+    End Function]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

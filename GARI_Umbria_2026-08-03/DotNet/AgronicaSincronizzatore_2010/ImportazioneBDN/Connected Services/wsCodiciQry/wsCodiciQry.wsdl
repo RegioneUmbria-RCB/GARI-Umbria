@@ -1,0 +1,3608 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati di decodifica per tipologie, codici, enumeratori generici</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="DownloadCausaliMorte">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCausaliMorteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCausaliMorteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="DownloadCausaliMorte_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCausaliMorte_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCausaliMorte_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadClassificazioni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadClassificazioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadClassificazioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadClassificazioni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadClassificazioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadClassificazioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCriteriControlli">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCriteriControlliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCriteriControlliResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCriteriControlli_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadCriteriControlli_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCriteriControlli_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadEsitiTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadEsitiTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadEsitiTestResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadEsitiTest_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadEsitiTest_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadEsitiTest_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadGruppiSpecie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadGruppiSpecieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadGruppiSpecieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadGruppiSpecie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadGruppiSpecie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadGruppiSpecie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadLibriGenealogici">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadLibriGenealogiciResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadLibriGenealogiciResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadLibriGenealogici_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadLibriGenealogici_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadLibriGenealogici_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviIngresso">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviIngressoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviIngressoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviIngresso_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviIngresso_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviIngresso_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviUscita">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviUscitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviUscitaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiFlagMarcaUsabile">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiFlagMarcaUsabileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiFlagMarcaUsabileResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiFlagMarcaUsabile_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiFlagMarcaUsabile_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiFlagMarcaUsabile_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviUscita_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviUscita_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviUscita_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadOrientamentiProduttivi">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadOrientamentiProduttiviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadOrientamentiProduttiviResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadOrientamentiProduttivi_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadOrientamentiProduttivi_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadOrientamentiProduttivi_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProduttoriMarche">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadProduttoriMarcheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadProduttoriMarcheResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadProduttoriMarche_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadProduttoriMarche_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadProduttoriMarche_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadRazze">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadRazzeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadRazzeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadRazze_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadRazze_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadRazze_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSpecie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSpecieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSpecieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSpecie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSpecie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSpecie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSuiTipiCategorie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSuiTipiCategorieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSuiTipiCategorieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSuiTipiCategorie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSuiTipiCategorie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSuiTipiCategorie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiAllevamento">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiAllevamento_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiAutorizzazione_Latte">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiAutorizzazione_LatteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiAutorizzazione_LatteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiAutorizzazione_Latte_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiAutorizzazione_Latte_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiAutorizzazione_Latte_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiCodice">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiCodiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiCodiceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiCodice_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiCodice_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiCodice_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiDelegati">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiDelegatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiDelegatiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiDelegati_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiDelegati_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiDelegati_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiIrregolarita">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiIrregolaritaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiIrregolaritaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiIrregolarita_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiIrregolarita_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiIrregolarita_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAccessori_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAccessori_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAccessori_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadAccessori">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadAccessoriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadAccessoriResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiMarche">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiMarcheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiMarcheResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiKitIdentificativi">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiKitIdentificativiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiKitIdentificativiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiKitIdentificativi_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiKitIdentificativi_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiKitIdentificativi_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiMarche_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiMarche_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiMarche_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiMarcheElettroniche">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiMarcheElettronicheResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiMarcheElettronicheResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiMarcheElettroniche_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiMarcheElettroniche_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiMarcheElettroniche_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiOrigine">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiOrigineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiOrigineResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiOrigine_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiOrigine_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiOrigine_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiPassaporti">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiPassaportiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiPassaportiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiPassaporti_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiPassaporti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiPassaporti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiProduzione">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiProduzioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiProduzioneResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiProduzione_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiProduzione_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiProduzione_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiStatoCapo">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiStatoCapoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiStatoCapoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiStatoCapo_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiStatoCapo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiStatoCapo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiStatoProcedimento">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiStatoProcedimentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiStatoProcedimentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiStatoProcedimento_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiStatoProcedimento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiStatoProcedimento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipi_Malattie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipi_MalattieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipi_MalattieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipi_Malattie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipi_Malattie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipi_Malattie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipi_Qualifiche_Sanitarie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipi_Qualifiche_SanitarieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipi_Qualifiche_SanitarieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipi_Qualifiche_Sanitarie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipi_Qualifiche_Sanitarie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipi_Qualifiche_Sanitarie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologiaRisultatoTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologiaRisultatoTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologiaRisultatoTestResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologiaRisultatoTest_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologiaRisultatoTest_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologiaRisultatoTest_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologiaTest">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologiaTestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologiaTestResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologiaTest_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologiaTest_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologiaTest_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologieSanzioni">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologieSanzioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologieSanzioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipologieSanzioni_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipologieSanzioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipologieSanzioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMalattie_QualificheSanitarie">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMalattie_QualificheSanitarieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMalattie_QualificheSanitarieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMalattie_QualificheSanitarie_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMalattie_QualificheSanitarie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMalattie_QualificheSanitarie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSpecieAvicoliIdentificabili">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSpecieAvicoliIdentificabiliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSpecieAvicoliIdentificabiliResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadSpecieAvicoliIdentificabili_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadSpecieAvicoliIdentificabili_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadSpecieAvicoliIdentificabili_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviApplicazioneAvicoli">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviApplicazioneAvicoliResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviApplicazioneAvicoliResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadMotiviApplicazioneAvicoli_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadMotiviApplicazioneAvicoli_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadMotiviApplicazioneAvicoli_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiTipologieProduttive">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiTipologieProduttiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiTipologieProduttiveResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiTipologieProduttive_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiTipologieProduttive_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiTipologieProduttive_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiProvenienza">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiProvenienzaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiProvenienzaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadTipiProvenienza_STR">
+        <s:complexType />
+      </s:element>
+      <s:element name="DownloadTipiProvenienza_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadTipiProvenienza_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DownloadCausaliMorteSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCausaliMorte" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCausaliMorteSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCausaliMorteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCausaliMorteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCausaliMorte_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCausaliMorte_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCausaliMorte_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCausaliMorte_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCausaliMorte_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadClassificazioni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadClassificazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadClassificazioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadClassificazioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadClassificazioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlliSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCriteriControlli" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlliSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCriteriControlliResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlliSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlli_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCriteriControlli_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlli_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCriteriControlli_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCriteriControlli_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTestSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadEsitiTest" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTestSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadEsitiTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTestSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTest_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadEsitiTest_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTest_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadEsitiTest_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadEsitiTest_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadGruppiSpecie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadGruppiSpecieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadGruppiSpecie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadGruppiSpecie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadGruppiSpecie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogiciSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadLibriGenealogici" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogiciSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadLibriGenealogiciResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogiciSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogici_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadLibriGenealogici_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogici_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadLibriGenealogici_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadLibriGenealogici_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngressoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviIngresso" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngressoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviIngressoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngressoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngresso_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviIngresso_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngresso_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviIngresso_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviIngresso_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscitaSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviUscita" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscitaSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviUscitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscitaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabileSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiFlagMarcaUsabile" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabileSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiFlagMarcaUsabileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabileSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabile_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiFlagMarcaUsabile_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabile_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiFlagMarcaUsabile_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiFlagMarcaUsabile_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscita_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviUscita_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscita_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviUscita_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviUscita_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttiviSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadOrientamentiProduttivi" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttiviSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadOrientamentiProduttiviResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttiviSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttivi_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadOrientamentiProduttivi_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttivi_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadOrientamentiProduttivi_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadOrientamentiProduttivi_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarcheSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadProduttoriMarche" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarcheSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadProduttoriMarcheResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarcheSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarche_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadProduttoriMarche_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarche_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadProduttoriMarche_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadProduttoriMarche_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazzeSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadRazze" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazzeSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadRazzeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazzeSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazze_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadRazze_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazze_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadRazze_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadRazze_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSpecie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSpecieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSpecie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSpecie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSuiTipiCategorie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSuiTipiCategorieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSuiTipiCategorie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSuiTipiCategorie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSuiTipiCategorie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_LatteSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAutorizzazione_Latte" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_LatteSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAutorizzazione_LatteResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_LatteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_Latte_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAutorizzazione_Latte_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_Latte_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiAutorizzazione_Latte_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiAutorizzazione_Latte_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiCodice" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiCodiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodiceSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodice_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiCodice_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodice_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiCodice_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiCodice_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegatiSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiDelegati" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegatiSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiDelegatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegatiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegati_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiDelegati_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegati_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiDelegati_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiDelegati_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolaritaSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiIrregolarita" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolaritaSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiIrregolaritaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolaritaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolarita_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiIrregolarita_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolarita_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiIrregolarita_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiIrregolarita_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessori_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAccessori_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessori_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAccessori_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessori_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessoriSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadAccessori" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessoriSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadAccessoriResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadAccessoriSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarche" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarcheResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativiSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiKitIdentificativi" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativiSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiKitIdentificativiResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativi_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiKitIdentificativi_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativi_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiKitIdentificativi_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiKitIdentificativi_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarche_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarche_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarche_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarche_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarche_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettronicheSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarcheElettroniche" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettronicheSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarcheElettronicheResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettronicheSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettroniche_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarcheElettroniche_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettroniche_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiMarcheElettroniche_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiMarcheElettroniche_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigineSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiOrigine" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigineSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiOrigineResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigineSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigine_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiOrigine_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigine_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiOrigine_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiOrigine_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaportiSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiPassaporti" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaportiSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiPassaportiResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaportiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaporti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiPassaporti_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaporti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiPassaporti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiPassaporti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzioneSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProduzione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzioneSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProduzioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzioneSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzione_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProduzione_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzione_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProduzione_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProduzione_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoCapo" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoCapoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoCapo_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoCapo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoCapo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimentoSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoProcedimento" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimentoSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoProcedimentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoProcedimento_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiStatoProcedimento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiStatoProcedimento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_MalattieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Malattie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_MalattieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_MalattieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_MalattieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Malattie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Malattie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Malattie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Malattie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Malattie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_SanitarieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Qualifiche_Sanitarie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_SanitarieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Qualifiche_SanitarieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_SanitarieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_Sanitarie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Qualifiche_Sanitarie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_Sanitarie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipi_Qualifiche_Sanitarie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipi_Qualifiche_Sanitarie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTestSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaRisultatoTest" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTestSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaRisultatoTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTestSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTest_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaRisultatoTest_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTest_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaRisultatoTest_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaRisultatoTest_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTestSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaTest" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTestSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaTestResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTestSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTest_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaTest_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTest_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologiaTest_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologiaTest_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioniSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologieSanzioni" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioniSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologieSanzioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipologieSanzioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipologieSanzioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipologieSanzioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarieSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMalattie_QualificheSanitarie" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarieSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMalattie_QualificheSanitarieResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMalattie_QualificheSanitarie_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMalattie_QualificheSanitarie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMalattie_QualificheSanitarie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabiliSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSpecieAvicoliIdentificabili" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabiliSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSpecieAvicoliIdentificabiliResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabiliSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabili_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadSpecieAvicoliIdentificabili_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabili_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadSpecieAvicoliIdentificabili_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadSpecieAvicoliIdentificabili_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoliSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviApplicazioneAvicoli" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoliSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviApplicazioneAvicoliResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoliSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoli_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviApplicazioneAvicoli_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoli_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadMotiviApplicazioneAvicoli_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadMotiviApplicazioneAvicoli_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttiveSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiTipologieProduttive" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttiveSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiTipologieProduttiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttiveSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttive_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiTipologieProduttive_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttive_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiTipologieProduttive_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiTipologieProduttive_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienzaSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProvenienza" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienzaSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProvenienzaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienzaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienza_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProvenienza_STR" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienza_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadTipiProvenienza_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadTipiProvenienza_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsCodiciQrySoap">
+    <wsdl:operation name="DownloadCausaliMorte">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CAUSALI_MORTE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCausaliMorteSoapIn" />
+      <wsdl:output message="tns:DownloadCausaliMorteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCausaliMorte_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CAUSALI_MORTE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCausaliMorte_STRSoapIn" />
+      <wsdl:output message="tns:DownloadCausaliMorte_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CLASSIFICAZIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadClassificazioniSoapIn" />
+      <wsdl:output message="tns:DownloadClassificazioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CLASSIFICAZIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadClassificazioni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadClassificazioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CRITERI_CONTROLLI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCriteriControlliSoapIn" />
+      <wsdl:output message="tns:DownloadCriteriControlliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella CRITERI_CONTROLLI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadCriteriControlli_STRSoapIn" />
+      <wsdl:output message="tns:DownloadCriteriControlli_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ESITI_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadEsitiTestSoapIn" />
+      <wsdl:output message="tns:DownloadEsitiTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ESITI_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadEsitiTest_STRSoapIn" />
+      <wsdl:output message="tns:DownloadEsitiTest_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella GRUPPI_SPECIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadGruppiSpecieSoapIn" />
+      <wsdl:output message="tns:DownloadGruppiSpecieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella GRUPPI_SPECIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadGruppiSpecie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadGruppiSpecie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella LIBRI_GENEALOGICI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadLibriGenealogiciSoapIn" />
+      <wsdl:output message="tns:DownloadLibriGenealogiciSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella LIBRI_GENEALOGICI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadLibriGenealogici_STRSoapIn" />
+      <wsdl:output message="tns:DownloadLibriGenealogici_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_INGRESSO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviIngressoSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviIngressoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_INGRESSO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviIngresso_STRSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviIngresso_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_USCITA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviUscitaSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviUscitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_FLAG_USABILE_MP</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiFlagMarcaUsabileSoapIn" />
+      <wsdl:output message="tns:DownloadTipiFlagMarcaUsabileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_FLAG_USABILE_MP</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiFlagMarcaUsabile_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiFlagMarcaUsabile_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_USCITA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviUscita_STRSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviUscita_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ORIENTAMENTI_PRODUTTIVI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadOrientamentiProduttiviSoapIn" />
+      <wsdl:output message="tns:DownloadOrientamentiProduttiviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ORIENTAMENTI_PRODUTTIVI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadOrientamentiProduttivi_STRSoapIn" />
+      <wsdl:output message="tns:DownloadOrientamentiProduttivi_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella PRODUTTORI_MARCHE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProduttoriMarcheSoapIn" />
+      <wsdl:output message="tns:DownloadProduttoriMarcheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella PRODUTTORI_MARCHE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadProduttoriMarche_STRSoapIn" />
+      <wsdl:output message="tns:DownloadProduttoriMarche_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella RAZZE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadRazzeSoapIn" />
+      <wsdl:output message="tns:DownloadRazzeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella RAZZE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadRazze_STRSoapIn" />
+      <wsdl:output message="tns:DownloadRazze_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella SPECIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSpecieSoapIn" />
+      <wsdl:output message="tns:DownloadSpecieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella SPECIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSpecie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadSpecie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella SUI_TIPI_CATEGORIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSuiTipiCategorieSoapIn" />
+      <wsdl:output message="tns:DownloadSuiTipiCategorieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella SUI_TIPI_CATEGORIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSuiTipiCategorie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadSuiTipiCategorie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_ALLEVAMENTO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiAllevamentoSoapIn" />
+      <wsdl:output message="tns:DownloadTipiAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_ALLEVAMENTO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_AUTORIZZAZIONE_LATTE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiAutorizzazione_LatteSoapIn" />
+      <wsdl:output message="tns:DownloadTipiAutorizzazione_LatteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_AUTORIZZAZIONE_LATTE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiAutorizzazione_Latte_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiAutorizzazione_Latte_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_CODICE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiCodiceSoapIn" />
+      <wsdl:output message="tns:DownloadTipiCodiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_CODICE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiCodice_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiCodice_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_DELEGATI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiDelegatiSoapIn" />
+      <wsdl:output message="tns:DownloadTipiDelegatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_DELEGATI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiDelegati_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiDelegati_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_IRREGOLARITA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiIrregolaritaSoapIn" />
+      <wsdl:output message="tns:DownloadTipiIrregolaritaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_IRREGOLARITA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiIrregolarita_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiIrregolarita_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ACCESSORI_PM </wsdl:documentation>
+      <wsdl:input message="tns:DownloadAccessori_STRSoapIn" />
+      <wsdl:output message="tns:DownloadAccessori_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella ACCESSORI_PM</wsdl:documentation>
+      <wsdl:input message="tns:DownloadAccessoriSoapIn" />
+      <wsdl:output message="tns:DownloadAccessoriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MARCHE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiMarcheSoapIn" />
+      <wsdl:output message="tns:DownloadTipiMarcheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_KIT_IDENTIFICATIVI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiKitIdentificativiSoapIn" />
+      <wsdl:output message="tns:DownloadTipiKitIdentificativiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_KIT_IDENTIFICATIVI. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiKitIdentificativi_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiKitIdentificativi_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MARCHE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiMarche_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiMarche_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MARCHE_ELE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiMarcheElettronicheSoapIn" />
+      <wsdl:output message="tns:DownloadTipiMarcheElettronicheSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MARCHE_ELE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiMarcheElettroniche_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiMarcheElettroniche_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_INGRESSO con Tipo='O'</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiOrigineSoapIn" />
+      <wsdl:output message="tns:DownloadTipiOrigineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MOTIVI_INGRESSO con Tipo='O'</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiOrigine_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiOrigine_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PASSAPORTI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiPassaportiSoapIn" />
+      <wsdl:output message="tns:DownloadTipiPassaportiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PASSAPORTI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiPassaporti_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiPassaporti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PRODUZIONE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiProduzioneSoapIn" />
+      <wsdl:output message="tns:DownloadTipiProduzioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PRODUZIONE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiProduzione_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiProduzione_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_STATO_CAPO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiStatoCapoSoapIn" />
+      <wsdl:output message="tns:DownloadTipiStatoCapoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_STATO_CAPO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiStatoCapo_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiStatoCapo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_STATO_PROCEDIMENTO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiStatoProcedimentoSoapIn" />
+      <wsdl:output message="tns:DownloadTipiStatoProcedimentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_STATO_PROCEDIMENTO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiStatoProcedimento_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiStatoProcedimento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MALATTIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipi_MalattieSoapIn" />
+      <wsdl:output message="tns:DownloadTipi_MalattieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_MALATTIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipi_Malattie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipi_Malattie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_QUALIFICHE_SANITARIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipi_Qualifiche_SanitarieSoapIn" />
+      <wsdl:output message="tns:DownloadTipi_Qualifiche_SanitarieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_QUALIFICHE_SANITARIE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipi_Qualifiche_Sanitarie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipi_Qualifiche_Sanitarie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIA_RISULTATO_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologiaRisultatoTestSoapIn" />
+      <wsdl:output message="tns:DownloadTipologiaRisultatoTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIA_RISULTATO_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologiaRisultatoTest_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipologiaRisultatoTest_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIA_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologiaTestSoapIn" />
+      <wsdl:output message="tns:DownloadTipologiaTestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIA_TEST</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologiaTest_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipologiaTest_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIE_SANZIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologieSanzioniSoapIn" />
+      <wsdl:output message="tns:DownloadTipologieSanzioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPOLOGIE_SANZIONI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipologieSanzioni_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipologieSanzioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MALATTIE_QUALIFICHE</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMalattie_QualificheSanitarieSoapIn" />
+      <wsdl:output message="tns:DownloadMalattie_QualificheSanitarieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella MALATTIE_QUALIFICHE. Restituisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMalattie_QualificheSanitarie_STRSoapIn" />
+      <wsdl:output message="tns:DownloadMalattie_QualificheSanitarie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AVI_SPECIE_RICHIAMI_VIVI</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSpecieAvicoliIdentificabiliSoapIn" />
+      <wsdl:output message="tns:DownloadSpecieAvicoliIdentificabiliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AVI_SPECIE_RICHIAMI_VIVI. Restituisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:DownloadSpecieAvicoliIdentificabili_STRSoapIn" />
+      <wsdl:output message="tns:DownloadSpecieAvicoliIdentificabili_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AVI_MOTIVI_INGRESSO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviApplicazioneAvicoliSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviApplicazioneAvicoliSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella AVI_MOTIVI_INGRESSO</wsdl:documentation>
+      <wsdl:input message="tns:DownloadMotiviApplicazioneAvicoli_STRSoapIn" />
+      <wsdl:output message="tns:DownloadMotiviApplicazioneAvicoli_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_TIPOLOGIE_PROD</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiTipologieProduttiveSoapIn" />
+      <wsdl:output message="tns:DownloadTipiTipologieProduttiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_TIPOLOGIE_PROD</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiTipologieProduttive_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiTipologieProduttive_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PROVENIENZA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiProvenienzaSoapIn" />
+      <wsdl:output message="tns:DownloadTipiProvenienzaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae il contenuto della tabella TIPI_PROVENIENZA</wsdl:documentation>
+      <wsdl:input message="tns:DownloadTipiProvenienza_STRSoapIn" />
+      <wsdl:output message="tns:DownloadTipiProvenienza_STRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsCodiciQrySoap" type="tns:wsCodiciQrySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadCausaliMorte">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCausaliMorte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCausaliMorteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCausaliMorte_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCausaliMorte_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCausaliMorte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadClassificazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadClassificazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadClassificazioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadClassificazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCriteriControlli" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCriteriControlliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadCriteriControlli_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadCriteriControlli_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadEsitiTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadEsitiTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadEsitiTest_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadEsitiTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadGruppiSpecie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadGruppiSpecieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadGruppiSpecie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadGruppiSpecie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadLibriGenealogici" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadLibriGenealogiciSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadLibriGenealogici_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadLibriGenealogici_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviIngresso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviIngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviIngresso_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviIngresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviUscita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviUscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiFlagMarcaUsabile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiFlagMarcaUsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiFlagMarcaUsabile_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiFlagMarcaUsabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviUscita_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviUscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadOrientamentiProduttivi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadOrientamentiProduttiviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadOrientamentiProduttivi_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadOrientamentiProduttivi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadProduttoriMarche" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadProduttoriMarcheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadProduttoriMarche_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadProduttoriMarche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadRazze" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadRazzeSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadRazze_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadRazze_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSpecieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSpecie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSuiTipiCategorie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSuiTipiCategorieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSuiTipiCategorie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSuiTipiCategorie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAutorizzazione_Latte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiAutorizzazione_LatteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAutorizzazione_Latte_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiAutorizzazione_Latte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiCodice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiCodiceSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiCodice_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiCodice_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiDelegati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiDelegatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiDelegati_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiDelegati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiIrregolarita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiIrregolaritaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiIrregolarita_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiIrregolarita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAccessori_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAccessori_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadAccessori" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadAccessoriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarche" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiMarcheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiKitIdentificativi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiKitIdentificativiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiKitIdentificativi_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiKitIdentificativi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarche_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiMarche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarcheElettroniche" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiMarcheElettronicheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarcheElettroniche_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiMarcheElettroniche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiOrigine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiOrigineSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiOrigine_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiOrigine_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiPassaporti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiPassaportiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiPassaporti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiPassaporti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProduzione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiProduzioneSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProduzione_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiProduzione_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoCapo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiStatoCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoCapo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiStatoCapo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoProcedimento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiStatoProcedimentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoProcedimento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiStatoProcedimento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Malattie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipi_MalattieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Malattie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipi_Malattie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Qualifiche_Sanitarie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipi_Qualifiche_SanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Qualifiche_Sanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipi_Qualifiche_Sanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaRisultatoTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologiaRisultatoTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaRisultatoTest_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologiaRisultatoTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaTest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologiaTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaTest_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologiaTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologieSanzioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologieSanzioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologieSanzioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipologieSanzioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMalattie_QualificheSanitarie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMalattie_QualificheSanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMalattie_QualificheSanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMalattie_QualificheSanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecieAvicoliIdentificabili" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSpecieAvicoliIdentificabiliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecieAvicoliIdentificabili_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadSpecieAvicoliIdentificabili_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviApplicazioneAvicoli" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviApplicazioneAvicoliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviApplicazioneAvicoli_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadMotiviApplicazioneAvicoli_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProvenienza" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiProvenienzaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProvenienza_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:DownloadTipiProvenienza_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsCodiciQrySoap12" type="tns:wsCodiciQrySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadCausaliMorte">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCausaliMorte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCausaliMorteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCausaliMorte_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCausaliMorte_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCausaliMorte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadClassificazioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadClassificazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadClassificazioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadClassificazioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadClassificazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCriteriControlli" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCriteriControlliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCriteriControlli_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadCriteriControlli_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadCriteriControlli_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadEsitiTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadEsitiTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadEsitiTest_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadEsitiTest_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadEsitiTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadGruppiSpecie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadGruppiSpecieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadGruppiSpecie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadGruppiSpecie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadGruppiSpecie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadLibriGenealogici" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadLibriGenealogiciSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadLibriGenealogici_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadLibriGenealogici_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadLibriGenealogici_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviIngresso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviIngressoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviIngresso_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviIngresso_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviIngresso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviUscita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviUscitaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiFlagMarcaUsabile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiFlagMarcaUsabileSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiFlagMarcaUsabile_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiFlagMarcaUsabile_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiFlagMarcaUsabile_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviUscita_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviUscita_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviUscita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadOrientamentiProduttivi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadOrientamentiProduttiviSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadOrientamentiProduttivi_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadOrientamentiProduttivi_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadOrientamentiProduttivi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadProduttoriMarche" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadProduttoriMarcheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadProduttoriMarche_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadProduttoriMarche_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadProduttoriMarche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadRazze" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadRazzeSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadRazze_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadRazze_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadRazze_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSpecieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSpecie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSuiTipiCategorie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSuiTipiCategorieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSuiTipiCategorie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSuiTipiCategorie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSuiTipiCategorie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAutorizzazione_Latte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiAutorizzazione_LatteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiAutorizzazione_Latte_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiAutorizzazione_Latte_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiAutorizzazione_Latte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiCodice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiCodiceSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiCodice_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiCodice_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiCodice_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiDelegati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiDelegatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiDelegati_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiDelegati_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiDelegati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiIrregolarita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiIrregolaritaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiIrregolarita_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiIrregolarita_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiIrregolarita_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAccessori_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAccessori_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadAccessori">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadAccessori" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadAccessoriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarche" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiMarcheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiKitIdentificativi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiKitIdentificativiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiKitIdentificativi_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiKitIdentificativi_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiKitIdentificativi_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarche_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarche_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiMarche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarcheElettroniche" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiMarcheElettronicheSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiMarcheElettroniche_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiMarcheElettroniche_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiMarcheElettroniche_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiOrigine" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiOrigineSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiOrigine_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiOrigine_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiOrigine_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiPassaporti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiPassaportiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiPassaporti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiPassaporti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiPassaporti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProduzione" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiProduzioneSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProduzione_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProduzione_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiProduzione_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoCapo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiStatoCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoCapo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoCapo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiStatoCapo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoProcedimento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiStatoProcedimentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiStatoProcedimento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiStatoProcedimento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiStatoProcedimento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Malattie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipi_MalattieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Malattie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Malattie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipi_Malattie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Qualifiche_Sanitarie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipi_Qualifiche_SanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipi_Qualifiche_Sanitarie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipi_Qualifiche_Sanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipi_Qualifiche_Sanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaRisultatoTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologiaRisultatoTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaRisultatoTest_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaRisultatoTest_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologiaRisultatoTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaTest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologiaTestSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologiaTest_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologiaTest_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologiaTest_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologieSanzioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologieSanzioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipologieSanzioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipologieSanzioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipologieSanzioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMalattie_QualificheSanitarie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMalattie_QualificheSanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMalattie_QualificheSanitarie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMalattie_QualificheSanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMalattie_QualificheSanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecieAvicoliIdentificabili" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSpecieAvicoliIdentificabiliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadSpecieAvicoliIdentificabili_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadSpecieAvicoliIdentificabili_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadSpecieAvicoliIdentificabili_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviApplicazioneAvicoli" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviApplicazioneAvicoliSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadMotiviApplicazioneAvicoli_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadMotiviApplicazioneAvicoli_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadMotiviApplicazioneAvicoli_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiTipologieProduttive_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProvenienza" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiProvenienzaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadTipiProvenienza_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/DownloadTipiProvenienza_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:DownloadTipiProvenienza_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsCodiciQry">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati di decodifica per tipologie, codici, enumeratori generici</wsdl:documentation>
+    <wsdl:port name="wsCodiciQrySoap" binding="tns:wsCodiciQrySoap">
+      <soap:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsCodiciQry.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsCodiciQrySoap12" binding="tns:wsCodiciQrySoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsCodiciQry.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

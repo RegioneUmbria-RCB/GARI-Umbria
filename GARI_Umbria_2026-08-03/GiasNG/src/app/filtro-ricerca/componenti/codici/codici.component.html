@@ -1,0 +1,146 @@
+
+<div class="services-customization-body row">
+  <div class="col-12 col-md-6" style="padding-top: 5px;">
+    <div id="ServicesManager" class="services-customization-item">
+      <div class="services-manager-container">
+        <div class="services-manager-header">
+          <div class="services-manager-title text_blue text_weight_800">
+            {{ GetTitleCodici() }}
+            <span kendoTooltip title="{{ 'SelezionaTuttiDati' | transloco }}">
+              <fa-icon size="sm" [icon]="['fas', 'angle-double-right']" aria-hidden="true" class="text_blue k-cursor-pointer" (click)="SelectAll()"></fa-icon>
+            </span>
+          </div>
+        </div>
+
+        <div class="services-manager-body">
+          <div class="services-container">
+            <ng-container *ngFor="let codice of allCodici">
+              <ng-container *ngIf="!codice.checked || ShowMasterRow(codice)">
+                <ng-container [ngTemplateOutlet]="TemplateBoxCodici"
+                              [ngTemplateOutletContext]="{codice: codice}">
+                </ng-container>
+              </ng-container>
+
+
+              <!-- <ng-container *ngFor="let preferito of codice.Figli | filterArr: filterText">
+                <div class="service-item k-cursor-pointer" [id]="preferito.idSezione"
+                  (click)="changeFavorite(preferito)">
+                  <span
+                    [ngClass]="preferito?.preferito == true ? 'checkbox-icon readonly' : 'checkbox-icon active unchecked'">
+                    <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+                    <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+                  </span>
+                  <div class="service-content service-card-border-left"
+                    [style]="'border-left-color:' + preferito.coloreAlternativo">
+                    <div class="left">
+                      <div class="left service-item-text">{{preferito.testo}}</div>
+                    </div>
+                    <div class="right">
+                      <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                    </div>
+                  </div>
+                </div>
+              </ng-container> -->
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6" style="padding-top: 5px;">
+    <div id="ServicesFavourite" class="services-customization-item">
+      <div class="services-favourite-container">
+        <div class="services-favourite-header bg_blue">
+          <div class="services-favourite-title text_weight_800">
+            {{ GetTitleSelectedCodici() }}
+            <span kendoTooltip title="{{ 'DeselezionaTuttiDati' | transloco }}">
+              <fa-icon size="sm" [icon]="['fas', 'angle-double-left']" aria-hidden="true" class="k-cursor-pointer" style="color: white;" (click)="DeselectAll()"></fa-icon>
+            </span>
+          </div>
+        </div>
+        <div class="services-favourite-body">
+          <div class="services-container">
+            <ng-container *ngFor="let codice of allCodici">
+              <ng-container *ngIf="codice.checked">
+                <ng-container [ngTemplateOutlet]="TemplateBoxCodici"
+                              [ngTemplateOutletContext]="{codice: codice}">
+                </ng-container>
+              </ng-container>
+
+              <!-- <ng-container *ngFor="let preferito of codice.Figli">
+                <ng-container *ngIf="preferito?.preferito == true">
+                  <div class="service-item k-cursor-pointer" [id]="preferito.idSezione"
+                    (click)="changeFavorite(preferito)">
+                    <span class="checkbox-icon remove text_blue">
+                      <i aria-hidden="true" class="fa fa-minus-square" aria-hidden="true"></i>
+                    </span>
+                    <div class="service-content service-card-border-left"
+                      [style]="'border-left-color:' + preferito.coloreAlternativo">
+                      <div class="left">
+                        <div class="left service-item-text">{{preferito.testo}}
+                        </div>
+                      </div>
+                      <div class="right">
+                        <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </ng-container> -->
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+<ng-template #TemplateCodici let-codice='codice'>
+  <div class="service-content service-card-border-left">
+    <div class="left">
+      <ng-container *ngIf="ContainsMaster()">
+        <div class="left" [ngClass]="{'service-item-text': !codice.master, 'service-item-text-master': codice.master}">{{ codice.descrizione }}</div>
+      </ng-container>
+
+      <ng-container *ngIf="!ContainsMaster()">
+        <div class="left service-item-text">{{ codice.descrizione }}</div>
+      </ng-container>
+    </div>
+    <div class="right">
+      <i aria-hidden="true" class="arrow fa fa-gias fa-angle-right pull-right"></i>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #TemplateBoxCodici let-codice='codice'>
+  <ng-container *ngIf="ContainsMaster()">
+    <div class="k-cursor-pointer" [ngClass]="{'service-item': !codice.master, 'service-item-master': codice.master }" [id]="codice.codice"
+         (click)="changeFavorite(codice)">
+      <!-- <span
+        [ngClass]="hasFavoriteChildren(codice) ? 'checkbox-icon readonly': 'checkbox-icon active unchecked'">
+        <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+      </span> -->
+      <ng-container [ngTemplateOutlet]="TemplateCodici"
+                    [ngTemplateOutletContext]="{codice: codice}">
+      </ng-container>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!ContainsMaster()">
+    <div class="k-cursor-pointer service-item-master"  [id]="codice.codice"
+         (click)="changeFavorite(codice)">
+      <!-- <span
+        [ngClass]="hasFavoriteChildren(codice) ? 'checkbox-icon readonly': 'checkbox-icon active unchecked'">
+        <i aria-hidden="true" class="fa fa-square-o" aria-hidden="true"></i>
+        <i aria-hidden="true" class="fa fa-check-square" aria-hidden="true"></i>
+      </span> -->
+      <ng-container [ngTemplateOutlet]="TemplateCodici"
+                    [ngTemplateOutletContext]="{codice: codice}">
+      </ng-container>
+    </div>
+  </ng-container>
+
+</ng-template>

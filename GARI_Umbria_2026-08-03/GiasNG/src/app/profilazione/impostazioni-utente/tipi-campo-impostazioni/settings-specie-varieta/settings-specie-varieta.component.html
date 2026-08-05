@@ -1,0 +1,22 @@
+<div *ngIf="impostazioneCod === impostazioneFiltroSpecieVegetali">
+
+
+  <form [formGroup]="formGroup">
+    <gias-multiselect-template-s #multi
+         [name]="formGroupValue.guida.Impostazione_Des"
+         id="filtroSpecie"
+         [listItems]="specieDaGruVeg"
+         textField="descrizione"
+         valueField="codice"
+         giasFormControlName="valoreCorrente"
+         (open)="onOpenFiltroSpecie($event)"
+    ></gias-multiselect-template-s>
+  </form>
+</div>
+
+
+<div *ngIf="impostazioneCod === impostazioneFiltroVarieta">
+    <h6>{{ 'prof.FiltroVarieta' | transloco }}</h6>
+    <gias-kendo-grid #grid></gias-kendo-grid>
+</div>
+

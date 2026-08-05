@@ -1,0 +1,13 @@
+<app-dialog-grid-prods-somm></app-dialog-grid-prods-somm>
+
+<div class="d-flex justify-content-end font-weight-bold mt-3">
+  <div class="header-content" headerContent>
+    <span>{{ 'TotaleReq' | transloco }}: {{ qtaTotReq }}</span>
+    <span class="mx-3">|</span>
+    <span
+      [class.text-danger]="(qtaTotDistribuito) !== (qtaTotReq)"
+      [class.text-success]="(qtaTotDistribuito) === (qtaTotReq)">
+        {{ 'TotaleSel' | transloco }}: {{ qtaTotDistribuito }}
+    </span>
+  </div>
+</div>

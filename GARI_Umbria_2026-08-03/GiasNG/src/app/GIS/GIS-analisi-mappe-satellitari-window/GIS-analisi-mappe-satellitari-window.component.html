@@ -1,0 +1,48 @@
+<ng-container *ngIf="windowArgs$ | async as computedArgs">
+  <gis-window #window [windowArgs]="computedArgs" class="pb-3 custom-window"
+    [ngClass]="{ 'isCloudy': computedArgs.additionalArgs?.isCloudy }">
+
+    <ng-container *ngIf="isAllMaskLayersVisible$ | async as allMasks">
+      <ng-container *ngIf="allMasks.visible == false; else loadData">
+        <p class="h5 text-center k-mt-3">
+          {{ ('gis.PerVisualizzareLeMappeSatellitariDevonoEssereAttivatiISeguentiLayer' | transloco: { masks: allMasks.masks }) }}
+        </p>
+      </ng-container>
+    </ng-container>
+
+    <ng-template #loadData>
+
+      <ng-container *ngIf="mapInfo$ | async"></ng-container>
+
+      <ng-container *ngIf="mapCleaner$ | async"></ng-container>
+      <div class="k-d-flex k-flex-column k-gap-3">
+
+        <div class="k-d-flex k-gap-3">
+          <kendo-tabstrip style="width: 100%;" *ngIf="{ value: selectedTab$ | async } as selectedTab"
+            (tabSelect)="selectedTabSubject.next($event)" [keepTabContent]="true">
+
+            <kendo-tabstrip-tab [title]="'gis.DatiSatellitariGiornalieri' | transloco"
+              [selected]="selectedTab.value == 0">
+              <ng-template kendoTabContent>
+                <gis-analisi-mappe-satellitari-daily-data></gis-analisi-mappe-satellitari-daily-data>
+              </ng-template>
+            </kendo-tabstrip-tab>
+
+            <kendo-tabstrip-tab [title]="'gis.Animazione' | transloco" [selected]="selectedTab.value == 1">
+              <ng-template kendoTabContent>
+                <gis-analisi-mappe-satellitari-animation></gis-analisi-mappe-satellitari-animation>
+              </ng-template>
+            </kendo-tabstrip-tab>
+          </kendo-tabstrip>
+
+          <gis-analisi-mappe-satellitari-opzioni></gis-analisi-mappe-satellitari-opzioni>
+
+        </div>
+
+        <gis-analisi-mappe-satellitari-grafici></gis-analisi-mappe-satellitari-grafici>
+
+        <!-- <gis-analisi-mappe-satellitari-notifiche></gis-analisi-mappe-satellitari-notifiche> -->
+      </div>
+    </ng-template>
+  </gis-window>
+</ng-container>

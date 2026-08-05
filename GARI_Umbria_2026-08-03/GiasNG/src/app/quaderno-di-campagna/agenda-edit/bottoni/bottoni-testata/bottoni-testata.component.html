@@ -1,0 +1,37 @@
+<div class="gias-qdg-verifica-container"
+    *ngIf="QdCHeaderVisibility.MostraBtnTestata(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())">
+    <div *ngIf="QdCHeaderVisibility.MostraBtn_VerificaDoseConsigliataBS(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())"
+        id="ImgBtn_VerificaDoseConsigliataDisciplinare_div" class="gias-button-two-rows ms-1"
+        (click)="redirectTo_Verifica_DoseConsigliataBS()">
+        <div class="k-icon k-i-verificadosedisciplinare">
+        </div>
+        <div class="text">
+            {{"qdc.DettaglioDoseConsigliataDisciplinare.Text" | transloco}}
+        </div>
+    </div>
+
+    <div *ngIf="QdCHeaderVisibility.MostraBtn_VerificaDoseConsigliata(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())"
+        id="ImgBtn_VerificaDoseConsigliata_div" class="gias-button-two-rows ms-1" style="max-width: 60px !important;"
+        (click)="redirectTo_Verifica_Sostenibilita()">
+        <div class="k-icon k-i-verificadoseconsigliata">
+        </div>
+        <div class="text">
+            {{"qdc.DoseConsigliata" | transloco}}
+        </div>
+    </div>
+
+    <div *ngIf="QdCHeaderVisibility.MostraBtn_VerificaConformita(qdcservice.TestataForm?.get('Operazioni')?.getRawValue())"
+        id="ImgBtn_VerificaConformita_div" class="gias-button-two-rows ms-1" style="max-width: 60px !important;"
+        (click)="redirectTo_Verifica_Conformita()">
+        <div class="k-icon k-i-verificaconformitainvervento"></div>
+        <div class="text">
+            {{"qdc.ConformitaOperazione" | transloco}}
+        </div>
+    </div>
+
+</div>
+
+<ng-template #aDetailsRef>
+    <p class="error-message">{{ _error }}</p>
+    <app-risultati-analisi-conformita></app-risultati-analisi-conformita>
+</ng-template>

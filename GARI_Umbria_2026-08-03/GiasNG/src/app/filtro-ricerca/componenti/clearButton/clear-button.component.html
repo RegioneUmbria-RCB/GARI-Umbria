@@ -1,0 +1,6 @@
+<div class="btn btn-primary btn-primary-fill btn-primary-text filters-button" (click)="clearFilters()">
+    <fa-icon [icon]="faClear" style="margin: 5px;" size="lg"></fa-icon>
+    <span class="text" *ngIf="typeButton == Enum_Type_Button_Clear.fromFilters"> {{ 'PulisciFiltri' | transloco }} </span>
+    <span class="text" *ngIf="typeButton == Enum_Type_Button_Clear.fromDatiAggiuntivi"> {{ 'ReimpostaCaricaDati' | transloco }} </span>
+    <span class="text" *ngIf="typeButton == Enum_Type_Button_Clear.fromDatiAggiuntiviAll"> {{ 'ReimpostaCaricaDatiAll' | transloco }} </span>
+</div>

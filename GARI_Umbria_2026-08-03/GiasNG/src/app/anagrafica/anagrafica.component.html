@@ -1,0 +1,129 @@
+<kendo-appbar position="top" class="container">
+    <gias-breadcrumbs></gias-breadcrumbs>
+    <kendo-appbar-spacer></kendo-appbar-spacer>
+    <div class="topbar-calendar-print">
+        <form [formGroup]="filtroForm">
+            <kendo-appbar-section>
+                <!--<input type="checkbox" formControlName="filter" />-->
+                <button kendoButton (click)="setOggi()">{{ 'Oggi' | transloco }}</button>
+                <gias-data-template giasFormControlName="data_filtro" [nullValue]="AGRODATA_INIZIO"
+                    [startValue]="FinestraTemporaleInizio" [endValue]="FinestraTemporaleFine"></gias-data-template>
+            </kendo-appbar-section>
+        </form>
+        <kendo-appbar-section id="anag-top-bar-print">
+            @if (ddlStampeData.length > 0) {
+                <kendo-dropdownbutton [data]="ddlStampeData">
+                    <fa-icon size="lg" [icon]="faPrint" aria-hidden="true"></fa-icon>
+                    <!--<div *ngIf="windowHtml.innerWidth > SMARTPHONE_WIDTH">
+                                {{ 'Stampa' | transloco }}
+                            </div>-->
+                </kendo-dropdownbutton>
+            }
+        </kendo-appbar-section>
+    </div>
+</kendo-appbar>
+
+<kendo-appbar position="top" class="container">
+
+    <!-- <kendo-appbar-section class="title">
+            <h3 class="title" routerLink="/Anagrafica"><span>Anagrafica</span></h3>
+        </kendo-appbar-section> -->
+    <!-- <kendo-appbar-spacer width="32px"></kendo-appbar-spacer> -->
+    <kendo-appbar-section id="anag-top-bar-1" class="appbar-items">
+        <div class="custom-toolbar">
+            <button *ngIf="!isBudget && showTree()" [class.open]="drawerService.expander.value" id="expander"
+                kendoButton icon="menu" look="flat" (click)="expandPanel()"
+                [disabled]="drawerService.disabled"></button>
+        </div>
+    </kendo-appbar-section>
+    <div #topTabsRightArrow class="arrow" (click)="moveToLeft()">
+        <fa-icon class="faTabsLeft"></fa-icon>
+    </div>
+    <!--  <button (click)="chiamataAPI()">Chiamata API</button>-->
+    <div #anagTopTar2 id="anag-top-bar-2">
+        <kendo-appbar-section class="appbar-items" (wheel)="mouseMoved($event)">
+            <div>
+                <ul #topTabsContainer>
+                    <li *ngIf="getPermesso(Anagrafica_Impresa ,0) && showTab(enum_AnagraficaNgTabs.imprese)"
+                        routerLink="./Imprese" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faImpresa" [icon]="faIndustry"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Aziende' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Anagrafica_CentroAziendale ,0) && showTab(enum_AnagraficaNgTabs.centri)"
+                        routerLink="./Centri" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faCentri" [icon]="faHome"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Centri' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Anagrafica_Fabbricato ,0) && showTab(enum_AnagraficaNgTabs.fabbricati)"
+                        routerLink="./Fabbricati" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faFabbricati" [icon]="faLeaf"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Fabbricati' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Anagrafica_ParticellaCatastale ,0) && showTab(enum_AnagraficaNgTabs.catasto)"
+                        routerLink="./Catasto" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faCatasto" [icon]="faLayerGroup"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Catasto' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Anagrafica_Campo ,0) && showTab(enum_AnagraficaNgTabs.campi)"
+                        routerLink="./Campi" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faCampi" [icon]="faObjectGroup"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'CampiSerre' | transloco }}</span>
+                    </li>
+                    <!--<li routerLink="/Anagrafica/Appezzamenti" class="nav-item" routerLinkActive="nav-item active">
+                        <span style="cursor: pointer;">Appezzamenti</span>
+                    </li>-->
+                    <!--<li routerLink="/Anagrafica/Impianti" class="nav-item" routerLinkActive="nav-item active">
+                        <span style="cursor: pointer;">Impianti</span>
+                    </li>-->
+                    <li *ngIf="getPermesso(Anagrafica_Impianto ,0) && showTab(enum_AnagraficaNgTabs.impianti)"
+                        routerLink="./Impianti" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faImpianti" [icon]="faLeaf"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Impianti' | transloco }}</span>
+                    </li>
+                    <!--<li routerLink="/Anagrafica/Fabbricati" class="nav-item" routerLinkActive="nav-item active">
+                        <span  style="cursor: pointer;">Fabbricati</span>
+                    </li>-->
+                    <li *ngIf="getPermesso(Anagrafica_Contatto ,0) && !isBudget  && showTab(enum_AnagraficaNgTabs.contatti)"
+                        routerLink="./Contatti" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faContatti" [icon]="faUsers"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'Contatti' | transloco }}</span>
+                    </li>
+                    <li *ngIf="getPermesso(Anagrafica_ParcoMacchine ,0) && showTab(enum_AnagraficaNgTabs.macchine)"
+                        routerLink="./Macchine" class="nav-item" routerLinkActive="nav-item active">
+                        <fa-icon style="padding-right: 5px;" size="lg" class="faMacchine" [icon]="faTruckPickup"
+                            aria-hidden="true">
+                        </fa-icon>
+                        <span style="cursor: pointer;">{{ 'MacchineAttrezzature' | transloco }}</span>
+                    </li>
+                </ul>
+            </div>
+        </kendo-appbar-section>
+    </div>
+    <div #topTabsLeftArrow class="arrow" (click)="moveToRight()">
+        <fa-icon class="faTabsRight"></fa-icon>
+    </div>
+    <div class="topbar-right-filler"></div>
+</kendo-appbar>
+<app-kendo-tree [treeContainerContext]="treeContextAnagrafiche">
+</app-kendo-tree>
+<div class="container anagraficaContainer">
+    <div class="row">
+        <div class="col-12">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodi per la gestione delle associazioni di aziende in consorzi o associazini professionali</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="Insert_Azienda_Consorzio_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Azienda_Consorzio_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Azienda_Consorzio_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Insert_Azienda_Consorzio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Insert_Azienda_ConsorzioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Insert_Azienda_ConsorzioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Azienda_Consorzio_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Azienda_Consorzio_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Azienda_Consorzio_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Azienda_Consorzio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strRecord" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Azienda_ConsorzioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Azienda_ConsorzioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Aziende_Consorzio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asspro_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Aziende_ConsorzioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Aziende_ConsorzioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Aziende_Consorzio_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_asspro_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Aziende_Consorzio_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Aziende_Consorzio_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Insert_Azienda_Consorzio_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Azienda_Consorzio_STR" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Azienda_Consorzio_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Azienda_Consorzio_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Azienda_Consorzio_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Azienda_ConsorzioSoapIn">
+    <wsdl:part name="parameters" element="tns:Insert_Azienda_Consorzio" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Azienda_ConsorzioSoapOut">
+    <wsdl:part name="parameters" element="tns:Insert_Azienda_ConsorzioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Insert_Azienda_ConsorzioSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_Consorzio_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Azienda_Consorzio_STR" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_Consorzio_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Azienda_Consorzio_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_Consorzio_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_ConsorzioSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Azienda_Consorzio" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_ConsorzioSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Azienda_ConsorzioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Azienda_ConsorzioSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_ConsorzioSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Aziende_Consorzio" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_ConsorzioSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Aziende_ConsorzioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_ConsorzioSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_Consorzio_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Aziende_Consorzio_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_Consorzio_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Aziende_Consorzio_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Aziende_Consorzio_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsAssociazioniAziendeSoap">
+    <wsdl:operation name="Insert_Azienda_Consorzio_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'azienda tra i membri di un consorzio. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Azienda_Consorzio_STRSoapIn" />
+      <wsdl:output message="tns:Insert_Azienda_Consorzio_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Azienda_Consorzio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Inserisce l'azienda tra i membri di un consorzio.</wsdl:documentation>
+      <wsdl:input message="tns:Insert_Azienda_ConsorzioSoapIn" />
+      <wsdl:output message="tns:Insert_Azienda_ConsorzioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancella l'azienda dai membri di un consorzio. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Azienda_Consorzio_STRSoapIn" />
+      <wsdl:output message="tns:Delete_Azienda_Consorzio_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Cancella l'azienda dai membri di un consorzio.</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Azienda_ConsorzioSoapIn" />
+      <wsdl:output message="tns:Delete_Azienda_ConsorzioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ricerca le aziende appartenenti ad un consorzio.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Aziende_ConsorzioSoapIn" />
+      <wsdl:output message="tns:Get_Aziende_ConsorzioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ricerca le aziende appartenenti ad un consorzio. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:Get_Aziende_Consorzio_STRSoapIn" />
+      <wsdl:output message="tns:Get_Aziende_Consorzio_STRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsAssociazioniAziendeSoap" type="tns:wsAssociazioniAziendeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insert_Azienda_Consorzio_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Azienda_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Azienda_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Azienda_Consorzio">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Insert_Azienda_Consorzio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Insert_Azienda_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Azienda_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Azienda_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Delete_Azienda_Consorzio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Delete_Azienda_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Aziende_Consorzio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Aziende_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Aziende_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Aziende_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAssociazioniAziendeSoap12" type="tns:wsAssociazioniAziendeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Insert_Azienda_Consorzio_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Azienda_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Azienda_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Insert_Azienda_Consorzio">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Insert_Azienda_Consorzio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Insert_Azienda_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Azienda_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Azienda_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Azienda_Consorzio">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Delete_Azienda_Consorzio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Delete_Azienda_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Aziende_Consorzio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Aziende_ConsorzioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Aziende_Consorzio_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Aziende_Consorzio_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Aziende_Consorzio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsAssociazioniAziende">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Metodi per la gestione delle associazioni di aziende in consorzi o associazini professionali</wsdl:documentation>
+    <wsdl:port name="wsAssociazioniAziendeSoap" binding="tns:wsAssociazioniAziendeSoap">
+      <soap:address location="http://bdrizsam.izs.it/wsGestioneAssConsorzi/wsAssociazioniAziende.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAssociazioniAziendeSoap12" binding="tns:wsAssociazioniAziendeSoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsGestioneAssConsorzi/wsAssociazioniAziende.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

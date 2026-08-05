@@ -1,0 +1,66 @@
+<div *ngIf="loadComplete">
+    <div *ngIf="false"
+        class="row"
+        position="top" [ngStyle]="{
+                'background-color': menuContestualeSetting.background_color,
+                'color': menuContestualeSetting.color,
+                'min-height': '43px',
+                'max-height': '63px;',
+                'margin': '0'
+            }">
+        <div class="col-4 appbar-items my-auto">
+            <div *ngIf="menuContestualeSetting.search">
+                <button kendoButton look="flat" size="large" (click)="toggleImpreseFilter()">
+                    <fa-icon [icon]="faSearch" aria-hidden="true"></fa-icon>
+                </button>
+                <fa-icon [icon]="faGripLinesVertical" aria-hidden="true"></fa-icon>
+                <button kendoButton look="flat" size="large" (click)="filtrinoImprese()">
+                    <fa-icon [icon]="faSearchPlus" aria-hidden="true"></fa-icon>
+                </button>
+                <gias-imprese-filter [@inOutAnimation] *ngIf="showImpreseFilter"></gias-imprese-filter>
+            </div>
+        </div>
+
+        <div class="col-4 title text-center my-auto">
+            <strong>{{ menuContestualeSetting.title }}</strong>
+        </div>
+
+        <div class="col-4 my-auto" style="text-align: right;">
+            <div *ngIf="menuContestualeSetting.bookmarks || menuContestualeSetting.contextualMenu">
+                <kendo-dropdownbutton [data]="bookmarks" (click)="leggiPreferiti($event)"
+                    *ngIf="menuContestualeSetting.bookmarks">
+                    <fa-icon [icon]="faStar" aria-hidden="true"> </fa-icon>
+                    <ng-template kendoDropDownButtonItemTemplate let-dataItem look="flat">
+                        <div (click)="itemSelected(dataItem)" class="btnTemplate" class="btn btn-sm text-center"
+                            [ngStyle]="{
+                                'background-color': dataItem.colore,
+                                'color': 'white',
+                                'border-radius': '25px',
+                                'min-width': '300px'
+                            }">
+                            {{dataItem.testo}} <fa-icon *ngIf="dataItem.preferito" [icon]="faStar" aria-hidden="true"> </fa-icon>
+                        </div>
+                    </ng-template>
+                </kendo-dropdownbutton>
+
+                <kendo-dropdownbutton
+                    *ngIf="menuContestualeSetting.contextualMenu"
+                    [data]="contextualMenu"
+                    (click)="leggiMenuContestuale($event)">
+                    <fa-icon [icon]="faBars" aria-hidden="true"> </fa-icon>
+                    <ng-template kendoDropDownButtonItemTemplate let-dataItem fillMode="flat">
+                        <div (click)="itemSelected(dataItem)" class="btn btn-sm text-center primopiano"
+                            [ngStyle]="{
+                                'background-color': dataItem.colore,
+                                'color': 'white',
+                                'border-radius': '25px',
+                                'min-width': '300px'
+                            }">
+                            {{dataItem.testo}} <fa-icon *ngIf="dataItem.preferito" [icon]="faStar" aria-hidden="true"> </fa-icon>
+                        </div>
+                    </ng-template>
+                </kendo-dropdownbutton>
+            </div>
+        </div>
+    </div>
+</div>

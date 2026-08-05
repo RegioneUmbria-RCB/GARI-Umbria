@@ -1,0 +1,3631 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati relativi alle aziende.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="getAzienda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAziendaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAziendaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="getAzienda_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAzienda_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAzienda_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPersona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_persona_idfiscale" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPersonaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPersonaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPersona_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_persona_idfiscale" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPersona_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPersona_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoSanitarie">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_malattia_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_rilevazione" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoSanitarieResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoSanitarieResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoSanitarie_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_malattia_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_rilevazione" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInfoSanitarie_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInfoSanitarie_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSoccidari">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSoccidariResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSoccidariResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSoccidari_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSoccidari_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSoccidari_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAzienda">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAziendaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoAziendaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAzienda_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoAzienda_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoAzienda_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_Latte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_LatteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamento_LatteResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_Latte_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_Latte_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamento_Latte_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviTipologieProduttive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviTipologieProduttiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOviTipologieProduttiveResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviTipologieProduttive_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviTipologieProduttive_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOviTipologieProduttive_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiTipologieProduttive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiTipologieProduttiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSuiTipologieProduttiveResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiTipologieProduttive_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiTipologieProduttive_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSuiTipologieProduttive_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOviCensimentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOviCensimenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimentiUnione">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindOviCensimentiUnioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindOviCensimentiUnioneResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiCensimenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiCensimentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSuiCensimentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiCensimenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSuiCensimenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSuiCensimenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAviCensimenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_detent_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_orientamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_allev" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAviCensimentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAviCensimentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAviCensimenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_detent_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_orientamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_allev" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAviCensimenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAviCensimenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_AVI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_prop_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_det_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_orientamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_allev" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_AVIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamento_AVIResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_AVI_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_prop_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_det_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_orientamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_allev" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamento_AVI_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamento_AVI_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamento_AVI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_prop_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_det_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_prod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_orientamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipo_allev" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamento_AVIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findAllevamento_AVIResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_ListaAllevamenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_ListaAllevamentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_ListaAllevamentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_ListaAllevamenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_ListaAllevamenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_ListaAllevamenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllevamento_A_Libro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllevamento_A_LibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllevamento_A_LibroResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllevamento_A_Libro_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllevamento_A_Libro_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllevamento_A_Libro_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamentoNelRaggio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_latitudine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_longitudine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_raggio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamentoNelRaggioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamentoNelRaggioResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamentoNelRaggio_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_latitudine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_longitudine" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_raggio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamentoNelRaggio_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamentoNelRaggio_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_denominazione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento01">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_denominazione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_proprietario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento01Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamento01Result">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento_DIFF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_riferimento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_tipologia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento_DIFFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamento_DIFFResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllev_Tipologie_Prod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_tipo_tipologia_prod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllev_Tipologie_ProdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllev_Tipologie_ProdResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllev_Tipologie_Prod_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_tipo_tipologia_prod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllev_Tipologie_Prod_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllev_Tipologie_Prod_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_denominazione" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Estrazione_Allevamenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strDelega" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Estrazione_AllevamentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Estrazione_AllevamentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Estrazione_Allevamenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strDelega" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Estrazione_Allevamenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Estrazione_Allevamenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindControlli_Allevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_controllo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindControlli_Allevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindControlli_Allevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindControlli_Allevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_controllo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindControlli_AllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindControlli_AllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_SuiCensimenti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_censimento_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_SuiCensimentiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_SuiCensimentiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_SuiCensimenti_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_censimento_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_SuiCensimenti_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_SuiCensimenti_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findBloccoMovimentazioni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_inizio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findBloccoMovimentazioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findBloccoMovimentazioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findBloccoMovimentazioni_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_inizio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findBloccoMovimentazioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findBloccoMovimentazioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBloccoMovimentazioni_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_lm_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBloccoMovimentazioni_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBloccoMovimentazioni_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBloccoMovimentazioni">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_lm_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getBloccoMovimentazioniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBloccoMovimentazioniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProrogaMarcatura_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_all_msm_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProrogaMarcatura_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProrogaMarcatura_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProrogaMarcatura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_all_msm_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProrogaMarcaturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getProrogaMarcaturaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevProrogaMarcatura_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevProrogaMarcatura_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findAllevProrogaMarcatura_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevProrogaMarcatura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevProrogaMarcaturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findAllevProrogaMarcaturaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEsitoSieroprevalenzaIBR_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_risanamento_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEsitoSieroprevalenzaIBR_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEsitoSieroprevalenzaIBR_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEsitoSieroprevalenzaIBR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_risanamento_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEsitoSieroprevalenzaIBRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEsitoSieroprevalenzaIBRResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findEsitoSieroprevalenzaIBR_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_azienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_id_fiscale_allev" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_allevata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_anno_controllo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findEsitoSieroprevalenzaIBR_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findEsitoSieroprevalenzaIBR_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findEsitoSieroprevalenzaIBR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_azienda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_id_fiscale_allev" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_specie_allevata" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_anno_controllo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findEsitoSieroprevalenzaIBRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findEsitoSieroprevalenzaIBRResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPascolo_Aziendale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_inizio_utilizzo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_dt_fine_utilizzo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPascolo_AziendaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPascolo_AziendaleResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPascolo_Aziendale_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPascolo_Aziendale_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPascolo_Aziendale_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findPascolo_Aziendale">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_pasaz_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findPascolo_AziendaleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findPascolo_AziendaleResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findPascolo_Aziendale_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_pasaz_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findPascolo_Aziendale_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findPascolo_Aziendale_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamentoRegistroInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamentoRegistroInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findAllevamentoRegistroInfoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamentoRegistroInfo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findAllevamentoRegistroInfo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findAllevamentoRegistroInfo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamentoRegistroInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamentoRegistroInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamentoRegistroInfoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamentoRegistroInfo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id_fiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllevamentoRegistroInfo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllevamentoRegistroInfo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getAziendaSoapIn">
+    <wsdl:part name="parameters" element="tns:getAzienda" />
+  </wsdl:message>
+  <wsdl:message name="getAziendaSoapOut">
+    <wsdl:part name="parameters" element="tns:getAziendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAziendaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAzienda_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getAzienda_STR" />
+  </wsdl:message>
+  <wsdl:message name="getAzienda_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getAzienda_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAzienda_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPersonaSoapIn">
+    <wsdl:part name="parameters" element="tns:getPersona" />
+  </wsdl:message>
+  <wsdl:message name="getPersonaSoapOut">
+    <wsdl:part name="parameters" element="tns:getPersonaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPersonaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPersona_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getPersona_STR" />
+  </wsdl:message>
+  <wsdl:message name="getPersona_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getPersona_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPersona_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarieSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoSanitarie" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarieSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoSanitarieResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarieSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarie_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInfoSanitarie_STR" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarie_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInfoSanitarie_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInfoSanitarie_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidariSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSoccidari" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidariSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSoccidariResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidariSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidari_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSoccidari_STR" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidari_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSoccidari_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSoccidari_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAziendaSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoAzienda" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAziendaSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoAziendaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAziendaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAzienda_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoAzienda_STR" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAzienda_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoAzienda_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoAzienda_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_LatteSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento_Latte" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_LatteSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamento_LatteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_LatteSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_Latte_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento_Latte_STR" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_Latte_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamento_Latte_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_Latte_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttiveSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOviTipologieProduttive" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttiveSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOviTipologieProduttiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttiveSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttive_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOviTipologieProduttive_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttive_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOviTipologieProduttive_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOviTipologieProduttive_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttiveSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSuiTipologieProduttive" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttiveSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSuiTipologieProduttiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttiveSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttive_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSuiTipologieProduttive_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttive_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSuiTipologieProduttive_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiTipologieProduttive_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOviCensimenti" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOviCensimentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOviCensimenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOviCensimenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiUnioneSoapIn">
+    <wsdl:part name="parameters" element="tns:FindOviCensimentiUnione" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiUnioneSoapOut">
+    <wsdl:part name="parameters" element="tns:FindOviCensimentiUnioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindOviCensimentiUnioneSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimentiSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSuiCensimenti" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimentiSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSuiCensimentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSuiCensimenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSuiCensimenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSuiCensimenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimentiSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAviCensimenti" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimentiSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAviCensimentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAviCensimenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAviCensimenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAviCensimenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVISoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento_AVI" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVISoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamento_AVIResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVISOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVI_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamento_AVI_STR" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVI_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamento_AVI_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamento_AVI_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamento_AVISoapIn">
+    <wsdl:part name="parameters" element="tns:findAllevamento_AVI" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamento_AVISoapOut">
+    <wsdl:part name="parameters" element="tns:findAllevamento_AVIResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamento_AVISOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamentiSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_ListaAllevamenti" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamentiSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_ListaAllevamentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_ListaAllevamenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_ListaAllevamenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_ListaAllevamenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_LibroSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllevamento_A_Libro" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_LibroSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllevamento_A_LibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_LibroSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_Libro_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllevamento_A_Libro_STR" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_Libro_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllevamento_A_Libro_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllevamento_A_Libro_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggioSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamentoNelRaggio" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggioSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamentoNelRaggioResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggioSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggio_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamentoNelRaggio_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggio_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamentoNelRaggio_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoNelRaggio_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento01SoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamento01" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento01SoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamento01Response" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento01SOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_DIFFSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamento_DIFF" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_DIFFSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamento_DIFFResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_DIFFSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_ProdSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllev_Tipologie_Prod" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_ProdSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllev_Tipologie_ProdResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_ProdSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_Prod_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllev_Tipologie_Prod_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_Prod_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllev_Tipologie_Prod_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllev_Tipologie_Prod_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_AllevamentiSoapIn">
+    <wsdl:part name="parameters" element="tns:Estrazione_Allevamenti" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_AllevamentiSoapOut">
+    <wsdl:part name="parameters" element="tns:Estrazione_AllevamentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_AllevamentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_Allevamenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Estrazione_Allevamenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_Allevamenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Estrazione_Allevamenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Estrazione_Allevamenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_Allevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindControlli_Allevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_Allevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindControlli_Allevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_Allevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_AllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:FindControlli_Allevamento" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_AllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:FindControlli_AllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindControlli_AllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimentiSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_SuiCensimenti" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimentiSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_SuiCensimentiResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimentiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimenti_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_SuiCensimenti_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimenti_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_SuiCensimenti_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_SuiCensimenti_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioniSoapIn">
+    <wsdl:part name="parameters" element="tns:findBloccoMovimentazioni" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioniSoapOut">
+    <wsdl:part name="parameters" element="tns:findBloccoMovimentazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:findBloccoMovimentazioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:findBloccoMovimentazioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findBloccoMovimentazioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioni_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getBloccoMovimentazioni_STR" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioni_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getBloccoMovimentazioni_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioni_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioniSoapIn">
+    <wsdl:part name="parameters" element="tns:getBloccoMovimentazioni" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioniSoapOut">
+    <wsdl:part name="parameters" element="tns:getBloccoMovimentazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBloccoMovimentazioniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcatura_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getProrogaMarcatura_STR" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcatura_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getProrogaMarcatura_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcatura_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcaturaSoapIn">
+    <wsdl:part name="parameters" element="tns:getProrogaMarcatura" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcaturaSoapOut">
+    <wsdl:part name="parameters" element="tns:getProrogaMarcaturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProrogaMarcaturaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcatura_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:findAllevProrogaMarcatura_STR" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcatura_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:findAllevProrogaMarcatura_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcatura_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcaturaSoapIn">
+    <wsdl:part name="parameters" element="tns:findAllevProrogaMarcatura" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcaturaSoapOut">
+    <wsdl:part name="parameters" element="tns:findAllevProrogaMarcaturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllevProrogaMarcaturaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBR_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getEsitoSieroprevalenzaIBR_STR" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBR_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getEsitoSieroprevalenzaIBR_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBR_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBRSoapIn">
+    <wsdl:part name="parameters" element="tns:getEsitoSieroprevalenzaIBR" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBRSoapOut">
+    <wsdl:part name="parameters" element="tns:getEsitoSieroprevalenzaIBRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEsitoSieroprevalenzaIBRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBR_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:findEsitoSieroprevalenzaIBR_STR" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBR_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:findEsitoSieroprevalenzaIBR_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBR_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBRSoapIn">
+    <wsdl:part name="parameters" element="tns:findEsitoSieroprevalenzaIBR" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBRSoapOut">
+    <wsdl:part name="parameters" element="tns:findEsitoSieroprevalenzaIBRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findEsitoSieroprevalenzaIBRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_AziendaleSoapIn">
+    <wsdl:part name="parameters" element="tns:getPascolo_Aziendale" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_AziendaleSoapOut">
+    <wsdl:part name="parameters" element="tns:getPascolo_AziendaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_AziendaleSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_Aziendale_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getPascolo_Aziendale_STR" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_Aziendale_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getPascolo_Aziendale_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPascolo_Aziendale_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_AziendaleSoapIn">
+    <wsdl:part name="parameters" element="tns:findPascolo_Aziendale" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_AziendaleSoapOut">
+    <wsdl:part name="parameters" element="tns:findPascolo_AziendaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_AziendaleSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_Aziendale_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:findPascolo_Aziendale_STR" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_Aziendale_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:findPascolo_Aziendale_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findPascolo_Aziendale_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:findAllevamentoRegistroInfo" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:findAllevamentoRegistroInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:findAllevamentoRegistroInfo_STR" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:findAllevamentoRegistroInfo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="findAllevamentoRegistroInfo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamentoRegistroInfo" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamentoRegistroInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllevamentoRegistroInfo_STR" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllevamentoRegistroInfo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllevamentoRegistroInfo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsAziendeQrySoap">
+    <wsdl:operation name="getAzienda">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio delle aziende.</wsdl:documentation>
+      <wsdl:input message="tns:getAziendaSoapIn" />
+      <wsdl:output message="tns:getAziendaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAzienda_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio delle aziende.</wsdl:documentation>
+      <wsdl:input message="tns:getAzienda_STRSoapIn" />
+      <wsdl:output message="tns:getAzienda_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersona">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative ad una persona.</wsdl:documentation>
+      <wsdl:input message="tns:getPersonaSoapIn" />
+      <wsdl:output message="tns:getPersonaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPersona_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative ad una persona.</wsdl:documentation>
+      <wsdl:input message="tns:getPersona_STRSoapIn" />
+      <wsdl:output message="tns:getPersona_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni sanitarie relative ad un'azienda.</wsdl:documentation>
+      <wsdl:input message="tns:GetInfoSanitarieSoapIn" />
+      <wsdl:output message="tns:GetInfoSanitarieSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni sanitarie relative ad un'azienda.</wsdl:documentation>
+      <wsdl:input message="tns:GetInfoSanitarie_STRSoapIn" />
+      <wsdl:output message="tns:GetInfoSanitarie_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni di un soccidario.</wsdl:documentation>
+      <wsdl:input message="tns:GetSoccidariSoapIn" />
+      <wsdl:output message="tns:GetSoccidariSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni di un soccidario.</wsdl:documentation>
+      <wsdl:input message="tns:GetSoccidari_STRSoapIn" />
+      <wsdl:output message="tns:GetSoccidari_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoAllevamentoSoapIn" />
+      <wsdl:output message="tns:getInfoAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:getInfoAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un'azienda.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoAziendaSoapIn" />
+      <wsdl:output message="tns:getInfoAziendaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un'azienda.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoAzienda_STRSoapIn" />
+      <wsdl:output message="tns:getInfoAzienda_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati relativi ad un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamentoSoapIn" />
+      <wsdl:output message="tns:getAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati di un allevamento se autorizzato alla produzione di latte alimentare.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamento_LatteSoapIn" />
+      <wsdl:output message="tns:getAllevamento_LatteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati di un allevamento se autorizzato alla produzione di latte alimentare.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamento_Latte_STRSoapIn" />
+      <wsdl:output message="tns:getAllevamento_Latte_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati relativi ad un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:getAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la tipologia produttiva associata ad un allevamento ovicaprino.</wsdl:documentation>
+      <wsdl:input message="tns:FindOviTipologieProduttiveSoapIn" />
+      <wsdl:output message="tns:FindOviTipologieProduttiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la tipologia produttiva associata ad un allevamento ovicaprino.</wsdl:documentation>
+      <wsdl:input message="tns:FindOviTipologieProduttive_STRSoapIn" />
+      <wsdl:output message="tns:FindOviTipologieProduttive_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la tipologia produttiva associata ad un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:FindSuiTipologieProduttiveSoapIn" />
+      <wsdl:output message="tns:FindSuiTipologieProduttiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la tipologia produttiva associata ad un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:FindSuiTipologieProduttive_STRSoapIn" />
+      <wsdl:output message="tns:FindSuiTipologieProduttive_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento ovicaprino.</wsdl:documentation>
+      <wsdl:input message="tns:FindOviCensimentiSoapIn" />
+      <wsdl:output message="tns:FindOviCensimentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento ovicaprino.</wsdl:documentation>
+      <wsdl:input message="tns:FindOviCensimenti_STRSoapIn" />
+      <wsdl:output message="tns:FindOviCensimenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimentiUnione">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati dei censimenti di un allevamento ovicaprino.(pre-2012 e post-2012</wsdl:documentation>
+      <wsdl:input message="tns:FindOviCensimentiUnioneSoapIn" />
+      <wsdl:output message="tns:FindOviCensimentiUnioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:FindSuiCensimentiSoapIn" />
+      <wsdl:output message="tns:FindSuiCensimentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:FindSuiCensimenti_STRSoapIn" />
+      <wsdl:output message="tns:FindSuiCensimenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento avicolo.</wsdl:documentation>
+      <wsdl:input message="tns:FindAviCensimentiSoapIn" />
+      <wsdl:output message="tns:FindAviCensimentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento avicolo.</wsdl:documentation>
+      <wsdl:input message="tns:FindAviCensimenti_STRSoapIn" />
+      <wsdl:output message="tns:FindAviCensimenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati di un allevamento avicolo.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamento_AVISoapIn" />
+      <wsdl:output message="tns:getAllevamento_AVISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati di un allevamento avicolo.</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamento_AVI_STRSoapIn" />
+      <wsdl:output message="tns:getAllevamento_AVI_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamento_AVI">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati di un allevamento avicolo.</wsdl:documentation>
+      <wsdl:input message="tns:findAllevamento_AVISoapIn" />
+      <wsdl:output message="tns:findAllevamento_AVISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la lista degli allevamenti.</wsdl:documentation>
+      <wsdl:input message="tns:Get_ListaAllevamentiSoapIn" />
+      <wsdl:output message="tns:Get_ListaAllevamentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la lista degli allevamenti.</wsdl:documentation>
+      <wsdl:input message="tns:Get_ListaAllevamenti_STRSoapIn" />
+      <wsdl:output message="tns:Get_ListaAllevamenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae tutti i dati relativi ad un allevamento iscritto a libro genealogico. Se l’ allevamento non risulta iscritto, il metodo non restituisce nulla. L’allevamento viene ricercato tramite chiave logica composta da codice azienda, codice specie, codice fiscale dell’allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllevamento_A_LibroSoapIn" />
+      <wsdl:output message="tns:GetAllevamento_A_LibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce la lista degli allevamenti.</wsdl:documentation>
+      <wsdl:input message="tns:GetAllevamento_A_Libro_STRSoapIn" />
+      <wsdl:output message="tns:GetAllevamento_A_Libro_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">dato un punto geografico individuato da latitudine e longitudine, dato un raggio non superiore a 10 km, recupera gli allevamenti di una certa specie situati all'interno della circonferenza con centro nel punto e raggio il raggio inserito.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamentoNelRaggioSoapIn" />
+      <wsdl:output message="tns:FindAllevamentoNelRaggioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">dato un punto geografico individuato da latitudine e longitudine, dato un raggio non superiore a 10 km, recupera gli allevamenti di una certa specie situati all'interno della circonferenza con centro nel punto e raggio il raggio inserito</wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamentoNelRaggio_STRSoapIn" />
+      <wsdl:output message="tns:FindAllevamentoNelRaggio_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamentoSoapIn" />
+      <wsdl:output message="tns:FindAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento01">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamento01SoapIn" />
+      <wsdl:output message="tns:FindAllevamento01SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_DIFF">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce solo gli allevamenti che hanno subito variazioni nella giornata precedente. Richiesto per le installazioni sel S.I. Silab. Formato data dd/mm/yyyy </wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamento_DIFFSoapIn" />
+      <wsdl:output message="tns:FindAllevamento_DIFFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllev_Tipologie_ProdSoapIn" />
+      <wsdl:output message="tns:FindAllev_Tipologie_ProdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllev_Tipologie_Prod_STRSoapIn" />
+      <wsdl:output message="tns:FindAllev_Tipologie_Prod_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:FindAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati relativi all'azienda, all'allevamento ed i capi in esso presenti.</wsdl:documentation>
+      <wsdl:input message="tns:Estrazione_AllevamentiSoapIn" />
+      <wsdl:output message="tns:Estrazione_AllevamentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati relativi all'azienda, all'allevamento ed i capi in esso presenti.</wsdl:documentation>
+      <wsdl:input message="tns:Estrazione_Allevamenti_STRSoapIn" />
+      <wsdl:output message="tns:Estrazione_Allevamenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i controlli effettuati presso un allevamento. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:FindControlli_Allevamento_STRSoapIn" />
+      <wsdl:output message="tns:FindControlli_Allevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i controlli effettuati presso un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:FindControlli_AllevamentoSoapIn" />
+      <wsdl:output message="tns:FindControlli_AllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:Get_SuiCensimentiSoapIn" />
+      <wsdl:output message="tns:Get_SuiCensimentiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce i dati del censimento di un allevamento suino.</wsdl:documentation>
+      <wsdl:input message="tns:Get_SuiCensimenti_STRSoapIn" />
+      <wsdl:output message="tns:Get_SuiCensimenti_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative al blocco sanitario delle movimentazioni da un allevamento indicato.</wsdl:documentation>
+      <wsdl:input message="tns:findBloccoMovimentazioniSoapIn" />
+      <wsdl:output message="tns:findBloccoMovimentazioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative al blocco sanitario delle movimentazioni da un allevamento indicato. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:findBloccoMovimentazioni_STRSoapIn" />
+      <wsdl:output message="tns:findBloccoMovimentazioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative ad un blocco sanitario delle movimentazioni da un allevamento. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:getBloccoMovimentazioni_STRSoapIn" />
+      <wsdl:output message="tns:getBloccoMovimentazioni_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce le informazioni relative ad un blocco sanitario delle movimentazioni da un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getBloccoMovimentazioniSoapIn" />
+      <wsdl:output message="tns:getBloccoMovimentazioniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fornisce le informazioni sulla proroga alla marcatura. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:getProrogaMarcatura_STRSoapIn" />
+      <wsdl:output message="tns:getProrogaMarcatura_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fornisce le informazioni sulla proroga alla marcatura</wsdl:documentation>
+      <wsdl:input message="tns:getProrogaMarcaturaSoapIn" />
+      <wsdl:output message="tns:getProrogaMarcaturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fornisce le informazioni sulla proroga alla marcatura. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:findAllevProrogaMarcatura_STRSoapIn" />
+      <wsdl:output message="tns:findAllevProrogaMarcatura_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fornisce le informazioni sulla proroga alla marcatura</wsdl:documentation>
+      <wsdl:input message="tns:findAllevProrogaMarcaturaSoapIn" />
+      <wsdl:output message="tns:findAllevProrogaMarcaturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un esito di monitoraggio sierologico sulla prevalenza IBR a partire dall'identificativo univoco con cui è registrato in BDN. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:getEsitoSieroprevalenzaIBR_STRSoapIn" />
+      <wsdl:output message="tns:getEsitoSieroprevalenzaIBR_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un esito di monitoraggio sierologico sulla prevalenza IBR a partire dall'identificativo univoco con cui è registrato in BDN</wsdl:documentation>
+      <wsdl:input message="tns:getEsitoSieroprevalenzaIBRSoapIn" />
+      <wsdl:output message="tns:getEsitoSieroprevalenzaIBRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un esito di monitoraggio sierologico sulla prevalenza IBR a partire dalle informazioni registrate in BDN. Restuisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:findEsitoSieroprevalenzaIBR_STRSoapIn" />
+      <wsdl:output message="tns:findEsitoSieroprevalenzaIBR_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un esito di monitoraggio sierologico sulla prevalenza IBR a partire dalle informazioni registrate in BDN.</wsdl:documentation>
+      <wsdl:input message="tns:findEsitoSieroprevalenzaIBRSoapIn" />
+      <wsdl:output message="tns:findEsitoSieroprevalenzaIBRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio del pascolo aziendale. Il formato data atteso è dd/mm/yyyy</wsdl:documentation>
+      <wsdl:input message="tns:getPascolo_AziendaleSoapIn" />
+      <wsdl:output message="tns:getPascolo_AziendaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio del pascolo aziendale. Il formato data atteso è dd/mm/yyyy. Restituisce un tipo stringa</wsdl:documentation>
+      <wsdl:input message="tns:getPascolo_Aziendale_STRSoapIn" />
+      <wsdl:output message="tns:getPascolo_Aziendale_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio del pascolo aziendale a partire dal suo codice identificativo univoco.</wsdl:documentation>
+      <wsdl:input message="tns:findPascolo_AziendaleSoapIn" />
+      <wsdl:output message="tns:findPascolo_AziendaleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio del pascolo aziendale a partire dal suo codice identificativo univoco. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:findPascolo_Aziendale_STRSoapIn" />
+      <wsdl:output message="tns:findPascolo_Aziendale_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio della sottoscrizione al registro informatizzato in BDN per l'allevamento indicato</wsdl:documentation>
+      <wsdl:input message="tns:findAllevamentoRegistroInfoSoapIn" />
+      <wsdl:output message="tns:findAllevamentoRegistroInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio della sottoscrizione al registro informatizzato in BDN per l'allevamento indicato. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:findAllevamentoRegistroInfo_STRSoapIn" />
+      <wsdl:output message="tns:findAllevamentoRegistroInfo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio della sottoscrizione al registro informatizzato in BDN per l'allevamento indicato</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamentoRegistroInfoSoapIn" />
+      <wsdl:output message="tns:getAllevamentoRegistroInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Restituisce il dettaglio della sottoscrizione al registro informatizzato in BDN per l'allevamento indicato. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:getAllevamentoRegistroInfo_STRSoapIn" />
+      <wsdl:output message="tns:getAllevamentoRegistroInfo_STRSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsAziendeQrySoap" type="tns:wsAziendeQrySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAzienda">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAzienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAziendaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAzienda_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAzienda_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAzienda_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersona">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPersona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPersonaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersona_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPersona_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPersona_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetInfoSanitarie" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInfoSanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetInfoSanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetInfoSanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetSoccidari" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSoccidariSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetSoccidari_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetSoccidari_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoAzienda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoAziendaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoAzienda_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoAzienda_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_Latte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamento_LatteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_Latte_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamento_Latte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindOviTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindOviTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindOviTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindOviTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindSuiTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindSuiTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindSuiTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindSuiTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindOviCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindOviCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimentiUnione">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimentiUnione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindOviCensimentiUnioneSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindSuiCensimenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindSuiCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindSuiCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindSuiCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAviCensimenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAviCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAviCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAviCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_AVI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamento_AVISOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_AVI_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamento_AVI_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamento_AVI">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findAllevamento_AVI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findAllevamento_AVISOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_ListaAllevamenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_ListaAllevamentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_ListaAllevamenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_ListaAllevamenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetAllevamento_A_Libro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllevamento_A_LibroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/GetAllevamento_A_Libro_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetAllevamento_A_Libro_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamentoNelRaggio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamentoNelRaggioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamentoNelRaggio_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamentoNelRaggio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento01">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento01" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamento01SOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_DIFF">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento_DIFF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamento_DIFFSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllev_Tipologie_Prod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllev_Tipologie_ProdSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllev_Tipologie_Prod_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllev_Tipologie_Prod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Estrazione_Allevamenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Estrazione_AllevamentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Estrazione_Allevamenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Estrazione_Allevamenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindControlli_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindControlli_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindControlli_Allevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindControlli_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_SuiCensimenti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_SuiCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_SuiCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_SuiCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findBloccoMovimentazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findBloccoMovimentazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findBloccoMovimentazioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findBloccoMovimentazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getBloccoMovimentazioni_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getBloccoMovimentazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getBloccoMovimentazioni" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getBloccoMovimentazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getProrogaMarcatura_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getProrogaMarcatura_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getProrogaMarcatura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getProrogaMarcaturaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findAllevProrogaMarcatura_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findAllevProrogaMarcatura_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findAllevProrogaMarcatura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findAllevProrogaMarcaturaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getEsitoSieroprevalenzaIBR_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getEsitoSieroprevalenzaIBR_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getEsitoSieroprevalenzaIBR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getEsitoSieroprevalenzaIBRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findEsitoSieroprevalenzaIBR_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findEsitoSieroprevalenzaIBR_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findEsitoSieroprevalenzaIBR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findEsitoSieroprevalenzaIBRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getPascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getPascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findPascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findPascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findPascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findPascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findAllevamentoRegistroInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findAllevamentoRegistroInfoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findAllevamentoRegistroInfo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findAllevamentoRegistroInfo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamentoRegistroInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamentoRegistroInfoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getAllevamentoRegistroInfo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAllevamentoRegistroInfo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAziendeQrySoap12" type="tns:wsAziendeQrySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getAzienda">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAzienda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAziendaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAzienda_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAzienda_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAzienda_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersona">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPersona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPersonaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPersona_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPersona_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPersona_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetInfoSanitarie" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInfoSanitarieSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoSanitarie_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetInfoSanitarie_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetInfoSanitarie_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetSoccidari" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSoccidariSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSoccidari_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetSoccidari_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetSoccidari_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoAzienda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoAziendaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoAzienda_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoAzienda_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoAzienda_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_Latte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamento_LatteSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_Latte_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_Latte_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamento_Latte_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindOviTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindOviTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviTipologieProduttive_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindOviTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindOviTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindSuiTipologieProduttive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindSuiTipologieProduttiveSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiTipologieProduttive_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindSuiTipologieProduttive_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindSuiTipologieProduttive_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindOviCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindOviCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindOviCensimentiUnione">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindOviCensimentiUnione" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindOviCensimentiUnioneSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindSuiCensimenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindSuiCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSuiCensimenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindSuiCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindSuiCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAviCensimenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAviCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAviCensimenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAviCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAviCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_AVI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamento_AVISOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamento_AVI_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamento_AVI_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamento_AVI_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamento_AVI">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findAllevamento_AVI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findAllevamento_AVISOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_ListaAllevamenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_ListaAllevamentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_ListaAllevamenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_ListaAllevamenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_ListaAllevamenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetAllevamento_A_Libro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllevamento_A_LibroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllevamento_A_Libro_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/GetAllevamento_A_Libro_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetAllevamento_A_Libro_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamentoNelRaggio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamentoNelRaggioSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamentoNelRaggio_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamentoNelRaggio_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamentoNelRaggio_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento01">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento01" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamento01SOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_DIFF">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento_DIFF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamento_DIFFSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllev_Tipologie_Prod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllev_Tipologie_ProdSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllev_Tipologie_Prod_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllev_Tipologie_Prod_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllev_Tipologie_Prod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Estrazione_Allevamenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Estrazione_AllevamentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Estrazione_Allevamenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Estrazione_Allevamenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Estrazione_Allevamenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindControlli_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindControlli_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindControlli_Allevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindControlli_Allevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindControlli_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_SuiCensimenti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_SuiCensimentiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_SuiCensimenti_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_SuiCensimenti_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_SuiCensimenti_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findBloccoMovimentazioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findBloccoMovimentazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findBloccoMovimentazioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findBloccoMovimentazioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findBloccoMovimentazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getBloccoMovimentazioni_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getBloccoMovimentazioni_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBloccoMovimentazioni">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getBloccoMovimentazioni" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getBloccoMovimentazioniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getProrogaMarcatura_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getProrogaMarcatura_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProrogaMarcatura">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getProrogaMarcatura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getProrogaMarcaturaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findAllevProrogaMarcatura_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findAllevProrogaMarcatura_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevProrogaMarcatura">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findAllevProrogaMarcatura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findAllevProrogaMarcaturaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getEsitoSieroprevalenzaIBR_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getEsitoSieroprevalenzaIBR_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEsitoSieroprevalenzaIBR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getEsitoSieroprevalenzaIBR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getEsitoSieroprevalenzaIBRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findEsitoSieroprevalenzaIBR_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findEsitoSieroprevalenzaIBR_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findEsitoSieroprevalenzaIBR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findEsitoSieroprevalenzaIBR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findEsitoSieroprevalenzaIBRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPascolo_Aziendale_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getPascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getPascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findPascolo_Aziendale" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findPascolo_AziendaleSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findPascolo_Aziendale_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findPascolo_Aziendale_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findPascolo_Aziendale_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findAllevamentoRegistroInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findAllevamentoRegistroInfoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllevamentoRegistroInfo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findAllevamentoRegistroInfo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findAllevamentoRegistroInfo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamentoRegistroInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamentoRegistroInfoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllevamentoRegistroInfo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getAllevamentoRegistroInfo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAllevamentoRegistroInfo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsAziendeQry">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati relativi alle aziende.</wsdl:documentation>
+    <wsdl:port name="wsAziendeQrySoap" binding="tns:wsAziendeQrySoap">
+      <soap:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsAziendeQry.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAziendeQrySoap12" binding="tns:wsAziendeQrySoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsAziendeQry.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

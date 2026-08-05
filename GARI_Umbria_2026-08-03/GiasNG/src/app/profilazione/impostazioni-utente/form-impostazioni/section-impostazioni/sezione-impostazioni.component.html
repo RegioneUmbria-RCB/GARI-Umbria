@@ -1,0 +1,65 @@
+<div class="subsection-container">
+    <div *ngFor="let sottosezione of getChildren(sezioneForm); index as i">
+        <!-- Gestisco la sottosezione in base alla sua espandibilità -->
+        <ng-container [ngTemplateOutlet]="sottosezione.value.espandibile
+                ? expansion_panel
+                : block_subsection" [ngTemplateOutletContext]="{sottosezione:sottosezione}"></ng-container>
+    </div>
+</div>
+
+<!-- Sottosezioni espandibili -->
+<ng-template #expansion_panel let-sottosezione='sottosezione'>
+    <kendo-expansionpanel [title]="sottosezione.value.descrizione">
+        <p *ngIf="isAgendaBlocchiAndCannotBeEdited(sottosezione)" class="infotext">
+            {{'prof.readonlyMode' | transloco}}
+        </p>
+        <div *ngFor="let livello of getChildren(sottosezione); index as j">
+            <ng-container [ngTemplateOutlet]="block_level" [ngTemplateOutletContext]="{livello:livello}"></ng-container>
+        </div>
+    </kendo-expansionpanel>
+</ng-template>
+
+<!-- Sottosezioni non espandibili -->
+<ng-template #block_subsection let-sottosezione='sottosezione'>
+    <section class="light-grey-border">
+        <p *ngIf="isAgendaBlocchiAndCannotBeEdited(sottosezione)" class="infotext">
+            {{'prof.readonlyMode' | transloco}}
+        </p>
+        <h5>{{sottosezione.value.descrizione}}</h5>
+        <div *ngFor="let livello of getChildren(sottosezione); index as j">
+            <ng-container [ngTemplateOutlet]="block_level" [ngTemplateOutletContext]="{livello:livello}"></ng-container>
+        </div>
+        <hr>
+    </section>
+</ng-template>
+
+<!-- Livello (sottosezione della sottosezione) -->
+<ng-template #block_level let-livello='livello'>
+    <section [ngClass]="{'light-grey-border': livello.value.codice != 0}">
+        <h6>{{livello.value.descrizione}}</h6>
+        <div class="inline" *ngFor="let imp of getSettings(livello); index as j">
+            <!--            {{imp.value.guida.Impostazione_Cod}}-->
+            <gias-info-template [title]="getOriginTooltip(imp)"></gias-info-template>
+            <ng-container [ngTemplateOutlet]="+imp.value.guida.Tipo_Campo === 0
+                    ? personalized_setting
+                    : general_setting" [ngTemplateOutletContext]="{imp:imp}"></ng-container>
+        </div>
+    </section>
+</ng-template>
+
+<!-- Gestione impostazioni generiche -->
+<ng-template #general_setting let-imp='imp'>
+    <form [formGroup]="imp">
+        <gias-general-input-template *ngIf="loaded" giasFormControlName="valoreCorrente"
+            [label]="imp.value.guida.Impostazione_Des" [listItems]="imp.value.valori" [value]="imp.value.valoreCorrente"
+            [controlType]="+imp.value.guida.Tipo_Campo" [tooltip]="imp.value.guida.Note"></gias-general-input-template>
+    </form>
+</ng-template>
+
+<!-- Gestione impostazioni specifiche e personalizzate -->
+<ng-template #personalized_setting let-imp='imp'>
+    <form [formGroup]="imp">
+        <app-settings-general-field *ngIf="loaded" giasFormControlName="valoreCorrente"
+            [label]="imp.value.guida.Impostazione_Des" [value]="imp.value.valoreCorrente"></app-settings-general-field>
+    </form>
+</ng-template>

@@ -1,0 +1,23 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && yearList.length > 0" class="grid-full-width">
+    <kendo-label>{{'Anno' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="yearList"
+                        [textField]="'text'"
+                        [valueField]="'value'"
+                        [(ngModel)]="selectedYear"
+                        (valueChange)="onDDLValueChangeYear($event)">
+    </kendo-dropdownlist>
+</div>
+
+<div *ngIf="!loading && areaList.length > 0" class="grid-full-width">
+    <kendo-label>{{'Paese' | transloco}}</kendo-label>
+    <kendo-dropdownlist [data]="areaList"
+                        [textField]="'descr'"
+                        [valueField]="'code'"
+                        [(ngModel)]="selectedCountry"
+                        (valueChange)="onDDLValueChangeCountry($event)">
+    </kendo-dropdownlist>
+</div>

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.2csolution.it/FatturaPassivaPA/V1.0" elementFormDefault="qualified" targetNamespace="http://www.2csolution.it/FatturaPassivaPA/V1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd2" namespace="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" />
+  <xs:element name="Contatto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ContattoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ContattoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVersion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetVersionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAutorizzazioni">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAutorizzazioniResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetAutorizzazioniResult" nillable="true" type="q1:Autorizzazione" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFatture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetFattureResult" nillable="true" type="q2:ArrayOfDatiFattura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattureParam">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="request" nillable="true" type="q3:GetFattureRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattureParamResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetFattureParamResult" nillable="true" type="q4:ArrayOfDatiFattura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattureFilter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="start" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="end" nillable="true" type="xs:dateTime" />
+        <xs:element xmlns:q5="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="request" nillable="true" type="q5:GetFattureRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattureFilterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetFattureFilterResult" nillable="true" type="q6:ArrayOfDatiFattura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFattura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFatturaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetFatturaResult" nillable="true" type="q7:Fattura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFatturaDisinbustata">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFatturaDisinbustataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="GetFatturaDisinbustataResult" nillable="true" type="q8:Fattura" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEsito">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="idEsito" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEsitoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetEsitoResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProtocollo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroFattura" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numeroProtocollo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataProtocollo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="numeroRegistrazione" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataRegistrazione" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProtocolloResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProtocolloSezionale">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroFattura" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numeroProtocollo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataProtocollo" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="numeroRegistrazione" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataRegistrazione" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sezionale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetProtocolloSezionaleResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiProtocollo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroFattura" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numeroProtocollo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataProtocollo" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiProtocolloResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiProtocolloLottoIntero">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroProtocollo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataProtocollo" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiProtocolloLottoInteroResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiRegistrazione">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroFattura" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="numeroRegistrazione" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dataRegistrazione" nillable="true" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="sezionale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetDatiRegistrazioneResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaEsitoCommittente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element xmlns:q9="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="esitoCommittente" type="q9:TipoEsitoCommittenteEnum" />
+        <xs:element minOccurs="0" name="note" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaEsitoCommittenteResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaEsitoCommittenteSingolaFattura">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="codiceUfficio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idSdi" type="xs:long" />
+        <xs:element minOccurs="0" name="numeroFattura" nillable="true" type="xs:string" />
+        <xs:element xmlns:q10="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" minOccurs="0" name="esitoCommittente" type="q10:TipoEsitoCommittenteEnum" />
+        <xs:element minOccurs="0" name="note" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreaEsitoCommittenteSingolaFatturaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="codiceCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="passwordServizi" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,9 @@
+<div [formGroup]="ProdottiForm" class="col-12" style="display:flex;justify-content: flex-end;">
+    <button kendoTooltip class="btn btn-primary btn-primary-fill btn-sm"
+            (click)="AggiungiDoseProdotto(ProdottiForm)"
+            [disabled]="Disabilita_Btn_AggiungiDoseProdotto(ProdottiForm)"
+            [title]="'AggiungiProdotto' | transloco"
+    >
+        <fa-icon size="lg" [icon]="['fas', 'plus']" aria-hidden="true" class="bottone-aggiunta"></fa-icon>
+    </button>
+</div>

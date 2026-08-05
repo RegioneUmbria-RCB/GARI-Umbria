@@ -1,0 +1,85 @@
+<div *ngIf="pianoContiSelected" class="container">
+    <form [formGroup]="mainForm">
+        <gias-update-toolbar [TipoOperazioneDB]="tipoOperazione" [submit]="false" [salvaNuovo]="false"
+            (clickEvent)="SalvaPianoConti()">
+        </gias-update-toolbar>
+        <div class="jumbotron">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row form-row">
+                        <div class="col-2 col-sm-3 "></div>
+                        <div class="col-8 col-sm-6">
+                            <gias-form-error-visualizer [form]="mainForm"></gias-form-error-visualizer>
+                        </div>
+                        <div class="col-2 col-sm-3"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="content">
+                            <span class="content-text">
+                                <div class="row ">
+                                    <div class="col-12">
+
+                                        <h4 class="card-title" style="text-align: center;">{{'Dati_PianoConti' |
+                                            transloco}}</h4>
+
+                                        <div class="row form-row">
+                                            <div class="col-12 col-sm-6">
+                                                <gias-drop-down-template [name]="'Impresa' | transloco"
+                                                    [listItems]="ragioneSociale_List" [textField]="'ragioneSociale'"
+                                                    [valueField]="'partitaIva'" [obligatory]="true"
+                                                    [isDisabled]="isFormDisabled" giasFormControlName="ragione_sociale"
+                                                    [valuePrimitive]="false">
+                                                </gias-drop-down-template>
+
+
+                                                <gias-switch-template [name]="'ValidoTutteImprese' | transloco"
+                                                    giasFormControlName="validoTutteImprese"
+                                                    [isDisabled]="isFormDisabled"
+                                                    (valueChange)="changeTutteImpese($event)">
+                                                </gias-switch-template>
+
+                                            </div>
+
+                                            <div class="col-12 col-sm-6">
+                                                <gias-text-template [name]="('DescrizionePianoConti' | transloco)"
+                                                    [obligatory]="true" [isDisabled]="isFormDisabled"
+                                                    giasFormControlName="descrizionePianoConti">
+                                                </gias-text-template>
+                                            </div>
+                                        </div>
+
+                                        <h5 class="mt-5">{{'SceltaConti' |
+                                            transloco}}</h5>
+
+                                        <div class="row form-row mt-2">
+                                            <div class="col-12">
+                                                <kendo-treeview kendoTreeViewDragAndDrop kendoTreeViewDragAndDropEditing
+                                                    kendoTreeViewHierarchyBinding
+                                                    kendoTreeViewCheckable
+                                                    [kendoTreeViewSelectable]="false"
+                                                    [checkBy]="key"
+                                                    [expandBy]="'id'"
+                                                    childrenField="children" [nodes]="dataTreeView"
+                                                    textField="descrizione" kendoTreeViewExpandable expandBy="id"
+                                                    [expandedKeys]="expandedKeys"
+                                                    (nodeDrop)="onNodeDrop($event)"
+                                                    [(checkedKeys)]="checkedKeys"
+                                                    (checkedChange)="onCheckChange($event)"
+                                                    [isChecked]="isChecked"
+                                                    (nodeDragEnd)="recicleOrders($event)"
+                                                    > 
+                                                </kendo-treeview>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

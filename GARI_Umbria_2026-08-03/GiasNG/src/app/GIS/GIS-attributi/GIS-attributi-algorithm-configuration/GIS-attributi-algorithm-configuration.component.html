@@ -1,0 +1,45 @@
+<div class="algorithm-configuration">
+  <h5>{{ 'gis.ImpostazioniValidePerLayerXLayer' | transloco: { layer: layer.nome } }}</h5>
+
+  <h6>Non disponibile.</h6>
+
+  <!-- Attivare quando avremo migliore gestione -->
+
+  <!--
+  <div class="configurations" *ngFor="let configuration of configurations">
+
+    <div class="description">
+      <h6> {{ 'gis.AlgoritmoXNome' | transloco: { algorithm: configuration.LayerAnalysisConfig_Algorithm_Des } }}</h6>
+      <h6> - </h6>
+      <h6> {{ 'gis.ConfigurazioneXNome' | transloco: { configuration: configuration.LayerAnalysisConfig_Des } }}</h6>
+    </div>
+
+    <div class="all-polygons">
+      <div (click)="onChangeLayerConfiguration(configuration, $event)" class="pointer">
+        <kendo-switch class="configuration-switch" [checked]="configuration.AttivaSuTuttiLayer"
+          [readonly]="true"></kendo-switch>
+      </div>
+
+      <div class="all-polygons-description">
+        <h6> {{ 'gis.EseguiSuTuttiILayer' | transloco }}</h6>
+        <h6> {{ 'gis.PoligoniAttiviXAttualiXTotali' | transloco: { current: configuration.NumEntitaAttive, total:
+          configuration.NumEntitaMax } }}</h6>
+      </div>
+    </div>
+  </div>
+  -->
+
+</div>
+
+<kendo-dialog *ngIf="changeLayerConfigurationEnable != null" (close)="changeLayerConfigurationEnable = null">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <p>{{ 'gis.ConfermaAttributiResetConfigurazione' | transloco }}</p>
+
+  <kendo-dialog-actions>
+    <button kendoButton (click)="changeLayerConfigurationEnable = null">{{ 'No' | transloco }}</button>
+    <button kendoButton (click)="changeActiveOnAllPolygons()">{{ 'Si' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-12 col-sm-12">
+        <gias-kendo-grid #GridOperatori [gridId]="'OperatoriGridId'" class="kendo-grid-no-shadows">
+            <ng-container headerContentButtons>
+                <div kendoTooltip>
+                    <button class="btn btn-primary btn-sm btn-primary-fill"
+                            [title]="'ImpostaSelezionePreferitaText' | transloco"
+                            [type]="'button'"
+                            style="margin-right: 5px"
+                            [disabled]="disabilitaBtnSalvaDefaultOperatori()"
+                            (click)="gridoperatorihttpService.SalvaDefaultOperatori()"
+                    >
+                        <fa-icon class="faImpostaPreferita"></fa-icon>
+                    </button>
+                </div>
+                <div kendoTooltip *ngIf="qdcservice.Scrittura_Modifica_Anagrafica_Contatto">
+                    <button class="btn btn-primary btn-sm btn-primary-fill"
+                            (click)="gridoperatorihttpService.ApriAnagraficaContatto(null,true)"
+                            [title]="'NuovaRisorsaText' | transloco"
+                            [type]="'button'"
+                            [disabled]="disabilitaBtnNuovoOperatore()"
+                    >
+                        <fa-icon class="faOperatoriNuovaRisorsa"></fa-icon>
+                    </button>
+                </div>
+                <span class="separator"></span>
+            </ng-container>
+        </gias-kendo-grid>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema xmlns:mstns="http://bdr.izs.it/XMLSchema/dsUSCITE_D.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns="http://bdr.izs.it/XMLSchema/dsUSCITE_D.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/XMLSchema/dsUSCITE_D.xsd" id="dsUSCITE_D" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element msdata:IsDataSet="true" name="dsUSCITE_D">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="USCITA">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="P_USCITA_ID" type="xs:decimal"/>
+							<xs:element name="P_AZIENDA_CODICE" type="xs:string"/>
+							<xs:element name="P_ALLEV_ID_FISCALE" type="xs:string"/>
+							<xs:element name="P_CAPO_CODICE" type="xs:string"/>
+							<xs:element name="P_CODICE_SPECIE" type="xs:string"/>
+							<xs:element minOccurs="0" name="P_MOTIVO" type="xs:string"/>
+							<xs:element name="P_DT_USCITA" type="xs:date"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+		<xs:unique name="Constraint1">
+			<xs:selector xpath=".//mstns:USCITA"/>
+			<xs:field xpath="mstns:P_USCITA_ID"/>
+		</xs:unique>
+	</xs:element>
+</xs:schema>

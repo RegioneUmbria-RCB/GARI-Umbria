@@ -1,0 +1,45 @@
+<div [formGroup]="qdcservice.TestataForm">
+    <div class="gias-testata-container">
+        <div class="gias-testata-section ricetta-descrizione">
+            <div class="gias-description-container">
+                <gias-text-template [name]="'Descrizione' | transloco"
+                                    giasFormControlName="Ricetta_Des">
+                </gias-text-template>
+            </div>
+        </div>
+
+        <div class="gias-testata-section">
+            <div class="gias-number-container">
+                <gias-text-template [name]="'Numero' | transloco"
+                                    giasFormControlName="Ricetta_Numero">
+                </gias-text-template>
+            </div>
+        </div>
+
+        <div class="gias-testata-section">
+            <div class="gias-data-container">
+                <gias-data-template [name]="'Da' | transloco"
+                                    giasFormControlName="Ricetta_Data_Da">
+                </gias-data-template>
+            </div>
+
+        </div>
+
+        <div class="gias-testata-section">
+            <div class="gias-data-container">
+                <gias-data-template [name]="'A' | transloco"
+                                    giasFormControlName="Ricetta_Data_A">
+                </gias-data-template>
+            </div>
+        </div>
+
+        <div class="gias-testata-section ricetta-note">
+            <div class="gias-note-container">
+                <gias-text-template [name]="'Note' | transloco"
+                                    giasFormControlName="Ricetta_Note"
+                                    [maxlength]="4000">
+                </gias-text-template>
+            </div>
+        </div>
+    </div>
+</div>

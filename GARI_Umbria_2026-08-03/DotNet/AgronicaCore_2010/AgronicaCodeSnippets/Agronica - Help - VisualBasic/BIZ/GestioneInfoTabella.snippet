@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Data Creazione, modifica, ecc.. (core biz lettura xml)</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Aggiunge l'assegnazione di data creazione, modifica, username (core biz lettura xml)</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>nodoxml</ID>
+          <Type/>
+          <ToolTip>Sostituire con l'origine dati per il nodo xml che si sta usando.</ToolTip>
+          <Default>DrUtentixAppezzamenti</Default>
+          <Function/>
+        </Literal>
+
+        <Literal>
+          <ID>Data Creazione, modifica, ecc..</ID>
+          <Default>Data Creazione, modifica, ecc..</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[.SetAttribute("data_creazione", Agro_SQL_Load($nodoxml$(i).Item("tabella_data_creazione")))
+.SetAttribute("data_modifica", Agro_SQL_Load($nodoxml$(i).Item("tabella_data_modifica")))
+.SetAttribute("username_creazione", Agro_SQL_Load($nodoxml$(i).Item("tabella_username_creazione")))
+.SetAttribute("username_modifica", Agro_SQL_Load($nodoxml$(i).Item("tabella_username_modifica")))
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

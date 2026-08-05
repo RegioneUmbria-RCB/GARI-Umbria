@@ -1,0 +1,64 @@
+﻿<div class="marker-window" *ngIf="{ markers: data$ | async } as data">
+  <div class="marker-window-row gap-10">
+
+    <button kendoButton class="flex-2 margin-0"
+      (click)="handleAddFromMapClick()" themeColor="success">Imposta da
+      Mappa</button>
+
+    <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-check marker-window-btn size-22"
+      [disabled]="tmpPolygon == null" themeColor="success" (click)="save()" [title]="'Salva' | transloco"
+      gisTooltip></button>
+
+    <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-close marker-window-btn size-22"
+      themeColor="error" (click)="reset(data.markers)" [title]="'Annulla' | transloco" gisTooltip></button>
+  </div>
+
+  <div class="marker-window-column mh-200" *ngIf="data.markers != null">
+    <div class="marker-window-row">
+      <div class="flex-1"> {{ 'Centro' | transloco }} </div>
+      <div class="flex-2"> lat: {{ data.markers.markerCenter.lat() }}</div>
+      <div class="flex-2"> lng: {{ data.markers.markerCenter.lng() }}</div>
+      <div class="flex-2"> {{ 'gis.Lato' | transloco }} {{ data.markers.distanceX }}x{{ data.markers.distanceY }}m
+      </div>
+    </div>
+    <div class="marker-window-row">
+      <div class="flex-1"> {{ 'gis.NordEst' | transloco }} </div>
+      <div class="flex-2"> lat: {{ data.markers.markerNE.lat() }}</div>
+      <div class="flex-2"> lng: {{ data.markers.markerNE.lng() }}</div>
+      <div class="flex-2"></div>
+    </div>
+    <div class="marker-window-row">
+      <div class="flex-1"> {{ 'gis.NordOvest' | transloco }} </div>
+      <div class="flex-2"> lat: {{ data.markers.markerNW.lat() }}</div>
+      <div class="flex-2"> lng: {{ data.markers.markerNW.lng() }}</div>
+      <div class="flex-2"></div>
+    </div>
+    <div class="marker-window-row">
+      <div class="flex-1"> {{ 'gis.SudOvest' | transloco }} </div>
+      <div class="flex-2"> lat: {{ data.markers.markerSW.lat() }}</div>
+      <div class="flex-2"> lng: {{ data.markers.markerSW.lng() }}</div>
+      <div class="flex-2"></div>
+    </div>
+    <div class="marker-window-row">
+      <div class="flex-1"> {{ 'gis.SudEst' | transloco }} </div>
+      <div class="flex-2"> lat: {{ data.markers.markerSE.lat() }}</div>
+      <div class="flex-2"> lng: {{ data.markers.markerSE.lng() }}</div>
+      <div class="flex-2"></div>
+    </div>
+
+  </div>
+</div>
+
+<kendo-dialog *ngIf="isNewPolygonConfirmationOpen" (close)="isNewPolygonConfirmationOpen = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div class="exit-text">{{ 'gis.ToolDisegnoAvanzatoReset' | transloco }}
+  </div>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="resetAndAddNew()">{{ 'Si' | transloco }}</button>
+    <button kendoButton (click)="isNewPolygonConfirmationOpen = false">{{ 'No' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

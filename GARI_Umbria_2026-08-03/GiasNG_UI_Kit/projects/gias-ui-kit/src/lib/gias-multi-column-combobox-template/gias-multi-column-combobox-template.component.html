@@ -1,0 +1,148 @@
+<div *ngIf="(giasFormControlName == undefined || giasFormControlName == null || giasFormControlName == '')">
+  <div *ngIf="inputType == 2">
+    <kendo-label>{{name}}</kendo-label>
+    <kendo-multicolumncombobox #multicolumncombobox [filterable]="filterable" [data]="listItems" [textField]="textField"
+      [valueField]="valueField" class="form-control valid" [ngClass]="{'required' : obligatory}" [(ngModel)]="value"
+      [valuePrimitive]="true" (valueChange)="changeValue($event)" (selectionChange)="changeSelection($event)"
+      (open)="openDdl()" [disabled]="isDisabled" [kendoDropDownFilter]="filterSettings" [loading]="loading"
+      (filterChange)="handleFilter($event)" (close)="handleClose($event)" [popupSettings]="popupSettings"
+      [readonly]="readonly" [clearButton]="clearButton" [placeholder]="placeholder" (focus)="onFocus($event)"
+      (blur)="onBlur($event)" [allowCustom]="allowCustom" [valueNormalizer]="valueNormalizer"
+      (closed)="OnClosed($event)" [virtual]="virtualization">
+
+      <ng-template kendoMultiColumnComboBoxNoDataTemplate *ngIf="!!noDataTemplate">
+        <ng-container *ngTemplateOutlet="noDataTemplate">
+        </ng-container>
+      </ng-template>
+
+      <kendo-combobox-column *ngFor="let col of columns; let i = index" [field]="col.field" [title]="col.title"
+        [hidden]="col.hidden" [media]="col.media" [width]="col.width" [class]="col.class" [style]="col.style">
+
+        <ng-template kendoMultiColumnComboBoxColumnHeaderTemplate>
+          <ng-container *ngTemplateOutlet="ShowColumnValue; context: { value: col.title  }">
+          </ng-container>
+        </ng-template>
+
+        <!--Non utilizzare degli ng template innestati-->
+        <ng-template *ngIf="col.ColumnComboBoxColumnCellTemplate === false" kendoMultiColumnComboBoxColumnCellTemplate
+          #column let-dataItem>
+
+          <ng-container *ngIf="ShowElementInList(dataItem); else NoData">
+            <ng-container *ngIf="col.isArray === false">
+              <ng-container *ngIf="col.type == 'number' && col.formatNumbertolocal === true">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="col.type != 'date' && col.formatNumbertolocal === false">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="col.type == 'date'">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="col.isArray === true">
+              <ng-container *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+
+
+        <ng-template *ngIf="col.ColumnComboBoxColumnCellTemplate === true" kendoMultiColumnComboBoxColumnCellTemplate
+          let-dataItem>
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: dataItem[col.field]  }">
+          </ng-container>
+        </ng-template>
+
+      </kendo-combobox-column>
+    </kendo-multicolumncombobox>
+  </div>
+</div>
+
+<div *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+  <kendo-formfield *ngIf="inputType == 2">
+    <kendo-label *ngIf="name != undefined && name != null && name != ''"
+      [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+    <kendo-multicolumncombobox #multicolumncombobox [filterable]="filterable" [data]="listItems" [textField]="textField"
+      [valueField]="valueField" style="width: 100%" [ngClass]="{'required' : obligatory}"
+      [valuePrimitive]="valuePrimitive" (valueChange)="changeValue($event)" (selectionChange)="changeSelection($event)"
+      (open)="openDdl()" [kendoDropDownFilter]="filterSettings" [formControlName]="giasFormControlName"
+      [loading]="loading" (filterChange)="handleFilter($event)" (close)="handleClose($event)"
+      [popupSettings]="popupSettings" [readonly]="readonly" [clearButton]="clearButton" [placeholder]="placeholder"
+      (blur)="onBlur($event)" (focus)="onFocus($event)" [allowCustom]="allowCustom" [valueNormalizer]="valueNormalizer"
+      (closed)="OnClosed($event)" [virtual]="virtualization">
+
+      <ng-template kendoMultiColumnComboBoxNoDataTemplate *ngIf="!!noDataTemplate">
+        <ng-container *ngTemplateOutlet="noDataTemplate">
+        </ng-container>
+      </ng-template>
+
+      <kendo-combobox-column *ngFor="let col of columns; let i = index" [field]="col.field" [title]="col.title"
+        [hidden]="col.hidden" [media]="col.media" [width]="col.width" [class]="col.class" [style]="col.style">
+
+        <ng-template kendoMultiColumnComboBoxColumnHeaderTemplate>
+          <ng-container *ngTemplateOutlet="ShowColumnValue; context: { value: col.title  }">
+          </ng-container>
+        </ng-template>
+
+        <!--Non utilizzare degli ng template innestati-->
+        <ng-template *ngIf="col.ColumnComboBoxColumnCellTemplate === false" kendoMultiColumnComboBoxColumnCellTemplate
+          #column let-dataItem>
+
+          <ng-container *ngIf="ShowElementInList(dataItem); else NoData">
+            <ng-container *ngIf="col.isArray === false">
+              <ng-container *ngIf="col.type == 'number' && col.formatNumbertolocal === true">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="col.type != 'date' && col.formatNumbertolocal === false">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+
+              <ng-container *ngIf="col.type == 'date'">
+                <ng-container
+                  *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+                </ng-container>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="col.isArray === true">
+              <ng-container *ngTemplateOutlet="ShowColumnValue; context: { value: FormatColumnValue(dataItem, col)  }">
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+
+
+        <ng-template *ngIf="col.ColumnComboBoxColumnCellTemplate === true" kendoMultiColumnComboBoxColumnCellTemplate
+          let-dataItem>
+          <ng-container *ngTemplateOutlet="itemTemplate; context: { $implicit: dataItem[col.field]  }">
+          </ng-container>
+        </ng-template>
+
+      </kendo-combobox-column>
+    </kendo-multicolumncombobox>
+  </kendo-formfield>
+</div>
+
+<ng-template #NoData kendoComboBoxNoDataTemplate>
+  <div></div>
+</ng-template>
+
+<ng-template #ShowColumnValue let-value="value">
+  <span class="FormattaTestoClamp" [title]="value">
+    {{ value }}
+  </span>
+</ng-template>

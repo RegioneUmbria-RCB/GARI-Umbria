@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{F39DF4FC-575B-4B88-A850-26336E58671D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCodeSnippets</RootNamespace>
+    <AssemblyName>AgronicaCodeSnippets</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Agronica - Help - JS\Agronica\Html\CheckBoxServer.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\Html\EtichettaCasellaTesto.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\Html\EtichettaDDLServer.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\Html\iFrame100Percent.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\AgronicaAddHash.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\AjaxJsonClient.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\AgronicaAjaxChiamat.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\iFrameSetSrc.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\WaTable\WaTableImpostaFiltri.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\WaTable\WaTableRecuperaFiltri.snippet" />
+    <None Include="Agronica - Help - JS\Agronica\JS\WaTable\WaTableNuova.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\Alert.Snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\Collapse.Snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\EtichettaCasellaTesto.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\FormOrizzontale.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\Modal.Snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\Pulsante.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\HTML\EtichettaCheckBox.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\BootStrap3\JS\modal.apri.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\JS\modal.inizializza.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap3\JS\typeahead.ajaxclient.snippet" />
+    <None Include="Agronica - Help - JS\BootStrap4\HTML\template.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\JQuery\html\jq.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscript.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscriptcdngoogle.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscriptcdnms.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscriptmin.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscriptuicdngoogle.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\html\jqscriptvalidatecdnms.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\func.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqafter.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqajax.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqajaxaspnetwebservice.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqappend.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqappendto.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqattrget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqattrremove.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqattrset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqattrsetfn.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqattrsetobj.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqbefore.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqbind.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqbindwithdata.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqblur.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqchange.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclassadd.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclassremove.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclasstoggle.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclasstogglefn.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclick.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclone.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqclonewithevents.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqcssget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqcssset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqcsssetobj.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdataget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdataremove.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdataset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdie.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdieall.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdiefn.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdr.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqdrs.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqeachelement.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqempty.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadein.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadeinfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadeout.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadeoutfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadeto.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfadetofull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqfocus.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqgetjson.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqgetscript.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhasclass.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqheightget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqheightset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhide.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhidefull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhover.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhtmlget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqhtmlset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqinnerheight.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqinnerwidth.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqinsertafter.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqinsertbefore.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqkeydown.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqkeypress.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqkeyup.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqlive.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqloadget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqloadpost.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmousedown.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmouseenter.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmouseleave.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmousemove.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmouseout.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmouseover.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqmouseup.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqoffset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqoffsetparent.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqone.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqonewithdata.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqouterheight.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqouterwidth.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqplugin.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqposition.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqpost.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqprepend.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqprependto.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqremove.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqremoveexp.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqreplaceall.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqreplacewith.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqresize.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqscroll.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqscrollleftget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqscrollleftset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqscrolltopget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqscrolltopset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqselect.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqselecttrigger.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqshow.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqshowfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqslidedown.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqslidedownfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqslideup.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqslideupfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqsubmit.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqsubmittrigger.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtextget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtextset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtoggle.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtogglemore.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtogglevis.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtogglevisfull.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtogglevisswitch.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtrigger.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtriggerhandler.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtriggerhandlerwithdata.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqtriggerwithdata.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqunbind.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqunbindall.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqunbindfn.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqunload.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqvalget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqvalset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqwidthget.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqwidthset.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqwrap.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqwrapall.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\js\jqwrapinner.snippet" />
+    <None Include="Agronica - Help - JS\JQuery\template.snippet" />
+    <None Include="Agronica - Help - JS\Kendo\GrigliaKendoIngDatiAgg.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\Kendo\GrigliaKendoIng.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\Kendo\GrigliaKendo.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\JSDoc.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\Kendo\ColonnaKendoTemplate.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - JS\Kendo\PivotKendo.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\AgVarieUtili\EccezioniMessaggi\EccezioneSemplice.snippet" />
+    <None Include="Agronica - Help - VisualBasic\AgVarieUtili\EccezioniMessaggi\template.snippet" />
+    <None Include="Agronica - Help - VisualBasic\AgVarieUtili\Griglie\KendoData.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\BIZ\GestioneTransazione.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\BIZ\GestioneInfoTabella.snippet" />
+    <None Include="Agronica - Help - VisualBasic\BIZ\GestioneInfoTabellaScrivi.snippet" />
+    <None Include="Agronica - Help - VisualBasic\BIZ\GestioneInfoTabellaScriviLINQ.snippet" />
+    <None Include="Agronica - Help - VisualBasic\BIZ\nuovobizEntityFramework.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuovodalEntityFramework_leggi.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuovodalEntityFramework_Scrivi.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuvodal.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuvodalVB6.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuvodalVB6Scrittura.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Creazione DAL\nuovodalEntityFramework.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\DAL\Modifiche DAL per campi GIAS\GestioneInfoTabella.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Modifiche DAL per campi GIAS\GestioneInfoTabella_ParametriFunzioneSalva.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Modifiche DAL per campi GIAS\GestioneInfoTabella_ParametriFuzioneSalvaChiamata.snippet" />
+    <None Include="Agronica - Help - VisualBasic\DAL\Modifiche DAL per campi GIAS\GestioneInfoTabella_QuerySalvataggio.snippet" />
+    <None Include="Agronica - Help - VisualBasic\SincroImportExport\INDICODE_EDI_Euritmo\stdClassEDI_Unittest.snippet" />
+    <None Include="Agronica - Help - VisualBasic\WEB\CoreWS\coreWsRvalTipizzato_2021.snippet" />
+    <None Include="Agronica - Help - VisualBasic\WEB\CoreWS\coreWS_2021.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\WEB\CoreWS\coreWS.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Help - VisualBasic\WEB\scriptService.snippet" />
+    <None Include="Agronica - Helper - XAML\XAMLPicker.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Helper - XAML\XAMLEtichettaDatePicker.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - Helper - XAML\XAMLEtichettaCasellaTesto.snippet">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Agronica - KendoUI for JQuery\KendoGrid\ColonnaKendoTemplate.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoGrid\GrigliaKendo.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoGrid\GrigliaKendoIng.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoGrid\GrigliaKendoIngDatiAgg.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoGrid\PivotKendo.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoPanelBar\PanelBarBasicLiElem.snippet" />
+    <None Include="Agronica - KendoUI for JQuery\KendoPanelBar\PanelBarBasic.snippet" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="template.snippet">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Agronica - Help - VisualBasic\WEB\CoreWS\coreWsRvalTipizzato.snippet" />
+    <Content Include="vsMacro_Utili\vs2015\AddComment.js" />
+    <Content Include="vsMacro_Utili\AgronicaMacro.txt" />
+    <Content Include="vsMacro_Utili\vs2015\EmbedString_SBuilder.js" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

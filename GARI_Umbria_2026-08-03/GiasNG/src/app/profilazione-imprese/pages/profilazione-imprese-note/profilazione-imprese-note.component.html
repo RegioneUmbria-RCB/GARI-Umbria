@@ -1,0 +1,84 @@
+<div class="prof-imprese-column gap-20">
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-global [globalSubject]="globalSubject"></app-profilazione-imprese-global>
+
+    <app-profilazione-imprese-specie [specieSubject]="specieSubject" [globalSubject]="globalSubject"
+      [additionalElement]="additionalSpecie"></app-profilazione-imprese-specie>
+
+    <div class="spacer"></div>
+  </div>
+
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-campo-applicativo
+      [campoApplicativoSubject]="campoApplicativoSubject"></app-profilazione-imprese-campo-applicativo>
+
+    <div class="prof-imprese-gestione-note">
+      <button kendoButton
+        class="btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+        (click)="gruppoNoteDialogOpened = true">{{ 'profImprese.GestioneNote' | transloco }}</button>
+    </div>
+  </div>
+
+  <div class="prof-imprese-row gap-20">
+    <app-profilazione-imprese-gruppo-operazione [gruppoOperazioneSubject]="gruppoOperazioneSubject"
+      [addAll]="true"></app-profilazione-imprese-gruppo-operazione>
+
+    <app-profilazione-imprese-lavorazione [gruppoOperazioneSubject]="gruppoOperazioneSubject"
+      [lavorazioneSubject]="lavorazioneSubject" [addAll]="true"></app-profilazione-imprese-lavorazione>
+  </div>
+
+  <app-profilazione-imprese-note-list [campoApplicativoSubject]="campoApplicativoSubject"
+    [noteSelectedSubject]="noteSelectedSubject"></app-profilazione-imprese-note-list>
+
+  <ng-container *ngIf="{ specie: specieSubject | async, 
+    campoApplicativo: campoApplicativoSubject | async, 
+    lavorazione: lavorazioneSubject | async, 
+    note: noteSelectedSubject | async, 
+    global: globalSubject | async,
+    piva: piva$ | async } as data">
+    <div>
+      <button kendoButton
+        class="save-button btn btn-primary btn-primary-fill btn-sm btn-primary-text k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+        (click)="save(data.specie, data.campoApplicativo, data.lavorazione, data.note, data.global, data.piva)">{{
+        'Salva' | transloco }}</button>
+    </div>
+
+    <div>
+      <kendo-grid [kendoGridBinding]="data$ | async" [loading]="dataLoading"
+        [pageable]="{ type: 'input', pageSizes: true }" [pageSize]="10">
+        <kendo-grid-command-column [width]="100">
+          <ng-template kendoGridCellTemplate let-dataItem="dataItem">
+            <div class="cmd-row">
+              <button [title]="'Modifica' | transloco" (click)="edit(dataItem)">
+                <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+              </button>
+
+              <button [title]="'Elimina' | transloco" (click)="delete(dataItem, data.global, data.piva)">
+                <i aria-hidden="true" class="k-icon k-i-trash"></i>
+              </button>
+            </div>
+          </ng-template>
+        </kendo-grid-command-column>
+
+        <kendo-grid-column field="notautilizzo_des"
+          [title]="'profImprese.CampoApplicativo' | transloco"></kendo-grid-column>
+        <kendo-grid-column field="Lav_des" [title]="'profImprese.Lavorazione' | transloco"></kendo-grid-column>
+        <kendo-grid-column field="Veg_des" [title]="'Specie' | transloco"></kendo-grid-column>
+        <kendo-grid-column field="note" [title]="'profImprese.Note' | transloco">
+          <ng-template kendoGridCellTemplate let-dataItem>
+            <div [innerHTML]="dataItem.nota_des"></div>
+          </ng-template>
+        </kendo-grid-column>
+
+      </kendo-grid>
+    </div>
+  </ng-container>
+</div>
+
+
+<kendo-dialog [title]="'profImprese.GestioneNote' | transloco" class="gruppo-note-dialog" *ngIf="gruppoNoteDialogOpened"
+  (close)="gruppoNoteDialogOpened = false">
+  <div class="profilazione-imprese-note-dialog">
+    <app-profilazione-imprese-gruppo-note-dialog></app-profilazione-imprese-gruppo-note-dialog>
+  </div>
+</kendo-dialog>

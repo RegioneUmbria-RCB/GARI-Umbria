@@ -1,0 +1,135 @@
+
+.widget-customization-body {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.widget-customization-title {
+  margin-bottom: 14px;
+}
+
+.checkbox-container {
+  display: flex;
+}
+
+/* widget customization item */
+.widget-customization-body .widget-customization-item {
+  display: flex;
+  line-height: 40px;
+  gap: 15px;
+}
+
+.widget-customization-body .widget-customization-item .item-title {
+  justify-content: start;
+}
+
+.widget-customization-body .widget-customization-item .item-switch {
+  justify-content: end;
+}
+
+/* switch */
+/* toggle in label designing */
+.widget-customization-item .toggle {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 27px;
+  background-color: #575757;
+  border-radius: 30px;
+  border: 2px solid #575757;
+  box-sizing: unset;
+}
+
+/* After slide changes */
+.widget-customization-item .toggle:after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 1px;
+  transition: all 0.5s;
+}
+
+/* Checkbox checked effect */
+.widget-customization-item .checkbox:checked + .toggle::after {
+  left: 25px;
+}
+
+/* Checkbox checked toggle label bg color */
+.widget-customization-item .checkbox:checked + .toggle {
+  background-color: #29C105;
+  border: 2px solid #29C105;
+}
+
+/* Checkbox vanished */
+.widget-customization-item .checkbox {
+  display: none;
+}
+
+/* switch customization */
+.widget-customization-item .switch-icons-container {
+  display: flex;
+}
+
+.widget-customization-item .switch-icon {
+  line-height: 27px;
+  font-size: 1rem;
+}
+
+.widget-customization-item .switch-icons-container .switch-icon-check {
+  margin-left: 6px;
+  color: white;
+}
+
+.widget-customization-item .switch-icons-container .switch-icon-x {
+  margin-left: 10px;
+  color: white;
+  line-height: 25px;
+}
+
+/* readonly widget */
+.widget-customization-item .readonly .toggle {
+  position: relative;
+  display: inline-block;
+  width: 51px;
+  height: 27px;
+  background-color: #BABABA;
+  border-radius: 30px;
+  border: 2px solid #BABABA;
+}
+
+.widget-customization-item .readonly .checkbox:checked + .toggle {
+  background-color: #BABABA;
+  border: 2px solid #BABABA;
+}
+
+.preset-switch {
+  justify-content: start !important;
+}
+
+.custom-checkbox {
+  font-size: large;
+  margin-right: 5px;
+}
+
+.new-widget {
+  font-weight: bold;
+  color: #002D5A;
+}
+
+.max-width {
+  width: 100%;
+}
+
+.preset-item-switch {
+  padding-top: 5px;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+

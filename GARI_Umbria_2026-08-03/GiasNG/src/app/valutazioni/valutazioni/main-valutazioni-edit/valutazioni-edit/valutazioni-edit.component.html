@@ -1,0 +1,86 @@
+<div *ngIf="valutazioneSelected" class="container">
+    <form [formGroup]="mainForm">
+
+        <gias-update-toolbar [TipoOperazioneDB]="tipoOperazione" [submit]="false" [salvaNuovo]="false"
+            (clickEvent)="SalvaValutazione()">
+        </gias-update-toolbar>
+
+        <!-- TODO_EXCEL: Giulia 27/09/2023 = l'excel ancora non esiste quindi per il momento è commentato -->
+        <button *ngIf="tipoOperazione != 1" kendoTooltip class="btn btn-primary btn-sm btn-primary-fill btn-important button-icon-download-excel mt-3"
+            (click)="downloadExcel()" [title]="'DownloadExcel' | transloco">
+            <fa-icon [icon]="faPlusSquare" aria-hidden="true"></fa-icon>
+        </button>
+
+        <div class="jumbotron">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row form-row">
+                        <div class="col-2 col-sm-3 "></div>
+                        <div class="col-8 col-sm-6">
+                            <gias-form-error-visualizer [form]="mainForm"></gias-form-error-visualizer>
+                        </div>
+                        <div class="col-2 col-sm-3"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="content">
+                            <span class="content-text">
+                                <div class="row ">
+                                    <div class="col-12">
+
+                                        <h4 class="card-title" style="text-align: center;">{{'Dati_Valutazione' |
+                                            transloco}}</h4>
+
+                                        <div class="row form-row">
+                                            <div class="col-12 col-sm-6">
+                                                <gias-drop-down-template [name]="'Ragione_Sociale1' | transloco"
+                                                    [listItems]="ragioneSociale_List" [textField]="'ragioneSociale'"
+                                                    [valueField]="'partitaIva'" [obligatory]="true"
+                                                    [isDisabled]="isFormDisabled" giasFormControlName="ragione_sociale"
+                                                    [valuePrimitive]="false">
+                                                </gias-drop-down-template>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-12 col-sm-6">
+                                                <gias-data-template [name]="'Data_Redazione' | transloco"
+                                                    giasFormControlName="dataRedazione">
+                                                </gias-data-template>
+                                            </div>
+
+                                            <div class="col-12 col-sm-6">
+                                                <gias-drop-down-template [name]="'piano_conti' | transloco"
+                                                    [listItems]="pianoConti_List" [textField]="'descrizione'"
+                                                    [valueField]="'codice'" [obligatory]="true"
+                                                    [isDisabled]="isFormDisabled" giasFormControlName="piano_conti"
+                                                    [valuePrimitive]="false">
+                                                </gias-drop-down-template>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row form-row">
+                                            <div class="col-12">
+                                                <gias-text-template [name]="('Note' | transloco)" [obligatory]="true"
+                                                    [isDisabled]="isFormDisabled" giasFormControlName="note">
+                                                </gias-text-template>
+                                            </div>
+                                        </div>
+
+                                        <div class="row form-row mt-4">
+                                            <div class="col-12">
+
+                                                <app-anno-valutazioni-edit></app-anno-valutazioni-edit>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

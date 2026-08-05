@@ -1,0 +1,16 @@
+<section class="tab-pratiche-container k-p-4">
+
+  <!-- No username warning -->
+  <aside *ngIf="!username" class="k-p-4 k-text-center" role="note">
+    <kendo-icon name="warning" size="xlarge" class="k-color-warning" aria-hidden="true"></kendo-icon>
+    <p class="k-mt-2">{{ 'prof.SelezionaUtentePerPratiche' | transloco }}</p>
+  </aside>
+
+  <!-- Grid area -->
+  <article *ngIf="username">
+    <app-griglia-pratiche #grigliaRef [pratiche]="pratiche" [isLoading]="isLoading" [isError]="isError"
+      (selectionCountChange)="onSelectionCountChange($event)" (retryClick)="caricaDati()" (gridChange)="onGridChange()">
+    </app-griglia-pratiche>
+  </article>
+
+</section>

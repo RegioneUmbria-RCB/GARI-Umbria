@@ -1,0 +1,47 @@
+<ng-container *ngIf="tileLoader$ | async"></ng-container>
+
+<div class="info-box">
+
+  <ng-content></ng-content>
+
+  <!-- Tipologia Layer Entità -->
+  <div (click)="centraMappaLayer($event, dataItem)">
+    <tr><i aria-hidden="true" class="xi-layer-legend-raster"></i></tr>
+    <tr><i aria-hidden="true" class="xi-layer-search-small"></i></tr>
+  </div>
+
+  <!-- Icona colore -->
+  <div class="color-icon" [ngStyle]="{ 'background-color': '#' + dataItem.colore_1 }"
+    (click)="togglePicker($event, dataItem, type)">
+  </div>
+
+  <div (click)="openRasterConfig($event, dataItem)">
+  </div>
+
+  <!-- Nome layer -->
+  <div class="layer-info">
+    <span class="layer-name">{{ dataItem.nome }}</span>
+    <span class="layer-feature-data">Totale: {{ numberOfFeatures }}, Visibili ora: {{ dataItem.flagvisibile ===
+      '1' ? numberOfVisibleFeatures : 0 }}</span>
+  </div>
+
+</div>
+
+<span (click)="toggleDesc($event, dataItem, type)" class="info-icon">
+  <i aria-hidden="true"
+     [class]="dataItem.MostraDescrizioneAssociata=='1' ? 'xi-layer-callout-ab-visible' : 'xi-layer-callout-ab-invisible'">
+  </i>
+</span>
+
+<span (click)="toggleGrouping($event, dataItem)" class="info-icon">
+  <i aria-hidden="true"
+     [class]="dataItem.RaggruppaDescrizioneAssociata == '1' ? 'xi-layer-callout-46-visible' : 'xi-layer-callout-46-invisible'">
+  </i>
+</span>
+
+<ng-container *ngIf="{ visible: visible$ | async, masks: masks$ | async } as data">
+  <span (click)="toggleRasterVisible($event, dataItem, data.masks, !data.visible)" class="info-icon">
+    <i aria-hidden="true" [class]="data.visible ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'">
+    </i>
+  </span>
+</ng-container>

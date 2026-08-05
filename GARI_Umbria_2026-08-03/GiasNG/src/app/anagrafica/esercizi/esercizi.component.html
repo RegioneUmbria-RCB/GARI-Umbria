@@ -1,0 +1,140 @@
+<h2 *ngIf="!impresaSelezionata()" xmlns="http://www.w3.org/1999/html">{{'SelezionareUnAzienda' | transloco}}</h2>
+
+<app-esercizi-copia-sposta-appezzamenti></app-esercizi-copia-sposta-appezzamenti>
+
+<gias-kendo-grid
+  #kendoGrid
+  *ngIf="impresaSelezionata()"
+  [disableCmdBtnsCallback]="shouldDisableCmd"
+  [media]="'(min-width: ' + SMARTPHONE_WIDTH + 'px)'"
+  [customCommandColumnCellTemplate]="customCommandColumn"
+>
+  <ng-container headerContentButtons class="gias-toolbar-section full-width-section">
+    <div class="btn-group-sm">
+      <div kendoTooltip *ngIf="permessoBloccaSblocca" class="gias-button-esercizi">
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="onSbloccaAppezzamenti()"
+          [type]="'button'"
+          [title]="'Sblocca' | transloco"
+        >
+          <fa-icon size="lg" [icon]="faLockOpen" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="permessoBloccaSblocca" class="gias-button-esercizi">
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="onBloccaAppezzamenti()"
+          [type]="'button'"
+          [title]="'Blocca' | transloco"
+        >
+          <fa-icon size="lg" [icon]="faLock" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="!isBudget() && canHandleMachinesLink()" class="gias-button-esercizi">
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="onLinkAppezzaToMachines()"
+          [type]="'button'"
+          [title]="'AssociaContatoriAcqua' | transloco"
+        >
+          <fa-icon size="lg" [icon]="faFaucetDrip" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="!isBudget() && canHandleContibutes()" class="gias-button-esercizi">
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="onLinkExerciceToContribute()"
+          [type]="'button'"
+          [title]="'AddContributes' | transloco"
+        >
+          <fa-icon size="lg" [icon]="faMoneyBillWheat" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+      <div kendoTooltip *ngIf="!isBudget() && specialEditAllowed()" class="gias-button-esercizi">
+        <button
+          class="btn btn-primary btn-sm"
+          (click)="onSpecialEdit()"
+          [type]="'button'"
+          [title]="specialEditBtnTitle() | transloco"
+        >
+          <fa-icon size="lg" [icon]="faPenToSquare" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div
+      kendoTooltip
+      *ngIf="permessoRibaltaBdg && getBudget().activeBudget == true"
+      class="gias-button-esercizi"
+    >
+      <button
+        [title]="'RibaltaImpiantiBDG_extended' | transloco"
+        [type]="'button'"
+        class="btn btn-primary btn-primary-fill btn-sm gias-button-esercizi"
+        (click)="ribaltaImpiantiBDG()"
+      >
+        {{"RibaltaImpiantiBDG" | transloco}}
+        <fa-icon class="faOpenCloseEsercizi"></fa-icon>
+      </button>
+    </div>
+
+    <button
+      *ngIf="permessoEdit && getBudget().activeBudget == false"
+      [type]="'button'"
+      class="btn btn-primary btn-primary-fill btn-sm gias-button-esercizi"
+      (click)="onModificaMulptipla()"
+    >
+      {{"MenuBS_Anagrafica_modificaMultiplaImpianti" | transloco}}
+      <fa-icon class="faOpenCloseEsercizi"></fa-icon>
+    </button>
+    <button
+      *ngIf="permessoEdit && permessoCopiaSposta"
+      [type]="'button'"
+      class="btn btn-primary btn-primary-fill btn-sm gias-button-esercizi"
+      (click)="onCopiaSpostaAppezzamenti()"
+    >
+      {{"CopiaSpostaAppezzamenti" | transloco}}
+    </button>
+    <span class="separator"></span>
+  </ng-container>
+
+  <ng-container headerContent></ng-container>
+
+  <ng-container headerContentEnd>
+    <div kendoTooltip *ngIf="permessoEdit">
+      <button
+        class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+        (click)="onNuovo()"
+        [title]="'NuovaSchedaCompleta' | transloco"
+        [type]="'button'"
+      >
+        <fa-icon class="faAddSchedule"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #customCommandColumn let-dataItem="dataItem">
+  <div class="column-commands">
+    <button
+      *ngIf="dataItem.OrdiniCollegati == 0"
+      kendoButton
+      kendoTooltip
+      (click)="redirectToPlanning(dataItem)"
+      [title]="'RichiestaMaterialeVivaistico' | transloco"
+      fillMode="flat"
+    >
+      <i aria-hidden="true" class="k-i-xi-tools-plan-management"></i>
+    </button>
+    <button
+      *ngIf="dataItem.OrdiniCollegati > 0"
+      kendoButton
+      kendoTooltip
+      (click)="redirectToViewOrderPlanning(dataItem)"
+      [title]="'VisualizzaOrdineMaterialeVivaistico' | transloco"
+      fillMode="flat"
+    >
+      <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="AfterBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+
+  <PropertyGroup>
+    <OutDirCallingProject>pippo</OutDirCallingProject>
+  </PropertyGroup>
+
+  <UsingTask TaskName="MinifyWebAssets" AssemblyFile="$(OutDirCallingProject)AgroAgenda_2010.dll" />
+  <Target Name="AfterBuild">
+    <Message Text="+++++ Eseguo Minificazione +++++" Importance="High" />
+    <Message Text="+++++ --&gt; Directory = $(WebDir) +++++" Importance="High" />
+    <Message Text="+++++ --&gt; OutDirCallingProject = $(OutDirCallingProject) +++++" Importance="High" />
+    <!--<Message Text="+++++ &gt; OutputPath = $(OutputPath) +++++" Importance="High" />
+    <Message Text="+++++ &gt; OutDir = $(OutDir) +++++" Importance="High" />
+    <Message Text="+++++ &gt; OutDirDLL = $(OutDir)bin\AgroAgenda_2010.dll +++++" Importance="High" />
+    <Message Text="+++++ &gt; MSBuildProjectDirectory = $(MSBuildProjectDirectory) +++++" Importance="High" />
+    <Message Text="+++++ &gt; TargetDir = $(TargetDir) +++++" Importance="High" />
+    <Message Text="+++++ &gt; TargetExt = $(TargetExt) +++++" Importance="High" />
+    <Message Text="+++++ &gt; TargetFileName = $(TargetFileName) +++++" Importance="High" />
+    <Message Text="+++++ &gt; TargetName = $(TargetName) +++++" Importance="High" />
+    <Message Text="+++++ &gt; TargetPath = $(TargetPath) +++++" Importance="High" />-->
+    <MinifyWebAssets ContinueOnError="ErrorAndStop" WebDir="$(WebDir)" />
+  </Target>
+
+</Project>

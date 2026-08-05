@@ -1,0 +1,1045 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url("legend-style.css");
+body, header, footer, h1, h2, h3, h4, h5, h6, p, ul li, ol li, table, table tr th, table tr td, input, select {
+    font-family: 'Lato', sans-serif !important;
+}
+
+
+/* ------------------------------------ HEADER FIXED TOP */
+header a:hover {
+    cursor: pointer;
+}
+header {
+    width: 100%; display: block; float: left;
+    z-index: 3000;
+    position: fixed;
+    top: 0;
+    padding: 0;
+    left: 0;
+}
+.headerCol-2 { width: 6%; min-width: 95px; max-width: 95px; display: block; float: left; }
+.headerCol-7 { width: 64%; display: block; float: left; }
+.headerCol-3 { /*width: 30%;*/ width: 18%; min-width: 320px; display: block; float: right; }
+
+
+/* vertical align */
+#headerColLeft, #headerColCenter, #headerColRight {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+#headerColRight {
+    justify-content: right;
+}
+#hContentBars, #hContentLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* toggle icon */
+#headerColLeft #hContentBars { width: auto; height: 50px; float: left; }
+#headerColLeft #hContentBars .menuBars { padding: 10px 20px;}
+
+/* logo icon */
+#headerColLeft #hContentLogo { width: 34px; height: 50px; float: left;}
+
+/* menu select navbar */
+#headerColCenter #breadcrumb-menu {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 50px;
+    width: 100%;
+}
+#headerColCenter #breadcrumb-menu .item-icon{
+    width: 30px; 
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+a#openMenu, a#closeMenu {
+    font-size: 14px;
+    text-size-adjust: 100%;
+    text-align: start;
+}
+
+#breadcrumb-menu .breadcrumbs-info {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    overflow: hidden;
+}
+#headerColCenter #breadcrumb-menu .item {
+    width: 20%;
+    float: left;
+    display: block;
+    padding-left: 13px;
+}
+#headerColCenter #breadcrumb-menu .item-icon + .item {
+    padding-left: 16px;
+}
+#headerColCenter #breadcrumb-menu .item:last-child {
+    padding-right: 0;
+}
+#headerColCenter #breadcrumb-menu .item i{
+    float: left; display: block;
+}
+
+/* icon right navbar */
+.hRightElement { display: block; float: left; height: 50px; }
+
+
+/** --------- Dropdown menu */
+.hRightElement .dropbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+}
+.dropbtn {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 5;
+    margin-top: -5px;
+    right: 0;
+    margin-right: -20px;
+}
+.dropdown-content a {
+    display: block;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+
+
+/** Tooltip */
+.tooltiptext {
+    visibility: hidden;
+    width: auto;
+    min-width: 140px;
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s;
+    transform: translateX(-50%);
+    margin-top: 24px;
+}
+
+    /** Tooltip Company - navbar */
+    .hCurrentCompanyName .tooltiptext {
+        visibility: hidden;
+        width: 250px;
+        bottom: -30px;
+        transform: translateX(-70%);
+    }
+#breadcrumb-menu .tooltiptext {
+    transform: translateX(7%);
+    margin-top: 33px;
+}
+/** Tooltip Company Dropdown - navbar */
+table.hCompanyTableSelect td.tdCheck .tooltiptext {
+    transform: translateX(-56%);
+}
+
+.linkLogo .tooltiptext {
+    transform: translateX(-31%);
+    margin-top: 34px;
+}
+    /** 
+    Tooltip Favorite - navbar 
+    -61px is optimized for the label "Modifica i tuoi preferiti"
+    */
+.hContainerFavorite .tooltiptext {
+    transform: translateX(-61px);
+    top: 25px;
+    width: min(100px, 100%);
+}
+
+.hCurrentCompanyName .tooltiptext::after, .tooltiptext::after  {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    -webkit-transform:rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+.hCurrentCompanyName:hover .tooltiptext,
+table.hCompanyTableSelect td.tdCheck:hover .tooltiptext,
+.hFavoriteContent:hover + .tooltiptext,
+.item:hover .tooltiptext,
+.linkLogo:hover .tooltiptext{
+
+    visibility: visible;
+    opacity: 1;
+}
+
+table.hCompanyTableSelect tr:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+.item:hover .tooltiptext {
+    transform: translateX(-50%);
+}
+
+/* Notice Badge - navbar */
+#navbar_notice .dropbtn {
+    padding: 0 8px;
+    height: 100%;
+}
+#navbar_notice .notification {
+    position: relative;
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#navbar_notice .notification .badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 2px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+}
+
+
+/* Notice Dropdown - navbar */
+#hNotificationDrop.dropdown-content {
+    min-width: 180px;
+    max-width: 260px;
+    margin-top: -5px;
+    right: 0;
+    right: 30px;
+}
+#hNotificationDrop .hnText {
+    padding: 8px 15px 0 15px;
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+}
+#hNotificationDrop .hnText p {
+    max-width: 220px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    margin: 0;
+    padding: 0;
+}
+#hNotificationDrop .hBtnLink {
+    padding: 8px 15px 8px 15px;
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+}
+#hNotificationDrop .hBtnLink a {
+    padding: 8px 25px 8px 0;
+    display: initial;
+    margin: 0 auto;
+    float: none;
+}
+#hNotificationDrop .hBtnLink a:hover {
+    text-decoration: underline;
+}
+
+/* Profilo - navbar */
+#navbar_user .dropbtn {
+    padding: 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profilo Dropdown - navbar */
+#userAccount.dropdown-content {
+    min-width: 180px;
+    margin-top: -5px;
+    right: 0;
+    right: 30px;
+}
+#userAccount.dropdown-content span.dropTitleRed {
+    padding: 15px 15px 8px 15px;
+    text-transform: uppercase;
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+}
+
+#userAccount .hUserVisibility {
+    padding: 8px 15px 8px 15px;
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+}
+#userAccount .hUserVisibility + .hUserVisibility {
+    padding: 0px 15px 8px 15px;
+}
+
+/* subtitle - Profile email */
+#userAccount.dropdown-content a {
+    padding: 4px 16px;
+}
+
+/** icon profile edit - icon profile logout - dropdown */
+.hIconLink {
+    padding: 0 15px;
+    width: calc(100%);
+    display: block;
+    float: left;
+}
+.hIcon {
+    width: auto;
+    display: block;
+    float: left;
+}
+.hIconText {
+    width: auto;
+    display: block;
+    float: left;
+    padding: 4px 0;
+}
+
+#userAccount.dropdown-content .hIcon a {
+    padding: 4px 0;
+    float: left;
+}
+#userAccount.dropdown-content .hIconText a {
+    padding: 4px 8px;
+}
+#userAccount.dropdown-content .hIconText a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Company - navbar */
+#navbar_company .dropbtn {
+    padding: 0 8px 0 15px;
+    height: 100%;
+}
+#navbar_company .dropbtn span.hCurrentCompanyName {
+    padding-right: 10px;
+    max-width: 170px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* Company Table - navbar */
+table.hCompanyTableSelect { border-collapse: collapse; border-spacing: 0; width: 100%; border: 0; padding: 5px 10px; }
+table.hCompanyTableSelect td.tdCompanyName, table.hCompanyTableSelect td.tdCheck {
+    padding: 4px 15px !important;
+}
+table.hCompanyTableSelect td.tdCheck img, table.hCompanyTableSelect td.tdCheck svg {
+    width: 20px;
+    height: auto;
+}
+table.hCompanyTableSelect td.tdCheck:hover, table.hCompanyTableSelect td.tdCheck img:hover {
+    cursor: pointer;
+}
+table.hCompanyTableSelect td.tdCheck img.check_off {
+    opacity: 0.4;
+}
+table.hCompanyTableSelect td.tdCheck:hover img.check_off {
+    opacity: 1;
+}
+
+
+/* Company Dropdown - navbar */
+#hCompaniesDrop.dropdown-content {
+    min-width: 440px;
+    margin-top: -5px;
+    right: 0;
+    margin-right: -20px;
+}
+#hCompaniesDrop.dropdown-content span.dropTitleRed {
+    padding: 15px 15px 8px 15px;
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+}
+
+
+/* Search */
+#hCompaniesDrop.dropdown-content .hBoxSearch {
+    width: calc(100% - 30px);
+    display: block;
+    float: left;
+    padding: 8px 15px 15px 15px;
+}
+.container-search{
+    width: 100%;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+/* icon search */
+.container-search .icon {
+    position: absolute;
+    top: 50%;
+    margin-top: -4px;
+    z-index: 1;
+}
+.sidebar .container-search .icon {
+    top: 0;
+}
+/* Link Ricerca avanzata */
+#hCompaniesDrop.dropdown-content .hInternalLink {
+    width: 100%;
+    display: block;
+    float: left;
+}
+#hCompaniesDrop.dropdown-content .hInternalLink span.dropTitleRed {
+    text-align: center;
+    margin: 0 auto;
+    float: none;
+    display: block;
+}
+#hCompaniesDrop.dropdown-content span.dropTitleRed a.ic_arrow {
+    padding: 8px 25px;
+    text-transform: uppercase;
+    display: initial;
+    margin: 0 auto;
+    float: none;
+}
+
+.company-table-select-max-height {
+    max-height: 250px;
+    overflow-y: auto;
+    display: block;
+}
+
+/** Breadcrumb **/
+
+/* The container must be positioned relative: */
+.dropdown-el {
+    position: relative;
+}
+
+.dropdown-el select {
+    display: none; /*hide original SELECT element: */
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    content: "";
+    top: 14px;
+    right: 0px;
+    width: 12px;
+    height: 12px;
+    display: block;
+    float: right;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-selected {
+    padding: 8px 16px;
+    /*max-width: 160px;*/
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    /*height: 25px;*/
+    /*line-height: 24px;*/
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.select-items div {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+    .dropdown-el label, .select-selected {
+        font-size: 14px;
+        padding-left: 0.5rem;
+        padding-right: 0.6rem;
+    }
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    top: 32px;
+    left: 0;
+    display: inline-table;
+    right: 0;
+    z-index: 9;
+    width: 100%;
+    min-width: 170px;
+    font-size: 13px;
+
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+
+/** -------------------------------------------- Sidebar menu */
+.hide { display: none; }
+
+/** --------------------------------------------
+    fix ai box-sizing (alcune pagine impostano un box-sizing a content-box)
+*/
+#GiasSidenav .sidebar #leftside-navigation ul li.active ul,
+#GiasSidenav .sidebar #leftside-navigation * {
+    box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+}
+
+#GiasSidenav .sidebar #leftside-navigation {
+    overflow-x: hidden;
+    box-sizing: border-box !important;
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+}
+
+#GiasSidenav .sidebar #leftside-header .container-search,
+#GiasSidenav .sidebar #leftside-navigation .container-search {
+    position: relative;
+    display: block;
+    float: left;
+    box-sizing: border-box;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+#GiasSidenav .sidebar #leftside-navigation ul.nano-content {
+    display: block;
+    float: left;
+}
+
+/* Sidebar header */
+#GiasSidenav .sidebar #leftside-header {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+#GiasSidenav .sidebar #leftside-header .leftside-header-row {
+    width: calc(100%);
+    display: block;
+    float: left;
+    text-align: left;
+    padding: 10px 15px 10px 15px;
+    box-sizing: border-box;
+}
+
+/* Sidebar header tabs */
+.leftside-header-tabs {
+    display: flex;
+    height: 22px;
+}
+
+.leftside-header-tab {
+    font-size: 11px;
+    color: white;
+    border-bottom: 1px solid #FFF;
+    flex: 1;
+    padding-bottom: 3px;
+}
+
+.leftside-header-tab.active {
+    font-size: 11px;
+    font-weight: bold;
+    color: white;
+    border-bottom: 3px solid #76bc21;
+    flex: 1;
+}
+
+.leftside-header-tab:hover {
+	cursor: pointer;
+}
+.inactiveLink {
+    pointer-events: none;
+    cursor: default;
+}
+
+/* The side navigation menu */
+#GiasSidenav.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 50px;
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+#GiasSidenav .sidebar {
+    width: calc(100% - 30px);
+    height: 100%;
+    position: absolute;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    z-index: 100;
+    padding: 0 15px;
+}
+#GiasSidenav .sidebar #leftside-navigation ul.nano-content {
+    padding-bottom: 50px;
+}
+#GiasSidenav .sidebar #leftside-navigation ul, #GiasSidenav .sidebar #leftside-navigation ul ul {
+    margin: 0 0 0;
+    padding: 0;
+}
+
+
+#GiasSidenav .sidebar #leftside-navigation ul li.active ul {
+    display: block;
+}
+#GiasSidenav .sidebar #leftside-navigation ul li a {
+    text-decoration: none;
+    display: block;
+    outline: 0;
+    -webkit-transition: all 200ms ease-in;
+    -moz-transition: all 200ms ease-in;
+    -o-transition: all 200ms ease-in;
+    -ms-transition: all 200ms ease-in;
+    transition: all 200ms ease-in;
+}
+
+#GiasSidenav .sidebar #leftside-navigation ul li a span {
+    display: inline-block;
+}
+#GiasSidenav .sidebar #leftside-navigation ul ul {
+    display: none;
+}
+#GiasSidenav .sidebar #leftside-navigation ul ul li {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+/* ---- Sidebar footer contacts */
+#GiasSidenav .sidebar {
+    box-sizing: border-box;
+    height: calc(100vh - 50px);
+    width: calc(100%);
+    padding-left: 0;
+    padding-right: 2px;
+}
+#GiasSidenav .sidebar #leftside-navigation {
+    height: calc(100vh - 195px);
+    overflow-y: scroll;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#GiasSidenav .sidebar #leftside-footer {
+    width: 100%;
+    display: block;
+    position: absolute;
+    float: left;
+    bottom: 0;
+    left: 0;
+}
+#GiasSidenav .sidebar #leftside-footer .row-footer{
+   width: calc(100%);
+   display: block;
+   float: left;
+   text-align: left;
+   padding: 15px;
+   box-sizing: border-box;
+}
+#GiasSidenav .sidebar #leftside-footer .row-footer span{
+    float: left;
+    font-size: 12px;
+    line-height: 30px;
+}
+
+
+
+
+/** -------------------------------------------- Responsive */
+
+@media only screen and (max-width: 1840px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 18px; width: 23%}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 20px; }
+
+}
+@media only screen and (max-width: 1790px) {
+
+    .headerCol-3 { width: 21%; }
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 24px; width: 24%}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 26px; }
+}
+@media only screen and (max-width: 1600px) {
+
+    .headerCol-3 { /*width: 25%;*/ width: 23%;}
+}
+@media only screen and (max-width: 1585px) {
+
+    .headerCol-7 { width: 68%; }
+    .headerCol-3 { /*width: 25%;*/ width: 25%; min-width: 320px; }
+
+}
+@media only screen and (max-width: 1430px) {
+
+    .headerCol-3 { /*width: 23%;*/ width: 25%; min-width: 320px; }
+
+}
+@media only screen and (max-width: 1400px) {
+
+    /* breadc menu select */
+    .dropdown-el label, .select-selected, .dropdown-el .select-items div {font-size: 14px;}
+
+}
+@media only screen and (max-width: 1380px) {
+
+    .headerCol-7 { width: 64%; }
+        .headerCol-3 { /*width: 27%;*/ width: 23%; min-width: 320px; }
+
+}
+@media only screen and (max-width: 1220px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 20px; }
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 22px; }
+    .dropdown-el label, .select-selected, .dropdown-el .select-items div {font-size: 14px;}
+
+}
+@media only screen and (max-width: 1160px) {
+
+    .headerCol-7 { width: 62%; }
+       .headerCol-3 { /*width: 27%;*/ width: 18%; min-width: 310px; }
+
+}
+@media only screen and (max-width: 1100px) {
+
+       .headerCol-3 { /*width: 27%;*/ width: 18%; min-width: 300px; }
+
+}
+@media only screen and (max-width: 1080px) {
+
+      .headerCol-3 {width: 18%; min-width: 280px; }
+
+}
+@media only screen and (max-width: 1080px) {
+
+    .headerCol-7 { width: 64%; }
+
+    #navbar_company .dropbtn {
+        padding: 0 5px 0 10px;
+    }
+    #navbar_favorite .overbtn {
+        padding: 8px 4px;
+    }
+    #navbar_notice .dropbtn {
+        padding: 0 4px;
+    }
+    #navbar_user .dropbtn {
+        padding: 0 4px;
+    }
+    #navbar_user .fa.fa-user-circle-o, .fa.fa-user-circle-o {
+        background-size: 30px auto;
+        font-size: 30px;
+    }
+    #navbar_user .dropbtn .fa.fa-chevron-down {
+        background-size: 12px auto;
+        font-size: 13px;
+    }
+    #navbar_notice .notification .fa.fa-bell, .fa.fa-bell {
+        background-size: 30px auto;
+        font-size: 34px;
+    }
+    #navbar_notice .notification .badge {
+        top: 6px;
+        right: 5px;
+        width: 14px;
+        height: 14px;
+    }
+    .label_text_small {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    #navbar_company .dropbtn .fa.fa-building-o, .fa.fa-building-o {
+        background-size: 28px auto;
+        font-size: 30px;
+    }
+    #navbar_company .dropbtn span.hCurrentCompanyName {
+        padding-right: 5px;
+        max-width: 100px;
+    }
+    .text_small, .dropbtn {
+        font-size: 10px;
+        line-height: 13px;
+    }
+    #navbar_company .dropbtn .fa.fa-chevron-down {
+        background-size: 32px auto;
+        font-size: 30px;
+    }
+
+    .dropdown-el label, .select-selected {
+        font-size: 14px;
+        padding-left: 0.2rem;
+        padding-right: 0.6rem;
+    }
+    #headerColCenter #breadcrumb-menu .item {
+        padding-right: 16px;
+        background-position: 104% center;
+    }
+    #headerColCenter #breadcrumb-menu .item-icon + .item {
+        padding-right: 16px;
+    }
+
+
+}
+@media only screen and (max-width: 1050px) {
+    .headerCol-3 {width: 18%; min-width: 260px; }
+
+}
+/* navbar header invert order div */
+@media only screen and (max-width: 991px) {
+    #headerColCenter #breadcrumb-menu .item {
+        width: 40%;
+    }
+    /* left header */
+    .headerCol-2 { z-index:2; position: absolute;}
+
+    /* center header */
+    .headerCol-7 { margin-top: 50px; border-top: 1px solid #efefef; width: 100%;}
+    #headerColCenter #breadcrumb-menu { z-index:3;}
+
+    /* right header */
+    .headerCol-3 {
+        width: auto;
+        top: 0;
+        float: left;
+        position: absolute;
+        right: 0;
+        min-width: 0;
+    }
+    .dropdown-content { z-index: 4; }
+    .tooltiptext { z-index: 5; }
+    
+    #master_contenitore_principale, #master_contenitore_principale.container {
+        padding-top: 100px !important;
+    }
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu { border-left: 0px solid #F7F7F7; }
+    #headerColCenter #breadcrumb-menu .item { padding-right: 20px; background-position: 100% center;}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 22px; }
+    .dropdown-el label, .select-selected, .dropdown-el .select-items div {font-size: 14px;}
+
+
+    /* sidebar */
+    #GiasSidenav.sidenav {
+        padding-top: 105px;
+    }
+    #GiasSidenav.openSidebarMenu .sidebar #leftside-footer {
+        position: fixed;
+        bottom: 0px;
+    }
+    #GiasSidenav .sidebar #leftside-navigation ul.nano-content {
+        padding-bottom: 300px;
+    }
+    #GiasSidenav .sidebar #leftside-navigation {
+        height: auto;
+        overflow-y: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* sidebar */
+    #GiasSidenav .sidebar #leftside-navigation ul, #GiasSidenav .sidebar #leftside-navigation ul ul { width: 100% !important; }
+    #GiasSidenav .sidebar #leftside-navigation ul li a { display: block !important;}
+    /*#GiasSidenav.sidenav {width: 100%; }*/
+    #GiasSidenav .sidebar #leftside-navigation ul li a span {max-width: 500px;}
+
+}
+@media only screen and (max-width: 860px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+}
+@media only screen and (max-width: 800px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+}
+@media only screen and (max-width: 767px) {
+
+    /* breadc menu select */
+    .dropdown-el label, .select-selected {font-size: 14px;}
+    #headerColCenter #breadcrumb-menu .item {background-size: 22px auto;}
+
+    /* sidebar */
+    #GiasSidenav .sidebar #leftside-navigation ul, #GiasSidenav .sidebar #leftside-navigation ul ul { width: 100% !important; }
+    #GiasSidenav .sidebar #leftside-navigation ul li a { display: block !important;}
+    /*#GiasSidenav.sidenav {width: 100%; }*/
+    #GiasSidenav .sidebar #leftside-navigation ul li a span {max-width: 500px;}
+
+}
+@media only screen and (max-width: 700px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+}
+@media only screen and (max-width: 620px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+}
+@media only screen and (max-width: 600px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 18px;}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 18px; }
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 380px; }
+
+}
+@media only screen and (max-width: 520px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 14px; background-position: 104% center;}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 14px; }
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+
+}
+@media only screen and (max-width: 480px) {
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 380px; margin-right: -60px; }
+
+}
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+@media only screen and (max-width: 430px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 10px; background-size: 20px auto; background-position: 109% center;}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 10px; }
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+    .dropdown-el label, .select-selected, .dropdown-el .select-items div { font-size: 14px; }
+    .select-items div { padding: 8px;}
+    .dropdown-el label, .select-selected { padding-left: 0.05rem; padding-right: 0.2rem; }
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 380px; margin-right: -80px; }
+
+    /* text */
+    .text_medium {
+        font-size: 11px;
+    }
+
+}
+@media only screen and (max-width: 410px) {
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 360px; margin-right: -80px; }
+
+}
+@media only screen and (max-width: 390px) {
+
+    #headerColLeft #hContentBars .menuBars {padding: 10px 12px;}
+    .text_small, .dropbtn { font-size: 9px;  line-height: 12px; }
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 350px; margin-right: -80px; }
+}
+@media only screen and (max-width: 375px) {
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 340px; margin-right: -80px; }
+
+}
+@media only screen and (max-width: 370px) {
+
+    /* breadc menu select */
+    #headerColCenter #breadcrumb-menu .item { padding-right: 10px; background-size: 20px auto; background-position: 109% center;}
+    #headerColCenter #breadcrumb-menu .item-icon + .item { padding-right: 10px; }
+    #headerColCenter #breadcrumb-menu .item { width: 40%;}
+    .dropdown-el label, .select-selected, .dropdown-el .select-items div { font-size: 14px; }
+    .select-items div { padding: 8px;}
+
+}
+@media only screen and (max-width: 360px) {
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 320px; margin-right: -80px; }
+
+}
+@media only screen and (max-width: 350px) {
+
+    #headerColLeft #hContentBars .menuBars {padding: 10px 8px;}
+    .text_small, .dropbtn { font-size: 9px;  line-height: 12px; }
+    #navbar_company .dropbtn .fa.fa-chevron-down { background-size: 30px auto; font-size: 22px; }
+    #navbar_company .dropbtn span.hCurrentCompanyName { padding-right: 5px; max-width: 94px; }
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 300px; margin-right: -90px; }
+
+
+}
+@media only screen and (max-width: 320px) {
+
+    /* navbar - dropdown */
+    #hCompaniesDrop.dropdown-content { min-width: 280px; margin-right: -90px; }
+
+
+}
+
+
+header .fa {
+    margin: 0px;
+}

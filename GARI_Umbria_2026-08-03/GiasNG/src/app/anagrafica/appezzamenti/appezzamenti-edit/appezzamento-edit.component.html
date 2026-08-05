@@ -1,0 +1,652 @@
+<div>
+  <form [formGroup]="AppezzamentoEditForm" (keydown.enter)="$event.preventDefault()" *ngIf="mostraForm">
+    <div id="gis"></div>
+    <gias-update-toolbar
+      [showCompanyName]="salvataggioGIS"
+      [formGroup]="AppezzamentoEditForm"
+      [submit]="false"
+      [salvaNuovo]="salvaNuovo"
+      [disabled]="saving"
+      (clickEvent)="salvaAppezzamento()"
+      (clickSalvaNuovoEvent)="salvaNuovoAppezzamento()"
+    >
+    </gias-update-toolbar>
+    <div class="jumbotron" id="top" fragment="top" #top>
+      <div class="container">
+        <div class="editPageContent">
+          <div class="row" *ngIf="mostraForm">
+            <div class="col-2 col-sm-3 "></div>
+            <div class="col-8 col-sm-6">
+              <app-form-error-visualizer [form]="AppezzamentoEditForm"></app-form-error-visualizer>
+            </div>
+            <div class="col-2 col-sm-3"></div>
+          </div>
+
+          <!-- -------- ELEMENTI PER SALVATAGGIO GIS -------- -->
+          <div *ngIf="salvataggioGIS">
+            <salvataggio-appezzamento-GIS
+              [presaveForm]="presaveForm"
+              (ModificaDatiAnagrafica)="modificaDatiAnagrafica($event)"
+            >
+            </salvataggio-appezzamento-GIS>
+          </div>
+          <!-- ---------------------------------------------- -->
+
+          <div *ngIf="!salvataggioGIS || isNewGIS || datiAngraficaGIS || createFrom">
+
+            <div class="row">
+              <div class="col-12">
+                <h4 data-index="1." class="card-title">
+                  {{'Appezzamento' | transloco}} - {{'DatiPrincipali' | transloco}}
+                </h4>
+              </div>
+            </div>
+
+            <div class="row form-row" *ngIf="objParametriAgenda.TipoOperazioneDB == Enum_DBTypeOperation.Write">
+              <div class="col-12 col-sm-6" [formGroup]="AppezzamentoEditForm.get('primaryKey').get('centroAziendalePK')">
+                <gias-drop-down-template-s
+                  [name]="'Centro' | transloco "
+                  textField="descrizione"
+                  (open)="openDdl($event)"
+                  valueField="codice"
+                  [filterable]="true"
+                  giasFormControlName="codice"
+                  [listItems]="lista_Centri"
+                  [defaultItem]="defaultItem"
+                  [valuePrimitive]="true"
+                >
+                </gias-drop-down-template-s>
+              </div>
+              <div class="col-12 col-sm-6" [formGroup]="AppezzamentoEditForm.get('campoPK')">
+                <gias-drop-down-template-s
+                        [name]="'Campo' | transloco " textField="descrizione"
+                        (open)="openDdl($event)" valueField="codice" [filterable]="true"
+                        [listItems]="listaCampi" [defaultItem]="defaultItem" giasFormControlName="codice"
+                        [valuePrimitive]="true"
+                >
+                </gias-drop-down-template-s>
+              </div>
+            </div>
+
+            <div *ngIf="AppezzamentoEditForm.getRawValue().primaryKey.centroAziendalePK.codice > 0">
+              <div class="row form-row">
+                <div class="col-12 col-sm-2" *ngIf="imageExist">
+                  <img alt="" [src]="imagePath" class="img-thumbnail rounded mx-auto d-block">
+                </div>
+                <div class="col">
+                  <div class="row form-row">
+                    <div class="col-12 col-sm-3">
+                      <gias-drop-down-template-s
+                        [name]="'appezzamento.Utilizzo_Del_Terreno' | transloco "
+                        textField="descrizione" (open)="openDdl($event)"
+                        [defaultItem]="defaultItem" valueField="codice"
+                        giasFormControlName="metodo_Produzione" [valuePrimitive]="false">
+                      </gias-drop-down-template-s>
+                    </div>
+                    <div class="col" *ngIf="AppezzamentoEditForm.get('metodo_Produzione').value.codice == 3">
+                      <gias-text-template
+                        [name]="'appezzamento.NAppBiologico' | transloco"
+                        [placeholder]="'appezzamento.NAppBiologico' | transloco"
+                        giasFormControlName="n_App_Bio"
+                      >
+                      </gias-text-template>
+                    </div>
+                    <div class="col">
+                      <gias-text-template
+                        [name]="'appezzamento.Riferimento_Appezzamento_Abbr' | transloco"
+                        [placeholder]="'appezzamento.Riferimento_Appezzamento_Abbr_Placeholder' | transloco"
+                        giasFormControlName="rif_Appezzamento">
+                      </gias-text-template>
+                    </div>
+                    <div class="col">
+                      <gias-text-template
+                        [name]="'appezzamento.Nome_Appezzamento' | transloco "
+                        [placeholder]="'appezzamento.Nome_Appezzamento' | transloco "
+                        giasFormControlName="descrizione"
+                      >
+                      </gias-text-template>
+                    </div>
+                  </div>
+                  <div class="row form-row">
+                    <div class="col-6 col-sm-3">
+                      <gias-numeric-template
+                        [name]="'appezzamento.Superficie' | transloco "
+                        #txtSuperficie
+                        [placeholder]="'appezzamento.Superficie_Placeholder' | transloco "
+                        giasFormControlName="superficie"
+                        [format]="'n4'"
+                      >
+                      </gias-numeric-template>
+                    </div>
+                    <gias-validita (onBlur)="onBlurValidita($event)"
+                                    formGroupName="validita"></gias-validita>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <gias-expansionpanel [id]="'Dati_Catastali_Appezzamento'">
+              <div class="header-content" headerContent>
+                <span><strong>{{ 'appezzamento.Dati_Catastali' | transloco }}</strong></span>
+              </div>
+
+              <div class="row form-row">
+                <app-dati-catastali formGroupName="catastoAppezzamento">
+                </app-dati-catastali>
+              </div>
+            </gias-expansionpanel>
+
+            <gias-expansionpanel [id]="'Dati_Aggiuntivi_Appezzamento'" (action)="datiAggiuntiviExpand($event)">
+              <div class="header-content" headerContent>
+                <span>
+                  <strong>{{ 'appezzamento.Dati_Aggiuntivi_Appezzamento' | transloco}}</strong>
+                </span>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{'appezzamento.Isola' | transloco}}</h5>
+                      <div class="card-text">
+                        <gias-text-template
+                          [placeholder]="'appezzamento.Isola_Placeholder' | transloco"
+                          giasFormControlName="isola">
+                        </gias-text-template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title"> {{ 'CaratteristicheTerreno' | transloco }} </h5>
+                      <div class="card-text col">
+                        <kendo-label [text]="'appezzamento.terrenoInutilizzato' | transloco" style="padding-right: 10px;">
+                          <kendo-switch formControlName="terrenoInutilizzato"></kendo-switch>
+                        </kendo-label>
+
+                        <kendo-label [text]="'appezzamento.terrenoDegradato' | transloco" style="padding-right: 10px;">
+                          <kendo-switch formControlName="terrenoDegradato"></kendo-switch>
+                        </kendo-label>
+
+                        <kendo-label [text]="'appezzamento.lowILUC' | transloco" style="padding-right: 10px;">
+                          <kendo-switch formControlName="lowILUC"></kendo-switch>
+                        </kendo-label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col" *ngIf="AppezzamentoEditForm.get('metodo_Produzione').value.codice == 3">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ 'appezzamento.AgricolturaBiologica' | transloco }}</h5>
+                      <div class="card-text">
+                        <div class="row form-row">
+                          <div class="col-12 col-md-4">
+                            <gias-multiselect-template-s
+                              [name]="'appezzamento.UtilizzoDelTerrenoBiologico' | transloco"
+                              textField="descrizione" valueField="codice"
+                              giasFormControlName="utilizzo_Terreno" [filterable]="true"
+                              (open)="openDdl($event)" [valuePrimitive]="false">
+                            </gias-multiselect-template-s>
+                          </div>
+                          <div class="col-12 col-md-4">
+                            <gias-text-template
+                              [name]="'appezzamento.ConfiniARischio' | transloco"
+                              [placeholder]="'appezzamento.ConfiniARischio' | transloco"
+                              giasFormControlName="confini_A_Rischio">
+                            </gias-text-template>
+                          </div>
+                          <div class="col-12 col-md-4">
+                            <gias-data-template
+                              [name]="'appezzamento.FineImpiegoProdotti' | transloco"
+                              giasFormControlName="fine_Impiego_Prod_Non_Conformi"
+                              [nullValue]="AGRODATA_INIZIO">
+                            </gias-data-template>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- <div class="col" *ngIf="AppezzamentoEditForm.get('metodo_Produzione').value.codice == 3">
+                    <div class="content">
+                    <span class="content-text">
+                        <div class="row form-row ">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ 'appezzamento.AgricolturaBiologica' |
+                                        transloco }}</h5>
+                                    <div class="card-text">
+                                        <div class="row form-row">
+                                            <div class="col col-sm-4">
+                                                <gias-multiselect-template-s
+                                                    [name]="'appezzamento.UtilizzoDelTerrenoBiologico' | transloco"
+                                                    textField="descrizione" valueField="codice"
+                                                    giasFormControlName="utilizzo_Terreno"
+                                                    [filterable]="true" (open)="openDdl($event)"
+                                                    [valuePrimitive]="false">
+                                                </gias-multiselect-template-s>
+                                            </div>
+                                            <div class="col col-sm-4">
+                                                <gias-text-template
+                                                    [name]="'appezzamento.ConfiniARischio' | transloco"
+                                                    [placeholder]="'appezzamento.ConfiniARischio' | transloco"
+                                                    giasFormControlName="confini_A_Rischio">
+                                                </gias-text-template>
+                                            </div>
+                                            <div class="col col-sm-4">
+                                                <gias-data-template
+                                                    [name]="'appezzamento.FineImpiegoProdotti' | transloco"
+                                                    giasFormControlName="fine_Impiego_Prod_Non_Conformi"
+                                                    [nullValue]="AGRODATA_INIZIO">
+                                                </gias-data-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    </div>
+                </div> -->
+                <div class="col-12 col-md-6">
+                  <div class="content">
+                    <span class="content-text">
+                      <div class="row form-row">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title" style="display: inline-block !important;">
+                              {{ 'appezzamento.Rispetto_Buffer_Zone' | transloco }}
+                              <h6 class="text-muted"style="display: inline-block !important;">{{ 'appezzamento.Lunghezza_confine_con' | transloco }}:</h6>
+                            </h5>
+                            <div class="card-text">
+                              <div class="row form-row">
+                                <div class="col-12 col-sm-6">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Corpi_idrici_superficiali' | transloco"
+                                    [placeholder]="'appezzamento.Corpi_idrici_superficiali_Placeholder' | transloco"
+                                    giasFormControlName="distBZ_CorpiIdrici">
+                                  </gias-numeric-template>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Aree_residenziali_pubbliche_m' | transloco"
+                                    [placeholder]="'appezzamento.Aree_residenziali_pubbliche_Placeholder' | transloco"
+                                    giasFormControlName="distBZ_AreeResPub">
+                                  </gias-numeric-template>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Allevamenti_m' | transloco"
+                                    [placeholder]="'appezzamento.Allevamenti_Placeholder' | transloco"
+                                    giasFormControlName="distBZ_Allevamenti">
+                                  </gias-numeric-template>
+                                </div>
+                              </div>
+                              <div class="row form-row">
+                                <div class="col-12 col-sm-6">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Vegetazione_naturale_non_coltivata_m' | transloco"
+                                    [placeholder]="'appezzamento.Vegetazione_naturale_non_coltivata_Placeholder' | transloco"
+                                    giasFormControlName="distBZ_VegNatNonColt">
+                                  </gias-numeric-template>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Offset_da_ultima_pianta_m' | transloco"
+                                    [placeholder]="'appezzamento.Offset_da_ultima_pianta_Placeholder' | transloco"
+                                    giasFormControlName="supBZ_Riduzione">
+                                  </gias-numeric-template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="content">
+                    <span class="content-text">
+                      <div class="row form-row ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ 'appezzamento.Rotazioni_Colturali' | transloco }}</h5>
+                            <div class="card-text">
+                              <div class="row form-row">
+                                <div class="col-12 col-sm-6">
+                                  <gias-drop-down-template-s
+                                    [name]="'appezzamento.Coltura_Precedente_1_Anno' | transloco"
+                                    [id]="'Coltura_Precedente_1_Anno'"
+                                    textField="descrizione" valueField="codice"
+                                    [defaultItem]="defaultItem" [filterable]="true"
+                                    giasFormControlName="coltura_Precedente_1_Anno"
+                                    (open)="openDdl($event)"
+                                    [defaultItem]="defaultItem"
+                                    [valuePrimitive]="false">
+                                  </gias-drop-down-template-s>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-drop-down-template-s
+                                    [name]="'appezzamento.Coltura_Precedente_2_Anno' | transloco"
+                                    [id]="'Coltura_Precedente_2_Anno'"
+                                    textField="descrizione" valueField="codice"
+                                    [defaultItem]="defaultItem" [filterable]="true"
+                                    giasFormControlName="coltura_Precedente_2_Anno"
+                                    (open)="openDdl($event)"
+                                    [defaultItem]="defaultItem"
+                                    [valuePrimitive]="false">
+                                  </gias-drop-down-template-s>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-drop-down-template-s
+                                    [name]="'appezzamento.Coltura_Precedente_3_Anno' | transloco"
+                                    [id]="'Coltura_Precedente_3_Anno'"
+                                    textField="descrizione" valueField="codice"
+                                    [defaultItem]="defaultItem" [filterable]="true"
+                                    giasFormControlName="coltura_Precedente_3_Anno"
+                                    (open)="openDdl($event)"
+                                    [defaultItem]="defaultItem"
+                                    [valuePrimitive]="false">
+                                  </gias-drop-down-template-s>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                  <gias-drop-down-template-s
+                                    [name]="'appezzamento.Coltura_Precedente_4_Anno' | transloco"
+                                    [id]="'Coltura_Precedente_4_Anno'"
+                                    textField="descrizione" valueField="codice"
+                                    [defaultItem]="defaultItem" [filterable]="true"
+                                    giasFormControlName="coltura_Precedente_4_Anno"
+                                    (open)="openDdl($event)"
+                                    [defaultItem]="defaultItem"
+                                    [valuePrimitive]="false">
+                                  </gias-drop-down-template-s>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-6">
+                  <div class="content">
+                    <span class="content-text">
+                      <div class="row form-row ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ 'appezzamento.Posizione_Appezzamento' | transloco }}</h5>
+                              <div class="card-text">
+                                <div class="row form-row">
+                                  <div class="col-12 col-sm-4">
+                                    <gias-numeric-template
+                                      [name]="'appezzamento.Pendenza_Perc' | transloco"
+                                      [placeholder]="'appezzamento.Pendenza_Placeholder' | transloco"
+                                      giasFormControlName="pendenza" [format]="'n0'">
+                                    </gias-numeric-template>
+                                  </div>
+                                  <div class="col-12 col-sm-4">
+                                    <gias-drop-down-template-s
+                                      [name]="'appezzamento.Esposizione' | transloco"
+                                      [id]="'Esposizione'" textField="descrizione"
+                                      valueField="codice"
+                                      [defaultItem]="{ codice:'', descrizione:'' }"
+                                      [filterable]="true"
+                                      giasFormControlName="esposizione"
+                                      [defaultItem]="defaultItem"
+                                      [valuePrimitive]="false"
+                                      (open)="openDdl($event)">
+                                    </gias-drop-down-template-s>
+                                  </div>
+                                  <div class="col-12 col-sm-4">
+                                    <gias-drop-down-template-s
+                                      [name]="'appezzamento.Ubicazione' | transloco"
+                                      [id]="'Ubicazione'" textField="descrizione"
+                                      valueField="codice"
+                                      [defaultItem]="{ codice:'', descrizione:'' }"
+                                      [filterable]="true"
+                                      giasFormControlName="ubicazione"
+                                      [defaultItem]="defaultItem"
+                                      [valuePrimitive]="false"
+                                      (open)="openDdl($event)">
+                                    </gias-drop-down-template-s>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="content">
+                    <span class="content-text">
+                      <div class="row form-row ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ 'appezzamento.Coordinate_Baricentro' | transloco }}</h5>
+                            <div class="card-text">
+                              <div class="row form-row">
+                                <div class="col-12 col-sm-4">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Latitudine_Abbr' | transloco"
+                                    [placeholder]="'appezzamento.Latitudine_Placeholder' | transloco"
+                                    giasFormControlName="lat" format="n7">
+                                  </gias-numeric-template>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Longitudine_Abbr' | transloco"
+                                    [placeholder]="'appezzamento.Longitudine_Placeholder' | transloco"
+                                    giasFormControlName="lng" format="n7">
+                                  </gias-numeric-template>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                  <gias-numeric-template
+                                    [name]="'appezzamento.Altitudine_M' | transloco"
+                                    [placeholder]="'appezzamento.Altitudine_Placeholder' | transloco"
+                                    giasFormControlName="altitudine">
+                                  </gias-numeric-template>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-12 col-md-12">
+                  <div class="content">
+                    <span class="content-text">
+                      <div class="row form-row ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">{{ 'TessituraTerreno' | transloco }}</h5>
+                            <div class="row form-row">
+                              <div class="col-12 col-sm-3">
+                                <gias-numeric-template
+                                  [name]="'PercSabbia' | transloco"
+                                  [placeholder]="'appezzamento.Sabbia_Placeholder' | transloco"
+                                  giasFormControlName="sabbia"
+                                  [format]="'n2'"
+                                  [decimals]="2"
+                                  [maxValue]="100"
+                                  [decimals]="2"
+                                  [maxValue]="100"
+                                  [minValue]="0"
+                                  (valueChange)="onValueChange('sabbia', $event)"
+                                  (onBlur)="onBlur('sabbia')">
+                                >
+                                </gias-numeric-template>
+                              </div>
+                              <div class="col-12 col-sm-3">
+                                <gias-numeric-template
+                                  [name]="'PercLimo' | transloco"
+                                  [placeholder]="'appezzamento.Limo_Placeholder' | transloco"
+                                  giasFormControlName="limo"
+                                  [format]="'n2'"
+                                  [decimals]="2"
+                                  [maxValue]="100">
+                                  [decimals]="2"
+                                  [maxValue]="100"
+                                  [minValue]="0"
+                                >
+                                </gias-numeric-template>
+                              </div>
+                              <div class="col-12 col-sm-3">
+                                <gias-numeric-template
+                                  [name]="'PercArgilla' | transloco"
+                                  [placeholder]="'appezzamento.Argilla_Placeholder' | transloco"
+                                  giasFormControlName="argilla" [format]="'n2'"
+                                  [decimals]="2"
+                                  [maxValue]="100"
+                                  [decimals]="2"
+                                  [maxValue]="100"
+                                  [minValue]="0"
+                                  (valueChange)="onValueChange('argilla', $event)"
+                                  (onBlur)="onBlur('argilla')">
+                                >
+                                </gias-numeric-template>
+                              </div>
+                              <div [formGroup]="AppezzamentoEditForm.get('classeTessitura')" class="col-12 col-sm-3">
+                                <gias-text-template
+                                  [name]="'Tessitura' | transloco"
+                                  giasFormControlName="descrizione">
+                                </gias-text-template>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="content">
+                  <span class="content-text">
+                    <div class="row form-row "></div>
+                  </span>
+                </div>
+              </div>
+
+              <div class="row form-row text-center">
+                <h4>{{'AppezzamentoCodiciAggiuntivi' | transloco}}</h4>
+              </div>
+              <div class="row form-row">
+                <div class="col-12">
+                  <gias-codici-template></gias-codici-template>
+                </div>
+              </div>
+
+              <div class="row form-row text-center">
+                <h4>{{'AgeaCodes' | transloco}}</h4>
+              </div>
+              <div class="row form-row">
+                <div class="col-12">
+                  <app-agea-codes [codes]="ageaCodes()"></app-agea-codes>
+                </div>
+              </div>
+
+            </gias-expansionpanel>
+
+            <gias-expansionpanel [id]="'Indirizzi_Appezzamento'">
+              <div class="header-content" headerContent>
+                <span><strong>{{ 'Indirizzi' | transloco }}</strong></span>
+              </div>
+
+              <div class="row form-row">
+                <div formArrayName="indirizzi">
+                  <app-appezzamento-edit-indirizzi
+                    [indirizzi]='AppezzamentoEditForm.get("indirizzi")'>
+                  </app-appezzamento-edit-indirizzi>
+                </div>
+              </div>
+
+            </gias-expansionpanel>
+
+            <div class="">
+              <div class="card" formArrayName="impianti">
+                <div class="row form-row">
+                  <div class="col-12">
+                    <h4 data-index="2."
+                        *ngIf="AppezzamentoEditForm.get('impianti').length == 1 || AppezzamentoEditForm.get('impianti').length == 0"
+                        class="card-title">
+                      {{'ImpiantoColturale' | transloco}} - {{'DatiPrincipali' | transloco}}
+                      <div style="margin-left: auto;">
+                        <button kendoTooltip kendoButton class="btn-primary-icon"
+                                (click)="onAddImpianto()" [primary]="true"
+                                *ngIf="edit && !salvataggioGIS"
+                                [title]="'Aggiungi' | transloco"><span
+                          class="k-icon k-i-plus"></span>
+                        </button>
+                      </div>
+                    </h4>
+                    <h4 data-index="2." *ngIf="AppezzamentoEditForm.get('impianti').length > 1"
+                        class="card-title">
+                      {{'ImpiantiColturali' | transloco}} - {{'DatiPrincipali' | transloco}}
+                      <div style="margin-left: auto;" *ngIf="!salvataggioGIS">
+                        <button
+                          kendoTooltip kendoButton class="btn-primary-icon"
+                          (click)="onAddImpianto()" [primary]="true" *ngIf="edit"
+                          [title]="'Aggiungi' | transloco"><span
+                          class="k-icon k-i-plus"></span>
+                        </button>
+                        <button
+                          *ngIf="edit" kendoTooltip kendoButton class="btn-danger-icon"
+                          [title]="'EliminaImpiantoSelezionato' | transloco"
+                          (click)="onRemoveImpiantoTabStrip()">
+                          <span class="k-icon k-i-trash"></span>
+                        </button>
+                      </div>
+                    </h4>
+                  </div>
+                </div>
+
+                <div class="card-text" style="width: 100%">
+                  <kendo-tabstrip
+                    [keepTabContent]="true" [scrollable]="true" #tabstripImpianti
+                    keepTabContent="true" id="tab"
+                  >
+                    <kendo-tabstrip-tab
+                      [id]="'appezzamento_' + i"
+                      *ngFor="let impianto of AppezzamentoEditForm.get('impianti').controls; index as i"
+                      [title]="descrizioneImpianti(impianto.getRawValue(), i)"
+                    >
+                      <ng-template kendoTabContent>
+                        <div class="content">
+                          <app-impianto-edit [appezzamentoEditForm]="AppezzamentoEditForm" [impiantoEditForm]="impianto"></app-impianto-edit>
+                        </div>
+                      </ng-template>
+                    </kendo-tabstrip-tab>
+                  </kendo-tabstrip>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

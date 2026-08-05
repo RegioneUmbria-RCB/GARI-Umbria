@@ -1,0 +1,60 @@
+.filter-controls-container {
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-between;*/
+}
+.controls.filter-controls-container {
+  flex-wrap: wrap;
+}
+.fill-width {
+  width: 100%;
+}
+.width10 {
+    width: 10%;
+}
+.btn-primary {
+    background-color: #002D5A;
+    color: #fff;
+}
+.line-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1%;
+}
+.text-nowrap {
+  white-space: nowrap;
+}
+.controls > div {
+  padding: 0px 10px;
+  width: 100%;
+}
+.controls > div/*:not(:last-child)*/ {
+  border-right: 2px solid #ccc;
+}
+
+form gias-text-template,
+form gias-general-input-template {
+  width: -webkit-fill-available;
+}
+
+gias-validita kendo-label label {
+  line-height: 1.5 !important;
+}
+
+@media (min-width:680px) {
+  .filter-controls-container {
+    flex-direction: row;
+    margin-right: 10px;
+  }
+}
+@media (min-width:1000px) {
+  .controls > div {
+    width: 50%;
+  }
+}
+@media (min-width:1400px) {
+  .controls > div {
+    width: 33.33%;
+  }
+}

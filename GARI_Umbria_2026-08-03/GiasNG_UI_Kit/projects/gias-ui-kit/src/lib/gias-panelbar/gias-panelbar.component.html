@@ -1,0 +1,12 @@
+<kendo-panelbar (collapse)="onCollapse($event)" (expand)="onExpand($event)" [keepItemContent]="keepItemContent">
+  <kendo-panelbar-item [expanded]="expand" [disabled]="disabled">
+    <ng-template kendoPanelBarItemTitle>
+      <ng-container [ngTemplateOutlet]="headerTemplate">
+      </ng-container>
+    </ng-template>
+    <ng-template kendoPanelBarContent>
+      <ng-container [ngTemplateOutlet]="contentTemplate" *ngIf="loadContent">
+      </ng-container>
+    </ng-template>
+  </kendo-panelbar-item>
+</kendo-panelbar>

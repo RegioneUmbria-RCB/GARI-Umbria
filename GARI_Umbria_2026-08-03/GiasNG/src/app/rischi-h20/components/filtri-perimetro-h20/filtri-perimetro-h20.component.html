@@ -1,0 +1,69 @@
+<div class="filters-section k-p-4" [formGroup]="form">
+
+  <div class="row k-mb-4">
+    <div class="col-12 col-md-6 k-d-flex k-align-items-center k-gap-2">
+      <span class="switch-label k-label">{{ 'rischi_h2o_label_per_colture' | transloco }}</span>
+      <gias-switch-template
+        giasFormControlName="modalita"
+        [hideLabel]="true"
+        [isBlue]="true">
+      </gias-switch-template>
+      <span class="switch-label k-label">{{ 'rischi_h2o_label_per_azienda' | transloco }}</span>
+    </div>
+  </div>
+
+  <div class="row k-mb-3">
+    <div class="col-12 col-md-6">
+      <gias-drop-down-template
+        id="filieraDdl"
+        [name]="'rischi_h2o_label_filiera' | transloco"
+        giasFormControlName="filiera"
+        [listItems]="filiereList"
+        textField="RagioneSociale"
+        valueField="Piva"
+        [valuePrimitive]="true"
+        [obligatory]="true"
+        [filterable]="true"
+        (open)="onFiliereOpen()"
+        (filterChange)="handleFiliereFilter($event)">
+      </gias-drop-down-template>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <gias-drop-down-template
+        id="annoDdl"
+        [name]="'rischi_h2o_label_anno' | transloco"
+        giasFormControlName="anno"
+        [listItems]="anniList"
+        [valuePrimitive]="true"
+        [obligatory]="true"
+        [filterable]="false">
+      </gias-drop-down-template>
+    </div>
+  </div>
+
+  <div class="row k-mb-4">
+    <div class="col-12">
+      <gias-multiselect-template-s
+        id="coltureMultiselect"
+        [name]="'rischi_h2o_label_colture' | transloco"
+        giasFormControlName="coltura"
+        [listItems]="coltureList"
+        textField="VegDes"
+        valueField="VegDes"
+        [valuePrimitive]="false"
+        [isDisabled]="isPerAzienda">
+      </gias-multiselect-template-s>
+    </div>
+  </div>
+
+  <!-- <div class="action-buttons k-d-flex k-gap-2">
+    <button
+      kendoButton
+      [fillMode]="'outline'"
+      (click)="resetFilters()">
+      {{ 'rischi_h2o_btn_reset' | transloco }}
+    </button>
+  </div> -->
+
+</div>

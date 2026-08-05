@@ -1,0 +1,48 @@
+<kendo-dropdownlist
+  *ngIf="!useForm; else useFormGroup"
+  [data]="data"
+  [itemDisabled]="ddl.itemDisabledFn"
+  [textField]="textField"
+  [valueField]="valueField"
+  [valuePrimitive]="valuePrimitive"
+  (ngModelChange)="changeValue($event)"
+  [ngModel]="selected"
+  [loading]="ddl.loading"
+  [defaultItem]="dropdownSerivce.defaultItem"
+  [ngModelOptions]="{standalone: true}"
+  (open)="onOpen()"
+  [filterable]="filterable"
+  (filterChange)="handleFilter($event)"
+>
+  <ng-template kendoDropDownListNoDataTemplate>
+    <div>
+      {{ 'giasgrid.No_Dati' | transloco }}
+      <!-- <ng-container *ngIf="filter">
+        {{ 'giasgrid.Nuovo_Elemento' | transloco }} "{{ filter }}" ?
+      </ng-container> -->
+      <br />
+      <button *ngIf="filter" class="k-button" (click)="addNew()">
+        {{ 'giasgrid.Nuovo_Elemento' | transloco }}
+      </button>
+    </div>
+  </ng-template>
+</kendo-dropdownlist>
+
+<ng-template #useFormGroup>
+  <kendo-dropdownlist
+    [data]="data"
+    [itemDisabled]="ddl.itemDisabledFn"
+    [textField]="textField"
+    [valueField]="valueField"
+    [valuePrimitive]="valuePrimitive"
+    (ngModelChange)="changeValue($event)"
+    [popupSettings]="{width: 'auto'}"
+    [formControlName]="controlName"
+    [loading]="ddl.loading"
+    class="ddl100"
+    [filterable]="filterable"
+    (filterChange)="handleFilter($event)"
+    (open)="onOpen()"
+    [ngClass]="{ 'remove-ddl-red-border': addRemoveBorderClass }"
+  ></kendo-dropdownlist>
+</ng-template>

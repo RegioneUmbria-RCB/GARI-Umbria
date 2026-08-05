@@ -1,0 +1,112 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.visual {
+	margin: 10px;
+}
+.visual, #VisualJSTooltip {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 13px;
+	background-color: #fff;
+}
+.visual h1 {
+	font-size: 13px;
+}
+.visual p {
+	font-size: 11px;
+	margin: 10px 0 0 0;
+}
+#VisualJSleft, #VisualJSright {
+	text-align: center;
+}
+#VisualJSTooltip {
+	display: none;
+	position: absolute;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-shadow:0 0 8px rgba(0,0,0,.2);
+	padding: 4px;
+	background-color: #f6f6f6;
+	opacity: 0.90;
+	white-space: nowrap;
+	font-size: 11px;
+}
+#VisualJSTooltip strong, #VisualJSTooltip em {
+	display: block;
+	font-weight: bold;
+}
+#VisualJSTooltip em {
+	font-style: normal;
+	margin-top: 4px;
+}
+
+.visual .VisualJSnw {
+	white-space: nowrap;
+}
+
+/* Flot */
+.visual .VisualJSmini .flot-tick-label {
+	font-size: 8px;
+}
+.visual .flot-tick-label span {
+	display: block;
+}
+/* Avoid x-axis label overlapping in bar charts using styles (since 0.9.6) */
+.visual .flot-tick-label.tickLabel span {
+	padding: 0 2.5em;
+}
+
+/* SVG */
+.visual .VisualJSarea {
+	fill: #808080;
+	stroke: #000;
+	stroke-width: .05px;
+	stroke-linejoin: round;
+	vector-effect: non-scaling-stroke;
+}
+.visual .VisualJSarea path:hover {
+	stroke: #000;
+	stroke-width: .5px;
+}
+.visual path.c80:hover,
+.visual path.c81:hover,
+.visual path.c82:hover,
+.visual path.c83:hover,
+.visual path.c84:hover,
+.visual path.c85:hover,
+.visual path.c86:hover,
+.visual path.c87:hover,
+.visual path.c88:hover,
+.visual path.c89:hover,
+.visual path.c90:hover,
+.visual path.c91:hover,
+.visual path.c92:hover,
+.visual path.c93:hover,
+.visual path.c94:hover,
+.visual path.c95:hover,
+.visual path.c96:hover,
+.visual path.c97:hover,
+.visual path.c98:hover,
+.visual path.c99:hover {
+	stroke: #fff;
+}
+.visual .VisualJSarea path.cnohover {
+	fill: #666;
+}
+.visual .VisualJSarea path.cnohover:hover {
+	stroke: #000;
+	stroke-width: .05px;
+}
+.visual svg g.VisualJSlegend {
+	stroke: #808080;
+	stroke-width: 1px;
+}
+.visual svg g.VisualJSlegend text {
+	font-size: 11px;
+	fill: #000;
+	stroke: none;
+}

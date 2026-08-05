@@ -1,0 +1,53 @@
+<div class="meteo-container" *ngIf="loading">
+  <div class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+  </div>
+</div>
+
+<div *ngIf="!loading">
+  <div class="meteo-container" *ngIf="data != null && !noLatLng else noLatLng ? noDataAvailableForCoordinates : noDataAvailable">
+    <div class="image-container">
+      <p class="text-hour">{{ this.city }}</p>
+
+      <ng-container *ngIf="displayIndex === todayIndex">
+        <img [src]="currHourPrevision.icon" alt="" kendoTooltip [title]="currHourPrevision.descr">
+        <p class="text-hour">{{ currHourPrevision.dataOraLocale }}</p>
+      </ng-container>
+
+      <ng-container *ngIf="displayIndex !== todayIndex">
+        <img [src]="displayedPrevision.average.icon" alt="" kendoTooltip [title]="displayedPrevision.average.descr"
+             *ngIf="displayedPrevision.average">
+        <p class="text-hour">{{ displayedPrevision.nextPrevisions[0].dataOraLocale.split(", ")[0] }}</p>
+      </ng-container>
+    </div>
+
+    <div class="items-container">
+      <div class="hours-container">
+        <div *ngFor="let p of displayedPrevision.nextPrevisions" class="meteo-hour">
+          <p class="m-0">{{ p.dataOra.split(" ")[1] }}</p>
+          <img alt="" [src]="p.icon" class="hour-prevision">
+        </div>
+      </div>
+
+      <div class="buttons-container">
+        <button *ngFor="let day of nextPrevisions; let i = index"
+                [class]="(displayIndex === i) ? 'meteo-btn meteo-btn-selected' : 'meteo-btn'" (click)="displayIndex = i">
+          <p class="m-0">{{ day.weekDay }}</p>
+          <img *ngIf="day.average && day.average.icon" alt="" [src]="day.average.icon">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noDataAvailableForCoordinates>
+  <div class="widget-loading-container">
+    <p class="widget-no-data">{{ 'PrevisioniMeteoNonDisponibiliPerLeCoordinateGeograficheDellAzienda' | transloco }}</p>
+  </div>
+</ng-template>
+
+<ng-template #noDataAvailable>
+  <div class="widget-loading-container">
+    <p class="widget-no-data">{{ 'PrevisioniMeteoNonDisponibili' | transloco }}</p>
+  </div>
+</ng-template>

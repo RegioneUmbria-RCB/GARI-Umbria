@@ -1,0 +1,96 @@
+<form [formGroup]="form">
+    <div class="rilievi-container" *ngIf="isEdit && isRilievoProdPrevista">
+        <div class="row mt-2 mx-1 v-aligned">
+            <div class="col-12 col-sm-4">
+                <gias-multiselect-template-s
+                        [name]="MultiSelectLabel"
+                        [id]="RilievoCausale"
+                        textField="Causale"
+                        valueField="Id"
+                        giasFormControlName="Causali"
+                        [valuePrimitive]="false"
+                        [listItems]="qdcservice.listaOperazioniCausali"
+                        (selectionItem)="onSelectionCausale($event)"
+                ></gias-multiselect-template-s>
+            </div>
+        </div>
+    </div>
+    <div class="rilievi-container" *ngIf="isEdit">
+            <div class="row mt-2 mx-1 v-aligned">
+                <div class="col-12 col-sm-5">
+                    <!--DropDown per scegliere l'operazione (cambiano il nome (Indice Maturità, Rilievo avversità) ed il contenuto della lista in base al tipo)-->
+                    <gias-drop-down-template #ddl
+                        [name]="DDLabel"
+                        [id]="TipoOp"
+                        textField="descrizione"
+                        valueField="descrizione"
+                        giasFormControlName="NomeOp"
+                        [valuePrimitive]="false"
+                        (open)="onOpenDdl($event)"
+                        (valueChange)="onOpChange($event)"
+                    ></gias-drop-down-template>
+                </div>
+
+                <div [ngClass]="ApplyDivClass()">
+                    <!--Quantità da inserire = data (si ricava dal valore selezionato della DDL)-->
+                    <gias-data-template *ngIf="qtaType == DATE"
+                        [name]="DateLabel"
+                        giasFormControlName="Qta"
+                    ></gias-data-template>
+
+                    <!--Quantità da inserire = booleano (si ricava dal valore selezionato della DDL)-->
+                    <div class="two-label-switch-container" *ngIf="qtaType == BOOLEAN">
+                        <span class="switch-label k-label">{{'Assente' | transloco}}</span>
+                        <gias-switch-template [hideLabel]="true" [isBlue]="true"
+                                            giasFormControlName="Qta"
+                                            [hideformfield]="true"
+                        style="margin-bottom: 4px; margin-right: 4px;"></gias-switch-template>
+                        <span class="switch-label k-label">{{'Presente' | transloco}}</span>
+                    </div>
+
+                    <!--Quantità da inserire = numerico (si ricava dal valore selezionato della DDL)-->
+                    <gias-numeric-template *ngIf="isNumeric"
+                        [name]="GetLabelNameQta()" [format]="format"
+                        giasFormControlName="Qta"
+                        (onBlur)="roundQta()"
+                    ></gias-numeric-template>
+
+                    <gias-drop-down-template *ngIf="qtaType == DDL"
+                        [name]="ComboLabel"
+                        textField="Descrizione"
+                        valueField="CodiceAnagrafica"
+                        giasFormControlName="Qta"
+                        [valuePrimitive]="false"
+                        (open)="onOpenCombo($event)"
+                    ></gias-drop-down-template>
+
+                    <gias-text-template *ngIf="qtaType == TXT"
+                                           [name]="NoteLabel"
+                                           giasFormControlName="Qta"
+                    ></gias-text-template>
+
+                    <gias-text-area-template *ngIf="qtaType == TXT_AREA"
+                                        [name]="NoteLabel"
+                                        giasFormControlName="Qta"
+                    ></gias-text-area-template>
+                </div>
+
+                <div class="col-12 col-sm-2 left align-self-end">
+                    <button class="btn left btn-primary btn-primary-fill btn-sm btn-primary-text" (click)="onSubmit()" [disabled]="isSubmitBtnDisabled()">
+                        <i aria-hidden="true" class="fa fa-arrow-down"></i>
+                        <span class="p-2">{{'Aggiungi' | transloco}}</span>
+                        <i aria-hidden="true" class="fa fa-arrow-down"></i>
+                    </button>
+                </div>
+            </div>
+            <div #infoElementi class="yellow-bg" *ngIf="showInfo">
+                <fa-icon [icon]="faWarning" style="margin-right: 10px;"></fa-icon>
+                {{ info }}
+            </div>
+    </div>
+</form>
+<!--Tabella-->
+<div class="row mt-2 mb-2">
+    <app-grid-rilievi #gridRilievi></app-grid-rilievi>
+</div>
+

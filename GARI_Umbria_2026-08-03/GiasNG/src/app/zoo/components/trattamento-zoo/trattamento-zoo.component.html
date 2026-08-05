@@ -1,0 +1,121 @@
+<div class="container">
+    <form [formGroup]="trattamentoFormService.formTrattamentoZoo">
+        <gias-update-toolbar
+                            [formGroup]="trattamentoFormService.formTrattamentoZoo"
+                            [openInIFrame]="openInIFrame"
+                            (clickEvent)="SalvaEditTrattamentoZoo()"
+                            (clickSalvaNuovoEvent)="SalvaEditTrattamentoZoo()">
+        </gias-update-toolbar>
+
+        <div class="jumbotron paddingResponsive">
+            <div class="container">
+                <div class="editPageContent">
+                    <div class="row">
+                        <h4 class="card-title mb-2 mt-2" style="text-align: center;">{{'TrattamentoZoo' | transloco}}</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-3">
+                            <gias-data-template [name]="'Data' | transloco"
+                                    [obligatory]="true"
+                                    giasFormControlName="Data"
+                                    (keydown.enter)="onKeyDownEnter($event)"
+                                    (onBlur)="trattamentoFormService.onBlurData()">
+                            </gias-data-template>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <gias-drop-down-template-s [name]="'CentroAziendale' | transloco"
+                                                       [listItems]="trattamentoFormService.Array_CentriAziendale"
+                                                       textField="descrizione"
+                                                       valueField="codice"
+                                                       giasFormControlName="CentroAziendale"
+                                                       [valuePrimitive]="false"
+                                                       [defaultItem]="trattamentoFormService.defaultCentro">
+                            </gias-drop-down-template-s>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <gias-drop-down-template-s [name]="'Stalla' | transloco"
+                                                       [listItems]="trattamentoFormService.Array_Stalle"
+                                                       textField="STA_DES"
+                                                       valueField="STA_NUM"
+                                                       giasFormControlName="Stalla"
+                                                       [valuePrimitive]="false"
+                                                       [defaultItem]="trattamentoFormService.defaultStalla">
+                            </gias-drop-down-template-s>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <gias-drop-down-template-s [name]="'Raggruppamento' | transloco"
+                                                       [listItems]="trattamentoFormService.Array_Stalle_Raggruppamenti"
+                                                       textField="descrizione"
+                                                       valueField="codice"
+                                                       giasFormControlName="Raggruppamento"
+                                                       [valuePrimitive]="false"
+                                                       [defaultItem]="trattamentoFormService.defaultRaggruppamento">
+                            </gias-drop-down-template-s>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <gias-expansionpanel [id]="'SomministrazioneProdotti'"
+                                             [willStoreCookies]="false"
+                                             [isExpanded]="true"
+                                             *ngIf="trattamentoFormService.showGriglie && trattamentoFormService.showGridProdotti"
+                                             @fadeInOut>
+                            <div class="header-content" headerContent>
+                                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                                <span>{{ 'ProdottiDellaSomministrazione' | transloco }}</span>
+                            </div>
+
+                            <app-prodotti-somministrazione></app-prodotti-somministrazione>
+
+                        </gias-expansionpanel>
+                    </div>
+                    <div class="row">
+                        <gias-expansionpanel [id]="'CapiAnimali'"
+                                             [willStoreCookies]="false"
+                                             [isExpanded]="true"
+                                             *ngIf="trattamentoFormService.showGriglie"
+                                             @fadeInOut>
+                            <div class="header-content" headerContent>
+                                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                                <span>{{ 'CapiAnimali' | transloco }}</span>
+                            </div>
+
+                            <app-capi-animali></app-capi-animali>
+
+                        </gias-expansionpanel>
+                    </div>
+                    <div class="row">
+                        <gias-expansionpanel [id]="'Note'"
+                                             [willStoreCookies]="false"
+                                             [isExpanded]="false"
+                                             @fadeInOut>
+                            <div class="header-content" headerContent>
+                                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                                <span>{{ 'Note' | transloco }}</span>
+                            </div>
+
+                            <gias-text-template [name]="'Note' | transloco " [clearButton]="true"
+                                                giasFormControlName="Note">
+                            </gias-text-template>
+
+                        </gias-expansionpanel>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<ng-template #saveWithDiffAICs>
+    <app-dialog-qta-diff-aics
+        #dialogComponentInstance
+        [products]="dialogProducts"
+        [qtaTotReq]="dialogQtaTot"
+        (closeDialogEvent)="closeDialogWithDiffAICs($event)"
+    >
+    </app-dialog-qta-diff-aics>
+</ng-template>

@@ -1,0 +1,24 @@
+<gias-kendo-grid #profileGrid (selectionChange)="selectProfile($event)"></gias-kendo-grid>
+
+<ng-template #copyFormTemplate>
+  <p>{{ 'prof.CreazioneCopiaProfilo' | transloco }}</p>
+  <form class="k-form" [formGroup]="copyProfileForm">
+    <gias-text-template
+      name="Description" giasFormControlName="Description"
+      [clearButton]="true"
+    ></gias-text-template>
+    <gias-checkbox-template
+      name="{{'prof.CreazioneCopiaProfiloImpostazioni' | transloco}}" giasFormControlName="copySettings"
+    ></gias-checkbox-template>
+  </form>
+</ng-template>
+
+<ng-template #impostazioniRef>
+  <div class="settings-window">
+    <div class="btn-container">
+      <button kendoButton class="btn btn-primary btn-primary-fill btn-sm btn-primary-text"
+        (click)="saveSettings()">{{'Salva' | transloco}}</button>
+    </div>
+    <app-form-impostazioni></app-form-impostazioni>
+  </div>
+</ng-template>

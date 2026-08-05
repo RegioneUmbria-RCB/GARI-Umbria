@@ -1,0 +1,36 @@
+﻿<ng-container *ngIf="feature == null">
+  <h6>{{ 'gis.NessunaFeatureSelezionata' | transloco }}</h6>
+</ng-container>
+
+<ng-container *ngIf="feature != null">
+  <div class="algorithm-configuration">
+    <h5>{{ description }}</h5>
+    <h6>{{ layer?.nome }}</h6>
+
+    <ng-container *ngIf="configurations.length == 0">
+      <h6>{{ 'gis.NessunaConfigurazionePerQuestaFeature' | transloco }}</h6>
+    </ng-container>
+
+    <ng-container *ngIf="configurations.length > 0">
+      <div class="configurations" *ngFor="let configuration of configurations">
+        <div class="description">
+          <h6> {{ 'gis.AlgoritmoXNome' | transloco: { algorithm: configuration.LayerAnalysisConfig_Algorithm_Des } }}
+          </h6>
+          <h6> - </h6>
+          <h6> {{ 'gis.ConfigurazioneXNome' | transloco: { configuration: configuration.LayerAnalysisConfig_Des } }}
+          </h6>
+        </div>
+
+        <div class="all-polygons">
+          <kendo-switch class="configuration-switch" (valueChange)="changeActive($event, configuration)"
+            [checked]="isChecked(configuration)" [disabled]="isLayerChecked(configuration)"></kendo-switch>
+          <h6>{{ 'gis.AlgoritmoAttivoElementoSelezionato' | transloco }}</h6>
+          <!-- <button kendoButton>Sospendi</button> --> <!-- da aggiungere quando il backend è pronto -->
+        </div>
+        <h6 class="active-details" *ngIf="getActiveConfiguration(configuration) as activeConfiguration">
+          {{ 'gis.VerraEseguitoDalAl' | transloco: { dateFrom: activeConfiguration.AttivaDa | date, dateTo: activeConfiguration.AttivaA | date } }}
+        </h6>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

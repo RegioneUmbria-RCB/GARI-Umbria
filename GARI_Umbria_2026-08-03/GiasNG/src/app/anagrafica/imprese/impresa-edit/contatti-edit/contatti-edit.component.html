@@ -1,0 +1,30 @@
+<div class="row form-row ">
+    <div class="card">
+        <h5 class="card-title">{{ 'Contatti' | transloco }}</h5>
+        <div class="row form-row">
+            <div class="col-12 col-sm-12">
+                <gias-kendo-grid [gridId]="'Contatti'" class="kendo-grid-no-shadows">
+                    <ng-container headerContent>
+                        <div *ngIf="contattoPubblicoVisible">
+                            <!--                 <input type="checkbox" [disabled]="contattoPubblicoDisabled" [checked]="contattoPubblicoIsChecked" (click)="contattoPubblicoClicked()" #notification kendoCheckBox />-->
+                            <!--                 <kendo-label class="k-checkbox-label" for="notification" [text]="'ContattoMovimentabileDaTutteLeImprese' | transloco"></kendo-label>-->
+                            <kendo-label [text]="'ContattoMovimentabileDaTutteLeImprese' | transloco" >
+                                <kendo-switch [disabled]="contattoPubblicoDisabled"
+                                    [(ngModel)]="contattoPubblicoIsChecked"
+                                    (valueChange)="contattoPubblicoClicked($event)"
+                                    giasFormControlName="contattoPubblico"></kendo-switch>
+                            </kendo-label>
+                        </div>
+                        <div *ngIf="visible">
+                            <kendo-label [text]="'AziendaProprietaria' | transloco" style="margin-right: 20px;"> </kendo-label>
+                            <kendo-dropdownlist [data]="saveParentCompanyDDL$ | async" textField="descrizione"
+                                valueField="codice" placeholder="Seleziona Padre" [valuePrimitive]="false"
+                                [value]="defaultParentCompany" (valueChange)="onParentCompanyChange($event)">
+                            </kendo-dropdownlist>
+                        </div>
+                    </ng-container>
+                </gias-kendo-grid>
+            </div>
+        </div>
+    </div>
+</div>

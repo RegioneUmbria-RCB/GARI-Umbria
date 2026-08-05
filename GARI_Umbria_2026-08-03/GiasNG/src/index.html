@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <script type='text/javascript'>
+    const { origin, pathname } = window.location;
+    const parts = pathname.split('/').filter(Boolean); // Rimuove elementi vuoti
+
+    const index = parts.indexOf('GiasNG');
+    let href = origin + '/';
+    if (index !== -1) {
+      const safeParts = parts.slice(0, index + 1);
+      const sanitizedParts = safeParts.filter(p => /^[a-zA-Z0-9-_]+$/.test(p));
+      const newPath = sanitizedParts.join('/');
+      href = `${origin}/${newPath}/`;
+    }
+
+    const base = document.createElement('base');
+    base.href = href;
+    document.head.appendChild(base);
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <link id="appFavicon" rel="icon" type="image/x-icon" href="data:image/x-icon;base64" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+  <app-root>Loading...</app-root>
+</body>
+
+</html>

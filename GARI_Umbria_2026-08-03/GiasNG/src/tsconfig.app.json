@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "outDir": "../out-tsc/app",
+    "types": ["node"],
+    "lib": [
+      "es2022",
+      "dom"
+    ]
+  },
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts",
+    "**/*.worker.ts"
+  ]
+}

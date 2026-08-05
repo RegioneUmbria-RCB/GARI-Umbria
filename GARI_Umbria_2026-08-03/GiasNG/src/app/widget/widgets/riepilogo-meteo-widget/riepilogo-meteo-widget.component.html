@@ -1,0 +1,90 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div class="riepilogo-container" #container *ngIf="!loading && height != null && widgetData.length > 0">
+  <ng-container *ngFor="let station of widgetData; let i = index">
+
+    <div *ngIf="page == i" class="riepilogo-page">
+      <div class="riepilogo-column">
+        <div class="summary-text">
+          {{ station.Descrizione }}
+        </div>
+
+        <div [style]="widgetData.length >= 2 ? 'flex-grow: 1; padding: 0px 16px;' : 'flex-grow: 1;'">
+          <div class="summary-chart" style="height: 100%;">
+            <div *ngFor="let chart of station.Charts" class="summary-chart-child" style="margin-bottom: 1px;">
+
+              <kendo-chart (click)="onChartClick($event, station)" [style]="'width: 100%; height: ' + (height - 40) + 'px'">
+                <!--[style.height]="(height - 40) + 'px'" [style.width]="width + 'px'"-->
+                <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+
+                <kendo-chart-axis-defaults [visible]="false" [majorGridLines]="{ visible: false }"
+                  [minorGridLines]="{ visible: false }"></kendo-chart-axis-defaults>
+
+                <kendo-chart-series>
+                  <kendo-chart-series-item *ngFor="let series of chart.Series" [name]="series.name" [type]="series.type"
+                    [field]="series.field" [color]="series.color" [axis]="series.axis" [aggregate]="series.aggregate"
+                    [data]="series.data" [markers]="{ visible: false }">
+                  </kendo-chart-series-item>
+                </kendo-chart-series>
+
+                <kendo-chart-category-axis>
+                  <kendo-chart-category-axis-item [categories]="chart.Categories" baseUnit="hours" [visible]="true"
+                    [line]="{ color: '#808080', dashType: 'dot' }" [majorTicks]="{ visible: false }"
+                    [labels]="{ visible: false }" [crosshair]="{ visible: true, width: 1, color: '#808080' }">
+                  </kendo-chart-category-axis-item>
+                </kendo-chart-category-axis>
+
+                <kendo-chart-value-axis>
+                  <kendo-chart-value-axis-item *ngFor="let axis of chart.Axis" [name]="axis.name">
+                  </kendo-chart-value-axis-item>
+                </kendo-chart-value-axis>
+
+                <kendo-chart-area [margin]="0" [height]="height - 20"></kendo-chart-area>
+
+                <kendo-chart-tooltip [visible]="true" [shared]="true" background="#808080"
+                  [border]="{ color: '#808080'}" color="white">
+                  <ng-template kendoChartSharedTooltipTemplate let-category="category" let-points="points">
+                    <div style='margin-bottom: 5px; font-weight: bold;'> {{ getCategoryAsDate(category) }} </div>
+                    <table class="tooltip-table">
+                      <caption></caption>
+                      <th></th>
+                      <tr *ngFor="let point of points">
+                        <td>
+                          <div [style]="'width: 15px; height: 3px; background-color: ' + point.series.color"></div>
+                        </td>
+                        <td> {{ point.series.name }}</td>
+                        <td>:</td>
+                        <td style='text-align: right;'> {{ point.value }}</td>
+                      </tr>
+                    </table>
+                  </ng-template>
+                </kendo-chart-tooltip>
+                <kendo-chart-legend [labels]="{ font: '11px sans-serif' }" position="bottom"></kendo-chart-legend>
+              </kendo-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="summary-text" [title]="'UltimoDatoMeteoDisponibile' | transloco" kendoTooltip>
+          {{ station.UltimoAggiornamento }}
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="widgetData.length >= 2">
+      <span class="scroll-arrow fa fa-angle-left fa-3x" (click)="navigate(-1)"></span>
+      <span class="scroll-arrow fa fa-angle-right fa-3x" style="right: 0px;" (click)="navigate(1)"></span>
+    </ng-container>
+
+  </ng-container>
+</div>
+
+<div *ngIf="!loading && piva != null && widgetData.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunRiepilogoMeteo' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

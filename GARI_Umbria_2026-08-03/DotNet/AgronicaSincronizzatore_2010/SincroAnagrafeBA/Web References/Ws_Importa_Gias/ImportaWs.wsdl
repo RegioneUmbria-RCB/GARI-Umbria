@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/WS_Importa_GIAS/ImportaWS" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" targetNamespace="http://tempuri.org/WS_Importa_GIAS/ImportaWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/WS_Importa_GIAS/ImportaWS">
+      <s:element name="Importa_DocumentoPubblico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DocumentoPubblicoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="NomeUtente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Piva_SuperUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_PianificazioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_PianificazioneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione_SuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_Pianificazione_SuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_Pianificazione_SuperServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DataRaccoltaPrevista">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Str_Parametri1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Str_Parametri2" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DataRaccoltaPrevistaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DataRaccoltaPrevistaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblico_SuperServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Credenziali" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Dati" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Codice_Chiave_Cliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Importa_DocumentoPubblico_SuperServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Importa_DocumentoPubblico_SuperServerResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Importa_DocumentoPubblicoSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblicoSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_PianificazioneSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione" />
+  </wsdl:message>
+  <wsdl:message name="Importa_PianificazioneSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_PianificazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_Pianificazione_SuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione_SuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Importa_Pianificazione_SuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_Pianificazione_SuperServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DataRaccoltaPrevistaSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DataRaccoltaPrevista" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DataRaccoltaPrevistaSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DataRaccoltaPrevistaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblico_SuperServerSoapIn">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico_SuperServer" />
+  </wsdl:message>
+  <wsdl:message name="Importa_DocumentoPubblico_SuperServerSoapOut">
+    <wsdl:part name="parameters" element="tns:Importa_DocumentoPubblico_SuperServerResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ImportaWSSoap">
+    <wsdl:operation name="Importa_DocumentoPubblico">
+      <wsdl:input message="tns:Importa_DocumentoPubblicoSoapIn" />
+      <wsdl:output message="tns:Importa_DocumentoPubblicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione">
+      <wsdl:input message="tns:Importa_PianificazioneSoapIn" />
+      <wsdl:output message="tns:Importa_PianificazioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione_SuperServer">
+      <wsdl:input message="tns:Importa_Pianificazione_SuperServerSoapIn" />
+      <wsdl:output message="tns:Importa_Pianificazione_SuperServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DataRaccoltaPrevista">
+      <wsdl:input message="tns:Importa_DataRaccoltaPrevistaSoapIn" />
+      <wsdl:output message="tns:Importa_DataRaccoltaPrevistaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DocumentoPubblico_SuperServer">
+      <wsdl:input message="tns:Importa_DocumentoPubblico_SuperServerSoapIn" />
+      <wsdl:output message="tns:Importa_DocumentoPubblico_SuperServerSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ImportaWSSoap" type="tns:ImportaWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Importa_DocumentoPubblico">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_Pianificazione_SuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_Pianificazione_SuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DataRaccoltaPrevista">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DataRaccoltaPrevista" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Importa_DocumentoPubblico_SuperServer">
+      <soap:operation soapAction="http://tempuri.org/WS_Importa_GIAS/ImportaWS/Importa_DocumentoPubblico_SuperServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ImportaWS">
+    <documentation xmlns="http://schemas.xmlsoap.org/wsdl/" />
+    <wsdl:port name="ImportaWSSoap" binding="tns:ImportaWSSoap">
+      <soap:address location="http://localhost/Ws_Importa_Gias/ImportaWs.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

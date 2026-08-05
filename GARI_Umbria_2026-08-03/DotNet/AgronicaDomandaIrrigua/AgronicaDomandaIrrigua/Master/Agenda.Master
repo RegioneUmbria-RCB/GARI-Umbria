@@ -1,0 +1,278 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Agenda.master.vb" Inherits="AgronicaDomandaIrrigua.Agenda" %>
+
+<%@ Register Assembly="AgronicaControlli_2010" Namespace="AgronicaControlli_2010"
+    TagPrefix="cc1" %>
+<%@ Register TagName="TopMenuAgenda" Src="~/ControlliUtente/UltraMenu.ascx" TagPrefix="cc" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head id="Head1" runat="server">
+
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
+   
+    <title></title>
+        <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/excanvas.js?" & Application("GiasVersioneCorrente").ToString) %>"></script><![endif]-->
+
+    
+
+
+
+    <!-- JS -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery-ui-1.10.3.custom.min.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+
+    
+    <!-- script gestione delle date -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/confrontaDate.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.ui.datepicker-it.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.ui.datepicker-pt-BR.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+
+    <!-- widget personalizzato per le combo UI -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery-ui.combobox.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+
+    <!-- bubble popup -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.bubblepopup.v2.3.1.min.js?" & Application("GiasVersioneCorrente").ToString) %>"> </script>
+    <!-- funzioni prototipizzate per le stringhe -->
+        <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/FunzioniMie.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+    <!-- loading -->
+    <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.showLoading.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+    
+    <cc1:AgroPako id="pako" runat="server" />
+
+    <!--STYLE-->
+     <link rel="stylesheet" href="<%= ResolveClientUrl("~/Styles/font-awesome-4.7.0/css/font-awesome.min.css") %>"
+        media="screen" />
+    <link href="../Styles/showLoading.css" rel="Stylesheet" type="text/css" />
+    <link href="../Styles/jquery-ui-1.10.3.custom.css" rel="Stylesheet" type="text/css" />
+    <link href="../Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/jquery.bubblepopup.v2.3.1.css" rel="stylesheet" type="text/css" />
+   
+   <script type="text/javascript" src="<%= ResolveClientUrl("~/Scripts/jquery.multiple.select.js?" & Application("GiasVersioneCorrente").ToString) %>"></script>
+   <link href="../Styles/multiple-select.css" rel="stylesheet" type="text/css" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="<%=PATH_GIASBASE %>agronica/AB_Immagini/Logo/favicon.ico?<% =Application("GiasVersioneCorrente")%>" type="image/svg+xml" />
+
+    <script type="text/javascript">
+
+        //'  Vanni, 28/05/2014 15:04:00: gestione del log in console...
+        jQuery.logThis = function (text) {
+            if ((window['console'] != undefined)) {
+                console.log(text);
+            }
+        }
+
+        // disabilitazione del tasto BACK 
+        document.onkeypress = function (event) {
+            if (typeof window.event != 'undefined') { // ie
+                event = window.event;
+                event.target = event.srcElement; // make ie confirm to standards !!
+            }
+            var kc = event.keyCode;
+            var tt = event.target.type;
+
+            if ((kc != 8) || (tt == 'text') || (tt == 'password') || (tt == 'textarea'))
+                return true;
+            alert('Disabilitato il tasto BACK della tastiera');
+            return false;
+        }
+
+        if (typeof window.event != 'undefined') // ie
+            document.onkeydown = document.onkeypress; // Trap bksp in ie. !! Note: does not trap enter, but onkeypress does !!
+
+
+
+
+
+        function ConfermaElimina(objthis) {
+            var id = objthis.getAttribute("alt");
+            $("#<%= ID_Elimina.ClientID %>").val(id);
+            $('.dialogAvvertimentoDelete').dialog('open');
+        }
+
+
+
+        $(document).ready(function () {
+
+            //ELIMINAZIONE DI UN IMPIANTO
+            //+ funzione in cima
+            $('.dialogAvvertimentoDelete').dialog({
+                autoOpen: false,
+                width: 300,
+                modal: true,
+                buttons: {
+                    "Elimina": function () {
+                        $(this).dialog("close");
+                        DoPostBack_btnEliminaImpianto(); //effettua il post back per eliminazione dei dati
+                    },
+                    "Annulla": function () {
+                        $(this).dialog("close");
+                        return false;
+                    }
+                }
+            });
+            //postback del submit elimina
+            function DoPostBack_btnEliminaImpianto() {
+                //invoco il click
+                $("#<%=BTN_PostBack.ClientID %>").click();
+            }
+            //per i messaggi di spiegazione
+            $('.bubba').CreateBubblePopup();
+            $('.bubba').mouseover(function () {
+                var info_ = $(this).next("span").html();
+
+                //show the bubble popup with new options
+                $(this).ShowBubblePopup({
+                    innerHtml: info_,
+                    innerHtmlStyle: { 'color': 'black', 'text-align': 'left' },
+                    themeName: 'azure',
+                    themePath: '<%= ResolveClientUrl("~/Styles/images/jquerybubblepopup-theme") %>',
+                    width: '230px'
+                });
+            });
+
+        });
+
+
+
+
+        //Per Rinfrescare la sessione
+        function Rinfresca() {
+
+
+            var p2 = 'http://' + window.location.hostname + '/AgronicaAgenda_2010/Ajax/xSessione.aspx/Rinfresca';
+            $.ajax({
+                type: "POST",
+                url: p2,
+                data: "{}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (msg) {
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    //                    alert(xhr.status);
+                    //                    alert(thrownError);
+                }
+            });
+
+        }
+
+        $(document).ready(function () {
+            setInterval('Rinfresca()', 1000 * 60);
+        });
+
+    </script>
+    <style type="text/css">
+        .descrizione
+        {
+            width: 75px;
+        }
+        
+        #WaitFrame
+        {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            left: 0;
+            display: none;
+        }
+    </style>
+
+
+        <link href="AgendaBootstrap_Master.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="ContentAgendaHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body >
+    <iframe height="100%" width="100%" id="WaitFrame" src="<%= ResolveClientUrl("~/WaitForm.htm") %>"
+        scrolling="no" frameborder="0"></iframe>
+    <form id="FORM1" runat="server">
+    <!--Bottone per invocare il postback dal client-->
+    <asp:Button ID="BTN_PostBack" runat="server" Style="display: none;" 
+        meta:resourcekey="BTN_PostBackResource1" />
+    <asp:HiddenField ID="ID_Elimina" runat="server" Value="none" />
+    <!--per invoare direttamente degli script-->
+    <asp:Literal ID="controllo_script" runat="server" 
+        meta:resourcekey="controllo_scriptResource1"></asp:Literal>
+    <asp:ScriptManager ID="ScriptManager1" runat="server" AsyncPostBackTimeout="36000"
+        LoadScriptsBeforeUI="False" ScriptMode="Release"  >
+    </asp:ScriptManager>
+    <asp:UpdatePanel ID="updateScript" runat="server">
+    </asp:UpdatePanel>
+    <div class="page">
+        <!--TOP-->
+        <div style="text-align: center; height: 80px;">
+            <table width="100%">
+                <tr>
+                    <td style="width: 100px">
+                        <asp:Image ID="Logo" Height="73px" Width="96px" ImageUrl="~/AB_Immagini/logo/Logo_GiasOnline_Mini.jpg"
+                            runat="server" meta:resourcekey="LogoResource1" />
+                    </td>
+                    <td>
+                        <div style="width: 100%; height: 32px;" class="ui-widget-header">
+                            <div style="float: left; margin-left: 10px; font-size: 15px; margin-top: 5px;">
+                                <asp:Label ID="Lbl_Titolo" runat="server" 
+                                    meta:resourcekey="Lbl_TitoloResource1"></asp:Label>
+                            </div>
+                            <div style="float: right; height: 32px; margin-top: 2px; width: 32px; margin-right: 17px">
+                            </div>
+                        </div>
+                        <div style="text-align: left; width: 100%; margin-top: 15px; height: 15px;" class="ui-widget-header">
+                            <div style="float: left">
+                                <asp:Label ID="Lbl_Rag_Soc" runat="server" 
+                                    meta:resourcekey="Lbl_Rag_SocResource1"></asp:Label></div>
+                            <div style="float: right">
+                                <asp:Label ID="lbl_FinestraTemporale" runat="server" 
+                                    meta:resourcekey="lbl_FinestraTemporaleResource1"></asp:Label></div>
+                        </div>
+                    </td>
+                    <td style="width: 50px">
+                        <asp:ImageButton ID="ImgBtn_AnnullaTutto" ImageUrl="~/AB_Immagini/icone32/esci.bmp"
+                            runat="server" Style="float: right;" 
+                             />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="clear">
+        </div>
+        <div style="width: 100%">
+            <asp:ContentPlaceHolder ID="ContentAgendaContenuti" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <!-- MESSAGGI DI ALERT -->
+        <div class="clear">
+        </div>
+        <!--Dialog per l'eliminazione -->
+        <div class="dialogAvvertimentoDelete" title="Eliminare?">
+            <table class='centerTab'>
+                <tr>
+                    <td><asp:Label ID="lblElimina" runat="server" 
+                            meta:resourcekey="lblEliminaResource1">Confermare l'eliminazione del dato?<br />
+                        L'operazione non &egrave; annullabile.</asp:Label>                        
+                    </td>
+                    <td>
+                        <asp:Image ID="ImageElimina" ImageUrl="~/AB_Immagini/Messaggi/cestino.png" 
+                            runat="server" meta:resourcekey="ImageEliminaResource1" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <cc1:DialogAvvertimenti ID="DialogAvvertimenti1" runat="server" 
+            meta:resourcekey="DialogAvvertimenti1Resource1" PathImmagini=""></cc1:DialogAvvertimenti>
+        <div class="clear">
+        </div>
+
+
+    </div>
+    </form>
+</body>
+</html>

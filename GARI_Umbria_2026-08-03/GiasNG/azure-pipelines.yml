@@ -1,0 +1,204 @@
+resources:
+  repositories:
+    - repository: giasdn
+      type: git
+      name: GiasDotNet
+
+trigger: none
+
+schedules:
+- cron: '0 0 * * *' # cron syntax defining a schedule
+  displayName: nightly # friendly name given to a specific schedule
+  branches:
+    include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: true
+
+variables:
+- group: Destinations
+- template: /templates/variables/deploy-path.yml@giasdn
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+- name: BranchPipe
+  value: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+- name: execDeploy
+  ${{ if eq(variables['build.reason'], 'Manual') }}:
+    value: ${{ parameters.executeDeploy }}
+  ${{ else }}:
+    value: false
+
+stages:
+  - stage: Build
+    jobs:
+    - job: build
+      workspace:
+        clean: all
+      pool: Default
+      variables:
+        NODE_OPTIONS: --max-old-space-size=5120
+      steps:  
+      - checkout: self
+        persistCredentials: true
+      - task: CmdLine@2
+        displayName: 'git fetch'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git fetch'
+      - task: CmdLine@2
+        displayName: 'git checkout'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git checkout $(BranchPipe)'
+      - task: CmdLine@2
+        displayName: 'git pull'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git pull'
+      - task: UseNode@1
+        displayName: 'Usa Node 22.x'
+        inputs:
+          version: '22.x'
+      - task: Npm@1
+        displayName: 'Install Angular CLI'
+        inputs:
+          command: custom
+          verbose: false
+          #verbose: true
+          customCommand: 'install -g @angular/cli'
+      - task: Npm@1
+        displayName: 'npm install'
+        inputs:
+          verbose: true
+      - task: AngularCLI@1
+        displayName: 'ng version'
+        inputs:
+          command: 'custom'
+          custom: 'version'
+          verbose: true
+          DisableAnalytics: true
+      - task: Npm@1
+        displayName: 'npm list'
+        inputs:
+          command: 'custom'
+          customCommand: 'list'
+      - task: PowerShell@2
+        displayName: 'Aggiornamento file Versione.txt'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          targetType: 'inline'
+          script: |
+            #### per DEBUG ####
+            #$Agent_WorkFolder = "C:\tmp"  #$(Build.SourcesDirectory)
+            #$FileName = "TEST-TFS.txt"
+            ##$FormatoData = "dd/MM/yyyy HH:mm:ss"
+            #$FormatoData = "dd MMMM yyyy HH:mm:ss"
+            #### per DEBUG ####
+            
+            $Agent_WorkFolder = "$(Build.SourcesDirectory)\src"
+            $FileName = "GiasVersioneCorrente.txt"
+            $FormatoData = "dd MMMM yyyy HH:mm:ss"
+            
+            Write-Host "par DirFile: ", $Agent_WorkFolder
+            Write-Host "par FileName: ", $FileName
+            Write-Host "par FormatoData: ", $FormatoData
+            
+            Write-Host "------------------------------------------------------------"
+            Write-Host "Update Gias Versione Corrente", $Agent_WorkFolder
+            Write-Host "------------------------------------------------------------"
+                
+            $MyFile = "$Agent_WorkFolder\$FileName"
+            
+            Write-Host "File Versione to change: ", $MyFile
+            
+            if (Test-Path $MyFile) {
+            
+                Set-Content -Path $MyFile -Value (Get-Date -format $FormatoData) -NoNewline -Encoding UTF8 -Force
+            
+                Write-Host "`nVersione scritta: ", (Get-Content -Path $MyFile), "`n"
+                  
+                Write-Host "File Versione changed: ", $MyFile
+            
+            } else {
+                Write-Error "Il file $MyFile non esiste."
+            }
+            
+            Write-Host " -----------------------------------"
+          failOnStderr: true
+      - task: AngularCLI@1
+        displayName: 'ng build'
+        inputs:
+          arguments: '--configuration production'
+          prod: false
+          verbose: true
+          #debug: true
+          DisableAnalytics: true
+      - task: PowerShell@2
+        displayName: 'Rename RewriteRules.config'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          targetType: 'inline'
+          script: |
+            Rename-Item -Path "$(Build.SourcesDirectory)\dist\RewriteRules.config" -NewName "__ORIG_RewriteRules.config"
+          failOnStderr: true
+      - task: CmdLine@2
+        displayName: 'git add Versione.txt'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git add src\\GiasVersioneCorrente.txt'
+      - task: CmdLine@2
+        displayName: 'git config user'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: |
+            git config user.name "$(Build.RequestedFor)"
+            git config user.email "$(Build.RequestedForEmail)"
+      - task: CmdLine@2
+        displayName: 'git commit'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git commit -m "aggiornamento file versione [skip ci]"'
+      - task: CmdLine@2
+        displayName: 'git push'
+        condition: and(succeeded(), eq(variables['build.reason'], 'Manual'))
+        inputs:
+          script: 'git push origin $(BranchPipe)'
+      - task: PublishPipelineArtifact@1
+        displayName: 'Pubblica artefatto: $(Build.DefinitionName)_$(Build.BuildNumber)'
+        inputs:
+          targetPath: '$(Build.SourcesDirectory)\dist'
+          artifact: '$(Build.DefinitionName)_$(Build.BuildNumber)'
+          publishLocation: 'pipeline'
+
+  - stage: Deploy
+    condition: and(succeeded(), eq(variables['execDeploy'], true))
+    jobs:
+    - deployment: publish
+      displayName: Pubblicazione locale
+      pool: 
+        name: Default
+      environment: Prod
+      strategy: 
+        runOnce:
+          deploy:
+            steps:
+              - task: PowerShell@2
+                displayName: 'Pulizia Preventiva Files'
+                inputs:
+                  targetType: 'inline'
+                  script: |
+                    $path = "$(PathDeployFinal)\\GiasNG"
+                    Write-Host "Pulizia della cartella: $path"
+                    Get-ChildItem -Path $path -Recurse| Foreach-object {Remove-item -Force -Recurse -path $_.FullName }
+                  failOnStderr: true
+              - task: PublishPipelineArtifact@1
+                displayName: 'Pubblica artefatto'
+                inputs:
+                  targetPath: '$(Pipeline.Workspace)\\$(Build.DefinitionName)_$(Build.BuildNumber)'
+                  artifact: 'GiasNG'
+                  publishLocation: 'filepath'
+                  fileSharePath: '$(PathDeployFinal)'
+                  parallel: true

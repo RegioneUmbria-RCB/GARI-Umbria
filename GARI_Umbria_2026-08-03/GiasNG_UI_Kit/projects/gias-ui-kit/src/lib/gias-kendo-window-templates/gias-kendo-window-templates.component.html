@@ -1,0 +1,11 @@
+<ng-template id="windowTitleBar" #windowTitleBar let-win>
+  <div class="k-window-title">{{title}}</div>
+  <button [hidden]="showMinimize" kendoWindowRestoreAction><i aria-hidden="true"
+      class="xi-modal-expand"></i></button>
+  <button [hidden]="showMaximize" kendoWindowMinimizeAction><i aria-hidden="true"
+      class="xi-modal-reduce"></i></button>
+  <button [hidden]="showRestore" kendoWindowMaximizeAction><i aria-hidden="true"
+      class="xi-modal-fullscreen"></i></button>
+  <button [hidden]="showClose" kendoWindowCloseAction><i aria-hidden="true"
+      class="xi-modal-close"></i></button>
+</ng-template>

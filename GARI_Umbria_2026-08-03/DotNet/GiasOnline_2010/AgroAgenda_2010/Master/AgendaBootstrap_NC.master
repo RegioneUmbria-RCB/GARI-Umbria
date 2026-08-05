@@ -1,0 +1,115 @@
+﻿<%@ Master Language="VB" MasterPageFile="~/Master/AgendaBootstrap.Master" AutoEventWireup="false"  
+        CodeBehind="AgendaBootstrap_NC.master.vb" Inherits="AgroAgenda_2010.AgendaBootstrap_NC" %>
+<%@ MasterType VirtualPath="~/Master/AgendaBootstrap.Master" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        
+        #navbar-nc .nav>li>a {
+            text-decoration: none;
+            background-color: #fff !important;
+            color: #052747 !important;
+            transition: background-color 0.5s ease;
+        }
+        
+        #navbar-nc .nav>li>a:hover, #navbar-nc .nav>li>a:focus, #navbar-nc .nav .menuattivo a{
+            text-decoration: none;
+            background-color: #052747 !important;
+            color: #fff !important;
+        }
+        
+    </style>
+
+    <asp:ContentPlaceHolder id="HeadContent_NC" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <asp:HiddenField id="hf_utenteAbilitato_Lista_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_FiltraEsporta_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_Impostazioni_Lettura" runat="server" Value="False" />
+    <asp:HiddenField id="hf_utenteAbilitato_Anagrafiche_Lettura" runat="server" Value="False" />
+    
+    <div class="row">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+             <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-nc">
+                <ul class="nav navbar-nav">
+                <li id="menuLista" style="display:none;"><a href="../NonConformita/NC_Lista.aspx">LISTA NC</a></li>
+                <li id="menuFiltraEsporta" style="display:none;"><a href="../NonConformita/NC_FiltraEsporta.aspx">FILTRA-ESPORTA</a></li>
+                <li id="menuImpsotazioni" style="display:none;"><a href="../NonConformita/NC_Impostazioni.aspx">IMPOSTAZIONI</a></li>
+                <li id="menuAnagrafiche" style="display:none;"><a href="../NonConformita/NC_Anagrafiche.aspx">ANAGRAFICHE</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+
+    <div class="row">
+        <div id="contenitore">
+            <asp:ContentPlaceHolder id="MainContent_NC" runat="server"></asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentScript" runat="server">
+    <asp:ContentPlaceHolder id="ContentScript_NC" runat="server"></asp:ContentPlaceHolder>
+
+    <script type="text/javascript">
+
+        var objP_server = '<%=objparametri_server_string %>';
+        var objP_utenti = '<%=objparametri_utenti_string %>';
+
+        $(document).ready(function () {
+
+            $('.collapse').on('shown.bs.collapse', function () {
+                $(this).parent().find(".fa-plus-circle").removeClass("fa-plus-circle").addClass("fa-minus-circle");
+            });
+
+            $('.collapse').on('hidden.bs.collapse', function () {
+                $(this).parent().find(".fa-minus-circle").removeClass("fa-minus-circle").addClass("fa-plus-circle");
+            });
+
+            //Attiva il menu in base alla pagina in cui ci si trova
+            var url = window.location.pathname;
+            var substr = url.split('/');
+            var urlaspx = substr[substr.length - 1];
+            $('#navbar-nc .nav').find('.menuattivo').removeClass('menuattivo');
+            $('#navbar-nc .nav li a').each(function () {
+                if (this.href.indexOf(urlaspx) >= 0) {
+                    $(this).parent().addClass('menuattivo');
+                }
+            });
+
+            //In base ai permessi, mostro le tab
+            if ($("input[name$='hf_utenteAbilitato_Lista_Lettura']").val() == "True")
+                $('#menuLista').show();
+
+            if ($("input[name$='hf_utenteAbilitato_FiltraEsporta_Lettura']").val() == "True")
+                $('#menuFiltraEsporta').show();
+
+            if ($("input[name$='hf_utenteAbilitato_Impostazioni_Lettura']").val() == "True")
+                $('#menuImpsotazioni').show();
+
+            if ($("input[name$='hf_utenteAbilitato_Anagrafiche_Lettura']").val() == "True")
+                $('#menuAnagrafiche').show();
+
+
+        });
+
+    </script>
+
+</asp:Content>

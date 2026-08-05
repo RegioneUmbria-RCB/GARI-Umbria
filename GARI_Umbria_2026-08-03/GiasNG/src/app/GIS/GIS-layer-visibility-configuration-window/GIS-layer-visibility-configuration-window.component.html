@@ -1,0 +1,112 @@
+<gis-window #window [windowArgs]="windowArgs" class="pb-3">
+
+  <div class="header">
+    <div class="row-new-layer" *ngIf="enableNewLayerBtn">
+      <div class="new-layer-text">
+        <kendo-textbox #textbox class="textbox" placeholder="{{'gis.NuovoLayer' | transloco}}" [clearButton]="true"
+          (valueChange)="change($event)">
+          <ng-template kendoTextBoxPrefixTemplate>
+            <span (click)="newLayerToggle()"
+              [class]="saveVisibile ? 'k-icon k-i-floppy k-icon-sm' : 'k-icon k-i-plus-circle k-icon-sm'">
+            </span>
+            <kendo-textbox-separator></kendo-textbox-separator>
+          </ng-template>
+        </kendo-textbox>
+      </div>
+      <div class="new-layer-type">
+        <kendo-dropdownlist [data]="featureTypeElements" textField="descrizione" valueField="codice"
+          [valuePrimitive]="true" [(ngModel)]="featureTypeSelectedId">
+        </kendo-dropdownlist>
+      </div>
+    </div>
+    <div class="row-new-layer">
+      <div class="new-layer-buttons">
+        <kendo-buttongroup selection="single">
+          <button kendoButton [toggleable]="true" [selected]="true" (click)="loadActiveLayers()">
+            {{ "gis.MostraSoloILayerAttivi" | transloco }}
+          </button>
+          <button kendoButton [toggleable]="true" (click)="loadAllLayers()">
+           {{ "gis.MostraTuttiILayer" | transloco }}
+          </button>
+        </kendo-buttongroup>
+      </div>
+    </div>
+    <div class="info-box">
+      <kendo-textbox class="custom-textbox" [(ngModel)]="filterValue" placeholder="{{'gis.CercaLayer' | transloco}}"
+        (valueChange)="onFilterChange()" [clearButton]="true" rounded="full" clearButtonIcon="xi-drawer-close">
+      </kendo-textbox>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="layers" [ngStyle]="{'height.px': calculateBodyHeight()}">
+      <div *ngFor="let item of layersData">
+        <div class="row k-align-items-center">
+          <p class="item-name">{{ item.nome }}</p>
+          <span (click)="toggleVisible(item)" class="item-visible info-icon">
+            <i aria-hidden="true"
+              [class]="item.flagvisibile == '1' ? 'xi-eye-visible-dark' : 'xi-eye-invisible-dark'"></i>
+          </span>
+
+          <div class="item-switch item-visible info-icon">
+            <label class="toggle">
+              <input type="checkbox" class="checkbox" [checked]="item.flagattivo == '1'"
+                (change)="toggleActive(item)" />
+            </label>
+          </div>
+
+<!--          <ng-container *ngIf="item.FlagAmministrazione == '1'">-->
+          <ng-container>
+            <div class="item-visible info-icon">
+              <app-drop-down-button
+                fillMode="flat"
+                [item]="item"
+                [data]="getActionsList(item)"
+                [disabled]="item.FlagAmministrazione != '1'"
+                gisTooltip
+                [title]="(item.FlagAmministrazione != '1' ? 'gis.PermessiEditLayerNegati' : '') | transloco"
+              >
+                <fa-icon class="btn increase-border btn-outline btn-sm" size="lg" [icon]="faDots"></fa-icon>
+              </app-drop-down-button>
+            </div>
+
+            <div *ngIf="item.FlagAmministrazione == '1'; else permissionDisabled" class="item-visible info-icon">
+              <span (click)="managePermission(item)">
+                <i aria-hidden="true" class="fa fa-user" style="font-size: 20px"></i>
+              </span>
+            </div>
+          </ng-container>
+
+          <ng-template #permissionDisabled>
+            <span class="item-visible info-icon" gisTooltip [title]="'gis.PermessiDisabilitato' | transloco">
+              <i aria-hidden="true" class="fa fa-user disabled"></i>
+            </span>
+          </ng-template>
+
+          <ng-container *ngIf="item.FlagAmministrazione == '1'">
+            <span (click)="manageTranslations(item)" class="item-visible info-icon">
+              <i aria-hidden="true" class="xi-label-active"></i>
+            </span>
+          </ng-container>
+
+          <ng-container *ngIf="item.FlagAmministrazione != '1'">
+            <span class="item-visible info-icon" gisTooltip [title]="'gis.PermessiTraduzioneDisabilitati' | transloco">
+              <i aria-hidden="true" class="xi-label-not-active"></i>
+            </span>
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div #load [ngClass]="isLoading ? 'height100' : ''"></div>
+
+</gis-window>
+
+<kendo-dialog *ngIf="traduzioniPayload != null" [title]="'gis.ImpostaLaTraduzioneDelNomeDelLayer' | transloco"
+  [width]="750" (close)="traduzioniPayload = null">
+
+  <gis-translations-grid [translations]="traduzioniPayload.Traduzioni" [loading]="false"
+    (updated)="translationsUpdated($event)"></gis-translations-grid>
+</kendo-dialog>

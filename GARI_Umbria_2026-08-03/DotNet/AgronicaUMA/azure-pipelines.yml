@@ -1,0 +1,33 @@
+﻿name: $(Date:yyyyMMdd).$(Rev:r)
+
+trigger: none
+
+schedules:
+  - cron: '30 22 * * *' # cron syntax defining a schedule (23:30)
+    displayName: nightly
+    branches:
+      include: [ develop ] # which branches the schedule applies to
+
+parameters:
+  - name: executeDeploy
+    displayName: Flag controllo deploy
+    type: boolean
+    default: true
+
+variables:
+- group: Destinations
+- template: ../templates/variables/deploy-path.yml
+  parameters:
+    branchName: ${{ replace(variables['Build.SourceBranch'], 'refs/heads/', '') }}
+
+extends:
+  template: ../templates/pipelines/net-agro-web-pipeline.yml  # Template reference
+  parameters:
+    solution: AgronicaUMA
+    target: AgronicaUMA
+    artifactName: 'AgronicaUMA'
+    path: 'AgronicaUMA'
+    artifactBasePath: AgronicaUMA
+    outdir: 'AgronicaUMA'
+    execDeploy: ${{ parameters.executeDeploy }}
+    deployPath: $(PathDeployFinal)

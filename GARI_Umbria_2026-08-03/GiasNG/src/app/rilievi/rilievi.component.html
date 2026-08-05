@@ -1,0 +1,39 @@
+<div class="rilievi-page">
+    <div class="filters-container">
+        <app-filters-rilievi></app-filters-rilievi>
+    </div>
+    <div class="container pt-3">
+        <div class="row col-12">
+            <ng-container>
+                <kendo-tabstrip
+                    id="tabstrip"
+                    #tabstrip>
+                    <kendo-tabstrip-tab [selected]="true">
+                        <ng-template kendoTabTitle>
+                            <span style="cursor: pointer;">{{'Rilievi' | transloco}}</span>
+                        </ng-template>
+                        <ng-template kendoTabContent>
+                            <div class="row" style="background-clip: content-box">
+                                <gias-kendo-grid #GridRilievi
+                                                [gridId]="'RilieviGridId'"
+                                                class="kendo-grid-no-shadows"
+                                                style="background-color: #ffffff"
+                                    >
+                                    <ng-container headerContentEnd>
+                                        <div kendoTooltip *ngIf="permessoQdC_W">
+                                            <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+                                                    (click)="onNew()"
+                                                    [title]="'NuovaOperazione' | transloco" [type]="'button'">
+                                                <fa-icon class="faAddSchedule"></fa-icon>
+                                            </button>
+                                        </div>
+                                    </ng-container>
+                                </gias-kendo-grid>
+                            </div>
+                        </ng-template>
+                    </kendo-tabstrip-tab>
+                </kendo-tabstrip>
+            </ng-container>
+        </div>
+    </div>
+</div>

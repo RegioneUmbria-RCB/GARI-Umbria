@@ -1,0 +1,92 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>BootStrap 3 : typeahead con chiamata $.ajax() template - con Gestione Session</Title>
+      <Author>Vanni</Author>
+      <Shortcut>bjaxs</Shortcut>
+      <HelpUrl></HelpUrl>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>id controllo bootstrap</ToolTip>
+          <Default>id</Default>
+        </Literal>
+        <Literal>
+          <ID>indirizzohttp</ID>
+          <ToolTip>The URL for the request</ToolTip>
+          <Default>pagina</Default>
+        </Literal>
+        <Literal>
+          <ID>url</ID>
+          <ToolTip>The URL for the request</ToolTip>
+          <Default>/url</Default>
+        </Literal>
+        <Literal>
+          <ID>method</ID>
+          <ToolTip>HTTP Method to use (GET, POST, etc.)</ToolTip>
+          <Default>POST</Default>
+        </Literal>
+        <Literal>
+          <ID>data</ID>
+          <ToolTip>Data to send (querystring)</ToolTip>
+          <Default>{ Parametro: '" + Parametro + "' }</Default>
+        </Literal>        
+        <Literal>
+          <ID>NomeMetodo</ID>
+          <ToolTip>Nome Metodo da chiamare</ToolTip>
+          <Default>NomeMetodo</Default>
+        </Literal>
+        <Literal>
+          <ID>asincrono</ID>
+          <ToolTip>Chiamata Asincrona (impostare a false per chiamata sincrona)</ToolTip>
+          <Default>true</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="jscript">
+        <![CDATA[
+
+
+$$('#$id$').typeahead({
+	source: function (query, process) {
+        $$.ajax({
+            url: '$url$',
+            type: 'POST',
+            dataType: 'JSON',
+            data: "query: '" + query + "' }",
+            success: function(data) {            
+            
+                $$('#WaitFrame').hide();
+                WaitFrame.hide();
+                if (data == 'SessioneScaduta') {
+                    $$('#dialogSessioneScaduta').dialog("open");
+                }
+                else {
+                    if (data.substring(0, 2) == "ok") {
+                    
+                        var msg_d = data.substring(2, msg.d.length - 1);
+                    
+                        //codice success
+                        process(msg_d);
+                    
+                    }
+                    else
+                        AgroMessaggio(divAgroErroreRosso, "Si è verificato un problema lato server (Errore 500)", msg.d);
+                }
+            
+            
+            }
+        });
+    }
+});
+
+
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,68 @@
+<gias-kendo-grid [id]="'gridBrogliaccio'" class="kendo-grid-no-shadows">
+  <ng-container headerContent>
+    <div style="display:flex; flex-flow:column;">
+      <div style="display:flex; flex-flow:row;">
+        <div style="display:flex; align-items: center; margin-right: 10px;">
+          <div class="ricettaBloccata legend-spacing"></div>
+          <div class="text-spacing">{{ "Bloccata" | transloco }}</div>
+          <gias-info-template [title]="'RicettaBloccataInfo' | transloco"></gias-info-template>
+        </div>
+        <div style="display:flex; align-items: center; margin-right: 10px;">
+          <div class="ricettaPubblica legend-spacing"></div>
+          <div class="text-spacing">{{ "Pubblica" | transloco }}</div>
+          <gias-info-template [title]="'RicettaPubblicaInfo' | transloco"></gias-info-template>
+        </div>
+        <div style="display:flex; align-items: center;">
+          <span class="ricettaSalvataInAgenda legend-spacing"></span>
+          <span class="text-spacing">{{ "SalvataInAgenda" | transloco }}</span>
+          <gias-info-template [title]="'RicettaInAgendaInfo' | transloco"></gias-info-template>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container headerContentEnd *ngIf="!store.isMenuAgendaCalledFromGis">
+    <div kendoTooltip>
+      <button class="btn btn-primary btn-sm btn-primary-fill"
+              (click)="importaAgendaDaTabelleAPP()"
+              [title]="'CaricaDatiAPP' | transloco"
+              style="margin-right: 5px"
+              [type]="'button'">
+        <div class="faGridToolbarIcon faQdCImportByApp"></div>
+      </button>
+    </div>
+    <!-- Casanova: Nascosto Bottone Codifica Prodotti APP
+    <div kendoTooltip>
+        <button class="btn btn-primary btn-sm btn-primary-fill"
+                (click)="CodificaProdottiAPP()"
+                [title]="'CodificaProdottiAPP' | transloco"
+                [type]="'button'">
+            <div class="faGridToolbarIcon faQdCCodeProductsByApp"></div>
+        </button>
+    </div>-->
+
+    <span class="separator"></span>
+
+    <ng-container *ngTemplateOutlet="stampeRef;"></ng-container>
+
+    <div kendoTooltip *ngIf="permessoMultiCancellazione">
+      <button style="margin-right: 5px" class="btn btn-delete btn-sm" (click)="removeSelected()"
+              [type]="'button'"
+              [title]="'CancellaleOperazioniSelezionate' | transloco">
+        <div class="faGridToolbarIcon faQdCCancellazioneMultipla"></div>
+      </button>
+    </div>
+    <div kendoTooltip *ngIf="MostraBtnNuovoBrogliaccio()">
+      <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+              (click)="onNuovo()"
+              [title]="'NuovoBrogliaccioText' | transloco"
+              [type]="'button'">
+        <fa-icon class="faAddSchedule"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #warningDialogRef>
+  <div [innerHTML]="warningDialogMsg"></div>
+</ng-template>

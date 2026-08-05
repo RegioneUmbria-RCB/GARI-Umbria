@@ -1,0 +1,75 @@
+<form [formGroup]="form">
+  <div class="editPageContent">
+    <div class="mt-2 mb-2">
+      <div class="row form-row">
+
+        <div class="col-12 col-md-4">
+          <gias-drop-down-template-s [name]="'Anno' | transloco" [obligatory]="false" [clearButton]="true"
+            [listItems]="listAnni" [valuePrimitive]="false" giasFormControlName="anno">
+          </gias-drop-down-template-s>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <app-export-qdc-to-agea-farm-filter (onImpresaSelected)="form.controls['impresa'].setValue($event)"
+            [yearControl]="form.controls.anno"
+            [impresaSelected]="form.controls['impresa'].value"></app-export-qdc-to-agea-farm-filter>
+        </div>
+
+        <div class="col-12 col-md-3 align-button-left">
+          <button kendoTooltip [disabled]="form.controls['impresa'].value == null" (click)="export([])"
+            [title]="'InviaAdAGEA' | transloco" class="btn btn-primary btn-primary-fill">
+            <fa-icon size="sm" [icon]="['fas', 'arrow-up-from-bracket']" aria-hidden="true"
+              style="color: white;"></fa-icon>
+          </button>
+
+          <button kendoTooltip (click)="refreshData()"
+            [title]="'AggiornaDati' | transloco" class="btn btn-secondary btn-primary-fill k-ml-2">
+            <fa-icon size="sm" [icon]="faRotate" aria-hidden="true"
+              style="color: white;"></fa-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<kendo-grid [data]="data$ | async" [loading]="isLoading" [pageable]="{ type: 'input', pageSizes: true }"
+  [pageSize]="stateSubject.value.take" [skip]="stateSubject.value.skip" (dataStateChange)="stateSubject.next($event)">
+
+  <kendo-grid-command-column [width]="100" *ngIf="AuthorizedUserForLogs">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="cmd-row">
+        <button kendoButton title="Apri JSON" fillMode="flat" class="btn btn-primary btn-primary-fill"
+          (click)="openJson(dataItem.bundleId)" *ngIf="ShowJSONBtn()"><fa-icon [icon]="faFileCode"></fa-icon></button>
+
+        <button kendoButton title="Apri log" fillMode="flat" class="btn btn-primary btn-primary-fill"
+          *ngIf="ShowLOGBtn(dataItem)"
+          (click)="downloadLogs(dataItem)"><fa-icon [icon]="faFileText"></fa-icon></button>
+      </div>
+    </ng-template>
+  </kendo-grid-command-column>
+
+  <kendo-grid-column-group title="Creazione Fornitura">
+    <kendo-grid-column field="bundleId" title="ID fornitura" format="##"></kendo-grid-column>
+    <kendo-grid-column field="creationDate" title="Data creazione" format="dd/MM/yyyy HH:mm"></kendo-grid-column>
+    <kendo-grid-column field="creationUser" title="Utente"></kendo-grid-column>
+  </kendo-grid-column-group>
+
+  <kendo-grid-column-group title="Interazione con Agea">
+    <kendo-grid-column field="state" title="Stato">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <span [title]="dataItem.rawState" kendoTooltip>{{ dataItem.state }}</span>
+      </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column field="date" title="Data" format="dd/MM/yyyy HH:mm"></kendo-grid-column>
+    <kendo-grid-column field="ageaToken" title="Token Agea"></kendo-grid-column>
+    <kendo-grid-column field="giasMessage" title="Segnalazioni Interne"></kendo-grid-column>
+    <kendo-grid-column field="message" title="Messaggio Agea"></kendo-grid-column>
+  </kendo-grid-column-group>
+
+</kendo-grid>
+
+<router-outlet></router-outlet>
+
+<app-export-qdc-to-agea-json-dialog *ngIf="jsonViewOpen != null" [data]="jsonViewOpen"
+  (onClose)="jsonViewOpen = null"></app-export-qdc-to-agea-json-dialog>

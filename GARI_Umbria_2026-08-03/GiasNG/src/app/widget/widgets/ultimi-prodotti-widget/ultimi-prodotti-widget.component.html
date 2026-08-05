@@ -1,0 +1,16 @@
+<div *ngIf="piva != null" class="widget-ultimi-prodotti-container">
+
+  <gias-kendo-grid></gias-kendo-grid>
+
+  <div class="row fix-margin text_uppercase widget-all-data-navigation">
+    <div>
+      <span class="text_uppercase text_weight_800 navigation-text" (click)="navigateToAllProducts()">
+        {{ 'MostraElencoCompleto' | transloco }}
+      </span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

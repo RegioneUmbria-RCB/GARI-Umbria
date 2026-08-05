@@ -1,0 +1,37 @@
+@if (isLoading) {
+  <kendo-loader/>
+} @else {
+  <div class="widget-customization-body">
+    @for (widget of widgets; track $index) {
+      @if (widget.Codice != 'PaeseWidgetsMultiAzienda') {
+        <div class="widget-customization-item text_blue">
+          <div class="item-switch" [ngClass]="{'readonly' : !customSelected()}">
+            <input type="checkbox" [id]="listID() + '_switch_' + $index" class="checkbox"
+                   [(ngModel)]="widget.Visibile"
+                   [disabled]="!customSelected()" (change)="onConfigChange(widget)"/>
+            <label [for]="listID() + '_switch_' + $index" class="toggle">
+              <div class="switch-icons-container">
+                <span class="switch-icon switch-icon-check">
+                  <i aria-hidden="true" class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="switch-icon switch-icon-x">
+                  <i aria-hidden="true" class="fa fa-times" aria-hidden="true"></i>
+                </span>
+              </div>
+            </label>
+          </div>
+
+          @if (widget.new == null || !widget.new) {
+            <div class="item-title text_gray_dark2">{{ widget.Titolo }}</div>
+          }
+          @if (widget.new != null && widget.new) {
+            <div kendoTooltip class="item-title text_gray_dark2 new-widget"
+                 [title]="'NewWidget' | transloco">
+              {{ widget.Titolo }}
+            </div>
+          }
+        </div>
+      }
+    }
+  </div>
+}

@@ -1,0 +1,14 @@
+<div [formGroup]="qdcservice.TestataVisitaForm">
+    <gias-drop-down-template-s [name]="'SpecieAnimali' | transloco"
+                               [clearButton]="true"
+                               [listItems]="testataservice.Array_Specie_Animali"
+                               (open)="openDdlSpecieAnimali()"
+                               textField="Descrizione_Concatenata"
+                               valueField= "Codice_Concatenato"
+                               [filterable]="true"
+                               giasFormControlName="SpecieAnimali_Visita"
+                               [valuePrimitive]="false">
+    </gias-drop-down-template-s>
+</div>
+
+<!-- [listItems]="testataservice.Array_SpecieAnimali" -->

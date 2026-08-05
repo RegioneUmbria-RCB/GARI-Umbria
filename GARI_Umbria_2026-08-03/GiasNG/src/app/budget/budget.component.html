@@ -1,0 +1,7 @@
+<div class="row">
+    <div class="col-11 px-5">
+        <h3 *ngIf="!budgetName && budgetId != 0">{{ 'Budget' | transloco }}</h3>
+        <h3 *ngIf="budgetName && budgetId != 0">{{ 'Budget' | transloco }} - {{budgetName}}</h3>
+    </div>
+</div>
+<router-outlet *ngIf="budgetName && budgetId != 0"></router-outlet>

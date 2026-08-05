@@ -1,0 +1,102 @@
+<body>
+<div class="filters-container" *ngIf="showFilters">
+  <agenda-filters></agenda-filters>
+</div>
+<div class="operations-container">
+  <ng-container *ngIf="impresaSelezionata(); else showRestrizione">
+    <kendo-tabstrip
+      id="tabstrip"
+      (tabSelect)="onTabSelect($event)"
+      #tabstrip
+      [scrollable]="{ scrollButtons: buttons }"
+    >
+
+      <kendo-tabstrip-tab *ngIf="permessoQdC_R" class="customTheme" [title]="">
+        <ng-template kendoTabTitle>
+          <div class="faTabsIcon faMenuQuadernoDiCampagna"></div>
+          <span style="cursor: pointer;">{{ 'Quaderno_di_Campagna' | transloco }}</span>
+        </ng-template>
+        <ng-template kendoTabContent>
+          <all-operations-table>
+            <ng-template #stampeRef let-dataItem *ngIf="StampeBtns.length > 0">
+              <ng-container
+                *ngTemplateOutlet="btnStampe; context: {$implicit: dataItem}"></ng-container>
+            </ng-template>
+          </all-operations-table>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab *ngIf="permessoOrdiniLavoroRicette_R">
+        <ng-template kendoTabTitle>
+          <div class="faTabsIcon faMenuOrdiniDiLavoro"></div>
+          <span style="cursor: pointer;"> {{ 'Ordini_Lavoro_Ricette' | transloco }}</span>
+        </ng-template>
+        <ng-template kendoTabContent>
+          <grid-ricette></grid-ricette>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab *ngIf="permessoBrogliaccio_R">
+        <ng-template kendoTabTitle>
+          <div class="faTabsIcon faMenuBrogliaccio"></div>
+          <span style="cursor: pointer;"> {{ 'Brogliaccio' | transloco }}</span>
+        </ng-template>
+        <ng-template kendoTabContent>
+          <brogliaccio-table></brogliaccio-table>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab *ngIf="false">
+        <ng-template kendoTabTitle>
+          <div class="faTabsIcon faMenuZoo"></div>
+          <span style="cursor: pointer;"> {{ 'Zoo' | transloco }}</span>
+        </ng-template>
+        <ng-template kendoTabContent>
+          <grid-zoo></grid-zoo>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <!--<kendo-tabstrip-tab *ngIf="permessoQdC_R" class="customTheme" [title]="">
+        <ng-template kendoTabTitle>
+          <div class="faTabsIcon faMenuTrappole"></div>
+          <span style="cursor: pointer;">{{ 'Gestione Trappole' }}</span>
+        </ng-template>
+        <ng-template kendoTabContent>
+          <grid-trappole></grid-trappole>
+        </ng-template>
+      </kendo-tabstrip-tab>-->
+
+    </kendo-tabstrip>
+  </ng-container>
+
+  <ng-template #showRestrizione>
+    <h2 style="text-align: center; margin-top: 20px;">
+      {{ 'SelezionareUnaImpresa' | transloco }}
+    </h2>
+  </ng-template>
+
+</div>
+</body>
+
+<ng-template #btnStampe let-dataItem>
+  <div kendoTooltip>
+    <kendo-dropdownbutton fillMode="flat" *ngIf="!inLineModificaIsDisabled"
+                          (itemClick)="onRedirectToStamps($event)"
+                          [title]="'Stampa' | transloco"
+                          [data]="StampeBtns"
+                          class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill"
+                          style="margin-left: -10px; margin-right: 5px;">
+      <div class="ng-fa-icon">
+        <span class="fa-print white lg"></span>
+      </div>
+
+      <ng-template kendoDropDownButtonItemTemplate let-ddlItem class="transparentBg">
+        <div class="faGridRowIcon {{ ddlItem.iconClass }}"
+             *ngIf="!ddlItem.fontawesomeIcon && ddlItem.iconClass"></div>
+        <fa-icon [icon]="ddlItem.fontawesomeIcon"
+                 *ngIf="ddlItem.fontawesomeIcon && !ddlItem.iconClass"></fa-icon>
+        <span>{{ ddlItem.actionName | transloco }}</span>
+      </ng-template>
+    </kendo-dropdownbutton>
+  </div>
+</ng-template>

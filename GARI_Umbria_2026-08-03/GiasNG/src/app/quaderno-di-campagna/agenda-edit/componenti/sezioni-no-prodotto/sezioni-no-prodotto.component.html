@@ -1,0 +1,31 @@
+<div [formGroup]="trattamentoFormGroup" *ngIf="mostraSezioni();">
+    <div class="row mt-2" [id]="'Sezione_' + i"
+         *ngFor="let Sezione of qdcservice.Sezioni_Senza_ProdottoFormArray.controls; index as i">
+        <div *ngIf="qdcservice.Mostra_Sezioni_Senza_Prodotto" [formGroup]="Sezione">
+            <gias-panelbar #Sezioni_PanelBar [headerTemplate]="headerTemplate"
+                           [contentTemplate]="contentTemplate"
+                           [willStoreCookies]="false" [keepItemContent]="true"
+                           [disabled]="Disabilita_Sezione()" [expand]="Espandi_Sezione()">
+
+                <ng-template #headerTemplate>
+                    {{ Componi_Descrizione_Sezione(Sezione.getRawValue()) }}
+                </ng-template>
+
+                <ng-template #contentTemplate>
+                    <div class="content">
+                        <span class="content-text" *ngIf="isRilievo(Sezione)">
+                            <app-rilievi [Rilievo]="Sezione"
+                                         [Causali]="qdcservice.CausaliFormControl"
+                                         [TipoOp]="Sezione.getRawValue().Operazione?.primaryKey?.codice">
+                            </app-rilievi>
+                        </span>
+                        <span class="content-text" *ngIf="isAbbattimento(Sezione)">
+                            <app-abbattimento-impianti></app-abbattimento-impianti>
+                        </span>
+                    </div>
+                </ng-template>
+
+            </gias-panelbar>
+        </div>
+    </div>
+</div>

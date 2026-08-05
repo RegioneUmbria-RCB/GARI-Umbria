@@ -1,0 +1,71 @@
+<h2 *ngIf="!companySelected(); else confrontopc">{{'SelezionareUnAzienda' | transloco}}</h2>
+
+<ng-template #confrontopc>
+  <div class="container">
+    <div class="jumbotron">
+      <form [formGroup]="confrontoPCForm" (keydown.enter)="$event.preventDefault()">
+
+        <div class="row form-row">
+          <div class="col-lg-9 col-md-9 col-sm-12">
+            <app-piano-colturale-grid></app-piano-colturale-grid>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="row form-row"></div>
+            <div class="row form-row">
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <gias-switch-template
+                  [name]="'ConsiderareCatasto' | transloco"
+                  [isDisabled]="true"
+                  [giasFormControlName]="'considerCatasto'"
+                ></gias-switch-template>
+              </div>
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <div style="margin-bottom: 5px">
+                  <gias-switch-template
+                    [name]="'ConsiderareVarieta' | transloco"
+                    [giasFormControlName]="'considerVarieta'"
+                  ></gias-switch-template>
+                </div>
+              </div>
+            </div>
+            <div class="row form-row">
+                <h6>{{'ValiditaPC' | transloco}}:</h6>
+            </div>
+            <div class="row form-row">
+                <gias-validita formGroupName="validita"></gias-validita>
+            </div>
+            <div class="row form-row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <button
+                  style="width: 100%; "
+                  kendoButton class="bottom btn btn-primary btn-primary-fill"
+                  icon="calculator"
+                  (click)="loadComparison()"
+                  fillMode="outline"
+                >
+                  {{ 'CaricaConfronto' | transloco }}
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-6">
+
+          </div>
+        </div>
+
+        <div class="row form-row">
+          <div class="col-lg-2 col-sm-6 col-md-6" style="display: flex; align-items: center; justify-content: center;">
+
+          </div>
+        </div>
+
+        <!--          <div *ngIf="!isPlanSelected(); else confrontogrid"></div>-->
+        <div *ngIf="false; else confrontogrid"></div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #confrontogrid>
+  <app-confronto-pc-catasto></app-confronto-pc-catasto>
+</ng-template>

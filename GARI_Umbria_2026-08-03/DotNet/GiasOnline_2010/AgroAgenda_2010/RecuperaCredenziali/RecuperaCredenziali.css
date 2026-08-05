@@ -1,0 +1,102 @@
+﻿/* Sticky footer styles
+      -------------------------------------------------- */
+
+html, body {
+    height: 100%; /* The html and body elements cannot have any padding or margin. */
+}
+
+.modal-dialog {
+    z-index: 2000;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap_master {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%; /* Negative indent footer by it's height */
+    margin: 0 auto -85px;
+}
+
+/* Set the fixed height of the footer here */
+#push, #footer {
+    height: 85px;
+}
+
+#footer {
+    background-color: #052747;
+    color: #fff;
+    font-size: 10px;
+    height: auto !important;
+    padding: 8px 0 !important;
+    margin-top: 23px;
+}
+
+    #footer h5 {
+        font-size: 14px;
+        margin-bottom: 3px;
+    }
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 991px) {
+    #footer {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 20px;
+        height: auto;
+    }
+
+    .footer_logo {
+        float: none;
+        margin-bottom: 5px;
+    }
+
+    #footer .nopadding {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+}
+
+.footer_logo {
+    margin-bottom: 5px;
+    float: left;
+    margin-right: 10px;
+    background-color: #fff;
+    padding: 8px 3px;
+    border-radius: 5px;
+}
+
+.btnAsLink {
+    border: none;
+    background: none;
+    color: #428bca;
+    padding: 0;
+}
+
+.btnAsLink:hover {
+    text-decoration: underline;
+}
+
+.btnAsLink:focus {
+    outline: none;
+}
+
+#descDominioScelto {
+    font-size: 18px;
+}
+
+#boxEsito {
+    font-weight: bold;
+    padding: 20px 0 20px 12px;
+}
+
+.esitoErrore {
+    border: 2px solid red;
+    border-radius: 5px;
+    color: red;
+}
+
+.esitoSuccesso {
+    border: 2px solid green;
+    border-radius: 2px;
+    color: green;
+}

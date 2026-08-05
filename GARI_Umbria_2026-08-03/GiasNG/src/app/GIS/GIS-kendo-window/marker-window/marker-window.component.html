@@ -1,0 +1,31 @@
+﻿<gis-window [windowArgs]="windowArgs" class="pb-3">
+  <app-tool-disegna-punti *ngIf="modality == markerWindowModality.Marker" (onReset)="reset($event)">
+  </app-tool-disegna-punti>
+
+  <app-tool-scomponi-punti *ngIf="modality == markerWindowModality.Scomponi"
+    (onReset)="reset($event)"></app-tool-scomponi-punti>
+
+  <app-tool-disegno-avanzato *ngIf="modality == markerWindowModality.DisegnoAvanzato"
+    (onReset)="reset($event)"></app-tool-disegno-avanzato>
+</gis-window>
+
+<kendo-dialog *ngIf="isCloseConfirmationOpen" (close)="isCloseConfirmationOpen = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'Conferma' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div class="exit-text" *ngIf="modality == markerWindowModality.Marker">{{ 'gis.CloseDrawingMarkerWindow' | transloco
+    }}
+  </div>
+  <div class="exit-text" *ngIf="modality == markerWindowModality.Scomponi">{{ 'gis.CloseDrawingScomponiWindow' |
+    transloco }}
+  </div>
+  <div class="exit-text" *ngIf="modality == markerWindowModality.DisegnoAvanzato">{{
+    'gis.CloseDrawingDisegnoAvanzatoWindow' | transloco }}
+  </div>
+
+  <kendo-dialog-actions [layout]="actionsLayout">
+    <button kendoButton (click)="doReset()">{{ 'Si' | transloco }}</button>
+    <button kendoButton (click)="isCloseConfirmationOpen = false">{{ 'No' | transloco }}</button>
+  </kendo-dialog-actions>
+</kendo-dialog>

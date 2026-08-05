@@ -1,0 +1,20 @@
+<gias-kendo-grid class="k-mt-5" #kendoGrid>
+  <ng-container headerContentEnd>
+    <button kendoTooltip class="btn btn-primary btn-sm btn-primary-fill btn-important" (click)="add()"
+      [title]="'Nuovo' | transloco">
+      <fa-icon class="faAddRowSingle"></fa-icon>
+    </button>
+  </ng-container>
+</gias-kendo-grid>
+
+<gis-cfg-proiezioni-dialog *ngIf="gisCfgProiezioniDataService.openConfigurationEditDialog" [algorithms]="algorithms$ | async"
+  [inputConfiguration]="gisCfgProiezioniDataService.selectedConfiguration" (close)="closeAndReload()">
+</gis-cfg-proiezioni-dialog>
+
+<gis-cfg-proiezioni-permissions *ngIf="gisCfgProiezioniDataService.openPermissionDialog" (close)="closeAndReload()"
+  [inputConfiguration]="gisCfgProiezioniDataService.selectedConfiguration">
+</gis-cfg-proiezioni-permissions>
+
+<gis-cfg-proiezioni-config *ngIf="gisCfgProiezioniDataService.openCfgDialog" (close)="closeAndReload()"
+  [inputConfiguration]="gisCfgProiezioniDataService.selectedConfiguration">
+</gis-cfg-proiezioni-config>

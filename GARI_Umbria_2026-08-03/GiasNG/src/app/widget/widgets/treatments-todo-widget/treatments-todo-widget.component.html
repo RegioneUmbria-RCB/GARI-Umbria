@@ -1,0 +1,56 @@
+<div class="widget-treatments-todo-container">
+  <div class="header-treatments-todo">
+    <div class="button-time-stamp">
+      <kendo-datepicker #impostaTimeStamp 
+        class="datePicker"
+        (valueChange)="onChangeData($event)"
+        [(value)]="timeStart"
+      >
+      </kendo-datepicker>
+      
+      <button class="btn btn-primary btn-sm btn-primary-fill"
+        [title]="'ResettaTimeStamp' | transloco"
+        [type]="'button'"
+        (click) = "reimpostaTimeStamp()">
+          {{ "ResettaTimeStamp" | transloco }}
+      </button>
+    </div>
+    
+    <form [formGroup]="stallaForm">
+        <gias-drop-down-template-s 
+          id="ddlStalle"
+          [listItems]="arrayStalle"
+          textField="Sta_Des"
+          valueField="chiave"
+          [valuePrimitive]="false"
+          [defaultItem]="defaultStalla"
+          [giasFormControlName]="'stallaControl'"
+        >
+      </gias-drop-down-template-s>
+    </form>
+  </div>
+
+  <gias-kendo-grid
+    class="kendo-grid-no-shadows"
+    [customCommandColumnCellTemplate]="customCommandColumn"
+  >
+    <ng-template #noRecordsTemplateRef>
+        <div>
+        <p>{{ "TrattamentiToDoNotFound" | transloco }}</p>
+        </div>
+    </ng-template>
+    
+    <ng-template #customCommandColumn let-dataItem="dataItem">
+      <div>
+        <button
+          kendoButton
+          kendoTooltip
+          (click)="redirectToAgenda(dataItem)"
+          [title]="'ProtocolloToAgenda' | transloco"
+          fillMode="flat">
+          <i aria-hidden="true" class="k-i-xi-tools-to-agenda"></i>
+        </button>
+      </div>
+    </ng-template>
+  </gias-kendo-grid>
+</div>

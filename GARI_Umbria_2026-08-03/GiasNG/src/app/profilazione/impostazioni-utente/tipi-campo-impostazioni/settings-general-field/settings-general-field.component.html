@@ -1,0 +1,41 @@
+@if (isAnnataAgraria) {
+<app-settings-annata-agraria [formGroup]="form"></app-settings-annata-agraria>
+}
+
+@if (isFiltroVarietaSpecie) {
+<app-settings-specie-varieta [formGroup]="form"></app-settings-specie-varieta>
+}
+
+@if (isFiltroOperazioni) {
+<app-settings-lavorazioni-grid [formGroup]="form"></app-settings-lavorazioni-grid>
+}
+
+@if (isProxy) {
+<app-settings-proxy [formGroup]="form"></app-settings-proxy>
+}
+
+@if (isStorageCategoryGrid) {
+<!--  Gestione dei caricamenti di righe, scelte in ddl avviene nel componente  -->
+<p>{{ label }}</p>
+<app-settings-categorie-magazzino [formGroup]="form"></app-settings-categorie-magazzino>
+}
+
+@if (isApp) {
+<app-settings-gias-app [formGroup]="form"></app-settings-gias-app>
+}
+
+@if (isSetupGIS) {
+<app-settings-gis [formGroup]="form"></app-settings-gis>
+}
+
+@if (isFiltroSQLMateriePrime) {
+<app-settings-filtro-sql-materie-prime [formGroup]="form"></app-settings-filtro-sql-materie-prime>
+}
+
+@if (isFormatiStampe) {
+<impostazione-formati-stampa [formGroup]="form"></impostazione-formati-stampa>
+}
+
+@if (!isHandled) {
+Custom setting not implemented yet. {{ Impostazione_Cod }}
+}

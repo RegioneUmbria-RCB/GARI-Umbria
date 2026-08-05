@@ -1,0 +1,49 @@
+<div [formGroup]="qdcservice.AcquaForm" *ngIf="qdcservice.mostraAcqua();">
+    <div class="row form-row">
+
+        <div class="col-12 col-md-6">
+            <div class="acqua-title text-blue" style="font-size: 15px;">
+                <div class="faBoxAcquaInMiscela"></div>
+                {{ "qdc.AcquaInMiscelaBotteDiluzione.Text" | transloco }}
+                <br *ngIf="qdcservice.EsisteProdottoPolverulento()">
+                {{ componi_descrizione_Acqua() }} *
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <gias-numeric-template
+                [name]="('qdc.rblAcqua_HAResource1.Text' | transloco) + getUdM() + ' '+ getProvenienza()"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Acqua_Ha"
+                [format]="qdcservice.get4DecimalNumericSettings().format"
+                [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                [step]="qdcservice.get4DecimalNumericSettings().step"
+                [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                (valueChange)="changeAcqua_Ha($event)">
+            </gias-numeric-template>
+
+            <div class="row" *ngIf="ShowLblAcquaM3()">
+                <label id="lbl_acqua_ha_m3">{{ GetDescrizioneAcquaHaM3() }}</label>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <gias-numeric-template
+                [name]="'qdc.rblAcqua_TotResource1.Text' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Acqua_Tot"
+                [format]="qdcservice.get4DecimalNumericSettings().format"
+                [minValue]="qdcservice.get4DecimalNumericSettings().min"
+                [step]="qdcservice.get4DecimalNumericSettings().step"
+                [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+                (valueChange)="changeAcqua_Tot($event)">
+            </gias-numeric-template>
+
+            <div class="row" *ngIf="ShowLblAcquaM3()">
+              <label id="lbl_acqua_tot_m3">{{ GetDescrizioneAcquaTotM3() }}</label>
+            </div>
+        </div>
+    </div>
+</div>

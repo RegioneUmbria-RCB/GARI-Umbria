@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Data Creazione, modifica, ecc.. (core biz scrittura xml - chiamata funzione)</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Aggiunge l'assegnazione di data creazione, modifica, username (core biz lettura xml)</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>nodoxml</ID>
+          <Type/>
+          <ToolTip>Sostituire con l'origine dati per il nodo xml che si sta usando.</ToolTip>
+          <Default>DrUtentixAppezzamenti</Default>
+          <Function/>
+        </Literal>
+
+		
+        <Literal>
+          <ID>Data Creazione, modifica, ecc..</ID>
+          <Default>Data Creazione, modifica, ecc..</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[Dim $nodoxml$_data_creazione As Date = #2/1/1900#
+                            Dim $nodoxml$_data_Modifica As Date = #2/1/1900#
+                            Dim $nodoxml$_username_creazione As String = ""
+                            Dim $nodoxml$_username_modifica As String = ""
+
+                            If Not IsNothing($nodoxml$.GetAttribute("data_creazione")) AndAlso _
+                             $nodoxml$.GetAttribute("data_creazione") <> "" Then
+                                $nodoxml$_data_creazione = CDate($nodoxml$.GetAttribute("data_creazione"))
+                            End If
+
+                            If Not IsNothing($nodoxml$.GetAttribute("data_modifica")) AndAlso _
+                             $nodoxml$.GetAttribute("data_modifica") <> "" Then
+                                $nodoxml$_data_Modifica = CDate($nodoxml$.GetAttribute("data_modifica"))
+                            End If
+
+                            If Not IsNothing($nodoxml$.GetAttribute("username_creazione")) Then
+                                $nodoxml$_username_creazione = CStr($nodoxml$.GetAttribute("username_creazione"))
+                            End If
+
+                            If Not IsNothing($nodoxml$.GetAttribute("username_modifica")) Then
+                                $nodoxml$_username_modifica = CStr($nodoxml$.GetAttribute("username_modifica"))
+                            End If]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,93 @@
+<div *ngIf="operations?.length > 0" class="operation-widget">
+  <div class="widget-scrollable">
+    <div class="widget-row-alternate-bg" *ngFor="let operation of operations; let i = index">
+      <!-- <div *ngIf="i != 0" class="operation-hr"></div> -->
+      <div class="operation-row">
+        <div class="operation-column">
+          <div class="operation-column operation-calendar">
+            <p class="operation-giorno-n">{{ getDayName(operation) }}</p>
+            <p class="operation-giorno-v">{{ getDayValue(operation) }}</p>
+            <p class="operation-mese">{{ getMonthName(operation) }}</p>
+            <p class="operation-specie">{{ operation.Specie }}</p>
+          </div>
+        </div>
+        <div class="operation-column flex-grow">
+          <p class="operation-descr">{{ operation.Descrizione_Operazione }}</p>
+          <div *ngIf="operation.AttivitaSvolte?.length > 0">
+            <div class="operation-row">
+              <p class="flex-small text-small">{{ 'Attivita' | transloco }}</p>
+              <p class="flex-large text-small">{{ listToString(operation.AttivitaSvolte) }}
+            </div>
+          </div>
+          <div *ngIf="operation.Personale.length > 0">
+            <div class="operation-row">
+              <p class="flex-small text-small">{{ 'Personale' | transloco }}</p>
+              <p class="flex-large text-small">{{ listToString(operation.Personale) }}
+            </div>
+          </div>
+          <div *ngIf="operation.Macchine.length > 0">
+            <div class="operation-row">
+              <p class="flex-small text-small">{{ 'MacchineAttrezzature' | transloco }}</p>
+              <p class="flex-large text-small">{{ listToString(operation.Macchine) }}
+            </div>
+          </div>
+          <div *ngIf="operation.Impianti.length > 0">
+            <div class="operation-row">
+              <p class="flex-small text-small">{{ 'Impianti' | transloco }}</p>
+              <p class="flex-large text-small">{{ listToString(operation.Impianti) }}
+            </div>
+          </div>
+          <div *ngIf="operation.ImpiantiMappe.length > 0">
+            <div class="operation-row">
+              <p class="flex-small"></p>
+              <div class="flex-large flex-images">
+                <ng-container *ngFor="let map of operation.ImpiantiMappe">
+                  <ng-container *ngIf="map?.StaticMap != null && map.StaticMap != ''">
+                    <img alt="" class="impianto-image" [src]="getImage(map.StaticMap)" [title]="map.APP_Nome" kendoTooltip>
+                  </ng-container>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="operation.Note != null">
+            <div class="operation-row">
+              <p class="flex-small text-small">{{ 'Note' | transloco }}</p>
+              <p class="flex-large text-small">{{ operation.Note }}
+            </div>
+          </div>
+
+          <div class="operation-row align-start"
+            *ngIf="operation.Operazione?.Visualizza == '1' || operation.Operazione?.Modifica == '1'">
+
+            <ng-container *ngIf="operation.Operazione?.Modifica == '1'">
+              <button *ngIf="!operation.Operazione.PermessoScrittura" [title]="'NoPermessoModifica' | transloco"
+                class="btn btn-sm no-border k-p-0 btn-disabled" size="small" kendoTooltip>
+                <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+              </button>
+
+              <button *ngIf="operation.Operazione.PermessoScrittura" [title]="'Modifica' | transloco"
+                class="btn btn-sm no-border k-p-0" size="small" kendoTooltip (click)="navigateToModifica(operation)">
+                <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+              </button>
+            </ng-container>
+
+            <button *ngIf="operation.Operazione?.Visualizza == '1'" class="btn btn-sm v-middle no-border k-p-0"
+              [title]="'Dettagli' | transloco" size="small" kendoTooltip (click)="navigateToDettagli(operation)">
+              <fa-icon [icon]="faInfo"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="k-pl-3 widget-all-data-navigation">
+    <span class="text_uppercase text_weight_800 k-cursor-pointer" (click)="navigateToAllProducts()">
+      {{ 'MostraElencoCompleto' | transloco }}
+    </span>
+  </div>
+</div>
+
+<div *ngIf="operations == null || operations.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'NessunaOperazione' | transloco }}</p>
+</div>

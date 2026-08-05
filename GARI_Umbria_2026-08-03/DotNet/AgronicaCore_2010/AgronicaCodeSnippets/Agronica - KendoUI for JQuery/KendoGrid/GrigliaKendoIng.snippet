@@ -1,0 +1,111 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Nuova griglia Kendo (Config Ingegnerizzata lato server)</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>        
+        <Literal>
+          <ID>IDControllo</ID>
+          <ToolTip>Id del DIV della griglia</ToolTip>
+          <Default>MioDic</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">
+        <![CDATA[var indirizzohttp = "$IDControllo$_WS.aspx";
+
+function onDataBindingRighe() {
+
+}
+
+function letturaDati$IDControllo$Kendo() {
+
+    var param = "{ }";
+
+    ajaxAgronica(indirizzohttp + "/letturaDati$IDControllo$Kendo",
+        param,
+        function (risposta) {
+
+            $$("#hd$IDControllo$").val(risposta.RispostaStringa);
+            $IDControllo$Kendo("div$IDControllo$");
+
+        }, null);    
+}
+
+function kRead$IDControllo$_rows(options) {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    options.success(jSonParsed_Kendo.kendo_rows);
+}
+
+function kRead$IDControllo$_col() {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    return jSonParsed_Kendo.kendo_columns;
+}
+
+function kRead$IDControllo$_mod() {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    return jSonParsed_Kendo.kendo_model;
+}
+
+function $IDControllo$Kendo(div$IDControllo$) {
+
+    var funzioniCRUD = {
+        funzioneRead: kRead$IDControllo$_rows        
+    };
+    var idModel = "kendoKey";
+    var campiKendoModel = kRead$IDControllo$_mod();
+    var colonneKendoGrid = kRead$IDControllo$_col();
+    var parametriPerLettura = [];
+    var parametriDataSource = {};
+    var parametriKendoGrid = {
+        pagesize: 20,
+        groupable: false,
+        scrollable: false,
+        sortable: false,
+        resizable: false,
+        filterable: false,
+        pageable: true,
+        pdf: false,
+        excel: false
+    };
+
+    var funzioniPrimaDopoEventi = { funzioneDaChiamarePrimaDelDataBinding: $IDControllo$onDataBindingRighe };
+    var mostraRigheCancellate = true;
+    var colonneDisabilitateSoloInModifica = ["kendoKey"];
+
+    creaKendoGrid(div$IDControllo$, // rappresenta l'ID del div a cui si associa la griglia
+        funzioniCRUD,  //funzioni js da chiamare per read, insert, update, delete
+        idModel, // chiave riga 
+        campiKendoModel, // campi modello
+        colonneKendoGrid, // colonne da mostrare
+        parametriPerLettura, // parametri da passare alla lettura
+        parametriDataSource, // parametri data source { chiave - valore}
+        parametriKendoGrid,   // parametri griglia [{ chiave - valore}]
+        funzioniPrimaDopoEventi, // funzioni da chiamare all'inizio e alla fine dei vari eventi
+        mostraRigheCancellate, // se true le righe cancellate vengono mostrate barrate e viene gestita funzione custom cancellazione
+        colonneDisabilitateSoloInModifica // colonne non modificabili in modifica["colA", "colB", ...]
+    );
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DatiEntita">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Entita">
+          <xs:complexType>
+            <xs:attribute name="TipoOperazioneDB" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="recno" type="xs:string" use="required" />
+            <xs:attribute name="deleted" type="xs:string" use="required" />
+            <xs:attribute name="section" type="xs:string" use="required" />
+            <xs:attribute name="id" type="xs:string" use="required" />
+            <xs:attribute name="prefisso" type="xs:string" use="required" />
+            <xs:attribute name="codice" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="descr" type="xs:string" use="required" />
+            <xs:attribute name="ecolor" type="xs:string" use="required" />
+            <xs:attribute name="layer" type="xs:string" use="required" />
+            <xs:attribute name="eline" type="xs:string" use="required" />
+            <xs:attribute name="vx1" type="xs:string" use="required" />
+            <xs:attribute name="vy1" type="xs:string" use="required" />
+            <xs:attribute name="vx2" type="xs:string" use="required" />
+            <xs:attribute name="vy2" type="xs:string" use="required" />
+            <xs:attribute name="rad" type="xs:string" use="required" />
+            <xs:attribute name="text" type="xs:string" use="required" />
+            <xs:attribute name="gps" type="xs:unsignedByte" use="required" />
+            <xs:attribute name="lat" type="xs:string" use="required" />
+            <xs:attribute name="lon" type="xs:string" use="required" />
+            <xs:attribute name="pdop" type="xs:string" use="required" />
+            <xs:attribute name="analisi_campione_cod" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="id_agenda" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="prov" type="xs:string" use="optional" />
+            <xs:attribute name="com" type="xs:string" use="optional" />
+            <xs:attribute name="sezione" type="xs:unsignedByte" use="optional" />
+            <xs:attribute name="foglio" type="xs:string" use="optional" />
+            <xs:attribute name="numero" type="xs:string" use="optional" />
+            <xs:attribute name="subalterno" type="xs:string" use="optional" />
+            <xs:attribute name="validita_inizio" type="xs:string" use="required" />
+            <xs:attribute name="validita_fine" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

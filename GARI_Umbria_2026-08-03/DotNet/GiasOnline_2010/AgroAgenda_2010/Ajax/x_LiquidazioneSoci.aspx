@@ -1,0 +1,1 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="x_LiquidazioneSoci.aspx.vb" Inherits="AgroAgenda_2010.x_LiquidazioneSoci" %>

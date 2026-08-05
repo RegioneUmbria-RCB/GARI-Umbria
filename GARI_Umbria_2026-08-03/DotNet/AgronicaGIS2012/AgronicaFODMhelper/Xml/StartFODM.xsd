@@ -1,0 +1,836 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"  targetNamespace="http://fodm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FODM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Resources">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CropList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Crop">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Commodities">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="CommoditiesRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Properties" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="TaskList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Task">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Properties" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MachineList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Machine">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="IsPowered" type="xs:string" />
+                          <xs:element name="SubType" type="xs:string" />
+                          <xs:element name="ContainerList">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Container">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Name" type="xs:string" />
+                                      <xs:element name="Code" type="xs:string" />
+                                      <xs:element name="Capacity">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:unsignedByte">
+                                              <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="Properties" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="PartID" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="ComponentList">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Component">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Name" type="xs:string" />
+                                      <xs:element name="Code" type="xs:string" />
+                                      <xs:element name="WidthMode" type="xs:unsignedByte" />
+                                      <xs:element name="Offset">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Unit" type="xs:unsignedByte" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="Properties" type="xs:string" />
+                                    </xs:sequence>
+                                    <xs:attribute name="PartID" type="xs:string" use="required" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Offset" type="xs:string" />
+                          <xs:element name="Properties">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Property">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Key" type="xs:string" />
+                                      <xs:element name="Name" type="xs:string" />
+                                      <xs:element name="Value" type="xs:unsignedByte" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ProductList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Product">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="ProductType" type="xs:unsignedInt" />
+                          <xs:element name="ProductForm" type="xs:unsignedByte" />
+                          <xs:element minOccurs="0" name="SubType" type="xs:string" />
+                          <xs:element name="AppUnit">
+                            <xs:complexType>
+                              <xs:attribute name="InventoryUnit" type="xs:unsignedByte" use="optional" />
+                              <xs:attribute name="MarketUnit" type="xs:unsignedByte" use="optional" />
+                              <xs:attribute name="MarketFactor" type="xs:unsignedByte" use="optional" />
+                              <xs:attribute name="TargetMC" type="xs:unsignedByte" use="optional" />
+                              <xs:attribute name="Shrink" type="xs:boolean" use="optional" />
+                              <xs:attribute name="Expand" type="xs:boolean" use="optional" />
+                              <xs:attribute name="CalcAsTurnOut" type="xs:boolean" use="optional" />
+                              <xs:attribute name="ReportType" type="xs:unsignedByte" use="optional" />
+                              <xs:attribute name="UOM" type="xs:unsignedByte" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="PurchaseUnit">
+                            <xs:complexType>
+                              <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="PurchaseDensity">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:unsignedByte">
+                                  <xs:attribute name="UOM" type="xs:unsignedInt" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Properties">
+                            <xs:complexType mixed="true">
+                              <xs:sequence minOccurs="0">
+                                <xs:element maxOccurs="unbounded" name="Property">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Key" type="xs:string" />
+                                      <xs:element minOccurs="0" name="Name" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OperatorList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Operator">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Properties">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Property">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Key" type="xs:string" />
+                                      <xs:element name="Name" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DomainList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Domain">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="DomainType">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:unsignedShort">
+                                  <xs:attribute name="Selectable" type="xs:string" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="ParentRef">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="URI" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element minOccurs="0" name="BoundaryWKT" type="xs:string" />
+                          <xs:element minOccurs="0" name="Crop" type="xs:string" />
+                          <xs:element minOccurs="0" name="CropYear" type="xs:unsignedShort" />
+                          <xs:element name="ReportedArea">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="MeasuredArea">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Properties" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="OtherProperties">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="Property">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Key" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Value" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="JobList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Job">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="Description" type="xs:string" />
+                          <xs:element name="Code" type="xs:string" />
+                          <xs:element name="Properties" type="xs:string" />
+                        </xs:sequence>
+                        <xs:attribute name="uri" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="RxList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="RxPoly">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Key" type="xs:string" />
+                          <xs:element name="GUID" type="xs:string" />
+                          <xs:element name="Name" type="xs:string" />
+                          <xs:element name="DomainKey" type="xs:string" />
+                          <xs:element name="JobKey" type="xs:string" />
+                          <xs:element name="Selected" type="xs:string" />
+                          <xs:element name="TaskKey" type="xs:string" />
+                          <xs:element name="Extent">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="MaxLon" type="xs:decimal" />
+                                <xs:element name="MaxLat" type="xs:decimal" />
+                                <xs:element name="MinLon" type="xs:decimal" />
+                                <xs:element name="MinLat" type="xs:decimal" />
+                                <xs:element name="StartTime" type="xs:string" />
+                                <xs:element name="EndTime" type="xs:string" />
+                                <xs:element name="GMTOffset" type="xs:unsignedByte" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="TotalArea">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:decimal">
+                                  <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="IsLocator" type="xs:string" />
+                          <xs:element name="Properties">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Property">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Key" type="xs:string" />
+                                      <xs:element name="Value" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="RxValues">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="RxValue">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Key" type="xs:string" />
+                                      <xs:element name="CellValueMethod" type="xs:unsignedByte" />
+                                      <xs:element name="Decimals" type="xs:unsignedByte" />
+                                      <xs:element name="DefaultValue" type="xs:unsignedByte" />
+                                      <xs:element name="Name" type="xs:string" />
+                                      <xs:element name="OutOfFieldValue" type="xs:unsignedByte" />
+                                      <xs:element name="ResourceKey" type="xs:string" />
+                                      <xs:element name="RxType" type="xs:unsignedByte" />
+                                      <xs:element name="Selected" type="xs:string" />
+                                      <xs:element name="TargetUnit" type="xs:unsignedInt" />
+                                      <xs:element name="MaxSetPoint" type="xs:unsignedShort" />
+                                      <xs:element name="MinSetPoint" type="xs:unsignedByte" />
+                                      <xs:element name="SwitchSetPoint" type="xs:unsignedByte" />
+                                      <xs:element name="ScaleFactor" type="xs:unsignedByte" />
+                                      <xs:element name="Subtract" type="xs:unsignedByte" />
+                                      <xs:element name="TotalQuantity">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="Records">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element maxOccurs="unbounded" name="Record">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="GeometryWKT" type="xs:string" />
+                                      <xs:element name="Value">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:string">
+                                              <xs:attribute name="ValueKey" type="xs:string" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OperationRegions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OperationRegion">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DomainRef">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="URI" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="TaskRef">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="URI" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Operation" type="xs:string" />
+                    <xs:element name="JobKey" type="xs:string" />
+                    <xs:element name="GUID" type="xs:string" />
+                    <xs:element name="OperationCost">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:unsignedByte">
+                            <xs:attribute name="UOM" type="xs:unsignedInt" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="DeviceProperties">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Property">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Key" type="xs:string" />
+                                <xs:element name="Value" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="UserProperties">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Property">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Key" type="xs:string" />
+                                <xs:element minOccurs="0" name="Value" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="AreaTotals">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Reported">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:decimal">
+                                  <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Extent">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="StartTime" type="xs:string" />
+                          <xs:element name="EndTime" type="xs:string" />
+                          <xs:element name="GMTOffset" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="MachineUses">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="MachineUse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="MachineRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AreaTotals">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Reported">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="TimeTotals" type="xs:string" />
+                                <xs:element name="Properties">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="Property">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Key" type="xs:string" />
+                                            <xs:element name="Value" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ComponentUses">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ComponentUse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ComponentRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                      <xs:element name="PartID" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Engaged">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Mode" type="xs:unsignedByte" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Width">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Mode" type="xs:unsignedByte" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AreaTotals" type="xs:string" />
+                                <xs:element name="Properties" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ContainerUses">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ContainerUse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ContainerRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                      <xs:element name="PartID" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Properties" type="xs:string" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="SensorUses" type="xs:string" />
+                    <xs:element name="OperatorUses">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="OperatorUse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="OperatorRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Duration">
+                                  <xs:complexType>
+                                    <xs:simpleContent>
+                                      <xs:extension base="xs:unsignedByte">
+                                        <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Properties">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Property">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Key" type="xs:string" />
+                                            <xs:element name="Value" type="xs:decimal" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ProductUses">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="ProductUse">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="ProductRef">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="URI" type="xs:string" />
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="ContainerProductUses">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="ContainerProductUse">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="ContainerRef">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="URI" type="xs:string" />
+                                                  <xs:element name="PartID" type="xs:string" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="AreaTotals">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Reported">
+                                                    <xs:complexType>
+                                                      <xs:simpleContent>
+                                                        <xs:extension base="xs:decimal">
+                                                          <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                                        </xs:extension>
+                                                      </xs:simpleContent>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="QuantityTotals">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Reported">
+                                                    <xs:complexType>
+                                                      <xs:simpleContent>
+                                                        <xs:extension base="xs:decimal">
+                                                          <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                                                        </xs:extension>
+                                                      </xs:simpleContent>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="RateTotals">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="Estimated">
+                                                    <xs:complexType>
+                                                      <xs:simpleContent>
+                                                        <xs:extension base="xs:decimal">
+                                                          <xs:attribute name="UOM" type="xs:unsignedInt" use="required" />
+                                                        </xs:extension>
+                                                      </xs:simpleContent>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                  <xs:element name="Reported">
+                                                    <xs:complexType>
+                                                      <xs:simpleContent>
+                                                        <xs:extension base="xs:decimal">
+                                                          <xs:attribute name="UOM" type="xs:unsignedInt" use="required" />
+                                                        </xs:extension>
+                                                      </xs:simpleContent>
+                                                    </xs:complexType>
+                                                  </xs:element>
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="AreaTotals">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Reported">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="UOM" type="xs:unsignedShort" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="QuantityTotals">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Reported">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="UOM" type="xs:unsignedByte" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="RateTotals">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Reported">
+                                        <xs:complexType>
+                                          <xs:simpleContent>
+                                            <xs:extension base="xs:decimal">
+                                              <xs:attribute name="UOM" type="xs:unsignedInt" use="required" />
+                                            </xs:extension>
+                                          </xs:simpleContent>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="Properties">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="Property">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="Key" type="xs:string" />
+                                            <xs:element name="Value" type="xs:decimal" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="ICD" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="Key" type="xs:string" use="required" />
+                  <xs:attribute name="Sequence" type="xs:unsignedByte" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Version" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

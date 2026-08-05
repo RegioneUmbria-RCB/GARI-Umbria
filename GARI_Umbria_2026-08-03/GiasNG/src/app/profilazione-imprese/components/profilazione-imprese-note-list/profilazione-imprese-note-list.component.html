@@ -1,0 +1,9 @@
+<div class="prof-imprese-column" *ngIf="note$ != null">
+  <p>{{ 'profImprese.SelezionaUnaOPiuNote' | transloco }} </p>
+  <div class="prof-imprese-row gap-20 prof-imprese-note" *ngIf="note$ | async as note">
+    <div *ngFor="let nota of note" class="prof-imprese-nota-switch">
+      <kendo-switch (valueChange)="selectNota($event, nota)" [checked]="isNotaSelected(nota)"></kendo-switch>
+      <p> {{ nota.NotaGruppo_Des + ' - ' + nota.Nota_Des }}</p>
+    </div>
+  </div>
+</div>

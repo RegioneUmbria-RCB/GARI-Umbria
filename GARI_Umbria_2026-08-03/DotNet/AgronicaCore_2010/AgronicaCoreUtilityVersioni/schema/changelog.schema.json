@@ -1,0 +1,514 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://example.com/changelog.schema.json",
+  "type": "object",
+  "title": "Agronica Changelog",
+  "description": "JSON Schema per Changelog di prodotti Agronica",
+  "required": [
+    "progetto",
+    "versioni"
+  ],
+  "properties": {
+    "progetto": {
+      "id": "#/properties/progetto",
+      "type": "string",
+      "description": "Il nome del progetto/sito di questo changelog.",
+      "default": "",
+      "examples": [
+        "Agronica Agenda"
+      ]
+    },
+    "versioni": {
+      "$ref": "#/definitions/versioni"
+    }
+  },
+
+  "definitions": {
+    "versioni": {
+      "id": "#/definitions/versioni",
+      "type": "array",
+      "title": "The versioni schema",
+      "description": "Elenco delle versioni.",
+      "uniqueItems": true,
+      "default": [],
+      "examples": [
+        [
+          {
+            "data": null,
+            "requisiti": [
+              {
+                "prodotto": "Migra",
+                "versione": "626",
+                "motivo": "Aggiunta colonna NaturaEsclusione_2 a tabella IVA_Aliquote"
+              },
+              {
+                "prodotto": "Aggancio",
+                "versione": "88",
+                "motivo": "Aggiunta vista TipologieDocumento"
+              },
+              {
+                "prodotto": "Core WS",
+                "versione": "2020-03-27",
+                "motivo": "Modificata funzione ricerca giacenze magazzino"
+              }
+            ],
+            "changelog": {
+              "feature": [
+                {
+                  "area": "Anagrafica Prodotti",
+                  "descrizione": "Gestione IVA Default"
+                }
+              ],
+              "bugfix": []
+            }
+          },
+          {
+            "data": "2020-03-28",
+            "requisiti": [
+              {
+                "prodotto": "Migra",
+                "versione": "626",
+                "motivo": "Aggiunta colonna NaturaEsclusione_2 a tabella IVA_Aliquote"
+              },
+              {
+                "prodotto": "Aggancio",
+                "versione": "88",
+                "motivo": "Aggiunta vista TipologieDocumento"
+              },
+              {
+                "prodotto": "Core WS",
+                "versione": "2020-03-27",
+                "motivo": "Modificata funzione ricerca giacenze magazzino"
+              }
+            ],
+            "changelog": {
+              "feature": [
+                {
+                  "area": "pagina modifica",
+                  "descrizione": "questa è la descrizione estesa della modifica 1"
+                },
+                {
+                  "area": "Doc Contabile",
+                  "descrizione": "aggiunta possibilità di modificare la data documento"
+                }
+              ],
+              "bugfix": [
+                {
+                  "area": "pagina con bug 1",
+                  "descrizione": "bugfix errore segnalato da Viola",
+                  "segnalatore": "Viola | Zespri",
+                  "cliente": "Zespri",
+                  "idTfs": 0,
+                  "idPerforma": 1234
+                },
+                {
+                  "area": "pagina con bug 2",
+                  "descrizione": "bugfix errore segnalato da Serena",
+                  "segnalatore": "Serena | Aboca",
+                  "cliente": "Aboca",
+                  "idTfs": 5678,
+                  "idPerforma": 0
+                }
+              ]
+            }
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/singolaVersione"
+      }
+    },
+    "singolaVersione": {
+      "id": "#/definitions/singolaVersione",
+      "type": "object",
+      "description": "Singola versione",
+      "required": [
+        "data",
+        "requisiti",
+        "changelog"
+      ],
+      "properties": {
+        "data": {
+          "id": "#/definitions/singolaVersione/properties/data",
+          "type": [ "string", "null" ],
+          "format": "date",
+          "description": "La data del rilascio",
+          "default": "2100-12-31",
+          "examples": [
+            "2020-03-28"
+          ]
+        },
+        "versione": {
+          "id": "#/definitions/singolaVersione/properties/versione",
+          "type": "string",
+          "description": "La versione del rilascio",
+          "default": "",
+          "examples": [
+            "135.1.2"
+          ]
+        },
+        "requisiti": {
+          "id": "#/definitions/singolaVersione/properties/requisiti",
+          "type": "array",
+          "description": "Array di pre-requisito di questa versione",
+          "uniqueItems": true,
+          "additionalItems": false,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singoloRequisito"
+          }
+        },
+        "changelog": {
+          "$ref": "#/definitions/changelog"
+        }
+      }
+    },
+
+    "singoloRequisito": {
+      "id": "#/definitions/singoloRequisito",
+      "type": "object",
+      "description": "Pre-requisito di questa versione",
+      "additionalProperties": false,
+      "examples": [
+        {
+          "prodotto": "Migra",
+          "versione": "626",
+          "motivo": "Aggiunta colonna NaturaEsclusione_2 a tabella IVA_Aliquote"
+        }
+      ],
+      "required": [
+        "prodotto",
+        "versione",
+        "motivo"
+      ],
+      "properties": {
+        "prodotto": {
+          "id": "#/definitions/singoloRequisito/properties/prodotto",
+          "type": "string",
+          "description": "Il nome del prodotto/oggetto a cui fa riferimento il pre-requisito",
+          "enum": [ "Migra", "Aggancio", "Configurazione Siti", "Gias Base", "Core WS", "Core API", "NetCore API", "Profilazione", "Profitosan API", "QdCACompliance", "NetCore DataExchange", "WEB Services", "Meteo WS" ],
+          "minimum": 1,
+          "maximum": 1
+        },
+        "versione": {
+          "id": "#/definitions/singoloRequisito/properties/versione",
+          "type": "string",
+          "description": "Versione del pre-requisito",
+          "minLength": 1
+        },
+        "motivo": {
+          "id": "#/definitions/singoloRequisito/properties/motivo",
+          "type": "string",
+          "description": "Motivo del pre-requisito",
+          "minLength": 1
+        }
+      }
+    },
+
+    "changelog": {
+      "id": "#/definitions/changelog",
+      "type": "object",
+      "description": "Changelog di questa versione",
+      "additionalProperties": false,
+      "required": [
+        "feature",
+        "bugfix"
+      ],
+      "properties": {
+        "feature": {
+          "id": "#/definitions/changelog/properties/feature",
+          "type": "array",
+          "description": "Array di nuove funzionalità o funzionalità modificate",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/definitions/singleFeature"
+          }
+        },
+        "bugfix": {
+          "id": "#/definitions/changelog/properties/bugfix",
+          "type": "array",
+          "description": "Array di Bugfix",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleBugFix"
+          }
+        },
+        "security": {
+          "id": "#/definitions/changelog/properties/security",
+          "type": "array",
+          "description": "Array di Security",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleSecurity"
+          }
+        },
+        "performance": {
+          "id": "#/definitions/changelog/properties/performance",
+          "type": "array",
+          "description": "Array di Performace",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singlePerformance"
+          }
+        }
+      }
+    },
+
+    "singleFeature": {
+      "id": "#/definitions/singleFeature",
+      "type": "object",
+      "description": "Nuova funzionalità o funzionalità modificata",
+      "additionalProperties": false,
+      "examples": {
+        "area": "Anagrafica Prodotti",
+        "descrizione": "Gestione IVA Default"
+      },
+      "required": [
+        "area",
+        "descrizione",
+        "cliente",
+        "idTicketAssistenza",
+        "idTicketSviluppo",
+        "idTicketTesting",
+        "autore"
+      ],
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/area"
+        },
+        "descrizione": {
+          "$ref": "#/definitions/descrizione"
+        },
+        "cliente": {
+          "$ref": "#/definitions/cliente"
+        },
+        "idPerforma": {
+          "$ref": "#/definitions/idPerforma"
+        },
+        "noteTecniche": {
+          "$ref": "#/definitions/noteTecniche"
+        },
+        "noteTest": {
+          "$ref": "#/definitions/noteTest"
+        },
+        "idTicketAssistenza": {
+          "$ref": "#/definitions/idTicketAssistenza"
+        },
+        "idTicketSviluppo": {
+          "$ref": "#/definitions/idTicketSviluppo"
+        },
+        "idTicketTesting": {
+          "$ref": "#/definitions/idTicketTesting"
+        },
+        "autore": {
+          "$ref": "#/definitions/autore"
+        }
+      }
+    },
+
+    "singleBugFix": {
+      "id": "#/definitions/singleBugFix",
+      "type": "object",
+      "description": "Singolo BugFix",
+      "additionalProperties": false,
+      "examples": {
+        "area": "pagina con bug 1",
+        "descrizione": "bugfix errore segnalato da Viola",
+        "segnalatore": "Viola | Zespri",
+        "cliente": "Zespri",
+        "idTfs": 0,
+        "idPerforma": 1234
+      },
+      "required": [
+        "area",
+        "descrizione",
+        "cliente",
+        "idTicketAssistenza",
+        "idTicketSviluppo",
+        "idTicketTesting",
+        "autore"
+      ],
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/area"
+        },
+        "descrizione": {
+          "$ref": "#/definitions/descrizione"
+        },
+        "cliente": {
+          "$ref": "#/definitions/cliente"
+        },
+        "idPerforma": {
+          "$ref": "#/definitions/idPerforma"
+        },
+        "noteTecniche": {
+          "$ref": "#/definitions/noteTecniche"
+        },
+        "noteTest": {
+          "$ref": "#/definitions/noteTest"
+        },
+        "idTicketAssistenza": {
+          "$ref": "#/definitions/idTicketAssistenza"
+        },
+        "idTicketSviluppo": {
+          "$ref": "#/definitions/idTicketSviluppo"
+        },
+        "idTicketTesting": {
+          "$ref": "#/definitions/idTicketTesting"
+        },
+        "autore": {
+          "$ref": "#/definitions/autore"
+        }
+      }
+    },
+
+    "singleSecurity": {
+      "id": "#/definitions/singleSecurity",
+      "type": "object",
+      "description": "Singola Security",
+      "additionalProperties": false,
+      "required": [
+        "area",
+        "descrizione",
+        "cliente",
+        "idTicketAssistenza",
+        "idTicketSviluppo",
+        "idTicketTesting",
+        "autore"
+      ],
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/area"
+        },
+        "descrizione": {
+          "$ref": "#/definitions/descrizione"
+        },
+        "cliente": {
+          "$ref": "#/definitions/cliente"
+        },
+        "noteTecniche": {
+          "$ref": "#/definitions/noteTecniche"
+        },
+        "noteTest": {
+          "$ref": "#/definitions/noteTest"
+        },
+        "idTicketAssistenza": {
+          "$ref": "#/definitions/idTicketAssistenza"
+        },
+        "idTicketSviluppo": {
+          "$ref": "#/definitions/idTicketSviluppo"
+        },
+        "idTicketTesting": {
+          "$ref": "#/definitions/idTicketTesting"
+        },
+        "autore": {
+          "$ref": "#/definitions/autore"
+        }
+      }
+    },
+
+    "singlePerformance": {
+      "id": "#/definitions/singlePerformance",
+      "type": "object",
+      "description": "Singola Performance",
+      "additionalProperties": false,
+      "required": [
+        "area",
+        "descrizione",
+        "cliente",
+        "idTicketAssistenza",
+        "idTicketSviluppo",
+        "idTicketTesting",
+        "autore"
+      ],
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/area"
+        },
+        "descrizione": {
+          "$ref": "#/definitions/descrizione"
+        },
+        "cliente": {
+          "$ref": "#/definitions/cliente"
+        },
+        "noteTecniche": {
+          "$ref": "#/definitions/noteTecniche"
+        },
+        "noteTest": {
+          "$ref": "#/definitions/noteTest"
+        },
+        "idTicketAssistenza": {
+          "$ref": "#/definitions/idTicketAssistenza"
+        },
+        "idTicketSviluppo": {
+          "$ref": "#/definitions/idTicketSviluppo"
+        },
+        "idTicketTesting": {
+          "$ref": "#/definitions/idTicketTesting"
+        },
+        "autore": {
+          "$ref": "#/definitions/autore"
+        }
+      }
+    },
+
+    "area": {
+      "id": "#/definitions/area",
+      "type": "string",
+      "description": "Area o pagina di intervento",
+      "minLength": 1
+    },
+    "descrizione": {
+      "id": "#/definitions/descrizione",
+      "type": "string",
+      "description": "Descrizione della modifica effettuata",
+      "minLength": 1
+    },
+    "cliente": {
+      "id": "#/definitions/cliente",
+      "type": "string",
+      "description": "Informazioni riguardo al cliente dove è stato segnalato il bug"
+    },
+    "idPerforma": {
+      "id": "#/definitions/idPerforma",
+      "type": "integer",
+      "description": "(DEPRECATED) Id della chiamata sul Performa di segnalazione del Bug",
+      "default": 0
+    },
+    "idTicketAssistenza": {
+      "id": "#/definitions/idTicketAssistenza",
+      "type": "integer",
+      "description": "ID del ticket di assistenza"
+    },
+    "idTicketSviluppo": {
+      "id": "#/definitions/idTicketSviluppo",
+      "type": "integer",
+      "description": "ID del ticket di sviluppo"
+    },
+    "idTicketTesting": {
+      "id": "#/definitions/idTicketTesting",
+      "type": "integer",
+      "description": "ID del ticket di testing"
+    },
+    "autore": {
+      "id": "#/definitions/autore",
+      "type": "string",
+      "description": "Autore della modifica"
+    },
+    "noteTecniche": {
+      "id": "#/definitions/noteTecniche",
+      "type": "string",
+      "description": "Informazioni TECNICHE ad uso interno",
+      "default": ""
+    },
+    "noteTest": {
+      "id": "#/definitions/noteTest",
+      "type": "string",
+      "description": "Informazioni di TEST per i testatori",
+      "default": ""
+    }
+  }
+}

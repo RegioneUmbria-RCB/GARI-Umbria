@@ -1,0 +1,9 @@
+<ng-container *ngIf="loader$ | async"></ng-container>
+
+<h2 *ngIf="!impresaSelezionata; else displayContent">{{'SelezionareUnAzienda' | transloco}}</h2>
+
+<ng-template #displayContent>
+  <div class="row">
+    <gias-kendo-grid #kendoGrid></gias-kendo-grid>
+  </div>
+</ng-template>

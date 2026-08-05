@@ -1,0 +1,780 @@
+<div kendoTooltip [tooltipTemplate]="tooltipTemplate" filter=".k-grid .k-header"
+     showOn="none" (mouseover)="showTooltip($event)">
+
+    <!-- Note: the option 'columnMenu=true' causes issues involving unwanted
+    horizontal scrolling when changing the state of the grid. -->
+
+    <!-- [rowSelected]="selectable.preselectedRows.isRowSelectedFn ? isRowSelected: null" -->
+    <!-- [height]="generalSettings.height" -->
+    <!-- (selectedKeysChange)="keyChange($event)" -->
+    <!-- [rowSelected]="selectable.preselectedRows.isRowSelectedFn ? isRowSelected: null" -->
+    <!-- (selectedKeysChange)="onSelectedKeysChange($event)" -->
+    <kendo-grid #grid [id]="config.gridId" [data]="view | async" (cellClick)="cellClickHandler($event)"
+                (cellClose)="cellCloseHandler($event)" [selectable]="selectable.selectable" [kendoGridSelectBy]="rowId"
+                (selectedKeysChange)="onSelectedKeysChange($event)" (selectionChange)="onSelectionChange($event)"
+                (dataStateChange)="onStateChange($event)" [resizable]="resizable.isResizable"
+                [rowSelected]="isRowSelected"
+                [reorderable]="generalSettings.reordable" (columnResize)="views.enabled && onColumnResize()"
+                (edit)="editHandler($event)" (cancel)="cancelHandler($event)" (save)="saveHandler($event)"
+                (remove)="removeHandler($event)" (add)="addHandler($event)" [sortable]="sort.sortable ?? false"
+                [sort]="pagination.gridState.sort" [pageable]="pagination.pageable"
+                [skip]="pagination.gridState.skip" [navigable]="pagination.navigable" (pageChange)="pageChange($event)"
+                [groupable]="groups.groupable" [group]="pagination.gridState.group" [columnMenu]="false"
+                [filterable]="$any(columnMenu.filterable)" [filter]="pagination.gridState.filter"
+                (columnVisibilityChange)="columnVisibilityChangeHandler($event)"
+                (columnReorder)="applyColumnReorderPolicy($event)"
+                [rowClass]="rowClassCallback.bind(this)"
+                [style.height]="generalSettings.height"
+                [height]="pagination?.virtualScrolling?.viewportHeight"
+                [scrollable]="pagination.scrollingType"
+                [rowHeight]="currentScrollingMode?.rowHeight"
+                [pageSize]="currentScrollingMode?.pageSize"
+                (detailCollapse)="detailMasterRowCollapse($event)"
+                (detailExpand)="detailMasterRowExpand($event)"
+                (sortChange)="sortChange($event)">
+
+
+        <ng-template *ngIf="showToolbar" kendoGridToolbarTemplate position="both" let-position="position">
+            <ng-container *ngIf="position == 'top'">
+              <ng-container class="row">
+                  <ng-content select="[toolbarStart]">
+
+                  </ng-content>
+
+                  <span class="separator"></span>
+                  <div class="gias-toolbar-section">
+                      <div kendoTooltip *ngIf="behavior.excelSettings.enabled">
+                          <button size="small" type="button" class="k-button" kendoGridExcelCommand icon="file-excel"
+                                  [title]="'giasgrid.Export_Excel' | transloco">
+                          </button>
+                      </div>
+
+                      <div kendoTooltip *ngIf="behavior.pdfSettings.enabled">
+                          <button size="small" type="button" class="k-button" kendoGridPDFCommand icon="file-pdf"
+                                  [title]="'giasgrid.Export_PDF' | transloco">
+                          </button>
+                      </div>
+
+                      <button *ngIf="editingMode === IN_CELL && generalSettings.performOnEdit == false && toolbar.SaveBtn"
+                              class="k-button grid-toolbar-button btn-primary-fill"
+                              size="small"
+                              [disabled]="!gridServices.incellHasChanges()" (click)="saveChanges(grid)">
+                          <div *ngIf="toolbar.title_save_button === '';else custom_title_save_button">
+                              {{ 'giasgrid.Save_Changes' | transloco }}
+                          </div>
+                          <ng-template #custom_title_save_button>
+                              {{ toolbar.title_save_button }}
+                          </ng-template>
+                      </button>
+
+                      <button *ngIf="toolbar.resetChanges" kendoButton class="grid-toolbar-button" size="small" (click)="resetHandler()">
+                          {{ 'giasgrid.Annulla_Modifiche' | transloco }}
+                      </button>
+                  </div>
+
+                  <ng-content select="[headerContent]">
+                      <!-- Content to be included by the user. -->
+                  </ng-content>
+                  <div class="spacer"></div>
+                  <ng-container *ngIf="views.enabled">
+
+                      <gias-grid-customizations class="ms-auto p-2 bd-highlight" [options]="views"
+                                          [(canApplyChanges)]="customizationViewChanged" (applyView)="applyView($event)"
+                                          [showSwitch]="showSwitchViewsPrivatePublic">
+                          <kendo-grid-column-chooser kendoTooltip *ngIf="columnMenu.kendoGridColumnChooser" end>
+                          </kendo-grid-column-chooser>
+                      </gias-grid-customizations>
+
+                  </ng-container>
+
+                  <ng-container *ngIf="!views.enabled">
+                      <div class="ms-auto p-2 bd-highlight"></div>
+                  </ng-container>
+
+                  <span *ngIf="views.enabled" class="separator must-show"></span>
+
+                  <ng-container *ngIf="filterableGrid()">
+                      <div kendoTooltip class="gias-button-esercizi">
+                          <button kendoButton type="button" class="k-button" (click)="resetFilter()" icon="filter-funnel"
+                                  [title]="'giasgrid.PulisciFiltri' | transloco">
+                          </button>
+                      </div>
+                  </ng-container>
+
+                  <div class="gias-toolbar-section full-width-section">
+                      <span *ngIf="views.enabled" class="separator must-show"></span>
+                      <ng-content select="[headerContentButtons]">
+                      </ng-content>
+                  </div>
+                  <div class="gias-toolbar-section full-width-section">
+                      <div kendoTooltip *ngIf="toolbar.newItem" class="gias-new-item-rapid-button">
+                          <button [title]="'giasgrid.NuovaSchedaRapida' | transloco" size="small" kendoGridAddCommand
+                                  class="btnDisabledInModifica btn-primary-fill btn-important">
+                              <fa-icon class="faAddRowSingle"></fa-icon>
+                          </button>
+                      </div>
+
+                      <div kendoTooltip *ngIf="editingMode == IN_LINE_BATCH || editingMode == IN_CELL_BATCH">
+                          <button size="small" [title]="'giasgrid.Salva' | transloco" class="btn btn-primary-fill btn-important"
+                              [disabled]="!hasBatchChanges" (click)="batchSave()">
+                              <fa-icon class="lg" [icon]="faCircleSave"></fa-icon>
+                          </button>
+                      </div>
+
+                      <ng-content select="[headerContentEnd]">
+                          <!-- Content to be included by the user. -->
+                      </ng-content>
+                  </div>
+              </ng-container>
+              <ng-container class="row">
+                  <div class="gias-toolbar-section full-width-section">
+                      <ng-content select="[headerSecondLine]">
+                          <!-- Content to be included by the user. -->
+                      </ng-content>
+                  </div>
+              </ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="position == 'bottom'">
+              <!-- THIS CAN BE USED AS A GENERIC FOOTER FOR THE WHOLE KENDO GRID -->
+              <div *ngIf="currentScrollingMode.isVirtual()" class="footer-virtual-count">
+                <p>{{ 'giasgrid.TotaleXElementi' | transloco: { count: currentScrollingMode.totalCount } }}</p>
+              </div>
+
+              <div *ngIf="!currentScrollingMode.isVirtual()" class="footer-virtual-empty">
+                <!-- This removes any extra space when footer is not needed -->
+              </div>
+            </ng-container>
+          </ng-template>
+
+        <ng-template kendoGridNoRecordsTemplate>
+          <ng-container *ngTemplateOutlet="noRecordsTemplateRef;">
+          </ng-container>
+        </ng-template>
+
+        <kendo-grid-checkbox-column #CheckboxColumn *ngIf="selectable.checkboxIsEnabled"
+                                    [showSelectAll]="selectable.columnSettings.showSelectAll"
+                                    [title]="selectable.columnSettings.title"
+                                    [width]="selectable.columnSettings.width? selectable.columnSettings.width: 30 "
+                                    [includeInChooser]="selectable.columnSettings.includeInChooser"
+                                    [sticky]="selectable.columnSettings.sticky"
+                                    [reorderable]="selectable.columnSettings.reorderable"
+                                    [headerStyle]="{
+        'background-color': '#428BCA',
+        color: 'white'
+      }">
+            <ng-template kendoGridHeaderTemplate>
+                <input *ngIf="selectable.columnSettings.showSelectAll" type="checkbox" kendoCheckBox
+                       id="selectAllCheckboxId" kendoGridSelectAllCheckbox [state]="selectAllState"
+                       (selectAllChange)="onSelectAllChange($event)"
+                       [disabled]="selectable.selectable.disableAllcheckbox"/>
+                <label class="k-checkbox-label" for="selectAllCheckboxId"></label>
+            </ng-template>
+            <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <input type="checkbox" kendoCheckBox
+                       [kendoGridSelectionCheckbox]="rowIndex"
+                       [disabled]="selectable.selectable.disableAllcheckbox"/>
+            </ng-template>
+        </kendo-grid-checkbox-column>
+        <!-- [minResizableWidth]="20" -->
+        <kendo-grid-command-column #CommandColumn [title]="dettagliColumn.title | transloco" [width]="dettagliColumn.width"
+                                   [sticky]="dettagliColumn.sticky" *ngIf="showDettagliColumn"
+                                   [headerStyle]="{ 'background-color': '#428BCA', color: 'white' }">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                <div class="btn-group btn-sm divEditFull divDettagliColumn" *ngIf="!isNew" kendoTooltip>
+                    <!-- <button *ngIf="insideWindow.innerWidth > SMARTPHONE_WIDTH && dettagliColumn.editBtn"
+                      class="btn btn-outline btn-edit-command btn-sm inlineBtnDisabledInModifica k-mr-2" [type]="'button'"
+                      [disabled]="inLineModificaIsDisabled" size="small" (click)="editBtnHandler(dataItem, isNew, rowIndex)">
+                      {{ 'giasgrid.Modifica' | transloco }}
+                    </button> -->
+                    <button *ngIf="dettagliColumn.editBtn" [title]="'giasgrid.Modifica' | transloco"
+                            [disabled]="dettagliColumn.onDisableEditBtn(dataItem) || inLineModificaIsDisabled"
+                            class="btn btn-outline btn-edit-command btn-sm inlineBtnDisabledInModifica k-mr-2"
+                            [type]="'button'"
+                            size="small" (click)="editBtnHandler(dataItem, isNew, rowIndex)">
+                        <fa-icon class="faEditFull" aria-hidden="true"></fa-icon>
+                    </button>
+
+                    <ng-container *ngIf="!isInEditMode">
+                        <button type="button" [id]="'infoBtn'" (click)="infoCmdHandler(dataItem, isNew, rowIndex)"
+                                *ngIf="cmdColumn.infoBtn"
+                                [disabled]="cmdColumn.onDisableInfoBtn(dataItem) || inLineModificaIsDisabled"
+                                class="btn btn-outline btn-inline-info btn-sm" [title]="'giasgrid.Informazioni' | transloco"
+                                size="small"
+                                style="color: #5BC0DE;">
+
+                            <div class="faGridRowIcon faInfo"></div>
+                        </button>
+
+                    </ng-container>
+
+                </div>
+            </ng-template>
+        </kendo-grid-command-column>
+
+        <kendo-grid-command-column [title]="cmdColumn.title | transloco" [width]="150"
+                                   [minResizableWidth]="70"
+                                   [sticky]="cmdColumn.sticky" [reorderable]="cmdColumn.reorderable" 
+                                   [media]="cmdColumn.media" [ngClass]="'blue-header'"
+                                   *ngIf="showCmdColumn || showCmdDDL">
+            <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem let-rowIndex="rowIndex">
+                <div class="row">
+                    <div class="btn-group btn-sm" kendoTooltip>
+                        <button type="button" *ngIf="showCmdColumn && showEditButton(dataItem) && !isNew" kendoGridEditCommand
+                                class="btn btn-primary increase-border btn-inline-edit btn-sm editBtn" size="small"
+                                look="flat"
+                                [title]="cmdColumn.editBtnTitle | transloco"
+                                [disabled]="cmdColumn.onDisableEditBtn(dataItem) ||inLineModificaIsDisabled">
+                            <fa-icon size="lg" [icon]="faEdit">
+                            </fa-icon>
+                        </button>
+
+                        <button [id]="'btnDelete'" type="button"
+                                class="btn btn-danger increase-border btn-inline-delete btn-sm"
+                                kendoGridRemoveCommand *ngIf="cmdColumn.removeBtn && showCmdColumn  && !isNew"
+                                [disabled]="cmdColumn.onDisableRemoveBtn(dataItem) || inLineModificaIsDisabled"
+                                size="small"
+                                [title]="'giasgrid.Cancella' | transloco" look="flat"
+                                style="color: #D41E1A;">
+                            <fa-icon size="lg" [icon]="faDelete">
+                            </fa-icon>
+                        </button>
+                        <div *ngIf="showCmdDdlButton(dataItem)">
+                            <kendo-dropdownbutton fillMode="flat" *ngIf="!inLineModificaIsDisabled"
+                                                  [title]="'giasgrid.AltreAzioni' | transloco"
+                                                  [data]="cmdDropDown.cmdList"
+                                                  (open)="onOpenCommands(dataItem)"
+                                                  (itemClick)="onCommand($event, dataItem, isNew, rowIndex)">
+                                <fa-icon class="btn increase-border btn-outline btn-sm" size="lg"
+                                         [icon]="faDots"></fa-icon>
+
+                                <ng-template kendoDropDownButtonItemTemplate let-ddlItem
+                                             class="transparentBg">
+
+                                    <ng-container *ngIf="!ddlItem.fontawesomeIcon && ddlItem.iconClass !== ''">
+                                      <div class="faGridRowIcon {{ ddlItem.iconClass }}"></div>
+                                    </ng-container>
+
+
+                                    <ng-container *ngIf="ddlItem.fontawesomeIcon && ddlItem.iconClass === ''">
+                                      <fa-icon [icon]="ddlItem.fontawesomeIcon"></fa-icon>
+                                    </ng-container>
+
+
+                                    <span>{{ ButtonGridCommandName(ddlItem) }}</span>
+
+                                </ng-template>
+                            </kendo-dropdownbutton>
+                        </div>
+                    </div>
+                </div>
+                <ng-container>
+                    <div class="row">
+                        <div class="btn-group btn-sm" kendoTooltip>
+                            <button type="button" class="btn btn-success btn-sm" kendoGridSaveCommand
+                                    *ngIf="isNew" size="small" look="flat" [title]="'giasgrid.Aggiungi' | transloco">
+                                <fa-icon size="lg" [icon]="isNew ? faSave: faSave ">
+                                </fa-icon>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" kendoGridSaveCommand
+                                    *ngIf="!isNew" size="small" look="flat" [title]="'giasgrid.Salva' | transloco">
+                                <fa-icon size="lg" [icon]="isNew ? faSave: faSave ">
+                                </fa-icon>
+                            </button>
+                            <button type="button" class="btn btn-warning increase-border btn-sm"
+                                    [title]="'giasgrid.Annulla' | transloco" size="small"
+                                    look="flat" style="color: #D41E1A;" kendoGridCancelCommand>
+                                <fa-icon size="lg" [icon]="faCancel">
+                                </fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </ng-container>
+            </ng-template>
+        </kendo-grid-command-column>
+
+        <kendo-grid-command-column
+            [title]="customColumn.title | transloco"
+            [width]="customColumn.width"
+            [sticky]="customColumn.sticky"
+            [reorderable]="customColumn.reorderable"
+            *ngIf="showCustomColumn"
+            [headerStyle]="customColumn.headerStyle"
+        >
+
+          <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem" let-rowIndex="rowIndex">
+            <ng-container [ngTemplateOutlet]="useCustomColumnCellTemplate() ? customCommandColumnCellTemplate : defaultCommandColumnTemplate"
+                          [ngTemplateOutletContext]="{ dataItem: dataItem, isNew: isNew, rowIndex: rowIndex}">
+            </ng-container>
+          </ng-template>
+
+          <ng-container *ngIf="useCustomColumnHeaderTemplate()">
+            <ng-template kendoGridHeaderTemplate let-column="column" let-columnIndex="columnIndex">
+              <ng-container [ngTemplateOutlet]="customCommandColumnHeaderTemplate"
+                            [ngTemplateOutletContext]="{ column: column, columnIndex: columnIndex}">
+              </ng-container>
+            </ng-template>
+          </ng-container>
+
+
+
+            <ng-template #defaultCommandColumnTemplate let-isNew="isNew" let-dataItem="dataItem" let-rowIndex="rowIndex">
+                <div class="btn-group btn-sm divEditFull" *ngIf="showBtncustomColumn(isNew)" kendoTooltip>
+                    <button
+                        [title]="customColumn.btnTooltip | transloco"
+                        [disabled]="customColumn.onDisableActionBtn(dataItem) || inLineModificaIsDisabled"
+                        class="btn btn-outline btn-edit-command btn-sm inlineBtnDisabledInModifica k-mr-2"
+                        [type]="'button'"
+                        size="small"
+                        (click)="actionBtnHandler(dataItem, isNew, rowIndex)"
+                    >
+                      <ng-container *ngIf="customColumn.btnIcon == '' && customColumn.fontawesomeIcon">
+                        <fa-icon [icon]="customColumn.fontawesomeIcon"></fa-icon>
+                      </ng-container>
+
+                      <ng-container *ngIf="customColumn.btnIcon !== '' && !customColumn.fontawesomeIcon">
+                        <fa-icon [ngClass]="customColumn.btnIcon" aria-hidden="true"></fa-icon>
+                      </ng-container>
+
+                    </button>
+                </div>
+            </ng-template>
+        </kendo-grid-command-column>
+
+
+        <!--Riportare le modifiche fatte alle colonne nel gridColumnGroupTemplate e nel gridNoColumnGroupTemplate-->
+        <ng-container *ngFor="let group of columnGroups | keyvalue: defaultOrder">
+
+          <ng-container  *ngIf="useColumnGroup(group)"
+                         [ngTemplateOutlet]="gridColumnGroupTemplate"
+                         [ngTemplateOutletContext]="{ group: group }">
+          </ng-container>
+
+          <ng-container  *ngIf="!useColumnGroup(group)"
+                         [ngTemplateOutlet]="gridNoColumnGroupTemplate"
+                         [ngTemplateOutletContext]="{ group: group }">
+          </ng-container>
+
+        </ng-container>
+
+
+       <!--Riportare le modifiche fatte alle colonne anche nel gridNoColumnGroupTemplate-->
+        <ng-template #gridColumnGroupTemplate let-group="group">
+          <kendo-grid-column-group [title]="group.key">
+
+            <kendo-grid-column *ngFor="let col of group.value;
+                          let i = index"
+                               [editable]="col.editable" [field]="col.field" [title]="col.title" [class]="col.class"
+                               [width]="col.width" [hidden]="col.hidden" [filter]="col | filterType" [format]="col.format"
+                               [filterable]="col?.filterable === false ? false: true"
+                               [includeInChooser]="col.includeInChooser" [media]="col.media" [sticky]="col.sticky"
+                               [ngClass]="'blue-header'" [style]="getColumnStyle(col)" [footerStyle]="getColumnFooterStyle(col)">
+
+              <ng-container *ngIf="col | cellType as cellType">
+                <ng-template  kendoGridCellTemplate
+                              let-columnIndex="columnIndex"  let-rowIndex="rowIndex" let-dataItem="dataItem" let-column="column"
+                              *ngIf="showAgronicakendoGridCellTemplate(cellType,col)">
+                  <ng-container [ngTemplateOutlet]="AgronicakendoGridCellTemplate"
+                                [ngTemplateOutletContext]="{ cellType: cellType, dataItem: dataItem, col: col}">
+                  </ng-container>
+
+                </ng-template>
+
+                <ng-template  kendoGridGroupHeaderTemplate
+                              let-group="group" let-field="field" let-value="value" let-aggregates="aggregates" let-index="index" let-expanded="expanded"
+                              *ngIf="showAgronicakendoGridGroupHeaderTemplate(cellType)">
+
+                  <ng-container [ngTemplateOutlet]="AgronicakendoGridGroupHeaderTemplate"
+                                [ngTemplateOutletContext]="{ group: group, field: field, value: value, aggregates: aggregates,index: index, expanded: expanded,  cellType: cellType, col: col}">
+                  </ng-container>
+                </ng-template>
+
+
+                <ng-template  kendoGridFooterTemplate
+                              let-column="column" let-columnIndex="columnIndex"
+                              *ngIf="showAgronicakendoGridFooterTemplate(cellType)">
+
+                  <ng-container [ngTemplateOutlet]="AgronicakendoGridFooterTemplate"
+                                [ngTemplateOutletContext]="{ columnIndex: columnIndex, cellType: cellType, col: col, total:_calculateAggregatesTotal(rows, false, '', '') }">
+                  </ng-container>
+                </ng-template>
+
+                <ng-template  kendoGridFilterMenuTemplate
+                              let-column="column" let-filter="filter" let-filterService="filterService"
+                              *ngIf="showkendoGridFilterMenuTemplate(cellType, col)">
+
+                    <ng-container *ngIf="showMultiCheckFilter(cellType, col)">
+
+                        <gias-multicheck-filter [multiIndex]="privateService.multiIndex" [type]="cellType"
+                                           [isPrimitive]="true"
+                                           [field]="col.field" [filterService]="filterService"
+                                           [currentFilter]="filter"
+                                           [showHTMLAsString]="ShowHTMLAsString(cellType,col)"
+                                           [ordering]="col.filterOrdering"></gias-multicheck-filter>
+                    </ng-container>
+
+                  <ng-container *ngIf="showAgronicakendoGridFilterMenuTemplate(cellType)"
+                                [ngTemplateOutlet]="AgronicakendoGridFilterMenuTemplate"
+                                [ngTemplateOutletContext]="{ filter: filter,filterService: filterService, cellType: cellType, col: col}">
+                  </ng-container>
+                </ng-template>
+
+                <ng-template  kendoGridEditTemplate
+                              let-formGroup="formGroup" let-rowIndex="rowIndex" let-dataItem="dataItem" let-column="column" let-isNew="isNew"
+                              *ngIf="showAgronicakendoGridEditTemplate(cellType)">
+                  <ng-container [ngTemplateOutlet]="AgronicakendoGridEditTemplate"
+                                [ngTemplateOutletContext]="{ formGroup: formGroup,rowIndex: rowIndex,dataItem: dataItem, isNew: isNew, cellType: cellType, col: col}">
+                  </ng-container>
+                </ng-template>
+
+              </ng-container>
+
+            </kendo-grid-column>
+
+          </kendo-grid-column-group>
+        </ng-template>
+
+        <!--Riportare le modifiche fatte alle colonne anche nel gridColumnGroupTemplate-->
+        <ng-template #gridNoColumnGroupTemplate let-group="group">
+          <kendo-grid-column *ngFor="let col of group.value;
+                          let i = index"
+                             [editable]="col.editable" [field]="col.field" [title]="col.title" [class]="col.class"
+                             [width]="col.width" [hidden]="col.hidden" [filter]="col | filterType" [format]="col.format"
+                             [filterable]="col?.filterable === false ? false: true"
+                             [includeInChooser]="col.includeInChooser" [media]="col.media" [sticky]="col.sticky"
+                             [ngClass]="'blue-header'" [style]="getColumnStyle(col)" [footerStyle]="getColumnFooterStyle(col)">
+
+            <ng-container *ngIf="col | cellType as cellType">
+              <ng-template  kendoGridCellTemplate
+                            let-columnIndex="columnIndex"  let-rowIndex="rowIndex" let-dataItem="dataItem" let-column="column"
+                            *ngIf="showAgronicakendoGridCellTemplate(cellType,col)">
+                <ng-container [ngTemplateOutlet]="AgronicakendoGridCellTemplate"
+                              [ngTemplateOutletContext]="{ cellType: cellType, dataItem: dataItem, col: col}">
+                </ng-container>
+
+              </ng-template>
+
+              <ng-template  kendoGridGroupHeaderTemplate
+                            let-group="group" let-field="field" let-value="value" let-aggregates="aggregates" let-index="index" let-expanded="expanded"
+                            *ngIf="showAgronicakendoGridGroupHeaderTemplate(cellType)">
+
+                <ng-container [ngTemplateOutlet]="AgronicakendoGridGroupHeaderTemplate"
+                              [ngTemplateOutletContext]="{ group: group, field: field, value: value, aggregates: aggregates,index: index, expanded: expanded,  cellType: cellType, col: col}">
+                </ng-container>
+              </ng-template>
+
+
+              <ng-template  kendoGridFooterTemplate
+                            let-column="column" let-columnIndex="columnIndex"
+                            *ngIf="showAgronicakendoGridFooterTemplate(cellType)">
+
+                <ng-container [ngTemplateOutlet]="AgronicakendoGridFooterTemplate"
+                              [ngTemplateOutletContext]="{ columnIndex: columnIndex, cellType: cellType, col: col, total:_calculateAggregatesTotal(rows, false, '', '')}">
+                </ng-container>
+              </ng-template>
+
+              <ng-template  kendoGridGroupFooterTemplate
+                            let-aggregates="aggregates" let-group="group" let-field="field" let-column="column"
+                            *ngIf="showAgronicakendoGridFooterTemplate(cellType)">
+                <ng-container [ngTemplateOutlet]="AgronicakendoGridGroupFooterTemplate"
+                              [ngTemplateOutletContext]="{ cellType: cellType, col: col, total:_calculateAggregatesTotal(group.items, false, group.field, group.value), group: group}">
+                </ng-container>
+
+              </ng-template>
+
+                <ng-template  kendoGridFilterMenuTemplate
+                              let-column="column" let-filter="filter" let-filterService="filterService"
+                              *ngIf="showkendoGridFilterMenuTemplate(cellType, col)">
+
+                    <ng-container
+                            *ngIf="showMultiCheckFilter(cellType, col)">
+
+                        <gias-multicheck-filter [multiIndex]="privateService.multiIndex" [type]="cellType"
+                                           [isPrimitive]="true"
+                                           [field]="col.field" [filterService]="filterService"
+                                           [currentFilter]="filter"
+                                           [showHTMLAsString]="ShowHTMLAsString(cellType,col)"
+                                           [ordering]="col.filterOrdering"></gias-multicheck-filter>
+                    </ng-container>
+
+                    <ng-container *ngIf="showAgronicakendoGridFilterMenuTemplate(cellType)"
+                                  [ngTemplateOutlet]="AgronicakendoGridFilterMenuTemplate"
+                                  [ngTemplateOutletContext]="{ filter: filter,filterService: filterService, cellType: cellType, col: col}">
+                    </ng-container>
+                </ng-template>
+
+              <ng-template  kendoGridEditTemplate
+                            let-formGroup="formGroup" let-rowIndex="rowIndex" let-dataItem="dataItem" let-column="column" let-isNew="isNew"
+                             *ngIf="showAgronicakendoGridEditTemplate(cellType)">
+                <ng-container [ngTemplateOutlet]="AgronicakendoGridEditTemplate"
+                              [ngTemplateOutletContext]="{ formGroup: formGroup,rowIndex: rowIndex,dataItem: dataItem, isNew: isNew, cellType: cellType, col: col}">
+                </ng-container>
+              </ng-template>
+
+            </ng-container>
+
+          </kendo-grid-column>
+        </ng-template>
+
+
+        <kendo-grid-excel *ngIf="behavior.excelSettings.enabled" [fileName]="'Export.xlsx'" [fetchData]="excelData">
+        </kendo-grid-excel>
+
+        <kendo-grid-pdf *ngIf="behavior.pdfSettings.enabled" [fileName]="config.gridId + '.pdf'"
+                        [allPages]="behavior.pdfSettings.allPages" paperSize="A4" [repeatHeaders]="true"
+                        [landscape]="true">
+            <kendo-grid-pdf-margin top="2cm" left="1cm" right="1cm" bottom="2cm"></kendo-grid-pdf-margin>
+            <ng-template kendoGridPDFTemplate let-pageNum="pageNum" let-totalPages="totalPages">
+                <div class="page-template">
+                    <div class="header">
+                        <div style="float: right">
+                            {{ "giasgrid.Page" | transloco }} {{ pageNum }} {{"giasgrid.of" | transloco}} {{ totalPages }}
+                        </div>
+                    </div>
+                    <!-- <div class="footer">{{ "giasgrid.Page" | transloco }} {{ pageNum }} {{"giasgrid.of" | transloco}} {{ totalPages }}</div> -->
+                </div>
+            </ng-template>
+        </kendo-grid-pdf>
+
+        <ng-container *ngIf="ShowkendoGridDetailTemplate()">
+            <ng-template
+                    kendoGridDetailTemplate
+                    let-dataItem
+                    let-rowIndex
+                    [kendoGridDetailTemplateShowIf]="masterdetailSettings.showDetailTemplate">
+
+                <ng-container [ngTemplateOutlet]="masterdetailSettings.templateGridDetail">
+                </ng-container>
+            </ng-template>
+        </ng-container>
+
+    </kendo-grid>
+</div>
+
+<ng-template #tooltipTemplate>
+    <span>{{ 'giasgrid.Ordina' | transloco }}</span>
+</ng-template>
+
+<!-- Celle nella modalità di visualizzazione -->
+<ng-template #AgronicakendoGridCellTemplate let-cellType="cellType" let-dataItem="dataItem" let-col="col">
+  <ng-container *ngIf="cellType === DATE">
+    {{ ((dataItem[col.field] | stringToDate: col)?.getTime() == AGRODATA_INIZIO.getTime() || (dataItem[col.field] | stringToDate: col)?.getTime() ==
+    AGRODATA_FINE.getTime()) ? (col.date?.placeholder ?? '') : ((dataItem[col.field] | stringToDate: col) | date:(col.date?.format ?? 'dd/MM/yyyy')) }}
+  </ng-container>
+
+  <ng-container *ngIf="cellType === DATETIME">
+    {{ ((dataItem[col.field] | stringToDate: col)?.getTime() == AGRODATA_INIZIO.getTime() || (dataItem[col.field] | stringToDate: col)?.getTime() ==
+    AGRODATA_FINE.getTime()) ? (col.date?.placeholder ?? '') : ((dataItem[col.field] | stringToDate: col) | date:(col.date?.format ?? 'dd/MM/yyyy HH:mm:ss')) }}
+  </ng-container>
+
+  <ng-container *ngIf="cellType === NUMERIC">
+    {{ dataItem[col.field] | formatNumber: col: null }}
+  </ng-container>
+
+  <ng-container *ngIf="cellType === DROPDOWNLIST">
+    {{ dataItem | cellDropdownName:col }}
+  </ng-container>
+
+  <ng-container *ngIf="cellType === MULTI_DROPDOWNLIST">
+    {{ dataItem | cellMultiDropdownName:col }}
+  </ng-container>
+
+  <ng-container *ngIf="ShowHTMLAsString(cellType,col)">
+    <div [innerHtml]="dataItem[col.field]"></div>
+  </ng-container>
+
+  <ng-container *ngIf="!ShowHTMLAsString(cellType,col) && cellType === STRING">
+    {{ dataItem[col.field] }}
+  </ng-container>
+
+  <ng-container *ngIf="cellType === BOOLEAN">
+    <gias-grid-boolean [defaultValue]="dataItem[col.field]" [editable]="false" [useCheckbox]="true"
+    ></gias-grid-boolean>
+  </ng-container>
+
+  <ng-container *ngIf="cellType === CUSTOM">
+    <gias-grid-custom [component]="col.component" [input]="dataItem" [field]="col.field" [edit]="false">
+    </gias-grid-custom>
+  </ng-container>
+</ng-template>
+
+<!-- GridGroupHeaderTemplate -->
+<ng-template #AgronicakendoGridGroupHeaderTemplate
+             let-group="group" let-field="field" let-value="value" let-aggregates="aggregates"
+             let-index="index" let-expanded="expanded" let-cellType="cellType" let-col="col">
+  <ng-container *ngIf="groups.groupable && (cellType === DROPDOWNLIST || cellType === MULTI_DROPDOWNLIST) ">
+    {{ group | groupHeaderName:col:field }}
+  </ng-container>
+</ng-template>
+
+<!-- GridFooterTemplate -->
+<ng-template #AgronicakendoGridFooterTemplate
+             let-columnIndex="columnIndex" let-cellType="cellType" let-col="col" >
+  <ng-container *ngIf="
+                            aggregates.enabled &&
+                            cellType === NUMERIC">
+    <ng-container *ngIf="col | aggrType as aggrType">
+      <ng-container *ngIf="aggrType.show" >
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'sum'">
+            {{"giasgrid.Somma_Totale_Abbr" | transloco}} {{ getAggregateResult(total.get(''), col, aggrType.descriptor?.aggregate) | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'average'">
+            {{"giasgrid.Media" | transloco}} {{getAggregateResult(total.get(''), col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'count'">
+            {{"giasgrid.Conteggio_Totale" | transloco}} {{getAggregateResult(total.get(''), col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'max'">
+            {{"giasgrid.Massimo" | transloco}} {{getAggregateResult(total.get(''), col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container  *ngIf="aggrType.descriptor?.aggregate === 'min'">
+            {{"giasgrid.Minimo" | transloco}} {{getAggregateResult(total.get(''), col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+
+      </ng-container>
+
+    </ng-container>
+
+    <ng-container *ngIf="col?.customFooter != null">
+      {{ col.customFooter(rows) }}
+    </ng-container>
+
+  </ng-container>
+</ng-template>
+
+<!-- GridGroupFooterTemplate -->
+<ng-template #AgronicakendoGridGroupFooterTemplate
+             let-cellType="cellType" let-col="col" let-total="total" let-group="group" style="'text-align': 'right'" >
+  <ng-container *ngIf="aggregates.enabled && cellType === NUMERIC">
+    <ng-container *ngIf="col | aggrType as aggrType">
+      <ng-container *ngIf="aggrType.show" >
+        <div style="text-align: right; font-weight: bold;" >
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'sum'">
+            {{"giasgrid.Somma_Totale_Abbr" | transloco}} {{ getAggregateResult(total, col, aggrType.descriptor?.aggregate) | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'average'">
+            {{"giasgrid.Media" | transloco}} {{getAggregateResult(total, col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'count'">
+            {{"giasgrid.Conteggio_Totale" | transloco}} {{getAggregateResult(total, col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container *ngIf="aggrType.descriptor?.aggregate === 'max'">
+            {{"giasgrid.Massimo" | transloco}} {{getAggregateResult(total, col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+          <ng-container  *ngIf="aggrType.descriptor?.aggregate === 'min'">
+            {{"giasgrid.Minimo" | transloco}} {{getAggregateResult(total, col, aggrType.descriptor?.aggregate)  | formatNumber:col: aggrType.descriptor?.format}}
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="col?.customFooter != null">
+      {{ col.customFooter(rows) }}
+    </ng-container>
+
+  </ng-container>
+</ng-template>
+
+<!-- GridFilterMenuTemplate -->
+<ng-template #AgronicakendoGridFilterMenuTemplate
+             let-filter="filter" let-filterService="filterService"
+             let-cellType="cellType" let-col="col"
+></ng-template>
+
+<!-- Celle nella modalità di editing -->
+<ng-template #AgronicakendoGridEditTemplate
+             let-formGroup="formGroup" let-rowIndex="rowIndex" let-dataItem="dataItem" let-isNew="isNew" let-cellType="cellType" let-col="col">
+
+  <!-- getDate(dataItem, col) -->
+  <ng-container *ngIf="cellType === DATE">
+    <kendo-datepicker #input [min]=" (col.date) ? col.date?.min : AGRODATA_INIZIO"
+                      [max]=" (col.date) ? col.date?.max : AGRODATA_FINE"
+                      [formControl]="formGroup.get(col.field)"
+                      calendarType="classic">
+    </kendo-datepicker>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="cellType === DATETIME">
+    <kendo-datetimepicker #input [min]=" (col.date) ? col.date?.min : AGRODATA_INIZIO"
+                      [max]=" (col.date) ? col.date?.max : AGRODATA_FINE"
+                      [formControl]="formGroup.get(col.field)" calendarType="classic">
+    </kendo-datetimepicker>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+  <!-- *ngIf="cellType === NUMERIC && aggregates.enabled" -->
+  <ng-container *ngIf="cellType === NUMERIC">
+    <kendo-numerictextbox #input [formControl]="formGroup.get(col.field)"
+                          [min]="col.numeric.min" [max]="col.numeric.max" [format]="col.numeric.format"
+                          [spinners]="false"
+                          [autoCorrect]="col.numeric.autoCorrect"
+                          [decimals]="col.numeric.decimals"
+                          [step]="col.numeric?.step ?? 0"></kendo-numerictextbox>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="cellType === DROPDOWNLIST">
+    <gias-grid-ddl #input [column]="col" [useForm]="true" [id]="col.ddl.id"
+                   [defaultItem]="col.ddl.defaultItem"
+                   [source]="col.ddl.data" [textField]="col.ddl.textField"
+                   [valueField]="col.ddl.valueField"
+                   [valuePrimitive]="col.ddl.valuePrimitive" [filterable]="true" [formGroup]="formGroup"
+                   [controlName]="col.ddl.formControlName" [ddl]="col.ddl"
+                   (reload)="ddlReload($event, formGroup,col)"
+                   (valueChange)="ddlStateChanged($event, formGroup, col)"
+                   (open)="ddlOpenEvent($event, formGroup)">
+    </gias-grid-ddl>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="cellType === MULTI_DROPDOWNLIST">
+    <gias-grid-multi-ddl #input [useForm]="true" [id]="col.ddl.id" [defaultItem]="col.ddl.defaultItem"
+                         [source]="col.ddl.data" [textField]="col.ddl.textField"
+                         [valueField]="col.ddl.valueField"
+                         [valuePrimitive]="col.ddl.valuePrimitive" [filterable]="true"
+                         [formGroup]="formGroup"
+                         [controlName]="col.ddl.formControlName" [ddl]="col.ddl"
+                         [defaultOpen]="col.ddl.defaultOpen"
+                         (reload)="onOpenReloadDDL($event, formGroup, true)"
+                         (valueChange)="ddlStateChanged($event, formGroup, col)"
+                         (open)="onOpenReloadDDL($event, formGroup, false)">
+    </gias-grid-multi-ddl>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="cellType === BOOLEAN">
+    <gias-grid-boolean [editable]="true" [useCheckbox]="true"
+      [defaultValue]="dataItem[col.field]"
+      [formGroup]="formGroup" [controlName]="col.field"
+    ></gias-grid-boolean>
+  </ng-container>
+
+  <ng-container *ngIf="cellType === CUSTOM">
+    <gias-grid-custom [component]="col.component" [field]="col.field"
+                      [input]="dataItem" [formGroup]="formGroup"
+                      [edit]="true"
+    ></gias-grid-custom>
+    <div *ngIf="formControls[col.field].touched && formControls[col.field].errors"
+         class="k-tooltip-validation">
+
+    </div>
+  </ng-container>
+
+</ng-template>

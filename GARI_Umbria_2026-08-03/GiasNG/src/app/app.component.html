@@ -1,0 +1,31 @@
+<ng-container *ngIf="translationsLoaded">
+
+    <div [ngClass]="{'gis-page': isGISRoute}">
+
+        <gias-master-header></gias-master-header>
+
+        <gias-sidemenu></gias-sidemenu>
+
+        <!-- il content div va a creare una barra grigia all altezza del footer -->
+
+        <!-- <div *ngIf="loaded" class="contentDiv" #routerOutlet>
+        <router-outlet></router-outlet>
+    </div> -->
+
+        <!-- <footer>
+        <gias-master-footer></gias-master-footer>
+    </footer> -->
+
+        <div *ngIf="showBackground" class="window-background"></div>
+
+        <div kendoDialogContainer></div>
+
+        <div kendoWindowContainer></div>
+
+    </div>
+
+    <gias-master-window-messaggio-errore></gias-master-window-messaggio-errore>
+
+    <gias-kendo-window-templates></gias-kendo-window-templates>
+
+</ng-container>

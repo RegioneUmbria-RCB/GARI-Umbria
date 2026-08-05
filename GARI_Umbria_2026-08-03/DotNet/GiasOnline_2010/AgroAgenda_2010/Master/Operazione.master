@@ -1,0 +1,1739 @@
+﻿<%@ Master Language="VB" MasterPageFile="Agenda.Master" AutoEventWireup="false" CodeBehind="Operazione.master.vb"
+    Inherits="AgroAgenda_2010.Operazione" %>
+
+<%@ Register Assembly="AgronicaControlli_2010" Namespace="AgronicaControlli_2010"
+    TagPrefix="cc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentAgendaHead" runat="server">
+    <!-- Eventuale JS E css aggiuntivi-->
+    <script type="text/javascript">
+
+        var Enum_TargetOperazione = {  
+          Reale: {value: 1, name: "Reale", code: 1 }, 
+          Planning : {value: 2, name: "Planning", code: 2 }
+        };
+
+        var objParametriAgenda_TargetOperazione = <%=objParametriAgenda_TargetOperazione %>;
+
+        function Contatto_gestisciValore_esci() {
+            $("#dialog").dialog("close");
+        }
+
+        function Contatto_gestisciValore(valore) {
+            $("#dialog").dialog("close");
+            clickButtonContatti();
+        }
+
+        function clickButtonContatti() {
+            $("#<%=BottoneNascostoContatti.ClientID %>").click()
+        }
+
+        function apriFormDialog(url) {
+            $("#dialog").dialog("open");
+            $("#xiframe").html("<iframe frameBorder='0' src='" + url + "' style='width:100%; height:" + ($("#dialog").height()) + "px'><iframe>");
+        }
+
+        function chiudidialog() {
+            $("#dialog").dialog("close");
+        }
+
+        function ChiamataParent_Id_Ageda(id_agenda) {
+            try {
+                window.parent.registrazioneAgenda(id_agenda);
+            }
+            catch (e) {
+
+            }
+            finally {
+
+            }
+        }
+
+
+
+        function BloccaCombo_CentroAziendale() {
+            $(".ComboCentroAziendale").parent().children('input').attr('disabled', 'disabled');
+            $(".ComboCentroAziendale").parent().children('button').attr('disabled', 'disabled');
+        }
+
+        function BloccaCombo_Operazioni() {
+            $(".ComboOperazioni").parent().children('input').attr('disabled', 'disabled');
+            $(".ComboOperazioni").parent().children('button').attr('disabled', 'disabled');
+        }
+
+        function BloccaCombo_Specie() {
+            $(".ComboSpecie").parent().children('input').attr('disabled', 'disabled');
+            $(".ComboSpecie").parent().children('button').attr('disabled', 'disabled');
+        }
+
+
+        function BloccaCombo_Magazzini() {
+
+            $(".ComboMagazzini").parent().children('input').attr('disabled', 'disabled');
+            $(".ComboMagazzini").parent().children('button').attr('disabled', 'disabled');
+        }
+
+        function SloccaCombo_Magazzini() {
+            $(".ComboMagazzini").parent().children('input').removeAttr('disabled');
+            $(".ComboMagazzini").parent().children('button').removeAttr('disabled');
+        }
+
+
+
+        //Per invocare il postback sulle combo
+        function DoPostBack_Combo($_combo, valoreOpt) {
+            //postBack Specie
+            if ($_combo.attr("id").endsWith("ComboSpecie")) {
+                $("#<%=BTN_ComboSpecie.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            //postBack Varieta
+            if ($_combo.attr("id").endsWith("ComboVarieta")) {
+                $("#<%=BTN_ComboVarieta.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            //postBack CentroAziendale
+            if ($_combo.attr("id").endsWith("ComboCentroAziendale")) {
+                $("#<%=BTN_ComboCentroAziendale.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+
+            //postBack Campo
+            if ($_combo.attr("id").endsWith("ComboCampo")) {
+                $("#<%=BTN_ComboCampo.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            //postBack Magazzini
+            if ($_combo.attr("id").endsWith("ComboMagazzini")) {
+                $("#<%=BTN_Magazzini.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            //postBack Operazioni
+            if ($_combo.attr("id").endsWith("ComboOperazioni")) {
+                $("#<%=BTN_ComboOperazione.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            if ($_combo.attr("id").endsWith("Cmb_Attivita")) {
+                //alert('cambio');
+                $("#<%=ComboAttivita_IndiceRigaCambiato.ClientID %>").val($($_combo).closest('tr')[0].rowIndex);
+                $("#<%=BTN_ComboAttivita.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+
+            if ($_combo.attr("id").endsWith("Cmb_Turni")) {
+                //alert('cambio');
+                $("#<%=BTN_ComboTurni.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            if ($_combo.attr("id").endsWith("Cmb_Qualifica")) {
+                //alert('cambio');
+                $("#<%=BTN_ComboQualifica.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            if ($_combo.attr("id").endsWith("Cmb_Tariffa")) {
+                //alert('cambio');
+                $("#<%=BTN_ComboTariffa.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            if ($_combo.attr("id").endsWith("CmbCentriDiCostoAvanzati")) {
+                //alert('cambio');
+                $("#<%=BTN_CmbCentriDiCostoAvanzati.ClientID %>").click();
+                $('#WaitFrame').show();
+                return;
+            }
+
+            DoPostBack_Combo_Slave($_combo, valoreOpt);
+        }
+
+        function comboCampoChiusa() {
+            $("#<%=BTN_ComboCampo.ClientID %>").click();
+            $('#WaitFrame').show();
+            return;
+        }
+
+        function comboVarietaChiusa() {
+            $("#<%=BTN_ComboVarieta.ClientID %>").click();
+            $('#WaitFrame').show();
+            return;
+        }
+
+        function ControllaDisciplinarePlanning(Oggetto) {
+            //TODO: verificare ..
+            return true;
+        }
+
+
+        function ControllaDisciplinare(Oggetto) {
+            //controllo che non sia soggetto a disciplinare
+            var disciplinare = false;
+
+            if (Oggetto.parent().parent().parent().hasClass("sfondogiallo") == true) {
+                //controllo se la combo dei discipòlinari è attiva
+                var ComboDisciplinari = $('.ComboDisciplinari').hasClass('myCombo');
+                if (ComboDisciplinari == true) {
+
+
+                    if ($('.ComboDisciplinari').val() != -2 && Oggetto.parent().parent().parent().children('.classeRegolamenti').html() == 4) {
+                        //if ($('.ComboDisciplinari').val() != -2 && Oggetto.parent().parent().parent().children('.classeRegolamenti').html().indexOf('834/07') >= 0) {
+                        //ho selezionato un dpi ma non reg bio
+                        MessaggioErrore('Se è stato impostato il regolamento Bio nell impianto occorre utilizzare il disciplinare Bio');
+                        return false;
+                    }
+
+                    if ($('.ComboDisciplinari').val() == 0) {
+                        //sono obbligato a utilizzare il disciplinare
+                        MessaggioErrore('<%=ObbligoUsaDPI.replace("'", "\'") %>');
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+
+
+                }
+                else {
+                    return true;
+                }
+
+            } else {
+                return true;
+            }
+
+        }
+
+
+        /////////////////////////////////////////////////////
+        /////////////////// SUPERFICI ///////////////////////
+        /////////////////////////////////////////////////////
+
+
+        function SelezionaDeselezionaTuttiPlanning() {
+            if ($('#chkSelezionaTuttiPlanning').is(':checked')) {
+                //seleziono tutto
+                $('.ChkSelezionaPlanning').each(function () {
+                    $(this).children('input').prop('checked', true);
+                    ChkSelezionaPlanning_Click($(this).children('input'), true);
+                });
+                AggiornaDopo_SupTrattata();
+            }
+            else {
+                //seleziono tutto
+                $('.ChkSelezionaPlanning').each(function () {
+                    $(this).children('input').prop('checked', false);
+                    ChkSelezionaPlanning_Click($(this).children('input'), true);
+                });
+                AggiornaDopo_SupTrattata();
+            }
+        }
+
+
+
+        function SelezionaDeselezionaTutti() {
+            if ($('#chkSelezionaTuttiImpianti').is(':checked')) {
+                //seleziono tutto
+                $('.ChkSelezionaImpianto').each(function () {
+                    $(this).children('input').prop('checked', true);
+                    ChkSelezionaImpianto_Click($(this).children('input'), true);
+                });
+                AggiornaDopo_SupTrattata();
+            }
+            else {
+                //seleziono tutto
+                $('.ChkSelezionaImpianto').each(function () {
+                    $(this).children('input').prop('checked', false);
+                    ChkSelezionaImpianto_Click($(this).children('input'), true);
+                });
+                AggiornaDopo_SupTrattata();
+            }
+        }
+
+
+        //Dato un oggetto $ trova la superficie dell'impianto
+        function ValoreSuperficie_Impianto(Oggetto) {
+            return Oggetto.parent().parent().parent().children('.Sup_Imp').html().replace(',', '.');
+        }
+        function Inserisci_ValoreSuperficie_Impianto(Oggetto, valore) {
+            var app = roundNumber(valore, 4) + "";
+            app = app.replace(".", ",");
+            Oggetto.parent().parent().parent().find('.Sup_Imp').val(app);
+        }
+
+        function ValoreSuperficieCoinvolta_Impianto(Oggetto) {
+            return Oggetto.parent().parent().parent().find('.Sup_Coinvolta').val().replace(',', '.');
+        }
+        function Inserisci_ValoreSuperficieCoinvolta_Impianto(Oggetto, valore) {
+            var app = roundNumber(valore, 4) + "";
+            app = app.replace(".", ",");
+            Oggetto.parent().parent().parent().find('.Sup_Coinvolta').val(app);
+        }
+
+
+        //Funzione per l'aggiornamento della superficie Totale
+        function RicalcolaSuperficieTotale() {
+            var SupTot = 0.00;
+            //sel la checkbox è chekkata
+            $('.ChkSelezionaImpianto').children('input:checked').each(function () {
+                var app = ValoreSuperficie_Impianto($(this));
+                SupTot += parseFloat(app);
+            });
+            InserisciSupTotale(SupTot);
+        }
+
+        //Funzione per l'aggiornamento della superficie Totale Planning
+        function RicalcolaSuperficieTotalePlanning() {
+            var SupTot = 0.00;
+            //sel la checkbox è chekkata
+            $('.ChkSelezionaPlanning').children('input:checked').each(function () {
+                var app = ValoreSuperficie_Impianto($(this));
+                SupTot += parseFloat(app);
+            });
+            InserisciSupTotale(SupTot);
+        }
+
+        //Aggiornamento della superficie Coinvolta Planning
+        function RicalcolaSuperficieCoinvoltaPlanning() {
+            var SupTot = 0.00;
+            //sel la checkbox è chekkata
+            $('.ChkSelezionaPlanning').children('input:checked').each(function () {
+                var app = ValoreSuperficieCoinvolta_Impianto($(this));
+                SupTot += parseFloat(app);
+            });
+            InserisciSupTrattata(SupTot);
+        }
+
+        //Aggiornamento della superficie Coinvolta
+        function RicalcolaSuperficieCoinvolta() {
+            var SupTot = 0.00;
+            //sel la checkbox è chekkata
+            $('.ChkSelezionaImpianto').children('input:checked').each(function () {
+                var app = ValoreSuperficieCoinvolta_Impianto($(this));
+                SupTot += parseFloat(app);
+            });
+            InserisciSupTrattata(SupTot);
+        }
+
+        //Ripartizione della superficie trattata
+        function RipartizionaSupTrattata() {
+            var SupSel = SupTotale();
+            var SupTratt = SupTrattata();
+            var prop;
+            prop = SupTratt / SupSel;
+
+            //'  Vanni, 20/09/2016 17:59:29: sugli impianti
+            $('.ChkSelezionaImpianto').children('input:checked').each(function () {
+                var app = ValoreSuperficie_Impianto($(this));
+                var daInserire = roundNumber((app * prop), 4);
+                $(this).parent().parent().parent().find('.Sup_Coinvolta').val(daInserire.toString().replace('.', ','));
+            });
+
+            //'  Vanni, 20/09/2016 17:59:29: sui planning
+            $('.ChkSelezionaPlanning').children('input:checked').each(function () {
+                var app = ValoreSuperficie_Impianto($(this));
+                var daInserire = roundNumber((app * prop), 4);
+                $(this).parent().parent().parent().find('.Sup_Coinvolta').val(daInserire.toString().replace('.', ','));
+            });
+        }
+
+
+        //Aggiornamento della Superficie coinvolta del singolo planning
+        function AggiornaValorePlanning(Oggetto) {
+            if (Oggetto.is(':checked')) {
+                Inserisci_ValoreSuperficieCoinvolta_Impianto(Oggetto, ValoreSuperficie_Impianto(Oggetto));
+                Oggetto.parent().parent().parent().find('.Sup_Coinvolta').removeAttr('disabled');
+            }
+            else {
+                Inserisci_ValoreSuperficieCoinvolta_Impianto(Oggetto, '0.00');
+                Oggetto.parent().parent().parent().find('.Sup_Coinvolta').attr('disabled', 'disabled');
+            }
+        
+        }
+
+        //Aggiornamento della Superficie coinvolta del singolo 
+        function AggiornaValoreImpianto(Oggetto) {
+            if (Oggetto.is(':checked')) {
+                Inserisci_ValoreSuperficieCoinvolta_Impianto(Oggetto, ValoreSuperficie_Impianto(Oggetto));
+                Oggetto.parent().parent().parent().find('.Sup_Coinvolta').removeAttr('disabled');
+            }
+            else {
+                Inserisci_ValoreSuperficieCoinvolta_Impianto(Oggetto, '0.00');
+                Oggetto.parent().parent().parent().find('.Sup_Coinvolta').attr('disabled', 'disabled');
+            }
+        }
+
+
+        //Verifico che la superficie coinvolta non superi la superficie dell'impianto
+        function ControllaMax(Oggetto) {
+            var valoreSup_Imp = roundNumber(Oggetto.parent().parent().find('.Sup_Imp').html().replace(",", "."), 4);
+            var valoreInserito = roundNumber(Oggetto.parent().parent().find('.Sup_Coinvolta').val().replace(",", "."), 4);
+            if (valoreSup_Imp < valoreInserito) {
+                Oggetto.parent().parent().find('.Sup_Coinvolta').val(valoreSup_Imp.toString().replace(".", ","));
+                MessaggioErrore("<%=MsgSupImpiego.Replace("""", "\""") %>");
+            }
+            //          else {
+            //                Oggetto.parent().parent().find('.Sup_Coinvolta').val(valoreInserito.toString().replace(".", ","));
+            //            }
+        }
+
+
+        function AbilitaDisabilita_SupTrattataPlanning() {
+            $('.ChkSelezionaPlanning').children('input').each(function () {
+                if ($(this).is(':checked') == false) {
+                    $(this).parent().parent().parent().find('.Sup_Coinvolta').attr('disabled', 'disabled');
+                }
+            });
+        }
+
+        function AbilitaDisabilita_SupTrattata() {
+            $('.ChkSelezionaImpianto').children('input').each(function () {
+                if ($(this).is(':checked') == false) {
+                    $(this).parent().parent().parent().find('.Sup_Coinvolta').attr('disabled', 'disabled');
+                }
+            });
+        }
+
+
+        function Sup_Coinvolta_Keyup(Oggetto) {
+            ControllaMax(Oggetto);
+            if (objParametriAgenda_TargetOperazione==Enum_TargetOperazione.Reale) {
+                RicalcolaSuperficieCoinvolta();
+            } else {
+                RicalcolaSuperficieCoinvoltaPlanning();
+            }
+            AggiornaDopo_SupTrattata();
+        }
+
+
+        function ChkSelezionaImpianto_Click(Oggetto, tutti) {
+            //controllo che non ho inserito alcuna dose 
+            if ($('.rigaImpianti').length == 0) {
+
+                //controllo che non sia soggetto a disciplinare
+                var ok = ControllaDisciplinare(Oggetto);
+
+                if (ok == true) {
+
+                    AggiornaValoreImpianto(Oggetto);
+                    RicalcolaSuperficieTotale();
+                    RicalcolaSuperficieCoinvolta();
+                    if (tutti == false)
+                    { AggiornaDopo_SupTrattata(); }
+                } else {
+                    $(Oggetto).prop('checked', false);
+                }
+            }
+        }
+
+        function ChkSelezionaPlanning_Click(Oggetto, tutti) {
+
+            console.log("ChkSelezionaPlanning_Click, start");
+
+            //controllo che non ho inserito alcuna dose 
+            if ($('.rigaImpianti').length == 0) {
+
+                //controllo che non sia soggetto a disciplinare
+                var ok = ControllaDisciplinarePlanning(Oggetto);
+
+                if (ok == true) {
+
+                    AggiornaValorePlanning(Oggetto);
+                    RicalcolaSuperficieTotalePlanning();
+                    RicalcolaSuperficieCoinvoltaPlanning();
+                    if (tutti == false)
+                    { AggiornaDopo_SupTrattata(); }
+                } else {
+                    $(Oggetto).prop('checked', false);
+                }
+            }
+            
+            console.log("ChkSelezionaPlanning_Click, end");
+
+
+        }
+
+        function SommaSuperficieTrattata_Keyup() {
+            var valore = parseFloat(SupTotale());
+            var valore2 = parseFloat(SupTrattata());
+            if (valore < valore2) {
+                MessaggioErrore('<%=MsgSupImpiegata.Replace("'", "\'") %>');
+                $('.SommaSuperficieTrattata').val(valore);
+                RipartizionaSupTrattata();
+            } else {
+                RipartizionaSupTrattata();
+            }
+            AggiornaDopo_SupTrattata();
+        }
+
+
+
+
+
+
+        //////////////////////////////////////////////
+        ///////////////BLOCCO SBLOCCO/////////////////
+        //////////////////////////////////////////////
+        function BloccaSbloccaTotale() {
+
+            if ($('.rigaImpianti').length > 0) {
+                $(".rblAcqua_Tot").children('input').attr('disabled', 'disabled');
+                $(".rblAcqua_HA").children('input').attr('disabled', 'disabled');
+
+                $(".ComboDisciplinari").parent().children('input').attr('disabled', 'disabled');
+                $(".ComboDisciplinari").parent().children('button').attr('disabled', 'disabled');
+
+                $(".ComboEpocheFertilizzazione").parent().children('input').attr('disabled', 'disabled');
+                $(".ComboEpocheFertilizzazione").parent().children('button').attr('disabled', 'disabled');
+
+                $("#chkSelezionaTuttiImpianti").attr('disabled', 'disabled');
+
+                $('.ChkSelezionaImpianto').children('input').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+                $(".Sup_Coinvolta").each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $(".SommaSuperficieTrattata").attr('disabled', 'disabled');
+
+                $(".AcquaTot").attr('disabled', 'disabled');
+                $(".AcquaHa").attr('disabled', 'disabled');
+
+                $(".rblAcqua").find('input:radio').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                $(".rblAcqua").find('input:radio').each(function () {
+                    $(this).attr('disabled', 'disabled');
+                });
+
+                //controllo cosa è selezionato
+                if ($(".ComboFiltriAggiuntiviAgenda").parent().children('select').val() == "0") {
+                    $(".ComboFiltriAggiuntiviAgenda").parent().children('input').attr('disabled', 'disabled');
+                    $(".ComboFiltriAggiuntiviAgenda").parent().children('button').attr('disabled', 'disabled');
+                }
+
+                BloccaCombo_Magazzini();
+
+            }
+            else {
+                
+                //solo su reale.
+                if (objParametriAgenda_TargetOperazione==Enum_TargetOperazione.Reale) {
+                    SloccaCombo_Magazzini();
+                }
+
+                $(".ComboDisciplinari").parent().children('input').removeAttr('disabled');
+                $(".ComboDisciplinari").parent().children('button').removeAttr('disabled');
+
+                $(".ComboEpocheFertilizzazione").parent().children('input').removeAttr('disabled');
+                $(".ComboEpocheFertilizzazione").parent().children('button').removeAttr('disabled');
+
+                $(".rblAcqua_Tot").children('input').removeAttr('disabled');
+                $(".rblAcqua_HA").children('input').removeAttr('disabled');
+
+
+                $("#chkSelezionaTuttiImpianti").removeAttr('disabled');
+
+                $('.ChkSelezionaImpianto').children('input').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+                $(".Sup_Coinvolta").each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $(".SommaSuperficieTrattata").removeAttr('disabled');
+
+                $(".AcquaTot").children('input').removeAttr('disabled');
+                $(".AcquaHa").children('input').removeAttr('disabled');
+
+                $(".rblAcqua").find('input:radio').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+                $(".rblAcqua").find('input:radio').each(function () {
+                    $(this).removeAttr('disabled');
+                });
+
+
+                $(".ComboFiltriAggiuntiviAgenda").parent().children('input').removeAttr('disabled');
+                $(".ComboFiltriAggiuntiviAgenda").parent().children('button').removeAttr('disabled');
+
+            }
+        }
+
+        function RiabilitaTutto() {
+
+            $(".ComboDisciplinari").parent().children('input').removeAttr('disabled');
+            $(".ComboDisciplinari").parent().children('button').removeAttr('disabled');
+
+            $('.ChkSelezionaImpianto').children('input').each(function () {
+                $(this).removeAttr('disabled');
+            });
+            $(".Sup_Coinvolta").each(function () {
+                $(this).removeAttr('disabled');
+            });
+
+            $(".SommaSuperficieTrattata").removeAttr('disabled');
+
+            $(".AcquaTot").removeAttr('disabled');
+            $(".AcquaHa").removeAttr('disabled');
+
+
+            $(".rblAcqua").find('input:radio').each(function () {
+                $(this).removeAttr('disabled');
+            });
+
+            $(".rblAcqua").find('input:radio').each(function () {
+                $(this).removeAttr('disabled');
+            });
+
+            $(".rblAcqua_Tot").removeAttr('disabled');
+            $(".rblAcqua_HA").removeAttr('disabled');
+
+            $("#<%=txt_DataOperazione.ClientID %>").removeAttr('disabled');
+            $("#chkSelezionaTuttiImpianti").attr('disabled', 'disabled');
+
+            $("#<%=ImgBtn_Salva.ClientID %>").click();
+        }
+
+        function FiltraMaterialiMagazzinoAvanzati() {
+            $("#<%=BTN_FiltraMaterialiAvanzati.ClientID %>").click();
+
+        }
+
+        function AggiornaAcqua() {
+            var acq = $("#<%=QtaAcqua.ClientID %>").val();
+            if (acq != "" && Number(acq) != 0 && Number($(".AcquaHa").val()) == 0) {
+                //controllo se non ho già inserito la quantità di acqua
+                $(".AcquaHa").val(acq);
+                $(".rblAcqua_HA").children('input').prop('checked', true);
+                $(".rblAcqua_Tot").children('input').prop('checked', false);
+                if (acq > 0) {
+                    $(".lbl_acqua_provenienza").html("<%=msgdataraturaUgelli.Replace("""", "\""") %>");
+                }
+            }
+        }
+
+        //DOCUMENT READY
+        $(document).ready(function () {
+            AggiornaAcqua();
+
+            // $('select').multipleSelect();
+
+        }); 
+          
+
+    </script>
+    <style type="text/css">
+        .descrizione
+        {
+            width: 75px;
+        }
+        #dialogCostiAccessoriAvanzati input.ui-autocomplete-input
+        {
+            width: 170px;
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="ContentOperazioniHeader" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentAgendaContenuti" runat="server">
+    <asp:HiddenField ID="hf_esistonoCostiCollegatiCDG" runat="server" />
+    <asp:HiddenField ID="QtaAcqua" runat="server" />
+    <asp:UpdatePanel ID="UpdatePanelBottoneAggiorna" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:HiddenField ID="fooName_PostedBack" runat="server" />
+            <asp:Button OnClick="Wrap_Client_PostedBack" CssClass="hideBtn" ID="btnDummyPostback"
+                runat="server" meta:resourcekey="btnDummyPostbackResource1" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <div class="cento boxColore">
+        <table width="100%">
+            <tr>
+                <td style="width: 700px;">
+                    <div style="min-width: 700px; width: 100%; float: left">
+                        <!-- Riga 1 -->
+                        <div class="box50" style="width: 250px">
+                            <asp:UpdatePanel ID="UpdatePanelData" runat="server" UpdateMode="Conditional">
+                                <ContentTemplate>
+                                    <div class="descrizione" style="width: 80px">
+                                        <asp:Label ID="lblData1" runat="server" meta:resourcekey="lblData1Resource1">Data</asp:Label></div>
+                                    <div class="valoriinput" style="width: 76px">
+                                        <asp:TextBox ID="txt_DataOperazione" runat="server" CssClass="txtUI datepicker change_per_load"
+                                            meta:resourcekey="txt_DataOperazioneResource1"></asp:TextBox>
+                                        <asp:Button ID="BTN_ChangeData" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ChangeDataResource1" />
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div style="min-width: 350px">
+                            <asp:UpdatePanel ID="UpdatePanelToolBar1" runat="server">
+                                <ContentTemplate>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <asp:UpdatePanel ID="UpdatePanelToolBar" runat="server">
+                                <ContentTemplate>
+                                    <asp:Panel ID="Box_Salva" runat="server" Style="width: 165px; padding-right: 0px;
+                                        float: left" meta:resourcekey="Box_SalvaResource1">
+                                        <img src="../AB_Immagini/icone32/dischetto.ico" alt="Salva" onclick="RiabilitaTutto();"
+                                            style="cursor: pointer; float: left;" class="btn_per_load" />
+                                        <asp:ImageButton ID="ImgBtn_Salva" runat="server" ImageUrl="../AB_Immagini/icone32/dischetto.ico"
+                                            Style="width: 32px; display: none; float: left;" meta:resourcekey="ImgBtn_SalvaResource1" />
+                                        <asp:RadioButtonList ID="RBL_Salva" runat="server" Style="float: left;" Font-Size="10px"
+                                            CellPadding="0" CellSpacing="0" meta:resourcekey="RBL_SalvaResource1">
+                                            <asp:ListItem Selected="True" Text="Salva ed Esci" Value="0" meta:resourcekey="ListItemResource1"></asp:ListItem>
+                                            <asp:ListItem Text="Salva e Nuovo" Value="1" meta:resourcekey="ListItemResource2"></asp:ListItem>
+                                            <asp:ListItem Text="Salva e Duplica" Value="2" meta:resourcekey="ListItemResource3"></asp:ListItem>
+                                        </asp:RadioButtonList>
+                                    </asp:Panel>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left;">
+                                        <asp:ImageButton ID="ImgBtn_Carico" runat="server" ImageUrl="../AB_Immagini/icone32/magazzinocarico.ico"
+                                            Style="width: 32px" Visible="False" meta:resourcekey="ImgBtn_CaricoResource1" />
+                                    </div>
+                                    <div id="DivAccessoriAvanzati" style="width: 38px; padding-right: 0px; float: left;"
+                                        runat="server">
+                                        <img src="../AB_Immagini/icone32/costiaccessori.ico" id="btn_costi_accessori_avanzati"
+                                            alt="Premere il pulsante per visualizzare i costi accessori" style="width: 32px;" />
+                                    </div>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <asp:ImageButton ID="ImgBtn_CheckDPI" runat="server" ImageUrl="../AB_Immagini/icone32/certificatoSI.ico"
+                                            ToolTip="Premere il pulsante per verificare la conformità al Disciplinare" Style="width: 32px"
+                                            Visible="False" meta:resourcekey="ImgBtn_CheckDPIResource1" />
+                                    </div>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <asp:ImageButton ID="ImgBtn_DoseConsigliata" runat="server" ImageUrl="../AB_Immagini/icone32/registro.ico"
+                                            ToolTip="Premere il pulsante per verificare la dose consigliata da Disciplinare"
+                                            Style="width: 32px" Visible="False" meta:resourcekey="ImgBtn_DoseConsigliataResource1" />
+                                    </div>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <asp:ImageButton ID="ImgBtn_Disciplinare" runat="server" ImageUrl="../AB_Immagini/icone32/disciplinari.ico"
+                                            ToolTip="Premere il pulsante per visualizzare il Disciplinare" Style="width: 32px"
+                                            Visible="False" meta:resourcekey="ImgBtn_DisciplinareResource1" />
+                                    </div>
+                                    <script type="text/javascript">
+
+                                        $(document).ready(function () {
+                                            // messaggi errore
+                                            $('#dialogRicette').dialog({
+                                                autoOpen: false,
+                                                modal: true,
+                                                width: 900,
+                                                buttons: [{
+                                                    id: "btn_carica_dialog",
+                                                    text: "<%=msgTestoImpiantiRicetta.Replace("""", "\""") %>",
+                                                    click: function () {
+                                                        $('#<%=Btn_Inserisci_Impianti_Ricetta.ClientID %>').click();
+                                                    }
+                                                }, {
+                                                    id: "btn_carica_costi_dialog",
+                                                    text: "<%=msgCostiAccessoriRicetta.Replace("""", "\""") %>",
+                                                    click: function () {
+                                                        $('#<%=Btn_Inserisci_Costi_Ricetta.ClientID %>').click();
+                                                    }
+                                                }, {
+                                                    id: "btn_conferma_dialog",
+                                                    text: "<%=msgCaricaRicetta.Replace("""", "\""")  %>",
+                                                    //                                                    display: "none",
+                                                    click: function () {
+                                                        $('#<%=Btn_Conferma_Ricetta.ClientID %>').click();
+                                                    }
+                                                }, {
+                                                    id: "btn_annulla_dialog",
+                                                    text: "<%=msgAnnulla.Replace("""", "\""") %>",
+                                                    click: function () {
+                                                        $(this).dialog("close");
+                                                        return false;
+                                                    }
+                                                }
+                                                       ]
+                                            });
+
+                                        });
+       
+                                    </script>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <img src="../AB_Immagini/icone32/Doc4.ico" alt="Premere il pulsante per creare l'operazione a partire da una Ricetta"
+                                            style="cursor: pointer; width: 32px" id="apri_pannello_ricette" />
+                                    </div>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <asp:ImageButton ID="ImgBtn_DDT" runat="server" ImageUrl="../AB_Immagini/icone32/Clip32.ico"
+                                            ToolTip="Premere il pulsante per allegare un DDT all'operazione" Style="width: 32px"
+                                            Visible="False" meta:resourcekey="ImgBtn_DDTResource1" />
+                                    </div>
+                                    <div class="" style="width: 38px; padding-right: 0px; float: left">
+                                        <asp:ImageButton ID="ImgBtn_DDT_Cancella" runat="server" ImageUrl="../AB_Immagini/icone32/Clip32_Elimina.ico"
+                                            ToolTip="Premere il pulsante per eliminare i DDT allegati all'operazione" Style="width: 32px"
+                                            Visible="False" meta:resourcekey="ImgBtn_DDT_CancellaResource1" />
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <!-- Riga 2 -->
+                        <div class="box50" style="min-width: 350px">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblCentroAziendale" runat="server" meta:resourcekey="lblCentroAziendaleResource1">Centro Aziendale</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelCentroAziendale" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelCentroAziendale" runat="server"
+                                            AssociatedUpdatePanelID="UpdatePanelCentroAziendale" DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <cc1:ComboCentroAziendale ID="ComboCentroAziendale" runat="server" meta:resourcekey="ComboCentroAziendaleResource1" />
+                                        <asp:Button ID="BTN_ComboCentroAziendale" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ComboCentroAziendaleResource1" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ChangeData" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="box50" style="min-width: 350px" runat="server" id="PannelloOperazioni">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblOperazione" runat="server" meta:resourcekey="lblOperazioneResource1">Operazione</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelOperazione" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelOperazione" runat="server" AssociatedUpdatePanelID="UpdatePanelOperazione"
+                                            DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <cc1:ComboOperazioni ID="ComboOperazione" runat="server" meta:resourcekey="ComboOperazioneResource1"
+                                            Tipo_GruppoOperazioni="'C'" />
+                                        <asp:Button ID="BTN_ComboOperazione" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ComboOperazioneResource1" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <!-- Riga 3 -->
+                        <div class="box50" style="min-width: 350px" runat="server" id="Div_Specie">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblSpecie" runat="server" meta:resourcekey="lblSpecieResource1">Specie</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelSpecie" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelSpecie" runat="server" AssociatedUpdatePanelID="UpdatePanelSpecie"
+                                            DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <%--                                        <cc1:ComboSpecie ID="ComboSpecie" runat="server" 
+                                            Carica_Tutte_Specie_Esistenti="False" ConsideraTerrenoNudo="False" Data="" 
+                                            FiltroAggiuntivo="" meta:resourcekey="ComboSpecieResource1" 
+                                            PrimaRiga_Flag="False" Sa_Cod="0" Usa_Filtro_Utente="False" 
+                                            Veg_Cod_ModificaLettura="0" />--%>
+                                        <cc1:ComboSpecie ID="ComboSpecie" runat="server" meta:resourcekey="ComboSpecieResource1" />
+                                        <asp:Button ID="BTN_ComboSpecie" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ComboSpecieResource1" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ChangeData" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboCentroAziendale" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboCampo" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="box50" style="min-width: 350px" runat="server" id="ProvenienzaRisorse">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblProvenienzaRisorse" runat="server" meta:resourcekey="lblProvenienzaRisorseResource1">Provenienza Risorse</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelMagazzino" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelMagazzino" runat="server" AssociatedUpdatePanelID="UpdatePanelMagazzino"
+                                            DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <cc1:ComboMagazzini ID="ComboMagazzini" runat="server" Fabbricato_Cod="0" Flag_CodCentroFabbricato="True"
+                                            Flag_GestioneMagazziniImpresaPadre="False" meta:resourcekey="ComboMagazziniResource1"
+                                            Sa_Cod="0" TipoMagazzino="20" />
+                                        <asp:Button ID="BTN_Magazzini" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_MagazziniResource1" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="AggiornaCostiAccessoriAvanzati" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="SalvaCostiAccessoriAvanzati" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="SalvaCostiAvanzatiDefault" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="dgrScaricoAvanzati" EventName="RowCommand" />
+                                        <asp:AsyncPostBackTrigger ControlID="GridViewCostiAccessoriVisibili" EventName="RowCommand" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="clear">
+                        </div>
+                        <asp:ContentPlaceHolder ID="ContentPlacexTRATTAMENTI" runat="server">
+                        </asp:ContentPlaceHolder>
+                        <div class="clear">
+                        </div>
+                        <!-- Riga 4 -->
+                        <div id="DivCampo" runat="server" class="box50" style="min-width: 350px">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblCampo" runat="server" meta:resourcekey="lblCampoResource1">Campo</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelCampo" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelCampo" runat="server" AssociatedUpdatePanelID="UpdatePanelCampo"
+                                            DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <cc1:ComboCampoMulti ID="ComboCampo" runat="server" />
+                                        <asp:Button ID="BTN_ComboCampo" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ComboCampoResource1" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ChangeData" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboCentroAziendale" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div id="DivVarieta" runat="server" class="box50" style="min-width: 350px">
+                            <div class="descrizione" style="width: 80px">
+                                <asp:Label ID="lblVarieta" runat="server" meta:resourcekey="lblVarietaResource1">Varieta</asp:Label>
+                            </div>
+                            <div class="valoriinput">
+                                <asp:UpdatePanel ID="UpdatePanelVarieta" runat="server" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:UpdateProgress ID="UpdateProgressUpdatePanelVarieta" runat="server" AssociatedUpdatePanelID="UpdatePanelVarieta"
+                                            DisplayAfter="50">
+                                            <ProgressTemplate>
+                                                <div class="LoadPanel">
+                                                    <div class="loading-indicator-bars">
+                                                    </div>
+                                                </div>
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                        <cc1:ComboVarietaMulti ID="ComboVarieta" runat="server" meta:resourcekey="ComboVarietaResource1" />
+                                        <%--                                        <cc1:ComboVarieta ID="ComboVarieta" runat="server" meta:resourcekey="ComboVarietaResource1" />
+                                        --%>
+                                        <asp:Button ID="BTN_ComboVarieta" runat="server" Text="Button" Style="display: none"
+                                            meta:resourcekey="BTN_ComboVarietaResource1" />
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ChangeData" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboCentroAziendale" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboCampo" EventName="Click" />
+                                        <asp:AsyncPostBackTrigger ControlID="BTN_ComboSpecie" EventName="Click" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <asp:Panel ID="NoteGiustPanel" runat="server" meta:resourcekey="NoteGiustPanelResource1">
+                        <!-- Note -->
+                        <script type="text/javascript">
+                            $(function () {
+                                $("#tabs").tabs();
+                            });
+                        </script>
+                        <div style="min-width: 215px; float: left; width: 100%; height:100%" id="tabs">
+                            <ul>
+                                <li id="tabGiust" ><a href="#tabs-2">
+                                    <asp:Label ID="lblGiustificazioni" runat="server" meta:resourcekey="lblGiustificazioniResource1">Giustificazioni</asp:Label></a></li>
+                                <li id="tabNote" ><a href="#tabs-1">
+                                    <asp:Label ID="lblNote" runat="server" meta:resourcekey="lblNoteResource1">Note</asp:Label></a></li>
+                                <li id="tabMeteo" runat="server"><a href="#<%=tab_meteo.ClientID%>"   >
+                                    <asp:Label ID="LblMeteo" runat="server" >Meteo</asp:Label></a></li>
+                                <li id="tabVentoIntensita" runat="server"><a href="#<%=tab_ventoint.ClientID%>"   >
+                                    <asp:Label ID="Label1" runat="server" >Vento Intensita</asp:Label></a></li>                           
+                                <li id="tabVentoDirezione" runat="server"><a href="#<%=tab_ventodir.ClientID%>"   >
+                                    <asp:Label ID="Label2" runat="server" >Vento Direzione</asp:Label></a></li>    
+                                <li id="tabTemperatura" runat="server"><a href="#<%=tab_temperatura.ClientID%>"   >
+                                    <asp:Label ID="Label3" runat="server" >Temperatura</asp:Label></a></li>
+                                <li id="tabOrario" runat="server"><a href="#<%=tab_orario.ClientID%>"   >
+                                    <asp:Label ID="Label4" runat="server" >Orario</asp:Label></a></li>                           
+                                <li id="tabMotivazioni" runat="server"><a href="#<%=tab_motivazioni.ClientID%>"   >
+                                    <asp:Label ID="Label5" runat="server" >Motivazione</asp:Label></a></li>    
+                            </ul>
+                            <div id="tabs-2" style="height: 76px; display: block; overflow: auto"  >
+                                                            <div>
+                                    <asp:UpdatePanel ID="update_consigli" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_Consigli" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%" meta:resourcekey="CBL_ConsigliResource1">
+                                            </asp:CheckBoxList>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                            <div id="tabs-1"  style="height: 76px; display: block; overflow: auto" >
+                                <div>
+                                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" >
+                                        <ContentTemplate>
+                                    <asp:TextBox ID="Txt_Note" runat="server" TextMode="MultiLine" CssClass="txtUI" Width="100%"
+                                        Height="100%" meta:resourcekey="Txt_NoteResource1"></asp:TextBox>
+                                                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                            <div id="tab_meteo"  runat="server" style="height: 76px; display: block; overflow: auto">
+                                                            <div>
+                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                        <ContentTemplate>
+                                                     <asp:CheckBoxList ID="CBL_Meteo" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                            <div id="tab_ventoint"  runat="server" style="height: 76px; display: block; overflow: auto" >
+                                                            <div>
+                                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_VentoIntensita" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                            <div id="tab_ventodir"   runat="server" style="height: 76px; display: block; overflow: auto" >
+                                                            <div>
+                                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_VentoDirezione" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+                            </div>
+                            <div id="tab_temperatura"   runat="server" style="height: 76px; display: block; overflow: auto">
+                                                              <div>
+                                    <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_Temperatura" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+
+                            </div>
+                            <div id="tab_orario"   runat="server" style="height: 76px; display: block; overflow: auto">
+                                                            <div>
+                                    <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_Orario" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+
+                            </div>
+                            <div id="tab_motivazioni"   runat="server" style="height: 76px; display: block; overflow: auto">
+                                                            <div>
+                                    <asp:UpdatePanel ID="UpdatePanel8" runat="server">
+                                        <ContentTemplate>
+                                            <asp:CheckBoxList ID="CBL_Motivazione" CssClass="txtUI" Height="76px" runat="server"
+                                                Width="100%">
+                                            </asp:CheckBoxList>
+                                                                                    </ContentTemplate>
+                                    </asp:UpdatePanel>
+                                </div>
+
+                            </div>
+                       </div>
+                    </asp:Panel>
+                </td>
+                <td style="width: 5px">
+                </td>
+            </tr>
+        </table>
+        <div class="clear">
+        </div>
+        <!-- Riga 5  Datagrid -->
+        <div class="cento" style="overflow: auto; width: 100%; height: 100%; max-height: 250px;
+            margin-top: 10px;">
+            <asp:UpdatePanel ID="UpdatePanelPlanning" runat="server">
+                <ContentTemplate>
+                    <asp:UpdateProgress ID="UpdateProgressPlanning" runat="server" AssociatedUpdatePanelID="UpdatePanelPlanning"
+                        DisplayAfter="50">
+                        <ProgressTemplate>
+                            <div class="LoadPanel">
+                                <div class="loading-indicator-bars">
+                                </div>
+                            </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                    <asp:Button ID="AggiornaGrigliaplanning" runat="server" Style="display: none;" />
+                    <asp:GridView ID="GridView_Planning" runat="server" AutoGenerateColumns="False" Width="100%"
+                        CellPadding="5" CssClass="ui-widget-content" AllowSorting="True" OnSorting="GridView_Planning_Sorting"
+                        Caption="Selezionare Pianificato: <img src='../AB_Immagini/icone16/plus.png' alt='Aggiungi Colonne' id='btn_Impostazioni_Colonne_Planning' style='margin-left:10px' />"
+                        >
+                         <Columns>
+
+
+                                <asp:TemplateField>
+                                    <HeaderTemplate>
+                                        <input type="checkbox" id="chkSelezionaTuttiPlanning" />
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <asp:CheckBox ID="ChkSelezionaPlanning" runat="server" CssClass="ChkSelezionaPlanning"
+                                             />
+                                    </ItemTemplate>
+                                    <HeaderStyle Width="20px" />
+                                    <ItemStyle Width="20px" />
+                                    <FooterStyle Width="20px" />
+                                    <ControlStyle Width="20px" />
+                                </asp:TemplateField>             
+                                                   
+                                <asp:BoundField DataField="Operazione_Des" HeaderText="Operazione" />
+                                <asp:BoundField DataField="Operazione_Cod" HeaderText="Operazione_Cod">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Piva" HeaderText="Piva">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Sa_Cod" HeaderText="Sa_Cod">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Campo_Cod" HeaderText="Campo_Cod">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Appezza" HeaderText="Appezza">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ID_Reg" HeaderText="ID_Reg">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Progetto_Cod" HeaderText="Progetto_Cod">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Programmazione_Entita_Cod" HeaderText="Programmazione_Entita_Cod">
+                                    <ItemStyle CssClass="displaynone" />
+                                    <HeaderStyle CssClass="displaynone" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Sa_nome" HeaderText="Centro" />
+                                <asp:BoundField DataField="Campo_Des" HeaderText="Campo" />
+                                <asp:BoundField DataField="App_nome" HeaderText="App." />
+                                <asp:BoundField DataField="Sup_App" HeaderText="Sup.[ha]"> <ItemStyle CssClass="Sup_Imp" /></asp:BoundField>
+                                <asp:TemplateField HeaderText="Sup.Trattata [Ha]" meta:resourcekey="TemplateFieldResource2">
+                                    <ItemTemplate>
+                                        <asp:TextBox ID="Txt_Trattata_Planning" runat="server" CssClass="Sup_Coinvolta txtUI" Style="width: 60px"
+                                            Text="0"  />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Macrouso_Des" HeaderText="Macrouso" />
+                                <asp:BoundField DataField="Veg_Des" HeaderText="Specie" />
+                                <asp:BoundField DataField="Cul_Des" HeaderText="Varieta'" />
+                                <asp:BoundField DataField="Veg_Des_Cliente" HeaderText="Specie AGEA" />
+                                <asp:BoundField DataField="Cul_Des_Cliente" HeaderText="Varieta' AGEA" />
+                                <asp:BoundField DataField="Grva_Des" HeaderText="Tipologia" />
+                                <asp:BoundField DataField="Grfi_Des" HeaderText="Finalita'" />
+                                <asp:BoundField DataField="Cop_Des" HeaderText="Copertura" />
+                                <asp:BoundField DataField="Resa" HeaderText="Resa [t/Ha]" />
+                                <asp:BoundField DataField="Num_Piante" HeaderText="Num.Piante" />
+                                <asp:BoundField DataField="Tra_Fila" HeaderText="Tra Fila [m]" />
+                                <asp:BoundField DataField="Su_Fila" HeaderText="Su Fila [m]" />
+                                <asp:BoundField DataField="Progetto_Nome" HeaderText="Lotto" />
+                                <asp:BoundField DataField="DestinazioneUso_Des" HeaderText="Destinazione Uso" />
+                                <asp:BoundField DataField="Validita_Inizio_Impianto" HeaderText="Inizio Impianto" />
+                                <asp:BoundField DataField="Validita_Inizio" HeaderText="Inizio Esercizio" />
+                                <asp:BoundField DataField="Validita_Fine" HeaderText="Fine Esercizio" />
+                                <asp:BoundField DataField="Data_Semina" HeaderText="Data Semina">
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Data_Raccolta" HeaderText="Data Raccolta">
+                                    <ItemStyle HorizontalAlign="Center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="TipoZona" HeaderText="Vulnerabile" />
+                                <asp:BoundField DataField="Catasto" HeaderText="Catasto" HtmlEncode="False" />
+                                <asp:BoundField DataField="Unita_Vitata" HeaderText="Unita Vitata" />
+                                <asp:BoundField DataField="MetodoProduzione_Des" HeaderText="Metodo Produzione" HtmlEncode="False" />
+                            </Columns>
+                        <HeaderStyle CssClass="ui-widget-header" />
+                        <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+            <asp:UpdatePanel ID="UpdatePanelImpianti" runat="server">
+                <ContentTemplate>
+                    <asp:UpdateProgress ID="UpdateProgressUpdatePanelImpianti" runat="server" AssociatedUpdatePanelID="UpdatePanelImpianti"
+                        DisplayAfter="50">
+                        <ProgressTemplate>
+                            <div class="LoadPanel">
+                                <div class="loading-indicator-bars">
+                                </div>
+                            </div>
+                        </ProgressTemplate>
+                    </asp:UpdateProgress>
+                    <asp:Button ID="AggiornaGrigliaImpianti" runat="server" Style="display: none;" meta:resourcekey="AggiornaGrigliaImpiantiResource1" />
+                    <asp:GridView ID="GridView_Impianti" runat="server" AutoGenerateColumns="False" Width="100%"
+                        CellPadding="5" CssClass="ui-widget-content" AllowSorting="True" OnSorting="GridView_Impianti_Sorting"
+                        Caption="Selezionare gli Impianti: <img src='../AB_Immagini/icone16/plus.png' alt='Aggiungi Colonne' id='btn_Impostazioni_Colonne' style='margin-left:10px' />"
+                        meta:resourcekey="GridView_ImpiantiResource1">
+                        <Columns>
+                            <asp:TemplateField meta:resourcekey="TemplateFieldResource1">
+                                <HeaderTemplate>
+                                    <input type="checkbox" id="chkSelezionaTuttiImpianti" />
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:CheckBox ID="ChkSelezionaImpianto" runat="server" CssClass="ChkSelezionaImpianto"
+                                        meta:resourcekey="ChkSelezionaImpiantoResource1" />
+                                </ItemTemplate>
+                                <HeaderStyle Width="20px" />
+                                <ItemStyle Width="20px" />
+                                <FooterStyle Width="20px" />
+                                <ControlStyle Width="20px" />
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Rag_Soc" HeaderText="Ragione Sociale" SortExpression="Rag_Soc"
+                                meta:resourcekey="BoundFieldResource1"></asp:BoundField>
+                            <asp:BoundField DataField="Sa_Nome" HeaderText="Centro Aziendale" SortExpression="Sa_Nome"
+                                meta:resourcekey="BoundFieldResource2"></asp:BoundField>
+                            <asp:BoundField DataField="Campo_Des" HeaderText="Campo" Visible="False" SortExpression="Campo_Des"
+                                meta:resourcekey="BoundFieldResource3"></asp:BoundField>
+                            <asp:BoundField DataField="App_Nome" HeaderText="App." SortExpression="App_Nome"
+                                meta:resourcekey="BoundFieldResource4"></asp:BoundField>
+                            <asp:BoundField DataField="RifNumerico" HeaderText="Rif. Numerico App." SortExpression="RifNumerico">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="CodBioApp" HeaderText="Cod. Biologico App." SortExpression="CodBioApp">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Catasto" HeaderText="Catasto" SortExpression="Catasto"
+                                meta:resourcekey="BoundFieldResource29" HtmlEncode="false"></asp:BoundField>
+                            <asp:BoundField DataField="Codici_Anagrafe_Des" HeaderText="Destinazione d'uso" SortExpression="Codici_Anagrafe_Des"
+                                meta:resourcekey="BoundFieldResource5"></asp:BoundField>
+                            <asp:BoundField DataField="Cul_Des" HeaderText="Varietà" SortExpression="Cul_Des"
+                                meta:resourcekey="BoundFieldResource6"></asp:BoundField>
+                            <asp:BoundField DataField="Sup_Imp" HeaderText="Sup.[Ha]" SortExpression="Sup_Imp"
+                                meta:resourcekey="BoundFieldResource7">
+                                <ItemStyle CssClass="Sup_Imp" />
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Sup.Trattata [Ha]" meta:resourcekey="TemplateFieldResource2">
+                                <ItemTemplate>
+                                    <asp:TextBox ID="Txt_Trattata" runat="server" CssClass="Sup_Coinvolta txtUI" Style="width: 60px"
+                                        Text="0" meta:resourcekey="Txt_TrattataResource1" />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Disciplinare" HeaderText="Disciplinare" SortExpression="Disciplinare"
+                                meta:resourcekey="BoundFieldResource8"></asp:BoundField>
+                            <asp:BoundField DataField="Reg_Des" HeaderText="Regolamento" SortExpression="Reg_Des"
+                                meta:resourcekey="BoundFieldResource9"></asp:BoundField>
+                            <asp:BoundField DataField="Capitolato_Privato_Des" HeaderText="Capitolato" SortExpression="Capitolato_Privato_Des">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Grfi_Des" HeaderText="Finalità" SortExpression="Grfi_Des"
+                                meta:resourcekey="BoundFieldResource10"></asp:BoundField>
+                            <asp:BoundField DataField="Validita_Inizio" HeaderText="Data Inizio Impianto" SortExpression="Validita_Inizio"
+                                meta:resourcekey="BoundFieldResource11"></asp:BoundField>
+                            <asp:BoundField DataField="Data_Semina" HeaderText="Data Semina" SortExpression="Data_Semina"
+                                meta:resourcekey="BoundFieldResource12"></asp:BoundField>
+                            <asp:BoundField DataField="Data_Fioritura" HeaderText="Data Fioritura" SortExpression="Data_Fioritura"
+                                meta:resourcekey="BoundFieldResource13"></asp:BoundField>
+                            <asp:BoundField DataField="Data_Fioritura_Prevista" HeaderText="Data Fioritura Prevista"
+                                SortExpression="Data_Fioritura_Prevista" meta:resourcekey="BoundFieldResource14">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Data_Raccolta_Prevista" HeaderText="Data Raccolta Prevista"
+                                SortExpression="Data_Raccolta_Prevista" meta:resourcekey="BoundFieldResource15">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Progetto" HeaderText="Lotto Impianto" SortExpression="Progetto"
+                                meta:resourcekey="BoundFieldResource16"></asp:BoundField>
+                            <asp:BoundField DataField="Copertura" HeaderText="Copertura" SortExpression="Copertura"
+                                meta:resourcekey="BoundFieldResource17"></asp:BoundField>
+                            <asp:BoundField DataField="Raccolte_Precedenti" HeaderText="Raccolte Precedenti" SortExpression="Raccolte_Precedenti"
+                              HtmlEncode="false"  ></asp:BoundField>
+                                                            <asp:BoundField DataField="Data_Raccolta" HeaderText="Data Raccolta" SortExpression="Data_Raccolta"
+                                meta:resourcekey="BoundFieldResource18"></asp:BoundField>
+                            <asp:BoundField DataField="Data_Semina_Prevista" HeaderText="Data Semina Prevista"
+                                SortExpression="Data_Semina_Prevista" meta:resourcekey="BoundFieldResource19">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="N_Massimo" HeaderText="N Massimo [Kg/Ha]" SortExpression="N_Massimo"
+                                meta:resourcekey="BoundFieldResource25"></asp:BoundField>
+                            <asp:BoundField DataField="P_Massimo" HeaderText="P Massimo [Kg/Ha]" SortExpression="P_Massimo"
+                                meta:resourcekey="BoundFieldResource26"></asp:BoundField>
+                            <asp:BoundField DataField="K_Massimo" HeaderText="K Massimo [Kg/Ha]" SortExpression="K_Massimo"
+                                meta:resourcekey="BoundFieldResource27"></asp:BoundField>
+                            <asp:BoundField DataField="Mg_Massimo" HeaderText="Mg Massimo [Kg/Ha]" SortExpression="Mg_Massimo"
+                                meta:resourcekey="BoundFieldResource28"></asp:BoundField>
+                            <asp:BoundField DataField="SpecieAgea" HeaderText="Specie Agea" SortExpression="SpecieAgea"
+                                meta:resourcekey="BoundFieldResource29"></asp:BoundField>
+                            <asp:BoundField DataField="CultivarAgea" HeaderText="Cultivar Agea" SortExpression="CultivarAgea"
+                                meta:resourcekey="BoundFieldResource30"></asp:BoundField>
+                            <asp:BoundField DataField="Tra_Fila" HeaderText="Tra Fila" SortExpression="Tra_Fila">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Su_Fila" HeaderText="Su Fila" SortExpression="Su_Fila">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="P_Impianto" HeaderText="n Piante/Impianto" SortExpression="P_Impianto">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Foral_Des" HeaderText="Forma Allevamento" SortExpression="Foral_Des">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Port_Des" HeaderText="Portinnesto" SortExpression="Port_Des">
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Finanziamento" HeaderText="Finanziamento">
+                                <HeaderStyle CssClass="displaynone" />
+                                <ItemStyle CssClass="ore displaynone classeDPI" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Regolamento" HeaderText="Regolamento">
+                                <HeaderStyle CssClass="displaynone" />
+                                <ItemStyle CssClass="ore displaynone classeRegolamenti" />
+                            </asp:BoundField>
+                        </Columns>
+                        <HeaderStyle CssClass="ui-widget-header" />
+                        <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                    </asp:GridView>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div style="width: 100%">
+        <asp:ContentPlaceHolder ID="ContentOperazioniContenuti" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <table width="100%" style="margin-top: 5px">
+        <tr>
+            <td>
+                <asp:UpdatePanel ID="UpdatePanelCostiAccessoriVisibili" runat="server">
+                    <ContentTemplate>
+                        <asp:CheckBox ID="CalcolaCosti" Checked="True" CssClass="CostiAperti" runat="server"
+                            Text="Associa automaticamente la superficie ai costi." ToolTip="Associa automaticamente la superficie trattata ai costi accessori nel caso l'unità di misura sia impostata ad ettaro. Quando vengono aperti i costi per la prima volta il check viene automaticamente disabilitato per permettere la modifica dei dati."
+                            meta:resourcekey="CalcolaCostiResource1" />
+                        <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanelCostiAccessoriVisibili"
+                            DisplayAfter="50">
+                            <ProgressTemplate>
+                                <div class="LoadPanel">
+                                    <div class="loading-indicator-bars">
+                                    </div>
+                                </div>
+                            </ProgressTemplate>
+                        </asp:UpdateProgress>
+                        <div id="CostiAccessori">
+                            <asp:GridView ID="GridViewCostiAccessoriVisibili" runat="server" AutoGenerateColumns="False"
+                                Width="100%" CellPadding="5" CssClass="ui-widget-content GridViewCostiAccessoriVisibili"
+                                Caption="Altre Risorse Impiegate:" meta:resourcekey="GridViewCostiAccessoriVisibiliResource1">
+                                <Columns>
+                                    <asp:ButtonField Text="&lt;img src='../AB_Immagini/icone16/gomma16.ico' border='0'&gt;"
+                                        CommandName="EliminaCosto" meta:resourcekey="ButtonFieldResource1" />
+                                    <asp:BoundField DataField="codice" HeaderText="Codice" />
+                                    <asp:BoundField DataField="Centro" HeaderText="Categoria"/>
+                                    <asp:BoundField DataField="Categoria_Des" HeaderText="Tipo Risorsa"/>
+                                    <asp:BoundField DataField="Risorsa_des" HeaderText="Risorsa" meta:resourcekey="BoundFieldResource22" />
+                                    <asp:TemplateField HeaderText="Unit&#224; Misura" meta:resourcekey="TemplateFieldResource3">
+                                        <ItemTemplate>
+                                            <asp:DropDownList ID="Cmb_UdmCosti" runat="server" Enabled="False" CssClass="UdmCosti"
+                                                meta:resourcekey="Cmb_UdmCostiResource1">
+                                            </asp:DropDownList>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Quantit&#224;" meta:resourcekey="TemplateFieldResource4">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="Txt_Qta_Ril" runat="server" CssClass="txtUI QtaCosti" ReadOnly="True"
+                                                meta:resourcekey="Txt_Qta_RilResource1"></asp:TextBox>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Costo_Unitario" HeaderText="Costo Unitario [euro]" meta:resourcekey="BoundFieldResource23">
+                                        <ItemStyle CssClass="CostoUnitario" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Costo" HeaderText="Costo [euro]" meta:resourcekey="BoundFieldResource24">
+                                        <ItemStyle CssClass="Costo" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="ore" HeaderText="ore">
+                                        <HeaderStyle CssClass="displaynone" />
+                                        <ItemStyle CssClass="ore displaynone" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="minuti" HeaderText="minuti">
+                                        <HeaderStyle CssClass="displaynone" />
+                                        <ItemStyle CssClass="minuti displaynone" />
+                                    </asp:BoundField>
+                                </Columns>
+                                <HeaderStyle CssClass="ui-widget-header" />
+                                <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                            </asp:GridView>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <%--                        <asp:AsyncPostBackTrigger ControlID="AggiornaCostiAccessori" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="SalvaCostiAccessori" EventName="Click" />--%>
+                        <asp:AsyncPostBackTrigger ControlID="AggiornaCostiAccessoriAvanzati" EventName="Click" />
+                        <asp:AsyncPostBackTrigger ControlID="SalvaCostiAccessoriAvanzati" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript">
+
+        function SalvaAccessoriAvanzatiDefault() {
+            $("#<%=SalvaCostiAvanzatiDefault.ClientID %>").click(); //effettua il post back per eliminazione dei dati
+            $('#dialogCostiAccessoriAvanzati').dialog("close");
+        };
+
+        function SalvaAccessoriAvanzati() {
+            $("#<%=SalvaCostiAccessoriAvanzati.ClientID %>").click(); //effettua il post back per eliminazione dei dati
+            $('#dialogCostiAccessoriAvanzati').dialog("close");
+        };
+
+        $(document).ready(function () {
+
+            // messaggi errore
+            $('#dialogCostiAccessoriAvanzati').dialog({
+                autoOpen: false,
+                modal: true,
+                width: "95%",
+                buttons: {
+                    "Aggiungi e Salva Profilo": function () {
+                        $(this).dialog("close");
+                        SalvaAccessoriAvanzatiDefault();
+                        //
+
+                    },
+
+                    "Aggiungi": function () {
+                        $(this).dialog("close");
+                        SalvaAccessoriAvanzati();
+
+
+                    },
+                    "Annulla": function () {
+                        $(this).dialog("close");
+                        $("#<%=AnnullaCostiAccessoriAvanzati.ClientID %>").click();
+                        return false;
+                    }
+                }
+            });
+
+        });
+
+       
+    </script>
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:Button ID="AggiornaCostiAccessoriAvanzati" runat="server" Style="display: none;"
+                meta:resourcekey="AggiornaCostiAccessoriResource1" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <!--- Bottoni Salvattaggio e Annulla -->
+    <asp:Button ID="SalvaCostiAccessoriAvanzati" runat="server" Style="display: none;"
+        meta:resourcekey="SalvaCostiAccessoriResource1" />
+    <asp:Button ID="AnnullaCostiAccessoriAvanzati" runat="server" Style="display: none;"
+        meta:resourcekey="AnnullaCostiAccessoriResource1" />
+    <asp:Button ID="SalvaCostiAvanzatiDefault" runat="server" Style="display: none;"
+        meta:resourcekey="SalvaCostiAccessoriResource1" />
+    <!--Dialog per l'eliminazione -->
+    <div id="dialogCostiAccessoriAvanzati" title="<%=divCostiAccessori.Replace("""", "\""") %>">
+        <asp:UpdatePanel ID="UpdateCostiAccessoriAvanzati" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <!--------------------- DIALOG --->
+                <div id="dialog" style="overflow: hidden">
+                    <div id="xiframe" style="height: 100%">
+                    </div>
+                </div>
+                <asp:Button ID="BottoneNascostoContatti" runat="server" Text="BottoneNascostoContatti"
+                    Style="display: none" />
+                <asp:UpdateProgress ID="UpdateProgress3" runat="server" DisplayAfter="50" AssociatedUpdatePanelID="UpdateCostiAccessoriAvanzati">
+                    <ProgressTemplate>
+                        <div class="LoadPanel">
+                            <div class="loading-indicator-bars">
+                            </div>
+                        </div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <table class='centerTab' id="tabellaCostiAccessoriAvanzati" runat="server" visible="False">
+                    <tr runat="server">
+                        <td runat="server" style="width:350px;">
+                            <table>
+                                <tr style="max-height: 200px; overflow: auto; width: 190px">
+                                    <td colspan="2">
+                                        <asp:GridView ID="dgrCentriCostoAvanzati" runat="server" AutoGenerateColumns="False"
+                                            Width="285px" CellPadding="5" CssClass="ui-widget-content">
+                                            <Columns>
+                                                <asp:ButtonField DataTextField="Fabbricato_Des" HeaderText="CATEGORIE" CommandName="Select"
+                                                    meta:resourcekey="btnFldFabbricato_DesResource1" />
+                                                <asp:ButtonField Text="&lt;img src='../AB_Immagini/icone16/Nuovo16.ico' border='0'&gt;"
+                                                    CommandName="NuovoElemento" Visible="true" />
+                                            </Columns>
+                                            <HeaderStyle CssClass="ui-widget-header" />
+                                            <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                                        </asp:GridView>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="ui-widget-content" cellspacing="0" cellpadding="5" rules="all" border="1" style="width:285px; border-collapse:collapse; margin-bottom:10px;">
+                                            <tbody>
+                                                <tr class="ui-widget-header">
+                                                    <th>Magazzini</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <asp:DropDownList ID="CmbCentriDiCostoAvanzati" runat="server" CssClass="txtUI" AutoPostBack="true" Width="235px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Testo di Ricerca:<span>
+                                        <asp:TextBox ID="Txt_FiltroMaterialiAvanzati" runat="server" CssClass="txtUI"></asp:TextBox>
+                                        <img src="../AB_Immagini/icone32/lente.ico" onclick="FiltraMaterialiMagazzinoAvanzati();"
+                                            style="cursor: pointer;" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:Label ID="Lbl_RisFiltroAvanzati" runat="server"></asp:Label></div>
+                                        <asp:Button ID="BTN_FiltraMaterialiAvanzati" runat="server" Text="Filtro" Style="display: none" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td id="Td1" runat="server" valign="top">
+                            <div style="max-height: 200px; overflow: auto; width: 685px">
+                                <asp:GridView ID="dgrMaterialiAvanzati" runat="server" AutoGenerateColumns="False"
+                                    Width="665px" CellPadding="5" CssClass="ui-widget-content">
+                                    <Columns>
+                                        <asp:ButtonField Text="&lt;img src='../AB_Immagini/icone16/FrecciaRossa_S.ico' border='0'&gt;"
+                                            CommandName="AggiungiCosto" />
+                                        <asp:BoundField DataField="Col_0" HeaderText="Categoria Prodotto" meta:resourcekey="dgrMaterialiCategoriaProdottoResource1">
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_1" HeaderText="Prodotto" meta:resourcekey="dgrMaterialiProdottoResource1">
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_12" HeaderText="Lotto" />
+                                        <asp:BoundField DataField="Col_2" HeaderText="Giacenza" meta:resourcekey="dgrMaterialiGiacenzaResource1">
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_3" HeaderText="Codice_Materiale" meta:resourcekey="dgrMaterialiCodiceMaterialeResource1">
+                                            <ItemStyle CssClass="displaynone" />
+                                            <HeaderStyle CssClass="displaynone" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_5" HeaderText="Udm_Cod">
+                                            <ItemStyle CssClass="displaynone" />
+                                            <HeaderStyle CssClass="displaynone" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_6" HeaderText="Elem_Cod">
+                                            <ItemStyle CssClass="displaynone" />
+                                            <HeaderStyle CssClass="displaynone" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_7" HeaderText="Ditta_Cod">
+                                            <ItemStyle CssClass="displaynone" />
+                                            <HeaderStyle CssClass="displaynone" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_8" HeaderText="Mat_Cod">
+                                            <ItemStyle CssClass="displaynone" />
+                                            <HeaderStyle CssClass="displaynone" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="Col_9" HeaderText="Costo Unitario [euro]" meta:resourcekey="dgrMaterialiCostoUnitarioResource1">
+                                        </asp:BoundField>
+                                    </Columns>
+                                    <HeaderStyle CssClass="ui-widget-header" />
+                                    <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                                </asp:GridView>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="Tr1" runat="server">
+                        <td id="Td2" colspan="2" runat="server">
+                            <asp:GridView ID="dgrScaricoAvanzati" runat="server" AutoGenerateColumns="False"
+                                Width="100%" CellPadding="5" CssClass="ui-widget-content">
+                                <Columns>
+                                    <asp:ButtonField Text="&lt;img src='../AB_Immagini/icone16/gomma16.ico' border='0'&gt;"
+                                        CommandName="EliminaCosto" />
+                                    <asp:BoundField DataField="codice" HeaderText="Codice" />
+                                    <asp:BoundField DataField="Centro" HeaderText="Categoria"/>
+                                    <asp:BoundField DataField="Categoria_Des" HeaderText="Tipo Risorsa"/>
+                                    <asp:BoundField DataField="Risorsa_des" HeaderText="Risorsa" meta:resourcekey="dgrScaricoRisorsaResource1" />
+                                    <asp:TemplateField HeaderText="Qualifica">
+                                        <ItemTemplate>
+                                            <div style="width: 215px;">
+                                                <asp:DropDownList ID="Cmb_Qualifica" runat="server" CssClass="txtUI" AutoPostBack="true">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Attività">
+                                        <ItemTemplate>
+                                            <div style="width: 215px;">
+                                                <asp:DropDownList ID="Cmb_Attivita" runat="server" CssClass="txtUI" AutoPostBack="false">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Tariffa">
+                                        <ItemTemplate>
+                                            <div style="width: 215px;">
+                                                <asp:DropDownList ID="Cmb_Tariffa" runat="server" CssClass="txtUI" AutoPostBack="true">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Turno">
+                                        <ItemTemplate>
+                                            <div style="width: 215px;">
+                                                <asp:DropDownList ID="Cmb_Turni" runat="server" CssClass="txtUI" AutoPostBack="true">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Unit&#224; Misura" meta:resourcekey="dgrScaricoUnitaMisuraResource1">
+                                        <ItemTemplate>
+                                            <asp:DropDownList ID="Cmb_UdmCosti" runat="server">
+                                            </asp:DropDownList>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField HeaderText="Quantità">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="Txt_Qta_Ril" runat="server" CssClass="txtUI" Width="100px">
+                                            </asp:TextBox>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="Costo_Unitario" HeaderText="Costo Unitario [euro]" meta:resourcekey="dgrScaricoCostoUnitarioResource1" />
+                                    <asp:BoundField DataField="Costo" HeaderText="Costo [euro]" meta:resourcekey="dgrScaricoCostoResource1" />
+                                </Columns>
+                                <HeaderStyle CssClass="ui-widget-header" />
+                                <PagerStyle CssClass="ui-widget-header" HorizontalAlign="Center" />
+                            </asp:GridView>
+                            <asp:Button ID="BTN_ComboAttivita" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="BTN_ComboTurni" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="BTN_ComboQualifica" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="BTN_ComboTariffa" runat="server" Text="Button" Style="display: none" />
+                            <asp:Button ID="BTN_CmbCentriDiCostoAvanzati" runat="server" Text="Button" Style="display: none" />
+                            <asp:HiddenField id="ComboAttivita_IndiceRigaCambiato" runat="server" />
+                        </td>
+                    </tr>
+                </table>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="AggiornaCostiAccessoriAvanzati" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="SalvaCostiAccessoriAvanzati" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="AnnullaCostiAccessoriAvanzati" EventName="Click" />
+                <asp:AsyncPostBackTrigger ControlID="SalvaCostiAvanzatiDefault" EventName="Click" />
+                <%--<asp:AsyncPostBackTrigger ControlID="BottoneNascostoContatti" EventName="Click" />--%>
+            </Triggers>
+        </asp:UpdatePanel>
+    </div>
+    <!------------------------------------------------------------->
+    <!------------------------------------------------------------->
+    <!---   Opzioni Colonne -->
+    <script type="text/javascript">
+        function SalvaImpostazioniColonne() {
+            $('#<%=SalvaImpostazioniColonne.ClientID %>').click();
+            //$('#dialogImpostazioniColonne').dialog('close');
+        };
+
+        
+       
+    </script>
+    <asp:UpdatePanel ID="UpdatePanelImpostazioniColonne" runat="server" UpdateMode="Conditional">
+        <ContentTemplate>
+            <asp:Button ID="AggiornaImpostazioniColonne" runat="server" Style="display: none;"
+                meta:resourcekey="AggiornaImpostazioniColonneResource1" />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <!--Dialog per l'eliminazione -->
+    <div id="dialogImpostazioniColonne" title="Visualizzazione colonne">
+        <asp:UpdatePanel ID="UpdatePanelVisualizzazioneColonne" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                <asp:UpdateProgress ID="UpdateProgressVisualizzazioneColonne" runat="server" DisplayAfter="50"
+                    AssociatedUpdatePanelID="UpdatePanelVisualizzazioneColonne">
+                    <ProgressTemplate>
+                        <div class="LoadPanel">
+                            <div class="loading-indicator-bars">
+                            </div>
+                        </div>
+                    </ProgressTemplate>
+                </asp:UpdateProgress>
+                <div>
+                    <!--- Bottoni Salvattaggio e Annulla -->
+                    <asp:Button ID="SalvaImpostazioniColonne" runat="server" Style="display: none;" meta:resourcekey="SalvaImpostazioniColonneResource1" />
+                    <asp:CheckBoxList ID="ListaColonneVisibili" runat="server" meta:resourcekey="ListaColonneVisibiliResource1">
+                    </asp:CheckBoxList>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="SalvaImpostazioniColonne" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
+    </div>
+    <!--Dialog per la ricetta -->
+    <div id="dialogRicette" title="Elenco delle Ricette attive">
+        <asp:UpdatePanel ID="UpdatePanelRicette" runat="server">
+            <ContentTemplate>
+                <div>
+                    <!--- Bottoni Salvattaggio e Annulla -->
+                    <asp:Button ID="Btn_Inserisci_Impianti_Ricetta" runat="server" Style="display: none;"
+                        CssClass="btn_per_load" meta:resourcekey="Btn_Inserisci_Impianti_RicettaResource1" />
+                    <asp:Button ID="Btn_Inserisci_Costi_Ricetta" runat="server" Style="display: none;"
+                        CssClass="btn_per_load" meta:resourcekey="Btn_Inserisci_Costi_RicettaResource1" />
+                    <asp:Button ID="Btn_Conferma_Ricetta" runat="server" Style="display: none;" CssClass="btn_per_load"
+                        meta:resourcekey="Btn_Conferma_RicettaResource1" />
+                    <asp:Label ID="lbl_Ricette" runat="server" meta:resourcekey="lbl_RicetteResource1"></asp:Label>
+                    <asp:RadioButtonList ID="rbl_RicetteAttive" runat="server" meta:resourcekey="rbl_RicetteAttiveResource1">
+                    </asp:RadioButtonList>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </div>
+    <asp:UpdatePanel ID="UpdatePanelPerScript" runat="server">
+        <ContentTemplate>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+</asp:Content>

@@ -1,0 +1,41 @@
+<div *ngIf="!(!edit && (thumbnailGrande == null || immagineGrande.immagine == '') && (thumbnail == null || immaginePiccola.immagine == ''))">
+    <div class="header-content">
+        <h5>{{ 'Immagine' | transloco }}</h5>
+    </div>
+    <div class="row">
+        <ng-container>
+                <div class="col-4" *ngIf="!(!edit && thumbnailGrande == null)">
+                    <div class="row">
+                        <span class="input-group-addon alert-info" *ngIf="(thumbnailGrande != null && immagineGrande.immagine != '') || edit">{{'macchina.ImmagineGrande' | transloco }}</span>
+                    </div>
+                    <div class="row">
+                        <img alt="" [src]="thumbnailGrande" class="img-thumbnail rounded mx-auto d-block" *ngIf="thumbnailGrande != null && immagineGrande.immagine != ''">
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <kendo-upload (success)="impostaImmagine(true, $event)" [restrictions]="allowedExtensions" [saveUrl]="saveLarge" [removeUrl]="removeLarge" id="imgSelezionataGrande" *ngIf="edit"></kendo-upload>
+                        </div>
+                        <div class="col-2">
+                            <button kendoButton id="deleteGrande" themeColor="error" size="large" fillMode="solid" icon="delete" (click)="cancellaImmagine(true)" *ngIf="thumbnailGrande != null && immagineGrande.immagine != '' && edit"></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="!(!edit && thumbnail == null)">
+                    <div class="row">
+                        <span class="input-group-addon alert-info" *ngIf="(thumbnail != null && immaginePiccola.immagine != '') || edit">{{'macchina.ImmaginePiccola' | transloco }}</span>
+                    </div>
+                    <div class="row">
+                        <img alt="" [src]="thumbnail" class="img-thumbnail rounded mx-auto d-block" *ngIf="thumbnail != null && immaginePiccola.immagine != ''">
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <kendo-upload (success)="impostaImmagine(false, $event)" [restrictions]="allowedExtensions" [saveUrl]="saveSmall" [removeUrl]="removeSmall" id="imgSelezionataPiccola" *ngIf="edit">Immagine piccola</kendo-upload>
+                        </div>
+                        <div class="col-2">
+                            <button kendoButton id="deletePiccola" themeColor="error" size="large" fillMode="solid" icon="delete"  (click)="cancellaImmagine(false)" *ngIf="thumbnail != null && immaginePiccola.immagine != '' && edit"></button>
+                        </div>
+                    </div>
+                </div>
+        </ng-container>
+    </div>
+</div>

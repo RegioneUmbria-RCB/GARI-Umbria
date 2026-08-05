@@ -1,0 +1,19 @@
+<form [formGroup]="formGroup">
+  <div class="bool-container" *ngIf="useCheckbox; else switch" #checkContainer>
+    <gias-checkbox-template
+      [giasFormControlName]="controlName"
+      [value]="defaultValue"
+      [isDisabled]="!editable"
+      (valueChange)="onChange($event)"
+    ></gias-checkbox-template>
+  </div>
+  <ng-template #switch>
+    <gias-switch-template
+      [giasFormControlName]="controlName"
+      [value]="defaultValue"
+      [hideLabel]="true"
+      [isDisabled]="!editable"
+      (valueChange)="onChange($event)"
+    ></gias-switch-template>
+  </ng-template>
+</form>

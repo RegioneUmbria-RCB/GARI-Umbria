@@ -1,0 +1,130 @@
+<form class="row" [formGroup]="addressForm">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      <gias-text-template
+        [name]="'Via' | transloco"
+        [obligatory]="true"
+        [placeholder]="'InserireVia' | transloco"
+        giasFormControlName="street"
+      >
+      </gias-text-template>
+    </div>
+    <div class="col-12 col-md-4">
+      <gias-text-template
+        [name]="'Frazione' | transloco"
+        [placeholder]="'NonDefinita' | transloco"
+        giasFormControlName="fraction"
+      >
+      </gias-text-template>
+    </div>
+    <div *ngIf="showProvince()" class="col-12 col-md-4">
+      <gias-drop-down-template-s
+        [name]="'Provincia' | transloco"
+        [obligatory]="true"
+        [filterable]="true"
+        [listItems]="province$ | async"
+        textField="Provincia_Des"
+        valueField="Istat_Prov"
+        giasFormControlName="province"
+        [valuePrimitive]="false"
+        (open)="openDdl($event)"
+      >
+      </gias-drop-down-template-s>
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="showCity()" class="col-12 col-md-4">
+      <gias-drop-down-template-s
+        [name]="'Comune' | transloco"
+        [obligatory]="true"
+        [filterable]="true"
+        [listItems]="cities$ | async"
+        textField="descrizione"
+        valueField="codice"
+        giasFormControlName="city"
+        [valuePrimitive]="false"
+        (open)="openDdl($event)"
+      >
+      </gias-drop-down-template-s>
+    </div>
+    <div class="col-12 col-md-4">
+      <gias-text-template
+        [name]="'CAP' | transloco"
+        [obligatory]="true"
+        placeholder="Inserire CAP"
+        giasFormControlName="zipCode"
+      >
+      </gias-text-template>
+    </div>
+    <div class="col-12 col-md-4">
+      <gias-drop-down-template-s
+        [name]="'Stato' | transloco"
+        [obligatory]="true"
+        [filterable]="true"
+        [listItems]="countries$ | async"
+        textField="descrizione"
+        valueField="codice"
+        giasFormControlName="country"
+        [valuePrimitive]="false"
+        (open)="openDdl($event)"
+      >
+      </gias-drop-down-template-s>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <gias-text-template
+        [name]="'Note' | transloco"
+        [obligatory]="false"
+        placeholder=""
+        giasFormControlName="note"
+      >
+      </gias-text-template>
+    </div>
+  </div>
+
+  <div style="padding-top: 10px" *ngIf="showGeolocation()">
+    <h6 class="card-title " style="text-align: center;">{{'Geolocalizzazione' | transloco}}</h6>
+    <div class="card-text">
+      <div class="row form-row" style="align-items: flex-end">
+        <div class="col-12 col-md-4 col-lg-5 form-group">
+          <gias-numeric-template
+            [name]="'Latitudine' | transloco"
+            [obligatory]="true"
+            [clearButton]="true"
+            [isDisabled]="true"
+            [maxValue]="90"
+            [minValue]="-90"
+            format="n7"
+            giasFormControlName="lat"
+          >
+          </gias-numeric-template>
+        </div>
+        <div class="col-12 col-md-4 col-lg-5 form-group">
+          <gias-numeric-template
+            [name]="'Longitudine' | transloco"
+            [obligatory]="true"
+            [clearButton]="true"
+            [isDisabled]="true"
+            [maxValue]="180"
+            [minValue]="-180"
+            format="n7"
+            giasFormControlName="lng"
+          >
+          </gias-numeric-template>
+        </div>
+        <div class="col-12 col-md-4 col-lg-2">
+          <button
+            class="btn btn-primary-fill k-button"
+            style="width: 100%"
+            [disabled]="false"
+            (click)="geolocate()"
+          >
+            <fa-icon size="lg" [icon]="['fas', 'location-pin']" aria-hidden="true"></fa-icon>
+            {{"Geolocalizza" | transloco}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

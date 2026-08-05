@@ -1,0 +1,27 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://cooperazione.sian.it/schema/SoapAutenticazione" xmlns:wsm="http://cooperazione.sian.it/schema/wsmrga/">
+   <soapenv:Header>
+      <soap:SOAPAutenticazione>
+         <!--Credenziali rilasciate dal Ministero all'azienda-->
+         <username>AAAAAAAAAA</username>
+         <password>BBBBBBBBBB</password>
+         <nomeServizio>CancSoggSiRPV</nomeServizio>
+      </soap:SOAPAutenticazione>
+   </soapenv:Header>
+   <soapenv:Body>
+      <wsm:CancSoggSiRPVInput>
+         <wsm:CodOper>
+            <!--Indicazione del Codice Fiscale dell'azienda (valorizzare persona fisica o giuridica)-->
+            <wsm:PersonaGiuridica>01234567890</wsm:PersonaGiuridica>
+         </wsm:CodOper>
+         <!--Specificare una o piu soggetti da cancellare-->
+         <wsm:SoggettoElimina>
+			<!--Codice alfanumerico del soggetto presente in ANAGRAFICA-->
+            <wsm:CodiceSoggetto>V1234X</wsm:CodiceSoggetto>
+         </wsm:SoggettoElimina>
+         <wsm:SoggettoElimina>
+			<!--Codice alfanumerico del soggetto presente in ANAGRAFICA-->
+            <wsm:CodiceSoggetto>2554PA</wsm:CodiceSoggetto>
+         </wsm:SoggettoElimina>
+      </wsm:CancSoggSiRPVInput>
+   </soapenv:Body>
+</soapenv:Envelope>

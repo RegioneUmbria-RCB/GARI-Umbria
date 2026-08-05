@@ -1,0 +1,454 @@
+﻿
+
+<script type="text/javascript">
+
+    var ddl_Azienda;
+    var ddl_Centro;
+    var ddl_Specie;
+    var ddl_Impianto;
+    var ddl_Recupera;
+
+    var pivaSelezionataDaMenu = "__pivaSelezionataDaMenu__";
+    var ragSocSelezionataDaMenu = "__ ragSocSelezionataDaMenu__";
+    var MapsSeparator = "__MapsSeparator__";
+    var GisSmartBsClientID = "GisSmartBSctrl";
+    var gissmartBsAnteprimaSuMappaClientID = "gissmartBsAnteprimaSuMappa";
+    var formGisSmartBsAnagraficaAttiva = __formGisSmartBsAnagraficaAttiva__;
+    var GisSmartDestinazioneChiaveAlbero = "";
+    var GisSmartDestinazioneHiddenPunti = "";
+    var GisSmartDestinazioneHiddenPuntiOnAfterUpdate = undefined;
+
+</script>
+
+
+
+
+<div id="GisSmartBSctrl" data-toggle="validator" role="form">
+    <div class="formGisSmartBScontainer formGisSmartBScontainer-lg formGisSmartBScontainer-xs" style="background-color: #fff; margin-bottom: 70px; margin-top: 5px">
+
+        <!-- Stato Rete -->
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-sm-2 col-xs-3">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required status" id="lbl_StatoRete" for="TxtStatoRete">Rete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pulsante online / offline -->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-success btn_100" onclick="OnOffLine(!LavoraOnLine, true);" id="btn_Off_OnLine"
+                                 style="white-space: normal;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Stato GPS -->
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 StatoGPS">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required status" id="lbl_StatoGPS" for="TxtStatoGPS">Attiva GPS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fine toolbar GPS / rete -->
+        <!-- Campi di appoggio -->
+        <input type="hidden" id="hidden_ID_poligono_x_salvataggio" />
+        <!-- fine Campi di appoggio
+
+
+            <!-- form compilazione dati class="formGisSmartBSOnline"-->
+        <!-- Azienda -->
+        <div class="row formGisSmartBSOnline formGisSmartBSAnagrafica">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-warning btn_100" onclick="aziendaCaricaTutte();" id="btnAziendaCaricaTutte"
+                                 style="white-space: normal;">
+                                Carica tutte le aziende
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row formGisSmartBSOnline formGisSmartBSAnagrafica">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required alert-info" id="lbl_Azienda" for="TxtAzienda">Azienda</span>
+                            <input id="ddl_Azienda" style="width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Centro Aziendale -->
+        <div class="row formGisSmartBSOnline formGisSmartBSAnagrafica">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required alert-info" id="lbl_Centro" for="TxtCentro">
+                                Centro
+                                Az.
+                            </span>
+                            <input id="ddl_Centro" style="width: 100%;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Specie -->
+        <div class="row" style="display: none">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required alert-info" id="lbl_Specie" for="TxtSpecie">
+                                Specie
+                            </span>
+                            <input type="text" id="ddl_Specie" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- impianto -->
+        <div class="row formGisSmartBSOnline formGisSmartBSAnagrafica">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required alert-info" id="lbl_AppNome" for="TxtAppNome">
+                                Impianto
+                            </span>
+
+                            <input id="ddl_Impianto" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row formGisSmartBSOnline formGisSmartBSAnagrafica">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="" id="lbl_msgImpianti"></span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Nuovo punto -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="PulsanteNuovoPunto(false);" id="btn_nuovoPunto"
+                                 style="white-space: normal;">
+                                Acquisisci Nuovo Punto da GPS
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 formGisSmartBSOnline">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="EditViaMappa();" id="btn_EditViaMappa"
+                                 style="white-space: normal;">
+                                Passa Alla Mappa
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <span style="font-weight: bold">La tua posizione: </span>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 CurGPS_Pos">
+            </div>
+        </div>
+        <!-- Elimina Tutto Quanto -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="MostraTuttoQuanto();" id="btn_MostraTuttoQuanto"
+                                 style="white-space: normal;">
+                                Mostra/Nascondi poligoni
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="listapoligonisalvati">
+        </div>
+        <div id="divPunti">
+            <span id="NuovoPuntoPoligonon">N.</span><span id='idmodifica'></span>
+        </div>
+        <div class="formGisSmartBSOnline">
+            <!-- Descrizione -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon lbl_required alert-info" id="lbl_Descrizione" for="txt_descrizione">Descrizione </span>
+                                <input id="txt_descrizione" type="text" class="form-control required"> </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Recupera Punti in memoria -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="mostraRecuperaPunti();" id="btnRecuperaPunti"
+                                 style="white-space: normal;">
+                                Recupera Punti in Memoria
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row inCorso">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon lbl_required" id="lbl_recupera" for="Txtrecupera">
+                                Recupera
+                                Punti in memoria
+                            </span>
+                            <input id="ddl_recupera" style="width: 100%" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row inCorso">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-danger btn_100" onclick="EliminaTuttoQuanto();" id="btn_EliminaTuttoQuanto"
+                                 style="white-space: normal;">
+                                Elimina Tutti i Punti in Memoria
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salva -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-success btn_100" onclick="GestioneSalvataggio();" id="btn_Salva"
+                                 style="white-space: normal;">
+                                Salva
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="MenuDevMode">
+            <!-- Descrizione -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon lbl_required" id="DevPass" for="txt_DevPass">
+                                    Pass:
+                                </span>
+                                <input id="txt_DevPass" type="text" class="form-control required"> </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PassButton -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="btn btn-danger btn_100" onclick="AttivaDevModePass();" id="btnAttivaDevModePass"
+                                     style="white-space: normal;">
+                                    Ok
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="MenuDevMode2">
+            <!-- Descrizione -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon lbl_required" id="lblDevPass" for="txt_DevPass">
+                                    Developer
+                                    mode:
+                                </span>
+                                <input id="ckDeveloperMode" type="checkbox" class="form-control required"> </input>
+                                <span class="input-group-addon lbl_required" id="lblDevGPSLog" for="txt_DevPass">
+                                    Gps
+                                    Log:
+                                </span>
+                                <input id="ckDeveloperModeGPSLog" type="checkbox" class="form-control required">
+                                </input>
+                                <span class="input-group-addon lbl_required" id="lblDevGPSCoord" for="txt_DevPass">
+                                    Gps
+                                    Coord:
+                                </span>
+                                <input id="ckDeveloperModeCoord" type="checkbox" class="form-control required">
+                                </input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- PassButton -->
+            <!---
+                var DeveloperMode = false;
+                var DeveloperModeGPSLog = true;
+                var DeveloperModeCoord = true;
+                -->
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="btn btn-dabger btn_100" onclick="AttivaDevModePass2();" id="btnAttivaDevModePass"
+                                     style="white-space: normal;">
+                                    Ok
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- GPS log... -->
+        <div id="GPSLog">
+        </div>
+    </div>
+</div>
+
+<div id="gissmartBsAnteprimaSuMappa" class="" tabindex="-1">
+
+    <div id="gissmartBsAnteprimaSuMappa_Title">
+
+    </div>
+
+    <div id="gissmartBsAnteprimaSuMappa_body">
+
+
+        <!-- Strumenti di disegno -->
+
+        <div class="row">
+
+            <div id="rowGGDisegno" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="btnGGIniziaDisegno();" id="btnGGDisegno"
+                                 style="white-space: normal;">
+                                Nuovo Disegno
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="rowGGAnnullaDisegno" class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="btnGGAnnullaDisegno();" id="btnGGAnnullaDisegno"
+                                 style="white-space: normal;">
+                                Annulla Disegno
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Apri google maps -->
+            <input type="hidden" id="lat_cerca" />
+            <input type="hidden" id="long_cerca" />
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="btn btn-info btn_100" onclick="ApriGoogleMaps();" id="btn_ApriGoogleMaps"
+                                 style="white-space: normal;">
+                                App Google Maps (su SmartPhone)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="gissmartBsAnteprimaSuMappa_mappa" class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div id="map_canvas"></div>
+        </div>
+    </div>
+
+</div>
+

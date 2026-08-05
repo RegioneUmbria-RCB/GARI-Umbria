@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tms="http://emcs.dgtaxud.ec/v10/tms" xmlns:emcs="http://emcs.dgtaxud.ec/v10/types" targetNamespace="http://emcs.dgtaxud.ec/v10/tms" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/types" schemaLocation="types_2.xsd"/>
+	<!--=========================================-->
+	<!--      EMCS COMMON MESSAGE HEADER         -->
+	<!--=========================================-->
+	<xs:element name="HeaderMessage" type="tms:HeaderMessageType"/>
+	<xs:element name="Header" type="tms:HeaderType"/>
+	<xs:complexType name="HeaderMessageType">
+		<xs:sequence>
+			<xs:element name="MessageSenderCode" type="tms:MessageSenderCodeType"/>
+			<xs:element name="OfficeReserved" type="tms:OfficeReservedType"/>
+			<xs:element name="FlowName" type="tms:FlowNameType"/>
+			<xs:element name="OfficeReserved" type="tms:OfficeReservedType"/>
+			<xs:element name="OfficeCode" type="tms:OfficeCodeType"/>
+			<xs:element name="OfficeReserved" type="tms:OfficeReservedType"/>
+			<xs:element name="VATAutorizedSender" type="tms:VATAuotirzedSenderType"/>
+			<xs:element name="OfficeNumberAutorizedSender" type="tms:OfficeNumberAutorizedSenderType"/>
+			<xs:element name="OfficeReserved" type="tms:OfficeReservedType"/>
+			<xs:element name="RecordFlowNumber" type="tms:RecordFlowNumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HeaderType">
+		<xs:sequence>
+			<xs:element name="MessageCode">
+				<xs:annotation>
+					<xs:documentation>Posizionale</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="tms:MessageCodeType"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DeclaratorIdentifyCode">
+				<xs:annotation>
+					<xs:documentation>Posizionale</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="tms:DeclaratorIdentifyCodeType"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="IdentifyDraftCode">
+					<xs:annotation>
+						<xs:documentation>Posizionale. Solo per File IE815</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="tms:IdentifyDraftCodeType"/>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="IdentityARCCode">
+					<xs:annotation>
+						<xs:documentation>Posizionale. Solo per File IE818</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="tms:IdentityARCCodeType"/>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="TransmissionFileDate">
+				<xs:annotation>
+					<xs:documentation>Posizionale</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="emcs:DateFlatType"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RecordType">
+				<xs:annotation>
+					<xs:documentation>Posizionale</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="tms:RecordType"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RecordNumberInFile">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:length value="4"/>
+						<xs:pattern value="[0-9]{1,4}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="RecordNumberFile">
+				<xs:simpleType>
+					<xs:restriction base="xs:token">
+						<xs:length value="4"/>
+						<xs:pattern value="[0-9]{1,4}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TotalRecordB" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+						<xs:pattern value="[0-9]{2}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TotalRecordC" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="998"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TotalRecordF" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+						<xs:pattern value="[0-9]{2}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TotalRecordK" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="998"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="SubmissionMessageType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Cab be 1 for Standard or 2 for Export</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="tms:SubmissionType"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- 
+  Examples: IE815
+  -->
+	<xs:simpleType name="MessageSenderCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="4"/>
+			<xs:pattern value="([A-Za-z0-9]{1,4})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OfficeReservedType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="12"/>
+			<xs:pattern value="([A-Za-z0-9]{0,12})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FlowNameType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="12"/>
+			<xs:pattern value="([A-Za-z0-9]{1,12})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OfficeCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="6"/>
+			<xs:pattern value="([0-9]{1,6})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="VATAuotirzedSenderType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="16"/>
+			<xs:pattern value="([A-Za-z0-9]{1,16})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OfficeNumberAutorizedSenderType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="([0-9]{1,3})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RecordFlowNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="5"/>
+			<xs:pattern value="([0-9]{1,5})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="5"/>
+			<xs:pattern value="([A-Z]{2}[0-9]{3})"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DeclaratorIdentifyCodeType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="18"/>
+			<xs:pattern value="[0-9A-Za-z]{1,18}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentifyDraftCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="22"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentityARCCodeType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="21"/>
+			<xs:pattern value="[0-9A-Za-z]{1,21}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RecordFileNumberType">
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:pattern value="[0-9]{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RecordType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="1"/>
+			<xs:pattern value="[A-Z]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TotalRecordBType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TotalRecordCType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TotalRecordFType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TotalRecordKType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: NDEA.DE | SEED.EC 
+  Over CCN the sender and the recipient are always known.
+  This element could be used for cross-checking
+  -->
+	<xs:simpleType name="MessageSenderType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: NDEA.FR | SEED.EC 
+  Over CCN the sender and the recipient are always known.
+  This element could be used for cross-checking
+  -->
+	<xs:simpleType name="MessageRecipientType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="36"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: uuid:d1681bbf-9de5-4d5f-afb7-b31a4e07529f 
+  Each message (request, response, datagram) is associated with a unique ID
+  The receiving application should consider messages with the same ID as duplicates.
+  -->
+	<xs:simpleType name="MessageIdentifierType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="44"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- 
+  Examples: uuid:07275b18-6940-49a3-85e6-975b24d99f4b 
+  Not applicable/ignored for requests and datagram messages. 
+  For the request-response message exchange pattern the receiving application
+  copies the MessageIdentifier of the request to the CorrelationIdentifier
+  of the response(s).
+  -->
+	<xs:simpleType name="CorrelationIdentifierType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="44"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--=========================================-->
+	<!--===== Submission Type =====-->
+	<!--=========================================-->
+	<xs:simpleType name="SubmissionType">
+		<xs:annotation>
+			<xs:documentation>Submission Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>Standard submission</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="2">
+				<xs:annotation>
+					<xs:documentation>Submission for export (local clearance)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

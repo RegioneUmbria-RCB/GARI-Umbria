@@ -1,0 +1,65 @@
+<div [formGroup]="qdcservice.CostiAccessoriForm">
+
+    <div class="row mt-2 mb-2">
+
+        <gias-panelbar [headerTemplate]="headerTemplate" [contentTemplate]="contentTemplate"
+                       [id]="'Macchine_Operatori'">
+
+            <ng-template #headerTemplate>
+                {{ 'MacchineeOperatori' | transloco }}
+            </ng-template>
+
+
+            <ng-template #contentTemplate>
+                <kendo-tabstrip id="CostiAccessori_tabstrip">
+                    <kendo-tabstrip-tab [title]="'MacchineAttrezzature' | transloco"
+                                        [selected]="true">
+
+                        <ng-template kendoTabContent>
+                            <app-grid-macchine></app-grid-macchine>
+                        </ng-template>
+
+                    </kendo-tabstrip-tab>
+
+                    <kendo-tabstrip-tab [title]="'Operatori' | transloco">
+
+                        <ng-template kendoTabContent>
+                            <app-grid-operatori></app-grid-operatori>
+                        </ng-template>
+
+                    </kendo-tabstrip-tab>
+                </kendo-tabstrip>
+            </ng-template>
+
+        </gias-panelbar>
+
+        <!--<gias-expansionpanel
+            [id]="'Macchine_Operatori'"
+            (action)="qdcservice.OnActionExpansionPanel($event,'Macchine_Operatori')"
+        >
+            <div headerContent class="header-content">
+                <span><strong>{{ 'MacchineeOperatori' | transloco }}</strong></span>
+            </div>
+
+            <kendo-tabstrip id="CostiAccessori_tabstrip">
+                <kendo-tabstrip-tab [title]="'MacchineAttrezzature' | transloco"
+                                    [selected]="true">
+
+                    <ng-template kendoTabContent>
+                        <app-grid-macchine></app-grid-macchine>
+                    </ng-template>
+
+                </kendo-tabstrip-tab>
+
+                <kendo-tabstrip-tab [title]="'Operatori' | transloco">
+
+                    <ng-template kendoTabContent>
+                        <app-grid-operatori></app-grid-operatori>
+                    </ng-template>
+
+                </kendo-tabstrip-tab>
+            </kendo-tabstrip>
+        </gias-expansionpanel>-->
+    </div>
+
+</div>

@@ -1,0 +1,76 @@
+<h3>{{'RichiesteStatoElaborazione' | transloco}}</h3>
+
+<gias-side-filters-template [filtersTemplate]="filtersForm" (search)="filterRequests()"></gias-side-filters-template>
+
+<gias-kendo-grid #RiepilogoRichiesteGrid>
+  <ng-container headerContentEnd>
+    <div kendoTooltip class="margin-right">
+      <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+        (click)="refreshGrid()" [title]="'Ricarica' | transloco" [type]="'button'" id="syncRequestsBtn">
+        <fa-icon size="lg" [icon]="faSync"></fa-icon>
+      </button>
+    </div>
+    <div kendoTooltip>
+      <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important" (click)="createNew()"
+        [title]="'NuovaRichiesta' | transloco" [type]="'button'">
+        <fa-icon size="lg" [icon]="faPlus"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #aDetailsRef>
+  <kendo-tabstrip>
+    @if (showRegulamentations) {
+    <kendo-tabstrip-tab [title]="'ConformitaNormative' | transloco" [selected]="tabSelectedIdx == 0">
+      <ng-template kendoTabContent>
+        <app-risultati-analisi-conformita></app-risultati-analisi-conformita>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    }
+    @if (showStorages) {
+    <kendo-tabstrip-tab [title]="'ConformitaMagazzino' | transloco" [selected]="tabSelectedIdx == 1">
+      <ng-template kendoTabContent>
+        <app-risultati-analisi-magazzino></app-risultati-analisi-magazzino>
+      </ng-template>
+    </kendo-tabstrip-tab>
+    }
+  </kendo-tabstrip>
+</ng-template>
+
+<ng-template #newRequestForm>
+  <app-filtri-nuova-analisi-conformita (onSearch)="forwardNewRequest($event)"></app-filtri-nuova-analisi-conformita>
+</ng-template>
+
+<ng-template #filtersForm>
+  <form [formGroup]="searchFilters">
+    <!-- <section> -->
+    <!-- <fieldset> -->
+    <gias-drop-down-template-s #company giasFormControlName="piva" textField="descrizione" valueField="codice"
+      [name]="'Azienda' | transloco" [obligatory]="true" [valuePrimitive]="true"
+      [listItems]="companies"></gias-drop-down-template-s>
+    <gias-multiselect-template-s #sacod giasFormControlName="sa_cod" textField="descrizione" valueField="codice"
+      [name]="'CentriAziendali' | transloco" [valuePrimitive]="true" [listItems]="centers"
+      [obligatory]="true"></gias-multiselect-template-s>
+    <gias-multiselect-template-s #vegcod giasFormControlName="veg_cod" textField="descrizione" valueField="codice"
+      [name]="'SpecieVegetale' | transloco" [valuePrimitive]="true" [listItems]="species"
+      [obligatory]="true"></gias-multiselect-template-s>
+    <!-- </fieldset> -->
+
+    <!-- <fieldset> -->
+    <gias-data-template giasFormControlName="data_da" [name]="'RichiesteDal' | transloco"></gias-data-template>
+    <gias-data-template giasFormControlName="data_a" [name]="'RichiesteAl' | transloco"></gias-data-template>
+    <!-- </fieldset> -->
+
+    <span>
+      <gias-switch-template giasFormControlName="flagNormative" [isBlue]="false"></gias-switch-template>
+      <label>{{'ConformitaNormative' | transloco}}</label>
+    </span>
+    <span>
+      <gias-switch-template giasFormControlName="flagMagazzino" [isBlue]="false"></gias-switch-template>
+      <label>{{'ConformitaMagazzino' | transloco}}</label>
+    </span>
+    <!-- </section> -->
+    <!-- <button type="button" class="btn btn-primary-fill" (click)="filterRequests()">{{'Cerca' | transloco}}</button> -->
+  </form>
+</ng-template>

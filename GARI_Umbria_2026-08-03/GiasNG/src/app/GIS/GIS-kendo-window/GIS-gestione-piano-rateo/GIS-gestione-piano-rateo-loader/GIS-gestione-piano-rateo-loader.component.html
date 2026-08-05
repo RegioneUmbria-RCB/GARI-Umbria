@@ -1,0 +1,21 @@
+﻿<div class="gestione-pano-rateo-dialog">
+  <div class="gestione-pano-rateo-column">
+    <div class="gestione-pano-rateo-row">
+      <kendo-label class="full-width" [text]="'gis.GestionePianoRateoDescrizione' | transloco">
+        <kendo-textbox [(ngModel)]="description" required>
+        </kendo-textbox>
+      </kendo-label>
+    </div>
+    <div class="gestione-pano-rateo-row">
+      <kendo-label class="full-width" [text]="'gis.GestionePianoRateoColonnaRateo' | transloco">
+        <kendo-textbox [(ngModel)]="rateColumnName" required>
+        </kendo-textbox>
+      </kendo-label>
+    </div>
+
+    <div class="gestione-pano-rateo-row">
+      <kendo-fileselect class="full-width" [multiple]="false" [restrictions]="restrictions$ | async"
+        (select)="onFileSelected($event)" (remove)="onFileRemoved()"></kendo-fileselect>
+    </div>
+  </div>
+</div>

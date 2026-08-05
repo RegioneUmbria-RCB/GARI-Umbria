@@ -1,0 +1,229 @@
+<div [formGroup]="FormulatiForm">
+    <div class="col-12 col-sm-12">
+        <!-- <div class="row">
+            <div  class="content">
+                <span class="content-text">
+                    <div class="row form-row mt-2 mb-2">
+                        <div class="col-12 col-sm-12">
+                            <gias-binary-button-group-template
+                            giasFormControlName="Nessun_Magazzino"
+                            [silabel]="'qdc.NessunaGestionedelMagazzinoAziendale' | transloco"
+                            [nolabel]="'qdc.GestisciMagazzinoAziendale' | transloco"
+                            [disabledsibutton] = "disabilitaOpzNessunaGestionedelMagazzinoAz"
+                            (valueChange)="changeButtonGroupNessunMagazzino($event)">
+                            </gias-binary-button-group-template>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+        *ngIf="mostraMagazzino()"
+        <div class="col-7 col-sm-7">
+                            <div class="form-group">
+                                <gias-multiselect-template-s
+                                [name]= "'qdc.ProvenienzaRisorseDesc' | transloco"
+                                [listItems]="prodottiservice.Array_Magazzini"
+                                textField="descrizione"
+                                valueField="primaryKey.codice"
+                                (open)="openControlProdottiForm($event, 'magazzino')"
+                                giasFormControlName="magazzino"
+                                [valuePrimitive]="false">
+                                </gias-multiselect-template-s>
+                            </div>
+                        </div>-->
+
+        <div class="row mt-2" *ngIf="qdcservice.Mostra_Avversita_Prima_Dei_Prodotti">
+            <app-avversita [showComandi]="qdcservice.Mostra_Avversita_Prima_Dei_Prodotti"></app-avversita>
+        </div>
+
+        <div class="row form-row">
+            <app-ricerca-formulati
+                [showComandi]="!qdcservice.Mostra_Avversita_Prima_Dei_Prodotti"></app-ricerca-formulati>
+        </div>
+
+        <div class="row form-row">
+
+            <div class="col">
+                <app-magazzino-lotto></app-magazzino-lotto>
+            </div>
+        </div>
+
+        <ng-container *ngIf="!MostraTemplateAvversitaInnesco()"
+                      [ngTemplateOutlet]="TemplateAvversita"
+                      [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+        </ng-container>
+
+        <ng-container *ngIf="MostraTemplateAvversitaInnesco()"
+                      [ngTemplateOutlet]="TemplateAvversitaInnesco"
+                      [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+        </ng-container>
+
+        <div *ngIf="mostraDose()">
+            <div class="row form-row">
+                <div class="col-12">
+                    <div class="gias-section-title-with-icon">
+                        <!-- <span class="faDoseProdotto me-1"></span> -->
+                        <h5 class="card-title">{{'qdc.DoseProdotto.text' | transloco}} *</h5>
+                    </div>
+
+                    <gias-multi-column-combobox-template
+                        [name]="'qdc.lblDoseEtichettaResource1.Text' | transloco"
+                        [listItems]="qdcdettagliformulatiservice.Array_Dosi"
+                        [textField]="'Descrizione_Concatenata'"
+                        [valueField]="'Codice_Concatenato'"
+                        [filterable]="true"
+                        giasFormControlName="Dose_Etichetta"
+                        [valuePrimitive]="false"
+                        (open)="openControlDettagliFormulati($event, 'Dose_Etichetta')"
+                        [columns]="ColumnComboboxDose_Etichetta"
+                        [clearButton]="false">
+                    </gias-multi-column-combobox-template>
+                </div>
+
+                <div class="row" *ngIf="qdcdettagliformulatiservice.Str_Dosi_Compatibili !== ''">
+                    <div class="col">
+                        <label id="lbl_dosi_compatibili">{{ qdcdettagliformulatiservice.Str_Dosi_Compatibili }}</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--Particolarità Diserbo-->
+            <div class="row" *ngIf="mostraParticolaritaDiserbo()">
+                <div class="col-3"
+                     *ngIf="Mostra_Lbl_Dose_Consigliata()">
+
+                    <label id="lbl_qta_residua"
+                           [for]="Lbl_Dose_Consigliata"
+                           *ngIf="qdcdettagliformulatiservice.doseConsentitaDiserbo.lbl_qta_residua !== ''"
+                           class="me-1">{{ qdcdettagliformulatiservice.doseConsentitaDiserbo.lbl_qta_residua }}</label>
+
+                    <label #Lbl_Dose_Consigliata
+                           *ngIf="qdcdettagliformulatiservice.doseConsentitaDiserbo.Lbl_Dose_Consigliata !== ''"
+                           [innerHTML]="qdcdettagliformulatiservice.doseConsentitaDiserbo.Lbl_Dose_Consigliata"
+                           class="me-1"></label>
+                </div>
+
+                <div class="col" *ngIf="Mostra_Lbl_Dose_Consigliata2()">
+                    <label id="Lbl_Dose_Consigliata2"
+                           [innerHTML]="qdcdettagliformulatiservice.doseConsentitaDiserbo.Lbl_Dose_Consigliata2"></label>
+                </div>
+
+                <!--TODO Salvo da fare la funzione di click per ora commentato il pulsante-->
+                <!--<div class="col-4" *ngIf="qdcservice.doseConsentitaDiserbo.Div_DettaglioDoseConsentita">
+                    <div kendoTooltip>
+                        <button
+                            id="CheckDettaglioDoseConsentita"
+                            class="btn btn-primary btn-sm btn-primary-fill"
+                            [title]="'qdc.DettaglioDoseConsDisciplinare' | transloco">
+                            <div class="k-icon k-i-btn_dettagliodose_consentita_disciplinare"></div>
+                        </button>
+                    </div>
+                </div>-->
+            </div>
+
+        </div>
+
+        <div class="row form-row inserisci-dose-container">
+            <div class="udm-container">
+                <app-unita-di-misura [mostraDose]="mostraDose()"></app-unita-di-misura>
+            </div>
+            <div class="dosi-container">
+                <app-dosi></app-dosi>
+            </div>
+            <div class="btn-dose-container"
+                 *ngIf="prodottiservice.mostrabtnInserisciDoseProdotto() && qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+                <div class="btn btn-primary btn-inserisci-dose-prodotto btn-primary-fill"
+                     (click)="InserisciFormulato()">
+                    <div class="fa_diserbo_inserisci_prodotto_in_miscela_on"></div>
+                    <span>{{ prodottiservice.btn_Inserisci_Modifica_Prodotto_Text }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-sm-12" *ngIf="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi()">
+            <app-grid-dosi-prodotti></app-grid-dosi-prodotti>
+        </div>
+
+        <div class="col-12 col-sm-12" *ngIf="MostraGridProdottixImpianti()">
+          <app-grid-prodotti-impianti></app-grid-prodotti-impianti>
+        </div>
+    </div>
+</div>
+
+<ng-template #trattamentorilievo let-dataItem>
+    <app-quaderno-di-campagna [inWindow]="true"></app-quaderno-di-campagna>
+</ng-template>
+
+<ng-template #TemplateAvversita let-FormulatiForm='FormulatiForm' >
+  <div class="row form-row"
+       *ngIf="(!qdcservice.Mostra_Avversita_Prima_Dei_Prodotti || mostraSoglieGiustificazioni()) && !qdcdettagliformulatiservice.isImpollinatore()">
+    <div class="col" *ngIf="!qdcservice.Mostra_Avversita_Prima_Dei_Prodotti">
+      <app-avversita [hideRileva]="!mostraSoglieGiustificazioni()"></app-avversita>
+    </div>
+
+    <ng-container *ngIf="mostraSoglieGiustificazioni() || mostraVerificaSoglia()"
+                  [ngTemplateOutlet]="TemplateSoglia"
+                  [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+    </ng-container>
+  </div>
+</ng-template>
+
+<ng-template #TemplateAvversitaInnesco let-FormulatiForm='FormulatiForm' >
+  <div class="row form-row"
+       *ngIf="!qdcdettagliformulatiservice.isImpollinatore()">
+    <app-avversita [hideRileva]="true"></app-avversita>
+  </div>
+
+  <div class="row form-row" *ngIf="mostraSoglieGiustificazioni() || mostraVerificaSoglia()">
+    <ng-container [ngTemplateOutlet]="TemplateSoglia"
+                  [ngTemplateOutletContext]="{FormulatiForm:FormulatiForm}">
+    </ng-container>
+  </div>
+
+</ng-template>
+
+<ng-template #TemplateSoglia let-FormulatiForm='FormulatiForm'>
+  <div class="col-5" *ngIf="mostraSoglieGiustificazioni()">
+    <div class="row form-row">
+      <div class="col-12">
+        <div class="gias-section-title-with-icon mb-2">
+          <!--<span class="faSoglieGiustificazioni me-1"></span>-->
+          <h5 class="card-title">
+            {{'qdc.SoglieGiustificazioni.Text' | transloco}} *
+          </h5>
+        </div>
+
+        <gias-drop-down-template-s
+          [name]="''"
+          [obligatory]="false"
+          [clearButton]="true"
+          [listItems]="qdcdettagliformulatiservice.Array_Soglie_Avversita"
+          (open)="openControlDettagliFormulati($event, 'Soglia_Avversita')"
+          textField="descrizione"
+          valueField="codice"
+          [filterable]="true"
+          giasFormControlName="Soglia_Avversita"
+          [valuePrimitive]="false">
+        </gias-drop-down-template-s>
+      </div>
+    </div>
+
+    <div class="col-12" *ngIf="mostraVerificaSoglia()">
+      <label id="Lbl_Verifica_Soglia"
+             style="color: red; font-size: small">{{ qdcdettagliformulatiservice.Verifica_Soglia }}</label>
+    </div>
+  </div>
+
+  <div class="col-2 button-rileva-container" *ngIf="mostraVerificaSoglia()">
+    <div kendoTooltip>
+      <button
+        id="ImgBtn_RilevaAvversita_div"
+        class="btn btn-primary btn-sm btn-primary-fill"
+        (click)="rilevaAvversita()"
+        [title]="'qdc.RilevaAvversita.Text' | transloco">
+        <div class="k-icon k-i-btn_rileva_soglia_trattamento_antiparassiti"></div>
+      </button>
+    </div>
+  </div>
+</ng-template>

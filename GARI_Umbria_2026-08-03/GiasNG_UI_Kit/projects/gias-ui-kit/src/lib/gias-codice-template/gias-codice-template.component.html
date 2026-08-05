@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-6">
+    <gias-drop-down-template name="Codice"
+                             [obligatory]="true"
+                             [isDisabled]="!formEnable"
+                             [listItems]="lista_codici"
+                             [textField]="text_field"
+                             [valueField]="value_field"
+                             [(value)]="codice.Id_Cod"
+                             formControlName="codice">
+    </gias-drop-down-template>
+  </div>
+  <div class="col-6">
+    <!--<gias-text-template name="Valore"
+                        [obligatory]="true"
+                        [clearButton]="true"
+                        [isDisabled]="!formEnable"
+                        [(value)]="codice.Val_Cod"
+                        placeholder="Inserire valore"
+                        [formControlName]="valore">
+    </gias-text-template>-->
+  </div>
+</div>
+<div class="row" *ngIf="dateControl">
+  <div class="col-6">
+    <gias-data-template name="Dal"
+                        [startValue]="AGRODATAINIZIO"
+                        [endValue]="AGRODATAFINE"
+                        [nullValue]="AGRODATAINIZIO"
+                        [obligatory]="false"
+                        [isDisabled]="!formEnable"
+                        [(value)]="codice.Validita_Inizio"
+                        formControlName="validita_inizio">
+    </gias-data-template>
+  </div>
+  <div class="col-6">
+    <gias-data-template name="Al"
+                        [startValue]="AGRODATAINIZIO"
+                        [endValue]="AGRODATAFINE"
+                        [nullValue]="AGRODATAFINE"
+                        [obligatory]="false"
+                        [isDisabled]="!formEnable"
+                        [(value)]="codice.Validita_Fine"
+                        formControlName="validita_fine">
+    </gias-data-template>
+  </div>
+</div>

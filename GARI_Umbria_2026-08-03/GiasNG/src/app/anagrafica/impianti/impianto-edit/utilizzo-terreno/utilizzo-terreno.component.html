@@ -1,0 +1,38 @@
+
+<div [formGroup]="UtilizzoTerrenoForm" [id]="completeFormControlName">
+    <div class="row">
+
+        <div class="col-12 col-sm-4">
+            <gias-binary-button-group-template
+                (valueChange)="onChangeChkTerrenoNudo($event)"
+                giasFormControlName="terrenoNudo"
+                [silabel]="(isSementieri$ | async) ? null : 'Terreno Nudo'"
+                [nolabel]="'Specie Vegetale'">
+            </gias-binary-button-group-template>
+            
+        </div>
+
+        <div class="col" *ngIf="UtilizzoTerrenoForm.controls['terrenoNudo'].value">
+            <gias-drop-down-template-s name="Destinazione D'Uso" textField="descrizione" [obligatory]="true"
+                                        valueField="codice" giasFormControlName="destinazioneUso" [filterable]="true" [valuePrimitive]="false"
+                                        (open)="openDdl($event, 'destinazioneUso')">
+            </gias-drop-down-template-s>
+        </div>
+
+        <div class="col-12 col-sm-4" *ngIf="!UtilizzoTerrenoForm.controls['terrenoNudo'].value">
+            <gias-drop-down-template-s name="Specie" [obligatory]="true"
+                                        textField="descrizione" valueField="codice" giasFormControlName="specie" [filterable]="true" [valuePrimitive]="false"
+                                        (open)="openDdl($event, 'specie')">
+            </gias-drop-down-template-s>
+        </div>
+
+        <div class="col-12 col-sm-4" *ngIf="!UtilizzoTerrenoForm.controls['terrenoNudo'].value">
+            <gias-drop-down-template-s name="Varietà" [obligatory]="true" textField="descrizione"
+                                        valueField="codice" giasFormControlName="varieta" [filterable]="true" [valuePrimitive]="false"
+                                        (open)="openDdl($event, 'varieta')">
+            </gias-drop-down-template-s>
+        </div>
+
+    </div>
+
+</div>

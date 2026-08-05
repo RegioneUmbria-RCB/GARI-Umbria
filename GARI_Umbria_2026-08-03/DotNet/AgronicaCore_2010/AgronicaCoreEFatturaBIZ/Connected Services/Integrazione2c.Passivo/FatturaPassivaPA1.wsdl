@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.2csolution.it/FatturaPassivaPA/V1.0" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FatturaPassivaPA" targetNamespace="http://www.2csolution.it/FatturaPassivaPA/V1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.2csolution.it/FatturaPassivaPA/V1.0/Imports">
+      <xsd:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd0" namespace="http://www.2csolution.it/FatturaPassivaPA/V1.0" />
+      <xsd:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd2" namespace="http://2csolution.it/FatturaPassivaPA/DTO/V1.0" />
+      <xsd:import schemaLocation="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IFatturaPassivaPA_Contatto_InputMessage">
+    <wsdl:part name="parameters" element="tns:Contatto" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_Contatto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ContattoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetVersion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersion" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetVersion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetAutorizzazioni_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutorizzazioni" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetAutorizzazioni_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAutorizzazioniResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFatture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFatture" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFatture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattureParam_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattureParam" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattureParam_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattureParamResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattureFilter_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattureFilter" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattureFilter_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattureFilterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattura_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFattura" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFattura_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFatturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFatturaDisinbustata_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFatturaDisinbustata" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetFatturaDisinbustata_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFatturaDisinbustataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetEsito_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEsito" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_GetEsito_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEsitoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetProtocollo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProtocollo" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetProtocollo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProtocolloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetProtocolloSezionale_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetProtocolloSezionale" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetProtocolloSezionale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetProtocolloSezionaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiProtocollo_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiProtocollo" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiProtocollo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiProtocolloResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiProtocolloLottoIntero_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiProtocolloLottoIntero" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiProtocolloLottoIntero_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiProtocolloLottoInteroResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiRegistrazione_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiRegistrazione" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_SetDatiRegistrazione_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetDatiRegistrazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_CreaEsitoCommittente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreaEsitoCommittente" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_CreaEsitoCommittente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreaEsitoCommittenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_CreaEsitoCommittenteSingolaFattura_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreaEsitoCommittenteSingolaFattura" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_CreaEsitoCommittenteSingolaFattura_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreaEsitoCommittenteSingolaFatturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_ResetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetData" />
+  </wsdl:message>
+  <wsdl:message name="IFatturaPassivaPA_ResetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFatturaPassivaPA">
+    <wsdl:operation name="Contatto">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/Contatto" message="tns:IFatturaPassivaPA_Contatto_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/ContattoResponse" message="tns:IFatturaPassivaPA_Contatto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersion">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetVersion" message="tns:IFatturaPassivaPA_GetVersion_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetVersionResponse" message="tns:IFatturaPassivaPA_GetVersion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutorizzazioni">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetAutorizzazioni" message="tns:IFatturaPassivaPA_GetAutorizzazioni_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetAutorizzazioniResponse" message="tns:IFatturaPassivaPA_GetAutorizzazioni_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFatture">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatture" message="tns:IFatturaPassivaPA_GetFatture_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureResponse" message="tns:IFatturaPassivaPA_GetFatture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFattureParam">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureParam" message="tns:IFatturaPassivaPA_GetFattureParam_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureParamResponse" message="tns:IFatturaPassivaPA_GetFattureParam_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFattureFilter">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureFilter" message="tns:IFatturaPassivaPA_GetFattureFilter_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattureFilterResponse" message="tns:IFatturaPassivaPA_GetFattureFilter_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFattura">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFattura" message="tns:IFatturaPassivaPA_GetFattura_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatturaResponse" message="tns:IFatturaPassivaPA_GetFattura_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFatturaDisinbustata">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatturaDisinbustata" message="tns:IFatturaPassivaPA_GetFatturaDisinbustata_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetFatturaDisinbustataResponse" message="tns:IFatturaPassivaPA_GetFatturaDisinbustata_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEsito">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetEsito" message="tns:IFatturaPassivaPA_GetEsito_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/GetEsitoResponse" message="tns:IFatturaPassivaPA_GetEsito_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProtocollo">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocollo" message="tns:IFatturaPassivaPA_SetProtocollo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocolloResponse" message="tns:IFatturaPassivaPA_SetProtocollo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetProtocolloSezionale">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocolloSezionale" message="tns:IFatturaPassivaPA_SetProtocolloSezionale_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetProtocolloSezionaleResponse" message="tns:IFatturaPassivaPA_SetProtocolloSezionale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiProtocollo">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocollo" message="tns:IFatturaPassivaPA_SetDatiProtocollo_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocolloResponse" message="tns:IFatturaPassivaPA_SetDatiProtocollo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiProtocolloLottoIntero">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocolloLottoIntero" message="tns:IFatturaPassivaPA_SetDatiProtocolloLottoIntero_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiProtocolloLottoInteroResponse" message="tns:IFatturaPassivaPA_SetDatiProtocolloLottoIntero_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetDatiRegistrazione">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiRegistrazione" message="tns:IFatturaPassivaPA_SetDatiRegistrazione_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/SetDatiRegistrazioneResponse" message="tns:IFatturaPassivaPA_SetDatiRegistrazione_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaEsitoCommittente">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittente" message="tns:IFatturaPassivaPA_CreaEsitoCommittente_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittenteResponse" message="tns:IFatturaPassivaPA_CreaEsitoCommittente_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreaEsitoCommittenteSingolaFattura">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittenteSingolaFattura" message="tns:IFatturaPassivaPA_CreaEsitoCommittenteSingolaFattura_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/CreaEsitoCommittenteSingolaFatturaResponse" message="tns:IFatturaPassivaPA_CreaEsitoCommittenteSingolaFattura_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetData">
+      <wsdl:input wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/ResetData" message="tns:IFatturaPassivaPA_ResetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.2csolution.it/FatturaPassivaPA/V1.0/IFatturaPassivaPA/ResetDataResponse" message="tns:IFatturaPassivaPA_ResetData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="FatturaPassivaPA">
+    <wsdl:port name="BasicHttpsBinding_IFatturaPassivaPA" binding="i0:BasicHttpsBinding_IFatturaPassivaPA">
+      <soap:address location="https://testfppa.solutiondocondemand.com/CustomerTest/FatturaPassivaPA.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

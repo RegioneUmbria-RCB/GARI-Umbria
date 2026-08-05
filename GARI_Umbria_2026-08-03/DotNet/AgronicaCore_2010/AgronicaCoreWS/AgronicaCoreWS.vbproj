@@ -1,0 +1,1702 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{E3042099-32B8-4306-B02F-DDC3C6D43877}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreWS</RootNamespace>
+    <AssemblyName>AgronicaCoreWS</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="Cloudmersive.APIClient.NET.VirusScan, Version=3.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cloudmersive.APIClient.NET.VirusScan.3.0.5\lib\net452\Cloudmersive.APIClient.NET.VirusScan.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.12.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="JsonSubTypes, Version=1.8.0.0, Culture=neutral, PublicKeyToken=ee75fc290dbc1176, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonSubTypes.1.8.0\lib\net47\JsonSubTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Agenda\Note.asmx" />
+    <Content Include="Agenda\Agenda.asmx" />
+    <Content Include="Agenda\CentriAziendali.asmx" />
+    <Content Include="Agenda\Profilazione.asmx" />
+    <None Include="Agenda\JSON_Impianti.json" />
+    <Content Include="Agenda\Impianti.asmx" />
+    <None Include="Agenda\JSON_Agenda.json" />
+    <Content Include="Agenda\MenuBS_WS.asmx" />
+    <Content Include="Agenda\SmartTractor_HubIoT.asmx" />
+    <Content Include="AgronicaChatGPT\ChatGPT.asmx" />
+    <Content Include="AgronicaControlli_2010\AlberoAnagrafica2017.aspx" />
+    <Content Include="AgronicaControlli_2010\AlberoGerarchiaImprese2021.aspx" />
+    <Content Include="AgronicaCoreDPI\DPI.asmx" />
+    <Content Include="AgronicaCoreDPI\PianoConcimazione.asmx" />
+    <Content Include="AgronicaCoreLabControlloQualita\Articoli.asmx" />
+    <Content Include="AgronicaCoreModello\ContabilitaHelper.asmx" />
+    <Content Include="AgronicaCoreModello\Operazione_Agenda_Utility.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_Categorie.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_CauseChiusura.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_Gravita.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_LineeImpianti.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_Rischi.asmx" />
+    <Content Include="AgronicaCorePannelloDiControllo\NC_Stati.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert_Area.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert_Avvisi.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert_Elenco.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert_Entita.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Alert_Tipologia.asmx" />
+    <Content Include="AgronicaCoreScadenziario\Tipo_Entita_Chiavi.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Gruppi_Utente.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\ImportazioneUtenti.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Impostazioni_R.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Imprese_Impostazioni_R.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Imprese_Impostazioni_W.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Permessi_W.asmx" />
+    <Content Include="GiasApp\StatisticheApp.asmx" />
+    <Content Include="Importazioni\ImportContatti.asmx" />
+    <Content Include="Importazioni\ImportSquadre.asmx" />
+    <Content Include="Importazioni\ImportFabbricati.asmx" />
+    <Content Include="IsAlive\IsAlive.asmx" />
+    <Content Include="Logging\LogInterscambio.asmx" />
+    <Content Include="Messaggistica\MessaggisticaWS.asmx" />
+    <Content Include="Metaschema\Agea.asmx" />
+    <Content Include="Metaschema\Contribute.asmx" />
+    <Content Include="Metaschema\Lista_Anomalie.asmx" />
+    <Content Include="Analisi\Analisi_Modello.asmx" />
+    <Content Include="Importazioni\ImportAnalisiTerreno.asmx" />
+    <Content Include="Importazioni\ImportAttivita.asmx" />
+    <Content Include="Metaschema\Lista_Patologie.asmx" />
+    <Content Include="Anagrafica\DatiPrevisionaliColture.asmx" />
+    <Content Include="Metaschema\GruppiUtente.asmx" />
+    <Content Include="Metaschema\Tessiture.asmx" />
+    <Content Include="Metaschema\TransizioniDiStato.asmx" />
+    <Content Include="NewAgri\NewAgri.asmx" />
+    <Content Include="Pratiche\Pratiche_W.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Impostazioni_W.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Impostazioni_R.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Visibilita.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Widgets.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Permessi_R.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_Tipologie.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_W.asmx" />
+    <Content Include="AgronicaCoreUtentiBIZ\Utenti_R.asmx" />
+    <Content Include="AgronicaCoreUtility\KendoGridServerExport.asmx" />
+    <Content Include="AgronicaCoreUtility\CaricaListControl.asmx" />
+    <Content Include="AgronicaCoreUtility\Configurazione_Siti.asmx" />
+    <Content Include="AgronicaCoreUtility\Gestione_Menu.asmx" />
+    <Content Include="AgronicaCoreVisite\Visite.asmx" />
+    <Content Include="AgronicaCoreVisite\Visite_Categoria1.asmx" />
+    <Content Include="AgronicaCoreVisite\Visite_Categoria2.asmx" />
+    <Content Include="Anagrafica\AnagraficaSharedFns.asmx" />
+    <Content Include="Anagrafica\Appezzamento.asmx" />
+    <Content Include="Anagrafica\Area_Omogenea.asmx" />
+    <Content Include="Anagrafica\Analisi_Testata.asmx" />
+    <Content Include="Anagrafica\Catasto.asmx" />
+    <Content Include="Anagrafica\ParamEntrataXSpecieVarieta.asmx" />
+    <Content Include="Anagrafica\Campi.asmx" />
+    <Content Include="Anagrafica\CentroAziendale.asmx" />
+    <Content Include="Anagrafica\Fabbricati.asmx" />
+    <Content Include="Anagrafica\GerarchiaImprese.asmx" />
+    <Content Include="Anagrafica\Prodotti.asmx" />
+    <Content Include="Anagrafica\Indirizzi.asmx" />
+    <Content Include="Anagrafica\Contatti.asmx" />
+    <Content Include="Anagrafica\Imprese.asmx" />
+    <Content Include="Anagrafica\Intestazione.asmx" />
+    <None Include="Anagrafica\JSON_ParcoMacchine.json" />
+    <Content Include="Anagrafica\Macchine.asmx" />
+    <Content Include="Anagrafica\ParticelleCatastali.asmx" />
+    <Content Include="Anagrafica\PianoConcimazione_Testata.asmx" />
+    <Content Include="Anagrafica\Planning.asmx" />
+    <Content Include="Anagrafica\Reg_Impianto.asmx" />
+    <Content Include="Anagrafica\Stalla_Raggruppamenti.asmx" />
+    <Content Include="Anagrafica\UnitaMisuraAlternativa.asmx" />
+    <Content Include="Anagrafica\Zoo_Animali.asmx" />
+    <Content Include="AntiVirus\AntiVirus.asmx" />
+    <Content Include="Audit\Audit.asmx" />
+    <Content Include="AuthDispatcher\AuthDispatcher.asmx" />
+    <Content Include="Biologico\Biologico.asmx" />
+    <Content Include="Budget\Appezzamento.asmx" />
+    <Content Include="Budget\Budget.asmx" />
+    <Content Include="Budget\Campi.asmx" />
+    <Content Include="Budget\Catasto.asmx" />
+    <Content Include="Budget\CentroAziendale.asmx" />
+    <Content Include="Budget\Impianti.asmx" />
+    <Content Include="Budget\Imprese.asmx" />
+    <Content Include="Budget\Macchine.asmx" />
+    <Content Include="Budget\ParticelleCatastali.asmx" />
+    <Content Include="Budget\Reg_Impianto.asmx" />
+    <Content Include="Cache\CacheManager.asmx" />
+    <Content Include="Cantine\RegistriTelematici.asmx" />
+    <Content Include="Codifiche\CAC_Codifica_InfoAggiuntive.asmx" />
+    <Content Include="Codifiche\CAC_Codifica_ProdottiAziendali.asmx" />
+    <Content Include="Contab\AgendaStatistiche.asmx" />
+    <Content Include="Contab\Listini_Prezzi.asmx" />
+    <Content Include="Contab\Causali_Fattura.asmx" />
+    <Content Include="Contab\Pagamenti_Causali.asmx" />
+    <Content Include="Contab\RicercaDocumenti.asmx" />
+    <Content Include="Contab\AttivitaXCentri_Aziendali.asmx" />
+    <Content Include="Contab\Imputazioni_Fasi.asmx" />
+    <Content Include="Contab\Attivita.asmx" />
+    <Content Include="Contab\AttivitaXOperazioni.asmx" />
+    <Content Include="Contab\Cespiti.asmx" />
+    <Content Include="Contab\Contabilita.asmx" />
+    <Content Include="Contab\Giacenze.asmx" />
+    <Content Include="Contab\PUA_Testata.asmx" />
+    <Content Include="Contab\Risorse_Umane_Classificazioni.asmx" />
+    <Content Include="Contab\Ricette.asmx" />
+    <Content Include="Contab\Conti.asmx" />
+    <Content Include="Contab\Note_Intervento.asmx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Esportazioni\EsportazioniExcel.asmx" />
+    <Content Include="FreshAndFood\Lavorazioni.asmx" />
+    <Content Include="FreshAndFood\FreshAndFood.asmx" />
+    <Content Include="GHG\GHG_WS.asmx" />
+    <Content Include="GiasApp\GiasAppWS.asmx" />
+    <Content Include="GiasApp\SincroDatiApp.asmx" />
+    <Content Include="GiasVersioneCorrente.txt" />
+    <Content Include="Gis\GIS.aspx" />
+    <Content Include="Gis\EntrateUscite.asmx" />
+    <Content Include="Gis\GisWS.asmx" />
+    <Content Include="Global.asax" />
+    <Content Include="GruppiRaccolta\GruppiRaccolta.asmx" />
+    <Content Include="IOT\DatiReteAcqua.asmx" />
+    <Content Include="Localization.asmx" />
+    <Content Include="Menu\Menu.asmx" />
+    <Content Include="Metaschema\Lista_Causali_Morte.asmx" />
+    <Content Include="Metaschema\Localizzazioni.asmx" />
+    <Content Include="Metaschema\Fertilizzazione.asmx" />
+    <Content Include="Metaschema\Biologico.asmx" />
+    <Content Include="Metaschema\ImpostazioniUtente.asmx" />
+    <Content Include="Metaschema\Tecnologie_Sementi.asmx" />
+    <Content Include="Metaschema\UnitaDiMisura.asmx" />
+    <Content Include="Metaschema\Conduzione.asmx" />
+    <Content Include="Metaschema\DosiEtichetta.asmx" />
+    <Content Include="Metaschema\FormeGiuridiche.asmx" />
+    <Content Include="Metaschema\Macchine.asmx" />
+    <Content Include="Metaschema\MetodoProduzione.asmx" />
+    <Content Include="Metaschema\QualitaCatasto.asmx" />
+    <Content Include="Metaschema\Regioni.asmx" />
+    <Content Include="Metaschema\Nazioni.asmx" />
+    <Content Include="Metaschema\Lista_Categorie_Animali.asmx" />
+    <Content Include="Metaschema\Epoche.asmx" />
+    <Content Include="Metaschema\Lista_Generi_Animali.asmx" />
+    <Content Include="Metaschema\Lista_IndirizziProd_Animali.asmx" />
+    <Content Include="Metaschema\Lista_Razze_Animali.asmx" />
+    <Content Include="Metaschema\Lista_Specie_Animali.asmx" />
+    <Content Include="Metaschema\SpecieVegetalixAvversita.asmx" />
+    <Content Include="Metaschema\GruppoAvversita.asmx" />
+    <Content Include="Metaschema\CategorieXUnitaMisura.asmx" />
+    <Content Include="Metaschema\FormeAllevamento.asmx" />
+    <Content Include="Metaschema\Avversita.asmx" />
+    <Content Include="Metaschema\GruppoVarietale.asmx" />
+    <Content Include="Metaschema\ImpiantiIrrigazioni.asmx" />
+    <Content Include="Metaschema\Portinnesti.asmx" />
+    <Content Include="Metaschema\PUA_Regolamenti.asmx" />
+    <Content Include="Metaschema\Copertura.asmx" />
+    <Content Include="Metaschema\Accise.asmx" />
+    <Content Include="Metaschema\Categorie_Magazzino.asmx" />
+    <Content Include="Metaschema\Cultivar.asmx" />
+    <Content Include="Metaschema\FasiCicloColturale.asmx" />
+    <Content Include="Metaschema\GruppoFinalita.asmx" />
+    <Content Include="Metaschema\ISTAT.asmx" />
+    <Content Include="Metaschema\Macrousi.asmx" />
+    <Content Include="Metaschema\Operazioni.asmx" />
+    <Content Include="Metaschema\Rapporti_Contabili.asmx" />
+    <Content Include="Metaschema\Regolamenti.asmx" />
+    <Content Include="Metaschema\IVA_Aliquote.asmx" />
+    <Content Include="Metaschema\SpecieVegetali.asmx" />
+    <Content Include="Metaschema\Rilievi.asmx" />
+    <Content Include="Metaschema\TipologieSementi.asmx" />
+    <Content Include="Metaschema\UMA.asmx" />
+    <Content Include="Metaschema\Widgets.asmx" />
+    <Content Include="Metaschema\Zone.asmx" />
+    <Content Include="Meteo\Meteo.asmx" />
+    <Content Include="Notifiche\Notifiche.asmx" />
+    <Content Include="Provisioning\Provisioning.asmx" />
+    <Content Include="Provisioning\Resources\BodyEmailConfermaRetail.html" />
+    <Content Include="RequisitiStabilimento\RequisitiStabilimento.asmx" />
+    <Content Include="Shared\VisteGriglia.asmx" />
+    <Content Include="SianWS\SianWS.asmx" />
+    <Content Include="Sincro\Zespri\Canopy\CanopyAnagraficaWS.asmx" />
+    <Content Include="Utility.asmx" />
+    <Content Include="Test.asmx" />
+    <Content Include="Valutazioni\Valutazioni.asmx" />
+    <Content Include="Versione.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Widgets\WidgetIndiciProduttivitaWS.asmx" />
+    <Content Include="Widgets\Widgets_Dati.asmx" />
+    <Content Include="Zoo\ZooAnimali.asmx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agenda\Note.asmx.vb">
+      <DependentUpon>Note.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\Agenda.asmx.vb">
+      <DependentUpon>Agenda.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\CentriAziendali.asmx.vb">
+      <DependentUpon>CentriAziendali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\Profilazione.asmx.vb">
+      <DependentUpon>Profilazione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\Impianti.asmx.vb">
+      <DependentUpon>Impianti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\MenuBS_WS.asmx.vb">
+      <DependentUpon>MenuBS_WS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Agenda\SmartTractor_HubIoT.asmx.vb">
+      <DependentUpon>SmartTractor_HubIoT.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaChatGPT\ChatGPT.asmx.vb">
+      <DependentUpon>ChatGPT.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaControlli_2010\AlberoAnagrafica2017.aspx.designer.vb">
+      <DependentUpon>AlberoAnagrafica2017.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgronicaControlli_2010\AlberoAnagrafica2017.aspx.vb">
+      <DependentUpon>AlberoAnagrafica2017.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgronicaControlli_2010\AlberoGerarchiaImprese2021.aspx.designer.vb">
+      <DependentUpon>AlberoGerarchiaImprese2021.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgronicaControlli_2010\AlberoGerarchiaImprese2021.aspx.vb">
+      <DependentUpon>AlberoGerarchiaImprese2021.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreDPI\DPI.asmx.vb">
+      <DependentUpon>DPI.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreDPI\PianoConcimazione.asmx.vb">
+      <DependentUpon>PianoConcimazione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreLabControlloQualita\Articoli.asmx.vb">
+      <DependentUpon>Articoli.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreModello\ContabilitaHelper.asmx.vb">
+      <DependentUpon>ContabilitaHelper.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreModello\Operazione_Agenda_Utility.asmx.vb">
+      <DependentUpon>Operazione_Agenda_Utility.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_Categorie.asmx.vb">
+      <DependentUpon>NC_Categorie.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_CauseChiusura.asmx.vb">
+      <DependentUpon>NC_CauseChiusura.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_Gravita.asmx.vb">
+      <DependentUpon>NC_Gravita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_LineeImpianti.asmx.vb">
+      <DependentUpon>NC_LineeImpianti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_Rischi.asmx.vb">
+      <DependentUpon>NC_Rischi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCorePannelloDiControllo\NC_Stati.asmx.vb">
+      <DependentUpon>NC_Stati.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert.asmx.vb">
+      <DependentUpon>Alert.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert_Area.asmx.vb">
+      <DependentUpon>Alert_Area.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert_Avvisi.asmx.vb">
+      <DependentUpon>Alert_Avvisi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert_Elenco.asmx.vb">
+      <DependentUpon>Alert_Elenco.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert_Entita.asmx.vb">
+      <DependentUpon>Alert_Entita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Alert_Tipologia.asmx.vb">
+      <DependentUpon>Alert_Tipologia.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreScadenziario\Tipo_Entita_Chiavi.asmx.vb">
+      <DependentUpon>Tipo_Entita_Chiavi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.pt.Designer.vb">
+      <DependentUpon>ResProfilazione.pt.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.fr.Designer.vb">
+      <DependentUpon>ResProfilazione.fr.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.en.Designer.vb">
+      <DependentUpon>ResProfilazione.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResProfilazione.resx</DependentUpon>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Gruppi_Utente.asmx.vb">
+      <DependentUpon>Gruppi_Utente.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\ImportazioneUtenti.asmx.vb">
+      <DependentUpon>ImportazioneUtenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Impostazioni_R.asmx.vb">
+      <DependentUpon>Impostazioni_R.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Imprese_Impostazioni_R.asmx.vb">
+      <DependentUpon>Imprese_Impostazioni_R.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Imprese_Impostazioni_W.asmx.vb">
+      <DependentUpon>Imprese_Impostazioni_W.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Permessi_W.asmx.vb">
+      <DependentUpon>Utenti_Permessi_W.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GiasApp\StatisticheApp.asmx.vb">
+      <DependentUpon>StatisticheApp.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Importazioni\ImportContatti.asmx.vb">
+      <DependentUpon>ImportContatti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Importazioni\ImportSquadre.asmx.vb">
+      <DependentUpon>ImportSquadre.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Importazioni\ImportFabbricati.asmx.vb">
+      <DependentUpon>ImportFabbricati.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IsAlive\IsAlive.asmx.vb">
+      <DependentUpon>IsAlive.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Logging\LogInterscambio.asmx.vb">
+      <DependentUpon>LogInterscambio.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Agea.asmx.vb">
+      <DependentUpon>Agea.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Contribute.asmx.vb">
+      <DependentUpon>Contribute.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Anomalie.asmx.vb">
+      <DependentUpon>Lista_Anomalie.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Analisi\Analisi_Modello.asmx.vb">
+      <DependentUpon>Analisi_Modello.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Importazioni\ImportAnalisiTerreno.asmx.vb">
+      <DependentUpon>ImportAnalisiTerreno.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Importazioni\ImportAttivita.asmx.vb">
+      <DependentUpon>ImportAttivita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Messaggistica\MessaggisticaWS.asmx.vb">
+      <DependentUpon>MessaggisticaWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Patologie.asmx.vb">
+      <DependentUpon>Lista_Patologie.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\DatiPrevisionaliColture.asmx.vb">
+      <DependentUpon>DatiPrevisionaliColture.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\GruppiUtente.asmx.vb">
+      <DependentUpon>GruppiUtente.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Tessiture.asmx.vb">
+      <DependentUpon>Tessiture.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\TransizioniDiStato.asmx.vb">
+      <DependentUpon>TransizioniDiStato.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NewAgri\NewAgri.asmx.vb">
+      <DependentUpon>NewAgri.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Pratiche\Pratiche_W.asmx.vb">
+      <DependentUpon>Pratiche_W.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Impostazioni_W.asmx.vb">
+      <DependentUpon>Utenti_Impostazioni_W.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Impostazioni_R.asmx.vb">
+      <DependentUpon>Utenti_Impostazioni_R.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Visibilita.asmx.vb">
+      <DependentUpon>Utenti_Visibilita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Widgets.asmx.vb">
+      <DependentUpon>Utenti_Widgets.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Permessi_R.asmx.vb">
+      <DependentUpon>Utenti_Permessi_R.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_Tipologie.asmx.vb">
+      <DependentUpon>Utenti_Tipologie.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_W.asmx.vb">
+      <DependentUpon>Utenti_W.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtentiBIZ\Utenti_R.asmx.vb">
+      <DependentUpon>Utenti_R.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtility\KendoGridServerExport.asmx.vb">
+      <DependentUpon>KendoGridServerExport.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtility\CaricaListControl.asmx.vb">
+      <DependentUpon>CaricaListControl.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtility\Configurazione_Siti.asmx.vb">
+      <DependentUpon>Configurazione_Siti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreUtility\Gestione_Menu.asmx.vb">
+      <DependentUpon>Gestione_Menu.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreVisite\Visite.asmx.vb">
+      <DependentUpon>Visite.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreVisite\Visite_Categoria1.asmx.vb">
+      <DependentUpon>Visite_Categoria1.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgronicaCoreVisite\Visite_Categoria2.asmx.vb">
+      <DependentUpon>Visite_Categoria2.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\AnagraficaSharedFns.asmx.vb">
+      <DependentUpon>AnagraficaSharedFns.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Appezzamento.asmx.vb">
+      <DependentUpon>Appezzamento.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Area_Omogenea.asmx.vb">
+      <DependentUpon>Area_Omogenea.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Analisi_Testata.asmx.vb">
+      <DependentUpon>Analisi_Testata.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Catasto.asmx.vb">
+      <DependentUpon>Catasto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\ParamEntrataXSpecieVarieta.asmx.vb">
+      <DependentUpon>ParamEntrataXSpecieVarieta.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Campi.asmx.vb">
+      <DependentUpon>Campi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\CentroAziendale.asmx.vb">
+      <DependentUpon>CentroAziendale.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Fabbricati.asmx.vb">
+      <DependentUpon>Fabbricati.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\GerarchiaImprese.asmx.vb">
+      <DependentUpon>GerarchiaImprese.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Prodotti.asmx.vb">
+      <DependentUpon>Prodotti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Indirizzi.asmx.vb">
+      <DependentUpon>Indirizzi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Contatti.asmx.vb">
+      <DependentUpon>Contatti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Imprese.asmx.vb">
+      <DependentUpon>Imprese.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Intestazione.asmx.vb">
+      <DependentUpon>Intestazione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Macchine.asmx.vb">
+      <DependentUpon>Macchine.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\ParticelleCatastali.asmx.vb">
+      <DependentUpon>ParticelleCatastali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\PianoConcimazione_Testata.asmx.vb">
+      <DependentUpon>PianoConcimazione_Testata.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Planning.asmx.vb">
+      <DependentUpon>Planning.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Reg_Impianto.asmx.vb">
+      <DependentUpon>Reg_Impianto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Stalla_Raggruppamenti.asmx.vb">
+      <DependentUpon>Stalla_Raggruppamenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\UnitaMisuraAlternativa.asmx.vb">
+      <DependentUpon>UnitaMisuraAlternativa.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Anagrafica\Zoo_Animali.asmx.vb">
+      <DependentUpon>Zoo_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AntiVirus\AntiVirus.asmx.vb">
+      <DependentUpon>AntiVirus.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Audit\Audit.asmx.vb">
+      <DependentUpon>Audit.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AuthDispatcher\AuthDispatcher.asmx.vb">
+      <DependentUpon>AuthDispatcher.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Biologico\Biologico.asmx.vb">
+      <DependentUpon>Biologico.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Appezzamento.asmx.vb">
+      <DependentUpon>Appezzamento.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Budget.asmx.vb">
+      <DependentUpon>Budget.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Campi.asmx.vb">
+      <DependentUpon>Campi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Catasto.asmx.vb">
+      <DependentUpon>Catasto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\CentroAziendale.asmx.vb">
+      <DependentUpon>CentroAziendale.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Impianti.asmx.vb">
+      <DependentUpon>Impianti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Imprese.asmx.vb">
+      <DependentUpon>Imprese.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Macchine.asmx.vb">
+      <DependentUpon>Macchine.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\ParticelleCatastali.asmx.vb">
+      <DependentUpon>ParticelleCatastali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Budget\Reg_Impianto.asmx.vb">
+      <DependentUpon>Reg_Impianto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cache\CacheManager.asmx.vb">
+      <DependentUpon>CacheManager.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Cantine\RegistriTelematici.asmx.vb">
+      <DependentUpon>RegistriTelematici.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Codifiche\CAC_Codifica_InfoAggiuntive.asmx.vb">
+      <DependentUpon>CAC_Codifica_InfoAggiuntive.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Codifiche\CAC_Codifica_ProdottiAziendali.asmx.vb">
+      <DependentUpon>CAC_Codifica_ProdottiAziendali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\AgendaStatistiche.asmx.vb">
+      <DependentUpon>AgendaStatistiche.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Listini_Prezzi.asmx.vb">
+      <DependentUpon>Listini_Prezzi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Causali_Fattura.asmx.vb">
+      <DependentUpon>Causali_Fattura.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Pagamenti_Causali.asmx.vb">
+      <DependentUpon>Pagamenti_Causali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\RicercaDocumenti.asmx.vb">
+      <DependentUpon>RicercaDocumenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\AttivitaXCentri_Aziendali.asmx.vb">
+      <DependentUpon>AttivitaXCentri_Aziendali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Imputazioni_Fasi.asmx.vb">
+      <DependentUpon>Imputazioni_Fasi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Attivita.asmx.vb">
+      <DependentUpon>Attivita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\AttivitaXOperazioni.asmx.vb">
+      <DependentUpon>AttivitaXOperazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Cespiti.asmx.vb">
+      <DependentUpon>Cespiti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Contabilita.asmx.vb">
+      <DependentUpon>Contabilita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Giacenze.asmx.vb">
+      <DependentUpon>Giacenze.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\PUA_Testata.asmx.vb">
+      <DependentUpon>PUA_Testata.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Risorse_Umane_Classificazioni.asmx.vb">
+      <DependentUpon>Risorse_Umane_Classificazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Ricette.asmx.vb">
+      <DependentUpon>Ricette.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Conti.asmx.vb">
+      <DependentUpon>Conti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Contab\Note_Intervento.asmx.vb">
+      <DependentUpon>Note_Intervento.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dtos\CentroAziendale.vb" />
+    <Compile Include="Esportazioni\EsportazioniExcel.asmx.vb">
+      <DependentUpon>EsportazioniExcel.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FreshAndFood\Lavorazioni.asmx.vb">
+      <DependentUpon>Lavorazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FreshAndFood\FreshAndFood.asmx.vb">
+      <DependentUpon>FreshAndFood.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FreshAndFood\UtilityFreshAndFood.vb" />
+    <Compile Include="GHG\GHG_WS.asmx.vb">
+      <DependentUpon>GHG_WS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GiasApp\GiasAppWS.asmx.vb">
+      <DependentUpon>GiasAppWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="GiasApp\SincroDatiApp.asmx.vb">
+      <SubType>Component</SubType>
+      <DependentUpon>SincroDatiApp.asmx</DependentUpon>
+    </Compile>
+    <Compile Include="Gis\GIS.aspx.designer.vb">
+      <DependentUpon>GIS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Gis\GIS.aspx.vb">
+      <DependentUpon>GIS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Gis\EntrateUscite.asmx.vb">
+      <DependentUpon>EntrateUscite.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gis\GisWS.asmx.vb">
+      <DependentUpon>GisWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gis\UtilityGis.vb" />
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GruppiRaccolta\GruppiRaccolta.asmx.vb">
+      <DependentUpon>GruppiRaccolta.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IOT\DatiReteAcqua.asmx.vb">
+      <DependentUpon>DatiReteAcqua.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Localization.asmx.vb">
+      <DependentUpon>Localization.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Menu\Menu.asmx.vb">
+      <DependentUpon>Menu.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Causali_Morte.asmx.vb">
+      <DependentUpon>Lista_Causali_Morte.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Localizzazioni.asmx.vb">
+      <DependentUpon>Localizzazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Fertilizzazione.asmx.vb">
+      <DependentUpon>Fertilizzazione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Biologico.asmx.vb">
+      <DependentUpon>Biologico.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\ImpostazioniUtente.asmx.vb">
+      <DependentUpon>ImpostazioniUtente.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Tecnologie_Sementi.asmx.vb">
+      <DependentUpon>Tecnologie_Sementi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\UnitaDiMisura.asmx.vb">
+      <DependentUpon>UnitaDiMisura.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Conduzione.asmx.vb">
+      <DependentUpon>Conduzione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\DosiEtichetta.asmx.vb">
+      <DependentUpon>DosiEtichetta.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\FormeGiuridiche.asmx.vb">
+      <DependentUpon>FormeGiuridiche.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Macchine.asmx.vb">
+      <DependentUpon>Macchine.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\MetodoProduzione.asmx.vb">
+      <DependentUpon>MetodoProduzione.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\QualitaCatasto.asmx.vb">
+      <DependentUpon>QualitaCatasto.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Regioni.asmx.vb">
+      <DependentUpon>Regioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Nazioni.asmx.vb">
+      <DependentUpon>Nazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Epoche.asmx.vb">
+      <DependentUpon>Epoche.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Categorie_Animali.asmx.vb">
+      <DependentUpon>Lista_Categorie_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Generi_Animali.asmx.vb">
+      <DependentUpon>Lista_Generi_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_IndirizziProd_Animali.asmx.vb">
+      <DependentUpon>Lista_IndirizziProd_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Razze_Animali.asmx.vb">
+      <DependentUpon>Lista_Razze_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Lista_Specie_Animali.asmx.vb">
+      <DependentUpon>Lista_Specie_Animali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\SpecieVegetalixAvversita.asmx.vb">
+      <DependentUpon>SpecieVegetalixAvversita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\GruppoAvversita.asmx.vb">
+      <DependentUpon>GruppoAvversita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\CategorieXUnitaMisura.asmx.vb">
+      <DependentUpon>CategorieXUnitaMisura.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\FormeAllevamento.asmx.vb">
+      <DependentUpon>FormeAllevamento.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\GruppoVarietale.asmx.vb">
+      <DependentUpon>GruppoVarietale.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\ImpiantiIrrigazioni.asmx.vb">
+      <DependentUpon>ImpiantiIrrigazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Portinnesti.asmx.vb">
+      <DependentUpon>Portinnesti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Avversita.asmx.vb">
+      <DependentUpon>Avversita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\PUA_Regolamenti.asmx.vb">
+      <DependentUpon>PUA_Regolamenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Copertura.asmx.vb">
+      <DependentUpon>Copertura.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Accise.asmx.vb">
+      <DependentUpon>Accise.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Categorie_Magazzino.asmx.vb">
+      <DependentUpon>Categorie_Magazzino.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Cultivar.asmx.vb">
+      <DependentUpon>Cultivar.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\FasiCicloColturale.asmx.vb">
+      <DependentUpon>FasiCicloColturale.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\GruppoFinalita.asmx.vb">
+      <DependentUpon>GruppoFinalita.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\ISTAT.asmx.vb">
+      <DependentUpon>ISTAT.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Macrousi.asmx.vb">
+      <DependentUpon>Macrousi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Operazioni.asmx.vb">
+      <DependentUpon>Operazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Rapporti_Contabili.asmx.vb">
+      <DependentUpon>Rapporti_Contabili.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Regolamenti.asmx.vb">
+      <DependentUpon>Regolamenti.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\IVA_Aliquote.asmx.vb">
+      <DependentUpon>IVA_Aliquote.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\SpecieVegetali.asmx.vb">
+      <DependentUpon>SpecieVegetali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Rilievi.asmx.vb">
+      <DependentUpon>Rilievi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\TipologieSementi.asmx.vb">
+      <DependentUpon>TipologieSementi.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\UMA.asmx.vb">
+      <DependentUpon>UMA.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Widgets.asmx.vb">
+      <DependentUpon>Widgets.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Metaschema\Zone.asmx.vb">
+      <DependentUpon>Zone.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Meteo\Meteo.asmx.vb">
+      <DependentUpon>Meteo.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Models\AlberoModels.vb" />
+    <Compile Include="Notifiche\Notifiche.asmx.vb">
+      <DependentUpon>Notifiche.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Provisioning\Provisioning.asmx.vb">
+      <DependentUpon>Provisioning.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RequisitiStabilimento\RequisitiStabilimento.asmx.vb">
+      <DependentUpon>RequisitiStabilimento.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Shared\VisteGriglia.asmx.vb">
+      <DependentUpon>VisteGriglia.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SianWS\SianWS.asmx.vb">
+      <DependentUpon>SianWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Sincro\Zespri\Canopy\CanopyAnagraficaWS.asmx.vb">
+      <DependentUpon>CanopyAnagraficaWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utility.asmx.vb">
+      <DependentUpon>Utility.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="OggettoRisposta.vb" />
+    <Compile Include="Test.asmx.vb">
+      <DependentUpon>Test.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="utils\Utils.vb" />
+    <Compile Include="Valutazioni\Valutazioni.asmx.vb">
+      <DependentUpon>Valutazioni.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Versione.aspx.designer.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Versione.aspx.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\WidgetIndiciProduttivitaWS.asmx.vb">
+      <DependentUpon>WidgetIndiciProduttivitaWS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Widgets\Widgets_Dati.asmx.vb">
+      <DependentUpon>Widgets_Dati.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Zoo\ZooAnimali.asmx.vb">
+      <DependentUpon>ZooAnimali.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Gis\App_LocalResources\gissmart.js.en.resx" />
+    <Content Include="Gis\App_LocalResources\gissmart.js.resx" />
+    <EmbeddedResource Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.pt.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResProfilazione.pt.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.fr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResProfilazione.fr.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResProfilazione.en.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgronicaCoreUtentiBIZ\App_GlobalResources\ResProfilazione.resx">
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResProfilazione1.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <Content Include="Gis\App_LocalResources\gissmart.js.pt.resx" />
+    <Content Include="Gis\App_LocalResources\gissmart.js.fr.resx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="appsettings.config" />
+    <Content Include="Gis\SmallTest.json" />
+    <Content Include="machineKey.config" />
+    <Content Include="httpCookies.config" />
+    <Content Include="sessionState.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{a1f2f959-43c8-4fe6-b159-96652ff9fb2b}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisBIZ\AgronicaCoreGisBIZ.vbproj">
+      <Project>{8942b252-809e-4fe1-9284-a3fdd7a174ea}</Project>
+      <Name>AgronicaCoreGisBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{d6963b76-054b-4070-8bad-dc9cc4c6f8d7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaControlliGIS\AgronicaControlliGIS.vbproj">
+      <Project>{4d08ae6b-07ee-4c0b-a6eb-6b7f3f292f41}</Project>
+      <Name>AgronicaControlliGIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaPrecisionFarming\AgronicaPrecisionFarming.vbproj">
+      <Project>{4393FB26-26D4-44E7-B74B-BBAEC9676CEA}</Project>
+      <Name>AgronicaPrecisionFarming</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaSHP\AgronicaSHPWrapper\AgronicaSHPWrapper.vbproj">
+      <Project>{bf0b317e-c293-4529-b2d5-57e3a92b5fde}</Project>
+      <Name>AgronicaSHPWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GiasOnline_2010\AgronicaControlli_2010\AgronicaControlli_2010.vbproj">
+      <Project>{74C51F78-05DC-4FED-B012-40BA23E87B77}</Project>
+      <Name>AgronicaControlli_2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agronica.ChatGPT\Agronica.ChatGPT.vbproj">
+      <Project>{e5172a10-10d2-435e-bb5f-a7364d0ba7a0}</Project>
+      <Name>Agronica.ChatGPT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agronica.Helpers.GDAL\Agronica.Helpers.GDALHelper.vbproj">
+      <Project>{BF6C161C-92EA-46E5-A06D-2E1BD8C66C83}</Project>
+      <Name>Agronica.Helpers.GDALHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agronica.Helper.Retail\Agronica.Helpers.Retail.vbproj">
+      <Project>{48838442-1A35-4CA7-A5CE-DF39EED4AB14}</Project>
+      <Name>Agronica.Helpers.Retail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaAlgoritmiProiezione\AgronicaAlgoritmiProiezione.vbproj">
+      <Project>{01A6779C-2AD5-4D57-A086-3B1A922E5EE5}</Project>
+      <Name>AgronicaAlgoritmiProiezione</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAgeaBIZ\AgronicaCoreAgeaBIZ.vbproj">
+      <Project>{f3532b1c-37d9-481a-b997-cfff85227ed3}</Project>
+      <Name>AgronicaCoreAgeaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23F6D423-BC4F-4D05-A52A-67FA593234C8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAuditBIZ\AgronicaCoreAuditBIZ.vbproj">
+      <Project>{52eb7bc4-e605-4af6-942f-235cf183808a}</Project>
+      <Name>AgronicaCoreAuditBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAuditDAL\AgronicaCoreAuditDAL.vbproj">
+      <Project>{696ef322-2ed5-48a4-bc26-fe40897dd0d8}</Project>
+      <Name>AgronicaCoreAuditDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreBudgetBIZ\AgronicaCoreBudgetBIZ.vbproj">
+      <Project>{a341c3fe-8112-48f3-b23b-0bf841364b21}</Project>
+      <Name>AgronicaCoreBudgetBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreBudgetDAL\AgronicaCoreBudgetDAL.vbproj">
+      <Project>{6e6de40f-1a6e-431d-85db-8d143612d45b}</Project>
+      <Name>AgronicaCoreBudgetDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09C9A140-71E4-430E-9E87-73C69E876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415C-E4F0-4EE5-BF6A-C0BD9BF3276B}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabObject\AgronicaCoreContabObject.vbproj">
+      <Project>{9AB17B93-43AC-40BD-9BDF-70803269DAC1}</Project>
+      <Name>AgronicaCoreContabObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDatiSensoriBIZ\AgronicaCoreDatiSensoriBIZ.vbproj">
+      <Project>{2b97070f-0d82-4564-9005-773573058bee}</Project>
+      <Name>AgronicaCoreDatiSensoriBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDemetraBIZ\AgronicaCoreDemetraBIZ.vbproj">
+      <Project>{5b028fa0-5a20-44d5-9392-3ad735695ac4}</Project>
+      <Name>AgronicaCoreDemetraBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDpiBIZ\AgronicaCoreDpiBIZ.vbproj">
+      <Project>{d0a726b3-fb25-4885-981e-4e741b35b843}</Project>
+      <Name>AgronicaCoreDpiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042AAF-F178-4337-BB88-C3332E989B51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreFiltroneBIZ\AgronicaCoreFiltroneBIZ.vbproj">
+      <Project>{c4e18f90-eda2-4a6b-aa07-2f9a40ffc27f}</Project>
+      <Name>AgronicaCoreFiltroneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{EFD63249-9CBE-4CB4-90D2-E881341C3B96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGHGBIZ\AgronicaCoreGHGBIZ.vbproj">
+      <Project>{1593AAEE-6E43-4A39-8460-89691C731B24}</Project>
+      <Name>AgronicaCoreGHGBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGiasAppBIZ\AgronicaCoreGiasAppBIZ.vbproj">
+      <Project>{48e158de-e5df-4883-b868-e75225956623}</Project>
+      <Name>AgronicaCoreGiasAppBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGHGBIZ\AgronicaCoreGHGBIZ.vbproj">
+      <Project>{1593AAEE-6E43-4A39-8460-89691C731B24}</Project>
+      <Name>AgronicaCoreGHGBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreImpostazioniUtenteBIZ\AgronicaCoreImpostazioniUtenteBIZ.vbproj">
+      <Project>{2d0746e4-36b3-4d22-95e1-363d1864b559}</Project>
+      <Name>AgronicaCoreImpostazioniUtenteBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreInterscambioBIZ\AgronicaCoreInterscambioBIZ.vbproj">
+      <Project>{1C0B7485-42AE-46C1-AD5B-F1F3FC2D9C2A}</Project>
+      <Name>AgronicaCoreInterscambioBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreIOTBIZ\AgronicaCoreIOTBIZ.vbproj">
+      <Project>{de62c14a-6cd7-46df-9c0f-a8422e24cc47}</Project>
+      <Name>AgronicaCoreIOTBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreIOTDAL\AgronicaCoreIOTDAL.vbproj">
+      <Project>{924edb31-b4c9-4f72-a287-8c7bf4f733bb}</Project>
+      <Name>AgronicaCoreIOTDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMailBIZ\AgronicaCoreMailBIZ.vbproj">
+      <Project>{66ea66a8-e530-47e9-891f-bca7a8203636}</Project>
+      <Name>AgronicaCoreMailBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMapper\AgronicaCoreMapper.vbproj">
+      <Project>{ee5fa564-529b-4ee7-beb9-4d2080755642}</Project>
+      <Name>AgronicaCoreMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMessaggisticaBIZ\AgronicaCoreMessaggisticaBIZ.vbproj">
+      <Project>{d9600576-aa06-456a-b606-5c9bf03eaee5}</Project>
+      <Name>AgronicaCoreMessaggisticaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMeteoBiz\AgronicaCoreMeteoBiz.vbproj">
+      <Project>{2bcba11f-11cf-410c-810c-b651c33f7db1}</Project>
+      <Name>AgronicaCoreMeteoBiz</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMeteoCommon\AgronicaCoreMeteoCommon.vbproj">
+      <Project>{9F5D72DE-02F6-456F-A3D4-66FFA250F848}</Project>
+      <Name>AgronicaCoreMeteoCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMeteoDAL\AgronicaCoreMeteoDAL.vbproj">
+      <Project>{f4ba9f1b-1dc9-4d06-a545-4369c9a87d86}</Project>
+      <Name>AgronicaCoreMeteoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModelliPrevisionaliBIZ\AgronicaCoreModelliPrevisionaliBIZ.vbproj">
+      <Project>{66e58f35-ad9d-48d5-af87-a7a66493d1c8}</Project>
+      <Name>AgronicaCoreModelliPrevisionaliBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModelliPrevisionaliCommon\AgronicaCoreModelliPrevisionaliCommon.vbproj">
+      <Project>{6055E877-3036-4230-A428-F5C2F67F014E}</Project>
+      <Name>AgronicaCoreModelliPrevisionaliCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModelloInSviluppo\AgronicaCoreModelloInSviluppo.vbproj">
+      <Project>{a45c88be-abe7-4761-9e0c-5125a5cd94fd}</Project>
+      <Name>AgronicaCoreModelloInSviluppo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30FDD803-F95C-4F68-BE23-6538127E149D}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreNotifichePushBIZ\AgronicaCoreNotifichePushBIZ.vbproj">
+      <Project>{16b11741-8e65-4466-89dd-19bfc3fa4bd4}</Project>
+      <Name>AgronicaCoreNotifichePushBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePannelloDiControlloBIZ\AgronicaCorePannelloDiControlloBIZ.vbproj">
+      <Project>{90b76964-d0e8-4e09-88da-7ff32cb04b2c}</Project>
+      <Name>AgronicaCorePannelloDiControlloBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePianidiCampionamentoBIZ\AgronicaCorePianidiCampionamentoBIZ.vbproj">
+      <Project>{089454D4-F3F4-45CB-B61A-C3FDD47302FE}</Project>
+      <Name>AgronicaCorePianidiCampionamentoBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePianoConcimazioneBIZ\AgronicaCorePianoConcimazioneBIZ.vbproj">
+      <Project>{8e64885e-19ad-4476-9094-1b5ef239cd43}</Project>
+      <Name>AgronicaCorePianoConcimazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePrecisionFarmingBIZ\AgronicaCorePrecisionFarmingBIZ.vbproj">
+      <Project>{ce04a1b9-822f-4d89-b083-601405a69fca}</Project>
+      <Name>AgronicaCorePrecisionFarmingBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProvisioningBIZ\AgronicaCoreProvisioningBIZ.vbproj">
+      <Project>{1c177e8f-a241-439d-aef3-8f64d3755c00}</Project>
+      <Name>AgronicaCoreProvisioningBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePUA_BIZ\AgronicaCorePUA_BIZ.vbproj">
+      <Project>{beeef80e-d6a8-4941-998c-fd1b172c2cc8}</Project>
+      <Name>AgronicaCorePUA_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreRegVinoBIZ\AgronicaCoreRegVinoBIZ.vbproj">
+      <Project>{2ddb910e-c9e2-44f4-bcf7-85d68da91dfc}</Project>
+      <Name>AgronicaCoreRegVinoBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreRegVinoDAL\AgronicaCoreRegVinoDAL.vbproj">
+      <Project>{9CEADAEB-7E5F-4D58-96C7-4D2E505D0021}</Project>
+      <Name>AgronicaCoreRegVinoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenziario\AgronicaCoreScadenziario_DAL.vbproj">
+      <Project>{ae20eaf7-05ab-40e3-a238-33454e0ce715}</Project>
+      <Name>AgronicaCoreScadenziario_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ\AgronicaCoreScadenziario_BIZ.vbproj">
+      <Project>{c3cd5baa-f8bf-462b-8533-e1a61c376fd7}</Project>
+      <Name>AgronicaCoreScadenziario_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreSementieriBIZ\AgronicaCoreSementieriBIZ.vbproj">
+      <Project>{68ecf108-682d-4122-9666-2f93b8d0aacc}</Project>
+      <Name>AgronicaCoreSementieriBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7cf14ae3-4b42-4488-a29e-e4b698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreStampeBIZ\AgronicaCoreStampeBIZ.vbproj">
+      <Project>{0e3e9758-c7e3-403c-be23-c1ebb701e390}</Project>
+      <Name>AgronicaCoreStampeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21FDABC5-4CAF-43DE-800A-1AE7B4CB7CBB}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiRetailBIZ\AgronicaCoreUtentiRetailBIZ.vbproj">
+      <Project>{c396de7f-982d-4681-ba72-5ed195e1efcf}</Project>
+      <Name>AgronicaCoreUtentiRetailBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtilityVersioni\AgronicaCoreUtilityVersioni.vbproj">
+      <Project>{65a1e92b-5c81-4d83-ade7-1c4af0ef9963}</Project>
+      <Name>AgronicaCoreUtilityVersioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0c28e3ab-427e-45d5-b6b3-43d3378af207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVisiteBIZ\AgronicaCoreVisiteBIZ.vbproj">
+      <Project>{96403adf-ca30-460e-9167-cfe2deeaef19}</Project>
+      <Name>AgronicaCoreVisiteBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreWinsortBIZ\AgronicaCoreWinsortBIZ.vbproj">
+      <Project>{C5CED13A-F8FA-4211-B877-F47CDA99B1AB}</Project>
+      <Name>AgronicaCoreWinsortBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreWinsortDAL\AgronicaCoreWinsortDAL.vbproj">
+      <Project>{1F546853-1BD0-421D-997C-492C4F667531}</Project>
+      <Name>AgronicaCoreWinsortDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56b64bcf-a26c-4ac3-86fe-7f8114b1b3d9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreZooDAL\AgronicaCoreZooDAL.vbproj">
+      <Project>{2332b409-b2e5-4a70-9f33-589f4bf7522f}</Project>
+      <Name>AgronicaCoreZooDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FiltroRicerca\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>SET ORIGINPATH="$(SolutionDir)packages\GDAL.Native.3.9.1\build\gdal\*.*"
+SET RELEASEPATH="$(SolutionDir)AgronicaCoreWS\bin\gdal"
+
+ECHO "Origine: %25ORIGINPATH%25"
+ECHO "Destinazione: %25RELEASEPATH%25"
+
+rmdir /S /Q %25RELEASEPATH%25
+mkdir %25RELEASEPATH%25
+xcopy /E %25ORIGINPATH%25 %25RELEASEPATH%25</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

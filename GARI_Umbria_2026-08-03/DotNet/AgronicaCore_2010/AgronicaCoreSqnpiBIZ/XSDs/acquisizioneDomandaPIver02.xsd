@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Claudia Cipriani (FINSIEL SPA) -->
+<xs:schema targetNamespace="http://cooperazione.sian.it/schema/interscambio/" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns="http://cooperazione.sian.it/schema/interscambio/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="invioDomandaRequest">
+		<xs:annotation>
+			<xs:documentation>Domanda di adesione alla Produzione Integrata. Schema xsd per l'invio della domanda e la consultazione dello stato
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="identificativoFlusso">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="30"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="dataAdesione" type="xs:date"/>
+				<xs:element name="skOdc">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger"/>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="cuaaOp">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="11"/>
+							<xs:maxLength value="16"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="destinatariResponso">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="mail" maxOccurs="unbounded">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:maxLength value="200"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="skTipoDomanda">
+					<xs:simpleType>
+						<xs:restriction base="xs:positiveInteger">
+							<xs:minInclusive value="1"/>
+							<xs:maxInclusive value="3"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="protocollo" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="50"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="soggetti">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="soggetto" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="cuaa">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="11"/>
+													<xs:maxLength value="16"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="datiCatastali" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Questo ramo del file XML può essere popolato SOLTANTO in caso di invio della DOMANDA COMPLETA</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="datoCatastale" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="codiIstaProv">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="codiIstaComu">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="seziCens" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="1"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="foglio" type="xs:integer"/>
+																<xs:element name="numeroParticella">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="5"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="subalterno" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="4"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="dettagliTerreno">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="dettaglioTerreno" type="dettaglioTerrenoType" maxOccurs="unbounded"/>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="codificaFascicolo" type="codificaFascicoloType"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="impiantiDiLavorazione" minOccurs="0">
+											<xs:annotation>
+												<xs:documentation>Questo ramo del file XML può essere popolato SOLTANTO in caso di invio della DOMANDA COMPLETA</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="impiantoDiLavorazione" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="skTipoImp" type="xs:nonNegativeInteger"/>
+																<xs:element name="skDestImp" type="xs:positiveInteger" minOccurs="0"/>
+																<xs:element name="codiIstaProv" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="codiIstaComu" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="3"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="seziCens" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="1"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="foglio" type="xs:integer" minOccurs="0"/>
+																<xs:element name="numeroParticella" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="5"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="subalterno" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="4"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="flagOnline" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="1"/>
+																			<xs:enumeration value="0"/>
+																			<xs:enumeration value="1"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="autorizzazione" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="30"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="inizioAutor" type="xs:date" minOccurs="0"/>
+																<xs:element name="fineAutor" type="xs:date" minOccurs="0"/>
+																<xs:element name="indirizzo" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="100"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="denominazione" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:maxLength value="100"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="flagUso" minOccurs="0">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:length value="1"/>
+																			<xs:enumeration value="E"/>
+																			<xs:enumeration value="P"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+																<xs:element name="prodotti" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="prodotto" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="skProdOrig" type="xs:positiveInteger"/>
+																						<xs:element name="skProdFina" type="xs:positiveInteger" minOccurs="0"/>
+																						<xs:element name="skUniMisu" type="xs:positiveInteger"/>
+																						<xs:element name="stimaQntProd">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:decimal">
+																									<xs:fractionDigits value="2"/>
+																									<xs:minExclusive value="0"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="allegati" minOccurs="0">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="allegato" maxOccurs="unbounded">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="documento">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:base64Binary"/>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="descrizione" minOccurs="0">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="1000"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																						<xs:element name="nome">
+																							<xs:simpleType>
+																								<xs:restriction base="xs:string">
+																									<xs:maxLength value="100"/>
+																								</xs:restriction>
+																							</xs:simpleType>
+																						</xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="datiTerreni" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Questo ramo del file XML deve essere popolato SOLTANTO in caso di invio della DOMANDA SEMPLIFICATA</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="datoTerreno" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="codificaFascicolo" type="codificaFascicoloType"/>
+										<xs:element name="dettaglioTerreno" type="dettaglioTerrenoType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="skTipoScopo" type="xs:positiveInteger"/>
+				<xs:element name="marchioRegionale" default="0" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0"/>
+							<xs:maxInclusive value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="codificaFascicoloType">
+		<xs:annotation>
+			<xs:documentation>codifica fascicolo</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="tripletta" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Questo ramo è ALTERNATIVO al ramo "quintupletta"</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codiMacrouso">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiProdotto">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiVarieta" default="000" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="quintupletta" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Questo ramo è ALTERNATIVO al ramo "tripletta"</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="codiOccuSuolo">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiDestUso" default="000">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiUso" default="000" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiQual" default="000" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="codiVarieta" default="000" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="3"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="dettaglioTerrenoType">
+		<xs:annotation>
+			<xs:documentation>informazioni relative al dettaglio del terreno</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="superficieInvestita" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="resaMedia">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="numeroCicli" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger">
+						<xs:maxInclusive value="9"/>
+						<xs:minInclusive value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="skTipoColt" type="xs:positiveInteger" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AuthenticateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="isAuthenticate">
+        <s:complexType />
+      </s:element>
+      <s:element name="isAuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isAuthenticateResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarichi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarichiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarichiResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLavorazione">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLavorazioneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLavorazioneResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProdFinito">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Limit" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProdFinitoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProdFinitoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="isAuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:isAuthenticate" />
+  </wsdl:message>
+  <wsdl:message name="isAuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:isAuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarichiSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarichi" />
+  </wsdl:message>
+  <wsdl:message name="GetCarichiSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarichiResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNCSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNC" />
+  </wsdl:message>
+  <wsdl:message name="GetNCSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNCResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLavorazioneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLavorazione" />
+  </wsdl:message>
+  <wsdl:message name="GetLavorazioneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLavorazioneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProdFinitoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProdFinito" />
+  </wsdl:message>
+  <wsdl:message name="GetProdFinitoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProdFinitoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wstraccSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <wsdl:input message="tns:AuthenticateSoapIn" />
+      <wsdl:output message="tns:AuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="isAuthenticate">
+      <wsdl:input message="tns:isAuthenticateSoapIn" />
+      <wsdl:output message="tns:isAuthenticateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarichi">
+      <wsdl:input message="tns:GetCarichiSoapIn" />
+      <wsdl:output message="tns:GetCarichiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNC">
+      <wsdl:input message="tns:GetNCSoapIn" />
+      <wsdl:output message="tns:GetNCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLavorazione">
+      <wsdl:input message="tns:GetLavorazioneSoapIn" />
+      <wsdl:output message="tns:GetLavorazioneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProdFinito">
+      <wsdl:input message="tns:GetProdFinitoSoapIn" />
+      <wsdl:output message="tns:GetProdFinitoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wstraccSoap" type="tns:wstraccSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://tempuri.org/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthenticate">
+      <soap:operation soapAction="http://tempuri.org/isAuthenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarichi">
+      <soap:operation soapAction="http://tempuri.org/GetCarichi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNC">
+      <soap:operation soapAction="http://tempuri.org/GetNC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLavorazione">
+      <soap:operation soapAction="http://tempuri.org/GetLavorazione" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProdFinito">
+      <soap:operation soapAction="http://tempuri.org/GetProdFinito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wstraccSoap12" type="tns:wstraccSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap12:operation soapAction="http://tempuri.org/Authenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="isAuthenticate">
+      <soap12:operation soapAction="http://tempuri.org/isAuthenticate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarichi">
+      <soap12:operation soapAction="http://tempuri.org/GetCarichi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNC">
+      <soap12:operation soapAction="http://tempuri.org/GetNC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLavorazione">
+      <soap12:operation soapAction="http://tempuri.org/GetLavorazione" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProdFinito">
+      <soap12:operation soapAction="http://tempuri.org/GetProdFinito" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wstracc">
+    <wsdl:port name="wstraccSoap" binding="tns:wstraccSoap">
+      <soap:address location="https://tti.ttitalia.it:92/wstracc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wstraccSoap12" binding="tns:wstraccSoap12">
+      <soap12:address location="https://tti.ttitalia.it:92/wstracc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

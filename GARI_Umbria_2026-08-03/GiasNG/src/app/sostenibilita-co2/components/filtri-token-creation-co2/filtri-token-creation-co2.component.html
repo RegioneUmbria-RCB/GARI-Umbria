@@ -1,0 +1,44 @@
+<div class="filters-section k-p-4" [formGroup]="form">
+
+  <div class="row k-mb-3">
+    <div class="col-12">
+      <gias-drop-down-template
+        id="filieraDdl"
+        [name]="'sco2_label_filiera' | transloco"
+        giasFormControlName="filiera"
+        [listItems]="filiereList"
+        textField="RagioneSociale"
+        valueField="Piva"
+        [valuePrimitive]="true"
+        [obligatory]="true"
+        [filterable]="true"
+        (open)="onFiliereOpen()"
+        (filterChange)="handleFiliereFilter($event)">
+      </gias-drop-down-template>
+    </div>
+  </div>
+
+  <div class="row k-mb-4">
+    <div class="col-12">
+      <gias-drop-down-template
+        id="annoDdl"
+        [name]="'sco2_label_anno' | transloco"
+        giasFormControlName="anno"
+        [listItems]="anniList"
+        [valuePrimitive]="true"
+        [obligatory]="true"
+        [filterable]="false">
+      </gias-drop-down-template>
+    </div>
+  </div>
+
+  <!-- <div class="action-buttons k-d-flex k-gap-2">
+    <button
+      kendoButton
+      [fillMode]="'outline'"
+      (click)="resetFilters()">
+      {{ 'sco2_btn_reset' | transloco }}
+    </button>
+  </div> -->
+
+</div>

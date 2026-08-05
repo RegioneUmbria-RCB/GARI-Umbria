@@ -1,0 +1,100 @@
+.scroll-arrow {
+    opacity: 0.2;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/*
+.scroll-arrow:hover {
+    opacity: 0.8 !important;
+}
+*/
+
+.summary-chart {
+    height: 100%;
+    margin: 0px 2px;
+    cursor: pointer;
+}
+
+.summary-chart-child {
+    position: relative;
+    height: 50%;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.summary-chart-child-hidden {
+    display: none;
+}
+
+.summary-text {
+    font-size: 11px;
+    height: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    padding: 0 7px;
+}
+
+.riepilogo-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.riepilogo-page {
+    position: relative;
+    height: 100%;
+    cursor: default;
+}
+
+.riepilogo-column {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
+.tooltip+.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 2;
+}
+
+.tooltip:hover+.tooltiptext {
+    visibility: visible;
+}
+
+.tooltip-table tr td {
+    color: white !important;
+}
+
+.riepilogo-container .riepilogo-column .summary-text {
+  font-size: 11px;
+  height: 1.5em;
+  text-align: center;
+  font-weight: bold;
+  padding: 0 7px;
+  color: black !important;
+}
+
+.scroll-arrow:hover {
+  color: black;
+}
+
+.scroll-arrow {
+  color: #c8c8c8;
+  opacity: 1;
+}

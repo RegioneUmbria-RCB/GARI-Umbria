@@ -1,0 +1,118 @@
+<div class="pesate-widget-container">
+  <div class="pesate-widget-header">
+    <form [formGroup]="filterForm" class="k-d-flex k-align-items-center k-gap-2">
+      <label class="k-label">{{ 'widget_pesate_aggregation_label' | transloco }}</label>
+      <gias-drop-down-template-s
+        [listItems]="aggregationLevels"
+        textField="label"
+        valueField="value"
+        [valuePrimitive]="true"
+        [giasFormControlName]="'aggregationLevel'"
+        [style.width.px]="160"
+      >
+      </gias-drop-down-template-s>
+    </form>
+
+    <div class="k-d-flex k-align-items-center k-gap-2">
+      <kendo-buttongroup selection="single">
+        <button
+          kendoButton
+          [selected]="viewMode === 'grid'"
+          (click)="setViewMode('grid')"
+          [title]="'widget_pesate_view_grid' | transloco">
+          <i class="fa fa-table" aria-hidden="true"></i>
+        </button>
+        <button
+          kendoButton
+          [selected]="viewMode === 'chart'"
+          (click)="setViewMode('chart')"
+          [title]="'widget_pesate_view_chart' | transloco">
+          <i class="fa fa-bar-chart" aria-hidden="true"></i>
+        </button>
+      </kendo-buttongroup>
+
+      <div class="pesate-widget-export-buttons" *ngIf="viewMode === 'grid'">
+        <button
+          type="button"
+          class="btn btn-sm btn-primary btn-primary-fill"
+          (click)="onExportCsv()"
+          [title]="'widget_pesate_export_csv' | transloco"
+        >
+          <i class="fa fa-download" aria-hidden="true"></i>
+          CSV
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm btn-primary btn-primary-fill"
+          (click)="onExportXls()"
+          [title]="'widget_pesate_export_xls' | transloco"
+        >
+          <i class="fa fa-download" aria-hidden="true"></i>
+          XLS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid view: always rendered so rowsLoaded fires and chartData stays populated -->
+  <div [hidden]="viewMode !== 'grid'" class="pesate-widget-content">
+    <gias-kendo-grid class="kendo-grid-no-shadows" (rowsLoaded)="onRowsLoaded()">
+      <ng-template #noRecordsTemplateRef>
+        <div>
+          <p>{{ 'widget_pesate_no_records' | transloco }}</p>
+        </div>
+      </ng-template>
+    </gias-kendo-grid>
+  </div>
+
+  <!-- Chart view -->
+  <div *ngIf="viewMode === 'chart'" class="pesate-chart-section">
+    <ng-container *ngIf="chartData.length > 0; else noChartData">
+      <kendo-chart>
+        <kendo-chart-tooltip [visible]="false"></kendo-chart-tooltip>
+
+        <kendo-chart-legend position="bottom" [labels]="{ font: '11px sans-serif' }"></kendo-chart-legend>
+
+        <kendo-chart-category-axis>
+          <kendo-chart-category-axis-item
+            [categories]="chartCategories"
+            [labels]="{ rotation: -40, font: '11px sans-serif' }">
+          </kendo-chart-category-axis-item>
+        </kendo-chart-category-axis>
+
+        <kendo-chart-value-axis>
+          <kendo-chart-value-axis-item
+            [name]="'deviation'"
+            [labels]="{ visible: false }">
+          </kendo-chart-value-axis-item>
+        </kendo-chart-value-axis>
+
+        <kendo-chart-series>
+          <kendo-chart-series-item
+            type="column"
+            [data]="chartBarData"
+            [field]="'value'"
+            [colorField]="'color'"
+            axis="deviation"
+            [name]="'widget_pesate_chart_deviation' | transloco"
+            [gap]="0.3">
+            <kendo-chart-series-item-labels
+              [visible]="true"
+              [content]="columnLabelContent"
+              [font]="'10px sans-serif'"
+              position="outsideEnd">
+            </kendo-chart-series-item-labels>
+          </kendo-chart-series-item>
+
+
+        </kendo-chart-series>
+      </kendo-chart>
+    </ng-container>
+
+    <ng-template #noChartData>
+      <div class="pesate-no-data">
+        <p>{{ 'widget_pesate_no_records' | transloco }}</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

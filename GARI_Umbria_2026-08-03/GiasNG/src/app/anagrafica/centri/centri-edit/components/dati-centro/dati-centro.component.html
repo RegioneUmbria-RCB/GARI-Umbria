@@ -1,0 +1,88 @@
+<div *ngIf="apiLoaded | async">
+</div>
+<div [formGroup]="datiFormGroup">
+  <h5 class="card-title mb-2">{{ 'Indirizzo' | transloco }}</h5>
+  <div formArrayName="indirizzi">
+    <ng-container *ngFor="let indirizzo of indirizzi.controls; let i = index">
+      <div [formGroupName]="i">
+        <div class="card-text" [formGroup]="indirizzo">
+          <div class="card-text" [formGroupName]="'indirizzo'">
+            <div class="row form-row">
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-text-template [name]="'centro.Via' | transloco" giasFormControlName="via"
+                  [clearButton]="true" [isDisabled]="isFormDisabled">
+                </gias-text-template>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-text-template [name]="'centro.Frazione' | transloco" giasFormControlName="frazione"
+                    [clearButton]="true" [isDisabled]="isFormDisabled">
+                </gias-text-template>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4" *ngIf="italiaSelezionata" formGroupName="istatComune">
+                <gias-drop-down-template [name]="'centro.Provincia' | transloco" giasFormControlName="prov"
+                  [listItems]="provincie" [textField]="'Provincia_Des'" [valueField]="'Istat_Prov'" [obligatory]="true"
+                  [clearButton]="true" [isDisabled]="isFormDisabled" [valuePrimitive]="false">
+                </gias-drop-down-template>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4" *ngIf="italiaSelezionata" formGroupName="istatComune">
+                <gias-drop-down-template [name]="'centro.Comune' | transloco" giasFormControlName="com"
+                  [listItems]="comune" [textField]="'descrizione'" [valueField]="'codice'" [obligatory]="true"
+                  [clearButton]="true" [isDisabled]="isFormDisabled" [valuePrimitive]="false">
+                </gias-drop-down-template>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-text-template [name]="'centro.CAP' | transloco" giasFormControlName="cap" [obligatory]="true"
+                  [clearButton]="true" [isDisabled]="isFormDisabled">
+                </gias-text-template>
+              </div>
+              <div class="col-12 col-sm-6 col-md-4">
+                <gias-drop-down-template [name]="'centro.Stato' | transloco" giasFormControlName="stato"
+                  [listItems]="stati" [textField]="'descrizione'" [valueField]="'codice'" [obligatory]="true"
+                  [clearButton]="true" [isDisabled]="isFormDisabled" [valuePrimitive]="false">
+                </gias-drop-down-template>
+              </div>
+            </div>
+            <div class="row form-row">
+              <div class="col-12">
+                <gias-text-template [name]="'centro.Nota' | transloco" giasFormControlName="note" [obligatory]="true"
+                  [clearButton]="true" [isDisabled]="isFormDisabled">
+                </gias-text-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <h5 class="card-title " style="text-align: center;">{{'centro.Geolocalizzazione2' | transloco}}</h5>
+  <div class="card-text">
+    <div class="row form-row">
+      <div class="col-12 col-md-4 col-lg-5 form-group">
+        <gias-text-template [name]="'centro.Lat.' | transloco" [obligatory]="true" [clearButton]="true"
+          [isDisabled]="true" giasFormControlName="lat">
+        </gias-text-template>
+      </div>
+      <div class="col-12 col-md-4 col-lg-5 form-group">
+        <gias-text-template [name]="'centro.Long.' | transloco" [obligatory]="true" [clearButton]="true"
+          [isDisabled]="true" giasFormControlName="lng">
+        </gias-text-template>
+      </div>
+      <div class="col-12 col-md-4 col-lg-2">
+        &shy;
+        <button  class="btn btn-primary-fill k-button" [disabled]="false" (click)="onClickGeolocalizza()" style="width: 100%"
+          for="'centro.Geolocalizzazione' | transloco">
+          <fa-icon size="lg" [icon]="['fas', 'location-pin']" aria-hidden="true"></fa-icon>
+          {{"centro.Geolocalizzazione" | transloco}}
+        </button>
+      </div>
+    </div>
+  </div>
+  <h5 class="card-title " style="text-align: center;">{{'centro.Rubrica' | transloco}}</h5>
+  <div class="card-text">
+    <div class="row form-row">
+      <div class="col-12">
+        <gias-kendo-grid class="kendo-grid-no-shadows"></gias-kendo-grid>
+      </div>
+    </div>
+  </div>
+</div>

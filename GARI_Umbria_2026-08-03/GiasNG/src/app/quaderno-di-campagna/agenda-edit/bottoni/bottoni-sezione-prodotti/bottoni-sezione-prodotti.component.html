@@ -1,0 +1,39 @@
+<!-- rimuovo completamente l'elemento se non deve stampare bottoni (ottimizza lo spacing)-->
+<div class="row" *ngIf="MostraBtn_Sezione_Prodotti()">
+    <div id="parent" class="col gias-buttons-prodotti-container">
+
+        <!-- Profitosan mostrato solo nei formulati -->
+        <div kendoTooltip *ngIf="MostraBtnProfitosan()">
+            <button class="btn btn-profitosan btn-primary btn-sm btn-primary-fill"
+                    (click)="Info()"
+                    [title]="'qdc.lblBancheDatiResource1.Text' | transloco">
+                <div class="k-icon k-i-btn_profitosan"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="MostraBtnGestioneMagazzini()" id="ImgBtn_MovimentiMagazzino_div">
+            <button class="btn btn-primary btn-sm btn-white-fill"
+                    (click)="redirectToApriGestioneMagazzini()"
+                    [title]="'qdc.MovimentiMagazzino.Text' | transloco">
+                <div class="k-icon k-i-btn_movimenti_magazzino"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="MostraBtnCaricoMagazzino()">
+            <button class="btn btn-primary btn-sm btn-white-fill"
+                    (click)="ApriCaricoMagazzino()"
+                    [title]="'qdc.CaricoMagazzino.Text' | transloco">
+                <div class="k-icon k-i-btn_carico_magazzino"></div>
+            </button>
+        </div>
+
+        <div kendoTooltip *ngIf="MostraBtnDDT_Ricevuto()">
+            <button class="btn btn-primary btn-sm btn-white-fill"
+                    (click)="ApriNuovoDDTRicevuto()"
+                    [title]="'qdc.NuovoDDTRicevuto' | transloco">
+                <div class="k-icon k-i-btn_nuovo_ddt_ricevuto"></div>
+            </button>
+        </div>
+
+    </div>
+</div>

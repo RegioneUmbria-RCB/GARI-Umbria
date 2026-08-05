@@ -1,0 +1,1042 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="http://emcs.dgtaxud.ec/v10/types" xmlns:tms="http://emcs.dgtaxud.ec/v10/tms" xmlns:tcl="http://emcs.dgtaxud.ec/v10/tcl" xmlns:doc="http://emcs.dgtaxud.ec/v10/doc" xmlns:ie="http://emcs.dgtaxud.ec/v10/cd815/ie" targetNamespace="http://emcs.dgtaxud.ec/v10/cd815/ie" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<!--=========================================-->
+	<!--===== IE815:N_AAD_SUB -->
+	<!--===== SUBMITTED DRAFT OF E-AAD -->
+	<!--=========================================-->
+	<!--===== Imports =====-->
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/types" schemaLocation="types_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tms" schemaLocation="tms_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tcl" schemaLocation="tcl_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/doc" schemaLocation="doc_2.xsd"/>
+	<!--===== Root Element =====-->
+	<xs:element name="CD815A" type="ie:CD815AType"/>
+	<!--===== EMCS Data Groups Declarations =====-->
+	<xs:complexType name="CD815AType">
+		<xs:sequence>
+			<xs:element ref="tms:HeaderMessage"/>
+			<xs:element name="BodyMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SubmittedDraftOfEaad" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="ie:SubmittedDraftOfEaadType"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NoSupplyProductsDraft" type="ie:NoSupplyProductsDraftType" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="SubmittedDraftComplementaryDetails" type="ie:SubmittedDraftComplementaryDetailsType" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<!--===== IE Specific Data Groups Declarations =====-->
+	<xs:complexType name="SubmittedDraftOfEaadType">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordA">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:HeaderEaad"/>
+						<xs:element ref="ie:ConsignorTrader"/>
+						<xs:element ref="ie:DeliveryPlaceTrader"/>
+						<xs:element ref="ie:DeliveryPlaceCustomsOffice"/>
+						<xs:element ref="ie:CompetentAuthorityDispatchOffice"/>
+						<xs:element ref="ie:ConsigneeTrader"/>
+						<xs:element ref="ie:ComplementConsigneeTrader"/>
+						<xs:element ref="ie:PlaceOfDispatchTrader"/>
+						<xs:element ref="ie:DispatchImportOffice"/>
+						<xs:element ref="ie:TransportMode"/>
+						<xs:element ref="ie:TransportArrangerTrader"/>
+						<xs:element ref="ie:FirstTransporterTrader"/>
+						<xs:element ref="ie:EaadDraft"/>
+						<xs:element ref="ie:MovementGuarantee"/>
+						<xs:element ref="ie:GuarantorTrader"/>
+						<xs:element ref="ie:ImportDAU"/>
+						<xs:element ref="ie:TransportDetails"/>
+						<xs:element ref="ie:DocumentCertificate"/>
+						<xs:element ref="ie:BodyEaad"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NoSupplyProductsDraftType">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordB">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:ConsigneeCumulativeTrader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SubmittedDraftComplementaryDetailsType">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordC">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:BodyEaad"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HeaderEaad" type="ie:HeaderEaadType"/>
+	<xs:element name="ConsignorTrader" type="ie:ConsignorTraderType"/>
+	<xs:element name="PlaceOfDispatchTrader" type="ie:PlaceOfDispatchTraderType"/>
+	<xs:element name="DispatchImportOffice" type="ie:DispatchImportOfficeType"/>
+	<xs:element name="CompetentAuthorityDispatchOffice" type="ie:CompetentAuthorityDispatchOfficeType"/>
+	<xs:element name="ConsigneeTrader" type="ie:ConsigneeTraderType"/>
+	<xs:element name="ComplementConsigneeTrader" type="ie:ComplementConsigneeTraderType"/>
+	<xs:element name="DeliveryPlaceTrader" type="ie:DeliveryPlaceTraderType"/>
+	<xs:element name="DeliveryPlaceCustomsOffice" type="ie:DeliveryPlaceCustomsOfficeType"/>
+	<xs:element name="TransportMode" type="ie:TransportModeType"/>
+	<xs:element name="TransportArrangerTrader" type="ie:TransportArrangerTraderType"/>
+	<xs:element name="FirstTransporterTrader" type="ie:FirstTransporterTraderType"/>
+	<xs:element name="EaadDraft" type="ie:EaadDraftType"/>
+	<xs:element name="MovementGuarantee" type="ie:MovementGuaranteeType"/>
+	<xs:element name="GuarantorTrader" type="ie:GuarantorTraderType"/>
+	<xs:element name="ImportDAU" type="ie:ImportDAUType"/>
+	<xs:element name="TransportDetails" type="ie:TransportDetailsType"/>
+	<xs:element name="DocumentCertificate" type="ie:DocumentCertificateType"/>
+	<xs:element name="BodyEaad" type="ie:BodyEaadType"/>
+	<xs:element name="ConsigneeCumulativeTrader" type="ie:ConsigneeCumulativeTraderType"/>
+	<xs:complexType name="HeaderEaadType">
+		<xs:sequence>
+			<xs:element name="DestinationTypeCode" type="tcl:DestinationTypeCode"/>
+			<xs:element name="MesurementJourneyType" type="ie:MesurementJourneyType"/>
+			<xs:element name="JourneyTime" type="emcs:JourneyDurationType"/>
+			<xs:element name="TransportArrangement" type="tcl:TransportArrangement"/>
+			<xs:element name="DeferredSubmissionFlag" type="tcl:Flag"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConsigneeTraderType">
+		<xs:sequence>
+			<xs:element name="Traderid" type="ie:TraderidType"/>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+			<xs:element name="EoriNumber" type="emcs:EoriNumberType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ConsignorTraderType">
+		<xs:sequence>
+			<xs:element name="TraderExciseNumber" type="ie:TraderidType"/>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="PlaceOfDispatchTraderType">
+		<xs:sequence>
+			<xs:element name="ReferenceOfTaxWarehouse" type="ie:TraderidType"/>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DispatchImportOfficeType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ComplementConsigneeTraderType">
+		<xs:sequence>
+			<xs:element name="MemberStateCode" type="emcs:CountryCodeType"/>
+			<xs:element name="SerialNumberOfCertificateOfExemption" type="ie:SerialNumberOfCertificateOfExemptionType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DeliveryPlaceTraderType">
+		<xs:sequence>
+			<xs:element name="Traderid">
+				<xs:simpleType>
+					<xs:restriction base="ie:TraderidType"/>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DeliveryPlaceCustomsOfficeType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CompetentAuthorityDispatchOfficeType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransportArrangerTraderType">
+		<xs:sequence>
+			<xs:element name="VatNumber" type="emcs:VatNumberType"/>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="FirstTransporterTraderType">
+		<xs:sequence>
+			<xs:element name="VatNumber" type="emcs:VatNumberType"/>
+			<xs:element name="TraderName" type="ie:TraderNameType"/>
+			<xs:element name="StreetName" type="ie:StreetNameType"/>
+			<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType"/>
+			<xs:element name="City" type="ie:CityType"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TransportDetailsType">
+		<xs:sequence>
+			<xs:element name="IterationTotal">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="TransportBodyDetails" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="1"/>
+									<xs:pattern value="[I]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxInclusive value="99"/>
+									<xs:pattern value="[0-9]{3}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="TransportUnitCode" type="ie:TransportUnitCodeType"/>
+						<xs:element name="IdentityOfTransportUnits" type="ie:IdentityOfTransportUnitsType"/>
+						<xs:element name="CommercialSealIdentification" type="ie:CommercialSealIdentificationType"/>
+						<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType"/>
+						<xs:element name="SealInformation" type="ie:LSDSealInformationType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DocumentCertificateType">
+		<xs:sequence>
+			<xs:element name="IterationTotal">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:maxInclusive value="9"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DocumentBodyCertificate" minOccurs="0" maxOccurs="9">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[L]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxInclusive value="9"/>
+									<xs:pattern value="[0-9]{3}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="DocumentDescription" type="ie:LSDDocumentDescriptionType" minOccurs="0"/>
+						<xs:element name="ReferenceOfDocument" type="ie:LSDReferenceOfDocumentType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="EaadDraftType">
+		<xs:sequence>
+			<xs:element name="InvoiceNumber" type="ie:InvoiceNumberType"/>
+			<xs:element name="InvoiceDate" type="emcs:DateFlatType"/>
+			<xs:element name="OriginTypeCode" type="tcl:OriginTypeCode"/>
+			<xs:element name="DateOfDispatch" type="emcs:DateFlatType"/>
+			<xs:element name="TimeOfDispatch" type="emcs:TimeFlatType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ImportDAUType">
+		<xs:sequence>
+			<xs:element name="IterationTotal" type="tcl:IterationTotalType"/>
+			<xs:element name="ImportBodyDAU" minOccurs="0" maxOccurs="9">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="1"/>
+									<xs:pattern value="[G]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxInclusive value="9"/>
+									<xs:pattern value="[0-9]{3}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="ImportSadNumber" type="ie:ImportSadNumberType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransportModeType">
+		<xs:sequence>
+			<xs:element name="TransportModeCode" type="ie:TransportModeCodeType"/>
+			<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MovementGuaranteeType">
+		<xs:sequence>
+			<xs:element name="GuarantorTypeCode" type="tcl:GuarantorTypeCode"/>
+			<xs:element name="ConsignorGuaranteeAccountCode" type="ie:GuaranteeAccountCodeType"/>
+			<xs:element name="ConsignorTypeGuarantee" type="ie:TypeGuaranteeType"/>
+			<xs:element name="ConsignorImportGuarantee" type="ie:ImportGuaranteeType"/>
+			<xs:element name="ConsigneeGuaranteeAccountCode" type="ie:GuaranteeAccountCodeType"/>
+			<xs:element name="ConsigneeTypeGuarantee" type="ie:TypeGuaranteeType"/>
+			<xs:element name="ConsigneeImportGuarantee" type="ie:ImportGuaranteeType"/>
+			<xs:element name="TransportGuaranteeAccountCode" type="ie:GuaranteeAccountCodeType"/>
+			<xs:element name="TransportTypeGuarantee" type="ie:TypeGuaranteeType"/>
+			<xs:element name="TransportImportGuarantee" type="ie:ImportGuaranteeType"/>
+			<xs:element name="OwnerGuaranteeAccountCode" type="ie:GuaranteeAccountCodeType"/>
+			<xs:element name="OwnerTypeGuarantee" type="ie:TypeGuaranteeType"/>
+			<xs:element name="OwnerImportGuarantee" type="ie:ImportGuaranteeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GuarantorTraderType">
+		<xs:sequence>
+			<xs:element name="IterationTotal">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="9"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="GuarantorBodyTrader" minOccurs="0" maxOccurs="2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="1"/>
+									<xs:pattern value="[H]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxInclusive value="2"/>
+									<xs:pattern value="[0-9]{3}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0"/>
+						<xs:element name="TraderName" type="ie:TraderNameType"/>
+						<xs:element name="StreetName" type="ie:StreetNameType"/>
+						<xs:element name="StreetNumber" type="ie:StreetNumberType"/>
+						<xs:element name="City" type="ie:CityType"/>
+						<xs:element name="Postcode" type="emcs:PostCodeType"/>
+						<xs:element name="VatNumber" type="emcs:VatNumberType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="BodyEaadType">
+		<xs:sequence>
+			<xs:element name="BodyRecordUniqueReference">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="CPAProductCategory" type="emcs:ExciseProductCodeType"/>
+			<xs:element name="CnCode" type="emcs:CnCodeType"/>
+			<xs:element name="Quantity" type="emcs:ProductQuantityType"/>
+			<xs:element name="GrossWeight" type="emcs:WeightType"/>
+			<xs:element name="NetWeight" type="emcs:WeightType"/>
+			<xs:element name="Density" type="ie:DensityType"/>
+			<xs:element name="AlcoholicStrength" type="ie:AlcoholicStrengthType"/>
+			<xs:element name="DegreePlato" type="ie:DegreePlatoType"/>
+			<xs:element name="FiscalMark" type="ie:LSDFiscalMarkType"/>
+			<xs:element name="FiscalMarkUsedFlag" type="tcl:Flag"/>
+			<xs:element name="DesignationOfOrigin" type="ie:LSDDesignationOfOriginType"/>
+			<xs:element name="SizeOfProducer" type="ie:SizeOfProducerType"/>
+			<xs:element name="TARICCode" type="ie:TARICCodeType"/>
+			<xs:element name="CADDCode" type="ie:CADDCodeType"/>
+			<xs:element name="AAMSCode" type="ie:AAMSCodeType"/>
+			<xs:element name="CommercialDescription" type="ie:LSDCommercialDescriptionType"/>
+			<xs:element name="BrandNameOfProducts" type="ie:LSDBrandNameOfProductsType"/>
+			<xs:element name="Package" type="ie:PackageType"/>
+			<xs:element name="WineProduct" type="ie:WineProductType"/>
+			<xs:element name="WineOperation" type="ie:WineOperationType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PackageType">
+		<xs:sequence>
+			<xs:element name="IterationTotal">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="99"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="PackageBody" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[M]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber">
+							<xs:simpleType>
+								<xs:restriction base="xs:integer">
+									<xs:maxInclusive value="99"/>
+									<xs:pattern value="[0-9]{3}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="KindOfPackages" type="ie:KindOfPackagesType"/>
+						<xs:element name="NumberOfPackages" type="ie:NumberOfPackagesType"/>
+						<xs:element name="CommercialSealIdentification" type="ie:CommercialSealIdentificationType"/>
+						<xs:element name="SealInformation" type="ie:LSDSealInformationType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WineProductType">
+		<xs:sequence>
+			<xs:element name="WineProductCategory" type="tcl:CategoryOfWineProduct"/>
+			<xs:element name="WineGrowingZoneCode" type="ie:WineGrowingZoneCodeType"/>
+			<xs:element name="ThirdCountryOfOrigin" type="emcs:CountryCodeType"/>
+			<xs:element name="OtherInformation" type="ie:LSDOtherInformationType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WineOperationType">
+		<xs:sequence>
+			<xs:element name="IterationTotal">
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+						<xs:pattern value="[0-9]{3}"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WineBodyOperation" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:length value="1"/>
+									<xs:pattern value="[O]"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="IterationNumber" type="tcl:IterationNumberType" minOccurs="0"/>
+						<xs:element name="WineOperationCode" type="ie:WineOperationCodeType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConsigneeCumulativeTraderType">
+		<xs:sequence>
+			<xs:element name="ExciseProductNumber" type="emcs:ExciseNumberType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--===== IE Specific Data Items Declarations =====-->
+	<xs:simpleType name="AlcoholicStrengthType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Alcoholic strength"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="6"/>
+			<xs:pattern value="[.0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BodyRecordUniqueReferenceType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Body Record Unique Reference"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="3"/>
+			<xs:pattern value="[0-9]{1,3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BrandNameOfProductsType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Brand Name of Products"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CityType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="City"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="50"/>
+			<xs:pattern value=".{0,50}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CommercialDescriptionType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Commercial description"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CommercialSealIdentificationType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Commercial Seal Identification"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="35"/>
+			<xs:pattern value=".{0,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ComplementaryInformationType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Complementary Information"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DegreePlatoType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Degree Plato"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="6"/>
+			<xs:pattern value="[.0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DensityType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Density"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="6"/>
+			<xs:pattern value="[.0-9]{0,6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DesignationOfOriginType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Designation of Origin"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentDescriptionType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Document Description"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{1,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="FiscalMarkType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Fiscal Mark"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IdentityOfTransportUnitsType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Identity of Transport Units"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="35"/>
+			<xs:pattern value=".{0,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ImportSadNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Import SAD Number"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="21"/>
+			<xs:pattern value=".{1,21}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="InvoiceNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Invoice Number"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="35"/>
+			<xs:pattern value=".{1,35}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TARICCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="TARIC Code"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AAMSCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="AAMS Code"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="4"/>
+			<xs:pattern value="[A-Z0-9]{0,4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CADDCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="CADDCode"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="4"/>
+			<xs:pattern value="[A-Z0-9]{0,4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CPAProductCategoryType">
+		<xs:annotation>
+			<xs:documentation>CPA Product Category</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="T">
+				<xs:annotation>
+					<xs:documentation>Tobacco</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="B">
+				<xs:annotation>
+					<xs:documentation>Beer</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="W">
+				<xs:annotation>
+					<xs:documentation>Wine</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="I">
+				<xs:annotation>
+					<xs:documentation>Intermediate alcholic product</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="S">
+				<xs:annotation>
+					<xs:documentation>Ethilic alcholic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="E">
+				<xs:annotation>
+					<xs:documentation>Energy products</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--=========================================-->
+	<!--===== Mesurement Journey Type=====-->
+	<!--=========================================-->
+	<xs:simpleType name="MesurementJourneyType">
+		<xs:annotation>
+			<xs:documentation>Mesurements journey type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:enumeration value="D">
+				<xs:annotation>
+					<xs:documentation>Day</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="H">
+				<xs:annotation>
+					<xs:documentation>Hour</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="KindOfPackagesType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Kind of packages"/>
+				<doc:codeList name="KindOfPackages"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:length value="2"/>
+			<xs:pattern value=".{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="LSDBrandNameOfProductsType">
+		<xs:simpleContent>
+			<xs:extension base="ie:BrandNameOfProductsType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDCommercialDescriptionType">
+		<xs:simpleContent>
+			<xs:extension base="ie:CommercialDescriptionType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDComplementaryInformationType">
+		<xs:simpleContent>
+			<xs:extension base="ie:ComplementaryInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDDesignationOfOriginType">
+		<xs:simpleContent>
+			<xs:extension base="ie:DesignationOfOriginType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDDocumentDescriptionType">
+		<xs:simpleContent>
+			<xs:extension base="ie:DocumentDescriptionType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDFiscalMarkType">
+		<xs:simpleContent>
+			<xs:extension base="ie:FiscalMarkType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDOtherInformationType">
+		<xs:simpleContent>
+			<xs:extension base="ie:OtherInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDReferenceOfDocumentType">
+		<xs:simpleContent>
+			<xs:extension base="ie:ReferenceOfDocumentType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDSealInformationType">
+		<xs:simpleContent>
+			<xs:extension base="ie:SealInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:simpleType name="LocalReferenceNumberType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Local Reference Number"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="22"/>
+			<xs:pattern value="[0-9]{1,22}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="NumberOfPackagesType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Number of packages"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="15"/>
+			<xs:pattern value="[0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OtherInformationType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Other Information"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ReferenceOfDocumentType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Reference of Document"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{1,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SealInformationType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Seal Information"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="350"/>
+			<xs:pattern value=".{0,350}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SerialNumberOfCertificateOfExemptionType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Serial Number of Certificate of Exemption"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="255"/>
+			<xs:pattern value=".{0,255}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SizeOfProducerType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Size of Producer"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="15"/>
+			<xs:pattern value="[0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StreetNameType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="65"/>
+			<xs:pattern value=".{0,65}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StreetNumberType">
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="11"/>
+			<xs:pattern value=".{0,11}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TraderNameType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Trader Name"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="182"/>
+			<xs:pattern value=".{0,182}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TraderidType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="TraderID"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="18"/>
+			<xs:pattern value=".{0,18}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransportModeCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Transport Mode Code"/>
+				<doc:codeList name="TransportMode"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TransportUnitCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Transport Unit Code"/>
+				<doc:codeList name="TransportUnits"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:length value="2"/>
+			<xs:pattern value="[0-9]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WineGrowingZoneCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Wine-Growing Zone Code"/>
+				<doc:codeList name="WineGrowingZoneCode"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]{0,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WineOperationCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Wine Operation Code"/>
+				<doc:codeList name="WineOperationCode"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="2"/>
+			<xs:pattern value="[0-9]{1,2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="GuaranteeAccountCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Guarantee Account Code"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="17"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TypeGuaranteeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Type Guarantee Type"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="1"/>
+			<xs:pattern value="[EC]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ImportGuaranteeType">
+		<xs:annotation>
+			<xs:documentation>
+				<doc:description value="Import Guarantee Type"/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:maxLength value="15"/>
+			<xs:pattern value="[.0-9]{0,15}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--=========================================-->
+	<!--===== Differite Flag Type =====-->
+	<!--=========================================-->
+	<xs:simpleType name="DifferiteFlagType">
+		<xs:annotation>
+			<xs:documentation>Differite Flag Type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:nonNegativeInteger">
+			<xs:enumeration value="0">
+				<xs:annotation>
+					<xs:documentation>True (Differite)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="1">
+				<xs:annotation>
+					<xs:documentation>False (No Differite)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

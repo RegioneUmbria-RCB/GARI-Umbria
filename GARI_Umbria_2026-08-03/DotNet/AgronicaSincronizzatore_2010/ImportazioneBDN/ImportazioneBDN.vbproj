@@ -1,0 +1,2715 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4843BA2A-1E5E-45D6-851F-D532613C0B66}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>ImportazioneBDN</RootNamespace>
+    <AssemblyName>ImportazioneBDN</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\DocumentFormat.OpenXml.2.12.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\GiasOnline_2010\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\PwsAziendeQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsGestioneModello\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsInterrogazioni\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsRegistriUpd\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ImportazioneMatricoleMadri\ImportazioneMatricoleMadri.vb" />
+    <Compile Include="ImportazioneMatricoleMadri\Importazione_MatricoleMadri.vb" />
+    <Compile Include="ImportazioneParmaFrance\importParmaFrance.vb" />
+    <Compile Include="ImportazioneParmaFrance\ParmaFranceExcelReader.vb" />
+    <Compile Include="ImportazioneParmaFrance\ParmaFranceImporter.vb" />
+    <Compile Include="ImportazioneParmaFrance\ParmaFranceSpecieValidator.vb" />
+    <Compile Include="ImportazioneParmaFrance\ParmaFranceCampoValidator.vb" />
+    <Compile Include="ImportazioneParmaFrance\ParmaFranceRazzaResolver.vb" />
+    <Compile Include="Model\CaricaModelli4_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\Account_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\CapiDaTrattare_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\CapiPerSomministrazione_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\CapoPerProdotto_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\CloseTrattamento_Pres.vb" />
+    <Compile Include="Model\chiamateVetInfo\CloseTrattamento_ProtTera.vb" />
+    <Compile Include="Model\chiamateVetInfo\CloseTrattamento_ProtTera_Medicinale.vb" />
+    <Compile Include="Model\chiamateVetInfo\DisponibilitaMedicinali.vb" />
+    <Compile Include="Model\chiamateVetInfo\InsertTrattamento_Massivo.vb" />
+    <Compile Include="Model\chiamateVetInfo\InsertTrattamento_Protocollo_Semplificato.vb" />
+    <Compile Include="Model\chiamateVetInfo\InsertTrattamento_ProtTera.vb" />
+    <Compile Include="Model\chiamateVetInfo\InsertTrattamento_Semplificato.vb" />
+    <Compile Include="Model\chiamateVetInfo\Insert_Somministrazione.vb" />
+    <Compile Include="Model\chiamateVetInfo\LogoutToken_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\ProdottiDaTrattare_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\RefreshToken_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\RegistroSomministrazioni_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\RegistroTrattamentiDaValidare_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\RegistroTrattamenti_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\ProdottoPerPrescrizione_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\RegistroPrescrizioni_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\ScarichiPerSomministrazione_Response.vb" />
+    <Compile Include="Model\chiamateVetInfo\ScortaProdotto_Somministrazione.vb" />
+    <Compile Include="Model\chiamateVetInfo\User_Response.vb" />
+    <Compile Include="Model\dsCapi.vb" />
+    <Compile Include="Model\SincroBDN_Allevamento_Response.vb" />
+    <Compile Include="Model\dsMacellazioni.vb" />
+    <Compile Include="Model\dsMovimentazioni.vb" />
+    <Compile Include="Model\VetInfoFilter.vb" />
+    <Compile Include="Model\VetInfoResponse.vb" />
+    <Compile Include="Model\XmlCapi_InvioModelli.vb" />
+    <Compile Include="Model\XmlEsamiCapo_InvioModelli.vb" />
+    <Compile Include="Model\XmlTrattamenti_InvioModelli.vb" />
+    <Compile Include="Nogmo\updateNogmo.vb" />
+    <Compile Include="Nogmo\uploadNogmo.vb" />
+    <Compile Include="ServizioSincroStalla.vb" />
+    <Compile Include="ServizioSincroStalla_Mail.vb" />
+    <Compile Include="Sincronizzaore Nogmo\SincroNogmo.vb" />
+    <Compile Include="Sincronizzatore BDN\SincroBDNAllevamento.vb" />
+    <Compile Include="Sincronizzatore BDN\SincroBDNAnimale.vb" />
+    <Compile Include="Sincronizzatore BDN\SincroBDNAzienda.vb" />
+    <Compile Include="Sincronizzatore BDN\SincroBDNConsorzi.vb" />
+    <Compile Include="Sincronizzatore BDN\SincroBDNGestioneCapi.vb" />
+    <Compile Include="Sincronizzatore REV\SincroREV.vb" />
+    <Compile Include="wsBDN\TokenHandler.vb" />
+    <Compile Include="wsBDN\wsAnagraficaCapoQry.vb" />
+    <Compile Include="wsBDN\wsAziendeQry.vb" />
+    <Compile Include="wsBDN\wsCodiciQry.vb" />
+    <Compile Include="wsBDN\wsGestioneAssConsorzi.vb" />
+    <Compile Include="wsBDN\wsGestioneModello4.vb" />
+    <Compile Include="wsBDN\wsInterrogazioneModello4.vb" />
+    <Compile Include="wsBDN\wsIdentificativiGet.vb" />
+    <Compile Include="wsBDN\wsBDNRegistriUpd.vb" />
+    <Compile Include="wsBDN\wsRegistriDiStalla.vb" />
+    <Compile Include="wsBDN\wsRegistroStallaCapiBovini.vb" />
+    <Compile Include="wsBDN\wsRegistroStallaQry.vb" />
+    <Compile Include="wsBDN\wsStruttureQry.vb" />
+    <Compile Include="wsBDN\wsTerritorioQry.vb" />
+    <Compile Include="wsBDN\wsBDN.vb" />
+    <Compile Include="Connected Services\wsAnagraficaCapoQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsAssociazioniAziende\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsAziendeQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsCodiciQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsIdentificativiGet\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsRegistroStallaQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsStruttureQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\wsTerritorioQry\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Importa.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="wsNOGMO\wsNogmo.vb" />
+    <Compile Include="wsNOGMO\wsUpload.vb" />
+    <Compile Include="wsNOGMO\wsUpdate.vb" />
+    <Compile Include="wsVetInfo\wsVetInfo.vb" />
+    <Compile Include="XLS\Farmaci_PrincipiAttivi.vb" />
+    <Compile Include="XSDs\dsCapi.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCapi.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsCAPI_D.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCAPI_D.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsCapi_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCapi_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsDECESSI_D.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDECESSI_D.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsDecessi_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDecessi_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsINGRESSI_D.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsINGRESSI_D.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsIngressi_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsIngressi_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsINS_DEL_CAPO_MODELLO_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsINS_DEL_CAPO_MODELLO_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsMacellazioni.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMacellazioni.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsMovimentazioni.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMovimentazioni.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsPRENOTAZIONE_MODELLO_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPRENOTAZIONE_MODELLO_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsREGISTRAZ_USCITA_MODELLO_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsREGISTRAZ_USCITA_MODELLO_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsUscite_ALL_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUscite_ALL_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsUscite_D.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUscite_D.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsUscite_Mac_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUscite_Mac_IUS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="XSDs\dsCONFERMA_MODELLO_IUS.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCONFERMA_MODELLO_IUS.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Estrazione_AllevamentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Estrazione_Allevamenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamento01Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamentoNelRaggioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamentoNelRaggio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findAllevamentoRegistroInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findAllevamentoRegistroInfo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findAllevamento_AVIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamento_DIFFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findAllevProrogaMarcaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findAllevProrogaMarcatura_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllev_Tipologie_ProdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAllev_Tipologie_Prod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAviCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindAviCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findBloccoMovimentazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findBloccoMovimentazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindControlli_AllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindControlli_Allevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findEsitoSieroprevalenzaIBRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findEsitoSieroprevalenzaIBR_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindOviCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindOviCensimentiUnioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindOviCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindOviTipologieProduttiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindOviTipologieProduttive_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.findPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindSuiCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindSuiCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindSuiTipologieProduttiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.FindSuiTipologieProduttive_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamentoRegistroInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamentoRegistroInfo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamento_AVIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamento_AVI_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetAllevamento_A_LibroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetAllevamento_A_Libro_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamento_LatteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamento_Latte_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAziendaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getAzienda_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getBloccoMovimentazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getBloccoMovimentazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getEsitoSieroprevalenzaIBRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getEsitoSieroprevalenzaIBR_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getInfoAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getInfoAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getInfoAziendaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getInfoAzienda_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetInfoSanitarieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetInfoSanitarie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getPersonaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getPersona_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getProrogaMarcaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.getProrogaMarcatura_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetSoccidariResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.GetSoccidari_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Get_ListaAllevamentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Get_ListaAllevamenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Get_SuiCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\ImportazioneBDN.PwsAziendeQry.Get_SuiCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PwsAziendeQry\wsAziendeQry.wsdl" />
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.FindCapiOviniMacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.FindCapiOviniMacellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.findCapoBovinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.findCapoEquinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.FindCapoMacellatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.FindCapoMacellato_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.find_Capi_Equini_MacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.find_Capi_Equini_Macellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCancellazione_AmministrativaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCancellazione_Amministrativa_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCanc_Amm_OviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapiOviniAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapiOviniAllevamento_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapiOviniAllevamento_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapiOviniAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoALibroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoALibro_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoEquinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoMacellatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoMacellato_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoOvinoMacellatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoOvinoMacellato_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoOvinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoOvino_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoTAGResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapoTAG_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getCapo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getDecessoOvinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getDecessoOvino_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getDecessoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getDecesso_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getFurtoOvinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getFurtoOvino_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getFurtoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getFurto_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getInfoCapiAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getInfoCapiAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getInfoCapiOviniAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getInfoCapiOviniAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getMadriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.getMadri_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_AllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Allevamento_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Allevamento_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Allevamento_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Allevamento_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Allevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Ovini_Allevamento_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.Get_Capi_Ovini_Allevamento_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.get_Capo_Equino_MacellatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.get_Capo_Equino_Macellato_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.get_Capo_SentinellaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.get_Capo_Sentinella_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\ImportazioneBDN.wsAnagraficaCapoQry.stampaDocumentoIdentificativoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAnagraficaCapoQry\wsAnagraficaCapoQry.wsdl" />
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Delete_Azienda_ConsorzioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Delete_Azienda_Consorzio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Get_Aziende_ConsorzioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Get_Aziende_Consorzio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Insert_Azienda_ConsorzioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\ImportazioneBDN.wsAssociazioniAziende.Insert_Azienda_Consorzio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAssociazioniAziende\wsAssociazioniAziende.wsdl" />
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Estrazione_AllevamentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Estrazione_Allevamenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamento01Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamentoNelRaggioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamentoNelRaggio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findAllevamentoRegistroInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findAllevamentoRegistroInfo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findAllevamento_AVIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamento_DIFFResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findAllevProrogaMarcaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findAllevProrogaMarcatura_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllev_Tipologie_ProdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAllev_Tipologie_Prod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAviCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindAviCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findBloccoMovimentazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findBloccoMovimentazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindControlli_AllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindControlli_Allevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findEsitoSieroprevalenzaIBRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findEsitoSieroprevalenzaIBR_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindOviCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindOviCensimentiUnioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindOviCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindOviTipologieProduttiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindOviTipologieProduttive_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.findPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindSuiCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindSuiCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindSuiTipologieProduttiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.FindSuiTipologieProduttive_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamentoRegistroInfoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamentoRegistroInfo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamento_AVIResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamento_AVI_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetAllevamento_A_LibroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetAllevamento_A_Libro_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamento_LatteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamento_Latte_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAziendaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getAzienda_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getBloccoMovimentazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getBloccoMovimentazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getEsitoSieroprevalenzaIBRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getEsitoSieroprevalenzaIBR_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getInfoAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getInfoAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getInfoAziendaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getInfoAzienda_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetInfoSanitarieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetInfoSanitarie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getPersonaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getPersona_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getProrogaMarcaturaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.getProrogaMarcatura_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetSoccidariResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.GetSoccidari_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Get_ListaAllevamentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Get_ListaAllevamenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Get_SuiCensimentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\ImportazioneBDN.wsAziendeQry.Get_SuiCensimenti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsAziendeQry\wsAziendeQry.wsdl" />
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadAccessoriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadAccessori_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadCausaliMorteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadCausaliMorte_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadClassificazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadClassificazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadCriteriControlliResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadCriteriControlli_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadEsitiTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadEsitiTest_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadGruppiSpecieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadGruppiSpecie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadLibriGenealogiciResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadLibriGenealogici_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMalattie_QualificheSanitarieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMalattie_QualificheSanitarie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviApplicazioneAvicoliResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviApplicazioneAvicoli_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviIngressoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviIngresso_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviUscitaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadMotiviUscita_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadOrientamentiProduttiviResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadOrientamentiProduttivi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadProduttoriMarcheResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadProduttoriMarche_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadRazzeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadRazze_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSpecieAvicoliIdentificabiliResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSpecieAvicoliIdentificabili_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSpecieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSpecie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSuiTipiCategorieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadSuiTipiCategorie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiAllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiAllevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiAutorizzazione_LatteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiAutorizzazione_Latte_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiCodiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiCodice_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiDelegatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiDelegati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiFlagMarcaUsabileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiFlagMarcaUsabile_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiIrregolaritaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiIrregolarita_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiKitIdentificativiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiKitIdentificativi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiMarcheElettronicheResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiMarcheElettroniche_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiMarcheResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiMarche_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiOrigineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiOrigine_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiPassaportiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiPassaporti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiProduzioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiProduzione_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiProvenienzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiProvenienza_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiStatoCapoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiStatoCapo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiStatoProcedimentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiStatoProcedimento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiTipologieProduttiveResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipiTipologieProduttive_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipi_MalattieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipi_Malattie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipi_Qualifiche_SanitarieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipi_Qualifiche_Sanitarie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologiaRisultatoTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologiaRisultatoTest_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologiaTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologiaTest_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologieSanzioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\ImportazioneBDN.wsCodiciQry.DownloadTipologieSanzioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsCodiciQry\wsCodiciQry.wsdl" />
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaPrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaPrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaPrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaTrasportoModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.aggiornaTrasportoModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.annullaPrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.annullaPrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.annullaPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.annullaPrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.confermaPrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.confermaPrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.confermaPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.confermaPrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloEquiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloEqui_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloOviResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloOvi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModelloSuiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deleteCapoModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deletePrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deletePrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deletePrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.deletePrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloEquiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloEqui_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloOviResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloOvi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloSuiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModelloSui_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insertCapoModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModelloFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModelloFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.insPrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaIngressoModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaIngressoModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaPartiteModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.registraUscitaPartiteModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.rifiutoPrenotazioneModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.rifiutoPrenotazioneModelloPartite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.rifiutoPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.rifiutoPrenotazioneModello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.SalvaModelloCorrenteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.SalvaModelloCorrente_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.UploadAllegatoPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsGestioneModello\ImportazioneBDN.wsGestioneModello.UploadAllegatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Giacenza_DistributoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativi_Giacenza_AllevResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativi_Giacenza_Allev_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_AllevUsabileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_AllevUsabile_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_ElettronicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Elettronico_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Giacenza_FornitoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Giacenza_FornitoreSTRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_ProdottoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Prodotto_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_RichiestaDupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_RichiestaDup_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_RichiestaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Richiesta_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_UsabileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Identificativo_Usabile_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_IdentificativiDupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_IdentificativiDup_PkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_IdentificativiDup_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_IdentificativiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_Identificativi_GiacenzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_Identificativi_Giacenza_PkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_Identificativi_PkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\ImportazioneBDN.wsIdentificativiGet.Get_Richiesta_Identificativi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsIdentificativiGet\wsIdentificativiGet.wsdl" />
+    <None Include="Connected Services\wsGestioneModello\wsGestioneModello.wsdl" />
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.calcolaEstremiModelloFieraMercatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.calcolaEstremiModelloPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.calcolaEstremiModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.creaModelloPartiteConDatiCorrentiDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.creaModelloPartiteConDatiCorrentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.creaModelloSingoliConDatiCorrentiDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.creaModelloSingoliConDatiCorrentiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadAllegatoPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadAllegatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloFieraDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPartiteDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPartitePascoloDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPartitePascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPascoloDEResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.DownloadModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.elencoModelli4ModificatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getCapoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getFarmacoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getListaPrenotazioniModelliFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getListaPrenotazioniModelliPartiteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getListaPrenotazioniModelliPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getListaPrenotazioniModelliResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getPrenotazioneModelloDettaglioPartitaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getPrenotazioneModelloDettaglioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getPrenotazioneModelloPartitaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getPrenotazioneModelloPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\ImportazioneBDN.wsInterrogazioni.getPrenotazioneModelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsInterrogazioni\wsInterrogazioni.wsdl" />
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_IngressoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_PascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_Pascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_Pascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_Pascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Ingresso_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_UscitaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Delete_Uscita_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_IngressoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_PascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_Pascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_Pascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_Pascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Ingresso_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Rientro_Da_FieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Rientro_Da_Fiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Rientro_Da_PascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Rientro_Da_Pascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_AllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Allevamento_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Allevamento_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Allevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_EsteroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Estero_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Estero_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Estero_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_FieraMercatoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_FieraMercato_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_FieraMercato_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_FieraMercato_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_MacelloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Macello_MulResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Macello_Mul_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Insert_Uscita_Macello_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Ins_Uscita_Da_Pascolo_A_PascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Ins_Uscita_Da_Pascolo_A_Pascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Annulla_RegistriResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Annulla_Registri_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_IngressoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Ingresso_PascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Ingresso_Pascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Ingresso_Pascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Ingresso_Pascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Ingresso_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_UscitaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\ImportazioneBDN.wsRegistriUpd.Update_Uscita_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistriUpd\wsRegistriUpd.wsdl" />
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Capi_In_StallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Capi_In_Stalla_Alla_DataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_Equi_RegistriStallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_Equi_RegistriStalla_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_Equi_RegistriStalla_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_Equi_RegistriStalla_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_Cod_PagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_Cod_Pag_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_PagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_Pag_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_OVI_RegistriStalla_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_Cod_PagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_Cod_Pag_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_PagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_Pag_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_RegistriStalla_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_SUI_RegistriStallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_SUI_RegistriStalla_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_SUI_RegistriStalla_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.Elenco_SUI_RegistriStalla_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindMacellazioniPartiteSuiniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindMacellazioniPartiteSuini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindMacellazioniSuiniPerEsameTrichinoscopicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindMacellazioniSuiniPerEsameTrichinoscopico_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.findMovimentazioniEquideResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindPrelieviSuiniPerEsameTrichinoscopicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindPrelieviSuiniPerEsameTrichinoscopico_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriStallaPartitaOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriStallaPartitaOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriStallaPartitaSuiniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriStallaPartitaSuini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriUscitePartitaOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriUscitePartitaOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriUscitePartitaSuiniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.FindRegistriUscitePartitaSuini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.findRegistroStallaEquideResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getCapoLattazioneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getCapoLattazione_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniCapoOvinoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniCapoOvino_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniCapoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniCapoTAGResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniCapo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniPascoloAziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniPascoloAziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getMovimentazioniPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniPascoloAziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniPascoloAziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getOVI_MovimentazioniPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaOvini_AsciiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaOvini_AsciiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaSuiniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaSuini_AsciiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaPartitaSuini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStallaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStalla_AsciiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriStalla_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUsciteOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUsciteOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUscitePartitaOviniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUscitePartitaOvini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUscitePartitaSuiniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUscitePartitaSuini_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUsciteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistriUscite_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistroRichiamiViviResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getRegistroRichiamiVivi_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\ImportazioneBDN.wsRegistroStallaQry.getVerificaCapiBoviniMortiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsRegistroStallaQry\wsRegistroStallaQry.wsdl" />
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.ElencoSpecieMattatoioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.ElencoSpecieMattatoio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Bovini_MacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Bovini_Macellati_Da_AllevamentoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Bovini_Macellati_Da_Allevamento_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Bovini_Macellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Ovini_MacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Capi_Ovini_Macellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Equidi_MacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Equidi_Macellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Aziendale_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Aziendale_Cod_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Aziendale_Cod_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Aziendale_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Cod_DetenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Cod_Deten_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_EQUI_RegistriPascolo_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Ovi_Partite_MacellatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_Ovi_Partite_Macellati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriFiereResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriFiere_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriFiere_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriFiere_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Aziendale_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Aziendale_Cod_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Aziendale_Cod_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Aziendale_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Cod_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Cod_Periodo_DetenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Cod_Periodo_Deten_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Cod_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_OVI_RegistriPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriFiereResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriFiere_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriFiere_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriFiere_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_AziendaleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Aziendale_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Aziendale_Cod_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Aziendale_Cod_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Aziendale_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Aziendale_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_CodResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_DetenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_Deten_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_Periodo_DetenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_Periodo_Deten_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Cod_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_PeriodoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Periodo_DetenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Periodo_Deten_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_Periodo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.Elenco_RegistriPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findMacellazioneSuinaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findMacellazioneSuina_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.FindMattatoioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.FindMattatoio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findRichiestaTransumanzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.findRichiestaTransumanza_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getInfo_StruttureResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getInfo_Strutture_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getMacellazioniSuineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getMacellazioniSuine_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getMattatoioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getMattatoio_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRegistriFieraResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRegistriFiera_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRegistriPascoloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRegistriPascolo_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRichiestaTransumanzaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\ImportazioneBDN.wsStruttureQry.getRichiestaTransumanza_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsStruttureQry\wsStruttureQry.wsdl" />
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAssociazioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAssociazioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAziendeUSLComuniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAziendeUSLComuni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAziendeUSLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadAziendeUSL_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadCategorieResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadCategorie_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadComuniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadComuni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadDistrettiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadDistretti_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadProvinceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadProvince_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadRegioniResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadRegioni_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadStatiResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\ImportazioneBDN.wsTerritorioQry.DownloadStati_STRResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\wsTerritorioQry\wsTerritorioQry.wsdl" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="XSDs\dsCapi.xsc">
+      <DependentUpon>dsCapi.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCapi.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCapi.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsCapi.xss">
+      <DependentUpon>dsCapi.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCAPI_D.xsc">
+      <DependentUpon>dsCAPI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCAPI_D.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCAPI_D.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsCAPI_D.xss">
+      <DependentUpon>dsCAPI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCapi_IUS.xsc">
+      <DependentUpon>dsCapi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCapi_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCapi_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsCapi_IUS.xss">
+      <DependentUpon>dsCapi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsDECESSI_D.xsc">
+      <DependentUpon>dsDECESSI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsDECESSI_D.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDECESSI_D.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsDECESSI_D.xss">
+      <DependentUpon>dsDECESSI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsDecessi_IUS.xsc">
+      <DependentUpon>dsDecessi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsDecessi_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDecessi_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsDecessi_IUS.xss">
+      <DependentUpon>dsDecessi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsINGRESSI_D.xsc">
+      <DependentUpon>dsINGRESSI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsINGRESSI_D.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsINGRESSI_D.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsINGRESSI_D.xss">
+      <DependentUpon>dsINGRESSI_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsIngressi_IUS.xsc">
+      <DependentUpon>dsIngressi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsIngressi_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsIngressi_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsIngressi_IUS.xss">
+      <DependentUpon>dsIngressi_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsINS_DEL_CAPO_MODELLO_IUS.xsc">
+      <DependentUpon>dsINS_DEL_CAPO_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsINS_DEL_CAPO_MODELLO_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsINS_DEL_CAPO_MODELLO_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsINS_DEL_CAPO_MODELLO_IUS.xss">
+      <DependentUpon>dsINS_DEL_CAPO_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsMacellazioni.xsc">
+      <DependentUpon>dsMacellazioni.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsMacellazioni.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMacellazioni.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsMacellazioni.xss">
+      <DependentUpon>dsMacellazioni.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsMovimentazioni.xsc">
+      <DependentUpon>dsMovimentazioni.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsMovimentazioni.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMovimentazioni.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsMovimentazioni.xss">
+      <DependentUpon>dsMovimentazioni.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsPRENOTAZIONE_MODELLO_IUS.xsc">
+      <DependentUpon>dsPRENOTAZIONE_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsPRENOTAZIONE_MODELLO_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPRENOTAZIONE_MODELLO_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsPRENOTAZIONE_MODELLO_IUS.xss">
+      <DependentUpon>dsPRENOTAZIONE_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsREGISTRAZ_USCITA_MODELLO_IUS.xsc">
+      <DependentUpon>dsREGISTRAZ_USCITA_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsREGISTRAZ_USCITA_MODELLO_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsREGISTRAZ_USCITA_MODELLO_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsREGISTRAZ_USCITA_MODELLO_IUS.xss">
+      <DependentUpon>dsREGISTRAZ_USCITA_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_ALL_IUS.xsc">
+      <DependentUpon>dsUscite_ALL_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_ALL_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUscite_ALL_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsUscite_ALL_IUS.xss">
+      <DependentUpon>dsUscite_ALL_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_D.xsc">
+      <DependentUpon>dsUscite_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_D.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUscite_D.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsUscite_D.xss">
+      <DependentUpon>dsUscite_D.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_Mac_IUS.xsc">
+      <DependentUpon>dsUscite_Mac_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsUscite_Mac_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUscite_Mac_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsUscite_Mac_IUS.xss">
+      <DependentUpon>dsUscite_Mac_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCONFERMA_MODELLO_IUS.xsc">
+      <DependentUpon>dsCONFERMA_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\dsCONFERMA_MODELLO_IUS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCONFERMA_MODELLO_IUS.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\dsCONFERMA_MODELLO_IUS.xss">
+      <DependentUpon>dsCONFERMA_MODELLO_IUS.xsd</DependentUpon>
+    </None>
+    <None Include="XSDs\xml_dsCapi_IUS.wsdl" />
+    <None Include="XSDs\_GeneratoreClassi.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wsBDN\BDNInterrogazioni\" />
+    <Folder Include="wsBDN\GestioneAssConsorzi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\PwsAziendeQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsAnagraficaCapoQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsAssociazioniAziende\" />
+    <WCFMetadataStorage Include="Connected Services\wsAziendeQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsCodiciQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsIdentificativiGet\" />
+    <WCFMetadataStorage Include="Connected Services\wsGestioneModello\" />
+    <WCFMetadataStorage Include="Connected Services\wsInterrogazioni\" />
+    <WCFMetadataStorage Include="Connected Services\wsRegistriUpd\" />
+    <WCFMetadataStorage Include="Connected Services\wsRegistroStallaQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsStruttureQry\" />
+    <WCFMetadataStorage Include="Connected Services\wsTerritorioQry\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistroStallaQry\wsRegistroStallaQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistroStallaQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistroStallaQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistroStallaQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{6300885f-3954-4f7b-91e9-1b028fa64b74}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{efd63249-9cbe-4cb4-90d2-e881341c3b96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMapper\AgronicaCoreMapper.vbproj">
+      <Project>{ee5fa564-529b-4ee7-beb9-4d2080755642}</Project>
+      <Name>AgronicaCoreMapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreStampeDAL\AgronicaCoreStampeDAL.vbproj">
+      <Project>{21fdabc5-4caf-43de-800a-1ae7b4cb7cbb}</Project>
+      <Name>AgronicaCoreStampeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsCodiciQry\wsCodiciQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsCodiciQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsCodiciQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsCodiciQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsIdentificativiGet\wsIdentificativiGet.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsIdentificativiGet\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsIdentificativiGet\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsIdentificativiGet\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsTerritorioQry\wsTerritorioQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsTerritorioQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsTerritorioQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsTerritorioQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAziendeQry\wsAziendeQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAziendeQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAziendeQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAziendeQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsStruttureQry\wsStruttureQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsStruttureQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsStruttureQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsStruttureQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAnagraficaCapoQry\wsAnagraficaCapoQry.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAnagraficaCapoQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAnagraficaCapoQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAnagraficaCapoQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAssociazioniAziende\wsAssociazioniAziende.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAssociazioniAziende\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAssociazioniAziende\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsAssociazioniAziende\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsGestioneModello\wsGestioneModello.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsGestioneModello\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsGestioneModello\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsGestioneModello\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsInterrogazioni\wsInterrogazioni.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsInterrogazioni\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsInterrogazioni\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsInterrogazioni\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistriUpd\wsRegistriUpd.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistriUpd\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistriUpd\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\wsRegistriUpd\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PwsAziendeQry\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PwsAziendeQry\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\PwsAziendeQry\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XSDs\dsPRENOTAZIONE_MODELLO_IUS.xml" />
+    <Content Include="XSDs\xml_dsCapi_IUS.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\..\GiasOnline_2010\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

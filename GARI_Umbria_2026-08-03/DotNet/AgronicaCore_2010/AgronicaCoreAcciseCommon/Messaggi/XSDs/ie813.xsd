@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:emcs="http://emcs.dgtaxud.ec/v10/types" xmlns:tms="http://emcs.dgtaxud.ec/v10/tms" xmlns:tcl="http://emcs.dgtaxud.ec/v10/tcl" xmlns:ie="http://emcs.dgtaxud.ec/v10/cd813/ie" targetNamespace="http://emcs.dgtaxud.ec/v10/cd813/ie" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.00">
+	<!--=========================================-->
+	<!--===== IE813:N_AAD_SUB -->
+	<!--===== SUBMITTED DRAFT OF E-AAD -->
+	<!--=========================================-->
+	<!--===== Imports =====-->
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/types" schemaLocation="types_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tms" schemaLocation="tms_2.xsd"/>
+	<xs:import namespace="http://emcs.dgtaxud.ec/v10/tcl" schemaLocation="tcl_2.xsd"/>
+	<!--xs:import namespace="urn:publicid:-:EC:DGTAXUD:EMCS:PHASE3:TCL:V1.71" schemaLocation="tcl.xsd"/-->
+	<!--===== Root Element =====-->
+	<xs:element name="CD813A" type="ie:CD813AType"/>
+	<!--===== EMCS Data Groups Declarations =====-->
+	<xs:complexType name="CD813AType">
+		<xs:sequence>
+			<xs:element ref="tms:HeaderMessage"/>
+			<xs:element name="BodyMessage">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ChangeOfDestination_E" type="ie:ChangeOfDestinationType_E" maxOccurs="unbounded"/>
+						<xs:element name="ChangeOfDestination_F" type="ie:ChangeOfDestinationType_F" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChangeOfDestinationType_E">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordE">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:UpdateEad" minOccurs="0"/>
+						<xs:element ref="ie:DestinationChanged"/>
+						<xs:element ref="ie:NewTransportArrangerTrader" minOccurs="0"/>
+						<xs:element ref="ie:NewTransporterTrader" minOccurs="0"/>
+						<xs:element ref="ie:TransportDetails"/>
+						<xs:element ref="ie:MovementGuarantee" minOccurs="0"/>
+						<xs:element ref="ie:GuarantorTrader" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChangeOfDestinationType_F">
+		<xs:sequence>
+			<xs:element ref="tms:Header"/>
+			<xs:element name="BodyRecordF">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element ref="ie:ExciseMovementEad" minOccurs="0"/>
+						<xs:element ref="ie:ConsigneeCumulativeTrader"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="UpdateEad" type="ie:UpdateEadType"/>
+	<xs:element name="ExciseMovementEad" type="ie:ExciseMovementEadType"/>
+	<xs:element name="DestinationChanged" type="ie:DestinationChangedType"/>
+	<xs:element name="NewTransportArrangerTrader" type="ie:NewTransportArrangerTraderType"/>
+	<xs:element name="NewTransporterTrader" type="ie:NewTransporterTraderType"/>
+	<xs:element name="TransportDetails" type="ie:TransportDetailsType"/>
+	<xs:element name="ConsigneeCumulativeTrader" type="ie:ConsigneeCumulativeTraderType"/>
+	<xs:element name="MovementGuarantee" type="ie:MovementGuaranteeType"/>
+	<xs:element name="GuarantorTrader" type="ie:GuarantorTraderType"/>
+	<xs:complexType name="UpdateEadType">
+		<xs:sequence>
+			<xs:element name="MesurementJourney" type="emcs:MesurementJourneyType" minOccurs="0"/>
+			<xs:element name="JourneyTime" type="emcs:JourneyDurationType" minOccurs="0"/>
+			<xs:element name="TransportArrangement" type="tcl:TransportArrangement" minOccurs="0"/>
+			<xs:element name="InvoiceNumber" type="emcs:InvoiceNumberType" minOccurs="0"/>
+			<xs:element name="InvoiceDate" type="emcs:DateFlatType" minOccurs="0"/>
+			<xs:element name="TransportModeCode" type="emcs:TransportModeCodeType" minOccurs="0"/>
+			<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ExciseMovementEadType">
+		<xs:sequence>
+			<xs:element name="SequenceNumber" type="emcs:SequenceNumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DestinationChangedType">
+		<xs:sequence>
+			<xs:element name="DestinationTypeCode" type="tcl:DestinationTypeCode"/>
+			<xs:element name="NewConsigneeTrader" type="ie:NewConsigneeTraderType" minOccurs="0"/>
+			<xs:element name="DeliveryPlaceTrader" type="ie:DeliveryPlaceTraderType" minOccurs="0"/>
+			<xs:element name="DeliveryPlaceCustomsOffice" type="ie:DeliveryPlaceCustomsOfficeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NewConsigneeTraderType">
+		<xs:sequence>
+			<xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0"/>
+			<xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0"/>
+			<xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0"/>
+			<xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType" minOccurs="0"/>
+			<xs:element name="City" type="emcs:CityType" minOccurs="0"/>
+			<xs:element name="EoriNumber" type="emcs:EoriNumberType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DeliveryPlaceTraderType">
+		<xs:sequence>
+			<xs:element name="Traderid" type="emcs:TraderidType" minOccurs="0"/>
+			<xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0"/>
+			<xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0"/>
+			<xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType" minOccurs="0"/>
+			<xs:element name="City" type="emcs:CityType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="DeliveryPlaceCustomsOfficeType">
+		<xs:sequence>
+			<xs:element name="ReferenceNumber" type="emcs:ExciseOfficeCodeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NewTransportArrangerTraderType">
+		<xs:sequence>
+			<xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0"/>
+			<xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0"/>
+			<xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0"/>
+			<xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType" minOccurs="0"/>
+			<xs:element name="City" type="emcs:CityType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="NewTransporterTraderType">
+		<xs:sequence>
+			<xs:element name="VatNumber" type="emcs:VatNumberType" minOccurs="0"/>
+			<xs:element name="TraderName" type="emcs:TraderNameType" minOccurs="0"/>
+			<xs:element name="StreetName" type="emcs:StreetNameType" minOccurs="0"/>
+			<xs:element name="StreetNumber" type="emcs:StreetNumberType" minOccurs="0"/>
+			<xs:element name="Postcode" type="emcs:PostCodeType" minOccurs="0"/>
+			<xs:element name="City" type="emcs:CityType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TransportDetailsType">
+		<xs:sequence>
+			<xs:element name="IterationTotal" type="tcl:IterationTotal99Type"/>
+			<xs:element name="TransportBodyDetails" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode" type="tcl:IterationCodeType"/>
+						<xs:element name="IterationNumber" type="tcl:IterationNumber99Type"/>
+						<xs:element name="TransportUnitCode" type="emcs:TransportUnitCode02Type" minOccurs="0"/>
+						<xs:element name="IdentityOfTransportUnits" type="emcs:IdentityOfTransportUnitsType" minOccurs="0"/>
+						<xs:element name="CommercialSealIdentification" type="emcs:CommercialSealIdentificationType" minOccurs="0"/>
+						<xs:element name="SealInformation" type="ie:LSDSealInformationType" minOccurs="0"/>
+						<xs:element name="ComplementaryInformation" type="ie:LSDComplementaryInformationType" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConsigneeCumulativeTraderType">
+		<xs:sequence>
+			<xs:element name="ExciseProductNumber" type="emcs:ExciseNumberType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LSDComplementaryInformationType">
+		<xs:simpleContent>
+			<xs:extension base="emcs:ComplementaryInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="LSDSealInformationType">
+		<xs:simpleContent>
+			<xs:extension base="emcs:SealInformationType">
+				<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="MovementGuaranteeType">
+		<xs:sequence>
+			<xs:element name="GuarantorTypeCode" type="tcl:GuarantorTypeCode"/>
+			<xs:element name="ConsignorGuaranteeAccountCode" type="emcs:GuaranteeAccountCodeType"/>
+			<xs:element name="ConsignorTypeGuarantee" type="emcs:TypeGuaranteeType"/>
+			<xs:element name="ConsignorImportGuarantee" type="emcs:ImportGuaranteeType"/>
+			<xs:element name="ConsigneeGuaranteeAccountCode" type="emcs:GuaranteeAccountCodeType"/>
+			<xs:element name="ConsigneeTypeGuarantee" type="emcs:TypeGuaranteeType"/>
+			<xs:element name="ConsigneeImportGuarantee" type="emcs:ImportGuaranteeType"/>
+			<xs:element name="TransportGuaranteeAccountCode" type="emcs:GuaranteeAccountCodeType"/>
+			<xs:element name="TransportTypeGuarantee" type="emcs:TypeGuaranteeType"/>
+			<xs:element name="TransportImportGuarantee" type="emcs:ImportGuaranteeType"/>
+			<xs:element name="OwnerGuaranteeAccountCode" type="emcs:GuaranteeAccountCodeType"/>
+			<xs:element name="OwnerTypeGuarantee" type="emcs:TypeGuaranteeType"/>
+			<xs:element name="OwnerImportGuarantee" type="emcs:ImportGuaranteeType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="GuarantorTraderType">
+		<xs:sequence>
+			<xs:element name="IterationTotal" type="tcl:IterationTotalType"/>
+			<xs:element name="GuarantorBodyTrader" minOccurs="0" maxOccurs="2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="IterationCode" type="tcl:IterationCodeType"/>
+						<xs:element name="IterationNumber" type="tcl:IterationTotalType"/>
+						<xs:element name="TraderExciseNumber" type="emcs:ExciseNumberType" minOccurs="0"/>
+						<xs:element name="TraderName" type="emcs:TraderNameType"/>
+						<xs:element name="StreetName" type="emcs:StreetNameType"/>
+						<xs:element name="StreetNumber" type="emcs:StreetNumberType"/>
+						<xs:element name="City" type="emcs:CityType"/>
+						<xs:element name="Postcode" type="emcs:PostCodeType"/>
+						<xs:element name="VatNumber" type="emcs:VatNumberType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="language" type="emcs:LanguageCodeType" use="optional"/>
+	</xs:complexType>
+</xs:schema>

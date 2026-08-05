@@ -1,0 +1,24 @@
+<div class="aziende-settings-container">
+  <div class="row-container">
+    <div class="flex-grow-2">
+      <span class="infotext" *ngIf="isOnlyBusiness">{{ 'prof.WarningSoloImpreseVisualizzate' | transloco }}</span>
+      <span class="infotext bold-text" *ngIf="disableForm"> {{ 'prof.readonlyMode' | transloco }}</span>
+    </div>
+
+    @if (!disableForm) {
+    <button class="btn btn-primary btn-primary-fill btn-sm btn-primary-text" (click)="onOverwriteTouched()">
+      {{ 'Salva' | transloco }}
+    </button>
+    }
+  </div>
+
+  <app-form-impostazioni #Settings *ngIf="hasSelection; else NoSettings"
+    [disable]="disableForm"></app-form-impostazioni>
+
+  <ng-template #NoSettings>
+    <div class="no-settings-container">
+      <span class="infotext">{{ 'NessunaImpostazioneCaricata' | transloco }} </span>
+      <span class="infotext">{{ 'prof.SelezionaImpresaPerAggiornareVisualizzazione' | transloco }}</span>
+    </div>
+  </ng-template>
+</div>

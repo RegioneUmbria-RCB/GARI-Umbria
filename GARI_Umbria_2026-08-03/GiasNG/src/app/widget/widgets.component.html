@@ -1,0 +1,389 @@
+<div id="widget-section" class="section" cdkDropList [cdkDropListSortingDisabled]="true"
+  (cdkDropListDropped)="cdkDropListDropped($event)">
+  <div *ngFor="let widget of elements; let i = index" cdkDrag [cdkDragDisabled]="widget.Codice == null"
+    [class]="getWidgetClass(widget)"
+    [style]="widget.Codice != null ? 'grid-area: ' + widget.aspettoReale.gridArea : ''"
+    (mouseenter)="onMouseEnter($event, widget.Codice)" (mouseleave)="onMouseLeave($event, widget.Codice)"
+    (cdkDragStarted)="cdkDragStarted($event)" (cdkDragEnded)="cdkDragEnded()" (cdkDragMoved)="cdkDragMoved($event)"
+    [id]="widget.Codice != null ? 'app-widget-' + widget.Codice : ''">
+
+    <div *ngIf="widget.Codice == null || !widget.Visibile"></div>
+
+    <div *ngIf="widget.Codice == 'Giacenze' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ultimi-prodotti-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-ultimi-prodotti-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Indicatori' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-indicatori-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%;  width: 100%;">
+        </app-indicatori-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Monitoraggio' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-monitoraggio-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-monitoraggio-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Conformita' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-conformita-widget content [params]="widget.Parametri" style="height: 100%">
+        </app-conformita-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Meteo' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-meteo-widget content [params]="widget.Parametri" style="height: 100%; width: 100%; overflow: hidden;"></app-meteo-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Attività' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ultime-attivita-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-ultime-attivita-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Visite' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ultime-visite-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-ultime-visite-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Rilievi' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ultimi-rilievi-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-ultimi-rilievi-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Colture' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-colture-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-colture-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'AlertDocumenti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-alert-documenti-widget content [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-alert-documenti-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'CapiNonValidati' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-invalid-animals-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-invalid-animals-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'TrattamentiToDo' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-treatments-todo-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-treatments-todo-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'TrattamentiToSend' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-treatments-tosend-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-treatments-tosend-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ExpiringDrugs' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-expiring-drugs-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-expiring-drugs-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'PesateAccrescimento' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-pesate-accrescimento-widget content [piva]="piva" style="height: 100%; width: 100%;">
+        </app-pesate-accrescimento-widget>
+      </app-widget-template>
+    </div>
+
+    <!-- inizio widget multiazienda -->
+
+    <div *ngIf="widget.Codice == 'PaeseWidgetsMultiAzienda' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-paese-multiazienda-widget content [params]="widget.Parametri" style="width: 60%;">
+        </app-paese-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'DatiFarmersMultiAzienda' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-dati-generali-farmers-widget content [params]="widget.Parametri" style="width: 100%;">
+        </app-dati-generali-farmers-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'TargetSuperficieAnnua' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-target-superficie-widget content [params]="widget.Parametri" style="height: auto; width: auto;">
+        </app-target-superficie-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ProduzioneColtureMultiAzienda' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-colture-multiazienda-widget content [codice]="widget.Codice" [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-colture-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'AziendeMovimentateMulti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()" [hasInfo]="true" [infoTitle]="'InfoAziendeMovimentate7gg'">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-aziende-multi-pie-widget content [codice]="widget.Codice" [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-aziende-multi-pie-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'AziendeMovimentateMultiInizioCampagna' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()" [hasInfo]="true" [infoTitle]="'InfoAziendeMovimentateInizioCampagna'">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-aziende-multi-pie-widget content [codice]="widget.Codice" [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-aziende-multi-pie-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'AziendeMappateMulti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-aziende-multi-pie-widget content [codice]="widget.Codice" [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-aziende-multi-pie-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'AziendeSeminateMulti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-seminati-multiazienda-widget [codice]="widget.Codice" content [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-seminati-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'SeminatiRaccoltiMulti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()" [hasInfo]="true" [infoTitle]="'InfoHAriferiti'">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-seminati-multiazienda-widget [codice]="widget.Codice" content [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-seminati-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'MappaPaesePoligoni' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-mappa-multiazienda-widget [codice]="widget.Codice" content [params]="widget.Parametri" class="no-scrolling" style="height: 100%; width: 100%;">
+        </app-mappa-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'MappaPaeseDistribuzione' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-mappa-multiazienda-widget [codice]="widget.Codice" content [params]="widget.Parametri" class="no-scrolling" style="height: 100%; width: 100%;">
+        </app-mappa-multiazienda-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ContatoreFarmer' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-columns-chart-widget content [params]="widget.Parametri" style="height: 100%; width: 100%;">
+        </app-columns-chart-widget>
+      </app-widget-template>
+    </div>
+
+    <!-- fine widget multiazienda -->
+
+    <div *ngIf="widget.Codice == 'ProduzioneColture' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-produzione-colture-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%"></app-produzione-colture-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'RiepilogoMeteo' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-riepilogo-meteo-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%"></app-riepilogo-meteo-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'Acquisti' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ultimi-acquisti-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%"></app-ultimi-acquisti-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'GhgColture' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-ghg-colture-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-ghg-colture-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'StimeProduzioneColture' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-stime-produzione-colture-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-stime-produzione-colture-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoProduttivita' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-produttivita-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-produttivita-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoPlv' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-plv-comparison-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-plv-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoErosione' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-erosione-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-erosione-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceCO2' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-co2-comparison-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-co2-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoAggregato' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-aggregato-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-aggregato-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoAllagamento' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-allagamento-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-allagamento-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoGelata' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-gelata-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-gelata-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoGrandine' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-grandine-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-grandine-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoSiccita' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-siccita-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-siccita-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ConfrontoIndiceRischioMeteoVentoForte' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-rischio-meteo-vento-forte-comparison-widget content [params]="widget.Parametri" [piva]="piva"
+          style="height: 100%; width: 100%;">
+        </app-rischio-meteo-vento-forte-comparison-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'IndicatoreUnicoRating' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-unique-rating-widget content [params]="widget.Parametri" [piva]="piva" [rag_soc]="rag_soc" style="height: 100%; width: 100%;">
+        </app-unique-rating-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'CostiRicaviAI' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()" [hasInfo]="true" infoTitle="PrevisioniAI">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <costi-ricavi-ai-widget content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </costi-ricavi-ai-widget>
+      </app-widget-template>
+    </div>
+
+    <div *ngIf="widget.Codice == 'ReportChecklist' && widget.Visibile && (widget.MultiAziendale === readSwitchMultiAzienda())" class="full-height">
+      <app-widget-template [title]="widget.Titolo" [widget]="widget" [piva]="piva" (onSave)="saveData()">
+        <span cdkDragHandle><i aria-hidden="true" class="fa fa-arrows-alt custom-cdk-handle" aria-hidden="true"></i></span>
+        <app-widget-checklist content [params]="widget.Parametri" [piva]="piva" style="height: 100%; width: 100%;">
+        </app-widget-checklist>
+      </app-widget-template>
+    </div>
+
+    <div *cdkDragPlaceholder [ngStyle]="{'min-height.px': placeholderHeight, 'min-width.px': placeholderWidth }"
+      [style]="widget.Codice != null ? 'grid-area: ' + widget.aspettoReale.gridArea : ''" class="ghost"></div>
+  </div>
+</div>

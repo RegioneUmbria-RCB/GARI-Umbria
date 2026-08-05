@@ -1,0 +1,74 @@
+<div *ngIf="loading" class="widget-loading-container">
+  <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<kendo-pdf-export #pdf paperSize="A4">
+  <div *ngIf="!loading && data.length > 0" class="widget-body">
+    <div class="widget-row header">
+      <div class="w-kpi">KPI</div>
+      <div class="w-description">{{ "Descrizione" | transloco }}</div>
+      <div class="w-value">{{ "Valore" | transloco }}</div>
+    </div>
+    <ng-container *ngFor="let elem of data">
+      <hr>
+
+      <div class="widget-row data">
+        <div class="w-kpi colored">
+          <div class="kpi-img" [ngClass]="elem.icon"></div>
+          <div class="kpi-name" [innerHTML]="elem.kpi"></div>
+        </div>
+        <div class="widget-column">
+          <div class="w-description" [innerHTML]="elem.des"></div>
+          <div class="w-error" *ngIf="isOutOfRange(elem)">{{ "DatiInsufficientiNonRilevantiPerLeColtureEsaminateONonCompresiNellIntervalloPrevisto" | transloco }}</div>
+        </div>
+        <div class="w-value">
+          <div class="semaphores">
+            <div class="semaphore red" [ngClass]="{ 'disabled': isOutOfRange(elem) || elem.indicator != IndicatoreRatingUnico.Basso }"></div>
+            <div class="semaphore yellow" [ngClass]="{ 'disabled': isOutOfRange(elem) || elem.indicator != IndicatoreRatingUnico.Medio }"></div>
+            <div class="semaphore green" [ngClass]="{ 'disabled': isOutOfRange(elem) || elem.indicator != IndicatoreRatingUnico.Alto }"></div>
+          </div>
+          <div class="info">
+            <div class="circle">{{ elem.min }}</div>
+            <span class="k-icon k-i-arrow-left scaled"></span>
+            <span>{{ elem.val }}{{ elem.udm }}</span>
+            <span class="k-icon k-i-arrow-right scaled"></span>
+            <div class="circle">{{ elem.max }}</div>
+          </div>
+        </div>
+      </div>
+
+    </ng-container>
+
+    <hr>
+    <div class="widget-row">
+      <div class="w-kpi">
+        <button
+          kendoTooltip
+          kendoButton
+          fillMode="outline"
+          [primary]="false"
+          [title]="'Stampa' | transloco"
+          class="btn btn-primary btn-primary-fill btn-primary-text"
+          style="width: 90%;"
+          (click)="exportKPI()">
+          <div class="ng-fa-icon">
+            <span class="fa-print white lg"></span>
+          </div>
+        </button>
+      </div>
+
+      <div class="widget-column">
+        <span class="info-print" #InfoPrint></span>
+      </div>
+
+    </div>
+  </div>
+</kendo-pdf-export>
+
+<div *ngIf="!loading && piva != null && data.length == 0" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'No_Dati' | transloco }}</p>
+</div>
+
+<div *ngIf="!loading && piva == null" class="widget-loading-container">
+  <p class="widget-no-data">{{ 'SelezionareUnaImpresa' | transloco }}</p>
+</div>

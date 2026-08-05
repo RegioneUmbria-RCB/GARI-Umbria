@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{23F6D423-BC4F-4D05-A52A-67FA593234C8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreAnagrafeBIZ</RootNamespace>
+    <AssemblyName>AgronicaCoreAnagrafeBIZ</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.12.2.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.12.2\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.15.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.15.0\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Packaging.4.0.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgronicaCoreAnagrafeBIZ_resx\AgronicaCoreAnagrafeBIZ.Designer.vb">
+      <DependentUpon>AgronicaCoreAnagrafeBIZ.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Allegati_Documenti.vb" />
+    <Compile Include="Analisi_Campione_W.vb" />
+    <Compile Include="Analisi_Modello.vb" />
+    <Compile Include="Analisi_Testata.vb" />
+    <Compile Include="Analisi_Tipologia.vb" />
+    <Compile Include="AppezzamentiXParcoMacchine.vb" />
+    <Compile Include="Breadcrumbs.vb" />
+    <Compile Include="CentroAziendaleNG.vb" />
+    <Compile Include="DatiPrevisionaliColture.vb" />
+    <Compile Include="EsportazioneMaterialeVivaistico\EsolverOrdiniMV.vb" />
+    <Compile Include="EsportazioneMaterialeVivaistico\EsolverParametriOrdiniMV.vb" />
+    <Compile Include="GruppiMerce.vb" />
+    <Compile Include="GruppiUtentiPerGruppiMerce.vb" />
+    <Compile Include="Gruppi_Raccolta.vb" />
+    <Compile Include="Impianto.vb" />
+    <Compile Include="Imprese_Impostazioni.vb" />
+    <Compile Include="IndiciProduttivitaAi.vb" />
+    <Compile Include="Lavorazione.vb" />
+    <Compile Include="Appezzamento.vb" />
+    <Compile Include="Appezzamento_Piccolo.vb" />
+    <Compile Include="AttivitaXCentri_Aziendali.vb" />
+    <Compile Include="Campo.vb" />
+    <Compile Include="CentroAziendale.vb" />
+    <Compile Include="ChiamateWS.vb" />
+    <Compile Include="Codici.vb" />
+    <Compile Include="CopiaContatti.vb" />
+    <Compile Include="Ereditatore.vb" />
+    <Compile Include="Indirizzi.vb" />
+    <Compile Include="jDeereDataModelBIZ_Account.vb" />
+    <Compile Include="jDeereDataModelBIZ_AccountXOrganization.vb" />
+    <Compile Include="jDeereDataModelBIZ_Boundary.vb" />
+    <Compile Include="jDeereDataModelBIZ_Client.vb" />
+    <Compile Include="jDeereDataModelBIZ_Farm.vb" />
+    <Compile Include="jDeereDataModelBIZ_Field.vb" />
+    <Compile Include="jDeereDataModelBIZ_FieldOperation.vb" />
+    <Compile Include="jDeereDataModelBIZ_FieldOperationFileRequest.vb" />
+    <Compile Include="jDeereDataModelBIZ_FieldOperationMeasurement.vb" />
+    <Compile Include="jDeereDataModelBIZ_FieldXBoundary.vb" />
+    <Compile Include="jDeereDataModelBIZ_Files.vb" />
+    <Compile Include="jDeereDataModelBIZ_Organization.vb" />
+    <Compile Include="Lotto_AssegnaxRisumSpeVarQualCert_BIZ.vb" />
+    <Compile Include="Configurazione_Imballaggi_BIZ.vb" />
+    <Compile Include="Contatti.vb" />
+    <Compile Include="Analisi_Certificato.vb" />
+    <Compile Include="ImportazionePcFast.vb" />
+    <Compile Include="Importa_GIAS.vb" />
+    <Compile Include="Meteo.vb" />
+    <Compile Include="model\AppezzamentoNG.vb" />
+    <Compile Include="model\Breadcrumbs.vb" />
+    <Compile Include="model\Campi.vb" />
+    <Compile Include="model\Centri.vb" />
+    <Compile Include="model\Contatti.vb" />
+    <Compile Include="model\Fabbricati.vb" />
+    <Compile Include="model\GisPurpose.vb" />
+    <Compile Include="model\GruppiMerce.vb" />
+    <Compile Include="model\GruppiUtentiPerGruppiMerce.vb" />
+    <Compile Include="model\Imprese.vb" />
+    <Compile Include="model\IndiciProduttivita.vb" />
+    <Compile Include="model\Indirizzi.vb" />
+    <Compile Include="model\Rubrica.vb" />
+    <Compile Include="Operazioni_Sementieri.vb" />
+    <Compile Include="ParamEntrataXSpecieVarietaBIZ.vb" />
+    <Compile Include="ProgettiXContributi.vb" />
+    <Compile Include="ProgrammazioneModel.vb" />
+    <Compile Include="PS_Zone_Specie_Varieta_Default.vb" />
+    <Compile Include="CorpiEstranei.vb" />
+    <Compile Include="Fabbricato.vb" />
+    <Compile Include="Impresa.vb" />
+    <Compile Include="Materie_Prime.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Particella.vb" />
+    <Compile Include="Progetto.vb" />
+    <Compile Include="Programmazione.vb" />
+    <Compile Include="Analisi_Correzioni.vb" />
+    <Compile Include="Rapporti_Contabili.vb" />
+    <Compile Include="Reg_Impianto.vb" />
+    <Compile Include="Replica_GIAS.vb" />
+    <Compile Include="RibaltamentoAnagraficheColturali.vb" />
+    <Compile Include="RisorseUmane.vb" />
+    <Compile Include="Rubrica.vb" />
+    <Compile Include="SpecieVegetali_Default.vb" />
+    <Compile Include="Stalla_Raggruppamenti.vb" />
+    <Compile Include="UnitaMisura_Alternativa.vb" />
+    <Compile Include="VisteGriglia.vb" />
+    <Compile Include="Web References\WS_CapitolatoCliente\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WS_Disciplinari\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WS_Fitofarmaci\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WidgetIndiciProduttivita.vb" />
+    <Compile Include="WeatherWidget.vb" />
+    <Compile Include="Zoo.vb" />
+    <Compile Include="Zoo_Configurazione.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AgronicaCoreAnagrafeBIZ_resx\AgronicaCoreAnagrafeBIZ.en.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeBIZ_resx\AgronicaCoreAnagrafeBIZ.fr.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeBIZ_resx\AgronicaCoreAnagrafeBIZ.pt.resx" />
+    <EmbeddedResource Include="AgronicaCoreAnagrafeBIZ_resx\AgronicaCoreAnagrafeBIZ.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AgronicaCoreAnagrafeBIZ.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Analisi_Tipologia.cd" />
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="SpecieVegetali_Default.cd" />
+    <None Include="Web References\WS_CapitolatoCliente\AgroWS_CapitolatoCliente.wsdl" />
+    <None Include="Web References\WS_CapitolatoCliente\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.wsdl" />
+    <None Include="Web References\WS_Disciplinari\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Web References\WS_Fitofarmaci\AgroWS_fitofarmaci.wsdl" />
+    <None Include="Web References\WS_Fitofarmaci\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{a1f2f959-43c8-4fe6-b159-96652ff9fb2b}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisBIZ\AgronicaCoreGisBIZ.vbproj">
+      <Project>{8942b252-809e-4fe1-9284-a3fdd7a174ea}</Project>
+      <Name>AgronicaCoreGisBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{d6963b76-054b-4070-8bad-dc9cc4c6f8d7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.FormatsConverter\AgronicaConversioneCartografiaGias.FormatsConverter.vbproj">
+      <Project>{ab4cd9b0-7252-43ef-9efb-34ad450dd74e}</Project>
+      <Name>AgronicaConversioneCartografiaGias.FormatsConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.GeoConverter.vbproj">
+      <Project>{8FA27405-01BD-4DA3-9461-DBB8FE16DEC7}</Project>
+      <Name>AgronicaConversioneCartografiaGias.GeoConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaGIS2012.Commons\AgronicaGIS2012.Commons.vbproj">
+      <Project>{BEA06BCC-9EBB-43BC-BB37-FD4519D128D3}</Project>
+      <Name>AgronicaGIS2012.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreBudgetDAL\AgronicaCoreBudgetDAL.vbproj">
+      <Project>{6e6de40f-1a6e-431d-85db-8d143612d45b}</Project>
+      <Name>AgronicaCoreBudgetDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09C9A140-71E4-430E-9E87-73C69E876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415C-E4F0-4EE5-BF6A-C0BD9BF3276B}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDpiDAL\AgronicaCoreDpiDAL.vbproj">
+      <Project>{be99028c-cc87-4ea8-8132-d4e7f9e56028}</Project>
+      <Name>AgronicaCoreDpiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{efd63249-9cbe-4cb4-90d2-e881341c3b96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGestoreModificheBIZ\AgronicaCoreGestoreModificheBIZ.vbproj">
+      <Project>{6C64FE54-7833-4319-ACAD-E50A1CE638C2}</Project>
+      <Name>AgronicaCoreGestoreModificheBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGraficaBIZ\AgronicaCoreGraficaBIZ.vbproj">
+      <Project>{F7E29145-114D-4520-B0AB-112ABBF72226}</Project>
+      <Name>AgronicaCoreGraficaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreGraficaDAL\AgronicaCoreGraficaDAL.vbproj">
+      <Project>{0BEE295E-9A01-4A27-BEFF-CCB552C07CAE}</Project>
+      <Name>AgronicaCoreGraficaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMailBIZ\AgronicaCoreMailBIZ.vbproj">
+      <Project>{66ea66a8-e530-47e9-891f-bca7a8203636}</Project>
+      <Name>AgronicaCoreMailBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307B2208-0488-440A-876B-5DCE4086E53B}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePianidiCampionamentoDAL\AgronicaCorePianidiCampionamentoDAL.vbproj">
+      <Project>{e144d815-9b57-4554-9bc2-10557d382982}</Project>
+      <Name>AgronicaCorePianidiCampionamentoDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePianoConcimazioneBIZ\AgronicaCorePianoConcimazioneBIZ.vbproj">
+      <Project>{8e64885e-19ad-4476-9094-1b5ef239cd43}</Project>
+      <Name>AgronicaCorePianoConcimazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreProfilazioneDAL\AgronicaCoreProfilazioneDAL.vbproj">
+      <Project>{812be209-57ac-45db-9bfc-a4d64bfa29d8}</Project>
+      <Name>AgronicaCoreProfilazioneDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreScadenziario\AgronicaCoreScadenziario_DAL.vbproj">
+      <Project>{ae20eaf7-05ab-40e3-a238-33454e0ce715}</Project>
+      <Name>AgronicaCoreScadenziario_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7cf14ae3-4b42-4488-a29e-e4b698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUmaDal\AgronicaCoreUmaDal.vbproj">
+      <Project>{daf17cca-db03-4077-8192-afcb6e733517}</Project>
+      <Name>AgronicaCoreUmaDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1C26FAC0-09AD-4D00-9FA6-6142B93542CF}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0C28E3AB-427E-45D5-B6B3-43D3378AF207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{c72bdd2d-2d24-41af-b4fc-1d71060bde58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56B64BCF-A26C-4AC3-86FE-7F8114B1B3D9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreZooDAL\AgronicaCoreZooDAL.vbproj">
+      <Project>{2332b409-b2e5-4a70-9f33-589f4bf7522f}</Project>
+      <Name>AgronicaCoreZooDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/AgronicaWebService2010/AgroWS_CapitolatoCliente.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_CapitolatoCliente\</RelPath>
+      <UpdateFromURL>http://localhost/AgronicaWebService2010/AgroWS_CapitolatoCliente.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AgronicaCoreAnagrafeBIZ_WS_CapitolatoCliente_AgroWS_CapitolatoCliente</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/AgronicaWebService2010/AgroWS_Disciplinari.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Disciplinari\</RelPath>
+      <UpdateFromURL>http://localhost/AgronicaWebService2010/AgroWS_Disciplinari.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AgronicaCoreAnagrafeBIZ_WS_Disciplinari_AgroWS_Disciplinari</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/AgronicaWebService2010/AgroWS_fitofarmaci.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WS_Fitofarmaci\</RelPath>
+      <UpdateFromURL>http://localhost/AgronicaWebService2010/AgroWS_fitofarmaci.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>MySettings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>AgronicaCoreAnagrafeBIZ_WS_Fitofarmaci_AgroWS_Fitofarmaci</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_CapitolatoCliente\AgroWS_CapitolatoCliente.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Fitofarmaci\AgroWS_fitofarmaci.disco" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

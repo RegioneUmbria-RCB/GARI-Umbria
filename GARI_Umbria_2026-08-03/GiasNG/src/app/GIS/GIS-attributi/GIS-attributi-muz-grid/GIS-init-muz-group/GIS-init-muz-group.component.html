@@ -1,0 +1,63 @@
+<ng-container *ngIf="groups$ | async as groups">
+  <kendo-tabstrip [keepTabContent]="true" [scrollable]="true">
+    <kendo-tabstrip-tab [title]="'gis.NuovoGruppoVuoto' | transloco" [selected]="true">
+      <ng-template kendoTabContent>
+        <div class="init-muz-column">
+          <h6>{{ 'gis.CreaUnNuovoGruppoDoveSarannoAggiunteLeMuz' | transloco }}</h6>
+
+          <div class="k-mt-2 init-muz-row">
+            <kendo-textbox [(value)]="newGroupName" [clearButton]="true"
+              [placeholder]="'gis.NuovoGruppoPerMuz' | transloco"></kendo-textbox>
+
+            <button kendoButton [disabled]="newGroupName == ''" (click)="submit(newGroupName, null)">{{
+              'Conferma' | transloco }}</button>
+          </div>
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.PartiDaUnGruppoRicopiaSuNuovo' | transloco">
+      <ng-template kendoTabContent>
+        <div class="init-muz-column">
+          <ol class="init-muz-list">
+            <li>
+              <h6>{{ 'gis.IndicazioneNuovoGruppoMuz1' | transloco }}</h6>
+            </li>
+            <li>
+              <h6>{{ 'gis.IndicazioneNuovoGruppoMuz2' | transloco }}</h6>
+            </li>
+          </ol>
+
+          <div class="k-mt-2 init-muz-row">
+            <kendo-dropdownlist [data]="groups" textField="Gruppo_Area_Des" valueField="Gruppo_Area_Cod"
+              [filterable]="true" [value]="selectedGroup" [kendoDropDownFilter]="filterSettings"
+              (valueChange)="selectedGroup = $event"></kendo-dropdownlist>
+
+            <kendo-textbox [(value)]="newGroupName" [clearButton]="true"
+              [placeholder]="'gis.NuovoGruppoPerMuz' | transloco"></kendo-textbox>
+
+            <button kendoButton [disabled]="newGroupName == '' || selectedGroup.Gruppo_Area_Cod == -1"
+              (click)="submit(newGroupName, selectedGroup)">{{ 'Conferma' | transloco }}</button>
+          </div>
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+
+    <kendo-tabstrip-tab [title]="'gis.UtilizzaUnGruppoEsistente' | transloco">
+      <ng-template kendoTabContent>
+        <div class="init-muz-column">
+          <h6>{{ 'gis.IndicazioneGruppoMuzEsistente1' | transloco }}</h6>
+
+          <div class="k-mt-2 init-muz-row">
+            <kendo-dropdownlist [data]="groups" textField="Gruppo_Area_Des" valueField="Gruppo_Area_Cod"
+              [filterable]="true" [value]="selectedGroup" [kendoDropDownFilter]="filterSettings"
+              (valueChange)="selectedGroup = $event"></kendo-dropdownlist>
+
+            <button kendoButton [disabled]="selectedGroup.Gruppo_Area_Cod == -1"
+              (click)="submit(null, selectedGroup)">{{ 'Conferma' | transloco }}</button>
+          </div>
+        </div>
+      </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+</ng-container>

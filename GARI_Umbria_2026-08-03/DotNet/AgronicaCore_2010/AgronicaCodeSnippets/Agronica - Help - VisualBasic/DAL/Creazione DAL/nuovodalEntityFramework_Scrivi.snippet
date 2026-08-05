@@ -1,0 +1,116 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Creazione di una funzione aggiorna in DAL via Entity Framework</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>agEFdal</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Nome</ID>
+          <ToolTip>Nome Oggetto da aggiornare</ToolTip>
+          <Default>NomeDal</Default>
+        </Literal>
+        <Literal>
+          <ID>Context</ID>
+          <ToolTip>Nome Contesto</ToolTip>
+          <Default>Gias_DeveloperServer_Entities</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="vb">
+        <![CDATA[Public Function Aggiorna_$Nome$(
+                ByVal EFArrayToInsert As List(Of $Nome$),
+                ByVal EFArrayToUpdate As List(Of $Nome$),
+                ByVal EFArrayToDelete As List(Of $Nome$),
+                ByRef objParametri As AgronicaCoreDataProvider.AgronicaCoreParametri
+                ) As String
+
+        Dim Piva_SuperUser = objParametri.PivaSuperUser
+
+        Dim ObjSequenze = New AgronicaCoreDataProvider.Agro_Sequenze
+
+        Dim retries As Integer = 3
+        Dim success As Boolean = True
+
+        Dim NomeRoutine As String = "AgronicaCoreContabDAL.AgronicaCore$Nome$.Aggiorna_$Nome$()"
+        Dim MessaggioErrore As String = ""
+
+        Dim gefutils As New Gias_EF_Utility
+        Dim EFConnString As String = gefutils.GetEntityConnectionString(objParametri.StringaConnessione)
+
+        Try
+
+            Using scope As New TransactionScope()
+
+                Using GiasContext As New $Context$(EFConnString)
+
+                    Dim idSeq As Integer = 0
+
+                    For Each cur$Nome$ As $Nome$ In EFArrayToInsert
+
+                        success = False
+                        For i As Integer = 0 To retries - 1
+
+                            Try
+
+
+                                GiasContext.$Nome$.AddObject(cur$Nome$)
+                                GiasContext.SaveChanges()
+                                success = True
+
+                                Exit For
+                            Catch ex As Exception
+                                Threading.Thread.Sleep(500) ' 500 milliseconds = 0.5 seconds
+                            End Try
+                        Next
+                        ' Al primo errore evito di continuare le modifiche
+                        If Not success Then
+                            MessaggioErrore = "Non sono riuscito ad aggiornare i dati dopo " & retries & " tentativi."
+                            Exit For
+                        End If
+                    Next
+
+                    If success Then
+                        For Each list$Nome$ As $Nome$ In EFArrayToUpdate
+                            GiasContext.$Nome$.Attach(list$Nome$)
+                            GiasContext.ObjectStateManager.ChangeObjectState(list$Nome$, EntityState.Modified)
+                            GiasContext.SaveChanges()
+                        Next
+
+                        For Each listlist$Nome$ As $Nome$ In EFArrayToDelete
+                            GiasContext.AttachTo("$Nome$", listlist$Nome$)
+                            GiasContext.DeleteObject(listlist$Nome$)
+
+                            GiasContext.SaveChanges()
+                        Next
+
+                        ' COMIT Effettivo
+                        scope.Complete()
+                    End If
+
+                End Using
+            End Using
+
+
+        Catch ex As Exception
+
+            MessaggioErrore = ex.Message
+            Scrivi_LOG(objParametri, NomeRoutine, MessaggioErrore)
+            Throw New Exception("[" & NomeRoutine & "] : " & MessaggioErrore, ex)
+
+        End Try
+
+        Return MessaggioErrore
+
+    End Function
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

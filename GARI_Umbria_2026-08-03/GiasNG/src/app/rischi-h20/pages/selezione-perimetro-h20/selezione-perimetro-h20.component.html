@@ -1,0 +1,40 @@
+<gias-side-filters-template [filtersTemplate]="filtersTpl" (search)="onSidebarSearch()">
+</gias-side-filters-template>
+
+<div class="selezione-perimetro-page">
+
+  <!-- Empty State -->
+  <div *ngIf="!isLoading && searchInitiated && !hasData" class="k-p-4">
+    <div class="k-messagebox k-messagebox-info">
+      {{ 'rischi_h2o_empty_message' | transloco }}
+    </div>
+  </div>
+
+  <!-- Results Section -->
+  <div *ngIf="searchInitiated" class="results-section">
+    <div *ngIf="hasData" class="results-header k-px-2 k-pt-2 k-mb-1">
+      <strong>{{ 'rischi_h2o_section_riepilogo' | transloco }}</strong>
+    </div>
+
+    <div class="grid-wrapper">
+      <gias-kendo-grid
+        [gridId]="'riepilogo-perimetro-h20-grid'"
+        class="kendo-grid-no-shadow"
+        (rowsLoaded)="onRowsLoaded()"
+        (selectionChange)="onSelectionChange($event)">
+      </gias-kendo-grid>
+    </div>
+
+    <div *ngIf="hasData" class="action-buttons k-px-4 k-py-3 k-d-flex k-justify-content-end">
+      <button class="btn btn-primary btn-primary-fill" [disabled]="!canAvviaCalcolo" (click)="onAvviaCalcolo()">
+        {{ isCalcoloInProgress ? ('rischi_h2o_loading_calcolo' | transloco) : ('rischi_h2o_btn_avvia_calcolo' | transloco) }}
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Sidebar filter template -->
+<ng-template #filtersTpl>
+  <app-filtri-perimetro-h20></app-filtri-perimetro-h20>
+</ng-template>

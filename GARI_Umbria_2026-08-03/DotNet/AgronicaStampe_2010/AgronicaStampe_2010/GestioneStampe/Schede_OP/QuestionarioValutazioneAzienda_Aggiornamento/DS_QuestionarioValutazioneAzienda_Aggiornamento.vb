@@ -1,0 +1,2 @@
+﻿Partial Class DS_QuestionarioValutazioneAzienda_Aggiornamento
+End Class

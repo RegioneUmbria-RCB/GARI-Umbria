@@ -1,0 +1,25 @@
+<gias-kendo-grid #Master [gridId]="'ContoEconomicoHttpService'" [customCommandColumnCellTemplate]="customCommandColumn">
+    <!--<kendo-grid-command-column *ngIf="permessoEdit" [includeInChooser]="false" [width]="70">
+        <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem" let-rowIndex="rowIndex">
+            <div class="btn-group" kendoTooltip>
+                <button kendoButton size="small" [title]="'AggiornaDettagliTooltip' | transloco"
+                    (click)="aggiornatiDatiDettaglioSpecifico(dataItem)">
+                    <fa-icon size="lg" [icon]="['fas', 'rotate']" aria-hidden="true"></fa-icon>
+                </button>
+            </div>
+        </ng-template>
+    </kendo-grid-command-column>-->
+    <ng-template #TemplateDetail>
+        <app-conto-economico-dettaglio></app-conto-economico-dettaglio>
+    </ng-template>
+</gias-kendo-grid>
+
+
+<ng-template #customCommandColumn let-dataItem="dataItem">
+  <div class="btn-group" kendoTooltip>
+    <button kendoButton size="small" [title]="'AggiornaDettagliTooltip' | transloco"
+            (click)="aggiornatiDatiDettaglioSpecifico(dataItem)">
+      <fa-icon size="lg" [icon]="['fas', 'rotate']" aria-hidden="true"></fa-icon>
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,13 @@
+﻿<gis-window [windowArgs]="windowArgs" class="pb-3">
+  <div class="linee-guida-ab-window-column">
+    <p class="text_blue"><strong> {{ title }} </strong></p>
+
+    <div class="linee-guida-ab-window-row">
+      <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-check linee-guida-ab-window-btn size-22"
+        themeColor="success" (click)="save()" [title]="'Salva' | transloco" gisTooltip></button>
+
+      <button kendoButton class="flex-1" fillMode="outline" iconClass="fa fa-close linee-guida-ab-window-btn size-22"
+        themeColor="error" (click)="cancel()" [title]="'Annulla' | transloco" gisTooltip></button>
+    </div>
+  </div>
+</gis-window>

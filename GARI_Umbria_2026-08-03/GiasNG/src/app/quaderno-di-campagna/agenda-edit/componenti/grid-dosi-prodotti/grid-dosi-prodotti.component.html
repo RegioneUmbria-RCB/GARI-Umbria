@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-12 col-sm-12" *ngIf="mostraGridDosiProdotti">
+        <div class="gias-section-title-with-icon mb-2">
+            <h5 class="card-title">
+                {{'InMiscela' | transloco}}
+            </h5>
+        </div>
+        <gias-kendo-grid #GridDosiProdotti [gridId]="'GridDosiProdotti'" class="kendo-grid-no-shadows">
+            <!-- TODO bottone dose consigliata dentro la griglia dei fertilizzanti aspetta a continuare lo sviluppo perchè non si sa se deve fare come
+                il vecchio che passa tutto l'oggetto agenda(non solo la riga selezionata) -->
+            <!--<kendo-grid-command-column
+                *ngIf="MostraBtn_Dose_Consigliata()"
+                [headerStyle]="{
+                    'background-color': '#428BCA',
+                    'color': 'white'
+                }" [title]="'qdc.Dose_Consigliata' | transloco"
+                [includeInChooser]="false"
+                [width]="70">
+                <ng-template kendoGridCellTemplate let-isNew="isNew" let-dataItem="dataItem" let-rowIndex="rowIndex">
+                    <div class="btn-group" kendoTooltip>
+                        <button
+                            kendoButton
+                            class="btn-primary-fill"
+                            size="small"
+                            [title]="'qdc.Dose_Consigliata' | transloco"
+                            [disabled]="Disabilita_Btn_Dose_Consigliata(dataItem,GridDosiProdotti.inLineModificaIsDisabled)"
+                        >
+                            <fa-icon size="lg" [icon]="['fas', 'info']" aria-hidden="true"></fa-icon>
+                        </button>
+                    </div>
+                </ng-template>
+            </kendo-grid-command-column>-->
+        </gias-kendo-grid>
+    </div>
+
+    <div [id]="'divGridDosiProdotti_'+ Lav_Cod"></div>
+</div>

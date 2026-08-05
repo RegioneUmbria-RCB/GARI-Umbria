@@ -1,0 +1,52 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Bootstrap 3 - Alert</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>      
+    </Header>    
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>id client dell alert</ToolTip>
+          <Default>id</Default>
+        </Literal>
+        <Literal>
+          <ID>titolo</ID>
+          <ToolTip>titolo</ToolTip>
+          <Default>Titolo</Default>
+        </Literal>
+        <Literal>
+          <ID>body</ID>
+          <ToolTip>Contenuto dell alert</ToolTip>
+          <Default>Messaggio</Default>
+        </Literal>
+        
+        <Literal>
+          <ID>chiudi</ID>
+          <ToolTip>chiudi</ToolTip>
+          <Default>chiudi</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="html">
+        <![CDATA[
+        
+    <!-- MessageBoxRosso -->
+    <div id="$id$" class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4><div id="$id$_Titolo">$titolo$</div></h4>
+        <p><div id="$id$_Testo">$body$</div></p>
+        <h4>$titolo$</h4>
+        <p>$body$</p>        
+    </div>
+    
+
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

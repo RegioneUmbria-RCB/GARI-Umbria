@@ -1,0 +1,360 @@
+<div class="dss-widget-card k-card" [class.dss-widget-card--clickable]="hasData()" (click)="navigateToDettaglio()">
+  <div #widgetCard>
+
+  <!-- Saving overlay – FR012: covers the card while the save request is in flight -->
+  <div *ngIf="isSaving()" class="dss-widget-card__saving-overlay">
+    <gias-master-spinner></gias-master-spinner>
+  </div>
+
+  <!-- Refresh overlay – FR014: covers the card while the refresh request is in flight -->
+  <div *ngIf="isRefreshing()" class="dss-widget-card__saving-overlay">
+    <gias-master-spinner></gias-master-spinner>
+  </div>
+
+  <!-- Card Header: globe icon | nome appezzamento | status badge | leaf icon – UIL002 §C.1 -->
+  <div class="k-card-header dss-widget-card__header">
+    <fa-icon *ngIf="showWidgetIcon()" [icon]="faGlobe" class="dss-widget-card__icon-theme" aria-hidden="true"></fa-icon>
+
+    <span class="k-card-title k-font-weight-bold dss-widget-card__title">
+      {{ appezzamento.NomeAppezzamento }}
+    </span>
+
+    <!-- Status Badge inline – UIL002 §C.5 -->
+    <ng-container [ngSwitch]="status()">
+      <span *ngSwitchCase="'loading'" kendoBadge themeColor="base" size="small" class="dss-widget-card__badge">
+        &hellip;
+      </span>
+      <span *ngSwitchCase="'hasData'" kendoBadge [themeColor]="consiglioThemeColor" size="small" class="dss-widget-card__badge">
+        {{ consiglioStatusLabel | transloco }}
+      </span>
+      <span *ngSwitchCase="'noData'" kendoBadge themeColor="warning" size="small" class="dss-widget-card__badge">
+        {{ 'dssNutrizione_widget_no_consiglio' | transloco }}
+      </span>
+      <span *ngSwitchCase="'error'" kendoBadge themeColor="error" size="small" class="dss-widget-card__badge">
+        {{ 'Errore_' | transloco }}
+      </span>
+    </ng-container>
+
+    <fa-icon *ngIf="showWidgetIcon()" [icon]="faLeaf" class="dss-widget-card__icon-theme--success" aria-hidden="true"></fa-icon>
+  </div>
+
+  <!-- Card Body – UIL002 §C.2, §C.3, §C.4, §C.5, §C.6 -->
+  <div class="k-card-body k-p-3">
+
+    <!-- Structural info rows – UIL002 §C.2: always visible -->
+    <div class="k-mb-1 k-d-flex k-justify-content-between">
+      <span class="k-color-subtle">{{ 'dssNutrizione_widget_specie_varieta' | transloco }}</span>
+      <span class="dss-widget-card__value">
+        {{ appezzamento.SpecieVegetale }}{{ appezzamento.Varieta ? ' - ' + appezzamento.Varieta : '' }}
+      </span>
+    </div>
+
+    <div class="k-mb-2 k-d-flex k-justify-content-between">
+      <span class="k-color-subtle">{{ 'Superficie' | transloco }}</span>
+      <span>{{ appezzamento.SuperficieHa | number:'1.2-2' }} ha</span>
+    </div>
+
+    <div class="k-mb-2 k-d-flex k-justify-content-between k-align-items-center">
+      <span class="k-color-subtle">{{ 'FaseFenologica' | transloco }}</span>
+      <ng-container *ngIf="appezzamento.FaseFenologicaCorrente?.BbchCod; else ndTemplate">
+        <span kendoBadge themeColor="primary" size="small">
+          BBCH {{ appezzamento.FaseFenologicaCorrente.BbchCod }}
+          <ng-container *ngIf="appezzamento.FaseFenologicaCorrente.BbchDescrizione">
+            &ndash; {{ appezzamento.FaseFenologicaCorrente.BbchDescrizione }}
+          </ng-container>
+        </span>
+      </ng-container>
+    </div>
+
+
+
+    <!-- Loading spinner – UIL002 §B State: Loading -->
+    <div *ngIf="isLoading()" class="k-mb-2">
+      <gias-master-spinner></gias-master-spinner>
+    </div>
+
+    <!-- Has Data state – UIL002 §B State: Data -->
+    <ng-container *ngIf="hasData() && consiglio()">
+      <div class="k-separator k-mb-2"></div>
+
+      <!-- Consiglio di Nutrizione (NPK) inline – UIL002 §C.3 -->
+      <div class="k-mb-2">
+        <strong class="k-display-block k-mb-2 k-font-size-sm">{{ 'dssNutrizione_tooltip_consiglio_titolo' | transloco }}</strong>
+        <ng-container *ngIf="consiglio()?.ConsiglioNutrizione?.Elementi?.length; else noConsiglioInlineTpl">
+          <ng-container *ngFor="let el of consiglio()!.ConsiglioNutrizione.Elementi; let last = last">
+            <div class="dss-tooltip-nutriente">
+              <!--<strong class="k-font-size-sm k-display-block k-mb-1">{{ getNutrienteLabel(el.Elemento) | transloco }}</strong>-->
+              <div class="k-d-flex k-justify-content-between k-gap-2 k-font-size-sm">
+                <span class="k-color-subtle">{{ el.Elemento }} {{ 'dssNutrizione_tooltip_fabbisogno' | transloco }}:</span>
+                <span>{{ el.FabbisognoMinimo | number:'1.1-1' }} – {{ el.FabbisognoMassimo | number:'1.1-1' }} kg/ha</span>
+              </div>
+              <div class="k-d-flex k-justify-content-between k-gap-2 k-font-size-sm">
+                <span class="k-color-subtle">{{ el.Elemento }} {{ 'dssNutrizione_tooltip_quantita_presente' | transloco }}:</span>
+                <span>{{ el.QuantitativoPresente | number:'1.1-1' }} kg/ha</span>
+              </div>
+              <div class="k-d-flex k-justify-content-between k-gap-2 k-font-size-sm">
+                <span class="k-color-subtle">{{ el.Elemento }} {{ 'dssNutrizione_consiglio_dose' | transloco }}:</span>
+                <span>{{ el.DoseConsigliataMinima | number:'1.1-1' }} – {{ el.DoseConsigliataMassima | number:'1.1-1' }} kg/ha</span>
+              </div>
+              <div class="k-d-flex k-justify-content-between k-gap-2 k-font-size-sm">
+                <span class="k-color-subtle">{{ el.Elemento }} {{ 'dssNutrizione_tooltip_residuo' | transloco }}:</span>
+                <span>{{ el.QuantitativoMinimoResiduo | number:'1.1-1' }} – {{ el.QuantitativoMassimoResiduo | number:'1.1-1' }} kg/ha</span>
+              </div>
+            </div>
+            <hr *ngIf="!last" class="k-my-1">
+          </ng-container>
+        </ng-container>
+        <ng-template #noConsiglioInlineTpl>
+          <span class="k-color-subtle">—</span>
+        </ng-template>
+      </div>
+    </ng-container>
+
+    <!-- Error with retry – UIL002 §B stato "Error" -->
+    <ng-container *ngIf="isError()">
+      <button kendoButton fillMode="flat" themeColor="primary" (click)="retryLoad($event)" class="k-mt-1">
+        {{ 'Riprova' | transloco }}
+      </button>
+    </ng-container>
+
+    <!-- Dettagli Appezzamento PanelBar – UIL002 §C.6 -->
+    <div class="k-mt-2" >
+      <div class="k-separator k-mb-2"></div>
+      <gias-panelbar
+        #dettagliPanel
+        [id]="'dss-dettagli-' + appezzamento.Appezza"
+        [willStoreCookies]="false"
+        [headerTemplate]="dettagliPanelHeader"
+        [contentTemplate]="dettagliPanelContent"
+        [loadContent]="true"
+        [keepItemContent]="true">
+
+        <ng-template #dettagliPanelHeader>
+          {{ 'dssNutrizione_widget_link_dettagli' | transloco }}
+        </ng-template>
+
+        <ng-template #dettagliPanelContent>
+          <div class="k-font-size-sm k-p-2">
+
+            <!-- Coordinate centroide -->
+            <div class="k-mb-2">
+              <strong>{{ 'dssNutrizione_tooltip_coordinate' | transloco }}:</strong>
+              <div class="k-mt-1 k-d-flex k-justify-content-between k-gap-2">
+                <span class="k-color-subtle">{{ 'Latitudine' | transloco }}:</span>
+                <span>{{ appezzamento.CoordinataLat != null ? (appezzamento.CoordinataLat | number:'1.6-6') + '°' : '—' }}</span>
+              </div>
+              <div class="k-d-flex k-justify-content-between k-gap-2">
+                <span class="k-color-subtle">{{ 'Longitudine' | transloco }}:</span>
+                <span>{{ appezzamento.CoordinataLng != null ? (appezzamento.CoordinataLng | number:'1.6-6') + '°' : '—' }}</span>
+              </div>
+            </div>
+
+            <!-- Data semina -->
+            <div class="k-mb-1 k-d-flex k-justify-content-between k-gap-2">
+              <span class="k-color-subtle">{{ 'dssNutrizione_tooltip_data_semina' | transloco }}:</span>
+              <span>{{ appezzamento.DataSeminaPrevista ? (appezzamento.DataSeminaPrevista | date:'dd/MM/yyyy') : '—' }}</span>
+            </div>
+
+            <!-- Numero piante -->
+            <div class="k-mb-1 k-d-flex k-justify-content-between k-gap-2">
+              <span class="k-color-subtle">{{ 'dssNutrizione_tooltip_num_piante' | transloco }}:</span>
+              <span>{{ appezzamento.NumPiante ? (appezzamento.NumPiante | number) : '—' }}</span>
+            </div>
+
+            <!-- Portinnesto -->
+            <div class="k-mb-1 k-d-flex k-justify-content-between k-gap-2">
+              <span class="k-color-subtle">{{ 'Portinnesto' | transloco }}:</span>
+              <span>{{ appezzamento.Portinnesto || '—' }}</span>
+            </div>
+
+            <!-- Stato impianto -->
+            <div class="k-mb-2 k-d-flex k-justify-content-between k-gap-2">
+              <span class="k-color-subtle">{{ 'StatoImpianto' | transloco }}:</span>
+              <span>{{ appezzamento.StatoImpianto || '—' }}</span>
+            </div>
+
+            <!-- Analisi terreno -->
+            <div>
+              <strong>{{ 'AnalisiDelTerreno' | transloco }}:</strong>
+              <ng-container *ngIf="appezzamento.AnalisiTerreno?.SabbiaPercentuale != null; else noAnalisiTpl">
+                <div class="k-mt-1 k-d-flex k-justify-content-between k-gap-2">
+                  <span class="k-color-subtle">Sabbia:</span>
+                  <span>{{ appezzamento.AnalisiTerreno.SabbiaPercentuale | number:'1.1-1' }}%</span>
+                </div>
+                <div class="k-d-flex k-justify-content-between k-gap-2">
+                  <span class="k-color-subtle">Limo:</span>
+                  <span>{{ appezzamento.AnalisiTerreno.LimoPercentuale != null ? (appezzamento.AnalisiTerreno.LimoPercentuale | number:'1.1-1') + '%' : '—' }}</span>
+                </div>
+                <div class="k-d-flex k-justify-content-between k-gap-2">
+                  <span class="k-color-subtle">Argilla:</span>
+                  <span>{{ appezzamento.AnalisiTerreno.ArgillaPercentuale != null ? (appezzamento.AnalisiTerreno.ArgillaPercentuale | number:'1.1-1') + '%' : '—' }}</span>
+                </div>
+                <div class="k-d-flex k-justify-content-between k-gap-2">
+                  <span class="k-color-subtle">N Totale:</span>
+                  <span>{{ appezzamento.AnalisiTerreno.NTotale != null ? (appezzamento.AnalisiTerreno.NTotale | number:'1.1-1') + ' mg/kg' : '—' }}</span>
+                </div>
+              </ng-container>
+              <ng-template #noAnalisiTpl>
+                <span class="k-color-subtle"> {{ 'dssNutrizione_tooltip_analisi_nd' | transloco }}</span>
+              </ng-template>
+            </div>
+
+          </div>
+        </ng-template>
+
+      </gias-panelbar>
+    </div>
+
+    <!-- Ultimo Aggiornamento – FR014: shown after at least one successful refresh -->
+    <div *ngIf="ultimoAggiornamento()" class="k-mt-2 k-d-flex k-justify-content-between">
+      <span class="k-color-subtle">{{ 'dssNutrizione_ricarica_ultimo_aggiornamento' | transloco }}</span>
+      <span>{{ ultimoAggiornamento() | date:'dd/MM/yyyy HH:mm:ss' }}</span>
+    </div>
+
+  </div>
+
+  <!-- Card Footer – UIL002 §C.7 | FR011-FR015 icon-only buttons with tooltips -->
+  <div class="k-card-footer k-px-3 k-py-2 k-d-flex k-justify-content-between" *ngIf="showWidgetIcon()"
+    kendoTooltip showOn="hover" position="top">
+
+    <!-- "Visualizza Fasi Fenologiche" – FR011 -->
+    <button kendoButton class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+      [title]="'dssNutrizione_fasiFenologiche_btn_open' | transloco"
+      [disabled]="isLoading()"
+      (click)="apriVisualizzaFasiFenologiche($event)">
+      <fa-icon [icon]="faCalendar" aria-hidden="true"></fa-icon>
+    </button>
+
+    <!-- "Salva Consiglio" – FR012 -->
+    <button kendoButton class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+      [title]="'SalvaConsiglio' | transloco"
+      [disabled]="!hasData() || isSaving() || isPrinting()"
+      (click)="salvaConsiglio($event)">
+      <span class="k-button-text">
+        <span class="k-icon k-i-save">
+        </span>
+      </span>
+    </button>
+
+    <!-- "Stampa Consiglio" – FR013 -->
+    <button kendoButton class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+      [title]="'dssNutrizione_stampa_consiglio' | transloco"
+      [disabled]="!hasData() || isSaving() || isPrinting()"
+      (click)="stampaPdf(widgetCard,$event)">
+      <div class="ng-fa-icon">
+        <span class="fa-print white lg"></span>
+      </div>
+    </button>
+
+    <!-- "Ricarica" – FR014 -->
+    <button kendoButton class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+      [title]="'Ricarica' | transloco"
+      [disabled]="isRefreshing() || isSaving() || isPrinting()"
+      (click)="ricaricaWidget($event)">
+      <fa-icon [icon]="faRotate" [class.dss-widget-card__icon-rotate]="isRefreshing()" aria-hidden="true"></fa-icon>
+    </button>
+
+    <!-- "Bilancio Azoto" – FR015 -->
+    <button kendoButton class="btn-primary-fill k-button k-button-md k-rounded-md k-button-solid-primary k-button-solid"
+      [title]="'dssNutrizione_bilancioAzoto_btn' | transloco"
+      [disabled]="isLoading()"
+      (click)="apriBilancioAzoto($event)">
+      <fa-icon [icon]="faChartLine" aria-hidden="true"></fa-icon>
+    </button>
+  </div>
+  </div>
+</div>
+
+<!-- nd placeholder template -->
+<ng-template #ndTemplate><span class="k-color-subtle">—</span></ng-template>
+
+
+<!-- ─── Fasi Fenologiche Modal – FR011 / UIL006 ─── -->
+<kendo-dialog
+  *ngIf="isFasiFenologicheModalOpen()"
+  [title]="'dssNutrizione_fasiFenologiche_title' | transloco"
+  [width]="600"
+  (close)="chiudiFasiFenologicheModal()">
+
+  <div class="dss-fasi-fenologiche-modal">
+
+    <!-- Loading state – UIL006 §F: Spinner centrale nella modale -->
+    <div *ngIf="isFasiFenologicheLoading()" class="k-d-flex k-justify-content-center k-p-4">
+      <gias-master-spinner></gias-master-spinner>
+    </div>
+
+    <!-- Error state – UIL006 §F: Alert danger -->
+    <kendo-alert *ngIf="!isFasiFenologicheLoading() && fasiFenologicheLoadError()" type="error" class="k-mb-2">
+      {{ 'dssNutrizione_fasiFenologiche_error' | transloco }}
+    </kendo-alert>
+
+    <!-- Empty state – UIL006 §F: Messaggio nessuna fase -->
+    <div *ngIf="!isFasiFenologicheLoading() && !fasiFenologicheLoadError() && fasiFenologiche().length === 0"
+         class="k-p-3 k-text-center k-color-subtle">
+      {{ 'dssNutrizione_fasiFenologiche_empty' | transloco }}
+    </div>
+
+    <!-- Data table – UIL006 §C1: Data | Codice BBCH | Descrizione Fase; ordinamento crescente -->
+    <table *ngIf="!isFasiFenologicheLoading() && !fasiFenologicheLoadError() && fasiFenologiche().length > 0"
+           class="k-table k-table-sm k-table-striped k-table-bordered dss-fasi-fenologiche-modal__table">
+      <thead class="k-table-thead">
+        <tr>
+          <th class="k-text-center">{{ 'dssNutrizione_fasiFenologiche_col_data' | transloco }}</th>
+          <th class="k-text-center">{{ 'dssNutrizione_fasiFenologiche_col_bbch' | transloco }}</th>
+          <th>{{ 'dssNutrizione_fasiFenologiche_col_descrizione' | transloco }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fase of fasiFenologiche()">
+          <td class="k-text-center">{{ fase.DataFase | date:'dd/MM/yyyy' }}</td>
+          <td class="k-text-center">{{ fase.BbchCod }}</td>
+          <td>{{ fase.BbchDescrizione }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <!-- Footer – UIL006 §B: Bottone "Chiudi" -->
+  <kendo-dialog-actions>
+    <button kendoButton fillMode="outline" (click)="chiudiFasiFenologicheModal()">
+      {{ 'Chiudi' | transloco }}
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>
+
+<!-- ─── Bilancio Azoto Modal – FR015 ─── -->
+<kendo-dialog
+  *ngIf="isBilancioAzotoOpen()"
+  [title]="'dssNutrizione_bilancioAzoto_title' | transloco"
+  [width]="900"
+  (close)="chiudiBilancioAzoto()">
+
+  <div class="dss-bilancio-azoto-modal">
+
+    <!-- Appezzamento context: specie e fase fenologica corrente -->
+    <div class="k-mb-3 k-d-flex k-gap-4 k-flex-wrap k-align-items-center">
+      <span>
+        <strong>{{ 'dssNutrizione_widget_specie_varieta' | transloco }}:</strong>
+        {{ appezzamento.SpecieVegetale }}{{ appezzamento.Varieta ? ' - ' + appezzamento.Varieta : '' }}
+      </span>
+      <ng-container *ngIf="appezzamento.FaseFenologicaCorrente?.BbchCod">
+        <span kendoBadge themeColor="primary" size="small">
+          BBCH {{ appezzamento.FaseFenologicaCorrente.BbchCod }}
+          <ng-container *ngIf="appezzamento.FaseFenologicaCorrente.BbchDescrizione">
+            &ndash; {{ appezzamento.FaseFenologicaCorrente.BbchDescrizione }}
+          </ng-container>
+        </span>
+      </ng-container>
+    </div>
+
+    <!-- FR016: Bilancio Azoto chart content -->
+
+  </div>
+
+  <kendo-dialog-actions>
+    <button kendoButton fillMode="outline" (click)="chiudiBilancioAzoto()">
+      {{ 'Chiudi' | transloco }}
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

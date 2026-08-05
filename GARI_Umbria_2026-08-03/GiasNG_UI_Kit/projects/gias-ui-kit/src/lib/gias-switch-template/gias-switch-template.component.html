@@ -1,0 +1,29 @@
+<ng-container *ngIf="hideformfield">
+    <ng-container *ngIf="!name; else singleLabelSwitchTemlate">
+        <ng-template *ngTemplateOutlet="doubleLabelSwitchTemplate"></ng-template>
+    </ng-container>
+</ng-container>
+
+<ng-container *ngIf="!hideformfield">
+    <kendo-formfield>
+        <ng-container *ngIf="!name; else singleLabelSwitchTemlate">
+            <ng-template *ngTemplateOutlet="doubleLabelSwitchTemplate"></ng-template>
+        </ng-container>
+    </kendo-formfield>
+</ng-container>
+
+<!-- TEMPLATES -->
+<ng-template #doubleLabelSwitchTemplate>
+    <kendo-label *ngIf="!hideLabel" [text]="noLabel"></kendo-label>
+    <kendo-switch [formControlName]="giasFormControlName" (valueChange)="changeValue($event)"
+        [ngClass]="isBlue ? 'bgBlue' : ''"></kendo-switch>
+    <kendo-label *ngIf="!hideLabel" [text]="siLabel"></kendo-label>
+</ng-template>
+
+<ng-template #singleLabelSwitchTemlate>
+    <kendo-label *ngIf="!hideLabel" [text]="name"></kendo-label>
+    <div>
+        <kendo-switch [formControlName]="giasFormControlName" (valueChange)="changeValue($event)"
+        [ngClass]="isBlue ? 'bgBlue' : ''"></kendo-switch>
+    </div>
+</ng-template>

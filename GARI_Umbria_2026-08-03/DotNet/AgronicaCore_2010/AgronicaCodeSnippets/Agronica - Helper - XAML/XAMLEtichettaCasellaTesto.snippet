@@ -1,0 +1,57 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Agronica - Etichetta casella Testo (XAML)</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+		<Declarations>
+			<Literal>
+				<ID>id</ID>
+				<ToolTip>id controllo</ToolTip>
+				<Default>id</Default>
+			</Literal>
+			<Literal>
+				<ID>titolo</ID>
+				<ToolTip>titolo</ToolTip>
+				<Default>Titolo</Default>
+			</Literal>
+			<Literal>
+				<ID>note</ID>
+				<ToolTip>note</ToolTip>
+				<Default></Default>
+			</Literal>
+			<Literal>
+				<ID>binding</ID>
+				<ToolTip>binding</ToolTip>
+				<Default>binding</Default>
+			</Literal>
+			<Literal>
+				<ID>NumeroGriglia</ID>
+				<ToolTip>numero nella griglia</ToolTip>
+				<Default>1</Default>
+			</Literal>
+
+		</Declarations>
+      <Code Language="XAML">
+        <![CDATA[<!-- $titolo$ -->        
+		    <StackLayout x:Name="section$id$" Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Text="$titolo$:" FontSize="Small" LineBreakMode="NoWrap" WidthRequest="80" TextColor="{StaticResource AgronicaTextSubtitleColor}"/>
+                <Label Grid.Row="0" Grid.Column="1" FontSize="Small" Text="{Binding Selected$id$.$binding$}" TextColor="{StaticResource AgronicaTextTitleColor}"/>
+            </Grid>
+            <Frame Padding="0" HasShadow="False" BackgroundColor="{StaticResource AgronicaTextSubtitleColor}" HeightRequest="1" VerticalOptions="Center" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

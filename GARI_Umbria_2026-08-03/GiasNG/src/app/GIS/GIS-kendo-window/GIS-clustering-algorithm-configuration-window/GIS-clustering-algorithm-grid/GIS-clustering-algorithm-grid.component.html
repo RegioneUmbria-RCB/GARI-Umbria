@@ -1,0 +1,6 @@
+﻿<gias-kendo-grid></gias-kendo-grid>
+
+<kendo-dialog *ngIf="editingData" title="{{ 'ConfigurazioneParametri' | transloco }}" (close)="editingData = null" [width]="800">
+    <gis-clustering-algorithm-details [parameters]="editingData.details[0].Parameters" (closeEvent)="editingData = null"
+        (saveEvent)="save($event)"></gis-clustering-algorithm-details>
+</kendo-dialog>

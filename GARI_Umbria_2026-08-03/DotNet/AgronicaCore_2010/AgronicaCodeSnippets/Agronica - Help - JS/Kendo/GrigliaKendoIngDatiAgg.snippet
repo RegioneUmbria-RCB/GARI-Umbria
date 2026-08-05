@@ -1,0 +1,191 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Nuova griglia Kendo con funzioni CRUD (Config Ingegnerizzata lato server)</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>agKgrid</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>        
+        <Literal>
+          <ID>IDControllo</ID>
+          <ToolTip>Id del DIV della griglia</ToolTip>
+          <Default>MioDic</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="jscript">
+        <![CDATA[var indirizzohttp = "$IDControllo$_WS.aspx";
+
+function $IDControllo$OnDataBindingRighe() {
+
+}
+
+
+
+/**
+ * Aggiornamento dei dati sul server 
+ * modificato dopo l'aggiunta nelle funzioniCRUD della funzione funzioneSubmit: { funzione: AggiornaDatiSrv }
+ * non serve più la variabile "riscontratiErroriDuranteSalvataggioKendoGrid"
+ */
+function $IDControllo$AggiornaDatiSrv() {
+
+  var grid = $$("#div$IDControllo$").data("kendoGrid");
+  var currentData = grid.dataSource.data();
+
+  var foundErr = false;
+
+  //effettuare verifiche lato client alla ricerca di errori.. e valorizzare foundErr di conseguenza
+
+
+  // Non ci sono errori, procedo con aggiornamenti
+  if (!foundErr) {
+
+    var updatedRecords = [];
+    var newRecords = [];
+    var deletedRecords = [];
+
+    for (var i = 0; i < currentData.length; i++) {
+
+      if (currentData[i].isNew()) {
+        newRecords.push(currentData[i].toJSON());
+      } else if (currentData[i].dirty) {
+        updatedRecords.push(currentData[i].toJSON());
+      }
+      
+    }
+
+    for (var i = 0; i < grid.dataSource._destroyed.length; i++) {
+      deletedRecords.push(grid.dataSource._destroyed[i].toJSON());
+    }
+
+
+    if (newRecords.length > 0 || updatedRecords.length > 0 || deletedRecords.length > 0) {
+    
+      var righeInserite = JSON.stringify(newRecords).replace(/'/g, "\\'");;
+      var righeModificate = JSON.stringify(updatedRecords).replace(/'/g, "\\'");;
+      var righeCancellate = JSON.stringify(deletedRecords).replace(/'/g, "\\'");;
+      var allOk = false;
+
+      var param = "{ righeInserite: '" + righeInserite + "', righeModificate: '" + righeModificate + "', righeCancellate: '" + righeCancellate + "' }"
+
+      ajaxAgronica(indirizzohttp + "/$IDControllo$AggiornaDatiSrv", param,
+                    function (risposta) {
+                        allOk = true;
+                        grid.dataSource._destroyed = [];
+
+                        var pj = JSON.parse($$("#hd$IDControllo$").val());
+                        pj.kendo_rows = currentData;
+                        $$("#hd$IDControllo$").val(JSON.stringify(pj));
+
+                        grid.dataSource.read();
+                        grid.refresh();
+                        MessaggioTuttoOK_Bootstrap("Salvataggio effettuato correttamente", "DIV_Messaggi");
+                    }, null);
+
+      if (!allOk) {
+        if (grid.dataSource._destroyed != null && grid.dataSource._destroyed.length > 0) {
+          var dsSort = [];
+          //dsSort.push({ field: "Tabella_Des", dir: "asc" });
+          //dsSort.push({ field: "val_des", dir: "asc" });
+
+          // chiamo la funzione in funzioniComuniKendoGrid che permette di mostrare le righe cancellate 
+          // che non si vedono più
+          ripristinaRigheCancellateKendoGrid(grid, dsSort);
+        }
+      }
+    }
+  }    
+}
+
+function letturaDati$IDControllo$Kendo() {
+
+    var param = "{ }";
+
+    ajaxAgronica(indirizzohttp + "/letturaDati$IDControllo$Kendo",
+        param,
+        function (risposta) {
+
+            $$("#hd$IDControllo$").val(risposta.RispostaStringa);
+            $IDControllo$Kendo("div$IDControllo$");
+
+        }, null);    
+}
+
+function kRead$IDControllo$_rows(options) {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    options.success(jSonParsed_Kendo.kendo_rows);
+}
+
+function kRead$IDControllo$_col() {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    return jSonParsed_Kendo.kendo_columns;
+}
+
+function kRead$IDControllo$_mod() {
+
+    var data = $$('#hd$IDControllo$').val();
+    jSonParsed_Kendo = JSON.parse(data);
+
+    //console.log(data);
+    return jSonParsed_Kendo.kendo_model;
+}
+
+function $IDControllo$Kendo(div$IDControllo$) {
+
+    var funzioniCRUD = {
+        funzioneRead: kRead$IDControllo$_rows,
+        funzioneInsert: $IDControllo$AggiornaDatiSrv,
+        funzioneUpdate: $IDControllo$AggiornaDatiSrv,
+        funzioneDelete: $IDControllo$AggiornaDatiSrv
+    };
+    var idModel = "kendoKey";
+    var campiKendoModel = kRead$IDControllo$_mod();
+    var colonneKendoGrid = kRead$IDControllo$_col();
+    var parametriPerLettura = [];
+    var parametriDataSource = {};
+    var parametriKendoGrid = {
+        pagesize: 20,
+        groupable: false,
+        scrollable: false,
+        sortable: false,
+        resizable: false,
+        filterable: false,
+        pageable: true,
+        pdf: false,
+        excel: false
+    };
+
+    var funzioniPrimaDopoEventi = { funzioneDaChiamarePrimaDelDataBinding: $IDControllo$OnDataBindingRighe };
+    var mostraRigheCancellate = true;
+    var colonneDisabilitateSoloInModifica = ["kendoKey"];
+
+    creaKendoGrid(div$IDControllo$, // rappresenta l'ID del div a cui si associa la griglia
+        funzioniCRUD,  //funzioni js da chiamare per read, insert, update, delete
+        idModel, // chiave riga 
+        campiKendoModel, // campi modello
+        colonneKendoGrid, // colonne da mostrare
+        parametriPerLettura, // parametri da passare alla lettura
+        parametriDataSource, // parametri data source { chiave - valore}
+        parametriKendoGrid,   // parametri griglia [{ chiave - valore}]
+        funzioniPrimaDopoEventi, // funzioni da chiamare all'inizio e alla fine dei vari eventi
+        mostraRigheCancellate, // se true le righe cancellate vengono mostrate barrate e viene gestita funzione custom cancellazione
+        colonneDisabilitateSoloInModifica // colonne non modificabili in modifica["colA", "colB", ...]
+    );
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

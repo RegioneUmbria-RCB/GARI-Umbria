@@ -1,0 +1,8 @@
+<form [formGroup]="options">
+  <gias-drop-down-template-s
+    [name]="'qdc.OpzioniChiusuraImpianti' | transloco"
+    giasFormControlName="closing"
+    textField="descrizione" valueField="codice"
+    [listItems]="closingOptions" [valuePrimitive]="true"
+  ></gias-drop-down-template-s>
+</form>

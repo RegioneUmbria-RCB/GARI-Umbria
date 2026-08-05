@@ -1,0 +1,23 @@
+<form [formGroup]="proxyForm">
+    <div kendoTooltip [title]="valori[0]?.Note">
+        <gias-checkbox-template
+                [name]="valori[0]?.descrizione"
+                giasFormControlName="enabled"
+        ></gias-checkbox-template>
+    </div>
+
+    <div *ngIf="isProxyEnabled">
+        <gias-text-template
+            [name]="valori[1]?.descrizione"
+            giasFormControlName="username">
+        </gias-text-template>
+        <gias-password-template
+            [name]="valori[2]?.descrizione"
+            giasFormControlName="password">
+        </gias-password-template>
+        <gias-text-template
+            [name]="valori[3]?.descrizione"
+            giasFormControlName="host">
+        </gias-text-template>
+    </div>
+</form>

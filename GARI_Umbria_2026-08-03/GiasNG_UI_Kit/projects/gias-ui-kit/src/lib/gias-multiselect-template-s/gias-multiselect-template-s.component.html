@@ -1,0 +1,76 @@
+<div *ngIf="!isUsingForm">
+  <div class="form-group" *ngIf="inputType == inputTypeValue.giasClassic">
+    <div class="input-group">
+      <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+        {{ name }}
+        <ng-container *ngIf="labelTemplate">
+          <ng-template *ngTemplateOutlet="labelTemplate">
+          </ng-template>
+        </ng-container>
+      </span>
+      <!-- [defaultItem]="defaultItem" -->
+      <kendo-multiselect #multiselect [data]="listItems" [textField]="textField"
+        [valueField]="valueField" class="form-control valid" [ngClass]="{'required' : obligatory}" [(ngModel)]="value"
+        [valuePrimitive]="valuePrimitive" (valueChange)="changeValue($event)" [disabled]="isDisabled"
+        [filterable]="filterable" [kendoDropDownFilter]="filterSettings" (open)="openDdl()" [autoClose]="autoClose"
+        [loading]="loading" [virtual]="virtual" [clearButton]="clearButton" (filterChange)="handleFilter($event)"
+        (removeTag)="removeTag($event)" [popupSettings]="popupSettings">
+      </kendo-multiselect>
+    </div>
+  </div>
+  <div *ngIf="inputType == inputTypeValue.twoLines">
+    <kendo-label>{{ name }}
+      <ng-container *ngIf="labelTemplate">
+        <ng-template *ngTemplateOutlet="labelTemplate"></ng-template>
+      </ng-container>
+    </kendo-label>
+    <!-- [defaultItem]="defaultItem" -->
+    <kendo-multiselect #multiselect [data]="listItems" [textField]="textField"
+      [valueField]="valueField" class="form-control valid" [ngClass]="{'required' : obligatory}" [(ngModel)]="value"
+      [valuePrimitive]="valuePrimitive" (valueChange)="changeValue($event)" (open)="openDdl()" [autoClose]="autoClose"
+      [disabled]="isDisabled" [filterable]="filterable" [kendoDropDownFilter]="filterSettings" [loading]="loading"
+      [virtual]="virtual" [clearButton]="clearButton" (filterChange)="handleFilter($event)"
+      (removeTag)="removeTag($event)" [popupSettings]="popupSettings">
+    </kendo-multiselect>
+  </div>
+</div>
+<div *ngIf="isUsingForm">
+  <div class="form-group" *ngIf="inputType == inputTypeValue.giasClassic">
+    <div class="input-group">
+      <span *ngIf=" name !== '' " class="input-group-addon alert-info" [ngClass]="{'lbl_required' : obligatory}">
+        {{ name }}
+        <ng-container *ngIf="labelTemplate">
+          <ng-template *ngTemplateOutlet="labelTemplate">
+          </ng-template>
+        </ng-container>
+      </span>
+      <kendo-multiselect #multiselect ngDefaultControl [data]="listItems" [textField]="textField"
+        [valueField]="valueField" class="form-control valid" [ngClass]="{'required' : obligatory}"
+        [valuePrimitive]="valuePrimitive" (valueChange)="changeValue($event)" (open)="openDdl()" [autoClose]="autoClose"
+        [filterable]="filterable" [kendoDropDownFilter]="filterSettings" [formControlName]="giasFormControlName"
+        [placeholder]="placeholder" [loading]="loading" [virtual]="virtual" [clearButton]="clearButton"
+        (filterChange)="handleFilter($event)" (removeTag)="removeTag($event)" [popupSettings]="popupSettings">
+      </kendo-multiselect>
+    </div>
+  </div>
+  <div *ngIf="inputType == inputTypeValue.twoLines">
+    <kendo-label *ngIf="name != null" [ngClass]="{'lbl_required' : obligatory}">
+      <gias-info-template *ngIf="hasInfo" size="lg" [title]="'SelezioneOperazioneMulti' | transloco">
+      </gias-info-template>
+      {{ name }}
+      <span *ngIf="showRedAsterisk" style="color:red;"> *</span>
+
+      <ng-container *ngIf="labelTemplate">
+        <ng-template *ngTemplateOutlet="labelTemplate">
+        </ng-template>
+      </ng-container>
+    </kendo-label>
+    <kendo-multiselect #multiselect ngDefaultControl [data]="listItems" [textField]="textField"
+      [valueField]="valueField" style="width: 100%" [ngClass]="{'required' : obligatory}" [autoClose]="autoClose"
+      [valuePrimitive]="valuePrimitive" (valueChange)="changeValue($event)" (open)="openDdl()" [filterable]="filterable"
+      [kendoDropDownFilter]="filterSettings" [formControlName]="getCtrlName()" [placeholder]="placeholder"
+      [loading]="loading" [virtual]="virtual" [clearButton]="clearButton" (filterChange)="handleFilter($event)"
+      (removeTag)="removeTag($event)" [popupSettings]="popupSettings">
+    </kendo-multiselect>
+  </div>
+</div>

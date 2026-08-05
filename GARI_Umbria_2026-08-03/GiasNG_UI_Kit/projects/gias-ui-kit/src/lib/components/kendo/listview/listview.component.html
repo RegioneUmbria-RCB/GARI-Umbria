@@ -1,0 +1,72 @@
+<kendo-listview
+  #listview
+  class="k-listview"
+  [height]="height$ | async"
+  [data]="data$ | async"
+  (add)="addHandler($event)"
+  (edit)="editHandler($event)"
+  (save)="saveHandler($event)"
+  (cancel)="cancelHandler($event)"
+  (remove)="removeHandler($event)"
+  [loading]="loading$ | async"
+>
+
+  <ng-template kendoListViewLoaderTemplate>
+    <gias-wait-frame></gias-wait-frame>
+  </ng-template>
+
+  <ng-template *ngif="false" kendoListViewHeaderTemplate>
+    <button *ngIf="showAddBtn()" class="k-add-button" kendoListViewAddCommand>
+      {{ 'giasgrid.AggiungiElemento' | transloco }}
+    </button>
+    <button *ngIf="showRemoveBtn()" class="k-add-button" kendoListViewRemoveCommand>
+      {{ 'giasgrid.RemoveAllItems' | transloco }}
+    </button>
+  </ng-template>
+
+  <ng-template
+    kendoListViewItemTemplate
+    let-dataItem="dataItem"
+    let-index="index"
+    let-isFirst="isFirst"
+    let-isLast="isLast"
+  >
+    <div class="listview-item-template" [style]="setItemStateStyle(dataItem, index)">
+      <dl>
+<!--        <dt>Product Name</dt>-->
+        <dd class="listview-item-dd">{{ dataItem.description }}</dd>
+      </dl>
+      <div class="">
+        <button *ngIf="showEditBtn()" kendoListViewEditCommand>{{ 'giasgrid.Edit' | transloco }}</button>
+        <button
+          *ngIf="showRemoveBtn()"
+          class="listview-remove-btn"
+          kendoTooltip
+          kendoListViewRemoveCommand
+          type="button"
+          [title]="removeBtnTitle | transloco"
+        >
+          <fa-icon
+            size="lg"
+            [icon]="faClose"
+            aria-hidden="true"
+          ></fa-icon>
+        </button>
+        <button
+          *ngIf="showDeleteBtn()"
+          class="listview-remove-btn k-button k-button-md k-rounded-md k-button-solid-base k-button-solid"
+          kendoTooltip
+          type="button"
+          [title]="deleteBtnTitle | transloco"
+          (click)="deleteHandler(dataItem, index)"
+        >
+          <fa-icon
+            size="lg"
+            [icon]="faTrashCan"
+            aria-hidden="true"
+          ></fa-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</kendo-listview>

@@ -1,0 +1,39 @@
+<div [formGroup]="qdcservice.SuperficiForm">
+
+    <div class="row form-row">
+
+        <div class="col-12 col-md-6">
+            <div class="acqua-title">
+                {{'qdc.SuperficiedegliImpiantiSelezionati' | transloco}}
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <gias-numeric-template
+                [name]="'qdc.lblSupHaSelezionataResource1.Text' | transloco"
+                [obligatory]="true"
+                [clearButton]="true"
+                giasFormControlName="Sup_Selezionata"
+                [format]="qdcservice.get4DecimalNumericSettings().format">
+            </gias-numeric-template>
+        </div>
+        <div class="col-12 col-md-3">
+            <!-- [errorMsg]="'LaSuperficieImpiegataDeveEssereMinoreOUgua' | transloco" -->
+          <gias-numeric-template
+            [name]="'qdc.lblSupHaTrattataResource1.Text' | transloco"
+            [obligatory]="true"
+            [clearButton]="true"
+            giasFormControlName="Sup_Trattata"
+            (valueChange)="supTrattataValueChange()"
+            [format]="qdcservice.get4DecimalNumericSettings().format"
+            [minValue]="qdcservice.get4DecimalNumericSettings().min"
+            [step]="qdcservice.get4DecimalNumericSettings().step"
+            [decimals]="qdcservice.get4DecimalNumericSettings().decimals"
+            [autoCorrect]="autocorrect">
+          </gias-numeric-template>
+        </div>
+    </div>
+
+</div>
+
+<!--(valueChange)="changeSuperficieTrattata()"-->

@@ -1,0 +1,85 @@
+<form [formGroup]="form">
+  <div *ngIf="controlType === 0">Control type undefined.</div>
+
+  <div *ngIf="controlType === enum_TipoControllo.CASELLA_TESTO">
+    <div class="flex-row">
+      <kendo-label *ngIf="!!label" [for]="textbox" [text]="label"></kendo-label>
+      <gias-info-template *ngIf="tooltip != ''" size="sm" [title]="tooltip"></gias-info-template>
+    </div>
+    <gias-text-template #textbox [name]="name" [obligatory]="obligatory"
+      [giasFormControlName]="giasFormControlName"></gias-text-template>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.AREA_TESTO">
+    <div class="flex-row">
+      <kendo-label *ngIf="!!label" [for]="textarea" [text]="label"></kendo-label>
+      <gias-info-template *ngIf="tooltip != ''" size="sm" [title]="tooltip"></gias-info-template>
+    </div>
+    <kendo-textarea #textarea placeholder="" [rows]="3" [formControlName]="giasFormControlName"></kendo-textarea>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.MENU_DISCESA
+           || controlType === enum_TipoControllo.DDL_ESTESA_SERVER_LIGHT
+           || controlType === enum_TipoControllo.DDL_ESTESA_CLIENT">
+    <span>{{label === '' ? label : label + ':'}}</span>
+    <gias-drop-down-template #ddl [name]="name" [id]="id" textField="descrizione" valueField="codice"
+      [listItems]="listItems" [giasFormControlName]="giasFormControlName"></gias-drop-down-template>
+  </div>
+
+  <div kendoTooltip [title]="tooltip"
+    *ngIf="controlType === enum_TipoControllo.MULTISELECT || controlType === enum_TipoControllo.MULTISELECT_ESTESA_SERVER">
+    <span>{{label === '' ? label : label + ':'}}</span>
+    <gias-multiselect-template-s #multi [name]="name" [id]="id" textField="descrizione" valueField="codice"
+      [listItems]="listItems" [giasFormControlName]="giasFormControlName"
+      (selectionItem)="onChange($event)"></gias-multiselect-template-s>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.CASELLA_SPUNTA" class="switch-container">
+    <gias-switch-template [name]="label" [hideLabel]="true"
+      [giasFormControlName]="giasFormControlName"></gias-switch-template>
+    <span>{{label}}</span>
+    <!--    <div *ngFor="let item of listItems; index as i">-->
+    <!--      <div kendoTooltip [title]="item.Note">-->
+    <!--        <gias-checkbox-template-->
+    <!--          [name]="item.descrizione"-->
+    <!--          [giasFormControlName]="giasFormControlName"-->
+    <!--        ></gias-checkbox-template>-->
+    <!--      </div>-->
+    <!--    </div>-->
+  </div>
+
+  <div kendoTooltip [title]="tooltip" *ngIf="controlType === enum_TipoControllo.CALENDARIO">
+    <gias-data-template [name]="label" [nullValue]="AGRODATAFINE"
+      [giasFormControlName]="giasFormControlName"></gias-data-template>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.ALLEGATO">Control not yet implemented. CT:{{controlType}}</div>
+  <div *ngIf="controlType === enum_TipoControllo.LINK">Control not yet implemented. CT:{{controlType}}&#125;</div>
+  <div *ngIf="controlType === enum_TipoControllo.PASSWORD">Control not yet implemented. CT:{{controlType}}&#125;</div>
+
+  <div *ngIf="controlType === enum_TipoControllo.PULSANTE_SCELTA">
+    <span>{{label}}</span>
+    <ul class="k-radio-list" #radioList>
+      <li class="k-radio-item" *ngFor="let item of listItems; index as i" (click)="onChange(item.codice)">
+        <input type="radio" kendoRadioButton [name]="item.descrizione" [value]="item.codice"
+          [formControlName]="giasFormControlName" />
+        <kendo-label class="k-radio-label" [for]="item.codice" [text]="item.descrizione"></kendo-label>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.IMMAGINE">Control not yet implemented. CT:{{controlType}}&#125;</div>
+  <div *ngIf="controlType === enum_TipoControllo.GIS_VIEWER">Control not yet implemented. CT:{{controlType}}&#125;</div>
+
+  <div *ngIf="controlType === enum_TipoControllo.NUMERO_INTERO" kendoTooltip [title]="tooltip">
+    <span>{{label}}</span>
+    <gias-numeric-template [name]="name" [format]="'n0'" [giasFormControlName]="giasFormControlName" [spinners]="true"
+      [maxValue]="maxValue" [minValue]="minValue"></gias-numeric-template>
+  </div>
+
+  <div *ngIf="controlType === enum_TipoControllo.NUMERO_DECIMALE" kendoTooltip [title]="tooltip">
+    <span>{{label}}</span>
+    <gias-numeric-template [name]="name" [format]="'n4'" [giasFormControlName]="giasFormControlName"
+      [maxValue]="maxValue" [minValue]="minValue"></gias-numeric-template>
+  </div>
+</form>

@@ -1,0 +1,77 @@
+<div class="analisi-mappe-satellitari-column">
+  <ng-container *ngIf="!(active$ | async); else checkFeatures">
+    <p class="h5 text-center k-mt-3">{{ 'gis.DatiSatellitariNonAttivi' | transloco }}</p>
+  </ng-container>
+
+  <ng-template #checkFeatures>
+    <ng-container *ngIf="(noFeaturesSelected$ | async); else checkData">
+      <p class="h5 text-center k-mt-3">{{ 'gis.SelezionaDeiPoligoniPerCaricareEVisualizzareIDati' | transloco }}</p>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #checkData>
+    <ng-container *ngIf="featuresWithNoDataSubject | async as codes">
+      <ng-container *ngIf="codes.length > 0; else viewData">
+        <p class="h5 text-center k-mt-3">{{ 'gis.QuestoPoligonoConCodiceNonHaDatiSatellitari'| transloco : { codes:
+          codes } }}</p>
+        <button kendoButton (click)="getSatelliteData()">{{ 'Conferma'| transloco }}</button>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #viewData>
+    <ng-container *ngIf="mapClickActivator$ | async"></ng-container>
+
+    <ng-container *ngIf="marker$ | async"></ng-container>
+
+    <ng-container *ngIf="calendarCurrentDateloader$ | async"></ng-container>
+
+    <gis-analisi-mappe-satellitari-calendario [selectedDate]="currentDate$ | async" [focusedDate]="currentDate$ | async"
+      (selectedDateChange)="changeCurrentDate($event)">
+    </gis-analisi-mappe-satellitari-calendario>
+
+    <ng-container *ngIf="sensors$ | async as sensors">
+      <kendo-dropdownlist [data]="sensors" [value]="sensor$ | async"
+        (valueChange)="changeSensor($event)"></kendo-dropdownlist>
+    </ng-container>
+
+    <ng-container *ngIf="{ data: data$ | async, error: errorSubject | async } as result">
+
+      <ng-container *ngIf="result.error != null">
+        {{ result.error | transloco }}
+      </ng-container>
+
+      <ng-container *ngIf="result.error != null">
+        {{ result.data | json }}
+      </ng-container>
+    </ng-container>
+
+    <div class="k-mt-3" *ngIf="{ items: (dailyValues$ | async), loading: (isLoadingDailyValues$ | async) } as vm">
+      <ng-container *ngIf="featureLoadedCentroids$ | async"></ng-container>
+
+      <ng-container *ngIf="imageShower$ | async"></ng-container>
+
+      <ng-container *ngIf="vm.loading; else showValues">
+        <div class="k-d-flex k-justify-content-center k-align-items-center k-py-4">
+          <kendo-loader [type]="'pulsing'" [size]="'large'"></kendo-loader>
+        </div>
+      </ng-container>
+      <ng-template #showValues>
+        <div class="k-d-flex k-gap-3" *ngIf="vm.items as items">
+          <div class="k-card k-p-3 k-flex-1" *ngFor="let it of items">
+            <div class="k-text-center k-font-bold" [ngStyle]="{ color: it.isCloudy ? 'red' : 'inherit' }">
+              <span *ngIf="it.isCloudy">
+                <span class="k-icon k-i-cloud cloudy-icon" kendoTooltip></span>
+              </span>
+              {{ it.date | date: 'dd/MM' }}
+            </div>
+
+            <div class="k-text-center">{{ it.value == null ? it.stringValue : (it.value | number : '1.4-4') }}</div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+  </ng-template>
+
+</div>

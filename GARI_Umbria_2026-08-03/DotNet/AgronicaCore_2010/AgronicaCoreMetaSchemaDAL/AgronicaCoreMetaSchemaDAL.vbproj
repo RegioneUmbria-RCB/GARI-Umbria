@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{307B2208-0488-440A-876B-5DCE4086E53B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaCoreMetaSchemaDAL</RootNamespace>
+    <AssemblyName>AgronicaCoreMetaSchemaDAL</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>None</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACCDAA_ANAG_T010_TabellaCodiciImballaggio.vb" />
+    <Compile Include="ACCDAA_ANAG_T001_TabellaCodiceDelleLingue.vb" />
+    <Compile Include="ACCDAA_ANAG_T004_TabellaCodiciStatiMembri.vb" />
+    <Compile Include="ACCDAA_ANAG_T005_TabellaCodiciPaesiTerziISO3166.vb" />
+    <Compile Include="ACCDAA_ANAG_T008_TabellaCodiciModalitaDiTrasporto.vb" />
+    <Compile Include="ACCDAA_ANAG_T009_TabellaCodiciUnitaDiTrasporto.vb" />
+    <Compile Include="Agea.vb" />
+    <Compile Include="Agro_Reportistica.vb" />
+    <Compile Include="Agro_Reportistica_Tipi.vb" />
+    <Compile Include="AllevamentoxSpecie.vb" />
+    <Compile Include="Attivita.vb" />
+    <Compile Include="Avversita.vb" />
+    <Compile Include="AvversitaxGruppoAvversita.vb" />
+    <Compile Include="Banche_ABI_CAB.vb" />
+    <Compile Include="BDN_MotiviIngressoUscita.vb" />
+    <Compile Include="BDN_TipologieAllevamento.vb" />
+    <Compile Include="BIO_Dati_MetodoProduzione.vb" />
+    <Compile Include="BIO_Dati_OrganismiControllo.vb" />
+    <Compile Include="BIO_Dati_OrientamentoProduttivo.vb" />
+    <Compile Include="BIO_Dati_TipologiaColtura.vb" />
+    <Compile Include="BIO_Dati_TitoloPossesso.vb" />
+    <Compile Include="CAC_Codifica_PrincipiAttivi.vb" />
+    <Compile Include="CalibriFrutti.vb" />
+    <Compile Include="Carburanti_GHG.vb" />
+    <Compile Include="Codifica_Coperture_SistemiEsterni.vb" />
+    <Compile Include="Codifica_ImpiantiIrrigui_SistemiEsterni.vb" />
+    <Compile Include="Codifica_SpecieVegetali_SistemiEsterni.vb" />
+    <Compile Include="Codifica_BDN_CategorieAnimali.vb" />
+    <Compile Include="Codifica_BDN_GeneriAnimali.vb" />
+    <Compile Include="Codifica_BDN_RazzeAnimali.vb" />
+    <Compile Include="Codifica_BDN_SpecieAnimali.vb" />
+    <Compile Include="Contribute.vb" />
+    <Compile Include="Densita_Apparente.vb" />
+    <Compile Include="DatiColture_Raccolta.vb" />
+    <Compile Include="CoefficienteAsorbimento.vb" />
+    <Compile Include="Contributi.vb" />
+    <Compile Include="Codifica_FormeAllevamento_SistemiEsterni.vb" />
+    <Compile Include="Codifica_Avversita_SistemiEsterni.vb" />
+    <Compile Include="Codifica_FasiFenologicheEpoche_SistemiEsterni.vb" />
+    <Compile Include="Codifica_Macchine_SistemiEsterni.vb" />
+    <Compile Include="Codifica_Operazioni_SistemiEsterni.vb" />
+    <Compile Include="Codifica_UnitaMisura_SistemiEsterni.vb" />
+    <Compile Include="Cultivar_GHG.vb" />
+    <Compile Include="Direttive.vb" />
+    <Compile Include="EUDR_Classificazione_Paesi.vb" />
+    <Compile Include="Farmaci.vb" />
+    <Compile Include="FarmacixUnitaMisura.vb" />
+    <Compile Include="Fertilizzanti_GHG.vb" />
+    <Compile Include="FormulatixFormulazioni.vb" />
+    <Compile Include="Formulati_GHG.vb" />
+    <Compile Include="GuidaImpostazioni.vb" />
+    <Compile Include="Lista_Anomalie.vb" />
+    <Compile Include="Lista_Attributi_Stalla.vb" />
+    <Compile Include="Lista_Causali_Morte.vb" />
+    <Compile Include="Lista_Generi_Animali.vb" />
+    <Compile Include="Lista_IndProd_Animali.vb" />
+    <Compile Include="Lista_Patologie.vb" />
+    <Compile Include="Lista_Tipi_Fabbricati.vb" />
+    <Compile Include="Lista_Tipi_Stalla.vb" />
+    <Compile Include="Macchine_Consumi.vb" />
+    <Compile Include="Modalita_Applicazione_Globali_Operazioni.vb" />
+    <Compile Include="Modalita_Applicazione_Globali.vb" />
+    <Compile Include="Operazioni_Combinazioni.vb" />
+    <Compile Include="Prodotti_Relazioni.vb" />
+    <Compile Include="Proiezioni.vb" />
+    <Compile Include="RegimiFiscali.vb" />
+    <Compile Include="Sistemi_Esterni.vb" />
+    <Compile Include="Carburanti.vb" />
+    <Compile Include="CatalogoEuropeoRifiuti.vb" />
+    <Compile Include="Categorie.vb" />
+    <Compile Include="CategorieXUnitaMisura.vb" />
+    <Compile Include="Categorie_Magazzino.vb" />
+    <Compile Include="CBI_Causali.vb" />
+    <Compile Include="ClassiTessituraB.vb" />
+    <Compile Include="Codici_Anagrafe.vb" />
+    <Compile Include="Codifica_FormeAllevamento.vb" />
+    <Compile Include="Codifica_ImpiantiIrrigui_Clienti.vb" />
+    <Compile Include="Codifica_Macchine_Agea.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Agea.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Agea_2015_2020.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Agrea.vb.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Artea.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Avepa.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Clienti.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Dogane.vb" />
+    <Compile Include="Codifica_SpecieVegetali_Enti_2015_2020.vb" />
+    <Compile Include="ConduzioneSuFila.vb" />
+    <Compile Include="ConduzioneTraFila.vb" />
+    <Compile Include="Copertura.vb" />
+    <Compile Include="CategorieDocumenti.vb" />
+    <Compile Include="DerrateRMA.vb" />
+    <Compile Include="EfficienzaRiferimentoxTipiAllevamentixEffluenti.vb" />
+    <Compile Include="EfficienzaxTipiAllevamentixEffluenti.vb" />
+    <Compile Include="Effluenti.vb" />
+    <Compile Include="EffluentixFertilizzanti.vb" />
+    <Compile Include="EnteTecnico.vb" />
+    <Compile Include="FattoriCorrettivixSpecie.vb" />
+    <Compile Include="FormeGiuridiche.vb" />
+    <Compile Include="FormulatixSpecieVegetalixBlocchi.vb" />
+    <Compile Include="GAP_Programmazione.vb" />
+    <Compile Include="GruppoFinalitaMappatura.vb" />
+    <Compile Include="GruppoFinalitaxSpecieVegetali.vb" />
+    <Compile Include="GruppoFinalitaxSpeciexEpoca.vb" />
+    <Compile Include="GruppoFinalita_Rer.vb" />
+    <Compile Include="ISTAT_Comuni_Austrungarico.vb" />
+    <Compile Include="ParticelleCatastali_Acclivita.vb" />
+    <Compile Include="PC_PrecessioneColturalexFrequenza.vb" />
+    <Compile Include="TecnologieSementi.vb" />
+    <Compile Include="UnitaMisura_Conversione.vb" />
+    <Compile Include="Widgets.vb" />
+    <Compile Include="TipologieDocumento.vb" />
+    <Compile Include="IVA_CodiciIvaProdottiAgricoli.vb" />
+    <Compile Include="MacchinexCaratteristiche.vb" />
+    <Compile Include="Mappatura_Specie.vb" />
+    <Compile Include="EfficienzaxTipoFertilizzante.vb" />
+    <Compile Include="EpocheModalita.vb" />
+    <Compile Include="FamigliePrincipiAttivi.vb" />
+    <Compile Include="Cultivar.vb" />
+    <Compile Include="Ditte.vb" />
+    <Compile Include="Epoche.vb" />
+    <Compile Include="FasiFenologiche.vb" />
+    <Compile Include="FasiFenologichexFioriture.vb" />
+    <Compile Include="FasiFenologichexSpecie.vb" />
+    <Compile Include="FattoriCorrettivi.vb" />
+    <Compile Include="Fertilizzanti.vb" />
+    <Compile Include="FertilizzantixClassifica.vb" />
+    <Compile Include="FertilizzantixDitte.vb" />
+    <Compile Include="FertilizzantixTipoCE.vb" />
+    <Compile Include="FertilizzantixTipologie.vb" />
+    <Compile Include="FertilizzantixTipoOrganici.vb" />
+    <Compile Include="Finanziamenti.vb" />
+    <Compile Include="FormeAllevamentoxSpecieVegetali.vb" />
+    <Compile Include="Formulati.vb" />
+    <Compile Include="FormulatixClassifica.vb" />
+    <Compile Include="FormulatixPrincipiAttivi.vb" />
+    <Compile Include="FormulatixSpecie.vb" />
+    <Compile Include="FormulatixSpeciexAvvxDosi.vb" />
+    <Compile Include="FormulatixSpeciexInfxDosi.vb" />
+    <Compile Include="GruppoAvversita.vb" />
+    <Compile Include="GruppoAvversitaAttive.vb" />
+    <Compile Include="GruppoColturaleXSpecieVegetali.vb" />
+    <Compile Include="GruppoFinalita.vb" />
+    <Compile Include="GruppoOperazioni.vb" />
+    <Compile Include="GruppoVarietale.vb" />
+    <Compile Include="GruppoVegetale.vb" />
+    <Compile Include="ImpiantiIrrigazioni.vb" />
+    <Compile Include="IndiciMaturita.vb" />
+    <Compile Include="IndiciMaturitaxSpecie.vb" />
+    <Compile Include="InfestantiAttive.vb" />
+    <Compile Include="InsettiUtili.vb" />
+    <Compile Include="Istat.vb" />
+    <Compile Include="ISTAT_Comuni.vb" />
+    <Compile Include="IVA_Aliquote.vb" />
+    <Compile Include="LimitiAzotoxSpecie.vb" />
+    <Compile Include="Lista_Categorie_Animali.vb" />
+    <Compile Include="Lista_Province.vb" />
+    <Compile Include="Lista_Razze_Animali.vb" />
+    <Compile Include="Lista_Regioni.vb" />
+    <Compile Include="Lista_Specie_Animali.vb" />
+    <Compile Include="Lista_Tipi_Allevamenti.vb" />
+    <Compile Include="Macchine.vb" />
+    <Compile Include="Macrousi.vb" />
+    <Compile Include="MisuraxAusiliari.vb" />
+    <Compile Include="MisuraXAvversita.vb" />
+    <Compile Include="MisuraxIndiciMaturita_Anagrafiche.vb" />
+    <Compile Include="MisuraxAvversita_Anagrafiche.vb" />
+    <Compile Include="MisuraXDanniRaccolta.vb" />
+    <Compile Include="MisuraxIndiciMaturita.vb" />
+    <Compile Include="ModalitaImpiego.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Operazioni.vb" />
+    <Compile Include="OperazioniLavorazioni_GestioneFiltroUtente.vb" />
+    <Compile Include="Operazioni_GestioneFiltroUtente.vb" />
+    <Compile Include="OrientamentoTecnicoEconomico.vb" />
+    <Compile Include="ParticelleCatastali_Vulnerabili.vb" />
+    <Compile Include="PC_ClassiTessitura.vb" />
+    <Compile Include="PC_CoefficenteMinimoSoN.vb" />
+    <Compile Include="PC_DisponibilitaOssigeno.vb" />
+    <Compile Include="PC_EffluentiXFrequenza.vb" />
+    <Compile Include="PC_Fabbisogni.vb" />
+    <Compile Include="PC_FasiCicloColturale.vb" />
+    <Compile Include="PC_FasiCicloColturalexGruppoVegetale.vb" />
+    <Compile Include="PC_Frequenza.vb" />
+    <Compile Include="PC_GrigliaCalcAtt.vb" />
+    <Compile Include="PC_GrigliaK2O.vb" />
+    <Compile Include="PC_GrigliaP2O5.vb" />
+    <Compile Include="PC_GrigliaSO.vb" />
+    <Compile Include="PC_GruppiTessitura.vb" />
+    <Compile Include="PC_Liscivazione.vb" />
+    <Compile Include="PC_MatriciOrganiche.vb" />
+    <Compile Include="PC_MatriciOrganicheXFrequenza.vb" />
+    <Compile Include="PC_NMinerazizzatoSOSuolo.vb" />
+    <Compile Include="PC_PerditeImmobilizzazioniDispersioni.vb" />
+    <Compile Include="PC_PrecessioneColturale.vb" />
+    <Compile Include="PC_RapportoCN.vb" />
+    <Compile Include="PC_SpecieConcimazione.vb" />
+    <Compile Include="PC_Tessiture.vb" />
+    <Compile Include="PC_TipoAcqua.vb" />
+    <Compile Include="PC_TriangoloTessitura.vb" />
+    <Compile Include="PC_Ubicazione.vb" />
+    <Compile Include="PortinnestixSpecieVegetali.vb" />
+    <Compile Include="PossibilitaDistribuzione.vb" />
+    <Compile Include="PrincipiAttivi.vb" />
+    <Compile Include="PrincipiAttiviXFamigliePrincipiAttivi.vb" />
+    <Compile Include="PUA_ParametrixRegolamenti.vb" />
+    <Compile Include="PUA_Regolamenti.vb" />
+    <Compile Include="QualitaCatasto.vb" />
+    <Compile Include="Regolamenti.vb" />
+    <Compile Include="RegolamentixFertilizza.vb" />
+    <Compile Include="RegolamentixFormulati.vb" />
+    <Compile Include="Servizi.vb" />
+    <Compile Include="Servizi_Configurazione.vb" />
+    <Compile Include="Servizi_Stati.vb" />
+    <Compile Include="SpecieConcimazione.vb" />
+    <Compile Include="SpecieVegetali.vb" />
+    <Compile Include="SpecieVegetalixAvversita.vb" />
+    <Compile Include="SpecieVegetalixGruppoVarietale.vb" />
+    <Compile Include="SpecieVegetaliXStadiCrescita.vb" />
+    <Compile Include="StampeReport.vb" />
+    <Compile Include="Tabelle_OP.vb" />
+    <Compile Include="TipologieSementi.vb" />
+    <Compile Include="TipologieSementixSpecie.vb" />
+    <Compile Include="Titolo_Possesso.vb" />
+    <Compile Include="Trappole.vb" />
+    <Compile Include="UDM_Helper.vb" />
+    <Compile Include="UMA_Allevamenti.vb" />
+    <Compile Include="UMA_Lavorazioni.vb" />
+    <Compile Include="UMA_Macrousi.vb" />
+    <Compile Include="UnitaMisura.vb" />
+    <Compile Include="Utenti_Impostazioni_FiltroMono.vb" />
+    <Compile Include="WAnagrafica_Stati.vb" />
+    <Compile Include="WTransizioniDiStatoConfigurazione.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{1CF0CA80-8CA6-4AED-B443-337B6E83F680}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{cd313002-8db3-4918-bb01-4432c97aaec9}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489BE20-BBE8-4B33-A6C3-82B845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{D1E4EDCA-946A-44B1-AA32-F315E0A9F13C}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{e52f9105-12ef-40a1-bd8a-f53bcb42fa36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreEntityFramework_POCOClasses\AgronicaCoreEntityFramework_POCO.vbproj">
+      <Project>{63042aaf-f178-4337-bb88-c3332e989b51}</Project>
+      <Name>AgronicaCoreEntityFramework_POCO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreSementieriDAL\AgronicaCoreSementieriDAL.vbproj">
+      <Project>{7cf14ae3-4b42-4488-a29e-e4b698752964}</Project>
+      <Name>AgronicaCoreSementieriDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430F460-F70F-4E5C-85F3-FEFD8E7EECBE}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition="'$(SonarQubeExcludeDuplicates)' == 'true'">
+    <!-- SonarQube Property per evitare molteplici analisi di progetti condivisi -->
+    <SonarQubeExclude>true</SonarQubeExclude>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,22 @@
+<gias-kendo-grid (selectionChange)="ImpresaSelezionata($event)">
+  <ng-container headerContentEnd>
+    <div class="btn-group btn-sm">
+      <div kendoTooltip *ngIf="permessoEdit">
+        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important" (click)="onNuovo()"
+          [title]="'NuovaSchedaCompleta' | transloco" [type]="'button'">
+          <fa-icon class="faAddSchedule"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container headerContentButtons>
+    <div class="btn-group btn-sm">
+      <div kendoTooltip *ngIf="loadAllCompaniesAllowed()">
+        <button class="btn btn-primary btn-sm btnDisabledInModifica btn-primary-fill btn-important"
+          (click)="onCaricaTutte()" [title]="'CaricaTutteLeImprese' | transloco" [type]="'button'">
+          <fa-icon class="gias-carica-tutte-le-imprese" aria-hidden="true"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</gias-kendo-grid>

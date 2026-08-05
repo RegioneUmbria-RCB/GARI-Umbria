@@ -1,0 +1,13 @@
+<ng-container *ngIf="translations != null">
+  <kendo-grid #grid [kendoGridBinding]="translations" [loading]="loading" (cellClick)="cellClickHandler($event)"
+    (cellClose)="cellCloseHandler($event)">
+    <ng-template kendoGridToolbarTemplate>
+      <button kendoButton class="save-button" (click)="save()">{{ 'Save_Changes' | transloco }}</button>
+    </ng-template>
+
+    <kendo-grid-column width="100" field="Lingua_Des" [editable]="false"
+      [title]="'Lingua' | transloco"></kendo-grid-column>
+
+    <kendo-grid-column width="250" field="Traduzione" [title]="'gis.Traduzione' | transloco"></kendo-grid-column>
+  </kendo-grid>
+</ng-container>

@@ -1,0 +1,366 @@
+/* INIZIO - Ridefinizione dello stile di testata delle griglie Kendo */
+.k-grid-header tr:not(.k-filter-row) .k-header
+{
+    background-color: #428BCA;
+    color: white;
+}
+.k-group-indicator
+{
+    background-color: #428BCA;
+    color: white;
+}
+.k-grid-header .k-link:link, 
+.k-grid-header .k-link:visited, 
+.k-grid-header .k-nav-current.k-state-hover .k-link, 
+.k-grid-header .k-nav-current.k-hover .k-link, 
+.k-grouping-header .k-link {
+    color: white;
+}
+
+.k-grid-header .k-header .k-active,
+.k-grid-header .k-header .k-state-active {
+    color: black;
+}
+
+.k-i-sort-desc-sm:before, .k-i-sort-asc-sm:before {
+    color: white;
+}
+
+/* FINE - Ridefinizione dello stile di testata delle griglie Kendo */
+
+/* INIZIO - per gestire cancellazione custom con testo barrato */
+tr.deletedKendoRow > td:not(.k-command-cell) {
+    text-decoration: line-through;
+    color: red;
+}
+tr:hover.deletedKendoRow > td:not(.k-command-cell) {
+    text-decoration: line-through;
+    color: red;
+}
+.k-grid-delete
+{
+    cursor: pointer;
+    color: #D41E1A;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.k-grid-Cancella
+{
+    cursor: pointer;
+    color: #D41E1A;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.k-grid-Cancella:hover
+{
+    color: #D41E1A;
+}
+.k-grid-Cancella:focus 
+{
+    color: #D41E1A;
+}
+   
+/* FINE - per gestire cancellazione custom con testo barrato */
+
+/* INIZIO - per far sì che l'header vada su più righe in caso di descrizione lunga */
+.k-grid  .k-grid-header  .k-header  .k-link 
+{
+    /*height: auto;*/
+}
+th.k-grid:not(.k-filter-row), th.k-grid-header:not(.k-filter-row), th.k-header:not(.k-filter-row) {
+    white-space: normal;
+}
+/* FINE - per far sì che l'header vada su più righe in caso di descrizione lunga */
+ 
+/* INIZIO - Stile pulsanti Toolbar griglia */
+
+.k-grid-pulsantegenerico {
+    color: #fff;
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}
+
+.k-grid-save-changes
+{
+    color: #fff;
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}
+
+.k-grid-cancel-changes
+{
+    color: #fff;
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}
+
+.k-grid-add
+{
+    /*color: #fff;*/
+    border-color: azure;
+    background-color: azure;
+}
+
+/*.k-grid-excel
+{
+    color: #fff;
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}
+
+.k-grid-pdf
+{
+    color: #fff;
+    border-color: #5cb85c;
+    background-color: #5cb85c;
+}*/
+
+.k-icon .k-i-update
+{
+    color: #fff;
+    /*border-color: #5cb85c;
+    background-color: #5cb85c;*/
+}
+/* FINE - Stile pulsanti Toolbar griglia */
+
+/* INIZIO - Kendo Pivot - allineamento a destra */
+   
+.k-pivot-table .k-grid-content td {
+    text-align: right;
+}
+/* FINE - Kendo Pivot - allineamento a destra */
+
+
+tbody tr.kendoRiga_AgendaOperazBloccata, tbody tr.kendoRiga_AgendaOperazBloccata:hover {
+    background-color: #ccc;
+    color: #555;
+}
+
+tbody tr.kendoRiga_AgendaOperazDaRevisionare, tbody tr.kendoRiga_AgendaOperazDaRevisionare:hover {
+    background-color: yellow;
+}
+
+tbody tr.kendoRiga_AgendaOperazPianificata, tbody tr.kendoRiga_AgendaOperazPianificata:hover {
+    background-color: #80ffff;
+}
+
+.campiObbligatori {
+    font-weight: bold;
+}
+
+.campiObbligatori::after {
+    content: "*";
+}
+
+/*Utilizzati per il background*/
+.rowKendoCritical {
+    background-color: #fdd;
+}
+
+.rowKendoWarning {
+    background-color: #fda;
+}
+
+.rowKendoOk {
+    background-color: #ced;
+}
+
+tbody tr.kendoRiga_Rossa, tbody tr.kendoRiga_Rossa:hover {
+    background-color: tomato;
+}
+
+tbody tr.kendoRiga_Arancione, tbody tr.kendoRiga_Arancione:hover {
+    background-color: orange;
+}
+
+tbody tr.kendoRiga_Verde, tbody tr.kendoRiga_Verde:hover {
+    background-color: lightgreen;
+}
+
+
+tbody tr.kendoRiga_VerdeScuro, tbody tr.kendoRiga_Verde:hover {
+    background-color: mediumseagreen;
+}
+
+/*INIZIO KENDO DROPDOWN*/
+/*Per colorare le righe in maniera alternata*/
+ul.k-list .k-item:nth-child(even):not(.k-state-selected):not(:hover),
+ul.k-list .k-item:nth-child(even):not(.k-selected):not(:hover) {
+    background-color: #f5f5f5;
+}
+/*FINE KENDO DROPDOWN*/
+
+/*INIZIO KENDO DROPDOWN IN FORM-CONTROL*/
+.k-widget.k-dropdown.k-header.form-control span.k-dropdown-wrap {
+    border-color: #428BCA;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0;
+}
+/*FINE KENDO DROPDOWN IN FORM-CONTROL*/
+
+/*KENDO GRID TOOLTIP */
+/*Per fare in modo che la punta del fumetto sia a sinistra e non centrale, puntando alla casella giusta, anche in caso di colonne strette*/
+.k-grid .k-callout-n {
+    left: auto;
+}
+
+/* bug nella versione di kendo? numericTextBox senza spinners*/
+.k-numeric-wrap.k-expand-padding {
+    padding-right: 0;
+}
+
+/* INIZIO KENDO DATEPICKER IN FORM-CONTROL*/
+.k-widget.k-datepicker.form-control {
+    border-color: rgb(66, 139, 202);
+    border-width: 1px;
+}
+
+.k-widget.k-datepicker.form-control span.k-picker-wrap {
+    border-width: 0px;
+}
+/* FINE KENDO DATEPICKER IN FORM-CONTROL*/
+
+/* INIZIO KENDO DATETIMEPICKER IN FORM-CONTROL*/
+.k-widget.k-datetimepicker.form-control {
+    border-color: rgb(66, 139, 202);
+    border-width: 1px;
+}
+
+.k-widget.k-datetimepicker.form-control span.k-picker-wrap {
+    border-width: 0px;
+}
+/* FINE KENDO DATETIMEPICKER IN FORM-CONTROL*/
+
+/* INIZIO KENDO NUMERICTEXTBOX IN FORM-CONTROL*/
+.k-widget.k-numerictextbox.form-control {
+    border-color: rgb(66, 139, 202);
+    border-width: 1px;
+}
+
+.k-widget.k-numerictextbox.form-control span.k-numeric-wrap {
+    border-width: 0px;
+}
+/* FINE KENDO NUMERICTEXTBOX IN FORM-CONTROL*/
+
+/* Pulsanti */
+
+.btnEliminaTuttiFiltri {
+    background-color: white;
+    color: black;
+}
+
+.k-filter-menu .k-action-buttons .k-button {
+    width: 120px;
+}
+
+li.k-item.k-filter-item > div.k-animation-container {
+    width: 350px !important;
+}
+
+li.k-item.k-filter-item > div.k-animation-container > ul {
+    position: relative !important;
+}
+
+li.k-item.k-filter-item > div.k-animation-container > ul > li > div > form.k-filter-menu > .k-filter-menu-container > ul.k-multicheck-wrap {
+    display: flex;
+    white-space: pre-wrap;
+    flex-flow: column;
+}
+
+li.k-item.k-filter-item > div.k-animation-container > ul > li > div > form.k-filter-menu > .k-filter-menu-container > ul.k-multicheck-wrap > li {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.k-panelbar .k-panelbar-content {
+    color: black;
+}
+
+/*
+    // Align to the center of the container the elements (checkboxes inside a label).
+    form.k-filter-menu > .k-filter-menu-container > ul.k-multicheck-wrap > li > label.k-checkbox-label {
+        align-items: center;
+    }
+*/
+
+/***************************************************
+** Istruzioni aggiunte per la versione 2022.2.510 **
+****************************************************/
+
+/* Places inline each element together with its corresponding icon */
+.k-picker.k-dropdownlist {
+    display: flex;
+}
+
+.k-multiselect.k-input {
+    display: flex;
+}
+
+.k-numerictextbox.k-input {
+    display: flex;
+}
+
+/*.k-slider {
+    display: flex;
+}*/
+
+.k-datepicker.k-input {
+    display: flex;
+}
+
+.k-datetimepicker.k-input {
+    display: flex;
+}
+
+/* Alias for the k-primary button which was renamed .k-button-solid-primary */
+.k-primary,
+.k-button-solid-primary {
+    color: #fff;
+    border-color: #357ebd;
+    background-color: #428bca;
+}
+
+.k-primary.k-state-hover, .k-primary.k-hover, .k-primary:hover,
+.k-button-solid-primary.k-state-hover, .k-button-solid-primary.k-hover {
+    color: #fff;
+    border-color: #285e8e;
+    background-color: #3276b1;
+}
+
+/* End alias */
+
+/* Griglia */
+th.k-header .k-column-title {
+    color: white;
+}
+
+/* Removes unwanted border introduced by applying a padding to this element */
+/*span.k-datepicker.k-input-inner {
+    padding: 0px;
+    border: 1px solid #428BCA;
+}*/
+
+/*AGGIUNTI X KENDO GRID*/
+.k-selected,
+.k-selected:link,
+.k-selected:visited {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+}
+
+/* pulsanti dentro griglia */
+.k-grid .k-command-cell > .k-button {
+    margin-left: 0px !important; /*azzero il margine sx default di kendo*/
+    margin: 0.32em; /*imposto tutti i margini a 0.32*/
+    margin-bottom: 0.16em; 
+}
+.k-grid .k-command-cell > .k-button + .k-button {
+    margin-inline-end: 0.32em;
+    margin-inline-start: 0.32em;
+}
+
+.k-tabstrip .k-button.k-disabled {
+    opacity: 0.6;
+}

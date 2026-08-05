@@ -1,0 +1,736 @@
+<div class="operations-container">
+        <div class="button-albero-aziende">
+            <button id="expander" kendoButton icon="menu" look="flat" (click)="expandPanelTree(true)">
+            </button>
+        </div>
+        <print-export-button *ngIf="displayPrintExportButton" [buttonType]="buttonTypeChiamanti" [codificaStampa]="codificaStampa"></print-export-button>
+        <div class="filters-container">
+            <div class="custom-toolbar" *ngIf="displayButtonFilters">
+                <button kendoButton look="flat"
+                    (click) ="onOpenFilters()" 
+                    [disabled]="isDisabled"
+                    [ngClass]="{ 'with-margin-top': withMarginTop }">
+                    <fa-icon size="lg" [icon]="faSliders"></fa-icon>
+                </button>
+            </div>
+        <form [formGroup]="formService.formFilters" (ngSubmit)="onSubmit()">
+            <kendo-drawer-container [hidden]="!shouldApply">
+                <kendo-drawer [ngClass]="{ 'with-padding-top': withPadding }" #drawer mode="overlay" [width]="drawerWidth"
+                    [position]="'end'"
+                    (collapse)="onCancel()"
+                    (expand)="shouldApply=true">
+
+                    <ng-template kendoDrawerTemplate *ngIf="displayFilters">
+
+                            <div class="btn right" style="margin-bottom: -20px;" (click)="onCancelFilters()">
+                                <fa-icon [icon]="faClose"></fa-icon>
+                            </div>
+
+                            <div class="row border_mostra">
+                                    <div class="row mx-1 v-aligned">
+                                        <div class="col-12 col-sm-3">
+                                            <gias-drop-down-template-s
+                                                [name]="'Mostra' | transloco"
+                                                giasFormControlName="CategoriaEsito"
+                                                [textField]="'nomeCat'"
+                                                [valueField]="'idCat'"
+                                                [listItems]="formService.listaTipiMostra"
+                                                [valuePrimitive]="false">
+                                            </gias-drop-down-template-s>
+                                        </div>
+                                        <div class="col-12 col-sm-3" *ngIf="modBudget">
+                                            <gias-drop-down-template-s
+                                                                        [name]="'Budget' | transloco"
+                                                                        giasFormControlName="Budget"
+                                                                        [textField]="'Nome_Budget'"
+                                                                        [valueField]="'Id_Budget'"
+                                                                        [listItems]="formService.ListaBudgets"
+                                                                        [valuePrimitive]="false"
+                                                                        [hasInfo]="true"
+                                                                        infoTitle="BudgetPubbliciPrivati">
+                                            </gias-drop-down-template-s>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <kendo-tabstrip id="TabStrip" #tabstrip>
+                                <kendo-tabstrip-tab [selected]="true">
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriAziende' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriAziende')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <div [formGroup]="formService.formFilters.get('FiltriAziende')">
+                                            <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriAziende')"></app-clear-button>
+                                            <fieldset>
+                                                <legend>{{ "Azienda" | transloco }}</legend>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6">
+                                                            <gias-multiselect-template-s [name]="'CooperativeImpreseReferenti' | transloco" [obligatory]="false"
+                                                                                        textField="Rag_Soc" valueField="Piva" [filterable]="true"
+                                                                                        giasFormControlName="ImpreseReferenti"
+                                                                                        [listItems]="formService.ListaCoopImpreseReferenti"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <gias-multiselect-template-s [name]="'TipoImpresa' | transloco" [obligatory]="false"
+                                                                                        textField="nome" valueField="id" [filterable]="true"
+                                                                                        giasFormControlName="TipiImpresa"
+                                                                                        [listItems]="formService.ListaTipiImpresa"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6">
+                                                            <gias-text-template [name]="'RagioneSociale' | transloco"
+                                                                giasFormControlName="RagioneSociale">
+                                                            </gias-text-template>
+                                                        </div>
+                                                        <div class="col-12 col-md-3">
+                                                            <gias-text-template [name]="'CodiceUnicoAziendaAgricolaSigla' | transloco"
+                                                                giasFormControlName="CUAA">
+                                                            </gias-text-template>
+                                                        </div>
+                                                        <div class="col-12 col-md-3">
+                                                            <gias-text-template [name]="'PartitaIVA' | transloco"
+                                                                giasFormControlName="Piva">
+                                                            </gias-text-template>
+                                                        </div>
+                                                    </div>
+                                                    <app-geo-filters [formGroupInput]="formService.formFilters.get('FiltriAziende')" ></app-geo-filters>
+                                            </fieldset>
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <gias-multiselect-template-s [name]="'Zone' | transloco" [obligatory]="false"
+                                                                                    textField="Descrizione" valueField="Zona_Cod" [filterable]="true"
+                                                                                    giasFormControlName="Zone"
+                                                                                    [listItems]="formService.ListaZone"
+                                                                                    [valuePrimitive]="false">
+                                                    </gias-multiselect-template-s>
+                                                </div>
+
+                                                <div class="col-12 col-md-3">
+                                                    <gias-drop-down-template-s  name=" "
+                                                                                textField="Descrizione"
+                                                                                valueField="Value"
+                                                                                giasFormControlName="FiltroZone"
+                                                                                [listItems] = "formService.ListaFiltroOperatoreLogicoZone"
+                                                                                [valuePrimitive]="false">
+                                                    </gias-drop-down-template-s>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab>
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriCentriAziendali' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriCentriAziendali')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <div [formGroup]="formService.formFilters.get('FiltriCentriAziendali')">
+                                            <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriCentriAziendali')"></app-clear-button>
+                                            <fieldset>
+                                                <legend class="centro-aziendale-legend">{{ "CentroAziendale" | transloco }}</legend>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-6">
+                                                            <gias-text-template [name]="'Centro' | transloco"
+                                                                giasFormControlName="CentroAziendale">
+                                                            </gias-text-template>
+                                                        </div>
+                                                    </div>
+                                                    <app-geo-filters [formGroupInput]="formService.formFilters.get('FiltriCentriAziendali')" ></app-geo-filters>
+                                            </fieldset>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab>
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriColture' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriPianoColturale')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <div [formGroup]="formService.formFilters.get('FiltriPianoColturale')">
+                                            <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriPianoColturale')"></app-clear-button>
+                                            <fieldset>
+                                                <legend>{{ "Impianto" | transloco }}</legend>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4">
+                                                            <gias-drop-down-template-s
+                                                                                        [name]="'Utilizzo' | transloco"
+                                                                                        giasFormControlName="FiltroDestinazioneUso"
+                                                                                        [textField]="'nome'"
+                                                                                        [valueField]="'id'"
+                                                                                        [listItems]="formService.ListaFiltroDestinazioniDuso"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-drop-down-template-s>
+                                                        </div>
+                                                        <div class="col-12 col-md-4" *ngIf="showDestinazioniUso">
+                                                            <gias-multiselect-template-s
+                                                                                        [name]="'DestinazioneDUso' | transloco"
+                                                                                        giasFormControlName="DestinazioniUso"
+                                                                                        [textField]="'Descrizione'"
+                                                                                        [valueField]="'Codice'"
+                                                                                        [listItems]="formService.ListaDestinazioniDuso"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4" *ngIf="showSpecieAndVarieta">
+                                                            <gias-multiselect-template-s [name]="'GruppoVegetale' | transloco" [obligatory]="false"
+                                                                                        textField="Gru_Des" valueField="Gru_Cod" [filterable]="true"
+                                                                                        giasFormControlName="GruppoVegetale"
+                                                                                        [listItems]="formService.ListaGruppiVegetali"
+                                                                                        (removeItem)="formService.onRemoveItemGruppoVegetale($event)"
+                                                                                        (selectionItem)="formService.onRemoveAll($event, 'FiltriPianoColturale', ['Specie', 'Varieta'])"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                        <div class="col-12 col-md-4" *ngIf="showSpecieAndVarieta">
+
+                                                            <div class="name-icon-container">
+                                                                <span class="input-group-addon alert-info" [innerHTML]="'Specie' | transloco"></span>
+                                                                <fa-icon *ngIf="formService.showIconUserSpecie" class="fa-user-icon" size="lg" [icon]="faUser"></fa-icon>
+                                                            </div>
+
+                                                            <gias-multiselect-template-s [obligatory]="false"
+                                                                                        textField="Veg_Des" valueField="Veg_Cod" [filterable]="true"
+                                                                                        giasFormControlName="Specie"
+                                                                                        (open)="formService.openMultiSelectSpecie($event)"
+                                                                                        (removeItem)="formService.onRemoveItemSpecie($event)"
+                                                                                        (selectionItem)="formService.onRemoveAll($event, 'FiltriPianoColturale', ['Varieta', 'TipologiaVarietale'])"
+                                                                                        [valuePrimitive]="false"
+                                                                                        [groupBy]="true">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                        <div class="col-12 col-md-4" *ngIf="showSpecieAndVarieta">
+                                                            <gias-multiselect-template-s [name]="'TipologiaVarietale' | transloco" [obligatory]="false"
+                                                                                        textField="Grva_Des" valueField="Grva_Cod" [filterable]="true"
+                                                                                        giasFormControlName="TipologiaVarietale"
+                                                                                        (open)="formService.openMultiSelectGruppoVarietale($event)"
+                                                                                        [valuePrimitive]="false"
+                                                                                        [groupBy]="true">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4" *ngIf="showSpecieAndVarieta">
+                                                            <gias-multiselect-template-s [name]="'Varieta' | transloco" [obligatory]="false"
+                                                                                        textField="Cul_Des" valueField="Cul_Cod" [filterable]="true"
+                                                                                        giasFormControlName="Varieta"
+                                                                                        (open)="formService.openMultiSelectVarieta($event)"
+                                                                                        [groupBy]="true"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-12 col-md-4">
+                                                            <gias-multiselect-template-s [name]="'UtilizzoDelTerreno' | transloco "
+                                                                                        textField = "Descrizione"
+                                                                                        [listItems]="formService.ListaUtilizzoTerreno"
+                                                                                        valueField="Value"
+                                                                                        [filterable]="true"
+                                                                                        giasFormControlName="UtilizzoTerreno"
+                                                                                        [valuePrimitive]="false">
+                                                            </gias-multiselect-template-s>
+                                                        </div>
+                                                    </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <legend class="centro-aziendale-legend">{{ "Esercizio" | transloco }}</legend>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <gias-text-template [name]="'LottoEsercizio' | transloco"
+                                                            giasFormControlName="Lotto">
+                                                        </gias-text-template>
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <gias-text-template [name]="'EsercizioDes' | transloco"
+                                                            giasFormControlName="Progetto">
+                                                        </gias-text-template>
+                                                    </div>
+                                                </div>
+                                                <div class="row" *ngIf="formService.showContributiACA">
+                                                    <div class="col-12 col-md-4">
+                                                        <gias-multiselect-template-s [name]="'ContributiACA' | transloco "
+                                                                                        textField = "description"
+                                                                                        [listItems]="formService.ListaContributiACA"
+                                                                                        valueField="code"
+                                                                                        [filterable]="true"
+                                                                                        giasFormControlName="ContributiACA"
+                                                                                        [valuePrimitive]="false">
+                                                        </gias-multiselect-template-s>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab>
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriTemporali' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriTemporali')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriTemporali')"></app-clear-button>
+                                        <div [formGroup]="formService.formFilters.get('FiltriTemporali')">
+                                            <app-filtri-temporali #filtriTemporali 
+                                                                  [formGroupArrayInput]="formService.formFilters.get('FiltriTemporali').get('FiltriData')"
+                                                                  [ListaEntita]="formService.ListaEntita"
+                                                                  [ListaValidita]="formService.ListaValidita"
+                                                                  [ListaTipoConfronto]="formService.ListaTipoConfronto"
+                                                                  [showSetDefaultFiltersButton]="formService.showSetDefaultFiltersButton"
+                                                                  (clickAddEsAttivi)="formService.setFiltriTemporaliMenu()"></app-filtri-temporali>
+                                            <br>
+                                            <div class="col-12 col-md-4">
+                                                <gias-drop-down-template-s  [name]="'OperatoreLogicoFiltriTemporali' | transloco"
+                                                                            textField="Descrizione"
+                                                                            valueField="Value"
+                                                                            giasFormControlName="OperatoreLogico"
+                                                                            [listItems] = "formService.ListaFiltroOperatoreLogicoTemporali"
+                                                                            [valuePrimitive]="false">
+                                                </gias-drop-down-template-s>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab *ngIf="!modBudget && showMovimenti">
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriMovimenti' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriMovimenti')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <div [formGroup]="formService.formFilters.get('FiltriMovimenti')">
+                                            <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriMovimenti')"></app-clear-button>
+                                            <fieldset>
+                                                <legend>{{ displayDDLTipoFiltroOperazioni ? (formService.formFilters.get('CategoriaEsito').getRawValue().nomeCat | transloco) : ("Movimenti" | transloco) }}</legend>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-2" *ngIf="displayDDLTipoFiltroOperazioni">
+                                                        <gias-drop-down-template-s [name]="'TipoFiltroOperazioni' | transloco" [obligatory]="false"
+                                                                                                textField="Descrizione"
+                                                                                                valueField="Value"
+                                                                                                [filterable]="true"
+                                                                                                giasFormControlName="FiltroOperazioni"
+                                                                                                [listItems] = "formService.ListaFiltroOperazioniSelezionate"
+                                                                                                [valuePrimitive]="false">
+                                                        </gias-drop-down-template-s>
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+                                                        <gias-multiselect-template-s [name]="'TipoOperazioni' | transloco" [obligatory]="false"
+                                                                                                textField="GRU_DES" valueField="GRU_COD" [filterable]="true"
+                                                                                                giasFormControlName="GruppoOperazioni"
+                                                                                                (open)="formService.openMultiSelectTipoOperazioni($event)"
+                                                                                                (removeItem)="formService.onRemoveItemTipoOperazioni($event)"
+                                                                                                (selectionItem)="formService.onRemoveAll($event, 'FiltriMovimenti', ['Operazioni'])"
+                                                                                                [valuePrimitive]="false">
+                                                        </gias-multiselect-template-s>
+                                                    </div>
+                                                    <div class="col-12 col-md-4">
+
+                                                        <div class="name-icon-container">
+                                                            <span class="input-group-addon alert-info" [innerHTML]="'Operazioni' | transloco"></span>
+                                                            <fa-icon *ngIf="formService.showIconUserOperazioni" class="fa-user-icon" size="lg" [icon]="faUser"></fa-icon>
+                                                        </div>
+
+                                                        <gias-multiselect-template-s    [obligatory]="false"
+                                                                                        textField="LAV_DES" valueField="LAV_COD" [filterable]="true"
+                                                                                        giasFormControlName="Operazioni"
+                                                                                        (open)="formService.openMultiSelectOperazioni($event)"
+                                                                                        [groupBy]="true"
+                                                                                        [valuePrimitive]="false">
+                                                        </gias-multiselect-template-s>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div [formGroup]="formService.formFilters.get('FiltriMovimenti').get('DataMovimento')">
+                                            <div class="row">
+                                                <div class="col-12 col-md-2">
+                                                    <gias-data-template [name]="'OperazioniDal' | transloco"
+                                                                                giasFormControlName ="inizio">
+                                                    </gias-data-template>
+                                                </div>
+                                                <div class="col-12 col-md-2">
+                                                    <gias-data-template [name]="'OperazioniAl' | transloco"
+                                                                                giasFormControlName ="fine">
+                                                    </gias-data-template>
+                                                </div>
+                                                <div class="col-12 col-md-4 left align-self-end mt-4">
+                                                        <div class="btn btn-primary btn-primary-fill button-annata-agraria"
+                                                            [ngClass]="{ 'disabled': disableButtonAnnataAgraria }" 
+                                                            (click)="onClickSetAnnataAgraria()">
+                                                            <span class="text"> {{ 'ImpostaFiltroAnnataAgraria' | transloco }} </span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab *ngIf="!modBudget">
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriServizi' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriServizi')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <div [formGroup]="formService.formFilters.get('FiltriServizi')">
+                                            <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriServizi')"></app-clear-button>
+                                            <fieldset>
+                                                <legend>{{ "Azienda" | transloco }}</legend>
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3">
+                                                        <gias-drop-down-template-s [name]="'Servizio' | transloco" [obligatory]="false"
+                                                                                                textField="Servizio_Des"
+                                                                                                valueField="Servizio_Cod"
+                                                                                                [filterable]="true"
+                                                                                                giasFormControlName="Servizio"
+                                                                                                [listItems]="formService.ListaServizi"
+                                                                                                [valuePrimitive]="false">
+                                                        </gias-drop-down-template-s>
+                                                    </div>
+                                                    <div class="col-12 col-md-3">
+                                                        <gias-multiselect-template-s [name]="'StatiPratica' | transloco" [obligatory]="false"
+                                                                                                textField="Stato_Des"
+                                                                                                valueField="Stato_Cod"
+                                                                                                [filterable]="true"
+                                                                                                [listItems]="formService.ListaStatiPratica"
+                                                                                                giasFormControlName="StatiPratica"
+                                                                                                [valuePrimitive]="false">
+                                                        </gias-multiselect-template-s>
+                                                    </div>
+                                                    <div class="col-12 col-md-3">
+                                                        <gias-data-template [name]="'AllaData' | transloco"
+                                                                                giasFormControlName ="Data">
+                                                        </gias-data-template>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab *ngIf="!modBudget">
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriGIS' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriGIS')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriGIS')"></app-clear-button>
+                                        <fieldset>
+                                            <legend>{{ "Impianto" | transloco }}</legend>
+                                            <div [formGroup]="formService.formFilters.get('FiltriGIS')">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3">
+                                                        <gias-drop-down-template-s [name]="'Poligoni' | transloco "
+                                                                                    textField = "Descrizione"
+                                                                                    valueField="Value"
+                                                                                    [filterable]="true"
+                                                                                    giasFormControlName="FiltroPoligoni"
+                                                                                    [listItems]="formService.ListaPoligoniGIS"
+                                                                                    [valuePrimitive]="false">
+                                                        </gias-drop-down-template-s>
+                                                    </div>
+                                                    <div class="col-12 col-md-3" *ngIf="showAnomalieGIS">
+                                                        <gias-multiselect-template-s [name]="'Anomalie' | transloco" [obligatory]="false"
+                                                                                        textField="Algoritmo" valueField="Algoritmo" [filterable]="true"
+                                                                                        giasFormControlName="Anomalie"
+                                                                                        [listItems]="formService.ListaAnomalie"
+                                                                                        [valuePrimitive]="false">
+                                                        </gias-multiselect-template-s>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                                <kendo-tabstrip-tab>
+                                    <ng-template kendoTabTitle>
+                                        <span>{{ 'FiltriCatasto' | transloco }}</span>
+                                        <app-red-spot *ngIf="hasChanges('FiltriCatasto')"></app-red-spot>
+                                    </ng-template>
+                                    <ng-template kendoTabContent>
+                                        <app-clear-button class="top-right-button" (onClear)="onClearPartialFilters('FiltriCatasto')"></app-clear-button>
+                                        <fieldset>
+                                            <legend>{{ "Appezzamento" | transloco }}</legend>
+                                            <div [formGroup]="formService.formFilters.get('FiltriCatasto')">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-3">
+                                                        <gias-drop-down-template-s [name]="'Riparto' | transloco "
+                                                                                    textField = "Descrizione"
+                                                                                    valueField="Value"
+                                                                                    [filterable]="true"
+                                                                                    giasFormControlName="FiltroRipartoCatastale"
+                                                                                    [listItems]="formService.ListaRipartoCatastale"
+                                                                                    [valuePrimitive]="false">
+                                                        </gias-drop-down-template-s>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </ng-template>
+                                </kendo-tabstrip-tab>
+                            </kendo-tabstrip>
+
+                            <div class="row k-content justify-content-center">
+                                    <div class="row mt-2 mx-1 v-aligned justify-content-center">
+                                        <div class="col-12 col-sm-4 left align-self-end">
+                                            <ng-container [ngTemplateOutlet]="cercaButton">
+                                            </ng-container>
+                                        </div>
+                                        <div class="col-12 col-sm-4 left align-self-end">
+                                            <div class="btn btn-primary btn-primary-fill btn-primary-text filters-button" (click)="onClearFilters()">
+                                                <fa-icon [icon]="faClear" style="margin: 5px;" size="lg"></fa-icon>
+                                                <span class="text clear-filters-button"> {{ 'PulisciTuttiFiltri' | transloco }} </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </div>
+                    </ng-template>
+            </kendo-drawer>
+        </kendo-drawer-container>
+
+                <kendo-dialog *ngIf="displayDati"
+                                [title]="'DatiAggiuntiviVista' | transloco"
+                                (close)="onCancelDati()"
+                                width="80%">
+
+                            <div [formGroup]="formService.formFilters.get('CaricaDati')" class="dialog-content">
+                                        <kendo-tabstrip id="TabStripDatiAggiuntivi" #tabstripDati>
+                                            <kendo-tabstrip-tab [selected]="true" *ngIf="formService.tab_Carica_Dati_Visibility.ImpreseReferenti_Visibile || formService.tab_Carica_Dati_Visibility.LegaleRappresentante_Visibile || formService.tab_Carica_Dati_Visibility.IndirizzoAzienda_Visibile || formService.tab_Carica_Dati_Visibility.AltriDatiAzienda_Visibile">
+                                                <ng-template kendoTabTitle>
+                                                    <span>{{ 'Azienda' | transloco }}</span>
+                                                    <app-red-spot *ngIf="hasChangesDatiAggiuntivi(Enum_Entita_FiltroRicerca.Azienda)"></app-red-spot>
+                                                </ng-template>
+                                                <ng-template kendoTabContent>
+                                                    <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntivi" class="top-right-button" (onClear)="onClearDatiAggiuntivi(Enum_Entita_FiltroRicerca.Azienda)"></app-clear-button>
+                                                    <fieldset class="p-2">
+                                                            <div class="row">
+                                                                <div class="col-12 col-sm-3" *ngIf="formService.tab_Carica_Dati_Visibility.ImpreseReferenti_Visibile">
+                                                                    <gias-switch-template [name]="'CooperativeImpreseReferenti' | transloco"
+                                                                                        giasFormControlName="ImpreseReferenti">
+                                                                    </gias-switch-template>
+                                                                </div>
+                                                                <div [formGroup]="formService.formFilters.get('CaricaDati').get('DatiIscrizioneLibroSoci')" class="col-12 col-sm-3" *ngIf="formService.tab_Carica_Dati_Visibility.ImpreseReferenti_Visibile">
+                                                                    <gias-switch-template [name]="'NumeroLibroSoci' | transloco"
+                                                                                        giasFormControlName="NumeroIscrizione">
+                                                                    </gias-switch-template>
+                                                                </div>
+                                                                <div [formGroup]="formService.formFilters.get('CaricaDati').get('DatiIscrizioneLibroSoci')" class="col-12 col-sm-3" *ngIf="formService.tab_Carica_Dati_Visibility.ImpreseReferenti_Visibile">
+                                                                    <gias-switch-template [name]="'DataIscrizioneLibroSoci' | transloco"
+                                                                                        giasFormControlName="DataIscrizione">
+                                                                    </gias-switch-template>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-2">
+                                                                <div class="col-12 col-sm-3 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.LegaleRappresentante_Visibile">
+                                                                    <gias-switch-template [name]="'LegaleRappr' | transloco"
+                                                                                        giasFormControlName="LegaleRappresentante">
+                                                                    </gias-switch-template>
+
+                                                                    <div class="gias-info-container">
+                                                                        <gias-info-template size="lg"
+                                                                                    [title]="'LegaleRappresentanteInfo' | transloco">
+                                                                        </gias-info-template>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-sm-3 align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.IndirizzoAzienda_Visibile">
+                                                                    <gias-switch-template [name]="'Indirizzo' | transloco"
+                                                                                        giasFormControlName="IndirizzoAzienda">
+                                                                    </gias-switch-template>
+                                                                </div>
+                                                                <div class="col-12 col-sm-3 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.Servizi_Visibile">
+
+                                                                    <gias-switch-template [name]="'DettagliServizi' | transloco"
+                                                                                        giasFormControlName="Servizi">
+                                                                    </gias-switch-template>
+
+                                                                    <div class="gias-info-container">
+                                                                        <gias-info-template size="lg"
+                                                                                    [title]="'DettagliServiziInfo' | transloco">
+                                                                        </gias-info-template>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-2">
+                                                                <div class="col-12 col-sm-8" *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiAzienda_Visibile">
+                                                                    <gias-switch-template [name]="'AltriDati' | transloco"
+                                                                                        giasFormControlName="AltriDatiAzienda">
+                                                                    </gias-switch-template>
+                                                                    <app-codici [formGroupInput]="formService.formFilters.get('CaricaDati').get('CodiciAzienda')" [tipoCodici]="Enum_Entita_FiltroRicerca.Azienda"  [allCodici]="ListaCodiciAziende" *ngIf="formService.formFilters.get('CaricaDati').get('AltriDatiAzienda').value"></app-codici>
+                                                                </div>
+                                                            </div>
+                                                    </fieldset>
+                                                </ng-template>
+                                            </kendo-tabstrip-tab>
+                                            <kendo-tabstrip-tab *ngIf="formService.tab_Carica_Dati_Visibility.IndirizzoCentroAziendale_Visibile || formService.tab_Carica_Dati_Visibility.EstremiCatastaliCentroAziendale_Visibile || formService.tab_Carica_Dati_Visibility.AltriDatiCentro_Visibile">
+                                                <ng-template kendoTabTitle>
+                                                    <span>{{ 'CentroAziendale' | transloco }}</span>
+                                                    <app-red-spot *ngIf="hasChangesDatiAggiuntivi(Enum_Entita_FiltroRicerca.CentroAziendale)"></app-red-spot>
+                                                </ng-template>
+                                                <ng-template kendoTabContent>
+                                                    <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntivi" class="top-right-button" (onClear)="onClearDatiAggiuntivi(Enum_Entita_FiltroRicerca.CentroAziendale)"></app-clear-button>
+                                                    <fieldset class="p-2">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-4" *ngIf="formService.tab_Carica_Dati_Visibility.IndirizzoCentroAziendale_Visibile">
+                                                                <gias-switch-template [name]="'Indirizzo' | transloco"
+                                                                                    giasFormControlName="IndirizzoCentroAziendale">
+                                                                </gias-switch-template>
+                                                            </div>
+                                                            <div class="col-12 col-sm-4 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.EstremiCatastaliCentroAziendale_Visibile">
+                                                                <gias-switch-template [name]="'DatiCatastali' | transloco"
+                                                                                    giasFormControlName="CatastoCentroAziendale">
+                                                                </gias-switch-template>
+
+                                                                <div class="gias-info-container">
+                                                                    <gias-info-template size="lg"
+                                                                                [title]="'DatiCatastaliCentroAziendaleInfo' | transloco">
+                                                                    </gias-info-template>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-12 col-sm-8" *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiCentro_Visibile">
+                                                                <gias-switch-template [name]="'AltriDati' | transloco"
+                                                                                    giasFormControlName="AltriDatiCentro">
+                                                                </gias-switch-template>
+                                                                <app-codici [formGroupInput]="formService.formFilters.get('CaricaDati').get('CodiciCentroAziendale')" [tipoCodici]="Enum_Entita_FiltroRicerca.CentroAziendale"  [allCodici]="ListaCodiciCentroAziendale" *ngIf="formService.formFilters.get('CaricaDati').get('AltriDatiCentro').value"></app-codici>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </ng-template>
+                                            </kendo-tabstrip-tab>
+                                            <kendo-tabstrip-tab *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiCampo_Visibile || formService.tab_Carica_Dati_Visibility.CatastoCampo_Visibile">
+                                                <ng-template kendoTabTitle>
+                                                    <span>{{ 'Campo' | transloco }}</span>
+                                                    <app-red-spot *ngIf="hasChangesDatiAggiuntivi(Enum_Entita_FiltroRicerca.Campo)"></app-red-spot>
+                                                </ng-template>
+                                                <ng-template kendoTabContent>
+                                                    <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntivi" class="top-right-button" (onClear)="onClearDatiAggiuntivi(Enum_Entita_FiltroRicerca.Campo)"></app-clear-button>
+                                                    <fieldset class="p-2">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-3 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.CatastoCampo_Visibile">
+                                                                <gias-switch-template [name]="'CatastoCampo' | transloco"
+                                                                                    giasFormControlName="CatastoCampo">
+                                                                </gias-switch-template>
+
+                                                                <div class="gias-info-container">
+                                                                    <gias-info-template size="lg"
+                                                                                [title]="'CatastoCampoInfo' | transloco">
+                                                                    </gias-info-template>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-12 col-sm-8" *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiCampo_Visibile">
+                                                                <gias-switch-template [name]="'AltriDati' | transloco"
+                                                                                    giasFormControlName="AltriDatiCampo">
+                                                                </gias-switch-template>
+                                                                <app-codici [formGroupInput]="formService.formFilters.get('CaricaDati').get('CodiciCampo')" [tipoCodici]="Enum_Entita_FiltroRicerca.Campo"  [allCodici]="ListaCodiciCampo" *ngIf="formService.formFilters.get('CaricaDati').get('AltriDatiCampo').value"></app-codici>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </ng-template>
+                                            </kendo-tabstrip-tab>
+                                            <kendo-tabstrip-tab *ngIf="formService.tab_Carica_Dati_Visibility.IndirizziPianoColturale_Visibile || formService.tab_Carica_Dati_Visibility.DatiCatastaliAppezzamento_Visibile || formService.tab_Carica_Dati_Visibility.AltriDatiPianoColturale_Visibile">
+                                                <ng-template kendoTabTitle>
+                                                    <span>{{ 'PianoColturale' | transloco }}</span>
+                                                    <app-red-spot *ngIf="hasChangesDatiAggiuntivi(Enum_Entita_FiltroRicerca.Appezzamento + Enum_Entita_FiltroRicerca.Impianto + Enum_Entita_FiltroRicerca.Esercizio)"></app-red-spot>
+                                                </ng-template>
+                                                <ng-template kendoTabContent>
+                                                    <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntivi" class="top-right-button" (onClear)="onClearDatiAggiuntivi(Enum_Entita_FiltroRicerca.Appezzamento + Enum_Entita_FiltroRicerca.Impianto + Enum_Entita_FiltroRicerca.Esercizio)"></app-clear-button>
+                                                    <fieldset class="p-2">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-3 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.IndirizziPianoColturale_Visibile">
+                                                                <gias-switch-template [name]="'Indirizzo' | transloco"
+                                                                                    giasFormControlName="IndirizziPianoColturale">
+                                                                </gias-switch-template>
+
+                                                                <div class="gias-info-container">
+                                                                    <gias-info-template size="lg"
+                                                                                [title]="'IndirizziPianoColturaleInfo' | transloco">
+                                                                    </gias-info-template>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-3 d-flex align-items-center" *ngIf="formService.tab_Carica_Dati_Visibility.DatiCatastaliAppezzamento_Visibile">
+
+                                                                <gias-switch-template [name]="'DatiCatastali' | transloco"
+                                                                                    giasFormControlName="CatastoAppezzamento">
+                                                                </gias-switch-template>
+                                
+                                                                <div class="gias-info-container">
+                                                                    <gias-info-template size="lg"
+                                                                                [title]="'AppezzamentoInfo' | transloco">
+                                                                    </gias-info-template>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-sm-3" *ngIf="formService.tab_Carica_Dati_Visibility.GISImpianto_Visibile">
+                                                                <gias-switch-template [name]="'GIS' | transloco"
+                                                                                    giasFormControlName="GISImpianto">
+                                                                </gias-switch-template>
+                                                            </div>
+                                                            <div class="col-12 col-sm-3">
+                                                                <gias-switch-template [name]="'ContributiACA' | transloco"
+                                                                                    giasFormControlName="ContributiACA">
+                                                                </gias-switch-template>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mt-2">
+                                                            <div class="col-12 col-sm-8" *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiPianoColturale_Visibile">
+                                                                <gias-switch-template [name]="'AltriDati' | transloco"
+                                                                                    giasFormControlName="AltriDatiPianoColturale">
+                                                                </gias-switch-template>
+                                                                <app-codici [formGroupInput]="formService.formFilters.get('CaricaDati').get('CodiciPianoColturale')" [tipoCodici]="Enum_Entita_FiltroRicerca.Appezzamento + Enum_Entita_FiltroRicerca.Impianto + Enum_Entita_FiltroRicerca.Esercizio" [allCodici]="ListaCodiciPianoColturale" *ngIf="formService.formFilters.get('CaricaDati').get('AltriDatiPianoColturale').value"></app-codici>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </ng-template>
+                                            </kendo-tabstrip-tab>
+                                            <kendo-tabstrip-tab *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiFabbricato_Visibile">
+                                                <ng-template kendoTabTitle>
+                                                    <span>{{ 'Fabbricato' | transloco }}</span>
+                                                    <app-red-spot *ngIf="hasChangesDatiAggiuntivi(Enum_Entita_FiltroRicerca.Fabbricato)"></app-red-spot>
+                                                </ng-template>
+                                                <ng-template kendoTabContent>
+                                                    <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntivi" class="top-right-button" (onClear)="onClearDatiAggiuntivi(Enum_Entita_FiltroRicerca.Fabbricato)"></app-clear-button>
+                                                    <fieldset class="p-2">
+                                                        <div class="row">
+                                                            <div class="col-12 col-sm-8" *ngIf="formService.tab_Carica_Dati_Visibility.AltriDatiFabbricato_Visibile">
+                                                                <gias-switch-template [name]="'AltriDati' | transloco"
+                                                                                    giasFormControlName="AltriDatiFabbricato">
+                                                                </gias-switch-template>
+                                                                <app-codici [formGroupInput]="formService.formFilters.get('CaricaDati').get('CodiciFabbricato')" [tipoCodici]="Enum_Entita_FiltroRicerca.Fabbricato"  [allCodici]="ListaCodiciFabbricato" *ngIf="formService.formFilters.get('CaricaDati').get('AltriDatiFabbricato').value"></app-codici>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </ng-template>
+                                            </kendo-tabstrip-tab>
+                                </kendo-tabstrip>
+                                <div class="row k-content justify-content-center" *ngIf="showButtonReimposta()">
+                                    <div class="row mt-2 mx-1 v-aligned justify-content-center">
+                                        <div class="col-12 col-sm-4 left align-self-end">
+                                            <ng-container [ngTemplateOutlet]="cercaButton">
+                                            </ng-container>
+                                        </div>
+                                        <div class="col-12 col-sm-4">
+                                            <app-clear-button [typeButton]="Enum_Type_Button_Clear.fromDatiAggiuntiviAll" (onClear)="onClearPartialFilters('CaricaDati')"></app-clear-button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                </kendo-dialog>
+        </form>
+    </div>
+    <app-tree-aziende *ngIf="treeAziendeService.expander.value" [showImpostaAziendaCorrente]="showImpostaAzienda" [withPadding]="withPadding" (pivaEmitter)="setImpresaReferente($event)" (impresaEmitter)="onSelectImpresa($event)" (pivaRagSocEmitter)="setPivaRagSocOnFilter($event)"></app-tree-aziende>
+    <br>
+
+    <app-griglia-filtro #grigliaFiltro (showGrid)="reloadGrid()" (openDatiAggiuntivi)="onOpenDati()" *ngIf="showGrid" [aziendaSelected]="inputAziendaSelected"></app-griglia-filtro>
+</div>
+
+<ng-template #cercaButton>
+    <div class="btn btn-primary btn-primary-fill btn-primary-text filters-button" (click)="onSubmit()">
+        <fa-icon [icon]="faSearch" style="margin: 5px;" size="lg"></fa-icon>
+        <span class="text"> {{ 'Cerca' | transloco }} </span>
+    </div>
+</ng-template>

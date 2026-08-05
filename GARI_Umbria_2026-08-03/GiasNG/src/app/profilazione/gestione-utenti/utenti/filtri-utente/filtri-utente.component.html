@@ -1,0 +1,39 @@
+<kendo-expansionpanel [title]="panelTitle" *ngIf="permessoAmmUtenti">
+  <section class="filter-controls-container">
+    <div class="controls filter-controls-container">
+      <div *ngFor="let ctrl of filterableProperties; index as i">
+        <form [formGroup]="ctrl" class="line-form" *ngIf="ctrl.get('controlType').value === textControlType">
+          <span class="text-nowrap">{{ getCtrlLabel(ctrl) }}</span>
+          <gias-drop-down-template
+            id="filterType"
+            textField="descrizione" valueField="codice"
+            [listItems]="filterTypesList"
+            giasFormControlName="filterType"
+          ></gias-drop-down-template>
+          <gias-text-template
+            giasFormControlName="value"
+            [controlType]="ctrl.get('controlType').value"
+          ></gias-text-template>
+        </form>
+      </div>
+      <div *ngFor="let ctrl of filterableProperties; index as i">
+        <form [formGroup]="ctrl" class="line-form" *ngIf="ctrl.get('controlType').value === dateControlType">
+          <span class="text-nowrap">{{ getCtrlLabel(ctrl) }}</span>
+          <gias-validita
+            inizioFormControlName="value"
+            fineFormControlName="valueAlt"
+            [enableAltRender]="true"
+          ></gias-validita>
+        </form>
+      </div>
+    </div>
+
+    <div kendoTooltip [title]="'Cerca' | transloco" class="width10">
+      <button kendoButton type="button" class="btn-primary fill-width bg-gias-blue" (click)="search()">
+        <fa-icon class="icon-size" [icon]="faSearch"></fa-icon>
+      </button>
+    </div>
+  </section>
+</kendo-expansionpanel>
+
+

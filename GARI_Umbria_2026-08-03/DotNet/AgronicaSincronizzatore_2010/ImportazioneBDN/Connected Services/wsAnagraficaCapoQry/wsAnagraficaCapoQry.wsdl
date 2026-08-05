@@ -1,0 +1,2925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://bdr.izs.it/webservices" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://bdr.izs.it/webservices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati anagrafici dei capi.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://bdr.izs.it/webservices">
+      <s:element name="getCapoTAG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_TAG" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoTAGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoTAGResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SOAPAutenticazione" type="tns:SOAPAutenticazione" />
+      <s:complexType name="SOAPAutenticazione">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="valore_ruolo_codice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="getCapo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findCapoBovino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findCapoBovinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findCapoBovinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoTAG_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_TAG" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoTAG_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoTAG_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoOvinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvino_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvino_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoOvino_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoALibro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoALibroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoALibroResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoALibro_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoALibro_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoALibro_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoMacellato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoMacellatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoMacellatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoMacellato_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoMacellato_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoMacellato_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvinoMacellato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvinoMacellatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoOvinoMacellatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvinoMacellato_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoOvinoMacellato_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoOvinoMacellato_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_AllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_AllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Allevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Periodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_dal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_al" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_PeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Allevamento_PeriodoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Periodo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_dal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_al" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Periodo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Allevamento_Periodo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Ovini_Allevamento_Periodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_dal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_al" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Ovini_Allevamento_PeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Ovini_Allevamento_PeriodoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Ovini_Allevamento_Periodo_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_dal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_al" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Ovini_Allevamento_Periodo_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Ovini_Allevamento_Periodo_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapiOviniAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapiOviniAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Cod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_CodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Allevamento_CodResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Cod_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_dal" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data_al" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Capi_Allevamento_Cod_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Capi_Allevamento_Cod_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_Cod">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_CodResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapiOviniAllevamento_CodResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_Cod_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_storico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_cod_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapiOviniAllevamento_Cod_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapiOviniAllevamento_Cod_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoCapiAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoCapiAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiOviniAllevamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiOviniAllevamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoCapiOviniAllevamentoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiOviniAllevamento_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getInfoCapiOviniAllevamento_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getInfoCapiOviniAllevamento_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMadri">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMadriResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMadriResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMadri_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_id" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMadri_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMadri_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecesso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecessoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDecessoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecesso_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecesso_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDecesso_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecessoOvino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecessoOvinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDecessoOvinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecessoOvino_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_azienda_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_allev_idfiscale" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_spe_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDecessoOvino_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDecessoOvino_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurtoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFurtoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurto_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurto_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFurto_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurtoOvino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurtoOvinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFurtoOvinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurtoOvino_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_capo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFurtoOvino_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getFurtoOvino_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapoMacellato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapoMacellatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapoMacellatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapoMacellato_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapoMacellato_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapoMacellato_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapiOviniMacellati">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapiOviniMacellatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapiOviniMacellatiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapiOviniMacellati_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindCapiOviniMacellati_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindCapiOviniMacellati_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCancellazione_Amministrativa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCancellazione_AmministrativaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCancellazione_AmministrativaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCancellazione_Amministrativa_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCancellazione_Amministrativa_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCancellazione_Amministrativa_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Sentinella">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ident_nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_SentinellaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Capo_SentinellaResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Sentinella_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_ident_nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Sentinella_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Capo_Sentinella_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Equino_Macellato">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Equino_MacellatoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Capo_Equino_MacellatoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Equino_Macellato_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Capo_Equino_Macellato_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_Capo_Equino_Macellato_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="find_Capi_Equini_Macellati">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="find_Capi_Equini_MacellatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="find_Capi_Equini_MacellatiResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="find_Capi_Equini_Macellati_STR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="find_Capi_Equini_Macellati_STRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="find_Capi_Equini_Macellati_STRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCanc_Amm_Ovini">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCanc_Amm_OviniResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCanc_Amm_OviniResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoEquino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_elettronico" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_passaporto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_codice_ueln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCapoEquinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCapoEquinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findCapoEquino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="findCapoEquinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="findCapoEquinoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="stampaDocumentoIdentificativo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_codice" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="p_capo_id" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="stampaDocumentoIdentificativoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stampaDocumentoIdentificativoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getCapoTAGSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoTAG" />
+  </wsdl:message>
+  <wsdl:message name="getCapoTAGSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoTAGResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoTAGSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapo" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findCapoBovinoSoapIn">
+    <wsdl:part name="parameters" element="tns:findCapoBovino" />
+  </wsdl:message>
+  <wsdl:message name="findCapoBovinoSoapOut">
+    <wsdl:part name="parameters" element="tns:findCapoBovinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="findCapoBovinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapo_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoTAG_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoTAG_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapoTAG_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoTAG_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoTAG_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoOvino" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoOvinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvino_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoOvino_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvino_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoOvino_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvino_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibroSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoALibro" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibroSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoALibroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibroSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibro_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoALibro_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibro_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoALibro_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoALibro_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellatoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoMacellato" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellatoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoMacellatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellato_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoMacellato_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellato_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoMacellato_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoMacellato_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellatoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoOvinoMacellato" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellatoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoOvinoMacellatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellato_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoOvinoMacellato_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellato_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoOvinoMacellato_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoOvinoMacellato_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_AllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_AllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_AllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_AllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_PeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Periodo" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_PeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_PeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_PeriodoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Periodo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Periodo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Periodo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Periodo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Periodo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_PeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Ovini_Allevamento_Periodo" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_PeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Ovini_Allevamento_PeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_PeriodoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_Periodo_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Ovini_Allevamento_Periodo_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_Periodo_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Ovini_Allevamento_Periodo_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Ovini_Allevamento_Periodo_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_CodSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Cod" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_CodSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_CodResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_CodSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Cod_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Cod_STR" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Cod_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Capi_Allevamento_Cod_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Capi_Allevamento_Cod_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_CodSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_Cod" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_CodSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_CodResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_CodSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_Cod_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_Cod_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_Cod_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapiOviniAllevamento_Cod_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapiOviniAllevamento_Cod_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoCapiAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoCapiAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoCapiAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoCapiAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoCapiOviniAllevamento" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoCapiOviniAllevamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamentoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamento_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getInfoCapiOviniAllevamento_STR" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamento_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getInfoCapiOviniAllevamento_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getInfoCapiOviniAllevamento_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getMadriSoapIn">
+    <wsdl:part name="parameters" element="tns:getMadri" />
+  </wsdl:message>
+  <wsdl:message name="getMadriSoapOut">
+    <wsdl:part name="parameters" element="tns:getMadriResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMadriSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getMadri_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getMadri_STR" />
+  </wsdl:message>
+  <wsdl:message name="getMadri_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getMadri_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMadri_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDecesso" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDecessoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getDecesso_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getDecesso_STR" />
+  </wsdl:message>
+  <wsdl:message name="getDecesso_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getDecesso_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDecesso_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvinoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDecessoOvino" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvinoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDecessoOvinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvino_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getDecessoOvino_STR" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvino_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getDecessoOvino_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDecessoOvino_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoSoapIn">
+    <wsdl:part name="parameters" element="tns:getFurto" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoSoapOut">
+    <wsdl:part name="parameters" element="tns:getFurtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getFurto_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getFurto_STR" />
+  </wsdl:message>
+  <wsdl:message name="getFurto_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getFurto_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFurto_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvinoSoapIn">
+    <wsdl:part name="parameters" element="tns:getFurtoOvino" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvinoSoapOut">
+    <wsdl:part name="parameters" element="tns:getFurtoOvinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvino_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getFurtoOvino_STR" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvino_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getFurtoOvino_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFurtoOvino_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellatoSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCapoMacellato" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellatoSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCapoMacellatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellato_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCapoMacellato_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellato_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCapoMacellato_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCapoMacellato_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellatiSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCapiOviniMacellati" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellatiSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCapiOviniMacellatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellatiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellati_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:FindCapiOviniMacellati_STR" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellati_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:FindCapiOviniMacellati_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindCapiOviniMacellati_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_AmministrativaSoapIn">
+    <wsdl:part name="parameters" element="tns:getCancellazione_Amministrativa" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_AmministrativaSoapOut">
+    <wsdl:part name="parameters" element="tns:getCancellazione_AmministrativaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_AmministrativaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_Amministrativa_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:getCancellazione_Amministrativa_STR" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_Amministrativa_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:getCancellazione_Amministrativa_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCancellazione_Amministrativa_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_SentinellaSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Capo_Sentinella" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_SentinellaSoapOut">
+    <wsdl:part name="parameters" element="tns:get_Capo_SentinellaResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_SentinellaSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Sentinella_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Capo_Sentinella_STR" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Sentinella_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:get_Capo_Sentinella_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Sentinella_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_MacellatoSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Capo_Equino_Macellato" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_MacellatoSoapOut">
+    <wsdl:part name="parameters" element="tns:get_Capo_Equino_MacellatoResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_MacellatoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_Macellato_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Capo_Equino_Macellato_STR" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_Macellato_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:get_Capo_Equino_Macellato_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_Capo_Equino_Macellato_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_MacellatiSoapIn">
+    <wsdl:part name="parameters" element="tns:find_Capi_Equini_Macellati" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_MacellatiSoapOut">
+    <wsdl:part name="parameters" element="tns:find_Capi_Equini_MacellatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_MacellatiSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_Macellati_STRSoapIn">
+    <wsdl:part name="parameters" element="tns:find_Capi_Equini_Macellati_STR" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_Macellati_STRSoapOut">
+    <wsdl:part name="parameters" element="tns:find_Capi_Equini_Macellati_STRResponse" />
+  </wsdl:message>
+  <wsdl:message name="find_Capi_Equini_Macellati_STRSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCanc_Amm_OviniSoapIn">
+    <wsdl:part name="parameters" element="tns:getCanc_Amm_Ovini" />
+  </wsdl:message>
+  <wsdl:message name="getCanc_Amm_OviniSoapOut">
+    <wsdl:part name="parameters" element="tns:getCanc_Amm_OviniResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCanc_Amm_OviniSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="getCapoEquinoSoapIn">
+    <wsdl:part name="parameters" element="tns:getCapoEquino" />
+  </wsdl:message>
+  <wsdl:message name="getCapoEquinoSoapOut">
+    <wsdl:part name="parameters" element="tns:getCapoEquinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCapoEquinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="findCapoEquinoSoapIn">
+    <wsdl:part name="parameters" element="tns:findCapoEquino" />
+  </wsdl:message>
+  <wsdl:message name="findCapoEquinoSoapOut">
+    <wsdl:part name="parameters" element="tns:findCapoEquinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="findCapoEquinoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:message name="stampaDocumentoIdentificativoSoapIn">
+    <wsdl:part name="parameters" element="tns:stampaDocumentoIdentificativo" />
+  </wsdl:message>
+  <wsdl:message name="stampaDocumentoIdentificativoSoapOut">
+    <wsdl:part name="parameters" element="tns:stampaDocumentoIdentificativoResponse" />
+  </wsdl:message>
+  <wsdl:message name="stampaDocumentoIdentificativoSOAPAutenticazione">
+    <wsdl:part name="SOAPAutenticazione" element="tns:SOAPAutenticazione" />
+  </wsdl:message>
+  <wsdl:portType name="wsAnagraficaCapoQrySoap">
+    <wsdl:operation name="getCapoTAG">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino a partire dall'identificativo elettronico.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoTAGSoapIn" />
+      <wsdl:output message="tns:getCapoTAGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoSoapIn" />
+      <wsdl:output message="tns:getCapoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findCapoBovino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino a partire dal suo dientificativo univoco.</wsdl:documentation>
+      <wsdl:input message="tns:findCapoBovinoSoapIn" />
+      <wsdl:output message="tns:findCapoBovinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCapo_STRSoapIn" />
+      <wsdl:output message="tns:getCapo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoTAG_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino a partire dall'identificativo elettronico.Restituisce un tipo stringa.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoTAG_STRSoapIn" />
+      <wsdl:output message="tns:getCapoTAG_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoOvinoSoapIn" />
+      <wsdl:output message="tns:getCapoOvinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoOvino_STRSoapIn" />
+      <wsdl:output message="tns:getCapoOvino_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi a un capo bovino iscritto a libro. Se il capo non risulta iscritto non restituisce alcun dato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoALibroSoapIn" />
+      <wsdl:output message="tns:getCapoALibroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi a un capo bovino iscritto a libro. Se il capo non risulta iscritto non restituisce alcun dato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoALibro_STRSoapIn" />
+      <wsdl:output message="tns:getCapoALibro_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoMacellatoSoapIn" />
+      <wsdl:output message="tns:getCapoMacellatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoMacellato_STRSoapIn" />
+      <wsdl:output message="tns:getCapoMacellato_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo ovino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoOvinoMacellatoSoapIn" />
+      <wsdl:output message="tns:getCapoOvinoMacellatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo ovino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoOvinoMacellato_STRSoapIn" />
+      <wsdl:output message="tns:getCapoOvinoMacellato_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_AllevamentoSoapIn" />
+      <wsdl:output message="tns:Get_Capi_AllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Allevamento_STRSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Allevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Allevamento_PeriodoSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Allevamento_PeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Allevamento_Periodo_STRSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Allevamento_Periodo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Ovini_Allevamento_PeriodoSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Ovini_Allevamento_PeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Ovini_Allevamento_Periodo_STRSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Ovini_Allevamento_Periodo_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getCapiOviniAllevamentoSoapIn" />
+      <wsdl:output message="tns:getCapiOviniAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getCapiOviniAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:getCapiOviniAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Allevamento_CodSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Allevamento_CodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:Get_Capi_Allevamento_Cod_STRSoapIn" />
+      <wsdl:output message="tns:Get_Capi_Allevamento_Cod_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getCapiOviniAllevamento_CodSoapIn" />
+      <wsdl:output message="tns:getCapiOviniAllevamento_CodSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo presente nell'allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getCapiOviniAllevamento_Cod_STRSoapIn" />
+      <wsdl:output message="tns:getCapiOviniAllevamento_Cod_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ad i capi presenti nell'allevamento nel mese corrente.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoCapiAllevamentoSoapIn" />
+      <wsdl:output message="tns:getInfoCapiAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ad i capi presenti nell'allevamento nel mese corrente.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoCapiAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:getInfoCapiAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ad i capi presenti nell'allevamento nel mese corrente.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoCapiOviniAllevamentoSoapIn" />
+      <wsdl:output message="tns:getInfoCapiOviniAllevamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ad i capi presenti nell'allevamento nel mese corrente.</wsdl:documentation>
+      <wsdl:input message="tns:getInfoCapiOviniAllevamento_STRSoapIn" />
+      <wsdl:output message="tns:getInfoCapiOviniAllevamento_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMadri">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi a i capi che ad una certa data hanno le caratteristiche per diventare madre.</wsdl:documentation>
+      <wsdl:input message="tns:getMadriSoapIn" />
+      <wsdl:output message="tns:getMadriSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMadri_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi a i capi che ad una certa data hanno le caratteristiche per diventare madre.</wsdl:documentation>
+      <wsdl:input message="tns:getMadri_STRSoapIn" />
+      <wsdl:output message="tns:getMadri_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ai decessi di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getDecessoSoapIn" />
+      <wsdl:output message="tns:getDecessoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi ai decessi di un allevamento.</wsdl:documentation>
+      <wsdl:input message="tns:getDecesso_STRSoapIn" />
+      <wsdl:output message="tns:getDecesso_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi al decesso di un ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getDecessoOvinoSoapIn" />
+      <wsdl:output message="tns:getDecessoOvinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi al decesso di un ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getDecessoOvino_STRSoapIn" />
+      <wsdl:output message="tns:getDecessoOvino_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFurto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un furto bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getFurtoSoapIn" />
+      <wsdl:output message="tns:getFurtoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFurto_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un furto bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getFurto_STRSoapIn" />
+      <wsdl:output message="tns:getFurto_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un furto ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getFurtoOvinoSoapIn" />
+      <wsdl:output message="tns:getFurtoOvinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un furto ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getFurtoOvino_STRSoapIn" />
+      <wsdl:output message="tns:getFurtoOvino_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo macellato.</wsdl:documentation>
+      <wsdl:input message="tns:FindCapoMacellatoSoapIn" />
+      <wsdl:output message="tns:FindCapoMacellatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo macellato.</wsdl:documentation>
+      <wsdl:input message="tns:FindCapoMacellato_STRSoapIn" />
+      <wsdl:output message="tns:FindCapoMacellato_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi alla macellazione di capi ovini.</wsdl:documentation>
+      <wsdl:input message="tns:FindCapiOviniMacellatiSoapIn" />
+      <wsdl:output message="tns:FindCapiOviniMacellatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati relativi alla macellazione di capi ovini.</wsdl:documentation>
+      <wsdl:input message="tns:FindCapiOviniMacellati_STRSoapIn" />
+      <wsdl:output message="tns:FindCapiOviniMacellati_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di una cancellazione amministrativa per un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCancellazione_AmministrativaSoapIn" />
+      <wsdl:output message="tns:getCancellazione_AmministrativaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di una cancellazione amministrativa per un capo bovino. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:getCancellazione_Amministrativa_STRSoapIn" />
+      <wsdl:output message="tns:getCancellazione_Amministrativa_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo sentinella.</wsdl:documentation>
+      <wsdl:input message="tns:get_Capo_SentinellaSoapIn" />
+      <wsdl:output message="tns:get_Capo_SentinellaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo sentinella. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:get_Capo_Sentinella_STRSoapIn" />
+      <wsdl:output message="tns:get_Capo_Sentinella_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo equino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:get_Capo_Equino_MacellatoSoapIn" />
+      <wsdl:output message="tns:get_Capo_Equino_MacellatoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo equino macellato. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:get_Capo_Equino_Macellato_STRSoapIn" />
+      <wsdl:output message="tns:get_Capo_Equino_Macellato_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo equino macellato.</wsdl:documentation>
+      <wsdl:input message="tns:find_Capi_Equini_MacellatiSoapIn" />
+      <wsdl:output message="tns:find_Capi_Equini_MacellatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati_STR">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati riguardanti un capo equino macellato. Restituisce una stringa</wsdl:documentation>
+      <wsdl:input message="tns:find_Capi_Equini_Macellati_STRSoapIn" />
+      <wsdl:output message="tns:find_Capi_Equini_Macellati_STRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCanc_Amm_Ovini">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo ovino.</wsdl:documentation>
+      <wsdl:input message="tns:getCanc_Amm_OviniSoapIn" />
+      <wsdl:output message="tns:getCanc_Amm_OviniSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCapoEquino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati anagrafici di uno o più capi equini che soddisfano i parametri di ricerca forniti. La ricerca viene effettuata sui valori esatti e non su valori parziali.</wsdl:documentation>
+      <wsdl:input message="tns:getCapoEquinoSoapIn" />
+      <wsdl:output message="tns:getCapoEquinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="findCapoEquino">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati anagrafici di uno o più capi equini che soddisfano i parametri di ricerca forniti. La ricerca viene effettuata sui valori esatti e non su valori parziali.</wsdl:documentation>
+      <wsdl:input message="tns:findCapoEquinoSoapIn" />
+      <wsdl:output message="tns:findCapoEquinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="stampaDocumentoIdentificativo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrae i dati di un capo bovino.</wsdl:documentation>
+      <wsdl:input message="tns:stampaDocumentoIdentificativoSoapIn" />
+      <wsdl:output message="tns:stampaDocumentoIdentificativoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsAnagraficaCapoQrySoap" type="tns:wsAnagraficaCapoQrySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getCapoTAG">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoTAG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoTAGSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCapoBovino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findCapoBovino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findCapoBovinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoTAG_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoTAG_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoTAG_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoOvino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoALibro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoALibroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoALibro_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoALibro_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoMacellato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoOvinoMacellato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoOvinoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoOvinoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoOvinoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Periodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Allevamento_PeriodoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Periodo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Allevamento_Periodo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Ovini_Allevamento_Periodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Ovini_Allevamento_PeriodoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Ovini_Allevamento_Periodo_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Ovini_Allevamento_Periodo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapiOviniAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapiOviniAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Cod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Allevamento_CodSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Cod_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:Get_Capi_Allevamento_Cod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_Cod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapiOviniAllevamento_CodSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_Cod_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapiOviniAllevamento_Cod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoCapiAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoCapiAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiOviniAllevamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoCapiOviniAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiOviniAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getInfoCapiOviniAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMadri">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getMadri" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getMadriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMadri_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getMadri_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getMadri_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getDecesso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDecessoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getDecesso_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDecesso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getDecessoOvino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDecessoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getDecessoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getDecessoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurto">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getFurto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getFurtoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurto_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getFurto_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getFurto_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getFurtoOvino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getFurtoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getFurtoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getFurtoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindCapoMacellato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindCapoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindCapoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindCapoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindCapiOviniMacellati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindCapiOviniMacellatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/FindCapiOviniMacellati_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:FindCapiOviniMacellati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCancellazione_Amministrativa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCancellazione_AmministrativaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCancellazione_Amministrativa_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCancellazione_Amministrativa_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Sentinella" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:get_Capo_SentinellaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Sentinella_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:get_Capo_Sentinella_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Equino_Macellato" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:get_Capo_Equino_MacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Equino_Macellato_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:get_Capo_Equino_Macellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/find_Capi_Equini_Macellati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:find_Capi_Equini_MacellatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati_STR">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/find_Capi_Equini_Macellati_STR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:find_Capi_Equini_Macellati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCanc_Amm_Ovini">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCanc_Amm_Ovini" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCanc_Amm_OviniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoEquino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/getCapoEquino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCapoEquinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCapoEquino">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/findCapoEquino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:findCapoEquinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stampaDocumentoIdentificativo">
+      <soap:operation soapAction="http://bdr.izs.it/webservices/stampaDocumentoIdentificativo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:stampaDocumentoIdentificativoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsAnagraficaCapoQrySoap12" type="tns:wsAnagraficaCapoQrySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getCapoTAG">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoTAG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoTAGSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCapoBovino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findCapoBovino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findCapoBovinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoTAG_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoTAG_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoTAG_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoOvino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvino_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoALibro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoALibroSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoALibro_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoALibro_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoALibro_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoMacellato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoMacellato_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoOvinoMacellato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoOvinoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoOvinoMacellato_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoOvinoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoOvinoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_AllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Allevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Periodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Allevamento_PeriodoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Periodo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Periodo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Allevamento_Periodo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Ovini_Allevamento_Periodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Ovini_Allevamento_PeriodoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Ovini_Allevamento_Periodo_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Ovini_Allevamento_Periodo_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Ovini_Allevamento_Periodo_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapiOviniAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapiOviniAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Cod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Allevamento_CodSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Capi_Allevamento_Cod_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/Get_Capi_Allevamento_Cod_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:Get_Capi_Allevamento_Cod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_Cod" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapiOviniAllevamento_CodSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapiOviniAllevamento_Cod_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapiOviniAllevamento_Cod_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapiOviniAllevamento_Cod_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoCapiAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoCapiAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiOviniAllevamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoCapiOviniAllevamentoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoCapiOviniAllevamento_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getInfoCapiOviniAllevamento_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getInfoCapiOviniAllevamento_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMadri">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getMadri" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getMadriSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMadri_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getMadri_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getMadri_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getDecesso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDecessoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecesso_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getDecesso_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDecesso_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getDecessoOvino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDecessoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDecessoOvino_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getDecessoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getDecessoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurto">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getFurto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getFurtoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurto_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getFurto_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getFurto_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getFurtoOvino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getFurtoOvinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFurtoOvino_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getFurtoOvino_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getFurtoOvino_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindCapoMacellato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindCapoMacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapoMacellato_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindCapoMacellato_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindCapoMacellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindCapiOviniMacellati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindCapiOviniMacellatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindCapiOviniMacellati_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/FindCapiOviniMacellati_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:FindCapiOviniMacellati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCancellazione_Amministrativa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCancellazione_AmministrativaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCancellazione_Amministrativa_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCancellazione_Amministrativa_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCancellazione_Amministrativa_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Sentinella" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:get_Capo_SentinellaSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Sentinella_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Sentinella_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:get_Capo_Sentinella_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Equino_Macellato" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:get_Capo_Equino_MacellatoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Capo_Equino_Macellato_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/get_Capo_Equino_Macellato_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:get_Capo_Equino_Macellato_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/find_Capi_Equini_Macellati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:find_Capi_Equini_MacellatiSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find_Capi_Equini_Macellati_STR">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/find_Capi_Equini_Macellati_STR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:find_Capi_Equini_Macellati_STRSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCanc_Amm_Ovini">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCanc_Amm_Ovini" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCanc_Amm_OviniSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCapoEquino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/getCapoEquino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCapoEquinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCapoEquino">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/findCapoEquino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:findCapoEquinoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="stampaDocumentoIdentificativo">
+      <soap12:operation soapAction="http://bdr.izs.it/webservices/stampaDocumentoIdentificativo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:stampaDocumentoIdentificativoSOAPAutenticazione" part="SOAPAutenticazione" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsAnagraficaCapoQry">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Estrazione dati anagrafici dei capi.</wsdl:documentation>
+    <wsdl:port name="wsAnagraficaCapoQrySoap" binding="tns:wsAnagraficaCapoQrySoap">
+      <soap:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsAnagraficaCapoQry.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsAnagraficaCapoQrySoap12" binding="tns:wsAnagraficaCapoQrySoap12">
+      <soap12:address location="http://bdrizsam.izs.it/wsBDNInterrogazioni/wsAnagraficaCapoQry.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

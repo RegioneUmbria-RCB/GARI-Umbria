@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="get_elenco_dpi_pubblici">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pivasuperuser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_elenco_dpi_pubbliciResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_elenco_dpi_pubbliciResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_elenco_dpi_privati">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pivasuperuser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_elenco_dpi_privatiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_elenco_dpi_privatiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_LMR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TAbellaRMA_COD" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Pa_cod" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Fam_cod" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Veg_Cod" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="data" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_LMRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="get_LMRResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_ListaDiTabellaLMR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PivaSuperUser" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_ListaDiTabellaLMRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_ListaDiTabellaLMRResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_elenco_CapitolatoCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Data" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="piva" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="str_IN_vegcod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_elenco_CapitolatoClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_elenco_CapitolatoClienteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verifica_Analisi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="stringaXmlAnalisiDaVerificare" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="verifica_AnalisiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="verifica_AnalisiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="get_elenco_dpi_pubbliciSoapIn">
+    <wsdl:part name="parameters" element="tns:get_elenco_dpi_pubblici" />
+  </wsdl:message>
+  <wsdl:message name="get_elenco_dpi_pubbliciSoapOut">
+    <wsdl:part name="parameters" element="tns:get_elenco_dpi_pubbliciResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_elenco_dpi_privatiSoapIn">
+    <wsdl:part name="parameters" element="tns:get_elenco_dpi_privati" />
+  </wsdl:message>
+  <wsdl:message name="get_elenco_dpi_privatiSoapOut">
+    <wsdl:part name="parameters" element="tns:get_elenco_dpi_privatiResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_LMRSoapIn">
+    <wsdl:part name="parameters" element="tns:get_LMR" />
+  </wsdl:message>
+  <wsdl:message name="get_LMRSoapOut">
+    <wsdl:part name="parameters" element="tns:get_LMRResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_ListaDiTabellaLMRSoapIn">
+    <wsdl:part name="parameters" element="tns:get_ListaDiTabellaLMR" />
+  </wsdl:message>
+  <wsdl:message name="get_ListaDiTabellaLMRSoapOut">
+    <wsdl:part name="parameters" element="tns:get_ListaDiTabellaLMRResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_elenco_CapitolatoClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:get_elenco_CapitolatoCliente" />
+  </wsdl:message>
+  <wsdl:message name="get_elenco_CapitolatoClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:get_elenco_CapitolatoClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="verifica_AnalisiSoapIn">
+    <wsdl:part name="parameters" element="tns:verifica_Analisi" />
+  </wsdl:message>
+  <wsdl:message name="verifica_AnalisiSoapOut">
+    <wsdl:part name="parameters" element="tns:verifica_AnalisiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AgroWS_CapitolatoClienteSoap">
+    <wsdl:operation name="get_elenco_dpi_pubblici">
+      <wsdl:input message="tns:get_elenco_dpi_pubbliciSoapIn" />
+      <wsdl:output message="tns:get_elenco_dpi_pubbliciSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_dpi_privati">
+      <wsdl:input message="tns:get_elenco_dpi_privatiSoapIn" />
+      <wsdl:output message="tns:get_elenco_dpi_privatiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_LMR">
+      <wsdl:input message="tns:get_LMRSoapIn" />
+      <wsdl:output message="tns:get_LMRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_ListaDiTabellaLMR">
+      <wsdl:input message="tns:get_ListaDiTabellaLMRSoapIn" />
+      <wsdl:output message="tns:get_ListaDiTabellaLMRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_CapitolatoCliente">
+      <wsdl:input message="tns:get_elenco_CapitolatoClienteSoapIn" />
+      <wsdl:output message="tns:get_elenco_CapitolatoClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="verifica_Analisi">
+      <wsdl:input message="tns:verifica_AnalisiSoapIn" />
+      <wsdl:output message="tns:verifica_AnalisiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AgroWS_CapitolatoClienteSoap" type="tns:AgroWS_CapitolatoClienteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_elenco_dpi_pubblici">
+      <soap:operation soapAction="http://tempuri.org/get_elenco_dpi_pubblici" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_dpi_privati">
+      <soap:operation soapAction="http://tempuri.org/get_elenco_dpi_privati" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_LMR">
+      <soap:operation soapAction="http://tempuri.org/get_LMR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_ListaDiTabellaLMR">
+      <soap:operation soapAction="http://tempuri.org/get_ListaDiTabellaLMR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_CapitolatoCliente">
+      <soap:operation soapAction="http://tempuri.org/get_elenco_CapitolatoCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifica_Analisi">
+      <soap:operation soapAction="http://tempuri.org/verifica_Analisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AgroWS_CapitolatoClienteSoap12" type="tns:AgroWS_CapitolatoClienteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_elenco_dpi_pubblici">
+      <soap12:operation soapAction="http://tempuri.org/get_elenco_dpi_pubblici" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_dpi_privati">
+      <soap12:operation soapAction="http://tempuri.org/get_elenco_dpi_privati" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_LMR">
+      <soap12:operation soapAction="http://tempuri.org/get_LMR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_ListaDiTabellaLMR">
+      <soap12:operation soapAction="http://tempuri.org/get_ListaDiTabellaLMR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_elenco_CapitolatoCliente">
+      <soap12:operation soapAction="http://tempuri.org/get_elenco_CapitolatoCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verifica_Analisi">
+      <soap12:operation soapAction="http://tempuri.org/verifica_Analisi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AgroWS_CapitolatoCliente">
+    <wsdl:port name="AgroWS_CapitolatoClienteSoap" binding="tns:AgroWS_CapitolatoClienteSoap">
+      <soap:address location="http://localhost/AgronicaWebService2010/AgroWS_CapitolatoCliente.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AgroWS_CapitolatoClienteSoap12" binding="tns:AgroWS_CapitolatoClienteSoap12">
+      <soap12:address location="http://localhost/AgronicaWebService2010/AgroWS_CapitolatoCliente.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

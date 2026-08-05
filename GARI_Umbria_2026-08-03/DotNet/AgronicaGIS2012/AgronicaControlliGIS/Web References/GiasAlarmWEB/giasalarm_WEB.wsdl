@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Scrivi_Messaggio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Scrivi_MessaggioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Scrivi_MessaggioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Coorinate_by_IMEI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IMEI" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Numero_Record_Max" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Solo_Ultimo" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Leggi_Coorinate_by_IMEIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Leggi_Coorinate_by_IMEIResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Scrivi_MessaggioSoapIn">
+    <wsdl:part name="parameters" element="tns:Scrivi_Messaggio" />
+  </wsdl:message>
+  <wsdl:message name="Scrivi_MessaggioSoapOut">
+    <wsdl:part name="parameters" element="tns:Scrivi_MessaggioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Coorinate_by_IMEISoapIn">
+    <wsdl:part name="parameters" element="tns:Leggi_Coorinate_by_IMEI" />
+  </wsdl:message>
+  <wsdl:message name="Leggi_Coorinate_by_IMEISoapOut">
+    <wsdl:part name="parameters" element="tns:Leggi_Coorinate_by_IMEIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GIASAlarm_WebSoap">
+    <wsdl:operation name="Scrivi_Messaggio">
+      <wsdl:input message="tns:Scrivi_MessaggioSoapIn" />
+      <wsdl:output message="tns:Scrivi_MessaggioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Coorinate_by_IMEI">
+      <wsdl:input message="tns:Leggi_Coorinate_by_IMEISoapIn" />
+      <wsdl:output message="tns:Leggi_Coorinate_by_IMEISoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GIASAlarm_WebSoap" type="tns:GIASAlarm_WebSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Scrivi_Messaggio">
+      <soap:operation soapAction="http://tempuri.org/Scrivi_Messaggio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Coorinate_by_IMEI">
+      <soap:operation soapAction="http://tempuri.org/Leggi_Coorinate_by_IMEI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GIASAlarm_WebSoap12" type="tns:GIASAlarm_WebSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Scrivi_Messaggio">
+      <soap12:operation soapAction="http://tempuri.org/Scrivi_Messaggio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Leggi_Coorinate_by_IMEI">
+      <soap12:operation soapAction="http://tempuri.org/Leggi_Coorinate_by_IMEI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GIASAlarm_Web">
+    <wsdl:port name="GIASAlarm_WebSoap" binding="tns:GIASAlarm_WebSoap">
+      <soap:address location="http://localhost/demogis/giasalarm/giasalarm_WEB.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GIASAlarm_WebSoap12" binding="tns:GIASAlarm_WebSoap12">
+      <soap12:address location="http://localhost/demogis/giasalarm/giasalarm_WEB.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

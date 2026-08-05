@@ -1,0 +1,45 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Agronica - Etichetta DDL Server</Title>
+      <Author>Fede</Author>
+      <Shortcut>aect</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>id</ID>
+          <ToolTip>id controllo</ToolTip>
+          <Default>id</Default>
+        </Literal>
+        <Literal>
+          <ID>titolo</ID>
+          <ToolTip>titolo</ToolTip>
+          <Default>Titolo</Default>
+        </Literal>
+        <Literal>
+          <ID>body</ID>
+          <ToolTip>Contenuto</ToolTip>
+          <Default>Contenuto</Default>
+        </Literal>
+
+
+      </Declarations>
+      <Code Language="html">
+        <![CDATA[
+        <!--  -->        
+      <div class="input-group" id ="$id$">
+          <label class="input-group-addon control-label " id="lbl_$id$" for="ddl_$id$">
+              $titolo$</label>
+          <asp:DropDownList ID="ddl_$id$" runat="server" CssClass="form-control selectpicker"
+              data-live-search="true" aria-describedby="lbl_$id$"></asp:DropDownList>
+      </div>
+      
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

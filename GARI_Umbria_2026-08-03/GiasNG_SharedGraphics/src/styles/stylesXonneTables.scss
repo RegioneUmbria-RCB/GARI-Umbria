@@ -1,0 +1,2049 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+$table-blue: #002850;
+$table-dark-grey: #575757;
+$table-light-blue: #e4e7eb;
+
+:root {
+    --bs-btn-hover-border-color: transparent;
+}
+
+body {
+    font-size: 14px;
+}
+.k-input-inner {
+    font-size: 14px!important;
+}
+.k-expander {
+    font-size: 14px!important;
+}
+
+.k-dropdown-button .k-button-text, .k-menu-button .k-button-text {
+    display: flex;
+}
+
+kendo-appbar-section kendo-dropdownbutton,
+form kendo-appbar-section {
+    margin-bottom: 22px;
+}
+
+kendo-dropdownbutton .k-button {
+    padding-left: 0px;
+}
+
+kendo-appbar-section input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+kendo-grid-toolbar,
+kendo-appbar-section {
+
+    .k-picker-wrap {
+        .k-input {
+            height: 30px;
+            font-family: 'Lato', Sans-serif;
+        }
+
+        .k-select {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: 1px solid $table-blue;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+
+
+            &:hover {
+                background-color: #E6ECF2 !important;
+                border: 1px solid $table-blue;
+            }
+        }
+    }
+
+    grid-customizations, gias-grid-customizations {
+        font-family: 'Lato', Sans-serif !important;
+        color: #002D5A !important;
+
+        customization-dropdown {
+            width: 150px;
+            kendo-dropdownlist {
+                width: 100% !important;
+            }
+        }
+
+        button.btn.btn-default.btn-sm {
+            border: none;
+            height: 32px !important;
+            width: 32px !important;
+            border-radius: 50% !important;
+            background-color: rgba(0, 0, 0, 0) !important;
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+            margin: 0 4px;
+            padding: 0px;
+        }
+
+    }
+
+    .k-grid-excel,
+    .btn.btn-primary,
+    .k-button {
+        display: flex;
+        align-items: center;
+        background-color: transparent !important;
+        color: $table-blue  !important;
+        border: 1px solid $table-blue  !important;
+        border-radius: 4px !important;
+        font-family: 'Lato', Sans-serif !important;
+        font-size: 14px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        height: 30px;
+
+
+        &:hover {
+            background-color: #E6ECF2 !important;
+        }
+    }
+
+    .k-button-icon:hover {
+        background-color: transparent !important;
+    }
+
+    .k-button.k-flat::before {
+        display: none;
+    }
+
+    .btn-primary-fill,
+    .btn.btn-primary.btn-primary-fill {
+        font-family: 'Lato', Sans-serif;
+        box-shadow: 0px 0px 10px rgba($table-blue, .2);
+        background-color: $table-blue  !important;
+        color: white !important;
+        min-width: 50px;
+
+        &:hover {
+            background-color: $table-blue  !important;
+            box-shadow: 0px 0px 10px rgba($table-blue, 0);
+        }
+
+        &:disabled {
+            opacity: .2 !important;
+        }
+
+        &.btn-important {
+            min-width: 75px;
+            justify-content: center;
+        }
+    }
+
+}
+
+.k-header.k-drag-clue {
+    background-color: $table-blue  !important;
+    font-family: 'Lato', Sans-serif;
+    font-weight: 700 !important;
+    border: none !important;
+}
+
+.k-grouping-dropclue {
+    color: $table-blue  !important;
+    margin-left: 16px !important;
+}
+
+.k-grid .k-grouping-header {
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px dashed #e8e8e8 !important;
+    border-radius: 12px;
+
+    .k-group-indicator {
+        background-color: $table-blue;
+        color: white;
+        height: 32px;
+    }
+
+    .k-indicator-container {
+        font-family: "Lato", Sans-serif;
+        font-size: 14px;
+        color: #575757;
+    }
+}
+
+
+thead tr th.k-header {
+    color: white !important;
+    font-family: 'Lato', Sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    background-color: $table-blue  !important;
+
+    &:first-child {
+        text-overflow: clip;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .k-checkbox {
+        border: 2px solid #E2E2E2 !important;
+        background-color: white;
+       /* background-color: $table-blue; */
+        border-radius: 2px;
+    }
+
+    .k-checkbox:checked {
+        border-color: $table-blue;
+    }
+
+
+    .k-checkbox:checked {
+        color: $table-blue  !important;
+        background-color: #fff !important;
+       /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='rgb(0,45,90)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") */
+        background-image: url('../assets/custom-icons/icon-general/ic_grid_check_on.svg') !important;
+    }
+
+    .k-checkbox:indeterminate {
+        color: $table-blue  !important;
+        background-color: #fff !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='rgb(0,45,90)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10h8'/%3e%3c/svg%3e");
+    }
+
+
+}
+
+.k-checkbox {
+    border: 2px solid #E2E2E2 !important;
+    background-color: white;
+}
+
+.k-checkbox:checked {
+    background-color: $table-blue  !important;
+}
+
+.k-checkbox:indeterminate {
+    background-color: white !important;
+}
+
+.k-grid-header .k-grid-header-sticky {
+    border-right-color: white !important;
+}
+
+.k-grid-content-sticky {
+    border-right-color: transparent !important;
+}
+
+.k-master-row.k-table-row.k-selected td.k-grid-content-sticky::before {
+    background-color: transparent !important;
+}
+
+
+tr td {
+    color: $table-dark-grey  !important;
+    font-family: 'Lato', Sans-serif;
+    font-weight: 400 !important;
+
+    &:first-child {
+        text-overflow: clip !important;
+    }
+
+    .btn {
+       /*TODO verificare impatto */
+      /* height: 40px; */
+    }
+
+    strong,
+    b {
+        color: $table-blue  !important;
+        font-weight: 800 !important;
+    }
+
+    .k-textbox {
+        height: 28px !important;
+    }
+
+}
+
+tr.nonAttivo {
+
+    td {
+        background-color: #EBEBEB !important;
+        color: #989898 !important;
+
+        &:first-child {
+            border-left: 2px solid #BABABA !important;
+        }
+    }
+}
+
+tbody tr[kendogridlogicalrow].bloccato {
+    background-color: white !important;
+
+    td {
+        background-color: #FAF1EF !important;
+        color: #989898 !important;
+
+        &:first-child {
+            border-left: 2px solid #D52B1E !important;
+        }
+    }
+}
+
+
+.k-dropdown>span {
+    color: #595959;
+    font-family: 'Lato', Sans-serif !important;
+    background-color: white !important;
+    border: 1px solid #EBEBEB !important;
+    border-radius: 4px !important;
+}
+
+kendo-grid-column-chooser .k-button.k-icon-button {
+    background: none !important;
+    border: none !important;
+
+    &::after,
+    &::before {
+        display: none !important;
+    }
+}
+
+tr.k-grid-edit-row,
+tr.k-selected {
+    td {
+        background-color: #EAF2FA !important;
+
+        &:first-child {
+            border-left: 2px solid $table-blue  !important;
+        }
+    }
+
+    input,
+    .k-dropdown>span {
+        color: #575757;
+        font-family: 'Lato', Sans-serif !important;
+        background-color: white !important;
+        border: 1px solid $table-blue  !important;
+        border-radius: 4px !important;
+    }
+
+    input[disabled] {
+        background-color: transparent !important;
+        border: 1px solid #707070 !important;
+    }
+
+    input.k-checkbox:checked {
+        background-color: $table-blue  !important;
+    }
+
+}
+
+tr {
+
+    td:first-child {
+        border-left: 2px solid transparent !important;
+    }
+
+    .btn-group.btn-sm {
+        padding: 0px !important;
+
+        button {
+         /*TODO controllare impatti */
+           /*  max-width: 45px; */
+        }
+    }
+
+
+    .btn-success,
+    .editBtn,
+    #btnDelete,
+    .k-grid-save-command,
+    .k-grid-cancel-command {
+        background-color: transparent !important;
+        border: none !important;
+
+        &[disabled] {
+            color: #989898;
+        }
+
+        &:hover {
+            background-color: inherit !important;
+        }
+
+    }
+
+    .k-button::before {
+        display: none !important;
+    }
+
+    .k-button:hover {
+        background-color: transparent !important;
+    }
+
+    .editBtn {
+        color: $table-blue  !important;
+        position: relative;
+    }
+
+    .k-grid-save-command {
+        color: $table-blue  !important;
+        background-color: transparent !important;
+        margin-left: 5px !important;
+        margin-right: 5px;
+    }
+
+    .k-grid-cancel-command {
+        color: $table-blue  !important;
+        background-color: transparent !important;
+    }
+
+}
+
+
+.k-gird {
+    border: none;
+    background-color: white;
+    padding: 0px !important;
+    padding: 24px !important;
+}
+
+
+.k-toolbar.k-grid-toolbar {
+    padding: 0 0 8px 0 !important;
+
+    .spacer {
+        flex: 1;
+    }
+}
+
+.k-grid-header,
+.k-toolbar,
+.k-grouping-header {
+    border: none !important;
+    background: white !important;
+}
+
+.k-grid-pager,
+.k-pager,
+.k-group-cell,
+.k-grouping-row {
+    border: none !important;
+}
+
+.k-grid-header .k-grid-header-wrap {
+    border-radius: 6px;
+}
+
+div.k-grid-header {
+    padding: 0 !important;
+}
+
+.k-grid {
+   /* padding: 0px 24px 16px 24px; */
+    padding: 0px 1rem 1rem 1rem;
+    border: none !important;
+    border-radius: 12px !important;
+   /* border-top-left-radius: 0px !important; */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+    overflow: hidden;
+}
+
+
+
+.k-pager-numbers-wrap{
+  align-items: center;
+}
+
+.key-grid .key-grid-content.key-virtual-content {
+    border-radius: 0 !important;
+}
+
+.k-grid-pager, .k-pager {
+    border: none !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+    margin-top: 8px;
+
+    kendo-pager-prev-buttons,
+    kendo-pager-next-buttons {
+        border-radius: 4px;
+        background-color: white !important;
+        line-height: 0;
+    }
+
+    .k-icon.k-i-arrow-s {
+        height: 20px !important;
+    }
+
+    .k-pager-sizes .k-dropdown {
+        width: 6em !important;
+    }
+
+    kendo-pager-page-sizes,
+    kendo-pager-info {
+
+        kendo-dropdownlist,
+        .k-input {
+            font-family: 'Lato', Sans-serif !important;
+            height: 22px !important;
+        }
+    }
+
+    .k-pager-nav.k-link {
+        border-color: #E8E8E8 !important;
+        color: $table-dark-grey  !important;
+    }
+
+    .k-pager-nav {
+        border: 1px solid #bbbbbb !important;
+    }
+
+}
+
+.k-pager, .k-grid-pager, .k-pager-info, .k-pager-sizes, .k-pager-input {
+  font-size: 12px;
+}
+.k-pager-nav .k-icon-wrapper-host{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.k-pager-input {
+    font-family: 'Lato', Sans-serif !important;
+    color: #595959 !important;
+    font-size: 12px;
+
+    .k-numerictextbox {
+        height: 20px !important;
+        width: 38px !important;
+
+        input {
+            font-family: 'Lato', Sans-serif !important;
+            color: #595959 !important;
+            font-size: 12px;
+            padding-left: 0;
+            border: none;
+            text-align: center;
+        }
+    }
+}
+
+kendo-appbar {
+    padding-bottom: 0 !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 12px !important;
+    border: 0px !important;
+    box-shadow: none !important;
+    align-items: flex-end !important;
+
+    .k-textbox,
+    .k-datepicker,
+    .k-timepicker {
+        height: unset !important;
+    }
+
+
+    kendo-appbar-section {
+        ul {
+            align-items: flex-end;
+
+            [routerlinkactive="nav-item active"] {
+                min-width: 140px;
+                font-family: 'Lato', Sans-serif !important;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, .2);
+                background-color: white;
+                border-top-left-radius: 8px !important;
+                border-top-right-radius: 8px !important;
+                margin: 0px 4px 0px 0px;
+                padding: 2px 40px;
+                position: relative;
+                text-align: center;
+
+                fa-icon {
+                    display: none !important;
+                }
+
+                .faImpresa {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-industry {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_imprese_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+
+                .faFabbricati {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-leaf {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_fabbricati_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faCentri {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-home {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faCatasto {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-layer-group {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_catasto_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faCentri {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-house {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+
+                .faContatti {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-user-group {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_contatti_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faCampi {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-object-group {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_campi_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faImpianti {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-leaf {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_impianti_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+                .faMacchine {
+                    display: inline !important;
+                    position: absolute !important;
+                    left: 0px;
+                    top: 0px;
+
+                    .fa-truck-pickup {
+                        height: 32px;
+                        width: 32px;
+                        color: transparent;
+                        position: relative;
+                        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_macchine_off.svg');
+                        background-repeat: no-repeat;
+                        background-position: center center;
+                        background-size: contain;
+                    }
+                }
+
+
+
+                span {
+                    font-size: 14px;
+                    color: $table-dark-grey;
+                }
+
+                &.active {
+
+                    .faImpresa {
+                        display: inline !important;
+
+                        .fa-industry {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_imprese.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .faFabbricati {
+                        display: inline !important;
+
+                        .fa-leaf {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_fabbricati.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .faCentri {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-home {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .faCatasto {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-layer-group {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_catasto.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .faCampi {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-object-group {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_campi.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    .faContatti {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-user-friends {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_contatti.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+
+                    .faImpianti {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-leaf {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_impianti.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+
+                    .faMacchine {
+                        display: inline !important;
+                        position: absolute !important;
+                        left: 0px;
+                        top: 0px;
+
+                        .fa-truck-pickup {
+                            height: 32px;
+                            width: 32px;
+                            color: transparent;
+                            position: relative;
+                            background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_macchine.svg');
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: contain;
+                        }
+                    }
+
+                    span {
+                        color: $table-blue;
+                        font-weight: 800;
+                    }
+
+                    border-color: $table-blue;
+
+                }
+            }
+        }
+
+    }
+}
+
+app-treeview {
+  fa-icon {
+    display: none !important;
+  }
+
+  .faImpresa {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-industry {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_imprese_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+
+  .faFabbricati {
+    display: inline !important;
+   /*position: absolute !important; */
+    left: 0px;
+    top: 0px;
+
+   /*.fa-leaf { */
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_fabbricati_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+   /*} */
+  }
+
+  .faCentri {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-home {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  .faCatasto {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-layer-group {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_catasto_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  .faCentri {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-house {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+
+  .faContatti {
+    display: inline !important;
+   /*position: absolute !important; */
+    left: 0px;
+    top: 0px;
+
+   /*.fa-user-group { */
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_contatti_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+   /*} */
+  }
+
+  .faCampi {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-object-group {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_campi_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  .faImpianti {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-leaf {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_impianti_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  .faMacchine {
+    display: inline !important;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+
+    .fa-truck-pickup {
+      height: 32px;
+      width: 32px;
+      color: transparent;
+      position: relative;
+      background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_macchine_off.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  span {
+    margin-left: 7px;
+    color: $table-blue;
+  }
+
+  &.active {
+
+    .faImpresa {
+      display: inline !important;
+
+      .fa-industry {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_imprese.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+    .faFabbricati {
+      display: inline !important;
+
+     /*.fa-leaf { */
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_fabbricati.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+     /*} */
+    }
+
+    .faCentri {
+      display: inline !important;
+      position: absolute !important;
+      left: 0px;
+      top: 0px;
+
+      .fa-home {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+    .faCatasto {
+      display: inline !important;
+      position: absolute !important;
+      left: 0px;
+      top: 0px;
+
+      .fa-layer-group {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_catasto.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+    .faCampi {
+      display: inline !important;
+      position: absolute !important;
+      left: 0px;
+      top: 0px;
+
+      .fa-object-group {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_campi.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+    .faContatti {
+      display: inline !important;
+     /*position: absolute !important; */
+      left: 0px;
+      top: 0px;
+
+     /*.fa-user-friends { */
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_contatti.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+     /*} */
+    }
+
+
+    .faImpianti {
+      display: inline !important;
+      position: absolute !important;
+      left: 0px;
+      top: 0px;
+
+      .fa-leaf {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_impianti.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+
+    .faMacchine {
+      display: inline !important;
+      position: absolute !important;
+      left: 0px;
+      top: 0px;
+
+      .fa-truck-pickup {
+        height: 32px;
+        width: 32px;
+        color: transparent;
+        position: relative;
+        background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_macchine.svg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+      }
+    }
+
+    span {
+      color: $table-blue;
+      font-weight: 800;
+    }
+
+    border-color: $table-blue;
+
+  }
+
+}
+
+.k-grid td {
+    font-size: 13px;
+    border-color: transparent !important;
+    line-height: 1.2;
+}
+
+
+customization-dropdown {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .caption {
+        position: absolute;
+        font-size: 8px;
+        top: -10px;
+        text-transform: uppercase;
+        color: #595959;
+    }
+
+    .k-dropdown {
+        margin-right: 8px;
+    }
+}
+
+kendo-dropdownlist {
+    .k-input {
+        height: 28px;
+    }
+}
+
+
+
+
+.k-grid .k-alt {
+    /*
+    background-color: #F8F8F8 !important;
+
+    &:hover {
+        background-color: #F8F8F8 !important;
+    }
+    */
+
+    background-color: #F0F0F0 !important;
+
+    &:hover {
+        background-color: #F0F0F0 !important;
+    }
+}
+
+kendo-grid.k-grid tbody tr:hover {
+    background-color: #fff !important;
+}
+
+
+kendo-grid.k-grid tr.k-alt .k-grid-content-sticky {
+    /*background-color: #F8F8F8;*/
+    background-color: #F0F0F0
+}
+
+kendo-grid.k-grid tr .k-grid-content-sticky {
+    background-color: #fff;
+}
+
+kendo-grid.k-grid tr:hover .k-grid-content-sticky {
+    background-color: #fff;
+}
+
+kendo-grid.k-grid tr.k-alt:hover .k-grid-content-sticky {
+    /*background-color: #F8F8F8;*/
+    background-color: #F0F0F0
+}
+
+
+/* .k-grid .k-alt .k-grid-content-sticky { */
+/*     background-color: transparent!important; */
+/* } */
+
+.k-grid-content table tbody tr.k-grouping-row td p {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #002850;
+    margin-bottom: 0;
+    vertical-align: middle;
+    border-bottom: 1px solid #002850 !important;
+    padding: 10px 20px 10px 0;
+    margin-left: 10px;
+}
+.k-grid-content table tbody tr.k-grouping-row td p a {
+    background-image: url('../assets/custom-icons/icon-table/ic_table_grouprow_arrow_down1.svg') !important;
+    width: 8px;
+    height: 8px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+}
+.k-grid-content table tbody tr.k-grouping-row td p a::before { display: none;}
+.k-grid-content table tbody tr.k-grouping-row td p a.k-i-caret-alt-right {
+    transform: rotate(-90deg);
+}
+
+
+
+.anagraficaContainer {
+    background-color: #f8f9fa !important;
+}
+
+
+kendo-popup {
+    z-index: 999999 !important;
+    button {
+        background-color: $table-blue;
+    }
+}
+
+grid-customizations.p-2 {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    align-items: center;
+    gap: 8px;
+}
+
+gias-grid-customizations.p-2 {
+    align-items: center;
+    gap: 8px;
+}
+
+.k-icon-button,
+.k-button.k-button-icon {
+    display: inline !important;
+    width: auto !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+}
+
+.separator {
+    flex-shrink: 0;
+    height: 28px;
+    width: 1px;
+    background: #CACCCD;
+    margin-right: 8px;
+    margin-left: 8px;
+
+    &+.separator,
+    &:first-child {
+        display: none;
+    }
+}
+
+.spacer + .separator {
+    display: none;
+}
+
+
+
+* {
+    &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: $table-blue  !important;
+        ;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: rgba($table-blue, .1) !important;
+        border-radius: 20px;
+        border: none;
+    }
+}
+
+.k-popup.k-popup-transparent {
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible;
+}
+
+.k-tooltip {
+    padding: 4px 8px !important;
+    font-family: 'Lato', Sans-serif !important;
+    font-size: 12px !important;
+    color: $table-blue  !important;
+    background-color: #E6ECF2 !important;
+}
+
+
+.k-tooltip .k-callout {
+    color: #E6ECF2 !important;
+}
+
+.k-popup {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, .2) !important;
+    border: 1px solid #E8E8E8 !important;
+    border-radius: 12px !important;
+    font-family: 'Lato', Sans-serif !important;
+    overflow: hidden;
+
+    .k-list {
+        overflow: hidden;
+    }
+
+    .k-button {
+        background-color: transparent !important;
+        color: $table-blue  !important;
+        border: 1px solid $table-blue  !important;
+        border-radius: 4px !important;
+        font-family: 'Lato', Sans-serif !important;
+        font-size: 14px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+
+        &:hover {
+            background-color: #E6ECF2 !important;
+        }
+    }
+
+    .k-button.k-primary {
+        border: none !important;
+        outline: none !important;
+        ;
+        font-family: 'Lato', Sans-serif;
+        box-shadow: 0px 0px 10px rgba($table-blue, .2);
+        background-color: $table-blue  !important;
+        color: white !important;
+
+        &:hover {
+            background-color: $table-blue  !important;
+            box-shadow: 0px 0px 10px rgba($table-blue, 0);
+        }
+
+        &:disabled {
+            opacity: .2 !important;
+        }
+    }
+
+    .k-list-filter {
+        .k-textbox {
+            color: #575757;
+            font-family: 'Lato', Sans-serif !important;
+            background-color: white !important;
+            border: 1px solid $table-blue  !important;
+            border-radius: 4px !important;
+            height: 28px;
+        }
+    }
+
+    .k-list-optionlabel.k-selected,
+    .k-list .k-item.k-selected,
+    .k-list-ul .k-list-item.k-selected {
+        color: white  !important;
+       /* background-color: rgba(0, 45, 90, .06) !important; */
+        background-color: #002850 !important;
+    }
+
+    .k-list-optionlabel {
+        color: #595959 !important;
+        background-color: white !important;
+        font-size: 12px !important;
+    }
+
+    .k-nodata {}
+}
+
+#expander {
+    border: none !important;
+    margin-right: 8px !important;
+    transform: translateX(-20px) translateY(-10px);
+}
+
+.k-button.k-flat::after {
+    display: none !important;
+}
+
+tree-filters {
+    padding-bottom: 16px;
+}
+
+.k-toolbar.k-grid-toolbar {
+    .separator+.separator+.k-button {
+        margin-left: auto;
+    }
+}
+
+.k-button-primary:focus,
+.k-button.k-primary:focus,
+.k-button-primary.k-focus,
+.k-focus.k-button.k-primary,
+.k-button-primary.k-focus,
+.k-focus.k-button.k-primary {
+    box-shadow: none !important;
+}
+
+.k-button::before {
+    display: none !important;
+}
+
+.btn-check:focus+.btn-success,
+.btn-success:focus {
+    box-shadow: none !important;
+}
+
+.btn-check:focus+.btn,
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.k-checkbox:focus,
+.k-checkbox.k-focus {
+    box-shadow: none !important;
+}
+
+
+.k-popup.k-grid-filter-popup {
+    padding: 12px 8px !important;
+    min-width: 250px;
+
+    .k-filter-menu-container {
+        width: 100% !important;
+    }
+
+    .k-textbox {
+        border: none !important;
+        background-color: #f5f5f5;
+        border-radius: 20px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 12px;
+        width: 100%;
+    }
+}
+
+.k-filter-menu-container .k-actions, .k-column-list-wrapper .k-actions {
+    flex-direction: row-reverse;
+}
+
+tfoot {
+    td {
+        background-color: #F1F3F6 !important;
+        color: #002850 !important;
+        font-weight: 800 !important;
+        font-size: 15px !important;
+    }
+}
+
+.k-grid-virtual.k-grid tbody td {
+    white-space: nowrap !important;
+}
+
+.k-grid-header .k-grid-filter.k-state-active,
+.k-grid-header .k-grid-filter.k-active,
+.k-grid-header .k-header-column-menu.k-state-active,
+.k-grid-header .k-header-column-menu.k-active,
+.k-grid-header .k-hierarchy-cell .k-icon.k-state-active,
+.k-grid-header .k-hierarchy-cell .k-icon.k-active {
+    background-color: #002850 !important;
+}
+
+form .k-appbar-section button {
+    margin-right: 8px;
+}
+
+.k-breadcrumb {
+    background: inherit !important;
+    padding: 16px 16px 0px 16px !important;
+}
+
+.k-breadcrumb-container {
+
+    .k-breadcrumb-item .item {
+        font-family: 'Lato', Sans-serif !important;
+        font-size: 12px !important;
+        color: #575757;
+
+        fa-icon {
+            .fa-industry {
+                height: 32px;
+                width: 32px;
+                color: transparent;
+                position: relative;
+                background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_imprese.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+
+            .fa-house {
+                height: 32px;
+                width: 32px;
+                color: transparent;
+                position: relative;
+                background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_centri_off.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+
+            .fa-object-group {
+                height: 32px;
+                width: 32px;
+                color: transparent;
+                position: relative;
+                background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_campi_off.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: contain;
+            }
+        }
+    }
+
+    .k-breadcrumb-item:first-child .item {
+        color: #002850;
+        font-weight: 800;
+    }
+}
+
+tree-filters .ng-fa-icon .fa-leaf {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+}
+
+tree-filters {
+    kendo-textbox {
+        border: none !important;
+        border-radius: 12px !important;
+        background-color: #f7f7f7 !important;
+
+        .k-input-prefix {
+            .k-button {
+                border: none;
+                background-color: inherit;
+            }
+        }
+
+        .k-icon.k-i-search {
+            background-image: url('../assets/custom-icons/icon-general/ic_options_details.svg');
+        }
+    }
+
+}
+
+
+.k-grid-header .k-i-sort-asc-sm, .k-grid-header .k-i-sort-desc-sm, .k-grid-header .k-i-sort-asc-small, .k-grid-header .k-i-sort-desc-small, .k-grid-header .k-sort-order {
+    color: white!important;
+}
+
+.k-grid-header .k-grid-header-menu.k-active {
+    background-color: #002850!important;
+}
+
+.k-grid-header .k-grid-header-menu.k-active .k-icon.k-i-filter {
+    background-image: url('../assets/custom-icons/icon-general/ic_options_filter_option_on.svg');
+}
+
+.tools span.k-link.k-menu-link.ng-star-inserted {
+    border-bottom: solid 1px #EBEBEB;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5rem;
+    font-size: 0.9rem !important;
+}
+
+.tools span.k-link.k-menu-link.ng-star-inserted {
+    box-shadow: none;
+}
+
+.tools span.ng-star-inserted.k-icon {
+    padding-right: 2rem;
+    justify-content: space-between;
+}
+
+
+img.img-thumbnail {
+   /*max-height: 150px; */
+}
+
+kendo-grid.k-grid tbody tr.Modifica_Dose_Prodotti:hover {
+    background-color: yellow !important;
+}
+
+.k-grid .k-alt.agendaOperazDaRevisionare {
+    background-color: yellow !important;
+    border: 1px solid black;
+}
+
+.k-grid .k-alt.agendaOperazBloccata,
+.k-grid .k-alt.agendaOperazBloccata:hover,
+.k-grid .agendaOperazBloccata,
+.k-grid .agendaOperazBloccata:hover  {
+    background-color: #ccc!important;
+    color: #555!important;
+}
+
+.k-grid .agendaOperazDaRevisionare {
+    background-color: #fcf6dd !important;
+    color: #555 !important;
+    td:first-child{
+        border-left: 2px solid #f2d177 !important;
+    }
+}
+
+.k-grid .agendaOperazPianificata  {
+    background-color: #d3f2f2 !important;
+    color: #555 !important;
+    td:first-child{
+        border-left: 2px solid #7bdddc !important;
+    }
+  }
+
+
+.k-touch-action-auto.k-command-cell:nth-child(2) div:first-child,
+.k-touch-action-auto.k-command-cell:nth-child(3) div:first-child
+{
+    padding-top: 0px !important;
+}
+
+tbody tr[kendogridlogicalrow].bloccato {
+    background-color: #ebebeb !important;
+    td:first-child {
+        border-left: 2px solid #DDDBDB!important;
+    }
+}
+tbody tr[kendogridlogicalrow].bloccato td {
+    background-color: transparent !important;
+}
+
+tr.k-grid-edit-row td:first-child, tr.k-selected td:first-child {
+    border-left: 2px solid #c0d2e3 !important;
+}
+
+tr.k-grid-edit-row td, tr.k-selected td {
+    background-color: #e6ecf2 !important;
+}
+
+/* .custom-infobox div:nth-of-type(3) u, */
+.custom-infobox div u,
+.custom-infobox span[style*="underline"] {
+    margin-top: 0.4rem;
+    margin-bottom: 0.2rem;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.maps-polygon-label-infowindow div u,
+.maps-polygon-label-infowindow span[style*="underline"] {
+    font-weight: bold;
+    display: inline-block;
+}
+
+.tblRiparto{
+    border-collapse: collapse;
+   /* border-spacing: 0.5rem 0.2rem; */
+   /* margin-left: -0.5rem; */
+    border: 1px solid #CCC;
+    margin: 1rem 0;
+
+    tr:nth-child(even) {
+        background-color: #002850!important;
+    }
+
+    td {
+        padding: 10px;
+    }
+
+    tr td:first-child {
+        text-align: left;
+        border-left: 1px solid #CCC!important;
+    }
+
+    td.ColonnaRiaparto1>span {
+        font-weight: 800;
+        color: #6bb36c!important;
+    }
+
+    table tbody tr:nth-child(even),
+    tr.ColonnaDesSommaRiaparto1{
+        background-color: #002850;
+
+        td {
+            border-top: 1px solid #CCC;
+        }
+
+        td:first-child {
+            text-align: right;
+        }
+    }
+    .ColonnaRiaparto1>span.SommaRipartoCentro {
+        color: #6bb36c!important;
+    }
+}
+
+.gm-style .gm-style-iw-c:has(.custom-infobox) span.supCondottaSingoloCentro,
+.gm-style .gm-style-iw-c:has(.custom-infobox) span.SommaTotaleSuperficieCondotta {
+    color: #f1af5c!important;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.gm-style .gm-style-iw-c:has(.custom-infobox) span.InfoRiparto1,
+.gm-style .gm-style-iw-c:has(.custom-infobox) span.SommaRiparto1 {
+    color: #6bb36c!important;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.k-grid .k-alt.visibilitaAziendale,
+.k-grid .k-alt.visibilitaAziendale:hover,
+.k-grid .visibilitaAziendale,
+.k-grid .visibilitaAziendale:hover  {
+    background-color: #6bb36c60!important;
+    color: #555!important;
+}
+
+.k-grid .k-alt.visibilitaPubblica,
+.k-grid .k-alt.visibilitaPubblica:hover,
+.k-grid .visibilitaPubblica,
+.k-grid .visibilitaPubblica:hover  {
+    background-color: #f1af5c60!important;
+    color: #555!important;
+}
+
+
+.k-grid .k-grouping-header {
+    padding: 0px 10px;
+   /* margin-bottom: 16px; */
+    border: 1px dashed #002850 !important;
+   /* border-radius: 12px; */
+    background-color: white !important;
+    height: auto; /* rimossa l'altezza fissa per permettere al componente di crescere quanto finisce lo spazio in orizzontale (es. mobile con due o tre colonne) */
+}
+
+.k-grid .k-column-title {
+    font-weight: 800 !important;
+
+ }
+
+ .k-panelbar > .k-panelbar-header {
+    font-weight: 800 !important;
+ }
+ .kendo-grid-no-shadows kendo-grid.k-grid {
+    box-shadow: none;
+    padding: 0;
+}
+.k-grid .k-column-title {
+    font-weight: 800 !important;
+
+ }
+
+ .k-panelbar > .k-panelbar-header {
+    font-size: 14px;
+    font-weight: 700 !important;
+ }
+ .k-panelbar > .k-panelbar-header.k-expanded > .k-link {
+    font-size: 14px;
+    font-weight: 700 !important;
+ }
+ .k-expander-header i{
+    font-weight: 700 !important;
+ }
+
+ app-sementi,
+ app-fertilizzanti,
+ app-formulati {
+    .non-salvata {
+        border: 1px dotted #ff7300;
+        border-left: 3px solid #ff7300;
+        margin-bottom: 4px;
+        border-radius: 8px;
+    }
+
+    .salvata {
+        border: 1px dotted #002D5A;
+        border-left: 3px solid #002D5A;
+        margin-bottom: 4px;
+        border-radius: 8px;
+    }
+
+    .innesco-scaduto {
+        border: 1px dotted #ffdbe1;
+        border-left: 3px solid #ffdbe1;
+        margin-bottom: 4px;
+        border-radius: 8px;
+    }
+
+    .innesco-in-scadenza {
+        border: 1px dotted #f7d755;
+        border-left: 3px solid #f7d755;
+        margin-bottom: 4px;
+        border-radius: 8px;
+    }
+ }
+
+.btn-important {
+    min-width: 75px;
+    justify-content: center;
+}
+
+.gias-m-a-0 {
+    margin: 0 !important;
+}
+
+.k-tabstrip-top > .k-tabstrip-items-wrapper {
+    margin-bottom: 0 !important;
+}
+
+.gias-carica-tutte-le-imprese {
+  display: inline-block;
+  vertical-align: middle;
+  height: 35px;
+  width: 35px;
+  color: transparent;
+  position: relative;
+  background-image: url('../assets/custom-icons/icon-general/ic_company_all_03.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.k-menu-group .k-item:focus > .k-link,
+.k-menu-group .k-item.k-focus > .k-link,
+.k-menu.k-context-menu .k-item:focus > .k-link,
+.k-menu.k-context-menu .k-item.k-focus > .k-link {
+    box-shadow: unset !important;
+}
+
+/* Menù laterale Anagrafiche (new) */
+.k-treeview-leaf.k-selected {
+  border-color: $table-light-blue !important;
+  color: $table-blue !important;
+  background-color: $table-light-blue !important;
+}
+
+.k-treeview-leaf:focus, .k-treeview-leaf.k-focus {
+  box-shadow: none !important;
+}
+
+.k-treeview-leaf:hover {
+  cursor: pointer;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item .k-treeview-top .k-treeview-leaf {
+  border-color: $table-blue !important;
+  color: white !important;
+  background-color: $table-blue !important;
+  font-weight: bold;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item .k-treeview-top .k-treeview-leaf span {
+  color: white !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item ul .k-treeview-top .k-treeview-leaf span {
+  color: $table-blue !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item ul .k-treeview-top:nth-of-type(1) .k-treeview-leaf {
+  border-color: transparent !important;
+  color: $table-blue !important;
+  background-color: transparent !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item ul .k-treeview-bot:nth-of-type(1) .k-treeview-leaf {
+  border-color: $table-light-blue !important;
+  color: $table-blue !important;
+  background-color: $table-light-blue !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item ul .k-treeview-mid .k-treeview-leaf {
+  border-color: transparent !important;
+  color: $table-blue !important;
+  background-color: transparent !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item[aria-level="4"] ul .k-treeview-bot:nth-of-type(1) .k-treeview-leaf {
+  border-color: transparent !important;
+  color: $table-blue !important;
+  background-color: transparent !important;
+}
+
+app-kendo-tree #treeContainer ul.k-treeview-lines .k-treeview-item .k-treeview-top + .k-treeview-group {
+  margin-top: 3px;
+}
+
+app-kendo-tree #treeContainer .k-treeview-md .k-treeview-leaf {
+    padding-left: 25px;
+}
+
+app-kendo-tree #treeContainer .k-treeview-leaf-text span.tree {
+    line-height: 2.4;
+}
+
+app-kendo-tree #treeContainer .k-treeview-item span.k-treeview-leaf {
+    margin-left: 0;
+}
+
+app-kendo-tree app-treeview #treeContainer .k-treeview-item .treeviewIconElement > svg,
+app-kendo-tree app-treeview #treeContainer .treeviewIconElement {
+  height: 40px;
+  width: 40px;
+}
+
+app-kendo-tree app-treeview #treeContainer .ng-fa-icon.faImpianti .fa-leaf:hover {
+    background-image: url('../assets/custom-icons/icon-section-area-tab/anagrafica/ic_anagrafica_tab_impianti_off.svg');
+}
+
+app-kendo-tree app-treeview #treeContainer .ng-fa-icon.faImpianti {
+    margin-top: -0.25rem;
+}
+
+app-kendo-tree app-treeview #treeContainer .treeDimGray {
+    --bs-gutter-x: 1.5rem;
+    padding: 0.25rem calc(var(--bs-gutter-x)* 0.5);
+    background-color: #F0F0F0 !important;
+    padding-bottom: 0.35rem;
+    border-radius: 3px !important;
+}
+
+app-kendo-tree #treeContainer .k-treeview-group:nth-of-type(1) .k-treeview-top.k-treeview-bot:nth-of-type(1) .k-treeview-leaf {
+    padding-left: 0;
+  }

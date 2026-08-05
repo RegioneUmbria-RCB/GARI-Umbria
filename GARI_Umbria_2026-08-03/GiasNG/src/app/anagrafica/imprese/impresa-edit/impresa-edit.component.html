@@ -1,0 +1,227 @@
+<div *ngIf="impresaSelezionata">
+  <form [formGroup]="impreseForm">
+    <gias-update-toolbar [TipoOperazioneDB]="objParametriAgenda.TipoOperazioneDB" [formGroup]="impreseForm"
+                         [submit]="false" [salvaNuovo]="true" (clickEvent)="save()" (clickSalvaNuovoEvent)="saveAndNew()">
+    </gias-update-toolbar>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="editPageContent">
+          <div class="row">
+            <div class="col-2 col-sm-3 "></div>
+            <div class="col-8 col-sm-6">
+              <gias-form-error-visualizer [form]="impreseForm"></gias-form-error-visualizer>
+            </div>
+            <div class="col-2 col-sm-3"></div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <h4 data-index="1." class="card-title">
+                {{'Impresa' | transloco}} - {{'DatiPrincipali' | transloco}}
+              </h4>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-12 col-sm-6">
+              <gias-text-template
+                [name]="'impresa.Ragione_Sociale' | transloco "
+                [obligatory]="true"
+                [clearButton]="true"
+                [isDisabled]="!formEnable"
+                [placeholder]="'impresa.Ragione_Sociale_Placeholder' | transloco"
+                giasFormControlName="ragioneSociale"
+              >
+              </gias-text-template>
+            </div>
+
+            <div class="col-12 col-sm-3">
+              <gias-text-template
+                [name]="'impresa.Partita_IVA' | transloco"
+                [clearButton]="true"
+                [isDisabled]="!formEnable"
+                [placeholder]="'impresa.Partita_IVA_Placeholder' | transloco"
+                giasFormControlName="partitaIvaReale"
+              >
+              </gias-text-template>
+            </div>
+
+            <div class="col-12 col-sm-3">
+              <gias-text-template
+                name="CF/CUAA"
+                [clearButton]="true"
+                [isDisabled]="!formEnable"
+                placeholder="Inserire CUAA"
+                giasFormControlName="CUAA"
+                [parentGroup]="impreseForm"
+              >
+              </gias-text-template>
+            </div>
+          </div>
+
+          <gias-expansionpanel [id]="'Dati_Aggiuntivi'">
+            <div headerContent class="header-content">
+              <span><strong>{{ 'DatiAggiuntivi' | transloco }}</strong></span>
+            </div>
+            <div class="content">
+              <span class="content-text">
+                <div class="row form-row ">
+                  <div class="card">
+                    <h5 class="card-title">{{ 'Indirizzo' | transloco }}</h5>
+                    <gias-address-template
+                      *ngFor="let addr of companyAddresses; index as i"
+                      [city]="addr.city"
+                      [province]="addr.province"
+                      [country]="addr.country"
+                      [zipCode]="addr.zipCode"
+                      [street]="addr.street"
+                      [fraction]="addr.fraction"
+                      [note]="addr.note"
+                      [geolocation]="addr.geolocation"
+                      [showGeolocation]="showGeolocation"
+                      (noteOut)="onAddressNotesChange($event, i)"
+                      (fractionOut)="onAddressFractionChange($event, i)"
+                      (streetOut)="onAddressStreetChange($event, i)"
+                      (zipCodeOut)="onAddressZipChange($event, i)"
+                      (cityOut)="onAddressCityChange($event, i)"
+                      (provinceOut)="onAddressProvinceChange($event, i)"
+                      (countryOut)="onAddressCountryChange($event, i)"
+                      (geolocationOut)="onGeolocationChange($event, i)"
+                    >
+                    </gias-address-template>
+                  </div>
+                </div>
+
+                <div class="gias-vertical-spacer"></div>
+
+                <app-contatti-edit *ngIf="mostraContatti"></app-contatti-edit>
+
+                <div class="row form-row">
+                    <div class="col-12 col-lg-3">
+                      <gias-drop-down-template
+                        [name]="'Tecnico' | transloco"
+                        [id]="'tecnico_referente'"
+                        [isDisabled]="!formEnable"
+                        [listItems]="Tecnici"
+                        textField="ragione_Sociale"
+                        [defaultItem]="defaultItemContatto"
+                        valueField="primaryKey.codice"
+                        [valuePrimitive]="false"
+                        giasFormControlName="tecnicoReferente"
+                      >
+                      </gias-drop-down-template>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                      <gias-drop-down-template
+                        [name]="'OrganismoDiControllo' | transloco"
+                        [id]="'organismo_di_controllo'"
+                        [isDisabled]="!formEnable"
+                        [listItems]="Odc"
+                        textField="contatto.ragione_Sociale"
+                        valueField="codice"
+                        giasFormControlName="organismo_di_Controllo"
+                        [valuePrimitive]="false"
+                      >
+                      </gias-drop-down-template>
+                    </div>
+                      <gias-validita formGroupName="validita"></gias-validita>
+                </div>
+
+                <div class="row form-row">
+                  <div class="col-12 col-lg-6">
+                    <gias-button-group-template
+                      [name]="'TipoImpresa' | transloco"
+                      [listItems]="TipoImpresa"
+                      textField="name"
+                      valueField="value"
+                      giasFormControlName="tipo_Impresa"
+                      [valuePrimitive]="true"
+                    >
+                    </gias-button-group-template>
+
+                    <gias-multiselect-template-s
+                      [name]="'Certificazione' | transloco"
+                      [id]="'Certificazione'"
+                      [isDisabled]="!formEnable"
+                      [listItems]="ListaCertificazione"
+                      textField="descrizione"
+                      valueField="codice"
+                      (open)="certificazioneChanged($event)"
+                      giasFormControlName="certificazione"
+                      [filterable]="true"
+                      [valuePrimitive]="false"
+                    >
+                    </gias-multiselect-template-s>
+
+                    <gias-drop-down-template
+                      [name]="'GruppoRaccolta' | transloco"
+                      [id]="'gruppo_raccolta'"
+                      [isDisabled]="!formEnable"
+                      [listItems]="GruppiRaccolta"
+                      [defaultItem]="defaultItem"
+                      textField="descrizione"
+                      valueField="codice"
+                      giasFormControlName="gruppoRaccolta"
+                      [valuePrimitive]="false"
+                      (open)="gruppoRaccoltaChanged($event)"
+                    >
+                    </gias-drop-down-template>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                    <gias-drop-down-template
+                      [name]="'FormaGiuridica' | transloco"
+                      [id]="'forma_giuridica'"
+                      [isDisabled]="!formEnable"
+                      [listItems]="FormeGiuridiche"
+                      textField="descrizione"
+                      valueField="codice"
+                      giasFormControlName="forma_Giuridica"
+                      [valuePrimitive]="false"
+                    >
+                    </gias-drop-down-template>
+
+                    <gias-drop-down-template
+                      [name]="'DisciplinareAziendalePredefinito' | transloco"
+                      id="disciplinare_aziendale_predefinito"
+                      [isDisabled]="!formEnable"
+                      [listItems]="DisciplinareAziendaliPredefiniti"
+                      [defaultItem]="defaultItemDisciplinare"
+                      textField="descrizione"
+                      valueField="codice"
+                      giasFormControlName="disciplinareAziendalePredefinito"
+                      [valuePrimitive]="false"
+                      (open)="disciplinareAziendalePredefinitoChanged($event)"
+                    >
+                    </gias-drop-down-template>
+                  </div>
+                </div>
+              </span>
+            </div>
+
+            <div class="row form-row">
+              <div class="card">
+                <h5 class="card-title">{{'CooperativeImpreseReferenti' | transloco}}</h5>
+                <div class="row form-row">
+                  <div class="col-12 col-sm-12">
+                    <cooperative-edit [padri]="Padri"></cooperative-edit>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row form-row">
+              <div class="card">
+                <h5 class="card-title">{{'AltriCodici' | transloco }}</h5>
+                <div class="row form-row">
+                  <div class="col-12 col-sm-12">
+                    <gias-codici-template></gias-codici-template>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </gias-expansionpanel>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

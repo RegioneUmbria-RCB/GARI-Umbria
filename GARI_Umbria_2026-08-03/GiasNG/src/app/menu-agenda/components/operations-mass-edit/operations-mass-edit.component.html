@@ -1,0 +1,39 @@
+<div class="main-container">
+    <form [formGroup]="form">
+        <div class="main-header">
+                <gias-drop-down-template-s
+                    [name]="'Modifica' | transloco"
+                    id="op"
+                    [obligatory]="true"
+                    [listItems]="operations"
+                    textField="descrizione"
+                    valueField="codice"
+                    [valuePrimitive] = true
+                    giasFormControlName="operazione"
+                ></gias-drop-down-template-s>
+
+            <button kendoButton class="blue-bg"
+                (click)="onSave()"
+            >{{'Salva' | transloco}}</button>
+        </div>
+        <section *ngIf="shouldShowSection">
+            
+            <gias-drop-down-template-s *ngIf="form.get('operazione').value === -3"
+                [name]="'qdc.Magazzino' | transloco"
+                id="storage"
+                textField="descrizione"
+                valueField="primaryKey.codice"
+                giasFormControlName="magazzino"
+                [listItems]="storages"
+                [valuePrimitive]="false"
+            ></gias-drop-down-template-s>
+
+            <app-grid-add-macchine *ngIf="form.get('operazione').value === -1"></app-grid-add-macchine>
+            <app-grid-add-operai *ngIf="form.get('operazione').value === -2"></app-grid-add-operai>
+
+        </section>
+        <section>
+            <gias-kendo-grid #gridOp></gias-kendo-grid>
+        </section>
+    </form>
+</div>

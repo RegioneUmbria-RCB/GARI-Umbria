@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:mstns="http://bdr.izs.it/dsCAPI_G.xsd" 
+		   xmlns:msdata="urn:schemas-microsoft-com:xml-msdata"
+		   xmlns="http://bdr.izs.it/dsCAPI_G.xsd" 
+		   attributeFormDefault="qualified" 
+		   elementFormDefault="qualified"
+		   targetNamespace="http://bdr.izs.it/dsCAPI_G.xsd" 
+		   id="dsCAPI_G" 
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema">
+		   
+	<xs:element msdata:IsDataSet="true" msdata:Locale="it-IT" name="dsCAPI_G">
+	
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+			
+				<xs:element name="CAPI_BOVINI">
+				
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="CAPO_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="SESSO" type="xs:string" />
+							<xs:element minOccurs="0" name="DT_NASCITA" type="xs:date" />
+							<xs:element minOccurs="0" name="COD_MADRE" type="xs:string" />
+							<xs:element minOccurs="0" name="COD_PADRE" type="xs:string" />
+							<xs:element minOccurs="0" name="TAG" type="xs:string" />
+							<xs:element minOccurs="0" name="COD_PRECEDENTE" type="xs:string" />
+							<xs:element minOccurs="0" name="DT_APPLICAZIONE_MARCHIO" type="xs:date" />
+							<xs:element minOccurs="0" name="DT_INIZIO_LATTAZIONE" type="xs:date" />
+							<xs:element minOccurs="0" name="DT_FINE_LATTAZIONE" type="xs:date" />
+							<xs:element minOccurs="0" name="DT_COMPILAZIONE_CEDOLA" type="xs:date" />
+							<xs:element minOccurs="0" name="FLAG_STATO_CAPO" type="xs:string" />
+							<xs:element minOccurs="0" name="FLAG_INSEMINAZIONE" type="xs:string" />
+							<xs:element minOccurs="0" name="FLAG_PASSAPORTO" type="xs:string" />
+							<xs:element minOccurs="0" name="FLAG_ERR_TEMPO" type="xs:string" />
+							<xs:element minOccurs="0" name="TIPO_ORIGINE" type="xs:string" />
+							<xs:element minOccurs="0" name="RAZZA_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="RAZZA_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="ANIMO_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="ANIMO_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="ALLEV_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="ALLEV_ID_FISCALE" type="xs:string" />
+							<xs:element minOccurs="0" name="ALLEV_DENOMINAZIONE" type="xs:string" />
+							<xs:element minOccurs="0" name="ALLEV_ID_FISCALE_DETEN" type="xs:string" />
+							<xs:element minOccurs="0" name="NOMINATIVO_DETEN" type="xs:string" />
+							<xs:element minOccurs="0" name="AZIENDA_CODICE_DETEN" type="xs:string" />
+							<xs:element minOccurs="0" name="MP_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="MP_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="ST_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="ST_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="LG_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="LG_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="AZIENDA_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="AZIENDA_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="SPE_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="SPE_CODICE" type="xs:string" />
+							<xs:element minOccurs="0" name="TIPO_VARIAZIONE" type="xs:string" />
+							<xs:element minOccurs="0" name="DATA_ESTRAZIONE" type="xs:date" />
+							<xs:element minOccurs="0" name="DT_INIVAL" type="xs:dateTime" />
+							<xs:element minOccurs="0" name="DT_FINVAL" type="xs:dateTime" />
+							<xs:element minOccurs="0" name="REF_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="NOTE" type="xs:string" />
+							<xs:element minOccurs="0" name="UTENTE_ID" type="xs:decimal" />
+							<xs:element minOccurs="0" name="DT_ISCRIZIONE" type="xs:date" />
+							<xs:element minOccurs="0" name="AZIENDA_CODICE_ATTUALE" type="xs:string" />
+							<xs:element minOccurs="0" name="ALLEV_ID_FISCALE_ATTUALE" type="xs:string" />
+							<xs:element minOccurs="0" name="ALLEV_DENOMINAZIONE_ATTUALE" type="xs:string" />
+							<xs:element minOccurs="0" name="DT_INGRESSO" type="xs:date" />
+							<xs:element minOccurs="0" name="NUM_CERTIFICATO" type="xs:string" />
+							<xs:element minOccurs="0" name="NUMERO_RIF_LOCALE" type="xs:string" />
+							<xs:element minOccurs="0" name="DT_EMISSIONE_PASSAPORTO_ORIG" type="xs:date" />
+							<xs:element minOccurs="0" name="DT_DUPLICAZIONE" type="xs:date" />
+							<xs:element minOccurs="0" name="NUMERO_DUPLICATI" type="xs:decimal" />
+						</xs:sequence>
+					</xs:complexType>
+					
+				</xs:element>
+				
+			</xs:choice>
+		</xs:complexType>
+		
+		<xs:unique msdata:PrimaryKey="true" name="Constraint1">
+			<xs:selector xpath=".//mstns:CAPI_BOVINI" />
+			<xs:field xpath="mstns:CAPO_ID" />
+		</xs:unique>
+		
+	</xs:element>
+
+</xs:schema>

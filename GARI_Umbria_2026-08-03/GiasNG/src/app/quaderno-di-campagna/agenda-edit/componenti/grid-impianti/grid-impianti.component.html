@@ -1,0 +1,349 @@
+<form [formGroup]="formImpianti">
+    <div class="row" >
+        <div class="col-sm-4" *ngIf="isIrrigazione">
+            <gias-drop-down-template-s
+                [name]="'UdmDose' | transloco" textField="descrizione"
+                valueField="codice" giasFormControlName="udmDose"
+                [filterable]="true" [valuePrimitive]="false"
+                [listItems]="udmDoseList">
+            </gias-drop-down-template-s>
+        </div>
+        <div class="col-sm-4" *ngIf="isFertirrigazione || isIrrigazione">
+            <gias-switch-template [giasFormControlName]="'microIrrigazione'" 
+                [name]="'VerificaCompatibilitaMicroirrigazione' | transloco">
+            </gias-switch-template>                
+        </div>
+    </div>
+</form>
+<div class="row">
+    <ng-template #template>
+    </ng-template>
+    <div kendoTooltip showOn="none" filter=".k-grid td" [tooltipTemplate]="template">
+        <gias-kendo-grid #GridImpianti [gridId]="'ImpiantiGridId'" [id]="'ImpiantiGridId'"
+            [customCommandColumnCellTemplate]="customCommandColumn" 
+            (selectionChange)="onSelected($event)" (rowsLoaded)="rowsLoaded()" class="kendo-grid-no-shadows">
+            <ng-container headerContentButtons>
+
+               <btn-rileva-fase-epoca></btn-rileva-fase-epoca>
+
+                <button kendoButton type="button" (click)="openDialogImpiantiEdit()" style="margin-left:8px;" *ngIf="MostraEditImpianto()">
+                    {{ 'GridImpianti_ModificaImpiantiSelezionati' | transloco }}
+                </button>
+            </ng-container>
+        </gias-kendo-grid>
+
+        <ng-template #customCommandColumn let-dataItem="dataItem">
+            <div kendoTooltip>
+                <div class="container" style="min-width: 220px;">
+                    <div class="row" *ngIf="visualizzaDssIrrigazione">
+                        <button kendoButton type="button" (click)="openDssIrrigazione($event, dataItem)" class="gridButton mb-2">
+                            {{ 'ApriDSSIrrigazione' | transloco }}
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button kendoButton type="button" (click)="visualizzaTurni($event, dataItem)" class="gridButton">
+                            {{ 'VisualizzaTuttiITurniSalvati' | transloco }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+        <kendo-dialog *ngIf="mostraTurniConsiglio" (close)="onDialogTurniClose()" [width]="600" [height]="490">
+            <kendo-dialog-titlebar>
+                <span class="dialog-title-span">{{ 'TurniSalvati' | transloco }}</span>
+            </kendo-dialog-titlebar>
+
+            <div class="dialog-subtitle subtitle">
+                {{ 'TurniSalvatiPerIlConsiglioDiIrrigazione' | transloco }} 
+                <span style="font-weight: bold;">
+                    {{ descrizioneTurno }}
+                </span>
+            </div>
+
+            <div class="container" style="margin-top: 8px; margin-bottom: 8px; font-size: 14px;">
+                <div class="row">
+                    <div class="col-6" style="justify-content: right; align-items: right; text-align: right;">
+                        {{ 'Data' | transloco }}:
+                    </div>
+                    <div class="col-6">
+                        <kendo-datepicker
+                            [value]="dataFiltroTurni"
+                            (valueChange)="onDataFiltroTurnoChange($event)"
+                            [format]="'dd/MM/yyyy'">
+                        </kendo-datepicker>
+                    </div>
+                </div>
+            </div>
+            
+            <kendo-listview [data]="turniConsiglioFiltrati" class="dialog-content-scroll">
+                <ng-template kendoListViewItemTemplate let-turno>
+                    <div class="container turno-item">
+
+                        <div class="row">
+                            <div class="col-6">
+                                {{ 'Turno' | transloco }}:
+                            </div>
+                            <div class="col-6" style="font-weight: bold;">
+                                {{ turno.Data_Turno | date:'dd/MM/yyyy HH:mm:ss' }}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                {{ 'Durata' | transloco }}:
+                            </div>
+                            <div class="col-6" style="font-weight: bold;">
+                                {{ turno.Qta_Acqua }} {{ turno.Udm_Des }} 
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-template>
+            </kendo-listview>
+
+        </kendo-dialog>
+
+        <kendo-dialog *ngIf="isSelectedImpiantiDialogOpen" (close)="onDialogClose()" [width]="950" [height]="820">
+            <kendo-dialog-titlebar>
+                <span class="dialog-title-span">{{ 'GridImpianti_ModificaImpiantiSelezionati' | transloco }}</span>
+            </kendo-dialog-titlebar>
+            <div class="dialog-main-container">
+                <!-- <div class="options-buttons">
+                    <span class="switch-label k-label" style="padding-right: 2px;">{{ 'GridImpianti_ModificaPuntuale' | transloco }}</span>
+                    <kendo-switch #switch [(ngModel)]="massiveEditEnabled"></kendo-switch>
+                    <span class="switch-label k-label" style="padding-left: 5px;">{{ 'GridImpianti_MassiveEdit' | transloco }}</span>
+                </div> -->
+
+                <div class="card-column" *ngIf="massiveEditEnabled">
+                    <div class="avatar-title-container">
+                        <div class="k-skeleton skeleton-avatar"></div>
+                        <h4 class="k-h4">{{ 'GridImpianti_InformazioniModificabili' | transloco }}</h4>
+                    </div>
+                    <div class="alert alert-info mb-2 mt-2" role="alert">
+                        {{ 'InfoModificaMassivaImpianti' | transloco }}
+                    </div>
+                    <div class="massive-edit-grid">
+                        <div class="component-container" *ngIf="isIrrigazione">
+                            <kendo-label [text]="'DoseAcquaGiornaliera' | transloco">
+                                <kendo-numerictextbox
+                                    [step]="1"
+                                    [decimals]="6"
+                                    [format]="'n6'"
+                                    [(ngModel)]="doseAcquaGiornaliera"
+                                    [min]="0">
+                                </kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container" *ngIf="isFertirrigazione">
+                            <kendo-label [text]="'Portata' | transloco">
+                                <kendo-numerictextbox
+                                    [step]="1"
+                                    [decimals]="0"
+                                    [format]="'n0'"
+                                    [(ngModel)]="portata"
+                                    [min]="0">
+                                </kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container" *ngIf="isIrrigazione">
+                            <kendo-label [text]="'DataInizioIrrigazione' | transloco">
+                                <kendo-datepicker [placeholder]="'GridImpianti_ChooseADate' | transloco"
+                                    (valueChange)="onChangeDataInizioIrrigazione($event)">
+                                </kendo-datepicker>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container">
+                            <kendo-label [text]="'DataFineIrrigazione' | transloco">
+                                <kendo-datepicker [placeholder]="'GridImpianti_ChooseADate' | transloco"
+                                    (valueChange)="onChangeDataFineIrrigazione($event)">
+                                </kendo-datepicker>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container">
+                            <kendo-label [text]="'FrequenzaIrrigazioneMedia' | transloco">
+                                <kendo-numerictextbox
+                                    [step]="1"
+                                    [decimals]="0"
+                                    [format]="'n0'"
+                                    [(ngModel)]="frequenzaIrrigazioneMedia"
+                                    [min]="0">
+                                </kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container">
+                            <kendo-label [text]="'Efficienza' | transloco">
+                                <kendo-numerictextbox
+                                    [step]="1"
+                                    [decimals]="2"
+                                    [format]="'n2'"
+                                    [(ngModel)]="efficienza"
+                                    [min]="0"
+                                    [max]="100">
+                                </kendo-numerictextbox>
+                            </kendo-label>
+                        </div>
+                        <div class="component-container">
+                            <kendo-label class="k-display-block" [for]="switchSupTratt"
+                                [text]="'GridImpianti_EnableSuperficieTrattataEqualsSuperficieTotale' | transloco"></kendo-label>
+                            <kendo-switch #switchSupTratt [(ngModel)]="supTrattEqualsSupTotale"></kendo-switch>
+                        </div>
+                        <!-- <div class="component-container">
+                            <kendo-label class="k-display-block" [for]="applyFirstElement"
+                                [text]="'GridImpianti_EnableApplicazionePrimoElemento' | transloco"></kendo-label>
+                            <kendo-switch #applyFirstElement [(ngModel)]="ConsiglioFirstElement"></kendo-switch>
+                        </div> -->
+
+                    </div>
+                </div>
+                <!-- Sezione Appezzamenti Selezionati -->
+                <div class="appezzamenti-title-section">
+                    <h4 class="appezzamenti-title-h4">
+                        {{ 'GridImpianti_AppezzamentiSelezionati' | transloco }}
+                    </h4>
+                </div>
+
+                <div class="appezzamenti-scroll-container">
+                    <div class="appezzamenti-grid appezzamenti-grid-responsive">
+                        <div *ngFor="let impianto of dialogImpianti; let i = index"
+                            (click)="openImpiantoDetailDialog(i)" class="impianto-section impianto-section-clickable">
+                            <span class="impianto-name-span">
+                                {{ 'Impianto' | transloco }} {{ impianto.rag_soc + ' - ' + impianto.APP_NOME }}
+                            </span>
+                            <span class="impianto-actions-span">
+                                <span *ngIf="isImpiantoEdited(i)" class="impianto-edited-indicator"></span>
+                                <button kendoButton fillMode="clear"
+                                    (click)="$event.stopPropagation(); removeImpianto(i)"
+                                    [title]="'GridImpianti_RimuoviDallaLista' | transloco"
+                                    class="impianto-remove-button">
+                                    <fa-icon [icon]="['fas','times']" class="impianto-remove-icon"></fa-icon>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dialog for impianto details -->
+                <kendo-dialog *ngIf="isImpiantoDetailDialogOpen" (close)="isImpiantoDetailDialogOpen = false"
+                    [width]="'1500px'" [minWidth]="900" [maxWidth]="1800" [height]="null">
+                    <kendo-dialog-titlebar>
+                        <span class="detail-dialog-title-span">{{ 'GridImpianti_DettaglioImpianto' | transloco }}</span>
+                    </kendo-dialog-titlebar>
+                    <div class="impianto-fields-table impianto-fields-grid detail-dialog-content">
+                        <ng-container *ngFor="let col of impiantiGridColumns; let idx = index">
+                            <div *ngIf="!col.hidden" class="impianto-field-row impianto-field-row-grid">
+                                <div class="impianto-field-label impianto-field-label-grid impianto-field-with-separator">{{ col.title || col.field }}
+                                </div>
+                                <div class="impianto-field-value impianto-field-value-grid">
+                                    <!-- Editable fields with mutually exclusive conditions -->
+                                    <ng-container *ngIf="col.editable; else readOnlyField">
+                                        <!-- Date fields (highest priority) -->
+                                        <kendo-datepicker
+                                            *ngIf="col.type === 'date' || col.field.toLowerCase().includes('data') || col.field.toLowerCase().includes('date'); else numericField"
+                                            [(ngModel)]="selectedImpianto[col.field]" [format]="'dd/MM/yyyy'"
+                                            [placeholder]="'GridImpianti_ChooseADate' | transloco"
+                                            class="full-width-input"></kendo-datepicker>
+
+                                        <ng-template #numericField>
+                                            <!-- Boolean fields (second priority) -->
+                                            <kendo-switch
+                                                *ngIf="col.type === 'boolean' || col.field.toLowerCase().includes('flag') || col.field.toLowerCase().includes('enable'); else irrigazioneDropDown"
+                                                [(ngModel)]="selectedImpianto[col.field]"></kendo-switch>
+
+                                            <ng-template #irrigazioneDropDown>
+                                                
+                                                <kendo-dropdownlist *ngIf="col.field === 'IrrigazioneUtilizzata_Codice'; else normalDropDown"
+                                                    [defaultValue]="irrigazione" [(ngModel)]="irrigazione" [data]="impiantiIrrigazione || []"
+                                                    [textField]="'IrrigazioneUtilizzata_Descrizione'  || 'text'"
+                                                    [valueField]="'IrrigazioneUtilizzata_Codice' || 'value'" class="full-width-input">
+                                                </kendo-dropdownlist>
+
+                                                <ng-template #normalDropDown>
+                                                    <!-- Dropdown fields (third priority) -->
+                                                    <kendo-dropdownlist
+                                                        *ngIf="col.type === 'dropdown' || col.values || (col.field.toLowerCase().includes('cod') && !col.field.toLowerCase().includes('data')); else numericInput"
+                                                        [(ngModel)]="selectedImpianto[col.field]" [data]="col.ddl.data || []"
+                                                        [textField]="col.ddl.textField  || 'text'"
+                                                        [valueField]="col.ddl.valueField || 'value'" class="full-width-input">
+                                                    </kendo-dropdownlist>
+
+                                                    <ng-template #numericInput>
+                                                        <!-- Numeric fields (fourth priority) - using textbox -->
+                                                        <div
+                                                            *ngIf="col.type === 'numeric' || col.field.toLowerCase().includes('sup') || col.field.toLowerCase().includes('dose') || col.field.toLowerCase().includes('ore') || col.field.toLowerCase().includes('portata') || col.field.toLowerCase().includes('frequenza') || col.field.toLowerCase().includes('qta') || col.field.toLowerCase().includes('perc'); else textInput">
+                                                            <!-- Special handling for Sup_Imp_help field with validation -->
+                                                            <kendo-textbox
+                                                                *ngIf="col.field === 'Sup_Imp_help'; else normalNumericInput"
+                                                                [(ngModel)]="selectedImpianto[col.field]"
+                                                                (valueChange)="onSuperficieTrattataChange($event, col.field)"
+                                                                class="full-width-input"
+                                                                [ngClass]="{'superficie-validation-error': !validateSuperficieTrattata(selectedImpianto[col.field])}"
+                                                                [title]="!validateSuperficieTrattata(selectedImpianto[col.field]) ? 'La superficie trattata non può superare la superficie totale (' + selectedImpianto.SUP_APP + ')' : ''">
+                                                            </kendo-textbox>
+
+                                                            <ng-template #normalNumericInput>
+                                                                <kendo-textbox [(ngModel)]="selectedImpianto[col.field]"
+                                                                    class="full-width-input"></kendo-textbox>
+                                                            </ng-template>
+                                                        </div>
+
+                                                        <ng-template #textInput>
+                                                            <!-- Default text input (lowest priority) -->
+                                                            <kendo-textbox [(ngModel)]="selectedImpianto[col.field]"
+                                                                class="full-width-input"></kendo-textbox>
+                                                        </ng-template>
+                                                    </ng-template>
+
+                                                </ng-template>
+                                            </ng-template>
+                                        </ng-template>
+                                    </ng-container>
+
+                                    <ng-template #readOnlyField>
+                                        <!-- Read-only fields -->
+                                        <span
+                                            *ngIf="col.type === 'date' || col.field.toLowerCase().includes('data') || col.field.toLowerCase().includes('date'); else normalReadOnly">
+                                            {{ selectedImpianto[col.field] | date:'dd/MM/yyyy' }}
+                                        </span>
+                                        <ng-template #normalReadOnly>
+                                            <span>{{ selectedImpianto[col.field] }}</span>
+                                        </ng-template>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <!-- No separators, clean 3-column grid -->
+                    </div>
+                    <kendo-dialog-actions>
+                        <button kendoButton (click)="confirmImpiantoDetailEdit()" [primary]="true"
+                            class="dialog-action-button-primary">{{ 'Conferma' | transloco }}</button>
+                        <button kendoButton (click)="showResetConfirmDialog = true"
+                            class="dialog-action-button-secondary">{{ 'Reset' | transloco }}</button>
+                        <button kendoButton (click)="isImpiantoDetailDialogOpen = false">{{ 'Chiudi' | transloco
+                            }}</button>
+                    </kendo-dialog-actions>
+                </kendo-dialog>
+
+                <!-- Kendo confirmation dialog for reset (must be outside the main dialog) -->
+                <kendo-dialog *ngIf="showResetConfirmDialog" (close)="showResetConfirmDialog = false" [width]="350">
+                    <kendo-dialog-titlebar>
+                        {{ 'GridImpianti_ConfermaReset' | transloco }}
+                    </kendo-dialog-titlebar>
+                    <div>{{ 'GridImpianti_SeiSicuroRipristinareValoriOriginali' | transloco }}</div>
+                    <kendo-dialog-actions>
+                        <button kendoButton
+                            (click)="resetImpiantoEdit(selectedImpiantoIndex); showResetConfirmDialog = false;">{{ 'Si'
+                            | transloco }}</button>
+                        <button kendoButton (click)="showResetConfirmDialog = false">{{ 'No' | transloco }}</button>
+                    </kendo-dialog-actions>
+                </kendo-dialog>
+            </div>
+            <kendo-dialog-actions>
+                <button kendoButton (click)="onSaveDialogGrid()" [primary]="true" class="dialog-action-button-primary">
+                    {{ 'Salva' | transloco }}
+                </button>
+                <button kendoButton (click)="onCancelDialog()"> {{ 'Annulla' | transloco }} </button>
+            </kendo-dialog-actions>
+        </kendo-dialog>
+    </div>
+</div>

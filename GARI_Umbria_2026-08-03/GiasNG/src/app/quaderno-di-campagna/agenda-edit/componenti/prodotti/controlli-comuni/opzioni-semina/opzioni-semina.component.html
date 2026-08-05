@@ -1,0 +1,16 @@
+<div [formGroup]="SementiForm">
+    <div class="row">
+        <div class="col-12 col-sm-12">
+            <h5>
+                <!--<fa-icon size="lg" [icon]="['fas', 'cogs']" aria-hidden="true"></fa-icon>-->
+                {{"OpzioniSalvataggio" | transloco}} *
+            </h5>
+
+            <gias-drop-down-template-s [name]="''" [clearButton]="true"
+                                       textField="descrizione" valueField="codice"
+                                       [filterable]="true" giasFormControlName="Opzioni_Semina" [valuePrimitive]="false"
+                                       (open)="openControlOpzioni_Semina($event, 'Opzioni_Semina')">
+            </gias-drop-down-template-s>
+        </div>
+    </div>
+</div>

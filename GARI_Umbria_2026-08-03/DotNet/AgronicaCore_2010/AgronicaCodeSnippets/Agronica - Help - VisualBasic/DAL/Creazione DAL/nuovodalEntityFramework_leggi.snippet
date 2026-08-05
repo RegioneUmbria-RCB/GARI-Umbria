@@ -1,0 +1,59 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Creazione di una funzione Leggi in DAL via Entity Framework</Title>
+      <Author>Fabrizio Paglierani</Author>
+      <Shortcut>agEFdal</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>Nome</ID>
+          <ToolTip>Nome Oggetto da aggiornare</ToolTip>
+          <Default>NomeDal</Default>
+        </Literal>
+        <Literal>
+          <ID>Context</ID>
+          <ToolTip>Nome Contesto</ToolTip>
+          <Default>Gias_DeveloperServer_Entities</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="vb">
+        <![CDATA[
+    Public Function Leggi_$Nome$(
+                ByVal COD As String,
+                ByRef objParametri As AgronicaCoreDataProvider.AgronicaCoreParametri
+        ) As $Nome$
+
+        Dim $Nome$Elem As $Nome$ = Nothing
+
+        Dim Piva_SuperUser = objParametri.PivaSuperUser
+
+        '----- Descrizione
+        Dim NomeRoutine As String = "$Nome$_R.Leggi()"
+
+        Dim gefutils As New Gias_EF_Utility
+
+        Dim EFConnString As String = gefutils.GetEntityConnectionString(objParametri.StringaConnessione)
+        Using GiasContext As New $Context$(EFConnString)
+
+            $Nome$Elem =
+           (From m In GiasContext.$Nome$
+            Where m.COD = COD
+            Select m).FirstOrDefault()
+
+        End Using
+
+        Return $Nome$Elem
+
+
+    End Function]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

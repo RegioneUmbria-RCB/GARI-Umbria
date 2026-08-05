@@ -1,0 +1,16 @@
+<div [formGroup]="ProdottiForm" *ngIf="prodottiservice.controlli_Giacenze_Lotti.ddl_UdM.visibile">
+    <div class="col-12 col-sm-12">
+        <gias-drop-down-template-s
+        [name]= "'qdc.lblUnitaMisuraResource1.Text' | transloco"
+        [obligatory]="!mostraDose"
+        [clearButton]="true"
+        [listItems]="prodottiservice.Array_UdM"
+        (open)="openControlUdM($event, 'UdM')"
+        textField="simbolo"
+        valueField="codice"
+        [filterable]="true"
+        giasFormControlName="UdM"
+        [valuePrimitive]="false">
+        </gias-drop-down-template-s>
+    </div>
+</div>

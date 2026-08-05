@@ -1,0 +1,44 @@
+button[kendoWindowRestoreAction] > span,
+button[kendoWindowMinimizeAction] > span,
+button[kendoWindowMaximizeAction] > span,
+button[kendowindowcloseaction] > span {
+    display: none !important;
+}
+
+.br-1 {
+    border-right: solid 1px #e5e5e5;
+}
+
+.pr-1 {
+    padding-right: 0.5rem;
+}
+
+.mr-1 {
+    margin-right: 0.5rem;
+}
+
+.py-1 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.k-window .k-window-titlebar {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.k-window-titlebar {
+    background-color: #ffffff;
+}
+
+.k-window-minimized {
+    border-style: none;
+}
+
+kendo-window {
+    z-index: 75 !important;
+}
+
+::ng-deep .no-default-close-button>.k-window-titlebar-action>kendo-icon-wrapper[name="close"] {
+    display: none !important;
+}

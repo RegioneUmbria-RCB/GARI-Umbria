@@ -1,0 +1,48 @@
+<div class="filtri-container">
+  <h6>{{'Filtri' | transloco}}</h6>
+  <form [formGroup]="filters">
+    <div>
+      <gias-multiselect-template-s [name]="'Impresa' | transloco" [id]="'impresa'"
+         textField="rag_soc" [listItems]="impreseDdl" [virtual]="virtual" (open)="openDdl($event)"
+         valueField="piva" [valuePrimitive]="true" giasFormControlName="Impresa">
+      </gias-multiselect-template-s>
+    </div>
+    <div>
+      <gias-multiselect-template-s [name]="'Utente' | transloco" [id]="'utente'"
+         [listItems]="utentiDdl" [virtual]="virtual" (open)="openDdl($event)"
+         textField="descrizione" valueField="codice"
+         giasFormControlName="Utente" [valuePrimitive]="true">
+      </gias-multiselect-template-s>
+    </div>
+    <div>
+      <gias-multiselect-template-s [name]="'GruppoUtente' | transloco" [id]="'gruppo'"
+         [listItems]="gruppiDdl" (open)="openDdl($event)"
+         textField="descrizione" valueField="codice"
+         giasFormControlName="Gruppo" [valuePrimitive]="true">
+      </gias-multiselect-template-s>
+    </div>
+    <button kendoButton class="btn btn-primary btn-primary-fill"
+        (click)="cercaVisibilita()" [disabled]="filters.valid || utentiConVisibilitaTotale.length > 0"
+    >{{'Cerca' | transloco}}</button>
+  </form>
+</div>
+
+<div *ngIf="utentiConVisibilitaTotale.length != 0" class="row messaggio-container">
+  <h6 *ngIf="utentiConVisibilitaTotale.length == 1">{{this.transloco.translate('LUtente')}}
+    <strong>{{getStringaUtenti()}}</strong>{{this.transloco.translate('HaVisibilitaTotale')}}</h6>
+  <h6 *ngIf="utentiConVisibilitaTotale.length > 1">{{this.transloco.translate('GliUtenti')}}
+    <strong>{{getStringaUtenti()}}</strong>{{this.transloco.translate('HannoVisibilitaTotale')}}</h6>
+  <h6 *ngIf="!forceShowGrid">{{this.transloco.translate('ModificaFiltriRicerca')}}</h6>
+</div>
+
+<div  *ngIf="customMsg !== ''" class="row messaggio-container">
+  <h6>{{ customMsg }}</h6>
+  <h6>{{this.transloco.translate('ModificaFiltriRicerca')}}</h6>
+</div>
+
+<div class="row">
+  <!--  <div *ngIf="!loaded">-->
+  <!--    <span class="infotext">{{'ProfWarningOperazioneLenta' | transloco}}</span>-->
+  <!--  </div>-->
+  <gias-kendo-grid *ngIf="utentiConVisibilitaTotale.length == 0 || forceShowGrid" #grid></gias-kendo-grid>
+</div>

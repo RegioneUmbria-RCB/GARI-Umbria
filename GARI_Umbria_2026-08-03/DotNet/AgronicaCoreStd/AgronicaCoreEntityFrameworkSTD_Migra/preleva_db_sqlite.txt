@@ -1,0 +1,10 @@
+﻿# da eseguire nel prompt dei comandi ADB Android
+# copia il file db sqlite nella sdcard
+adb shell
+su
+cp /data/user/0/it.agronica.giasapp/files/GiasDB.db /storage/emulated/0
+exit
+exit
+
+# copia il file dalla sd card sul desktop
+adb pull /storage/emulated/0/GiasDB.db %homepath%\Desktop

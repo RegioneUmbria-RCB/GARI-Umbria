@@ -1,0 +1,63 @@
+.prof-imprese-hours {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+        margin: 0;
+    }
+}
+
+button {
+    border: none;
+}
+
+.faInfo:hover,
+.xi-settings-dark:hover {
+    filter: brightness(200%);
+}
+
+.cmd-row {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.imprese-macchine-dialog {
+    max-width: 90vw;
+    max-height: 80vh;
+}
+
+.cmd-row>button,
+.prof-imprese-hours>button {
+    background-color: transparent;
+}
+
+.save-button {
+    max-width: 60px;
+    margin-left: auto;
+}
+
+.row-button-time-lock {
+    color: #052747;
+}
+
+.custom-lock {
+    height: 32px;
+    width: 32px;
+    color: transparent;
+    position: relative;
+    background-image: url('../../../../assets/custom-icons/icon-general/ic_options_lock.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    &:hover {
+        background-image: url('../../../../assets/custom-icons/icon-general/ic_options_unlock_on.svg');
+    }
+}
+
+::ng-deep #macchine-operatori-grid tr.data-selected {
+    background-color: rgb(208, 234, 252) !important;
+}

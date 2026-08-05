@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds_rapportodiprova" targetNamespace="http://tempuri.org/ds_rapportodiprova.xsd" xmlns:mstns="http://tempuri.org/ds_rapportodiprova.xsd" xmlns="http://tempuri.org/ds_rapportodiprova.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="fruttagel_test_serverConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="fruttagel_test_serverConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.fruttagel_test_serverConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds_rapportodiprova" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ds_rapportodiprova" msprop:Generator_UserDSName="ds_rapportodiprova">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LOGO" msprop:Generator_TableClassName="LOGODataTable" msprop:Generator_TableVarName="tableLOGO" msprop:Generator_TablePropName="LOGO" msprop:Generator_RowDeletingName="LOGORowDeleting" msprop:Generator_RowChangingName="LOGORowChanging" msprop:Generator_RowEvHandlerName="LOGORowChangeEventHandler" msprop:Generator_RowDeletedName="LOGORowDeleted" msprop:Generator_UserTableName="LOGO" msprop:Generator_RowChangedName="LOGORowChanged" msprop:Generator_RowEvArgName="LOGORowChangeEvent" msprop:Generator_RowClassName="LOGORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Logo" msprop:Generator_ColumnVarNameInTable="columnLogo" msprop:Generator_ColumnPropNameInRow="Logo" msprop:Generator_ColumnPropNameInTable="LogoColumn" msprop:Generator_UserColumnName="Logo" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="A" msprop:Generator_TableClassName="ADataTable" msprop:Generator_TableVarName="tableA" msprop:Generator_TablePropName="A" msprop:Generator_RowDeletingName="ARowDeleting" msprop:Generator_RowChangingName="ARowChanging" msprop:Generator_RowEvHandlerName="ARowChangeEventHandler" msprop:Generator_RowDeletedName="ARowDeleted" msprop:Generator_UserTableName="A" msprop:Generator_RowChangedName="ARowChanged" msprop:Generator_RowEvArgName="ARowChangeEvent" msprop:Generator_RowClassName="ARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cod_rapporto_prova" msprop:Generator_ColumnVarNameInTable="columncod_rapporto_prova" msprop:Generator_ColumnPropNameInRow="cod_rapporto_prova" msprop:Generator_ColumnPropNameInTable="cod_rapporto_provaColumn" msprop:Generator_UserColumnName="cod_rapporto_prova" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="data_campione" msprop:Generator_ColumnVarNameInTable="columndata_campione" msprop:Generator_ColumnPropNameInRow="data_campione" msprop:Generator_ColumnPropNameInTable="data_campioneColumn" msprop:Generator_UserColumnName="data_campione" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="data_ricevimento" msprop:Generator_ColumnVarNameInTable="columndata_ricevimento" msprop:Generator_ColumnPropNameInRow="data_ricevimento" msprop:Generator_ColumnPropNameInTable="data_ricevimentoColumn" msprop:Generator_UserColumnName="data_ricevimento" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="data_inizio_analisi" msprop:Generator_ColumnVarNameInTable="columndata_inizio_analisi" msprop:Generator_ColumnPropNameInRow="data_inizio_analisi" msprop:Generator_ColumnPropNameInTable="data_inizio_analisiColumn" msprop:Generator_UserColumnName="data_inizio_analisi" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="data_fine_analisi" msprop:Generator_ColumnVarNameInTable="columndata_fine_analisi" msprop:Generator_ColumnPropNameInRow="data_fine_analisi" msprop:Generator_ColumnPropNameInTable="data_fine_analisiColumn" msprop:Generator_UserColumnName="data_fine_analisi" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Analisi_Tipologia_Des" msprop:Generator_ColumnVarNameInTable="columnAnalisi_Tipologia_Des" msprop:Generator_ColumnPropNameInRow="Analisi_Tipologia_Des" msprop:Generator_ColumnPropNameInTable="Analisi_Tipologia_DesColumn" msprop:Generator_UserColumnName="Analisi_Tipologia_Des" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LDM" msprop:Generator_ColumnVarNameInTable="columnLDM" msprop:Generator_ColumnPropNameInRow="LDM" msprop:Generator_ColumnPropNameInTable="LDMColumn" msprop:Generator_UserColumnName="LDM" type="xs:double" minOccurs="0" />
+              <xs:element name="UDM_Cod" msprop:Generator_ColumnVarNameInTable="columnUDM_Cod" msprop:Generator_ColumnPropNameInRow="UDM_Cod" msprop:Generator_ColumnPropNameInTable="UDM_CodColumn" msprop:Generator_UserColumnName="UDM_Cod" type="xs:int" minOccurs="0" />
+              <xs:element name="Analisi_Parametro_Cod" msprop:Generator_ColumnVarNameInTable="columnAnalisi_Parametro_Cod" msprop:Generator_ColumnPropNameInRow="Analisi_Parametro_Cod" msprop:Generator_ColumnPropNameInTable="Analisi_Parametro_CodColumn" msprop:Generator_UserColumnName="Analisi_Parametro_Cod" type="xs:int" />
+              <xs:element name="Analisi_Dettaglio_Valore_1" msprop:Generator_ColumnVarNameInTable="columnAnalisi_Dettaglio_Valore_1" msprop:Generator_ColumnPropNameInRow="Analisi_Dettaglio_Valore_1" msprop:Generator_ColumnPropNameInTable="Analisi_Dettaglio_Valore_1Column" msprop:Generator_UserColumnName="Analisi_Dettaglio_Valore_1" type="xs:string" minOccurs="0" />
+              <xs:element name="Analisi_Dettaglio_MargineErrore_1" msprop:Generator_ColumnVarNameInTable="columnAnalisi_Dettaglio_MargineErrore_1" msprop:Generator_ColumnPropNameInRow="Analisi_Dettaglio_MargineErrore_1" msprop:Generator_ColumnPropNameInTable="Analisi_Dettaglio_MargineErrore_1Column" msprop:Generator_UserColumnName="Analisi_Dettaglio_MargineErrore_1" type="xs:double" minOccurs="0" />
+              <xs:element name="Principio_Famiglie" msprop:Generator_ColumnVarNameInTable="columnPrincipio_Famiglie" msprop:Generator_ColumnPropNameInRow="Principio_Famiglie" msprop:Generator_ColumnPropNameInTable="Principio_FamiglieColumn" msprop:Generator_UserColumnName="Principio_Famiglie" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RMA" msprop:Generator_ColumnVarNameInTable="columnRMA" msprop:Generator_ColumnPropNameInRow="RMA" msprop:Generator_ColumnPropNameInTable="RMAColumn" msprop:Generator_UserColumnName="RMA" type="xs:string" minOccurs="0" />
+              <xs:element name="Veg_Des" msprop:Generator_ColumnVarNameInTable="columnVeg_Des" msprop:Generator_ColumnPropNameInRow="Veg_Des" msprop:Generator_ColumnPropNameInTable="Veg_DesColumn" msprop:Generator_UserColumnName="Veg_Des" type="xs:string" minOccurs="0" />
+              <xs:element name="Cul_Des" msprop:Generator_ColumnVarNameInTable="columnCul_Des" msprop:Generator_ColumnPropNameInRow="Cul_Des" msprop:Generator_ColumnPropNameInTable="Cul_DesColumn" msprop:Generator_UserColumnName="Cul_Des" type="xs:string" minOccurs="0" />
+              <xs:element name="Fornitore" msprop:Generator_ColumnVarNameInTable="columnFornitore" msprop:Generator_ColumnPropNameInRow="Fornitore" msprop:Generator_ColumnPropNameInTable="FornitoreColumn" msprop:Generator_UserColumnName="Fornitore" type="xs:string" minOccurs="0" />
+              <xs:element name="Analisi_Testata_Des" msprop:Generator_ColumnVarNameInTable="columnAnalisi_Testata_Des" msprop:Generator_ColumnPropNameInRow="Analisi_Testata_Des" msprop:Generator_ColumnPropNameInTable="Analisi_Testata_DesColumn" msprop:Generator_UserColumnName="Analisi_Testata_Des" type="xs:string" minOccurs="0" />
+              <xs:element name="Note_Campione" msprop:Generator_ColumnVarNameInTable="columnNote_Campione" msprop:Generator_ColumnPropNameInRow="Note_Campione" msprop:Generator_ColumnPropNameInTable="Note_CampioneColumn" msprop:Generator_UserColumnName="Note_Campione" type="xs:string" minOccurs="0" />
+              <xs:element name="Note_Impianto" msprop:Generator_ColumnVarNameInTable="columnNote_Impianto" msprop:Generator_ColumnPropNameInRow="Note_Impianto" msprop:Generator_ColumnPropNameInTable="Note_ImpiantoColumn" msprop:Generator_UserColumnName="Note_Impianto" type="xs:string" minOccurs="0" />
+              <xs:element name="UDM_Sim" msprop:Generator_ColumnVarNameInTable="columnUDM_Sim" msprop:Generator_ColumnPropNameInRow="UDM_Sim" msprop:Generator_ColumnPropNameInTable="UDM_SimColumn" msprop:Generator_UserColumnName="UDM_Sim" type="xs:string" minOccurs="0" />
+              <xs:element name="LottoFornitore" msprop:Generator_ColumnVarNameInTable="columnLottoFornitore" msprop:Generator_ColumnPropNameInRow="LottoFornitore" msprop:Generator_ColumnPropNameInTable="LottoFornitoreColumn" msprop:Generator_UserColumnName="LottoFornitore" type="xs:string" minOccurs="0" />
+              <xs:element name="Data_Fornitura" msprop:Generator_ColumnVarNameInTable="columnData_Fornitura" msprop:Generator_ColumnPropNameInRow="Data_Fornitura" msprop:Generator_ColumnPropNameInTable="Data_FornituraColumn" msprop:Generator_UserColumnName="Data_Fornitura" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="b" msprop:Generator_TableClassName="bDataTable" msprop:Generator_TableVarName="tableb" msprop:Generator_TablePropName="b" msprop:Generator_RowDeletingName="bRowDeleting" msprop:Generator_RowChangingName="bRowChanging" msprop:Generator_RowEvHandlerName="bRowChangeEventHandler" msprop:Generator_RowDeletedName="bRowDeleted" msprop:Generator_UserTableName="b" msprop:Generator_RowChangedName="bRowChanged" msprop:Generator_RowEvArgName="bRowChangeEvent" msprop:Generator_RowClassName="bRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PDC_Testata_Des" msprop:Generator_ColumnVarNameInTable="columnPDC_Testata_Des" msprop:Generator_ColumnPropNameInRow="PDC_Testata_Des" msprop:Generator_ColumnPropNameInTable="PDC_Testata_DesColumn" msprop:Generator_UserColumnName="PDC_Testata_Des" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Veg_Des" msprop:Generator_ColumnVarNameInTable="columnVeg_Des" msprop:Generator_ColumnPropNameInRow="Veg_Des" msprop:Generator_ColumnPropNameInTable="Veg_DesColumn" msprop:Generator_UserColumnName="Veg_Des" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

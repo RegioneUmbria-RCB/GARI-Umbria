@@ -1,0 +1,19 @@
+<ng-container *ngIf="lastPositionSaver$ | async"></ng-container>
+
+<gis-window [windowArgs]="windowArgs$ | async" class="pb-3">
+  <gias-kendo-grid *ngIf="firstLoad$ | async" #kendoGrid [customCommandColumnCellTemplate]="customCommandColumn">
+
+    <ng-container>
+    </ng-container>
+
+  </gias-kendo-grid>
+</gis-window>
+
+<ng-template #customCommandColumn let-dataItem="dataItem">
+  <div class="column-commands">
+    <button kendoButton kendoTooltip (click)="viewOnMap(dataItem)" [title]="'gis.VisualizzaSuMappa' | transloco"
+      fillMode="flat">
+      <i aria-hidden="true" class="xi-eye-visible-dark"></i>
+    </button>
+  </div>
+</ng-template>

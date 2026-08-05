@@ -1,0 +1,32 @@
+<div class="analisi-mappe-satellitari-column">
+  <h6 class="k-my-3">{{ 'gis.Opzioni' | transloco }}</h6>
+
+  <div class="k-d-flex k-gap-3">
+    <kendo-label [text]="'Trasparenza' | transloco"></kendo-label><br />
+    <kendo-slider class="kendo-slider-trasparenza" #sliderTrasparenza [showButtons]="false" [min]="0" [max]="1"
+      [smallStep]="0.01" [tickPlacement]="'none'" [value]="opacity$ | async" (valueChange)="changeOpacity($event)">
+    </kendo-slider>
+  </div>
+
+  <div class="k-d-flex">
+    <kendo-switch class="analisi-mappe-satellitari-switch" color="primary" [checked]="mapInfo$ | async"
+      (valueChange)="changeMapInfo($event)"></kendo-switch>
+    <div>{{'gis.InformazioniSuClickInMappa' | transloco}}</div>
+  </div>
+
+  <div *ngIf="masks$ | async as masks">
+    <ng-container *ngIf="masks.length == 0">
+      <h6 class="k-mt-5">{{ 'gis.NessunaMascheraDisponibile' | transloco }}</h6>
+    </ng-container>
+
+    <ng-container *ngIf="masks.length > 0">
+      <h6 class="k-mt-5">{{ 'gis.LayerDisponibiliPerMaschera' | transloco }}</h6>
+
+      <div *ngFor="let mask of masks" class="k-d-flex k-mb-3">
+        <kendo-switch class="analisi-mappe-satellitari-switch" color="primary"
+          [checked]="mask.isAttivaPerUtenteCorrente" (valueChange)="saveMask(mask, $event)"></kendo-switch>
+        <div>{{ mask.maschera_des }}</div>
+      </div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<ng-container [formGroup]="form">
+    <div class="col">
+        <gias-date-time-picker-template (onBlur)="handleBlur('inizio')" [name]="'Validita_Inizio' | transloco"
+            giasFormControlName="inizio" [nullValue]="AGRODATA_INIZIO">
+        </gias-date-time-picker-template>
+    </div>
+    <div class="col">
+        <gias-date-time-picker-template (onBlur)="handleBlur('fine')" [name]="'Validita_Fine' | transloco"
+            giasFormControlName="fine" [nullValue]="AGRODATA_FINE">
+        </gias-date-time-picker-template>
+    </div>
+</ng-container>

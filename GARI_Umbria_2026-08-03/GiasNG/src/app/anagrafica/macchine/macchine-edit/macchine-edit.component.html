@@ -1,0 +1,562 @@
+<div class="container" *ngIf="mostraform">
+  <div class="jumbotron">
+    <div class="container">
+      <form [formGroup]="macchinaForm" (keydown.enter)="onFormEnter($event)">
+        <gias-update-toolbar [TipoOperazioneDB]="objParametriAgenda.TipoOperazioneDB"
+          [disabled]="objParametriAgenda.TipoOperazioneDB === 0 || !macchinaForm.valid" [submit]="false"
+          [salvaNuovo]="true" (clickEvent)="salvaMacchina()" (clickSalvaNuovoEvent)="salvaNuovoMacchina()">
+        </gias-update-toolbar>
+        <div class="editPageContent">
+          <!-- <div class="header-content">
+              <span><strong>{{ 'macchina.Dati_Macchina' | transloco }}</strong></span>
+          </div> -->
+          <div class="row">
+            <h4 class="card-title mb-2 mt-2" style="text-align: center;">{{ 'macchina.Dati_Macchina' | transloco }}</h4>
+          </div>
+          <div class="row form-row">
+            <div class="col-12 col-sm-6 col-md-3">
+              <gias-text-template [name]="'macchina.Mac_Des' | transloco" [clearButton]="true"
+                [placeholder]="'macchina.Mac_Des_Placeholder' | transloco" giasFormControlName="descrizione">
+              </gias-text-template>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3" [formGroup]="macchinaForm.get('centroPK')">
+              <gias-drop-down-template [name]="'macchina.Visibilita_Pubblica' | transloco" [obligatory]="true"
+                [listItems]="getVisibilityList()" [itemDisabledFn]="disableVisibilityItems.bind(this)"
+                textField="descrizione" valueField="codice" giasFormControlName="codice" [valuePrimitive]="true">
+              </gias-drop-down-template>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <gias-drop-down-template [name]="'macchina.Marca' | transloco" [id]="'marca'" [listItems]="Ditte"
+                textField="descrizione" valueField="codice" giasFormControlName="marca" [valuePrimitive]=false required>
+              </gias-drop-down-template>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <gias-text-template [name]="'macchina.Modello' | transloco" [clearButton]="true"
+                [placeholder]="'macchina.Modello_Placeholder' | transloco" giasFormControlName="modello">
+              </gias-text-template>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+              <gias-drop-down-template [name]="'macchina.Contatto' | transloco" [id]="contatto"
+                textField="ragione_Sociale" valueField="primaryKey" giasFormControlName="contatto"
+                [valuePrimitive]="false" (open)="openContattoDdl($event)">
+              </gias-drop-down-template>
+            </div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-lg-4 col-md-4 col-md-6">
+              <gias-drop-down-template [name]="'Tipo' | transloco" [id]="'tipo'" [obligatory]="true" [listItems]="Tipo"
+                textField="descrizione" valueField="codice" (valueChange)="TipoChange($event)"
+                giasFormControlName="tipo" [valuePrimitive]=false>
+              </gias-drop-down-template>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <gias-drop-down-template [name]="'macchina.Dettaglio_1' | transloco" [id]="'dettaglio_1'"
+                [listItems]="Dettaglio1" textField="descrizione" valueField="codice"
+                (valueChange)="Dettaglio1Change($event)" giasFormControlName="dettaglio_1" [valuePrimitive]=false>
+              </gias-drop-down-template>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6">
+              <gias-drop-down-template [name]="'macchina.Dettaglio_2' | transloco" [id]="'dettaglio_2'"
+                [listItems]="Dettaglio2" textField="descrizione" valueField="codice"
+                (valueChange)="Dettaglio2Change($event)" giasFormControlName="dettaglio_2" [valuePrimitive]=false>
+              </gias-drop-down-template>
+            </div>
+          </div>
+          <div class="row form-row">
+            <div class="col-12 col-md-6">
+              <gias-drop-down-template-s [name]="'CodificaAgea' | transloco" [id]="'CodificaAgea'"
+                textField="descrizione" valueField="codice" giasFormControlName="ageaCod" [valuePrimitive]=false
+                (open)="openDdl($event)">
+              </gias-drop-down-template-s>
+            </div>
+          </div>
+          <div class="row form-row">
+            <div class="col-12 col-sm-6">
+              <gias-drop-down-template [name]="'macchina.Finalita' | transloco" [id]="'finalita'"
+                [listItems]="TipoFinalita" textField="descrizione" valueField="codice" giasFormControlName="finalita"
+                [valuePrimitive]=false>
+              </gias-drop-down-template>
+            </div>
+            <div class="col-12 col-sm-6">
+              <gias-text-template [name]="'macchina.Codice_Stringa' | transloco"
+                [placeholder]="'macchina.Codice_Placeholder' | transloco " giasFormControlName="codice_stringa">
+              </gias-text-template>
+            </div>
+          </div>
+
+          <gias-expansionpanel>
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span><em>{{ 'macchina.Ulteriori_Dati_Macchina' | transloco }}</em></span>
+            </div>
+
+            <div class="content">
+              <span class="content-text">
+                <div class="row form-row">
+                  <gias-validita formGroupName="validita"></gias-validita>
+                </div>
+                <div class="row form-row">
+                  <div class="col-6">
+                    <gias-data-template [name]="'macchina.Data_Carico' | transloco" [startValue]="data_inizio"
+                      [endValue]="data_fine" [nullValue]="data_inizio" giasFormControlName="Data_Carico">
+                    </gias-data-template>
+                  </div>
+                  <!-- <div class="col-1">
+                              <div *ngIf="objParametriAgenda.TipoOperazioneDB == 1" class="btn-success">C.P.</div>
+                              </div> -->
+                  <div class="col-6">
+                    <gias-data-template [name]="'macchina.Data_Scarico' | transloco" [startValue]="data_inizio"
+                      [endValue]="data_fine" [nullValue]="data_fine" [obligatory]="false"
+                      giasFormControlName="Data_Scarico">
+                    </gias-data-template>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-6">
+                    <gias-data-template [name]="'Data_Ultima_Revisione' | transloco" [startValue]="data_inizio"
+                      [endValue]="data_fine" [nullValue]="data_inizio" [obligatory]="false"
+                      giasFormControlName="data_Ultima_Revisione">
+                    </gias-data-template>
+                  </div>
+                  <div class="col-6">
+                    <gias-data-template [name]="'Data_Ultima_Manutenzione' | transloco" [startValue]="data_inizio"
+                      [endValue]="data_fine" [nullValue]="data_inizio" [obligatory]="true"
+                      giasFormControlName="data_Ultima_Manutenzione">
+                    </gias-data-template>
+                  </div>
+                </div>
+                <div class="row form-row">
+                  <div class="col-12 col-sm-4 ">
+                    <gias-drop-down-template [name]="'macchina.Titolo_Possesso' | transloco" [id]="'titolo_possesso'"
+                      [listItems]="TipoTitoloPossesso" textField="descrizione" valueField="codice"
+                      giasFormControlName="titolo_Possesso" [valuePrimitive]=false>
+                    </gias-drop-down-template>
+                  </div>
+                  <div class="col-12 col-sm-4">
+                    <gias-text-template [name]="'Proprietario' | transloco" [clearButton]="true"
+                      [placeholder]="'Proprietario_Placeholder' | transloco" giasFormControlName="proprietario">
+                    </gias-text-template>
+                  </div>
+                  <div class="col-12 col-sm-4">
+                    <gias-text-template [name]="'macchina.CUAA_Proprietario' | transloco" [clearButton]="true"
+                      [placeholder]="'macchina.CUAA_Proprietario_Placeholder' | transloco"
+                      giasFormControlName="CUAA_Proprietario">
+                    </gias-text-template>
+                  </div>
+                </div>
+              </span>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                <span class="content-text">
+                  <div class="row">
+                    <h5 class="card-title">
+                      {{ 'macchina.Dati_Tecnici' | transloco }}
+                    </h5>
+                  </div>
+
+                  <div class="row form-row">
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.Targa' | transloco" [clearButton]="true"
+                        [placeholder]="'macchina.Targa_Placeholder' | transloco" giasFormControlName="targa">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-drop-down-template [name]="'macchina.Tipo_Targa' | transloco" [id]="'tipo_targa'"
+                        [listItems]="TipoTarga" textField="descrizione" valueField="codice"
+                        giasFormControlName="tipo_Targa" [valuePrimitive]=false>
+                      </gias-drop-down-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.Telaio' | transloco" [clearButton]="true"
+                        [placeholder]="'macchina.Telaio_Placeholder' | transloco" giasFormControlName="telaio">
+                      </gias-text-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.N_Immatricolazione' | transloco" [clearButton]="false"
+                        [placeholder]="'macchina.N_Immatricolazione_Placeholder' | transloco"
+                        giasFormControlName="n_Immatricolazione">
+                      </gias-text-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-data-template [name]="'macchina.Data_Immatricolazione' | transloco"
+                        [startValue]="data_inizio" [endValue]="data_fine" [nullValue]="data_inizio" [obligatory]="false"
+                        giasFormControlName="data_Immatricolazione">
+                      </gias-data-template>
+                    </div>
+                  </div>
+
+                  <div class="row form-row">
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.N_Immatricolazione_Rimorchio' | transloco"
+                        [clearButton]="false"
+                        [placeholder]="'macchina.N_Immatricolazione_Rimorchio_Placeholder' | transloco"
+                        giasFormControlName="n_Immatricolazione_Rimorchio">
+                      </gias-text-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.N_Autorizzazione_Trasporto' | transloco"
+                        [clearButton]="true"
+                        [placeholder]="'macchina.N_Autorizzazione_Trasporto_Placeholder' | transloco"
+                        giasFormControlName="N_Autorizzazione_Trasporto">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-data-template [name]="'macchina.Data_Rilascio_Autorizzazione' | transloco"
+                        [startValue]="data_inizio" [endValue]="data_fine" [nullValue]="data_inizio" [obligatory]="false"
+                        giasFormControlName="data_Rilascio_Autorizzazione">
+                      </gias-data-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-drop-down-template [name]="'macchina.Alimentazione' | transloco" [id]="'alimentazione'"
+                        [listItems]="TipoAlimentazione" textField="descrizione" valueField="codice"
+                        giasFormControlName="alimentazione" [valuePrimitive]=false>
+                      </gias-drop-down-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template *ngIf="macchinaForm.controls['VIN'].value != '' || edit"
+                        [name]="'macchina.VIN' | transloco" [obligatory]="false" [clearButton]="true"
+                        [placeholder]="'macchina.VIN_Placeholder' | transloco" giasFormControlName="VIN">
+                      </gias-text-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-drop-down-template [name]="'macchina.HubIoT_PlatformDestination' | transloco"
+                        [id]="'HubIoT_PlatformDestination'" [listItems]="HubIoT" textField="descrizione"
+                        valueField="codice" giasFormControlName="HubIoT_PlatformDestination" [valuePrimitive]=false>
+                      </gias-drop-down-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template *ngIf="macchinaForm.controls['BTM_Serial'].value != '' || edit"
+                        [name]="'macchina.BTM_Serial' | transloco" [obligatory]="false" [clearButton]="true"
+                        [placeholder]="'macchina.BTM_Serial_Placeholder' | transloco" giasFormControlName="BTM_Serial">
+                      </gias-text-template>
+                    </div>
+
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template *ngIf="macchinaForm.controls['ExternalAPIKey'].value != '' || edit"
+                        [name]="'macchina.ExternalAPIKey' | transloco" [obligatory]="false" [clearButton]="true"
+                        [placeholder]="'macchina.ExternalAPIKey_Placeholder' | transloco"
+                        giasFormControlName="ExternalAPIKey">
+                      </gias-text-template>
+                    </div>
+                  </div>
+
+                  <h5 class="card-title">
+                    {{ 'macchina.Irrigation' | transloco }}
+                  </h5>
+                  <div class="row form-row">
+                    <div class="col-12 col-sm-4" *ngIf="macchinaForm.controls['codice_impianto'].value != '' || edit">
+                      <gias-drop-down-template [name]="'macchina.IrrigationImplantType' | transloco" [id]="'codice_impianto'"
+                        [listItems]="irrigationImplantTypes" textField="descrizione" valueField="codice"
+                        giasFormControlName="codice_impianto">
+                      </gias-drop-down-template>
+                    </div>
+                    <div class="col-12 col-sm-4" *ngIf="macchinaForm.controls['portata'].value != '' || edit">
+                      <label [for]="capacity">{{'macchina.Capacity' | transloco}}</label>
+                      <kendo-numerictextbox #capacity formControlName="portata" [min]="0" [decimals]="0" [format]="'#'"
+                        [spinners]="false"
+                        [inputAttributes]="{'data-unit': 'l/h', 'data-measurement-type': 'capacity', 'data-precision': '0'}"></kendo-numerictextbox>
+                    </div>
+                    <div class="col-12 col-sm-4" *ngIf="macchinaForm.controls['efficienza'].value != '' || edit">
+                      <label [for]="efficiency">{{'macchina.Efficiency' | transloco}}</label>
+                      <kendo-numerictextbox #efficiency formControlName="efficienza" [min]="0" [max]="100"
+                        [decimals]="2" [format]="'n2'" [spinners]="false"
+                        [inputAttributes]="{'data-unit': '%', 'data-measurement-type': 'percentage', 'data-precision': '0.01'}"></kendo-numerictextbox>
+                    </div>
+                  </div>
+
+                  <h5 class="card-title">
+                    {{ 'macchina.Taratura_Ugello_Titolo' | transloco }}
+                  </h5>
+                  <div class="row form-row">
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.Taratura_Ugello' | transloco" [clearButton]="true"
+                        [placeholder]="'macchina.Taratura_Ugello_Placeholder' | transloco"
+                        giasFormControlName="taratura_Ugello">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-data-template [name]="'macchina.Data_Ultima_Taratura' | transloco"
+                        [startValue]="data_inizio" [endValue]="data_fine" [nullValue]="data_inizio" [obligatory]="false"
+                        giasFormControlName="data_Ultima_Taratura">
+                      </gias-data-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-data-template [name]="'macchina.Scadenza_Taratura' | transloco" [startValue]="data_inizio"
+                        [endValue]="data_fine" [nullValue]="data_fine" [obligatory]="false"
+                        giasFormControlName="scadenza_Taratura">
+                      </gias-data-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'NrCertificato' | transloco" [clearButton]="true"
+                        [placeholder]="'NrCertificatoExt' | transloco" giasFormControlName="numero_certificato">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-12 col-sm-4">
+                      <gias-text-template [name]="'macchina.Stato_Utilizzo' | transloco" [clearButton]="true"
+                        [placeholder]="'macchina.Stato_Utilizzo_Placeholder' | transloco"
+                        giasFormControlName="stato_Utilizzo">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                      <gias-text-template [name]="'Potenza' | transloco" [clearButton]="true"
+                        [placeholder]="'Potenza_Placeholder' | transloco" giasFormControlName="potenza">
+                      </gias-text-template>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                      <gias-drop-down-template [name]="'Unita_Misura' | transloco" [id]="'unita_misura'"
+                        [listItems]="TipoUnitaMisura" textField="descrizione" valueField="codice"
+                        giasFormControlName="unita_Misura" [valuePrimitive]=false>
+                      </gias-drop-down-template>
+                    </div>
+                  </div>
+                  <div class="row form-row">
+                    <div class="col-12">
+                      <gias-text-template [name]="'Note' | transloco" [clearButton]="true"
+                        [placeholder]="'Note_Placeholder' | transloco" giasFormControlName="note">
+                      </gias-text-template>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                <span class="content-text">
+                  <div class="row ">
+                    <h5 class="card-title">
+                      {{ 'macchina.Costi_Titolo' | transloco }}
+                    </h5>
+                    <div class="row form-row">
+                      <gias-switch-template [name]="'Visibile Controllo Gestione'"
+                        giasFormControlName="visibileControlloGestione">
+                      </gias-switch-template>
+                    </div>
+
+                    <div formArrayName="costi">
+                      <div class="row form-row">
+                        <div class="col-12">
+                          <app-macchina-edit-costi [costi]="costi"
+                            class="kendo-grid-no-shadows"></app-macchina-edit-costi>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </span>
+              </div>
+            </div>
+          </gias-expansionpanel>
+          <gias-expansionpanel>
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span><em>{{ 'macchina.Caratteristiche' | transloco }}</em></span>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                <span class="content-text">
+                  <div class="row ">
+                    <div class="card">
+                      <div formArrayName="costi">
+                        <div class="row form-row">
+                          <div class="col-12">
+                            <app-macchine-edit-caratteristiche>
+                            </app-macchine-edit-caratteristiche>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+
+          </gias-expansionpanel>
+          <gias-expansionpanel>
+            <div class="header-content" headerContent>
+              <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+              <span><em>Gerarchia</em></span>
+            </div>
+
+            <div class="row form-row">
+              <div class="content">
+                <span class="content-text">
+                  <div class="row ">
+                    <div class="card">
+                      <div formArrayName="costi">
+                        <div class="row form-row">
+                          <div class="col-12">
+                            <app-macchine-edit-gerarchia>
+                            </app-macchine-edit-gerarchia>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </span>
+              </div>
+            </div>
+
+          </gias-expansionpanel>
+
+          @if (showIrriguaTurniPanel) {
+            <gias-expansionpanel @fadeInOut>
+              <div class="header-content" headerContent>
+                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                <span><em>{{ 'macchina.TurniIrrigua' | transloco }}</em></span>
+              </div>
+
+              <div class="row form-row">
+                <div  class="content">
+                          <span class="content-text">
+                              <div class="row ">
+                                  <div class="card">
+                                      <div formArrayName="costi">
+                                          <div class="row form-row">
+                                              <div class="col-12">
+                                                  <app-macchine-edit-turni-irrigua>
+                                                  </app-macchine-edit-turni-irrigua>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </span>
+                </div>
+             </div>
+
+            </gias-expansionpanel>
+          }
+
+          @if (showInstallationDetailsPanel) {
+            <gias-expansionpanel @fadeInOut>
+              <div class="header-content" headerContent>
+                <kendo-icon name="plus" [style.marginRight.px]="10"></kendo-icon>
+                <span><em>{{ 'macchina.DatiInstallazione' | transloco }}</em></span>
+              </div>
+
+              <div class="row form-row">
+                <div class="content">
+                  <span class="content-text">
+                    <div class="row">
+                      <div class="card">
+                          <div class="row form-row">
+                            <div class="col-6">
+                              <gias-text-template [name]="'Contratto_Nome' | transloco" [clearButton]="false"
+                                [placeholder]="'Contratto_Nome' | transloco"
+                                giasFormControlName="Contratto_Installazione">
+                              </gias-text-template>
+                            </div>
+                            <div class="col-6">
+                              <gias-text-template [name]="'Tipologia' | transloco" [clearButton]="false"
+                                [placeholder]="'Tipologia' | transloco"
+                                giasFormControlName="Tipologia_Installazione">
+                              </gias-text-template>
+                            </div>
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-4">
+                              <gias-drop-down-template-s [name]="'Stato' | transloco" [clearButton]="false"
+                                [placeholder]="'Stato' | transloco"
+                                [listItems]="StatiStazione" textField="descrizione" valueField="codice"
+                                giasFormControlName="Stato_Installazione"
+                                [valuePrimitive]="true">
+                              </gias-drop-down-template-s>
+                            </div>
+                            @if (checkIfItaly()) {
+                              <div class="col-4">
+                                  <gias-drop-down-template-s [name]="'Provincia' | transloco"
+                                    [clearButton]="false"
+                                    [placeholder]="'Provincia' | transloco"
+                                    [listItems]="ProvinceStazione" textField="Provincia_Des" valueField="Istat_Prov"
+                                    giasFormControlName="Provincia_Istat_Installazione"
+                                    [valuePrimitive]="true">
+                                  </gias-drop-down-template-s>
+                              </div>
+                              <div class="col-4">
+                                  <gias-drop-down-template-s [name]="'Comune' | transloco"
+                                    [clearButton]="false"
+                                    [placeholder]="'Comune' | transloco"
+                                    [listItems]="ComuniStazione" textField="descrizione" valueField="codice"
+                                    giasFormControlName="Comune_Istat_Installazione"
+                                    [valuePrimitive]="true">
+                                  </gias-drop-down-template-s>
+                              </div>
+                            }
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-12">
+                              <gias-text-template [name]="'Indirizzo' | transloco" [clearButton]="false"
+                                  [placeholder]="'Indirizzo' | transloco"
+                                  giasFormControlName="Indirizzo_Installazione">
+                              </gias-text-template>
+                            </div>
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-6">
+                              <gias-date-time-picker-template [name]="'macchina.InizioInstallazione' | transloco"
+                                giasFormControlName="Data_Inizio_Installazione">
+                              </gias-date-time-picker-template>
+                            </div>
+                            <div class="col-6">
+                              <gias-date-time-picker-template [name]="'macchina.FineInstallazione' | transloco"
+                                giasFormControlName="Data_Fine_Installazione">
+                              </gias-date-time-picker-template>
+                            </div>
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-6">
+                              <gias-numeric-template [name]="'Latitudine' | transloco"
+                                  [placeholder]="'Latitudine' | transloco"
+                                  giasFormControlName="Latitudine_Installazione"
+                                  format="n7">
+                              </gias-numeric-template>
+                            </div>
+                            <div class="col-6">
+                              <gias-numeric-template [name]="'Longitudine' | transloco"
+                                  [placeholder]="'Longitudine' | transloco"
+                                  giasFormControlName="Longitudine_Installazione"
+                                  format="n7">
+                              </gias-numeric-template>
+                            </div>
+                          </div>
+                          <div class="row form-row">
+                            <div class="col-12">
+                              <gias-text-area-template
+                                #distintaTextArea
+                                class="distinta"
+                                [name]="'macchina.Distinta' | transloco"
+                                [clearButton]="false"
+                                [placeholder]="'macchina.Distinta' | transloco"
+                                giasFormControlName="Distinta_Installazione"
+                                maxlength="1000">
+                              </gias-text-area-template>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </span>
+                </div>
+              </div>
+
+            </gias-expansionpanel>
+
+          }
+
+          <app-macchine-edit-image [immagineGrandeControl]="macchinaForm.controls['immagineGrande']"
+            [immaginePiccolaControl]="macchinaForm.controls['immaginePiccola']" [edit]="edit"></app-macchine-edit-image>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

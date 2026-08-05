@@ -1,0 +1,1 @@
+﻿dte.ActiveDocument.Selection.text = 'Stb.AppendLine("' + dte.ActiveDocument.Selection.text.replace(/\r\n/g, ' \") \r\n  Stb.AppendLine(\" ') + '\"  )\r\n';

@@ -1,0 +1,38 @@
+<gias-kendo-grid #grid (selectionChange)="onSelectionChange($event)">
+    <ng-container headerContent>
+        <form [formGroup]="form">
+            <div class="two-label-switch-container">
+                <span class="switch-label k-label">{{'SoloImprese' | transloco}}</span>
+                <gias-switch-template [hideLabel]="true" [isBlue]="true"
+                                      [hideformfield]="true"
+                                      giasFormControlName="showCenters"
+                ></gias-switch-template>
+                <span class="switch-label k-label">{{'CentriEImprese' | transloco}}</span>
+            </div>
+        </form>
+    </ng-container>
+
+  <ng-container headerContentEnd>
+    <div kendoTooltip [title]="'prof.CopiaImpostazioniDa' | transloco">
+      <button kendoButton type="button" (click)="openCopySettingsDialog()">
+        <fa-icon size="lg" [icon]="faCopy"></fa-icon>
+      </button>
+    </div>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #copySettingsRef>
+  <div class="settings-window">
+    <form [formGroup]="form">
+      <gias-drop-down-template-s id="impresa" [obligatory]="true"
+                                 [name]="'prof.SelezionaImpresaCopiaImpostazioni' | transloco"
+                                 textField="rag_soc" valueField="piva"
+                                 [listItems]="impreseDdl"
+                                 [valuePrimitive]="false"
+                                 giasFormControlName="impresa"
+      ></gias-drop-down-template-s>
+    </form>
+  </div>
+</ng-template>
+
+

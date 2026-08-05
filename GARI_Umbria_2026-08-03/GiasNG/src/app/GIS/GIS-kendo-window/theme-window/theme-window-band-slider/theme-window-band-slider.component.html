@@ -1,0 +1,25 @@
+<div class="fullwidth">
+  <div class="range" *ngIf="scale?.length > 0 && theme != null">
+    <div class="range-input"
+      [ngStyle]="{'background':'linear-gradient(90deg, ' + theme.colore1 + ' 0%, ' + theme.colore2 + ' 100%)'}">
+
+      <div class="range-input1">
+        <input class="bubble-input" type="range" [(ngModel)]="input1" (change)="onChange()" [min]="scale[0].valoreMax"
+          [max]="scale[scale.length - 1].valoreMax" step="0.1">
+        <output class="bubble"></output>
+      </div>
+
+      <div class="range-input2">
+        <input class="bubble-input" type="range" [(ngModel)]="input2" (change)="onChange()" [min]="scale[0].valoreMax"
+          [max]="scale[scale.length - 1].valoreMax" step="0.1">
+        <output class="bubble"></output>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-numbers" *ngIf="theme.varianza > 0 && theme.valoreMax > 0">
+    <div *ngFor="let data of scale">
+      {{data.valoreMax | number: '1.0-2'}}
+    </div>
+  </div>
+</div>

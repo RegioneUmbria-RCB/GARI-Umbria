@@ -1,0 +1,18 @@
+<kendo-dialog (close)="close()" [minWidth]="500" [minHeight]="600">
+  <kendo-dialog-titlebar>
+    <div class="dialog-content">
+      <p>Dati della fornitura</p>
+
+      <div class="buttons">
+        <button kendoButton [primary]="true" (click)="copy()">
+          <fa-icon [icon]="faCopy"></fa-icon>
+        </button>
+      </div>
+    </div>
+  </kendo-dialog-titlebar>
+
+  <pre class="data" #jsonContent *ngIf="data != null && !isLoading" [innerHtml]="data | json"></pre>
+  <div #notificationContainer class="notification-container"></div>
+
+  <kendo-loader *ngIf="isLoading" type="pulsing" themeColor="primary" size="large"></kendo-loader>
+</kendo-dialog>

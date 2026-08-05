@@ -1,0 +1,30 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>SurroundsWith</SnippetType>
+      </SnippetTypes>
+      <Title>Surround con classe input-group-prepend/append</Title>
+      <Author>Vanni Costa</Author>
+      <Shortcut>b4preapp</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>   
+		  <Literal>
+          <ID>PreApp</ID>
+          <ToolTip>Prepend or append</ToolTip>
+          <Default>prepend</Default>
+        </Literal>
+      </Declarations>
+      
+      <!-- RICORDARSI DI CAMBIARE IL LINGUAGGIO: html, jscript oppure vb -->
+      <Code Language="html">
+        <![CDATA[
+        <div class="input-group-$PreApp$">
+		    $selected$
+		</div>
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

@@ -1,0 +1,210 @@
+﻿<gis-window #window [windowArgs]="windowArgs" class="pb-3">
+  <div
+    *ngIf="visualizzaBottone.pulisciSelezione && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'PulisciSelezione' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.erase)"
+    >
+      <i aria-hidden="true" class="xi-draw-deselect-map-area"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.disegnaPoligono && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.Disegna' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.polygon)"
+    >
+      <i aria-hidden="true" class="xi-draw-edit-poly"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.strumentiDisegnoPunti && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.StrumentoDisegnoPunti' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.marker)"
+    >
+      <i aria-hidden="true" class="xi-draw-gps-plants"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.scomponiModificaPunti && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.StrumentoScomponiModificaPunti' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.scomponiModificaPunti)"
+    >
+      <i aria-hidden="true" class="k-i-xi-tools-break-edit-points"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.strumentoDisegnoAvanzato && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.StrumentoDisegnoAvanzato' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.strumentoDisegnoAvanzato)"
+    >
+      <i aria-hidden="true" class="xi-draw-advanced-tool"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.strumentoUnisci && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.StrumentoUnisciPoligoni' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.strumentoUnisci)"
+    >
+      <i aria-hidden="true" class="xi-polygon-merge"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.modificaImpianto && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'Modifica' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.save)"
+    >
+      <i aria-hidden="true" class="xi-draw-edit-plants"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.nuovoImpiantoAppezzamentoSelezionato && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.NuovoImpiantoAppezzamentoSelezionato' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.new)"
+    >
+      <i aria-hidden="true" class="xi-draw-add"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.copiaFeature && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'Copia' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.copy)"
+    >
+      <i aria-hidden="true" class="xi-draw-copy-object"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.incollaFeature && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'Incolla' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.paste)"
+    >
+      <i aria-hidden="true" class="xi-draw-paste-object"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.eliminaPoligono && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.EliminaPoligono' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.delete)"
+    >
+      <i aria-hidden="true" class="xi-draw-delete-poly"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.datiAgricolturaPrecisone && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.DatiAgricolturaPrecisoneCarica' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.datiAgricolturaPrecisone)"
+    >
+      <i aria-hidden="true" class="xi-draw-upload-datas"></i>
+    </button>
+  </div>
+
+  <div
+    *ngIf="visualizzaBottone.lineeGuidaAB && modality == GISModality.Full"
+    class="row"
+    gisTooltip
+    title="{{'gis.StrumentoLineeGuidaABAggiungi' | transloco}}"
+  >
+    <button
+      kendoButton
+      fillMode="outline"
+      [primary]="false"
+      (click)="setOperation(GISDrawingOperations.lineeGuidaAB)"
+    >
+      <i aria-hidden="true" class="k-i-xi-tools-insert-guideline"></i>
+    </button>
+  </div>
+
+</gis-window>

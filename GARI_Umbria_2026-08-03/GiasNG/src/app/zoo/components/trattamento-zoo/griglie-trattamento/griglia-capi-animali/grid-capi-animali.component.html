@@ -1,0 +1,45 @@
+<div class="header-summary">
+    <h5>{{ 'zoo.CapiAnimaliSelezionati' | transloco }}: {{ selectedAnimalsCount }}</h5>
+</div>
+  
+
+<gias-kendo-grid #GridCapiAnimali
+                [gridId]="'GridCapiAnimaliId'"
+                class="kendo-grid-no-shadows"
+                (cellClick)="onCellClick($event)"
+                style="background-color: #ffffff">
+  <ng-template #noRecordsTemplateRef>
+    <div>
+      <p>{{ 'zoo.CapiAnimaliNonTrovati' | transloco }}</p>
+    </div>
+  </ng-template>
+</gias-kendo-grid>
+
+<br/>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-2 col-md-auto">
+            <label for="totaleFarmacoDaSomministrare">{{ 'Totale' | transloco }}</label>
+        </div>
+        <div class="col-5 col-md-auto">
+            <kendo-numerictextbox
+                #totaleFarmacoDaSomministrare
+                [(ngModel)]="gridService.totaleFarmacoDaSomministrare"
+                [min]="0"
+                [format]="gridService.numericFormat"
+                [decimals]="0"
+                [spinners]="false"
+                [disabled]="isTotQtaDisabled"
+                (keydown.enter)="onKeyDown($event)"
+                (blur)="onBlur()"
+                (focus)="qtaApplied = false"
+                suffix="ml"
+            >
+            </kendo-numerictextbox>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay" *ngIf="gridService.isTotEditable"></div>

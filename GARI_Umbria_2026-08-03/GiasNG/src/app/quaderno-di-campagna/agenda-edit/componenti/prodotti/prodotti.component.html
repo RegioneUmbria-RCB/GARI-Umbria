@@ -1,0 +1,103 @@
+<div [formGroup]="qdcservice.QdCForm.get('Trattamento')" *ngIf="mostraProdotti();">
+    <div class="row">
+        <div class="col-12 col-sm-12">
+
+                <div class="row mt-2" [id]="'Sezione_Prodotto_' + i"
+                     *ngFor="let Sezione_Prodotto of qdcservice.Sezioni_ProdottoFormArray.controls; index as i">
+                    <div *ngIf="qdcservice.Mostra_Sezioni_Prodotto" [formGroup]="Sezione_Prodotto">
+
+                        <gias-panelbar #Sezione_Prodotti_PanelBar [headerTemplate]="headerTemplate" [contentTemplate]="contentTemplate" [expand]="Espandi_Sezione_Prodotti()" [willStoreCookies]="false" [keepItemContent]="true"
+                        [disabled]="Disabilita_Sezione_Prodotti()">
+
+                            <ng-template #headerTemplate>
+                                {{ Componi_Descrizione_Sezione(Sezione_Prodotto.getRawValue()) }}
+                            </ng-template>
+
+
+                            <ng-template #contentTemplate>
+                                <div class="content">
+
+                                <span class="content-text"
+                                      *ngIf="Sezione_Prodotto.get('Categoria_Magazzino').value === Formulati ||
+                                                Sezione_Prodotto.get('Categoria_Magazzino').value === Insetti">
+
+                                     <ng-container [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateFormulatiGridDosi : TemplateFormulatiSenzaGridDosi"
+                                                   [ngTemplateOutletContext]="{Sezione_Prodotto:Sezione_Prodotto}">
+                                     </ng-container>
+
+                                </span>
+
+                                    <span class="content-text"
+                                          *ngIf="Sezione_Prodotto.get('Categoria_Magazzino').value === Fertilizzanti">
+
+                                    <ng-container [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateFertilizzantiGridDosi : TemplateFertilizzantiSenzaGridDosi"
+                                                  [ngTemplateOutletContext]="{Sezione_Prodotto:Sezione_Prodotto}">
+                                     </ng-container>
+
+                                </span>
+
+                                    <span class="content-text"
+                                          *ngIf="Sezione_Prodotto.get('Categoria_Magazzino').value === Sementi">
+
+
+                                    <ng-container [ngTemplateOutlet]="qdcservice.Abilitato_Inserimento_Prodotti_da_Grid_Dosi() ?TemplateSementiGridDosi : TemplateSementiSenzaGridDosi"
+                                                  [ngTemplateOutletContext]="{Sezione_Prodotto:Sezione_Prodotto}">
+                                     </ng-container>
+
+                                </span>
+
+                                    <span class="content-text"
+                                          *ngIf="Sezione_Prodotto.get('Categoria_Magazzino').value === Trasformati_Vegetali">
+                                    <app-raccolta *ngIf="+ Sezione_Prodotto.get('Operazione').value.primaryKey.codice === Raccolta">
+                                    </app-raccolta>
+                                </span>
+
+                                </div>
+
+                            </ng-template>
+
+                        </gias-panelbar>
+                    </div>
+                </div>
+    </div>
+</div>
+
+
+<ng-template #TemplateFormulatiGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+    <div [formGroup]="Sezione_Prodotto">
+        <app-formulati></app-formulati>
+    </div>
+</ng-template>
+
+<ng-template #TemplateFormulatiSenzaGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+        <div [formGroup]="Sezione_Prodotto" style="width: 100%">
+            <app-formulati></app-formulati>
+        </div>
+</ng-template>
+
+
+<ng-template #TemplateFertilizzantiGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+    <div [formGroup]="Sezione_Prodotto">
+        <app-fertilizzanti></app-fertilizzanti>
+    </div>
+</ng-template>
+<ng-template #TemplateFertilizzantiSenzaGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+    <div [formGroup]="Sezione_Prodotto" style="width: 100%">
+        <app-fertilizzanti></app-fertilizzanti>
+    </div>
+</ng-template>
+
+
+<ng-template #TemplateSementiGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+    <div [formGroup]="Sezione_Prodotto">
+        <app-sementi></app-sementi>
+    </div>
+</ng-template>
+
+<ng-template #TemplateSementiSenzaGridDosi let-Sezione_Prodotto='Sezione_Prodotto'>
+    <div [formGroup]="Sezione_Prodotto" style="width: 100%">
+        <app-sementi></app-sementi>
+    </div>
+</ng-template>
+
+

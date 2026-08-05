@@ -1,0 +1,80 @@
+<div class="custom-toolbar">
+  <button kendoButton look="flat"
+          (click) ="onOpenFilters()">
+    <fa-icon size="lg" [icon]="faFilters"></fa-icon>
+  </button>
+</div>
+
+<kendo-drawer-container>
+  <kendo-drawer #drawer mode="overlay"
+                [position]="'end'"
+                [width]="960"
+                (collapse)="onCancel()">
+
+    <ng-template kendoDrawerTemplate>
+      <div [formGroup]="scadenzaReinnescoTrappoleService.FiltriForm">
+
+        <div class="mtb-2">
+          <div class="btn right" style="margin-left: 900px;" (click)="onCancel()">
+            <fa-icon [icon]="faClose"></fa-icon>
+          </div>
+
+          <div class="form-row margin-filtri">
+            <gias-drop-down-template-s [name]="'Centro_Aziendale' | transloco"
+                                       giasFormControlName="CentroAziendale"
+                                       [listItems]="CentriList"
+                                       [textField]="'sa_nome'"
+                                       [valueField]="'sa_cod'"
+                                       [obligatory]="true"
+                                       [clearButton]="true"
+                                       [filterable]="true"
+                                       [valuePrimitive]="false"
+                                       (open)="openDdlFiltri($event,'CentroAziendale')">
+
+            </gias-drop-down-template-s>
+          </div>
+
+          <div class="form-row margin-filtri">
+            <gias-drop-down-template-s [name]="'Specie' | transloco"
+                                       giasFormControlName="Specie"
+                                       [textField]="'veg_des'"
+                                       [valueField]="'veg_cod'"
+                                       [listItems]="SpecieList"
+                                       [obligatory]="true"
+                                       [clearButton]="true"
+                                       [filterable]="true"
+                                       [valuePrimitive]="false"
+                                       (open)="openDdlFiltri($event,'Specie')">
+
+            </gias-drop-down-template-s>
+          </div>
+
+          <div class="form-row margin-filtri">
+            <gias-data-template
+              [name]="'Da' | transloco"
+              giasFormControlName="Da"
+              [nullValue]="MinInizio" >
+            </gias-data-template>
+          </div>
+
+          <div class="form-row margin-filtri">
+            <gias-data-template
+              [name]="'A' | transloco"
+              giasFormControlName="A"
+              [nullValue]="MaxFine">
+            </gias-data-template>
+          </div>
+
+          <div class="form-row btn_ricerca">
+            <div class="btn btn-primary btn-primary-fill btn_ricerca" (click)="ApplicaFiltri()">
+              <fa-icon [icon]="faSearch" style="margin: 5px; margin-right: 15px;" size="lg"></fa-icon>
+              <span>{{ 'Cerca' | transloco }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+
+  </kendo-drawer>
+</kendo-drawer-container>

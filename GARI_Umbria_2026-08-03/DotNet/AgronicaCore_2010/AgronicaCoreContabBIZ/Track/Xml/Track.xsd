@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.agronica.it/track/">
+  <xs:element name="track">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="lotsToTrack">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="lot">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="inputData">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lotto" type="xs:unsignedLong" />
+                          <xs:element name="tipolotto" type="xs:unsignedByte" />
+                          <xs:element name="ricarica" type="xs:unsignedByte" />
+                          <xs:element name="FF_TrackedData_Cod" type="xs:unsignedByte" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="outputData">
+                      <xs:complexType mixed="true">
+                        <xs:sequence minOccurs="0">
+                          <xs:element name="trasformazioni">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="trasformazione_dati">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element name="traformazione">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="PIVA" type="xs:string" />
+                                            <xs:element name="Sa_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Id_Trasformazione" type="xs:unsignedByte" />
+                                            <xs:element name="Trasformazione_Des" type="xs:string" />
+                                            <xs:element name="Stato" type="xs:unsignedByte" />
+                                            <xs:element name="Linea_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Preparazione_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Id_Agenda" type="xs:unsignedByte" />
+                                            <xs:element name="Cau_Mov" type="xs:string" />
+                                            <xs:element name="Step_Giorni" type="xs:unsignedByte" />
+                                            <xs:element name="Ora1" type="xs:string" />
+                                            <xs:element name="Ora2" type="xs:string" />
+                                            <xs:element name="Ora3" type="xs:string" />
+                                            <xs:element name="Ora4" type="xs:string" />
+                                            <xs:element name="Colore" type="xs:unsignedByte" />
+                                            <xs:element name="Monitor" type="xs:string" />
+                                            <xs:element name="Note" type="xs:string" />
+                                            <xs:element name="Tipo_Stima" type="xs:unsignedByte" />
+                                            <xs:element name="Elem_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Mat_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Udm_Cod" type="xs:unsignedByte" />
+                                            <xs:element name="Stima" type="xs:string" />
+                                            <xs:element name="ChkPassaggio" type="xs:unsignedByte" />
+                                            <xs:element name="Passaggio_Data" type="xs:string" />
+                                            <xs:element name="Passaggio_Id_Agenda" type="xs:unsignedByte" />
+                                            <xs:element name="Passaggio_Des" type="xs:string" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                      <xs:element name="trasformazione_riferimenti" />
+                                      <xs:element name="datiGias">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="PIVA"  />
+                                            <xs:element name="Sa_Cod"  />
+                                            <xs:element name="id_agenda" />
+                                            <xs:element name="lav_cod" />
+                                            <xs:element name="Des_lib" />
+                                            <xs:element name="Data_Movimento" />
+                                            <xs:element name="id_mov" />
+                                            <xs:element name="id_mov_det" />
+                                            <xs:element name="Elem_Cod" />
+                                            <xs:element name="Pro_Cod" />
+                                            <xs:element name="mat_cod" />
+                                            <xs:element name="udm_cod" />
+                                            <xs:element name="cal_Cod" />
+                                            <xs:element name="Lotto" />
+                                            <xs:element name="qta" />
+                                            <xs:element name="percentuale_contributo" />
+                                            <xs:element name="step" />
+                                            <xs:element name="progressivo" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

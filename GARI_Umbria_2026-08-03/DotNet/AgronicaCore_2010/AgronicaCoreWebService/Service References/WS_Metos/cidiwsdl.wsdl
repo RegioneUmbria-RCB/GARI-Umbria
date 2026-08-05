@@ -1,0 +1,2740 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://metos.at" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://metos.at" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://metos.at">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/" />
+      <xsd:complexType name="StructReturnDataInfo">
+        <xsd:all>
+          <xsd:element name="s_name" type="xsd:string" />
+          <xsd:element name="s_type" type="xsd:string" />
+          <xsd:element name="s_flags" type="xsd:int" />
+          <xsd:element name="s_value" type="xsd:string" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfReturnDataInfo">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="tns:StructReturnDataInfo[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="StructRecordSetInfo">
+        <xsd:sequence>
+          <xsd:element name="s_field_count" type="xsd:int" />
+          <xsd:element name="s_row_count" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfStrings">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="SOAP-ENC:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="SOAP-ENC:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="DataSetStruct">
+        <xsd:sequence>
+          <xsd:element name="ReturnDataInfo" type="tns:ArrayOfReturnDataInfo" />
+          <xsd:element name="ReturnRecordSetInfo" type="tns:StructRecordSetInfo" />
+          <xsd:element name="ReturnDataSet" type="tns:ArrayOfStrings" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationsensors_GetReturnParams" />
+      <xsd:complexType name="struct_cidistationsensors_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist2_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist2_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist2_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist2_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist2_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist2_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist4_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist4_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist4_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist4_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist4_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist4_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_GetInfoReturnParams" />
+      <xsd:complexType name="struct_cidiuser_GetInfoData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_LoginReturnParams">
+        <xsd:sequence>
+          <xsd:element name="user_name" type="xsd:string" />
+          <xsd:element name="cookie" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_LoginData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidiuser_LoginReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_LogoutReturnParams" />
+      <xsd:complexType name="struct_cidiuser_LogoutData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_GetUserInfoReturnParams" />
+      <xsd:complexType name="struct_cidiuser_GetUserInfoData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_CheckTimeReturnParams">
+        <xsd:sequence>
+          <xsd:element name="time" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidiuser_CheckTimeData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidiuser_CheckTimeReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_GetReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="page_number" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_GetData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarylist_GetReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_GetPagesReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_GetPagesData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarylist_GetPagesReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_AddReturnParams">
+        <xsd:sequence>
+          <xsd:element name="diary_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_AddData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarylist_AddReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_EditReturnParams">
+        <xsd:sequence>
+          <xsd:element name="diary_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_EditData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarylist_EditReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarylist_RemoveReturnParams" />
+      <xsd:complexType name="struct_cididiarylist_RemoveData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_GetReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="page_number" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_GetData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryevents_GetReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_GetPagesReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_GetPagesData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryevents_GetPagesReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_AddReturnParams">
+        <xsd:sequence>
+          <xsd:element name="event_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_AddData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryevents_AddReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_EditReturnParams">
+        <xsd:sequence>
+          <xsd:element name="event_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_EditData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryevents_EditReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryevents_RemoveReturnParams" />
+      <xsd:complexType name="struct_cididiaryevents_RemoveData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_GetReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="page_number" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_GetData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryspraylist_GetReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_GetPagesReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_GetPagesData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryspraylist_GetPagesReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_AddReturnParams">
+        <xsd:sequence>
+          <xsd:element name="diary_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_AddData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryspraylist_AddReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_EditReturnParams">
+        <xsd:sequence>
+          <xsd:element name="diary_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_EditData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryspraylist_EditReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryspraylist_RemoveReturnParams" />
+      <xsd:complexType name="struct_cididiaryspraylist_RemoveData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_GetReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="page_number" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_GetData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarysprayevents_GetReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_GetPagesReturnParams">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="num_pages" type="xsd:int" />
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_GetPagesData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarysprayevents_GetPagesReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_AddReturnParams">
+        <xsd:sequence>
+          <xsd:element name="event_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_AddData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarysprayevents_AddReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_EditReturnParams">
+        <xsd:sequence>
+          <xsd:element name="event_id" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_EditData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiarysprayevents_EditReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_RemoveReturnParams" />
+      <xsd:complexType name="struct_cididiarysprayevents_RemoveData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_AddPesticideReturnParams" />
+      <xsd:complexType name="struct_cididiarysprayevents_AddPesticideData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_AddDiseasReturnParams" />
+      <xsd:complexType name="struct_cididiarysprayevents_AddDiseasData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_PesticidesReturnParams" />
+      <xsd:complexType name="struct_cididiarysprayevents_PesticidesData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiarysprayevents_DiseasesReturnParams" />
+      <xsd:complexType name="struct_cididiarysprayevents_DiseasesData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryfertilizers_GetReturnParams">
+        <xsd:sequence>
+          <xsd:element name="sort_by" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryfertilizers_GetData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cididiaryfertilizers_GetReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryfertilizers_AddReturnParams" />
+      <xsd:complexType name="struct_cididiaryfertilizers_AddData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryfertilizers_EditReturnParams" />
+      <xsd:complexType name="struct_cididiaryfertilizers_EditData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cididiaryfertilizers_RemoveReturnParams" />
+      <xsd:complexType name="struct_cididiaryfertilizers_RemoveData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidifields_GetReturnParams" />
+      <xsd:complexType name="struct_cidifields_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidicrops_GetReturnParams" />
+      <xsd:complexType name="struct_cidicrops_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationprofiles_GetReturnParams" />
+      <xsd:complexType name="struct_cidistationprofiles_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidifavorites_GetReturnParams" />
+      <xsd:complexType name="struct_cidifavorites_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetLastReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetLastData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetLastReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetPrevReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetPrevData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetPrevReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetFromDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetFromDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetFromDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetMinMaxDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata_GetMinMaxDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata_GetMinMaxDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationgraph_CreateGraphReturnParams" />
+      <xsd:complexType name="struct_cidistationgraph_CreateGraphData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationimages_UploadImageReturnParams" />
+      <xsd:complexType name="struct_cidistationimages_UploadImageData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationimages_GetImagesReturnParams" />
+      <xsd:complexType name="struct_cidistationimages_GetImagesData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist3_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="station_code" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist3_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetStationNumberReturnParams" />
+      <xsd:complexType name="struct_cidistationlist3_GetStationNumberData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetPageNumberReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetPageNumberData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist3_GetPageNumberReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetPageReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="page_num" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_GetPageData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationlist3_GetPageReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_AttachReturnParams" />
+      <xsd:complexType name="struct_cidistationlist3_AttachData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationlist3_DetachReturnParams" />
+      <xsd:complexType name="struct_cidistationlist3_DetachData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetLastReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetLastData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetLastReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetPrevReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetPrevData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetPrevReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetFromDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetFromDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetFromDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetMinMaxDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata2_GetMinMaxDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata2_GetMinMaxDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationconfig2_GetReturnParams" />
+      <xsd:complexType name="struct_cidistationconfig2_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationsensors3_GetReturnParams" />
+      <xsd:complexType name="struct_cidistationsensors3_GetData">
+        <xsd:all>
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetFirstReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetFirstData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetFirstReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetLastReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetLastData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetLastReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetNextReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetNextData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetNextReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetPrevReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetPrevData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetPrevReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetFromDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="row_count" type="xsd:int" />
+          <xsd:element name="dt_from" type="xsd:dateTime" />
+          <xsd:element name="dt_to" type="xsd:dateTime" />
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+          <xsd:element name="_eof" type="xsd:int" />
+          <xsd:element name="_bof" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetFromDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetFromDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetMinMaxDateReturnParams">
+        <xsd:sequence>
+          <xsd:element name="min_date" type="xsd:dateTime" />
+          <xsd:element name="max_date" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="struct_cidistationdata3_GetMinMaxDateData">
+        <xsd:all>
+          <xsd:element name="ReturnParams" type="tns:struct_cidistationdata3_GetMinMaxDateReturnParams" />
+          <xsd:element name="DataSetMain" type="tns:DataSetStruct" />
+        </xsd:all>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cidistationsensors_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationsensors_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationsensors_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist2_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist2_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist2_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist2_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_code" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist2_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist2_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_code" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist4_GetFirstRequest">
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist4_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist4_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist4_GetNextRequest">
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_code" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist4_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist4_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_GetInfoRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_GetInfoResponse">
+    <wsdl:part name="return" type="tns:struct_cidiuser_GetInfoData" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_LoginRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="api_key" type="xsd:string" />
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_LoginResponse">
+    <wsdl:part name="return" type="tns:struct_cidiuser_LoginData" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_LogoutRequest">
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_LogoutResponse">
+    <wsdl:part name="return" type="tns:struct_cidiuser_LogoutData" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_GetUserInfoRequest">
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_GetUserInfoResponse">
+    <wsdl:part name="return" type="tns:struct_cidiuser_GetUserInfoData" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_CheckTimeRequest">
+    <wsdl:part name="cookie" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidiuser_CheckTimeResponse">
+    <wsdl:part name="return" type="tns:struct_cidiuser_CheckTimeData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="page_number" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarylist_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_GetPagesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_GetPagesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarylist_GetPagesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_AddRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_name" type="xsd:string" />
+    <wsdl:part name="diary_desc" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_AddResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarylist_AddData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_EditRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="diary_name" type="xsd:string" />
+    <wsdl:part name="diary_desc" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_EditResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarylist_EditData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_RemoveRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarylist_RemoveResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarylist_RemoveData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="page_number" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="dt_to" type="xsd:dateTime" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryevents_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_GetPagesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_GetPagesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryevents_GetPagesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_AddRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_title" type="xsd:string" />
+    <wsdl:part name="event_text" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="date_start" type="xsd:dateTime" />
+    <wsdl:part name="date_end" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_AddResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryevents_AddData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_EditRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="event_title" type="xsd:string" />
+    <wsdl:part name="event_text" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="date_start" type="xsd:dateTime" />
+    <wsdl:part name="date_end" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_EditResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryevents_EditData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_RemoveRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryevents_RemoveResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryevents_RemoveData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="page_number" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryspraylist_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_GetPagesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_GetPagesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryspraylist_GetPagesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_AddRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_name" type="xsd:string" />
+    <wsdl:part name="diary_desc" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_AddResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryspraylist_AddData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_EditRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="diary_name" type="xsd:string" />
+    <wsdl:part name="diary_desc" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_EditResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryspraylist_EditData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_RemoveRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryspraylist_RemoveResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryspraylist_RemoveData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="page_number" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="dt_to" type="xsd:dateTime" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_GetPagesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_GetPagesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_GetPagesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_title" type="xsd:string" />
+    <wsdl:part name="event_text" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="date_start" type="xsd:dateTime" />
+    <wsdl:part name="date_end" type="xsd:dateTime" />
+    <wsdl:part name="field_id" type="xsd:int" />
+    <wsdl:part name="crop_id" type="xsd:int" />
+    <wsdl:part name="water_value" type="xsd:string" />
+    <wsdl:part name="water_unit" type="xsd:string" />
+    <wsdl:part name="days_medical" type="xsd:int" />
+    <wsdl:part name="days_preventiv" type="xsd:int" />
+    <wsdl:part name="fertilizer_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_AddData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_EditRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="event_title" type="xsd:string" />
+    <wsdl:part name="event_text" type="xsd:string" />
+    <wsdl:part name="diary_id" type="xsd:int" />
+    <wsdl:part name="date_start" type="xsd:dateTime" />
+    <wsdl:part name="date_end" type="xsd:dateTime" />
+    <wsdl:part name="field_id" type="xsd:int" />
+    <wsdl:part name="crop_id" type="xsd:int" />
+    <wsdl:part name="water_value" type="xsd:string" />
+    <wsdl:part name="water_unit" type="xsd:string" />
+    <wsdl:part name="days_medical" type="xsd:int" />
+    <wsdl:part name="days_preventiv" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_EditResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_EditData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_RemoveRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_RemoveResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_RemoveData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddPesticideRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="fertilizer_value" type="xsd:float" />
+    <wsdl:part name="fertilizer_unit" type="xsd:string" />
+    <wsdl:part name="fertilizer_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddPesticideResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_AddPesticideData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddDiseasRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="profile_id" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_AddDiseasResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_AddDiseasData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_PesticidesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_PesticidesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_PesticidesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_DiseasesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="event_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiarysprayevents_DiseasesResponse">
+    <wsdl:part name="return" type="tns:struct_cididiarysprayevents_DiseasesData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="sort_by" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryfertilizers_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_AddRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="pesticide_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_AddResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryfertilizers_AddData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_EditRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="pesticide_id" type="xsd:int" />
+    <wsdl:part name="pesticide_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_EditResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryfertilizers_EditData" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_RemoveRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="pesticide_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cididiaryfertilizers_RemoveResponse">
+    <wsdl:part name="return" type="tns:struct_cididiaryfertilizers_RemoveData" />
+  </wsdl:message>
+  <wsdl:message name="cidifields_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidifields_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidifields_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidicrops_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="field_id" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidicrops_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidicrops_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationprofiles_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationprofiles_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationprofiles_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidifavorites_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidifavorites_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidifavorites_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetLastRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetLastResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetLastData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_to" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetPrevRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetPrevResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetPrevData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetFromDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetFromDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetFromDateData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetMinMaxDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata_GetMinMaxDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata_GetMinMaxDateData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationgraph_CreateGraphRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="cookie_login" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="profile_class" type="xsd:string" />
+    <wsdl:part name="start_date" type="xsd:string" />
+    <wsdl:part name="end_date" type="xsd:string" />
+    <wsdl:part name="direction" type="xsd:string" />
+    <wsdl:part name="extended_data" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationgraph_CreateGraphResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationgraph_CreateGraphData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationimages_UploadImageRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="cookie_login" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="latitude" type="xsd:string" />
+    <wsdl:part name="longitude" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationimages_UploadImageResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationimages_UploadImageData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationimages_GetImagesRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="cookie_login" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationimages_GetImagesResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationimages_GetImagesData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_code" type="xsd:int" />
+    <wsdl:part name="sort_type" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetStationNumberRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetStationNumberResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_GetStationNumberData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetPageNumberRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetPageNumberResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_GetPageNumberData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetPageRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="page_num" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_GetPageResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_GetPageData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_AttachRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="serial" type="xsd:string" />
+    <wsdl:part name="key" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_AttachResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_AttachData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_DetachRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationlist3_DetachResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationlist3_DetachData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetLastRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetLastResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetLastData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_to" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetPrevRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetPrevResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetPrevData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetFromDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetFromDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetFromDateData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetMinMaxDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata2_GetMinMaxDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata2_GetMinMaxDateData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationconfig2_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+  </wsdl:message>
+  <wsdl:message name="cidistationconfig2_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationconfig2_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationsensors3_GetRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="cidistationsensors3_GetResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationsensors3_GetData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetFirstRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetFirstResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetFirstData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetLastRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetLastResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetLastData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetNextRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_to" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetNextResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetNextData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetPrevRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetPrevResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetPrevData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetFromDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="row_count" type="xsd:int" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="group_code" type="xsd:int" />
+    <wsdl:part name="dt_from" type="xsd:dateTime" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetFromDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetFromDateData" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetMinMaxDateRequest">
+    <wsdl:part name="user_name" type="xsd:string" />
+    <wsdl:part name="user_passw" type="xsd:string" />
+    <wsdl:part name="station_name" type="xsd:string" />
+    <wsdl:part name="debug" type="xsd:int" />
+    <wsdl:part name="show_user_app" type="xsd:boolean" />
+    <wsdl:part name="master_user_app" type="xsd:string" />
+    <wsdl:part name="no_wait_sync" type="xsd:boolean" />
+    <wsdl:part name="die_if_locked" type="xsd:boolean" />
+    <wsdl:part name="api_key" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="cidistationdata3_GetMinMaxDateResponse">
+    <wsdl:part name="return" type="tns:struct_cidistationdata3_GetMinMaxDateData" />
+  </wsdl:message>
+  <wsdl:portType name="iMetosSOAPPortType">
+    <wsdl:operation name="cidistationsensors_Get">
+      <documentation>reads all sensors of the station</documentation>
+      <wsdl:input message="tns:cidistationsensors_GetRequest" />
+      <wsdl:output message="tns:cidistationsensors_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist2_GetFirst">
+      <documentation>reads first row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist2_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationlist2_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist2_GetNext">
+      <documentation>reads next row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist2_GetNextRequest" />
+      <wsdl:output message="tns:cidistationlist2_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist_GetFirst">
+      <documentation>reads first row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationlist_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist_GetNext">
+      <documentation>reads next row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist_GetNextRequest" />
+      <wsdl:output message="tns:cidistationlist_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist4_GetFirst">
+      <documentation>reads first row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist4_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationlist4_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist4_GetNext">
+      <documentation>reads next row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist4_GetNextRequest" />
+      <wsdl:output message="tns:cidistationlist4_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_GetInfo">
+      <documentation>read user info</documentation>
+      <wsdl:input message="tns:cidiuser_GetInfoRequest" />
+      <wsdl:output message="tns:cidiuser_GetInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_Login">
+      <documentation>login</documentation>
+      <wsdl:input message="tns:cidiuser_LoginRequest" />
+      <wsdl:output message="tns:cidiuser_LoginResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_Logout">
+      <documentation>logout</documentation>
+      <wsdl:input message="tns:cidiuser_LogoutRequest" />
+      <wsdl:output message="tns:cidiuser_LogoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_GetUserInfo">
+      <documentation>Get basic user information</documentation>
+      <wsdl:input message="tns:cidiuser_GetUserInfoRequest" />
+      <wsdl:output message="tns:cidiuser_GetUserInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_CheckTime">
+      <documentation>checktime</documentation>
+      <wsdl:input message="tns:cidiuser_CheckTimeRequest" />
+      <wsdl:output message="tns:cidiuser_CheckTimeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Get">
+      <documentation>read diary list</documentation>
+      <wsdl:input message="tns:cididiarylist_GetRequest" />
+      <wsdl:output message="tns:cididiarylist_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_GetPages">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiarylist_GetPagesRequest" />
+      <wsdl:output message="tns:cididiarylist_GetPagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Add">
+      <documentation>add diary</documentation>
+      <wsdl:input message="tns:cididiarylist_AddRequest" />
+      <wsdl:output message="tns:cididiarylist_AddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Edit">
+      <documentation>edit diary by id</documentation>
+      <wsdl:input message="tns:cididiarylist_EditRequest" />
+      <wsdl:output message="tns:cididiarylist_EditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Remove">
+      <documentation>delete diary</documentation>
+      <wsdl:input message="tns:cididiarylist_RemoveRequest" />
+      <wsdl:output message="tns:cididiarylist_RemoveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Get">
+      <documentation>read events list</documentation>
+      <wsdl:input message="tns:cididiaryevents_GetRequest" />
+      <wsdl:output message="tns:cididiaryevents_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_GetPages">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiaryevents_GetPagesRequest" />
+      <wsdl:output message="tns:cididiaryevents_GetPagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Add">
+      <documentation>add event</documentation>
+      <wsdl:input message="tns:cididiaryevents_AddRequest" />
+      <wsdl:output message="tns:cididiaryevents_AddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Edit">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiaryevents_EditRequest" />
+      <wsdl:output message="tns:cididiaryevents_EditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Remove">
+      <documentation>delete event</documentation>
+      <wsdl:input message="tns:cididiaryevents_RemoveRequest" />
+      <wsdl:output message="tns:cididiaryevents_RemoveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Get">
+      <documentation>read diary list</documentation>
+      <wsdl:input message="tns:cididiaryspraylist_GetRequest" />
+      <wsdl:output message="tns:cididiaryspraylist_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_GetPages">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiaryspraylist_GetPagesRequest" />
+      <wsdl:output message="tns:cididiaryspraylist_GetPagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Add">
+      <documentation>add diary</documentation>
+      <wsdl:input message="tns:cididiaryspraylist_AddRequest" />
+      <wsdl:output message="tns:cididiaryspraylist_AddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Edit">
+      <documentation>edit diary by id</documentation>
+      <wsdl:input message="tns:cididiaryspraylist_EditRequest" />
+      <wsdl:output message="tns:cididiaryspraylist_EditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Remove">
+      <documentation>delete diary</documentation>
+      <wsdl:input message="tns:cididiaryspraylist_RemoveRequest" />
+      <wsdl:output message="tns:cididiaryspraylist_RemoveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Get">
+      <documentation>read events list</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_GetRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_GetPages">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_GetPagesRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_GetPagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Add">
+      <documentation>add event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_AddRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_AddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Edit">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_EditRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_EditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Remove">
+      <documentation>delete event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_RemoveRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_RemoveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_AddPesticide">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_AddPesticideRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_AddPesticideResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_AddDiseas">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_AddDiseasRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_AddDiseasResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Pesticides">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_PesticidesRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_PesticidesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Diseases">
+      <documentation>edit event</documentation>
+      <wsdl:input message="tns:cididiarysprayevents_DiseasesRequest" />
+      <wsdl:output message="tns:cididiarysprayevents_DiseasesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Get">
+      <documentation>read fertilizers list</documentation>
+      <wsdl:input message="tns:cididiaryfertilizers_GetRequest" />
+      <wsdl:output message="tns:cididiaryfertilizers_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Add">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiaryfertilizers_AddRequest" />
+      <wsdl:output message="tns:cididiaryfertilizers_AddResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Edit">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiaryfertilizers_EditRequest" />
+      <wsdl:output message="tns:cididiaryfertilizers_EditResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Remove">
+      <documentation>read pages info</documentation>
+      <wsdl:input message="tns:cididiaryfertilizers_RemoveRequest" />
+      <wsdl:output message="tns:cididiaryfertilizers_RemoveResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidifields_Get">
+      <documentation>read fields list</documentation>
+      <wsdl:input message="tns:cidifields_GetRequest" />
+      <wsdl:output message="tns:cidifields_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidicrops_Get">
+      <documentation>read crops list</documentation>
+      <wsdl:input message="tns:cidicrops_GetRequest" />
+      <wsdl:output message="tns:cidicrops_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationprofiles_Get">
+      <documentation>Reads all available profiles of the station</documentation>
+      <wsdl:input message="tns:cidistationprofiles_GetRequest" />
+      <wsdl:output message="tns:cidistationprofiles_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidifavorites_Get">
+      <documentation>Reads all favorites of the user. If station is provided 
+only favorites for this station are returned</documentation>
+      <wsdl:input message="tns:cidifavorites_GetRequest" />
+      <wsdl:output message="tns:cidifavorites_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetFirst">
+      <documentation>reads first row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationdata_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetLast">
+      <documentation>reads last row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata_GetLastRequest" />
+      <wsdl:output message="tns:cidistationdata_GetLastResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetNext">
+      <documentation>reads next row_count or less rows of weather data entries
+possible scenarios:
+1. If dt_to is set (not 0 and not false) then next to dt_to row_count records
+will be read.
+2. If dt_from is set and dt_to is not set then dt_to will be found as date of
+the record with offset row_count from dt_from
+If neither dt_from nor dt_to is set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata_GetNextRequest" />
+      <wsdl:output message="tns:cidistationdata_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetPrev">
+      <documentation>reads previous row_count or less rows of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata_GetPrevRequest" />
+      <wsdl:output message="tns:cidistationdata_GetPrevResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetFromDate">
+      <documentation>reads next row_count or less rows beginning from dt_from
+If dt_from is not set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata_GetFromDateRequest" />
+      <wsdl:output message="tns:cidistationdata_GetFromDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetMinMaxDate">
+      <documentation>returns dates of first and last data entry</documentation>
+      <wsdl:input message="tns:cidistationdata_GetMinMaxDateRequest" />
+      <wsdl:output message="tns:cidistationdata_GetMinMaxDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationgraph_CreateGraph">
+      <documentation>creates graph for specific station and specific profile.</documentation>
+      <wsdl:input message="tns:cidistationgraph_CreateGraphRequest" />
+      <wsdl:output message="tns:cidistationgraph_CreateGraphResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationimages_UploadImage">
+      <documentation>Saves user image of station with gps coordinates. Needs jpeg image as parameter.</documentation>
+      <wsdl:input message="tns:cidistationimages_UploadImageRequest" />
+      <wsdl:output message="tns:cidistationimages_UploadImageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationimages_GetImages">
+      <documentation>Returns all images of the station with gps coordinates.</documentation>
+      <wsdl:input message="tns:cidistationimages_GetImagesRequest" />
+      <wsdl:output message="tns:cidistationimages_GetImagesResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetFirst">
+      <documentation>reads first row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist3_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationlist3_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetNext">
+      <documentation>reads next row_count or less stations</documentation>
+      <wsdl:input message="tns:cidistationlist3_GetNextRequest" />
+      <wsdl:output message="tns:cidistationlist3_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetStationNumber">
+      <wsdl:input message="tns:cidistationlist3_GetStationNumberRequest" />
+      <wsdl:output message="tns:cidistationlist3_GetStationNumberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetPageNumber">
+      <wsdl:input message="tns:cidistationlist3_GetPageNumberRequest" />
+      <wsdl:output message="tns:cidistationlist3_GetPageNumberResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetPage">
+      <wsdl:input message="tns:cidistationlist3_GetPageRequest" />
+      <wsdl:output message="tns:cidistationlist3_GetPageResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_Attach">
+      <wsdl:input message="tns:cidistationlist3_AttachRequest" />
+      <wsdl:output message="tns:cidistationlist3_AttachResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_Detach">
+      <wsdl:input message="tns:cidistationlist3_DetachRequest" />
+      <wsdl:output message="tns:cidistationlist3_DetachResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetFirst">
+      <documentation>reads first row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetLast">
+      <documentation>reads last row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetLastRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetLastResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetNext">
+      <documentation>reads next row_count or less rows of weather data entries
+possible scenarios:
+1. If dt_to is set (not 0 and not false) then next to dt_to row_count records
+will be read.
+2. If dt_from is set and dt_to is not set then dt_to will be found as date of
+the record with offset row_count from dt_from
+If neither dt_from nor dt_to is set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetNextRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetPrev">
+      <documentation>reads previous row_count or less rows of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetPrevRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetPrevResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetFromDate">
+      <documentation>reads next row_count or less rows beginning from dt_from
+If dt_from is not set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetFromDateRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetFromDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetMinMaxDate">
+      <documentation>returns dates of first and last data entry</documentation>
+      <wsdl:input message="tns:cidistationdata2_GetMinMaxDateRequest" />
+      <wsdl:output message="tns:cidistationdata2_GetMinMaxDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationconfig2_Get">
+      <documentation>read config params connected to a station</documentation>
+      <wsdl:input message="tns:cidistationconfig2_GetRequest" />
+      <wsdl:output message="tns:cidistationconfig2_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationsensors3_Get">
+      <documentation>reads all sensors of the station</documentation>
+      <wsdl:input message="tns:cidistationsensors3_GetRequest" />
+      <wsdl:output message="tns:cidistationsensors3_GetResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetFirst">
+      <documentation>reads first row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetFirstRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetFirstResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetLast">
+      <documentation>reads last row_count or less of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetLastRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetLastResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetNext">
+      <documentation>reads next row_count or less rows of weather data entries
+possible scenarios:
+1. If dt_to is set (not 0 and not false) then next to dt_to row_count records
+will be read.
+2. If dt_from is set and dt_to is not set then dt_to will be found as date of
+the record with offset row_count from dt_from
+If neither dt_from nor dt_to is set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetNextRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetNextResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetPrev">
+      <documentation>reads previous row_count or less rows of weather data entries</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetPrevRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetPrevResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetFromDate">
+      <documentation>reads next row_count or less rows beginning from dt_from
+If dt_from is not set then works as GetFirst</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetFromDateRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetFromDateResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetMinMaxDate">
+      <documentation>returns dates of first and last data entry</documentation>
+      <wsdl:input message="tns:cidistationdata3_GetMinMaxDateRequest" />
+      <wsdl:output message="tns:cidistationdata3_GetMinMaxDateResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="iMetosSOAPBinding" type="tns:iMetosSOAPPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="cidistationsensors_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationsensors_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist2_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist2_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist2_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist2_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist4_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist4_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist4_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist4_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_GetInfo">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidiuser_GetInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_Login">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidiuser_Login" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_Logout">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidiuser_Logout" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_GetUserInfo">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidiuser_GetUserInfo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidiuser_CheckTime">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidiuser_CheckTime" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarylist_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_GetPages">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarylist_GetPages" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Add">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarylist_Add" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Edit">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarylist_Edit" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarylist_Remove">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarylist_Remove" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryevents_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_GetPages">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryevents_GetPages" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Add">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryevents_Add" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Edit">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryevents_Edit" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryevents_Remove">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryevents_Remove" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryspraylist_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_GetPages">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryspraylist_GetPages" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Add">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryspraylist_Add" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Edit">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryspraylist_Edit" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryspraylist_Remove">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryspraylist_Remove" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_GetPages">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_GetPages" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Add">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Add" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Edit">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Edit" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Remove">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Remove" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_AddPesticide">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_AddPesticide" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_AddDiseas">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_AddDiseas" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Pesticides">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Pesticides" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiarysprayevents_Diseases">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiarysprayevents_Diseases" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryfertilizers_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Add">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryfertilizers_Add" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Edit">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryfertilizers_Edit" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cididiaryfertilizers_Remove">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cididiaryfertilizers_Remove" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidifields_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidifields_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidicrops_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidicrops_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationprofiles_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationprofiles_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidifavorites_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidifavorites_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetLast">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetLast" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetPrev">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetPrev" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetFromDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetFromDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata_GetMinMaxDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata_GetMinMaxDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationgraph_CreateGraph">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationgraph_CreateGraph" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationimages_UploadImage">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationimages_UploadImage" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationimages_GetImages">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationimages_GetImages" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetStationNumber">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_GetStationNumber" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetPageNumber">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_GetPageNumber" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_GetPage">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_GetPage" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_Attach">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_Attach" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationlist3_Detach">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationlist3_Detach" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetLast">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetLast" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetPrev">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetPrev" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetFromDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetFromDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata2_GetMinMaxDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata2_GetMinMaxDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationconfig2_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationconfig2_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationsensors3_Get">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationsensors3_Get" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetFirst">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetFirst" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetLast">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetLast" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetNext">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetNext" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetPrev">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetPrev" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetFromDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetFromDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cidistationdata3_GetMinMaxDate">
+      <soap:operation soapAction="http://www.metos.at/pikernel/cidiwsdl.php/cidistationdata3_GetMinMaxDate" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="http://metos.at" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="iMetosSOAP">
+    <wsdl:port name="iMetosSOAPPort" binding="tns:iMetosSOAPBinding">
+      <soap:address location="http://www.metos.at/pikernel/cidiwsdl.php?debug=1" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

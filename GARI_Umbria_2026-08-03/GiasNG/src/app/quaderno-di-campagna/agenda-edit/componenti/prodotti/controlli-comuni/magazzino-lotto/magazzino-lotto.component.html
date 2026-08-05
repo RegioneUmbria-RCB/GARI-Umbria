@@ -1,0 +1,35 @@
+<div [formGroup]="ProdottiForm"
+     *ngIf="mostraDDLMagazzino() || mostraLotto()">
+    <div class="row form-row">
+        <div class="col"
+             *ngIf="mostraDDLMagazzino()">
+            <gias-drop-down-template-s
+                [name]="getMagazzinoDescrizione()"
+                [listItems]="prodottiservice.Array_Magazzini"
+                textField="Descrizione_Concatenata"
+                valueField="Codice_Concatenato"
+                [obligatory]="true"
+                (open)="openControlMagazzino($event, MagazzinoFormControlName)"
+                [giasFormControlName]=MagazzinoFormControlName
+                [valuePrimitive]="false">
+            </gias-drop-down-template-s>
+        </div>
+
+        <!-- Effluenti mostrato solo nella distribuzione ammendamenti organici o liquami -->
+        <div kendoTooltip class="rilievo-effluenti-container" *ngIf="mostraBtnCaricoEffluenti()">
+            <button class="btn btn-primary btn-sm btn-white-fill"
+                    (click)="redirectToRilievoEffluenti()"
+                    [title]="'qdc.CaricoEffluenti.Text' | transloco">
+                <div class="k-icon k-i-btn_carico_effluenti"></div>
+            </button>
+        </div>
+
+        <div class="col"
+             *ngIf="mostraLotto()">
+            <gias-text-template
+                [name]="getLottoDescrizione()"
+                [giasFormControlName]=LottoFormControlName>
+            </gias-text-template>
+        </div>
+    </div>
+</div>

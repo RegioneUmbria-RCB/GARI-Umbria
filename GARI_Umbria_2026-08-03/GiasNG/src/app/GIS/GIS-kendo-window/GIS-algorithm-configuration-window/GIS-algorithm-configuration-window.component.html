@@ -1,0 +1,29 @@
+﻿<gis-window #window [windowArgs]="windowArgs$ | async" class="pb-3">
+
+  <ng-container *ngIf="configurations$ | async as configurations">
+    <kendo-tabstrip *ngIf="data$ | async as data" [keepTabContent]="true"
+      (tabSelect)="tabSelectedSubject.next($event.index)" style="max-height: 50vh">
+
+      <kendo-tabstrip-tab [title]="'gis.ConfigurazioneAlgoritmi' | transloco" [selected]="data.tab == 0">
+        <ng-template kendoTabContent>
+          <gis-algorithm-configuration [configurations]="configurations" [layer]="data.layer"
+            [tipoLayer]="data.tipoLayer" [feature]="data.feature"></gis-algorithm-configuration>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab [title]="'gis.LogElaborazione' | transloco" [selected]="data.tab == 1">
+        <ng-template kendoTabContent>
+          <gis-algorithm-configuration-log [configurations]="configurations" [layer]="data.layer"
+            [tipoLayer]="data.tipoLayer" [feature]="data.feature"></gis-algorithm-configuration-log>
+        </ng-template>
+      </kendo-tabstrip-tab>
+
+      <kendo-tabstrip-tab [title]="'Checklist' | transloco" [selected]="data.tab == 2">
+        <ng-template kendoTabContent>
+          <gis-algorithm-result></gis-algorithm-result>
+        </ng-template>
+      </kendo-tabstrip-tab>
+    </kendo-tabstrip>
+  </ng-container>
+
+</gis-window>

@@ -1,0 +1,60 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Unit test per classi EDI_*</Title>
+      <Author>vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>record</ID>
+          <ToolTip>saluto</ToolTip>
+          <Default>REC</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="vb">
+        <![CDATA[
+        
+        Dim target As New $record$ ' TODO: Eseguire l'inizializzazione a un valore appropriato
+        
+        
+        ' TODO: Eseguire l'inizializzazione a un valore appropriato
+        Dim Supporto As String = ""
+        Dim actual As String
+
+        Supporto = Supporto.PadRight(target.MaxLength - 1, " ")
+
+        actual = target.Leggi(Supporto)
+        actual = target.CreaTracciato()
+
+
+        'considero il test superato se il valore iniziale che viene letto 
+        'coincide con il valore ri-serializzato dal metodo CreaTracciato dell'oggetto
+
+        Dim confronta As Boolean = False
+        Try
+            AgronicaCoreUtility.UnitTestHelper.stampaStringhe(Supporto, actual)
+            Assert.AreEqual(Supporto.Replace(vbCrLf, ""), actual.Replace(vbCrLf, ""))
+        Catch ex As Exception
+            confronta = True
+        End Try
+
+
+        If confronta Then
+
+            AgronicaCoreUtility.UnitTestHelper.stampaStringhe(Supporto, actual)
+            Debug.Print(AgronicaCoreUtility.UnitTestHelper.confrontaStringhe(Supporto, actual))
+            Assert.Fail()
+        
+        End If
+
+
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

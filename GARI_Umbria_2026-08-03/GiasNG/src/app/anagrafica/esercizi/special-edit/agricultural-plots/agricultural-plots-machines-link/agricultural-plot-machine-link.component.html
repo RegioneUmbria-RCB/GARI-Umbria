@@ -1,0 +1,35 @@
+<form [formGroup]="validityForm" class="row form-row">
+  <gias-validita
+    [inizioFormControlName]="'inizio'"
+    [fineFormControlName]="'fine'"
+  ></gias-validita>
+</form>
+
+<gias-drop-down-template-s
+  [name]="'WaterCounters' | transloco"
+  [listItems]="[]"
+  textField="macchina"
+  valueField="chiave"
+  [formGroup]="machinesDdlForm"
+  giasFormControlName="machine"
+  [filterable]="true"
+  [valuePrimitive]="false"
+  (open)="openDdl($event)"
+>
+</gias-drop-down-template-s>
+
+<div class="agricultural-plots-machines-link-msg-text">
+  <h6>{{ 'SelectedAgriculturalPlots' | transloco }}</h6>
+</div>
+
+<app-listview
+  [data$]="rows$"
+  [height$]="listViewHeight$"
+  [removeDataItem$]="removeDataItem$"
+  [resetStates$]="resetStates$"
+  [showDeleteBtn]="showListViewDeleteBtn"
+  deleteBtnTitle="EliminaAssociazione"
+  removeBtnTitle="RemoveRowFromList"
+  (delete)="onDelete($event)"
+  [loading$]="loading$"
+></app-listview>

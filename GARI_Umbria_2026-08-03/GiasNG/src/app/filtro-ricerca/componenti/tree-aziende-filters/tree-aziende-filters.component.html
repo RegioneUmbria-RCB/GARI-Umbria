@@ -1,0 +1,39 @@
+<div class="container with-padding">
+    <div class="row">
+        <div class="col-8 d-flex align-items-center">
+            <!-- <input class="flex-grow-1" [(value)]="treeService.filterTerm" [placeholder]="'Filtra' | transloco" /> -->
+            <kendo-textbox
+                #customInput
+                (valueChange)="onValueChange($event)"
+                [clearButton]="true"
+                [placeholder]="'FiltraAziende' | transloco"
+            >
+                <ng-template kendoTextBoxPrefixTemplate>
+                <span class="k-input-icon k-font-icon k-icon k-i-search"></span>
+                </ng-template>
+            </kendo-textbox>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-end">
+            <div class="circular-button" 
+                 [class.disabled]="isButtonReloadTreeDisabled" 
+                 (click)="resettaAlbero()"
+                 [ngClass]="{'disabled': isButtonReloadTreeDisabled}">
+                <fa-icon kendoTooltip size="lg" [icon]="faClear" [title]="'PulisciFiltri' | transloco" aria-hidden="true">
+                </fa-icon>
+            </div>
+        </div>
+        <div class="col-2 d-flex align-items-center justify-content-end">
+            <div class="circular-button" 
+                 [class.disabled]="isButtonFilterDisabled"
+                 (click)="riportaResultGrigliaSuAlbero()"
+                 [ngClass]="{'disabled': isButtonFilterDisabled}">
+                <!-- <fa-icon kendoTooltip size="lg" [icon]="faFilter" [title]="'FiltraDaGriglia' | transloco" aria-hidden="true">
+                </fa-icon> -->
+                <i kendoTooltip [title]="'FiltraDaGriglia' | transloco" aria-hidden="true" class="icon-filtra-albero"></i>
+            </div>
+        </div>
+        <!-- <div class="col-2 d-flex align-items-center justify-content-end" (click)="onCancel()">
+            <fa-icon size="lg" [icon]="faClose" aria-hidden="true"></fa-icon>
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Nuovo Script Service</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>NomeFunzione</ID>
+          <ToolTip>Nome</ToolTip>
+          <Default>Nome</Default>
+        </Literal>
+               
+      </Declarations>
+      <Code Language="vb">
+        <![CDATA[
+    <WebMethod(EnableSession:=True)> _
+    Public Shared Function $NomeFunzione$() As RispostaStandard
+        Dim r As New rispostaStandard
+        
+        Dim objParametri_Server As AgronicaCoreParametri = HttpContext.Current.Session("ASG_objParametri_Server")
+        If HttpContext.Current.Session.IsNewSession OrElse isNothing(objParametri_Server) Then        
+            r.Sessione = False
+            return r
+        End If
+
+        Lingua.Gias_InizializzaCultura_DaSession()
+
+        Try
+
+            'Inserire il codice QUI..
+
+            r.RispostaOK = True
+            r.RispostaStringa = " cosa vuoi comunicare"
+
+        Catch ex As Exception
+
+            r.RispostaOK = False
+
+            'uso questa funzione per ottenere il Messaggio..:
+            r.Errore = "Errore durante l'operazione: " & vbCrLf & _
+                AgronicaCoreDataProvider.Gestione_Eccezioni_2015.MessaggioCompletoDataEccezione(ex, True, source:=True)
+
+
+        End Try
+
+        Return r
+    End Function
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

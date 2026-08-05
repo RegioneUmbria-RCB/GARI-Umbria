@@ -1,0 +1,7 @@
+<ul [@slideDownUp]="open ? 'slideDown' : 'slideUp'" style="overflow: hidden;">
+  <li class="clickable" *ngFor="let child of menus">
+    <a (click)="menuClicked(child)">
+      <span>{{child.testo}}</span>
+    </a>
+  </li>
+</ul>

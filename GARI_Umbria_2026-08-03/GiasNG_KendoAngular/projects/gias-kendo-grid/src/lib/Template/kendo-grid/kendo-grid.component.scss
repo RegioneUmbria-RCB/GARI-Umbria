@@ -1,0 +1,79 @@
+.footer-virtual-count {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    p {
+        text-align: right;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+}
+
+.k-grid-toolbar-bottom:has(> .footer-virtual-empty) {
+    height: 0px !important;
+    padding: 0 !important;
+}
+
+.btn:disabled {
+    border: 0px;
+}
+
+.increase-border {
+    margin-left: 5px !important;
+    margin-right: 5px;
+}
+
+:host ::ng-deep thead th {
+    background-color: rgb(66, 139, 202)!important;
+    color: white !important;
+}
+
+:host ::ng-deep .k-grid-header .k-i-sort-asc-sm{
+        color: #ffffff !important;
+}
+
+:host ::ng-deep.k-grid-header .k-i-sort-desc-sm {
+    color: #ffffff !important;
+}
+
+#btnDelete, .editBtn, #infoBtn {
+    max-width: 45px;
+}
+
+.pending-deletion-row {
+    text-decoration: line-through;
+    color: red;
+}
+
+.batch-fixed-top {
+    top: -6px;
+}
+
+.breakWord120 {
+    /*max-width: 120px !important;*/
+    word-break: break-all !important;
+    word-wrap: break-word !important;
+    /*vertical-align: top;
+    line-height: 15px;*/
+}
+
+// #infoBtn {
+//     background-color: #e4e7eb;
+//     width: 45px;
+// }
+
+
+// TODO(RV) Da rimuovere, verrà applicato in modo dinamico dal Virtual Scrolling
+// Service
+.k-grid tbody td {
+    white-space: wrap !important;
+    line-height: 20px !important;
+    padding: 8px 12px !important;
+}
+
+multicheck-filter {
+    align-self: center;
+    width: 100%;
+}

@@ -1,0 +1,14 @@
+<div>
+    <form [formGroup]="formSelezionaCentro" *ngIf="mostraForm">
+        <gias-drop-down-template
+            name=""
+            [obligatory]="true"
+            textField="descrizione"
+            [listItems]="ListCentri"
+            valueField="codice"
+            [filterable]="true"
+            giasFormControlName="Centro"
+            [valuePrimitive]="false">
+        </gias-drop-down-template>
+    </form>
+</div>

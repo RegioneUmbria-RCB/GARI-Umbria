@@ -1,0 +1,148 @@
+// Make the host a proper block grid item that shrinks to its cell width
+:host {
+  display: block;
+  min-width: 0;
+}
+
+.dss-widget-card {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--kendo-color-border);
+  border-radius: 4px;
+  background-color: var(--kendo-color-surface);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative; // needed for the FR012 saving overlay
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+
+  // Hover elevation – UIL002 §D (hover feedback)
+  &--clickable {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+      border-color: var(--kendo-color-primary);
+    }
+  }
+
+  .k-card-body {
+    flex: 1;
+  }
+
+  .k-card-title {
+    font-size: 0.9rem;
+  }
+
+  .k-separator {
+    border-top: 1px solid var(--kendo-color-border);
+    margin-bottom: 0.5rem;
+  }
+
+  // Card header: flex row, no overflow clip so badge/icons are never cut
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    overflow: visible;
+  }
+
+  // Tematic theme icons – UIL002 §C.1
+  &__icon-theme {
+    flex-shrink: 0;
+    color: var(--kendo-color-primary);
+    font-size: 1.1rem;
+  }
+
+  // Leaf icon in success/green – UIL002 §C.1
+  &__icon-theme--success {
+    flex-shrink: 0;
+    color: var(--kendo-color-success);
+    font-size: 1.1rem;
+  }
+
+  // Ellipsis truncation for long appezzamento names – UIL002 §C.1
+  // min-width:0 lets the flex item shrink below its text content width
+  &__title {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // Keep badge visible and prevent it from shrinking – UIL002 §C.5
+  &__badge {
+    flex-shrink: 0;
+    position: relative !important; // override any absolute positioning from Kendo
+  }
+
+  // Value text truncation for long species/variety strings
+  &__value {
+    max-width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  // Clickable link style for tooltip triggers – UIL002 §C.4, §C.6
+  &__link {
+    color: var(--kendo-color-primary);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  // Saving overlay – FR012: semi-transparent backdrop with centred spinner
+  &__saving-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 4px;
+  }
+}
+
+// Tooltip content container – UIL002 §C.4.1, §C.6.1
+.dss-tooltip-content {
+  min-width: 260px;
+  max-width: 400px;
+  padding: 0.5rem;
+}
+
+// Single nutrient section inside consiglio tooltip
+.dss-tooltip-nutriente {
+  padding: 0.25rem 0;
+}
+
+// Rotating propeller animation for the Ricarica button icon – FR014
+@keyframes dss-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.dss-widget-card__icon-rotate {
+  animation: dss-spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+// Fasi Fenologiche modal content – FR011 / UIL006
+.dss-fasi-fenologiche-modal {
+  min-height: 80px;
+  max-height: 60vh;
+  overflow-y: auto;
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}

@@ -1,0 +1,48 @@
+<!-- Loading state -->
+<div *ngIf="isLoading" class="state-container k-p-4">
+  <kendo-skeleton shape="text" animation="pulse" *ngFor="let i of [1,2,3,4,5]"
+    style="height: 32px; margin-bottom: 8px;">
+  </kendo-skeleton>
+</div>
+
+<!-- Error state -->
+<div *ngIf="!isLoading && isError" class="state-container k-p-4">
+  <kendo-alert type="error">
+    {{ 'prof.ImpossibileCaricareConfigPratiche' | transloco }}
+  </kendo-alert>
+  <div class="k-mt-3 k-text-center">
+    <button kendoButton themeColor="base" (click)="onRetry()">
+      {{ 'prof.RiprovaPratiche' | transloco }}
+    </button>
+  </div>
+</div>
+
+<!-- Empty state -->
+<div *ngIf="!isLoading && !isError && pratiche?.length === 0" class="state-container k-p-4 k-text-center">
+  <kendo-icon name="info-circle" size="xlarge" class="k-color-subtle"></kendo-icon>
+  <p class="k-mt-2">{{ 'prof.NessunaPraticaDisponibile' | transloco }}</p>
+</div>
+
+<!-- Data state -->
+<gias-kendo-grid #grid *ngIf="!isLoading && !isError && pratiche?.length > 0" (cellClick)="onCellClick()"
+  [customCommandColumnHeaderTemplate]="selectAllHeaderTpl" [customCommandColumnCellTemplate]="selectAllCellTpl">
+  <ng-container headerContentButtons>
+    <span *ngIf="selectedCount > 0" class="selection-badge">
+      {{ selectedCount + ' ' + ('prof.PraticheSelezionate' | transloco) }}
+    </span>
+  </ng-container>
+</gias-kendo-grid>
+
+<ng-template #selectAllHeaderTpl>
+  <div class="k-d-flex k-justify-content-center k-align-items-center" style="width:100%">
+    <input kendoCheckBox type="checkbox" [checked]="allSelected" [indeterminate]="someSelected && !allSelected"
+      (change)="onToggleSelectAll($any($event.target).checked)" />
+  </div>
+</ng-template>
+
+<ng-template #selectAllCellTpl let-dataItem="dataItem">
+  <div class="k-d-flex k-justify-content-center k-align-items-center" style="width:100%">
+    <input kendoCheckBox type="checkbox" [checked]="dataItem.Selected"
+      (change)="onRowToggleSelected(dataItem, $any($event.target).checked)" />
+  </div>
+</ng-template>

@@ -1,0 +1,47 @@
+<kendo-dialog [title]="'CopiaSpostaAppezzamenti' | transloco" *ngIf="mostraPopup"
+(close)="closeRicette('back')"
+[minWidth]="250" [width]="650">
+    <form [formGroup]="formCopiaSpostaAppezzamenti">
+        <div class="row form-row">
+            <div class="col-12 col-md-6">
+                <gias-drop-down-template-s [name]="'ImpresaDestinazione' | transloco"
+                    textField="descrizione" valueField="codice" [filterable]="true"
+                    giasFormControlName="imprese"  [virtual]="virtual"
+                    [valuePrimitive]="false" (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+            </div>
+            <div class="col-12 col-md-6">
+                <gias-drop-down-template-s [name]="'Sa_Nome_Destinazione' | transloco"
+                    textField="descrizione" valueField="codice" [filterable]="true"
+                    giasFormControlName="centri"
+                    [valuePrimitive]="false" (open)="openDdl($event)">
+                </gias-drop-down-template-s>
+            </div>
+        </div>
+            <div class="row form-row">
+                <div class="col-12 col-md-6">
+                    <div>
+                        <gias-switch-template [name]="'CopiaSpostaAppezzamenti_check' | transloco" giasFormControlName="copiasposta">
+                        </gias-switch-template>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div>
+                        <gias-switch-template [name]="'CopiaRiferimentiCatastali' | transloco" giasFormControlName="copiaRifCatastali">
+                        </gias-switch-template>
+                    </div>
+                </div>
+            </div>
+    </form>
+    <div class="row">
+        <div class="col-lg-12">
+        </div>
+    </div>
+
+    <kendo-dialog-actions>
+        <button kendoButton (click)="closeRicette('create')" themeColor="primary"
+        >
+        {{ 'Salva' | transloco }}
+        </button>
+    </kendo-dialog-actions>
+</kendo-dialog>

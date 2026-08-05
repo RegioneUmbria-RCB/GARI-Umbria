@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RootNamespace>AgronicaControlli_2010STD</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgronicaCoreDataProviderSTD\AgronicaCoreDataProviderSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreUtilityStd\AgronicaCoreUtilityStd.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreVarieBizSTD\AgronicaCoreVarieBizSTD.vbproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<gias-kendo-grid 
+    #DialogGridSommProds
+    [gridId]="'DialogSommProdsId'"
+    class="kendo-grid-no-shadows"
+>
+    <ng-template kendoGridGroupFooterTemplate>
+        <div class="text-right pr-2">
+            <strong>{{ 'TotaleSel' | transloco }}:</strong>
+            <span>{{ reqQuantity | number:'1.4-4' }}</span>
+        </div>
+    </ng-template>
+</gias-kendo-grid>

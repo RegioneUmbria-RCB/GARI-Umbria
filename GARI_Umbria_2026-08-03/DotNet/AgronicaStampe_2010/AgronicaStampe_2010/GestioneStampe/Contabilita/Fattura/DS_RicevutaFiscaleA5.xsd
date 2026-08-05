@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="DS_RicevutaFiscaleA5" targetNamespace="http://tempuri.org/DS_RicevutaFiscaleA5.xsd"
+	elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/DS_RicevutaFiscaleA5.xsd"
+	xmlns:mstns="http://tempuri.org/DS_RicevutaFiscaleA5.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="DS_RicevutaFiscaleA5" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Intestazione">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Rag_Soc" type="xs:string" minOccurs="0" />
+							<xs:element name="Int_Riga1" type="xs:string" minOccurs="0" />
+							<xs:element name="Int_Riga2" type="xs:string" minOccurs="0" />
+							<xs:element name="Int_Riga3" type="xs:string" minOccurs="0" />
+							<xs:element name="Int_Riga4" type="xs:string" minOccurs="0" />
+							<xs:element name="Int_Riga5" type="xs:string" minOccurs="0" />
+							<xs:element name="Cliente_Riga1" type="xs:string" minOccurs="0" />
+							<xs:element name="Cliente_Riga2" type="xs:string" minOccurs="0" />
+							<xs:element name="Data" type="xs:string" minOccurs="0" />
+							<xs:element name="Numero" type="xs:string" minOccurs="0" />
+							<xs:element name="Note" type="xs:string" minOccurs="0" />
+							<xs:element name="Corrispettivo_Pagato" type="xs:string" minOccurs="0" />
+							<xs:element name="Corrispettivo_NonPagato" type="xs:string" minOccurs="0" />
+							<xs:element name="Totale" type="xs:string" minOccurs="0" />
+							<xs:element name="Logo" type="xs:base64Binary" minOccurs="0" />
+							<xs:element name="ImmaginePromozionale" type="xs:base64Binary" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Dettagli">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Qta" type="xs:string" minOccurs="0" />
+							<xs:element name="Udm_Sim" type="xs:string" minOccurs="0" />
+							<xs:element name="Descrizione" type="xs:string" minOccurs="0" />
+							<xs:element name="Sconto" type="xs:string" minOccurs="0" />
+							<xs:element name="Importo" type="xs:string" minOccurs="0" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

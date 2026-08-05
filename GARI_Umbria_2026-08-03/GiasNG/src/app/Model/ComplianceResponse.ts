@@ -1,0 +1,4 @@
+
+interface ComplianceResponse {
+    IdTestata: number;
+}

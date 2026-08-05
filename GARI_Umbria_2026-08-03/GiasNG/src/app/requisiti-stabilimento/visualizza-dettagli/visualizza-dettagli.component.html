@@ -1,0 +1,52 @@
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="editPageContent">
+      <form [formGroup]="filtriForm">
+        <div class="row form-rows">
+          <gias-validita [formGroupName]="'validita'"></gias-validita>
+          <div class="col-lg-2 col-md-3 col-sm-6">
+            <button kendoButton class="btn-primary-fill mw-150 k-ml-4" (click)="getGridData()">{{'Cerca' | transloco}}</button>
+          </div>
+        </div>
+      </form>
+
+      <kendo-appbar position="top">
+        <div #anagTopTar2 id="anag-top-bar-2">
+          <kendo-appbar-section class="appbar-items">
+            <div>
+              <ul #topTabsContainer>
+                <li routerLink="./piano-colturale" class="nav-item"
+                    routerLinkActive="nav-item active">
+                  <fa-icon style="padding-right: 5px;" size="lg" class="faImpianti" [icon]="faLeaf"
+                           aria-hidden="true">
+                  </fa-icon>
+                  <span style="cursor: pointer;">{{ 'PianoColturale' | transloco }}</span>
+                </li>
+                <li routerLink="./contratti" class="nav-item"
+                    routerLinkActive="nav-item active">
+                  <fa-icon
+                    style="padding-right: 5px;"
+                    size="lg"
+                    class="faImpresa"
+                    [icon]="faIndustry"
+                    aria-hidden="true">
+                  </fa-icon>
+                  <span style="cursor: pointer;">{{ 'Contratti' | transloco }}</span>
+                </li>
+              </ul>
+            </div>
+          </kendo-appbar-section>
+        </div>
+        <div class="topbar-right-filler"></div>
+      </kendo-appbar>
+      <div class="anagraficaContainer">
+        <div class="row">
+          <div class="col-12">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

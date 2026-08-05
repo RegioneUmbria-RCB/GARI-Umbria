@@ -1,0 +1,138 @@
+<div class="container">
+    <div *ngIf="filtroAvanzatoImpianti" class="alertFiltroAvanzatoImpianti">
+        <span><strong>{{messaggioFiltroAvanzatoImpianti}}</strong></span>
+    </div>
+    <div class="primaRigaFiltro">
+        <div class="col-9">
+            <kendo-dropdownlist
+                style="width: 60%;"
+                *ngIf="!visualizzazioneTotale"
+                id="selezionaCentro"
+                [data]="centriAziendaliDDL | async"
+                textField="name"
+                valueField="id"
+                [(ngModel)]="currentCentro"
+                (valueChange)="onFiltersChanged()">
+            </kendo-dropdownlist>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <button
+                *ngIf="visualizzaFiltroCatasto && !visualizzazioneTotale"
+                kendoTooltip [title]="'FiltroCatasto' | transloco"
+                kendoButton (click)="toggleFiltroCatasto()">
+                <fa-icon
+                    size="lg"
+                    [icon]="faFilter"
+                    aria-hidden="true">
+                </fa-icon>
+                <fa-icon
+                    size="lg"
+                    [icon]="iconaFrecciaFiltroCatasto"
+                    aria-hidden="true">
+                </fa-icon>
+            </button>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <button
+                class="buttonFiltroAvanzatoImpianti"
+                kendoTooltip
+                    [title]="labelFiltroAvanzatoImpianti"
+                    [showOn]="visualizzazioneTotale === true ? 'none' : 'hover'"
+                kendoButton>
+                <fa-icon
+                    size="lg"
+                    [icon]="faFilter"
+                    aria-hidden="true"
+                    (click)="apriFiltroAvanzatoImpianti()">
+                </fa-icon>
+                <span *ngIf="visualizzazioneTotale"
+                    (click)="apriFiltroAvanzatoImpianti()">
+                    {{labelFiltroAvanzatoImpianti}}
+                </span>
+                <fa-icon
+                    size="lg"
+                    [icon]="filtroAvanzatoImpianti === true ? faCircleXmark : faBars"
+                    aria-hidden="true"
+                    (click)="toggleFiltroAvanzatoImpianti()">
+                </fa-icon>
+            </button>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <fa-icon
+                *ngIf="!visualizzazioneTotale"
+                kendoTooltip [title]="'RefreshTreeAndFeature' | transloco"
+                class="verticalAlignMiddle"
+                size="lg"
+                [icon]="faReload"
+                aria-hidden="true"
+                (click)="ricaricaAlberoConFeature()">
+            </fa-icon>
+        </div>
+        <div
+            *ngIf="permessoVisualizzazioneTotale"
+            class="col-3 textAlignRight">
+            <kendo-switch
+                #switch
+                class="verticalAlignMiddle"
+                [(ngModel)]="visualizzazioneTotale"
+                (valueChange)="onChangeVisualizzazioneTotale($event)">
+            </kendo-switch>
+            <kendo-label [for]="switch" [text]="'gis.VisualizzazioneTotale' | transloco">
+            </kendo-label>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <fa-icon
+                *ngIf="visualizzazioneTotale"
+                kendoTooltip [title]="'Aggiorna' | transloco"
+                class="verticalAlignMiddle"
+                size="lg"
+                [icon]="faReload"
+                aria-hidden="true"
+                (click)="caricaFeatureVisualizzazioneTotale()">
+            </fa-icon>
+        </div>
+    </div>
+    <div class="row sticky"
+        style="margin-bottom: 8px;"
+        *ngIf="filtroCatasto && !visualizzazioneTotale">
+        <div class="col-12">
+            <kendo-textbox
+                [(value)]="treeGisService.filtroCatasto.Provincia"
+                [style.width.%]="23"
+                [placeholder]="'Provincia' | transloco"
+                [clearButton]="true">
+            </kendo-textbox>
+            <label [style.width.%]="1"></label>
+            <kendo-textbox
+                [(value)]="treeGisService.filtroCatasto.Comune"
+                [style.width.%]="23"
+                [placeholder]="'Comune' | transloco"
+                [clearButton]="true">
+            </kendo-textbox>
+            <label [style.width.%]="1"></label>
+            <kendo-textbox
+                [(value)]="treeGisService.filtroCatasto.Foglio"
+                [style.width.%]="23"
+                [placeholder]="'Foglio' | transloco"
+                [clearButton]="true">
+            </kendo-textbox>
+            <label [style.width.%]="1"></label>
+            <kendo-textbox
+                [(value)]="treeGisService.filtroCatasto.Particella"
+                [style.width.%]="28"
+                [placeholder]="'Particella' | transloco"
+                [clearButton]="true">
+                <ng-template kendoTextBoxSuffixTemplate>
+                    <button kendoButton icon="search"></button>
+                </ng-template>
+            </kendo-textbox>
+        </div>
+    </div>
+    <div class="row sticky"
+        *ngIf="!visualizzazioneTotale">
+        <div class="col-12">
+            <kendo-textbox [style.width.%]="100" [placeholder]="'FiltroAlbero' | transloco" [clearButton]="true"
+                [(value)]="treeGisService.filterTerm">
+                <ng-template kendoTextBoxSuffixTemplate>
+                    <button kendoButton icon="search"></button>
+                </ng-template>
+            </kendo-textbox>
+        </div>
+    </div>
+</div>

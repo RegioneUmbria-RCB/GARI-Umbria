@@ -1,0 +1,114 @@
+<kendo-dialog *ngIf="isModalOpen" class="k-dialog-centered gis-calendar-modal">
+
+    <h4>{{ 'FiltroTemporale' | transloco }}</h4>
+
+    <i aria-hidden="true" class="xi-modal-close close-button" (click)="close()"></i>
+
+    <form [formGroup]="form">
+        <!-- <div>
+            {{form.value | json}}
+        </div> -->
+        <div>
+            <gias-drop-down-template
+                *ngIf="tipoFiltroDataAbilitato"
+                [id]="'tipoFiltroData'"
+                [obligatory]="true"
+                [listItems]="tipoFiltroData"
+                [filterable]="false"
+                textField="descrizione"
+                valueField="codice"
+                [valuePrimitive] = false
+                giasFormControlName="ddlTipoFiltroData"
+                (valueChange)="onTipoFiltroDataValueChange($event)">
+            </gias-drop-down-template>
+        </div>
+
+        <div><p></p></div>
+
+        <div class="row">
+            <div class="col">
+                <gias-data-template
+                    [name]="labelDataInizio"
+                    giasFormControlName="dataInizio"
+                    [nullValue]="AGRODATA_INIZIO">
+                </gias-data-template>
+                <gias-button-group-template
+                    *ngIf="isRicercaAvanzata && visualizzaDataFine()"
+                    [name]="tipoOperatoreDataInizio"
+                    [listItems]="tipoOperatoreFiltroData"
+                    textField="name"
+                    valueField="value"
+                    giasFormControlName="tipoOperatoreDataInizio"
+                    [valuePrimitive]="true">
+                </gias-button-group-template>
+            </div>
+            <div *ngIf="!visualizzaDataFine()" class="col-2 position-relative">
+                <button
+                    title="{{ 'AggiungiDataFine' | transloco }}"
+                    kendoButton
+                    (click)="visualizzaRicercaSemplice()"
+                    class="bg-white p-0 position-absolute bottom-0">
+                    <i aria-hidden="true" class="xi-add-inline"></i>
+                </button>
+            </div>
+        </div>
+
+        <div><p></p></div>
+
+        <div *ngIf="visualizzaDataFine()">
+            <gias-data-template
+                [name]="'DataFine' | transloco"
+                giasFormControlName="dataFine"
+                [nullValue]="AGRODATA_FINE">
+            </gias-data-template>
+            <gias-button-group-template
+                *ngIf="isRicercaAvanzata"
+                [name]="tipoOperatoreDataFine"
+                [listItems]="tipoOperatoreFiltroData"
+                textField="name"
+                valueField="value"
+                giasFormControlName="tipoOperatoreDataFine"
+                [valuePrimitive]="true">
+            </gias-button-group-template>
+        </div>
+
+        <div><p></p></div>
+
+        <div *ngIf="visualizzaDataFine()">
+            <button kendoButton
+                class="btn-tipo-ricerca"
+                (click)="onClickTipoRicerca()">
+                {{ [labelTipoRicerca] }}
+            </button>
+        </div>
+
+        <div><p></p></div>
+
+        <h4>{{ 'FiltroTemporaleSingolaData' | transloco }}</h4>
+
+        <div>
+            <gias-data-template
+                [name]="'DataInizio' | transloco"
+                giasFormControlName="dataInizioSingola"
+                [nullValue]="AGRODATA_INIZIO">
+            </gias-data-template>
+        </div>
+
+        <div>
+            <gias-data-template
+                [name]="'DataFine' | transloco"
+                giasFormControlName="dataFineSingola"
+                [nullValue]="AGRODATA_FINE">
+            </gias-data-template>
+        </div>
+
+        <div><p></p></div>
+
+        <kendo-dialog-actions>
+            <button kendoButton (click)="applicaFiltro()">{{ 'ApplicaFiltro' | transloco }}</button>
+            <!-- <button kendoButton (click)="impostaFiltriIniziali()">{{ 'ImpostaFiltriIniziali' | transloco }}</button> -->
+        </kendo-dialog-actions>
+
+    </form>
+
+</kendo-dialog>

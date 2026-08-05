@@ -1,0 +1,2079 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>
+    </SchemaVersion>
+    <ProjectGuid>{AD65C001-C38A-431F-B4A0-13FDE43E54CD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AgronicaDomandaIrrigua</RootNamespace>
+    <AssemblyName>AgronicaDomandaIrrigua</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Collections.Specialized" />
+    <Import Include="System.Configuration" />
+    <Import Include="System.Text" />
+    <Import Include="System.Text.RegularExpressions" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Caching" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.Profile" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+    <Import Include="System.Web.UI.WebControls.WebParts" />
+    <Import Include="System.Web.UI.HtmlControls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AB_Immagini\Icone16\c0.ico" />
+    <Content Include="AB_Immagini\Icone16\Calcolatrice16.png" />
+    <Content Include="AB_Immagini\Icone16\cE.ico" />
+    <Content Include="AB_Immagini\Icone16\cE2.png" />
+    <Content Include="AB_Immagini\Icone16\cI.ico" />
+    <Content Include="AB_Immagini\Icone16\cN.ico" />
+    <Content Include="AB_Immagini\Icone16\Copia16.ico" />
+    <Content Include="AB_Immagini\Icone16\cS.ico" />
+    <Content Include="AB_Immagini\Icone16\Esclamativo16.ico" />
+    <Content Include="AB_Immagini\Icone16\FrecciaRossa_N.ico" />
+    <Content Include="AB_Immagini\Icone16\FrecciaRossa_S.ico" />
+    <Content Include="AB_Immagini\Icone16\Gomma16.ico" />
+    <Content Include="AB_Immagini\Icone16\movimenti.png" />
+    <Content Include="AB_Immagini\Icone16\MovimentiMacchine16.ico" />
+    <Content Include="AB_Immagini\Icone16\Nuovo16.ico" />
+    <Content Include="AB_Immagini\Icone16\OperazioneAgenda16.ico" />
+    <Content Include="AB_Immagini\Icone16\p1.ico" />
+    <Content Include="AB_Immagini\Icone16\p2.ico" />
+    <Content Include="AB_Immagini\Icone16\p3.ico" />
+    <Content Include="AB_Immagini\Icone16\Plus.png" />
+    <Content Include="AB_Immagini\Icone16\Stampa16b.ico" />
+    <Content Include="AB_Immagini\Icone24\Agenda.ico" />
+    <Content Include="AB_Immagini\Icone24\Agenda24.ico" />
+    <Content Include="AB_Immagini\Icone24\Agenda24.png" />
+    <Content Include="AB_Immagini\Icone24\Agronica_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Appezzamento.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Appezzamento_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Campo.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Campo_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_CTR.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_CTR_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_Ortofoto.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_OrtofotoCTR.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_OrtofotoCTR_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Centro_Ortofoto_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Impianto.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Serra.ico" />
+    <Content Include="AB_Immagini\Icone24\Anagrafica_24_Serra_Lock.ico" />
+    <Content Include="AB_Immagini\Icone24\Avversita24_a.ico" />
+    <Content Include="AB_Immagini\Icone24\Avversita24_b.ico" />
+    <Content Include="AB_Immagini\Icone24\btnnuovoarticolo4.png" />
+    <Content Include="AB_Immagini\Icone24\btnnuovofornitore.png" />
+    <Content Include="AB_Immagini\Icone24\btnprofitosan4.png" />
+    <Content Include="AB_Immagini\Icone24\btnricerca.png" />
+    <Content Include="AB_Immagini\Icone24\btn_salva_esci.png" />
+    <Content Include="AB_Immagini\Icone24\btn_salva_nuovo.png" />
+    <Content Include="AB_Immagini\Icone24\Calendario24.ico" />
+    <Content Include="AB_Immagini\Icone24\CalendarioBis24.ico" />
+    <Content Include="AB_Immagini\Icone24\CampoNew2.ico" />
+    <Content Include="AB_Immagini\Icone24\Cantina.ico" />
+    <Content Include="AB_Immagini\Icone24\Cartografia01.ico" />
+    <Content Include="AB_Immagini\Icone24\Cartografia01.png" />
+    <Content Include="AB_Immagini\Icone24\Casa_01.ico" />
+    <Content Include="AB_Immagini\Icone24\Casa_02.ico" />
+    <Content Include="AB_Immagini\Icone24\Catasto.ico" />
+    <Content Include="AB_Immagini\Icone24\Catasto_02.ico" />
+    <Content Include="AB_Immagini\Icone24\CellaFrigorifera_01.ico" />
+    <Content Include="AB_Immagini\Icone24\CellaFrigorifera_02.ico" />
+    <Content Include="AB_Immagini\Icone24\Centro.ico" />
+    <Content Include="AB_Immagini\Icone24\Certificato24.ico" />
+    <Content Include="AB_Immagini\Icone24\Check24b.ico" />
+    <Content Include="AB_Immagini\Icone24\Consistenze.ico" />
+    <Content Include="AB_Immagini\Icone24\Consistenze01.ico" />
+    <Content Include="AB_Immagini\Icone24\Contatti24.ico" />
+    <Content Include="AB_Immagini\Icone24\Cooperativa24a.ico" />
+    <Content Include="AB_Immagini\Icone24\Cooperativa24b.ico" />
+    <Content Include="AB_Immagini\Icone24\Cooperativa24c.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Catasto_02.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Copia di Freccia24BluDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Copia di Freccia24BluDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Copia di Freccia24BluSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Copia di Freccia24BluUP.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24BluDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24BluDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24BluSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24BluUP.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24RossaDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24RossaDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24RossaSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Copia di Freccia24RossaUP.ico" />
+    <Content Include="AB_Immagini\Icone24\Doc4.ico" />
+    <Content Include="AB_Immagini\Icone24\Doc4.png" />
+    <Content Include="AB_Immagini\Icone24\Dose24.ico" />
+    <Content Include="AB_Immagini\Icone24\Euro_02_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Euro_03_24.ico" />
+    <Content Include="AB_Immagini\Icone24\FabbricatoGenerico.ico" />
+    <Content Include="AB_Immagini\Icone24\Fienile.ico" />
+    <Content Include="AB_Immagini\Icone24\Formulati24.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24BluDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24BluDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24BluSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24BluUP.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24RossaDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24RossaDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24RossaSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24RossaUP.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24VerdeDN.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24VerdeDX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24VerdeSX.ico" />
+    <Content Include="AB_Immagini\Icone24\Freccia24VerdeUP.ico" />
+    <Content Include="AB_Immagini\Icone24\gps.png" />
+    <Content Include="AB_Immagini\Icone24\GrigliaturaChiara24.ico" />
+    <Content Include="AB_Immagini\Icone24\Help24.ico" />
+    <Content Include="AB_Immagini\Icone24\Icona_A_agronica.png" />
+    <Content Include="AB_Immagini\Icone24\Icona_Euro.png" />
+    <Content Include="AB_Immagini\Icone24\ImpiantiLavorazione_01.ico" />
+    <Content Include="AB_Immagini\Icone24\ImpiantiLavorazione_02.ico" />
+    <Content Include="AB_Immagini\Icone24\ImpiantiLavorazione_04.ico" />
+    <Content Include="AB_Immagini\Icone24\Impianto.ico" />
+    <Content Include="AB_Immagini\Icone24\ImpiantoOrticoleNew.ico" />
+    <Content Include="AB_Immagini\Icone24\Ingrediente_01.ico" />
+    <Content Include="AB_Immagini\Icone24\Ingrediente_02.ico" />
+    <Content Include="AB_Immagini\Icone24\Ingredienti.ico" />
+    <Content Include="AB_Immagini\Icone24\Logo24_Lan.ico" />
+    <Content Include="AB_Immagini\Icone24\Logo24_Online.ico" />
+    <Content Include="AB_Immagini\Icone24\Logo24_OnlineLan.ico" />
+    <Content Include="AB_Immagini\Icone24\MagazzinoGiacenze24.ico" />
+    <Content Include="AB_Immagini\Icone24\Magazzino_01.ico" />
+    <Content Include="AB_Immagini\Icone24\Magazzino_02.ico" />
+    <Content Include="AB_Immagini\Icone24\movimenti.png" />
+    <Content Include="AB_Immagini\Icone24\MovimentiMagazzino01.ico" />
+    <Content Include="AB_Immagini\Icone24\Ope_Colturali_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Ope_Contabili_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Ope_Zootecniche_24.ico" />
+    <Content Include="AB_Immagini\Icone24\PageWarp24.ico" />
+    <Content Include="AB_Immagini\Icone24\ParcoMacchine24.ico" />
+    <Content Include="AB_Immagini\Icone24\ParticellaCatastale02.ico" />
+    <Content Include="AB_Immagini\Icone24\Permessi_Nessuno.ico" />
+    <Content Include="AB_Immagini\Icone24\Permessi_Read.ico" />
+    <Content Include="AB_Immagini\Icone24\Permessi_ReadWrite.ico" />
+    <Content Include="AB_Immagini\Icone24\PersonaArancio.ico" />
+    <Content Include="AB_Immagini\Icone24\PersonaAzzurra.ico" />
+    <Content Include="AB_Immagini\Icone24\Piano.ico" />
+    <Content Include="AB_Immagini\Icone24\PianoConcimazione_24.ico" />
+    <Content Include="AB_Immagini\Icone24\planning.png" />
+    <Content Include="AB_Immagini\Icone24\PortafoglioProdotti.ico" />
+    <Content Include="AB_Immagini\Icone24\Posta24.ico" />
+    <Content Include="AB_Immagini\Icone24\Prodotti24.ico" />
+    <Content Include="AB_Immagini\Icone24\Prodotto_01.ico" />
+    <Content Include="AB_Immagini\Icone24\Prodotto_02.ico" />
+    <Content Include="AB_Immagini\Icone24\profitosan.ico" />
+    <Content Include="AB_Immagini\Icone24\profitosan.png" />
+    <Content Include="AB_Immagini\Icone24\profitosan2.png" />
+    <Content Include="AB_Immagini\Icone24\Sfera2_Arancio_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera2_Azzurra_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera2_Rossa_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera2_Verde_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera2_Viola_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Arancio_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Azzurra_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Bianca_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Grigia_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Rossa_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Verde_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Sfera_Viola_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Silos_01.ico" />
+    <Content Include="AB_Immagini\Icone24\Silos_02.ico" />
+    <Content Include="AB_Immagini\Icone24\Specie24.ico" />
+    <Content Include="AB_Immagini\Icone24\Stalla_01.ico" />
+    <Content Include="AB_Immagini\Icone24\ValidazioneNO_24.ico" />
+    <Content Include="AB_Immagini\Icone24\ValidazioneSI_24.ico" />
+    <Content Include="AB_Immagini\Icone24\Vasca.ico" />
+    <Content Include="AB_Immagini\Icone24\Visualizzazione_Mensile.ico" />
+    <Content Include="AB_Immagini\Icone24\Visualizzazione_Settimanale.ico" />
+    <Content Include="AB_Immagini\Icone24\x01_Utente.png" />
+    <Content Include="AB_Immagini\Icone24\x02_Impresa.png" />
+    <Content Include="AB_Immagini\Icone24\x03_Centro.png" />
+    <Content Include="AB_Immagini\Icone24\x04_Campo.png" />
+    <Content Include="AB_Immagini\Icone24\x04_CampoNew.png" />
+    <Content Include="AB_Immagini\Icone24\x05_Appezzamento.png" />
+    <Content Include="AB_Immagini\Icone24\x06_TerrenoNudo.png" />
+    <Content Include="AB_Immagini\Icone24\x07_Arboree.png" />
+    <Content Include="AB_Immagini\Icone24\x08_Erbacee.png" />
+    <Content Include="AB_Immagini\Icone24\x09_Orticole.png" />
+    <Content Include="AB_Immagini\Icone24\x10_Stalla.png" />
+    <Content Include="AB_Immagini\Icone24\x11_Consistenze.png" />
+    <Content Include="AB_Immagini\Icone24\x12_Particella.ico" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Appezzamento.bmp" />
+    <Content Include="AB_Immagini\Icone24\X24 - 256 - Campo.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impianto Arb.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impianto Erb.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impianto Nudo.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impianto Ort.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impianto.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Impresa.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Particella Albero 01.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Struttura.bmp" />
+    <Content Include="AB_Immagini\Icone24\x24 - 256 - Utente.bmp" />
+    <Content Include="AB_Immagini\Icone24\X24 - Campo.bmp" />
+    <Content Include="AB_Immagini\Icone32\0-9.ico" />
+    <Content Include="AB_Immagini\Icone32\17-Text File.ico" />
+    <Content Include="AB_Immagini\Icone32\A-Z.ico" />
+    <Content Include="AB_Immagini\Icone32\ACC - Configurazione.ico" />
+    <Content Include="AB_Immagini\Icone32\ACC - Configurazione2.ico" />
+    <Content Include="AB_Immagini\Icone32\ACC - Promozioni.ico" />
+    <Content Include="AB_Immagini\Icone32\ACC - Vetrina.ico" />
+    <Content Include="AB_Immagini\Icone32\Agenda.ico" />
+    <Content Include="AB_Immagini\Icone32\Agenda01.ico" />
+    <Content Include="AB_Immagini\Icone32\AggiungiAgenda.ico" />
+    <Content Include="AB_Immagini\Icone32\Agronica.ico" />
+    <Content Include="AB_Immagini\Icone32\Albero.ico" />
+    <Content Include="AB_Immagini\Icone32\Albero01.ico" />
+    <Content Include="AB_Immagini\Icone32\AlberoGerarchico32.ico" />
+    <Content Include="AB_Immagini\Icone32\AnalisiCosti.ico" />
+    <Content Include="AB_Immagini\Icone32\AnalisiCosti01.ico" />
+    <Content Include="AB_Immagini\Icone32\AngoloNO_32.ico" />
+    <Content Include="AB_Immagini\Icone32\AngoloSE_32.ico" />
+    <Content Include="AB_Immagini\Icone32\AssegnaPermessi.ico" />
+    <Content Include="AB_Immagini\Icone32\BtnNo.ico" />
+    <Content Include="AB_Immagini\Icone32\BtnSi.ico" />
+    <Content Include="AB_Immagini\Icone32\Calcolatrice32.ico" />
+    <Content Include="AB_Immagini\Icone32\Calendario04.ico" />
+    <Content Include="AB_Immagini\Icone32\CalibriFrutti32.ico" />
+    <Content Include="AB_Immagini\Icone32\CambioPiva.ico" />
+    <Content Include="AB_Immagini\Icone32\Cancella.bmp" />
+    <Content Include="AB_Immagini\Icone32\Caratteristiche.ico" />
+    <Content Include="AB_Immagini\Icone32\Cartella.ico" />
+    <Content Include="AB_Immagini\Icone32\CartellaColori32.ico" />
+    <Content Include="AB_Immagini\Icone32\Cartografia01.ico" />
+    <Content Include="AB_Immagini\Icone32\Casetta.ico" />
+    <Content Include="AB_Immagini\Icone32\Certificato.ico" />
+    <Content Include="AB_Immagini\Icone32\Certificato2.ico" />
+    <Content Include="AB_Immagini\Icone32\CertificatoNO.ico" />
+    <Content Include="AB_Immagini\Icone32\CertificatoSI.ico" />
+    <Content Include="AB_Immagini\Icone32\Cestino.ico" />
+    <Content Include="AB_Immagini\Icone32\Check 01.ico" />
+    <Content Include="AB_Immagini\Icone32\Check32a.ico" />
+    <Content Include="AB_Immagini\Icone32\Check32b.ico" />
+    <Content Include="AB_Immagini\Icone32\ChiaveInglese32.ico" />
+    <Content Include="AB_Immagini\Icone32\Chiavi32a.ico" />
+    <Content Include="AB_Immagini\Icone32\Clip32.ico" />
+    <Content Include="AB_Immagini\Icone32\Clip32_Elimina.ico" />
+    <Content Include="AB_Immagini\Icone32\Coccinella01.ico" />
+    <Content Include="AB_Immagini\Icone32\Coccinella02.ico" />
+    <Content Include="AB_Immagini\Icone32\Coccinella03.ico" />
+    <Content Include="AB_Immagini\Icone32\Cocomero32.ico" />
+    <Content Include="AB_Immagini\Icone32\Consistenze32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilita.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Disponibilita_Finanziarie_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Documenti_Trasporto_32.ICO" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Elaborati_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Movimento_Finanziario_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Note_Comunicati_32.ICO" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Pagamenti_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Piano_Conti_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contabilità - Utilità_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Contatti.ico" />
+    <Content Include="AB_Immagini\Icone32\ControlliBlocca.ico" />
+    <Content Include="AB_Immagini\Icone32\ControlliSblocca.ico" />
+    <Content Include="AB_Immagini\Icone32\Cooperativa32a.ico" />
+    <Content Include="AB_Immagini\Icone32\Cooperativa32b.ico" />
+    <Content Include="AB_Immagini\Icone32\Cooperativa32c.ico" />
+    <Content Include="AB_Immagini\Icone32\Copia32.ico" />
+    <Content Include="AB_Immagini\Icone32\CostiAccessori.ico" />
+    <Content Include="AB_Immagini\Icone32\CostiAccessoriAvanzati.ico" />
+    <Content Include="AB_Immagini\Icone32\CostiAccessoriElimina32.ico" />
+    <Content Include="AB_Immagini\Icone32\CostiOperazione.ico" />
+    <Content Include="AB_Immagini\Icone32\Diramazione2.ico" />
+    <Content Include="AB_Immagini\Icone32\Diramazione3.ico" />
+    <Content Include="AB_Immagini\Icone32\Dischetto.ico" />
+    <Content Include="AB_Immagini\Icone32\Disciplinari.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc1.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc10.ICO" />
+    <Content Include="AB_Immagini\Icone32\Doc11.ICO" />
+    <Content Include="AB_Immagini\Icone32\Doc2.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc3.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc4.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc5.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc6.ico" />
+    <Content Include="AB_Immagini\Icone32\Doc7.ICO" />
+    <Content Include="AB_Immagini\Icone32\Doc8.ICO" />
+    <Content Include="AB_Immagini\Icone32\Doc9.ico" />
+    <Content Include="AB_Immagini\Icone32\Documenti.ico" />
+    <Content Include="AB_Immagini\Icone32\Edificio12.ico.ICO" />
+    <Content Include="AB_Immagini\Icone32\Edit_Nuovo_Appezzamento.ico" />
+    <Content Include="AB_Immagini\Icone32\Edit_Nuovo_Appezzamento2.ico" />
+    <Content Include="AB_Immagini\Icone32\Edit_Nuovo_Impianto.ico" />
+    <Content Include="AB_Immagini\Icone32\Edit_Nuovo_Impianto2.ico" />
+    <Content Include="AB_Immagini\Icone32\Edit_Nuovo_Poligono.ico" />
+    <Content Include="AB_Immagini\Icone32\ElencoImprese.ico" />
+    <Content Include="AB_Immagini\Icone32\ElmettoSicurezza32.ico" />
+    <Content Include="AB_Immagini\Icone32\Errore.ico" />
+    <Content Include="AB_Immagini\Icone32\Esci.bmp" />
+    <Content Include="AB_Immagini\Icone32\Esci.ico" />
+    <Content Include="AB_Immagini\Icone32\Esci02.ico" />
+    <Content Include="AB_Immagini\Icone32\Esci03.ico" />
+    <Content Include="AB_Immagini\Icone32\EsciPorta.ico" />
+    <Content Include="AB_Immagini\Icone32\Esclamativo.ico" />
+    <Content Include="AB_Immagini\Icone32\Etichetta32.ico" />
+    <Content Include="AB_Immagini\Icone32\Euro_01_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Euro_02_32.ico" />
+    <Content Include="AB_Immagini\Icone32\Euro_03_32.ico" />
+    <Content Include="AB_Immagini\Icone32\FasiFenologiche32.ico" />
+    <Content Include="AB_Immagini\Icone32\Formulati32.ico" />
+    <Content Include="AB_Immagini\Icone32\Formulati32a.ico" />
+    <Content Include="AB_Immagini\Icone32\FrecciaDN.ico" />
+    <Content Include="AB_Immagini\Icone32\FrecciaDX.ico" />
+    <Content Include="AB_Immagini\Icone32\FrecciaSX.ico" />
+    <Content Include="AB_Immagini\Icone32\FrecciaUP.ico" />
+    <Content Include="AB_Immagini\Icone32\Freccia_NE.ico" />
+    <Content Include="AB_Immagini\Icone32\Freccia_NO.ico" />
+    <Content Include="AB_Immagini\Icone32\Freccia_SE.ico" />
+    <Content Include="AB_Immagini\Icone32\Freccia_SO.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneCatasto.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneDistinte.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneImpresa32.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneIngredienti.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneParticelle.ico" />
+    <Content Include="AB_Immagini\Icone32\GestionePreparazioni.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneProdotti.ico" />
+    <Content Include="AB_Immagini\Icone32\GestioneTerreni.ico" />
+    <Content Include="AB_Immagini\Icone32\Giacenze.ico" />
+    <Content Include="AB_Immagini\Icone32\Gomma.ico" />
+    <Content Include="AB_Immagini\Icone32\Gomma32.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Albero32.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Cancella.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - CancellaPunto.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Disegna.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Layer32.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - LayerAttivo32.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Misura.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Misura2.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Modifica.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Pan32.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Ritaglio32a.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Stampa.bmp" />
+    <Content Include="AB_Immagini\Icone32\Grafica - TipoMappa.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - TipoMappa2.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Entita.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Finestra.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Minus.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Plus.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Scala.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Selezione.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafica - Zoom Uguale.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafico01.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafico02.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafico03.ico" />
+    <Content Include="AB_Immagini\Icone32\Grafico04.ico" />
+    <Content Include="AB_Immagini\Icone32\Grigliatura.ico" />
+    <Content Include="AB_Immagini\Icone32\GrigliaturaChiara.ico" />
+    <Content Include="AB_Immagini\Icone32\GrigliaturaChiara24.ico" />
+    <Content Include="AB_Immagini\Icone32\GrigliaturaScura.ico" />
+    <Content Include="AB_Immagini\Icone32\Help32.ico" />
+    <Content Include="AB_Immagini\Icone32\ImpiantoLavorazione.ico" />
+    <Content Include="AB_Immagini\Icone32\Impostazioni01.ico" />
+    <Content Include="AB_Immagini\Icone32\Impresa.ico" />
+    <Content Include="AB_Immagini\Icone32\Impresa01.ico" />
+    <Content Include="AB_Immagini\Icone32\ImpresaPrecedente.ico" />
+    <Content Include="AB_Immagini\Icone32\Impresa_Cerca32.ico" />
+    <Content Include="AB_Immagini\Icone32\InCostruzione.ico" />
+    <Content Include="AB_Immagini\Icone32\Indicazioni.ico" />
+    <Content Include="AB_Immagini\Icone32\Indicazioni_Edit.ico" />
+    <Content Include="AB_Immagini\Icone32\IndiciMaturita32.ico" />
+    <Content Include="AB_Immagini\Icone32\Informazioni.bmp" />
+    <Content Include="AB_Immagini\Icone32\Informazioni.ico" />
+    <Content Include="AB_Immagini\Icone32\Informazioni.png" />
+    <Content Include="AB_Immagini\Icone32\InfoSuperfici32.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingrediente04.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti_AgriBio.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti_AgriNorm.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti_Aux.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti_Edit.ico" />
+    <Content Include="AB_Immagini\Icone32\Ingredienti_NonAgri2.ico" />
+    <Content Include="AB_Immagini\Icone32\InsettiUtili01.ico" />
+    <Content Include="AB_Immagini\Icone32\Insetto32_01.ico" />
+    <Content Include="AB_Immagini\Icone32\Insetto32_02.ico" />
+    <Content Include="AB_Immagini\Icone32\Insetto32_03.ico" />
+    <Content Include="AB_Immagini\Icone32\Insetto32_04.ico" />
+    <Content Include="AB_Immagini\Icone32\Interrogativo.ico" />
+    <Content Include="AB_Immagini\Icone32\Layer_Crust_Pin_32.png" />
+    <Content Include="AB_Immagini\Icone32\Lente.ico" />
+    <Content Include="AB_Immagini\Icone32\Logo_Agrea.ico" />
+    <Content Include="AB_Immagini\Icone32\Logo_Codex.jpg" />
+    <Content Include="AB_Immagini\Icone32\Magazzino01.ico" />
+    <Content Include="AB_Immagini\Icone32\MagazzinoCarico.ico" />
+    <Content Include="AB_Immagini\Icone32\MagazzinoMovimenti32.ico" />
+    <Content Include="AB_Immagini\Icone32\Magazzinooldico.png" />
+    <Content Include="AB_Immagini\Icone32\MagazzinoScarico.ico" />
+    <Content Include="AB_Immagini\Icone32\MagazzinoTrasferimento.ico" />
+    <Content Include="AB_Immagini\Icone32\Mappa32_CTR.ico" />
+    <Content Include="AB_Immagini\Icone32\Mappa32_CTR_b.ico" />
+    <Content Include="AB_Immagini\Icone32\Mappa32_Ortofoto.ico" />
+    <Content Include="AB_Immagini\Icone32\Mappa32_Ortofoto_b.ico" />
+    <Content Include="AB_Immagini\Icone32\MappaCentro32.ico" />
+    <Content Include="AB_Immagini\Icone32\MenuProdotti01.ico" />
+    <Content Include="AB_Immagini\Icone32\MenuProdotti02.ico" />
+    <Content Include="AB_Immagini\Icone32\Modifica.bmp" />
+    <Content Include="AB_Immagini\Icone32\Modifica.ico" />
+    <Content Include="AB_Immagini\Icone32\movimenti.png" />
+    <Content Include="AB_Immagini\Icone32\msg.jpeg" />
+    <Content Include="AB_Immagini\Icone32\Mucca32.ico" />
+    <Content Include="AB_Immagini\Icone32\Nocivita32.ico" />
+    <Content Include="AB_Immagini\Icone32\Nocivita32_Edit.ico" />
+    <Content Include="AB_Immagini\Icone32\Nuovo.bmp" />
+    <Content Include="AB_Immagini\Icone32\Nuovo.ico" />
+    <Content Include="AB_Immagini\Icone32\NuovoPref.ico" />
+    <Content Include="AB_Immagini\Icone32\NuovoRapportoContabile.ico" />
+    <Content Include="AB_Immagini\Icone32\Occhio32.ico" />
+    <Content Include="AB_Immagini\Icone32\Ope_Colturali.ico" />
+    <Content Include="AB_Immagini\Icone32\Ope_Contabili.ico" />
+    <Content Include="AB_Immagini\Icone32\Ope_Zootecniche.ico" />
+    <Content Include="AB_Immagini\Icone32\Opzioni 02.bmp" />
+    <Content Include="AB_Immagini\Icone32\PageWarp32.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_1.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_2.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_3.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_4.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_5.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_6.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_7.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_8.ico" />
+    <Content Include="AB_Immagini\Icone32\Pagina_9.ico" />
+    <Content Include="AB_Immagini\Icone32\ParcoMacchine.ico" />
+    <Content Include="AB_Immagini\Icone32\Persona32.ico" />
+    <Content Include="AB_Immagini\Icone32\Persone.ico" />
+    <Content Include="AB_Immagini\Icone32\PianoConcimazione.ico" />
+    <Content Include="AB_Immagini\Icone32\PianoConti.ico" />
+    <Content Include="AB_Immagini\Icone32\Plus.png" />
+    <Content Include="AB_Immagini\Icone32\Posta32.ico" />
+    <Content Include="AB_Immagini\Icone32\Preparazioni.ico" />
+    <Content Include="AB_Immagini\Icone32\Prodotti.ico" />
+    <Content Include="AB_Immagini\Icone32\profitosan_36.png" />
+    <Content Include="AB_Immagini\Icone32\Progetto_Fasi32.ico" />
+    <Content Include="AB_Immagini\Icone32\Progetto_Interventi32.ico" />
+    <Content Include="AB_Immagini\Icone32\Progetto_Lavorati32.ico" />
+    <Content Include="AB_Immagini\Icone32\Progetto_Stato32.ico" />
+    <Content Include="AB_Immagini\Icone32\RapportoContabile.ico" />
+    <Content Include="AB_Immagini\Icone32\Refresh32.ico" />
+    <Content Include="AB_Immagini\Icone32\Registro.ico" />
+    <Content Include="AB_Immagini\Icone32\Salva.ico" />
+    <Content Include="AB_Immagini\Icone32\SchedaTecnica.ico" />
+    <Content Include="AB_Immagini\Icone32\SchedaTecnica_Edit.ico" />
+    <Content Include="AB_Immagini\Icone32\Semina32.ico" />
+    <Content Include="AB_Immagini\Icone32\Sfera2_Arancio.ico" />
+    <Content Include="AB_Immagini\Icone32\Sfera2_Azzurra.ico" />
+    <Content Include="AB_Immagini\Icone32\Sfera2_Rossa.ico" />
+    <Content Include="AB_Immagini\Icone32\Sfera2_Verde.ico" />
+    <Content Include="AB_Immagini\Icone32\Sfera2_Viola.ico" />
+    <Content Include="AB_Immagini\Icone32\Stalla.ico" />
+    <Content Include="AB_Immagini\Icone32\Stalla01.ico" />
+    <Content Include="AB_Immagini\Icone32\Stalla02.ico" />
+    <Content Include="AB_Immagini\Icone32\Stampa.bmp" />
+    <Content Include="AB_Immagini\Icone32\Stampa.ico" />
+    <Content Include="AB_Immagini\Icone32\Stampa32b.ico" />
+    <Content Include="AB_Immagini\Icone32\Stampa32c.ico" />
+    <Content Include="AB_Immagini\Icone32\Stato.ico" />
+    <Content Include="AB_Immagini\Icone32\Storico01.ico" />
+    <Content Include="AB_Immagini\Icone32\Storico02.ico" />
+    <Content Include="AB_Immagini\Icone32\Temp_Magazzino.ico" />
+    <Content Include="AB_Immagini\Icone32\Temp_Mucca.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Appezzamento_Cancella.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Appezzamento_Modifica.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Appezzamento_Nuovo.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_CampoAggrega.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_CampoDisaggrega.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Campo_Cancella.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Campo_Modifica.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Campo_Nuovo.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Collega.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Frazionamento.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Unione.ico" />
+    <Content Include="AB_Immagini\Icone32\Terreni_Variazione.ico" />
+    <Content Include="AB_Immagini\Icone32\Trova.ico" />
+    <Content Include="AB_Immagini\Icone32\Trova2.ico" />
+    <Content Include="AB_Immagini\Icone32\Trova3.ico" />
+    <Content Include="AB_Immagini\Icone32\TrovaImprese.ico" />
+    <Content Include="AB_Immagini\Icone32\update.png" />
+    <Content Include="AB_Immagini\Icone32\Uscita.ico" />
+    <Content Include="AB_Immagini\Icone32\ValidazioneNO.ico" />
+    <Content Include="AB_Immagini\Icone32\ValidazioneSI.ico" />
+    <Content Include="AB_Immagini\Icone32\Vite_32.ico" />
+    <Content Include="AB_Immagini\Icone32\XLS_01.ico" />
+    <Content Include="AB_Immagini\Icone32\XLS_02.ico" />
+    <Content Include="AB_Immagini\Icone32\z_Omino 04.ico" />
+    <Content Include="AB_Immagini\Icone32\z_Omino 11_32.bmp" />
+    <Content Include="AB_Immagini\Icone32\z_Omino 21_32.ico" />
+    <Content Include="AB_Immagini\Icone32\z_Omino 23_32.ICO" />
+    <Content Include="AB_Immagini\Icone32\z_Utenti 03_32.ICO" />
+    <Content Include="AB_Immagini\Icone32\z_Utenti 07.ico.ICO" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Appezzamento.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Appezzamento_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Campo.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Campo_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_CTR.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_CTR_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_Ortofoto.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_OrtofotoCTR.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_OrtofotoCTR_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Centro_Ortofoto_Lock.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Serra.ico" />
+    <Content Include="AB_Immagini\IconeAnagrafica\Anagrafica_24_Serra_Lock.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000001.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000002.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000003.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000009.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000011.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000013.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000015.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000016.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000017.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000021.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000022.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000023.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000025.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000028.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000030.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000031.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000032.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000033.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000034.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000035.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000038.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000039.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000040.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000041.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000043.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000044.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000045.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000046.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000047.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000048.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000049.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000050.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000051.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000052.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000053.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000054.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000056.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000057.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000058.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000059.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000060.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000062.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000063.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000064.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000065.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000066.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000069.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000070.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000071.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000072.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000073.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000074.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000075.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000076.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000077.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000078.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000079.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000080.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000081.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000083.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000084.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000085.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000086.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000087.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000091.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000101.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000102.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000108.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000110.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000116.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000117.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000118.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000120.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000125.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000126.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000127.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000209.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000210.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000235.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000294.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000311.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000347.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\0000350.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\5000123.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\5000309.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\5000310.ico" />
+    <Content Include="AB_Immagini\IconeVegetali\9999999.ico" />
+    <Content Include="AB_Immagini\Icone\AB16.png" />
+    <Content Include="AB_Immagini\Icone\AB32.png" />
+    <Content Include="AB_Immagini\Icone\Agenda01.ico" />
+    <Content Include="AB_Immagini\Icone\Agenda16.png" />
+    <Content Include="AB_Immagini\Icone\Agenda32.png" />
+    <Content Include="AB_Immagini\Icone\AgendaDettaglio16.png" />
+    <Content Include="AB_Immagini\Icone\AgendaDettaglio32.png" />
+    <Content Include="AB_Immagini\Icone\AreeOmogenee16.png" />
+    <Content Include="AB_Immagini\Icone\AreeOmogenee32.png" />
+    <Content Include="AB_Immagini\Icone\BtnNO_64.ico" />
+    <Content Include="AB_Immagini\Icone\BtnSI_64.ico" />
+    <Content Include="AB_Immagini\Icone\BufferZone16.png" />
+    <Content Include="AB_Immagini\Icone\BufferZone24.png" />
+    <Content Include="AB_Immagini\Icone\BufferZone32.png" />
+    <Content Include="AB_Immagini\Icone\CampoNew_16.ico" />
+    <Content Include="AB_Immagini\Icone\CampoNew_32.ico" />
+    <Content Include="AB_Immagini\Icone\Catasto16.png" />
+    <Content Include="AB_Immagini\Icone\Catasto32.png" />
+    <Content Include="AB_Immagini\Icone\Cross_16.ico" />
+    <Content Include="AB_Immagini\Icone\Cross_32.ico" />
+    <Content Include="AB_Immagini\Icone\Doc4_16.png" />
+    <Content Include="AB_Immagini\Icone\Doc4_32.png" />
+    <Content Include="AB_Immagini\Icone\Dose16.ico" />
+    <Content Include="AB_Immagini\Icone\Dose32.ico" />
+    <Content Include="AB_Immagini\Icone\Foglia16.png" />
+    <Content Include="AB_Immagini\Icone\Foglia32.png" />
+    <Content Include="AB_Immagini\Icone\FrecciaDN_32x16.png" />
+    <Content Include="AB_Immagini\Icone\FrecciaUP_32x10.ico" />
+    <Content Include="AB_Immagini\Icone\FrecciaUP_32x16.ico" />
+    <Content Include="AB_Immagini\Icone\HAEquivalenti16.png" />
+    <Content Include="AB_Immagini\Icone\HAEquivalenti32.png" />
+    <Content Include="AB_Immagini\Icone\Impianto16.png" />
+    <Content Include="AB_Immagini\Icone\Impianto32.png" />
+    <Content Include="AB_Immagini\Icone\Insetto16.png" />
+    <Content Include="AB_Immagini\Icone\Insetto32.png" />
+    <Content Include="AB_Immagini\Icone\Interferenze96.ico" />
+    <Content Include="AB_Immagini\Icone\mappePrescrizione16.png" />
+    <Content Include="AB_Immagini\Icone\mappePrescrizione32.png" />
+    <Content Include="AB_Immagini\Icone\MovimentiMacchine16.ico" />
+    <Content Include="AB_Immagini\Icone\planning16.png" />
+    <Content Include="AB_Immagini\Icone\planning32.png" />
+    <Content Include="AB_Immagini\Icone\Precision16.png" />
+    <Content Include="AB_Immagini\Icone\Precision32.png" />
+    <Content Include="AB_Immagini\Icone\PrelevaCampione16.png" />
+    <Content Include="AB_Immagini\Icone\PrelevaCampione32.png" />
+    <Content Include="AB_Immagini\Icone\testa16x16.png" />
+    <Content Include="AB_Immagini\Icone\testa24x24.png" />
+    <Content Include="AB_Immagini\Icone\testa32x32.png" />
+    <Content Include="AB_Immagini\Icone\trattore.png" />
+    <Content Include="AB_Immagini\Icone\trattore16.png" />
+    <Content Include="AB_Immagini\Icone\trattore32.png" />
+    <Content Include="AB_Immagini\Icone\x03_Centro_16.png" />
+    <Content Include="AB_Immagini\Icone\x03_Centro_32.png" />
+    <Content Include="AB_Immagini\Icone\x04_GenericoLayer_16.png" />
+    <Content Include="AB_Immagini\Icone\x04_GenericoLayer_32.png" />
+    <Content Include="AB_Immagini\Icone\x05_Appezzamento_16.png" />
+    <Content Include="AB_Immagini\Icone\x05_Appezzamento_32.png" />
+    <Content Include="AB_Immagini\Logo\Logo 3.5x3.5.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo 4x4.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo Codex Blu.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo Tondo 100x100 --- 1.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo Tondo 100x100 --- 2.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo Tondo 100x100 --- 3.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo_Agronica.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_AgronicaGroup_150x50.bmp" />
+    <Content Include="AB_Immagini\Logo\Logo_Agronica_Group.gif" />
+    <Content Include="AB_Immagini\Logo\Logo_Agronica_Group.JPG" />
+    <Content Include="AB_Immagini\Logo\Logo_Codex.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Codinfo.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Codinfo_Grande.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Codinfo_Mini.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Codinfo_Piccolo.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_GiasOnline.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_GiasOnline_Grande.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_GiasOnline_Mini.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Pempa1.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Pempacorer.png" />
+    <Content Include="AB_Immagini\Logo\Logo_Pizzoli.jpg" />
+    <Content Include="AB_Immagini\Logo\logo_profitosan.jpg" />
+    <Content Include="AB_Immagini\Logo\logo_profitosan_small.jpg" />
+    <Content Include="AB_Immagini\Logo\logo_profitosan_smallBtn.jpg" />
+    <Content Include="AB_Immagini\Logo\logo_profitosan_smallBtnBS.jpg" />
+    <Content Include="AB_Immagini\Logo\Logo_Strube.JPG" />
+    <Content Include="AB_Immagini\Logo\Logo_Terremerse.png" />
+    <Content Include="AB_Immagini\Logo\Logo_Terremerse1.jpg" />
+    <Content Include="AB_Immagini\Logo\REGIONEUMBRIA.jpg" />
+    <Content Include="AB_Immagini\Logo\xLogo_Codinfo.jpg" />
+    <Content Include="AB_Immagini\Logo\xLogo_Codinfo_Grande.jpg" />
+    <Content Include="AB_Immagini\Logo\xLogo_Codinfo_Mini.jpg" />
+    <Content Include="AB_Immagini\Logo\xLogo_Codinfo_Piccolo.jpg" />
+    <Content Include="AB_Immagini\logo_small.png" />
+    <Content Include="AB_Immagini\Messaggi\ajax-loader.gif" />
+    <Content Include="AB_Immagini\Messaggi\cestino.png" />
+    <Content Include="AB_Immagini\Messaggi\IconError.jpg" />
+    <Content Include="AB_Immagini\Messaggi\infoIcon.gif" />
+    <Content Include="AB_Immagini\Messaggi\pleasewait.gif" />
+    <Content Include="AB_Immagini\Messaggi\ValidazioneSI.ico" />
+    <Content Include="AB_Immagini\Natale\AlberoNatale01.gif" />
+    <Content Include="AB_Immagini\Varie\chiave.gif" />
+    <Content Include="AB_Immagini\Varie\clessidra.gif" />
+    <Content Include="AB_Immagini\Varie\DivietoAccesso.gif" />
+    <Content Include="AB_Immagini\Varie\LegendaRegistroBudPlant.jpg" />
+    <Content Include="AB_Immagini\Varie\Semaforo_Rosso.gif" />
+    <Content Include="AB_Immagini\Varie\Semaforo_Verde.gif" />
+    <Content Include="Cache\CacheManager.asmx" />
+    <Content Include="Custom500.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="DomandeIrrigue\DomandaIrrigua_ws_client.js" />
+    <Content Include="DomandeIrrigue\RicercaDomandeIrrigue_jQueryDocReady.js" />
+    <Content Include="DomandeIrrigue\RicercaDomandeIrrigue.js" />
+    <Content Include="DomandeIrrigue\DomandaIrrigua.aspx" />
+    <Content Include="DomandeIrrigue\DomandaIrrigua.js" />
+    <Content Include="DomandeIrrigue\DomandaIrrigua_jQueryDocReady.js" />
+    <Content Include="DomandeIrrigue\DomandaIrrigua_WS.aspx" />
+    <Content Include="DomandeIrrigue\RicercaDomandeIrrigue_ws_client.js" />
+    <Content Include="DomandeIrrigue\RicercaDomandeIrrigue.aspx" />
+    <Content Include="GestioneRichieste.aspx" />
+    <Content Include="GiasVersioneCorrente.txt" />
+    <Content Include="Global.asax" />
+    <Content Include="Localization.aspx" />
+    <Content Include="Master\AgendaBootstrap_Master.css" />
+    <Content Include="Master\DomandaIrriguaBootstrap_Master.css" />
+    <Content Include="Master\DomandaIrriguaBootstrap_Master_jQueryDocReady.js" />
+    <Content Include="ControlliUtente\UltraMenu.ascx" />
+    <Content Include="Master\OperazioneBootstrap_kendoEvents.js" />
+    <Content Include="Master\OperazioneBootstrap_master.js" />
+    <Content Include="Operazioni\Distribuzione_Insetti.aspx" />
+    <Content Include="Operazioni\Installazione_Trappole.aspx" />
+    <Content Include="Operazioni\Reinnesco_Rilievi_Trappole.aspx" />
+    <Content Include="Operazioni\Trattamenti_2.aspx" />
+    <Content Include="Operazioni\RilieviBS.aspx" />
+    <Content Include="Operazioni\RilieviBS.js" />
+    <Content Include="Operazioni\RilieviBSjQueryDocReady.js" />
+    <Content Include="Operazioni\RilieviBSKendo.js" />
+    <Content Include="Operazioni\Raccolta.aspx" />
+    <Content Include="Operazioni\Trattamenti_PostRaccolta.aspx" />
+    <Content Include="Master\OperazioneBootstrap.master" />
+    <Content Include="GIS\Gis_Scripts\Colori.js" />
+    <Content Include="GIS\Gis_Scripts\Costanti_Gis.js" />
+    <Content Include="GIS\Gis_Scripts\DrawingManager.js" />
+    <Content Include="GIS\Gis_Scripts\Enumerativi_Gis.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartBS.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartBS_GMaps.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartBS_jQuery_DocReady.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartBS_KendoUI.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartBS_Localization.js" />
+    <Content Include="GIS\Gis_Scripts\gissmartCommons.js" />
+    <Content Include="GIS\Gis_Scripts\gMapsUtility.js" />
+    <Content Include="GIS\Gis_Scripts\Interfaccia.js" />
+    <Content Include="GIS\Gis_Scripts\InterfacciaBS.js" />
+    <Content Include="GIS\Gis_Scripts\js_demo_tiles.js" />
+    <Content Include="GIS\Gis_Scripts\labels.js" />
+    <Content Include="GIS\Gis_Scripts\labelsruler.js" />
+    <Content Include="GIS\Gis_Scripts\Mappa.js" />
+    <Content Include="GIS\Gis_Scripts\markerclusterer_cfg.js" />
+    <Content Include="GIS\Gis_Scripts\Numeri.js" />
+    <Content Include="GIS\Gis_Scripts\precision.js" />
+    <Content Include="GIS\Gis_Scripts\ruler.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMaps_DI_PARTENZA.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMaps_DI_PARTENZA_BS.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMaps_DI_PARTENZA_Com.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMaps_jQueryReady.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMaps_jQueryUI.js" />
+    <Content Include="GIS\Gis_Scripts\scriptMapsKendo.js" />
+    <Content Include="GIS\Gis_Scripts\Shape.js" />
+    <Content Include="GIS\Gis_Scripts\Stringhe.js" />
+    <Content Include="GIS\Gis_Scripts\Utility.js" />
+    <Content Include="GIS\Gis_Scripts\Vettori.js" />
+    <Content Include="ScriptGestionali\funzioni_comuni.js" />
+    <Content Include="ScriptGestionali\leggiArrayCostanti.js" />
+    <Content Include="ScriptGestionali\leggiTabelle_ws_client.js" />
+    <Content Include="ScriptGestionali\template_comuni_dropdown.js" />
+    <Content Include="Scripts\additional-methods.js" />
+    <Content Include="Scripts\additional-methods.min.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
+    <Content Include="Scripts\bootstrap-switch.min.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootswatch.js" />
+    <Content Include="Scripts\confrontaDate.js" />
+    <Content Include="Scripts\excanvas.compiled.js" />
+    <Content Include="Scripts\excanvas.js" />
+    <Content Include="Scripts\excanvas.min.js" />
+    <Content Include="Scripts\footable.min.js" />
+    <Content Include="Scripts\Funzioni.js" />
+    <Content Include="Scripts\FunzioniMie.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.js" />
+    <Content Include="Scripts\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.js" />
+    <Content Include="Scripts\i18n\defaults-de_DE.min.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.js" />
+    <Content Include="Scripts\i18n\defaults-en_US.min.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.js" />
+    <Content Include="Scripts\i18n\defaults-es_CL.min.js" />
+    <Content Include="Scripts\i18n\defaults-eu.js" />
+    <Content Include="Scripts\i18n\defaults-eu.min.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.js" />
+    <Content Include="Scripts\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.js" />
+    <Content Include="Scripts\i18n\defaults-it_IT.min.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.js" />
+    <Content Include="Scripts\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.js" />
+    <Content Include="Scripts\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.js" />
+    <Content Include="Scripts\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.js" />
+    <Content Include="Scripts\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.js" />
+    <Content Include="Scripts\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.js" />
+    <Content Include="Scripts\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.js" />
+    <Content Include="Scripts\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Scripts\jMsAjax.js" />
+    <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <Content Include="Scripts\jquery-barcode-2.0.1.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="Scripts\jquery-ui.combobox.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.bubblepopup.v2.3.1.min.js" />
+    <Content Include="Scripts\jquery.circliful.js" />
+    <Content Include="Scripts\jquery.collapsible.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.hotkeys.js" />
+    <Content Include="Scripts\jquery.innerfade.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.linq.min.js" />
+    <Content Include="Scripts\jquery.multiple.select.js" />
+    <Content Include="Scripts\jquery.showLoading.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-it.js" />
+    <Content Include="Scripts\jquery.ui.datepicker-pt-BR.js" />
+    <Content Include="Scripts\jquery.ui.timepicker.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.watable_modificato.js" />
+    <Content Include="Scripts\jshashset-3.0.js" />
+    <Content Include="Scripts\jstree.min_3.js" />
+    <Content Include="Scripts\linq.js" />
+    <Content Include="Scripts\locales\bootstrap-datepicker.it.js" />
+    <Content Include="Scripts\min\confrontaDate.min.js" />
+    <Content Include="Scripts\min\Funzioni.min.js" />
+    <Content Include="Scripts\min\FunzioniMie.min.js" />
+    <Content Include="Scripts\min\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\min\jquery-ui-1.8.4.custom.min.js" />
+    <Content Include="Scripts\min\jquery-ui.combobox.min.js" />
+    <Content Include="Scripts\min\jquery.bubblepopup.v2.3.1.min.js" />
+    <Content Include="Scripts\min\jquery.cookie.min.js" />
+    <Content Include="Scripts\min\jquery.hotkeys.min.js" />
+    <Content Include="Scripts\min\jquery.min.js" />
+    <Content Include="Scripts\min\jquery.showLoading.min.js" />
+    <Content Include="Scripts\min\themes\apple\bg.jpg" />
+    <Content Include="Scripts\min\themes\apple\d.png" />
+    <Content Include="Scripts\min\themes\apple\dot_for_ie.gif" />
+    <Content Include="Scripts\min\themes\apple\style.css" />
+    <Content Include="Scripts\min\themes\apple\throbber.gif" />
+    <Content Include="Scripts\min\themes\classic\d.png" />
+    <Content Include="Scripts\min\themes\classic\dot_for_ie.gif" />
+    <Content Include="Scripts\min\themes\classic\style.css" />
+    <Content Include="Scripts\min\themes\classic\throbber.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\d.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\d.png" />
+    <Content Include="Scripts\min\themes\default-rtl\dots.gif" />
+    <Content Include="Scripts\min\themes\default-rtl\style.css" />
+    <Content Include="Scripts\min\themes\default-rtl\throbber.gif" />
+    <Content Include="Scripts\min\themes\default\d.gif" />
+    <Content Include="Scripts\min\themes\default\d.png" />
+    <Content Include="Scripts\min\themes\default\style.css" />
+    <Content Include="Scripts\min\themes\default\throbber.gif" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.css" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.min.css" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.js" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-de_DE.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-en_US.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-en_US.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-es_CL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-eu.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-eu.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-it_IT.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Scripts\pluginbootstrap\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Scripts\plugins\jqplot.barRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.barRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.BezierCurveRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.BezierCurveRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.blockRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.blockRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.bubbleRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.bubbleRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisLabelRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisLabelRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisTickRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasAxisTickRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasOverlay.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasOverlay.min.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasTextRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.canvasTextRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.categoryAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.categoryAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.ciParser.js" />
+    <Content Include="Scripts\plugins\jqplot.ciParser.min.js" />
+    <Content Include="Scripts\plugins\jqplot.cursor.js" />
+    <Content Include="Scripts\plugins\jqplot.cursor.min.js" />
+    <Content Include="Scripts\plugins\jqplot.dateAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.dateAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.donutRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.donutRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.dragable.js" />
+    <Content Include="Scripts\plugins\jqplot.dragable.min.js" />
+    <Content Include="Scripts\plugins\jqplot.enhancedLegendRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.enhancedLegendRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.funnelRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.funnelRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.highlighter.js" />
+    <Content Include="Scripts\plugins\jqplot.highlighter.min.js" />
+    <Content Include="Scripts\plugins\jqplot.json2.js" />
+    <Content Include="Scripts\plugins\jqplot.json2.min.js" />
+    <Content Include="Scripts\plugins\jqplot.logAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.logAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.mekkoRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.meterGaugeRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.meterGaugeRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.ohlcRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.ohlcRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pieRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pieRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pointLabels.js" />
+    <Content Include="Scripts\plugins\jqplot.pointLabels.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidAxisRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidAxisRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidGridRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidGridRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidRenderer.js" />
+    <Content Include="Scripts\plugins\jqplot.pyramidRenderer.min.js" />
+    <Content Include="Scripts\plugins\jqplot.trendline.js" />
+    <Content Include="Scripts\plugins\jqplot.trendline.min.js" />
+    <Content Include="Scripts\plugins\jquery.jqplot.js" />
+    <Content Include="Scripts\proto.js" />
+    <Content Include="Scripts\themes\apple\bg.jpg" />
+    <Content Include="Scripts\themes\apple\d.png" />
+    <Content Include="Scripts\themes\apple\dot_for_ie.gif" />
+    <Content Include="Scripts\themes\apple\style.css" />
+    <Content Include="Scripts\themes\apple\throbber.gif" />
+    <Content Include="Scripts\themes\classic\d.png" />
+    <Content Include="Scripts\themes\classic\dot_for_ie.gif" />
+    <Content Include="Scripts\themes\classic\style.css" />
+    <Content Include="Scripts\themes\classic\throbber.gif" />
+    <Content Include="Scripts\themes\default-rtl\d.gif" />
+    <Content Include="Scripts\themes\default-rtl\d.png" />
+    <Content Include="Scripts\themes\default-rtl\dots.gif" />
+    <Content Include="Scripts\themes\default-rtl\style.css" />
+    <Content Include="Scripts\themes\default-rtl\throbber.gif" />
+    <Content Include="Scripts\themes\default\d.gif" />
+    <Content Include="Scripts\themes\default\d.png" />
+    <Content Include="Scripts\themes\default\style.css" />
+    <Content Include="Scripts\themes\default\throbber.gif" />
+    <Content Include="Scripts\themes\default_3\32px.png" />
+    <Content Include="Scripts\themes\default_3\40px.png" />
+    <Content Include="Scripts\themes\default_3\style.css" />
+    <Content Include="Scripts\themes\default_3\style.min.css" />
+    <Content Include="Scripts\themes\default_3\throbber.gif" />
+    <Content Include="Scripts\WS.js" />
+    <Content Include="Master\Operazione.master" />
+    <Content Include="Master\Agenda.Master" />
+    <None Include="Scripts\_references.js" />
+    <Content Include="Styles\bootstrap-select.css" />
+    <Content Include="Styles\bootstrap-select.min.css" />
+    <Content Include="Styles\bootstrap-select_1.12.4.min.css" />
+    <Content Include="Styles\bootstrap-switch.min.css" />
+    <Content Include="Styles\bootstrap.3.3.4.min.css" />
+    <Content Include="Styles\bootstrap.3.4.1.min.css" />
+    <Content Include="Styles\bootstrap.4.5.2.min.css" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\bootstrap.datepicker.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\bootswatch.min.css" />
+    <Content Include="Styles\datepicker.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Styles\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Styles\images\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-azure\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-black\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-blue\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-green\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-grey\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-orange\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-violet\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\all-yellow\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\azure\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\black\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\blue\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\green\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\grey\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\orange\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\violet\top-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\bottom-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\bottom-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\middle-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\middle-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-bottom.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\tail-top.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-left.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-middle.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\ie\top-right.gif" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\middle-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\middle-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-bottom.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-right.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\tail-top.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-left.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-middle.png" />
+    <Content Include="Styles\images\jquerybubblepopup-theme\yellow\top-right.png" />
+    <Content Include="Styles\images\loading.gif" />
+    <Content Include="Styles\images\minus.gif" />
+    <Content Include="Styles\images\plus.gif" />
+    <Content Include="Styles\images\throbber.gif" />
+    <Content Include="Styles\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Styles\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Styles\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Styles\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Styles\images\ui-bg_gloss-wave_85_9fda58_500x100.png" />
+    <Content Include="Styles\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Styles\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Styles\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Styles\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Styles\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Styles\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Styles\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Styles\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Styles\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Styles\jquery-ui-1.10.3.custom.css" />
+    <Content Include="Styles\jquery-ui-1.11.1.min.css" />
+    <Content Include="Styles\jquery-ui-1.8.16.custom.css" />
+    <Content Include="Styles\jquery-ui-1.8.4.custom.css" />
+    <Content Include="Styles\jquery-ui-1.8.4.custom.min.css" />
+    <Content Include="Styles\jquery.bubblepopup.v2.3.1.css" />
+    <Content Include="Styles\jquery.bubblepopup.v2.3.1.min.css" />
+    <Content Include="Styles\jquery.circliful.css" />
+    <Content Include="Styles\jquery.jqplot.min.css" />
+    <Content Include="Styles\jquery.ui.timepicker.css" />
+    <Content Include="Styles\multiple-select.css" />
+    <Content Include="Styles\shCoreDefault.min.css" />
+    <Content Include="Styles\showLoading.css" />
+    <Content Include="Styles\showLoading.min.css" />
+    <Content Include="Styles\shThemejqPlot.min.css" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Styles\Site.min.css" />
+    <Content Include="Styles\visual.css" />
+    <Content Include="Styles\watable\AgronicaWaTable.css" />
+    <Content Include="Styles\watable\watable.css" />
+    <Content Include="Tariffazione\CalcoloTariffazione.aspx" />
+    <Content Include="Tariffazione\CalcoloTariffazione_WS.aspx" />
+    <Content Include="Tariffazione\CalcoloTariffazione.js" />
+    <Content Include="Tariffazione\CalcoloTariffazione_jQueryDocReady.js" />
+    <Content Include="Tariffazione\CalcoloTariffazione_ws_client.js" />
+    <Content Include="Tariffazione\LettureContatoriAziendali.aspx" />
+    <Content Include="Tariffazione\LettureContatoriAziendali.js" />
+    <Content Include="Tariffazione\LettureContatoriAziendali_JQueryDocReady.js" />
+    <Content Include="Tariffazione\LettureContatoriAziendali_WS.aspx" />
+    <Content Include="Tariffazione\LettureContatoriAziendali_ws_client.js" />
+    <Content Include="Versione.aspx" />
+    <Content Include="WaitForm.htm" />
+    <Content Include="WaitForm.html" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AA_Script\UDM_Helper.vb" />
+    <Compile Include="App_GlobalResources\AgronicaDomandaIrrigua.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaDomandaIrrigua.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\AgronicaAgenda_2010.designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaAgenda_2010.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\AgronicaAgenda_2010.en.designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaAgenda_2010.en.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\AgronicaAgenda_2010.fr.designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaAgenda_2010.fr.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\AgronicaAgenda_2010.pt.designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgronicaAgenda_2010.pt.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Cache\CacheManager.asmx.vb">
+      <DependentUpon>CacheManager.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classi\Utility\Utility_Operazioni.vb" />
+    <Compile Include="Custom500.aspx.designer.vb">
+      <DependentUpon>Custom500.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Custom500.aspx.vb">
+      <DependentUpon>Custom500.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.vb">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="DomandeIrrigue\DomandaIrrigua.aspx.designer.vb">
+      <DependentUpon>DomandaIrrigua.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DomandeIrrigue\DomandaIrrigua.aspx.vb">
+      <DependentUpon>DomandaIrrigua.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="DomandeIrrigue\DomandaIrrigua_WS.aspx.designer.vb">
+      <DependentUpon>DomandaIrrigua_WS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DomandeIrrigue\DomandaIrrigua_WS.aspx.vb">
+      <DependentUpon>DomandaIrrigua_WS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="DomandeIrrigue\RicercaDomandeIrrigue.aspx.designer.vb">
+      <DependentUpon>RicercaDomandeIrrigue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DomandeIrrigue\RicercaDomandeIrrigue.aspx.vb">
+      <DependentUpon>RicercaDomandeIrrigue.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.designer.vb">
+      <DependentUpon>GestioneRichieste.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestioneRichieste.aspx.vb">
+      <DependentUpon>GestioneRichieste.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Localization.aspx.designer.vb">
+      <DependentUpon>Localization.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Localization.aspx.vb">
+      <DependentUpon>Localization.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Master\Agenda.Master.designer.vb">
+      <DependentUpon>Agenda.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Agenda.Master.vb">
+      <DependentUpon>Agenda.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\DomandaIrriguaBootstrap.Master.designer.vb">
+      <DependentUpon>DomandaIrriguaBootstrap.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\DomandaIrriguaBootstrap.Master.vb">
+      <DependentUpon>DomandaIrriguaBootstrap.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\OperazioneBootstrap.master.designer.vb">
+      <DependentUpon>OperazioneBootstrap.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\OperazioneBootstrap.master.vb">
+      <DependentUpon>OperazioneBootstrap.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Master\Operazione.master.designer.vb">
+      <DependentUpon>Operazione.master</DependentUpon>
+    </Compile>
+    <Compile Include="Master\Operazione.master.vb">
+      <DependentUpon>Operazione.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWebExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.Web.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ControlliUtente\UltraMenu.ascx.designer.vb">
+      <DependentUpon>UltraMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ControlliUtente\UltraMenu.ascx.vb">
+      <DependentUpon>UltraMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\Distribuzione_Insetti.aspx.designer.vb">
+      <DependentUpon>Distribuzione_Insetti.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Distribuzione_Insetti.aspx.vb">
+      <DependentUpon>Distribuzione_Insetti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\helperUI.vb" />
+    <Compile Include="Operazioni\Installazione_Trappole.aspx.designer.vb">
+      <DependentUpon>Installazione_Trappole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Installazione_Trappole.aspx.vb">
+      <DependentUpon>Installazione_Trappole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\Trattamenti_2.aspx.designer.vb">
+      <DependentUpon>Trattamenti_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Trattamenti_2.aspx.vb">
+      <DependentUpon>Trattamenti_2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\RilieviBS.aspx.designer.vb">
+      <DependentUpon>RilieviBS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\RilieviBS.aspx.vb">
+      <DependentUpon>RilieviBS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\Raccolta.aspx.designer.vb">
+      <DependentUpon>Raccolta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Raccolta.aspx.vb">
+      <DependentUpon>Raccolta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\Trattamenti_PostRaccolta.aspx.designer.vb">
+      <DependentUpon>Trattamenti_PostRaccolta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Trattamenti_PostRaccolta.aspx.vb">
+      <DependentUpon>Trattamenti_PostRaccolta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Operazioni\iOperazioneGUI.vb" />
+    <Compile Include="Operazioni\Reinnesco_Rilievi_Trappole.aspx.designer.vb">
+      <DependentUpon>Reinnesco_Rilievi_Trappole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Operazioni\Reinnesco_Rilievi_Trappole.aspx.vb">
+      <DependentUpon>Reinnesco_Rilievi_Trappole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classi\Agro_Pages\Agro_Page_Generica.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Classi\Agro_Pages\Agro_Page_Operazione_Colturale.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestioneContabilita\XML_Manager.vb" />
+    <Compile Include="Web References\WS_Disciplinari\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Tariffazione\CalcoloTariffazione.aspx.designer.vb">
+      <DependentUpon>CalcoloTariffazione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tariffazione\CalcoloTariffazione.aspx.vb">
+      <DependentUpon>CalcoloTariffazione.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Tariffazione\CalcoloTariffazione_WS.aspx.designer.vb">
+      <DependentUpon>CalcoloTariffazione_WS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tariffazione\CalcoloTariffazione_WS.aspx.vb">
+      <DependentUpon>CalcoloTariffazione_WS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Tariffazione\LettureContatoriAziendali.aspx.designer.vb">
+      <DependentUpon>LettureContatoriAziendali.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tariffazione\LettureContatoriAziendali.aspx.vb">
+      <DependentUpon>LettureContatoriAziendali.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Tariffazione\LettureContatoriAziendali_WS.aspx.designer.vb">
+      <DependentUpon>LettureContatoriAziendali_WS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tariffazione\LettureContatoriAziendali_WS.aspx.vb">
+      <DependentUpon>LettureContatoriAziendali_WS.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Versione.aspx.designer.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Versione.aspx.vb">
+      <DependentUpon>Versione.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\AgronicaDomandaIrrigua.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>AgronicaDomandaIrrigua.Designer.vb</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\AgronicaAgenda_2010.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>AgronicaAgenda_2010.designer.vb</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\AgronicaAgenda_2010.en.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>AgronicaAgenda_2010.en.designer.vb</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\AgronicaAgenda_2010.fr.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>AgronicaAgenda_2010.fr.designer.vb</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\AgronicaAgenda_2010.pt.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>AgronicaAgenda_2010.pt.designer.vb</LastGenOutput>
+    </Content>
+    <Content Include="Master\App_LocalResources\Agenda.Master.resx" />
+    <Content Include="Master\App_LocalResources\Agenda.master.en.resx" />
+    <Content Include="Master\App_LocalResources\Agenda.master.fr.resx" />
+    <Content Include="Master\App_LocalResources\Agenda.master.pt.resx" />
+    <Content Include="Master\App_LocalResources\Operazione.master.en.resx" />
+    <Content Include="Master\App_LocalResources\Operazione.master.fr.resx" />
+    <Content Include="Master\App_LocalResources\Operazione.master.resx" />
+    <Content Include="Operazioni\App_LocalResources\Installazione_Trappole.aspx.resx" />
+    <Content Include="Operazioni\App_LocalResources\Reinnesco_Rilievi_Trappole.aspx.resx" />
+    <Content Include="Operazioni\App_LocalResources\Reinnesco_Rilievi_Trappole.aspx.en.resx" />
+    <Content Include="Operazioni\App_LocalResources\Reinnesco_Rilievi_Trappole.aspx.fr.resx" />
+    <Content Include="Operazioni\App_LocalResources\Reinnesco_Rilievi_Trappole.aspx.pt.resx" />
+    <Content Include="Operazioni\App_LocalResources\Installazione_Trappole.aspx.en.resx" />
+    <Content Include="Operazioni\App_LocalResources\Installazione_Trappole.aspx.fr.resx" />
+    <Content Include="Operazioni\App_LocalResources\Installazione_Trappole.aspx.pt.resx" />
+    <Content Include="Master\App_LocalResources\OperazioneBootstrap.master.en.resx" />
+    <Content Include="Master\App_LocalResources\OperazioneBootstrap.master.fr.resx" />
+    <Content Include="Master\App_LocalResources\OperazioneBootstrap.master.pt.resx" />
+    <Content Include="Master\App_LocalResources\OperazioneBootstrap.master.resx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Content Include="Operazioni\App_LocalResources\Trattamenti_2.aspx.en.resx" />
+    <Content Include="Operazioni\App_LocalResources\Trattamenti_2.aspx.fr.resx" />
+    <Content Include="Operazioni\App_LocalResources\Trattamenti_2.aspx.it-CH.resx" />
+    <Content Include="Operazioni\App_LocalResources\Trattamenti_2.aspx.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilieviBS.aspx.en.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilieviBS.aspx.fr.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilieviBS.aspx.pt.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilieviBS.aspx.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilievoPiogge.aspx.en.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilievoPiogge.aspx.fr.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilievoPiogge.aspx.pt.resx" />
+    <Content Include="Operazioni\App_LocalResources\RilievoPiogge.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Master\DomandaIrriguaBootstrap.Master" />
+    <Content Include="machineKey.config" />
+    <Content Include="appsettings.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <Content Include="Styles\bootstrap-select.css.map" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Styles\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Styles\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Styles\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Styles\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Scripts\bootstrap-select.js.map" />
+    <Content Include="Scripts\pluginbootstrap\css\bootstrap-select.css.map" />
+    <Content Include="Scripts\pluginbootstrap\js\bootstrap-select.js.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj">
+      <Project>{afe3b912-9600-420b-adc3-a3a4d75093fd}</Project>
+      <Name>AgronicaCoreDTOStd</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCoreStd\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj">
+      <Project>{22b97611-6aa7-4e56-aacd-549cfa05381d}</Project>
+      <Name>AgronicaCoreModelsSTD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreEntityFramework\AgronicaCoreEntityFramework.vbproj">
+      <Project>{E52F9105-12EF-40A1-BD8A-F53BCB42FA36}</Project>
+      <Name>AgronicaCoreEntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePianoConcimazioneBIZ\AgronicaCorePianoConcimazioneBIZ.vbproj">
+      <Project>{8e64885e-19ad-4476-9094-1b5ef239cd43}</Project>
+      <Name>AgronicaCorePianoConcimazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaControlliGIS\AgronicaControlliGIS.vbproj">
+      <Project>{4d08ae6b-07ee-4c0b-a6eb-6b7f3f292f41}</Project>
+      <Name>AgronicaControlliGIS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreIO\AgronicaCoreIO.vbproj">
+      <Project>{E8B4A7ED-C7DF-4C45-B2A2-597C6BDDBEC9}</Project>
+      <Name>AgronicaCoreIO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDpiBIZ\AgronicaCoreDpiBIZ.vbproj">
+      <Project>{D0A726B3-FB25-4885-981E-4E741B35B843}</Project>
+      <Name>AgronicaCoreDpiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2012\AgronicaCoreGisDAL\AgronicaCoreGisDAL.vbproj">
+      <Project>{D6963B76-054B-4070-8BAD-DC9CC4C6F8D7}</Project>
+      <Name>AgronicaCoreGisDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaBIZ\AgronicaCoreMetaSchemaBIZ.vbproj">
+      <Project>{dfe81d0f-eb19-4e60-a58d-4d21363c6b6a}</Project>
+      <Name>AgronicaCoreMetaSchemaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePUA_BIZ\AgronicaCorePUA_BIZ.vbproj">
+      <Project>{beeef80e-d6a8-4941-998c-fd1b172c2cc8}</Project>
+      <Name>AgronicaCorePUA_BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCorePUA_DAL\AgronicaCorePUA_DAL.vbproj">
+      <Project>{5a441011-0f08-4535-85b6-36031c54cae2}</Project>
+      <Name>AgronicaCorePUA_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreWebService\AgronicaCoreWebService.vbproj">
+      <Project>{C72BDD2D-2D24-41AF-B4FC-1D71060BDE58}</Project>
+      <Name>AgronicaCoreWebService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\Agronica.Helpers.GiasBase\Agronica.Helpers.GiasBase.vbproj">
+      <Project>{7a9f6a10-ed3a-44a7-94c7-ca069a36c133}</Project>
+      <Name>Agronica.Helpers.GiasBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeBIZ\AgronicaCoreAnagrafeBIZ.vbproj">
+      <Project>{23f6d423-bc4f-4d05-a52a-67fa593234c8}</Project>
+      <Name>AgronicaCoreAnagrafeBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreAnagrafeDAL\AgronicaCoreAnagrafeDAL.vbproj">
+      <Project>{4489be20-bbe8-4b33-a6c3-82b845521073}</Project>
+      <Name>AgronicaCoreAnagrafeDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabBIZ\AgronicaCoreContabBIZ.vbproj">
+      <Project>{09c9a140-71e4-430e-9e87-73c69e876912}</Project>
+      <Name>AgronicaCoreContabBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreContabDAL\AgronicaCoreContabDAL.vbproj">
+      <Project>{3325415c-e4f0-4ee5-bf6a-c0bd9bf3276b}</Project>
+      <Name>AgronicaCoreContabDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDataProvider\AgronicaCoreDataProvider.vbproj">
+      <Project>{d1e4edca-946a-44b1-aa32-f315e0a9f13c}</Project>
+      <Name>AgronicaCoreDataProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreDomandaIrriguaBIZ\AgronicaCoreDomandaIrriguaBIZ.vbproj">
+      <Project>{06583041-e8ed-4042-94a6-9f6757e8537b}</Project>
+      <Name>AgronicaCoreDomandaIrriguaBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreGestioneRichieste\AgronicaCoreGestioneRichieste.vbproj">
+      <Project>{efd63249-9cbe-4cb4-90d2-e881341c3b96}</Project>
+      <Name>AgronicaCoreGestioneRichieste</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreMetaSchemaDAL\AgronicaCoreMetaSchemaDAL.vbproj">
+      <Project>{307b2208-0488-440a-876b-5dce4086e53b}</Project>
+      <Name>AgronicaCoreMetaSchemaDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreModello\AgronicaCoreModello.vbproj">
+      <Project>{30fdd803-f95c-4f68-be23-6538127e149d}</Project>
+      <Name>AgronicaCoreModello</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreProfilazioneBiz\AgronicaCoreProfilazioneBIZ.vbproj">
+      <Project>{9ca961b9-d9d3-4c47-b99e-f496f86ea287}</Project>
+      <Name>AgronicaCoreProfilazioneBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiBIZ\AgronicaCoreUtentiBIZ.vbproj">
+      <Project>{81c236b6-2854-4b14-9cda-c8668035a364}</Project>
+      <Name>AgronicaCoreUtentiBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtentiDAL\AgronicaCoreUtentiDAL.vbproj">
+      <Project>{7430f460-f70f-4e5c-85f3-fefd8e7eecbe}</Project>
+      <Name>AgronicaCoreUtentiDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtilityVersioni\AgronicaCoreUtilityVersioni.vbproj">
+      <Project>{65a1e92b-5c81-4d83-ade7-1c4af0ef9963}</Project>
+      <Name>AgronicaCoreUtilityVersioni</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreUtility\AgronicaCoreUtility.vbproj">
+      <Project>{1c26fac0-09ad-4d00-9fa6-6142b93542cf}</Project>
+      <Name>AgronicaCoreUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieBIZ\AgronicaCoreVarieBIZ.vbproj">
+      <Project>{0c28e3ab-427e-45d5-b6b3-43d3378af207}</Project>
+      <Name>AgronicaCoreVarieBIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreVarieDAL\AgronicaCoreVarieDAL.vbproj">
+      <Project>{0746d560-498b-435b-b197-faa7ff9bd0da}</Project>
+      <Name>AgronicaCoreVarieDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaCore_2010\AgronicaCoreXML\AgronicaCoreXML.vbproj">
+      <Project>{56b64bcf-a26c-4ac3-86fe-7f8114b1b3d9}</Project>
+      <Name>AgronicaCoreXML</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AgronicaGIS2012\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias\AgronicaConversioneCartografiaGias.GeoConverter.vbproj">
+      <Project>{8fa27405-01bd-4da3-9461-dbb8fe16dec7}</Project>
+      <Name>AgronicaConversioneCartografiaGias.GeoConverter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\GiasOnline_2010\AgronicaControlli_2010\AgronicaControlli_2010.vbproj">
+      <Project>{74c51f78-05dc-4fed-b012-40ba23e87b77}</Project>
+      <Name>AgronicaControlli_2010</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.wsdl" />
+    <None Include="Web References\WS_Disciplinari\AgroWS_Disciplinari.disco" />
+    <None Include="Web References\WS_Disciplinari\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

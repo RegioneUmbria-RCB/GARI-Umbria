@@ -1,0 +1,148 @@
+<div>
+  <form [formGroup]="catastoForm" *ngIf="mostraForm" (keydown.enter)="$event.preventDefault()">
+    <gias-update-toolbar
+      [submit]="false"
+      [salvaNuovo]="true"
+      (clickEvent)="SalvaParticella(false)"
+      [disabled]="saving"
+      [formGroup]="catastoForm"
+      (clickSalvaNuovoEvent)="SalvaParticella(true)">
+    </gias-update-toolbar>
+
+    <div class="jumbotron">
+      <div class="container">
+        <div class="editPageContent">
+          <div class="row" *ngIf="mostraForm">
+            <div class="col-2 col-sm-3 "></div>
+            <div class="col-8 col-sm-6">
+              <gias-form-error-visualizer [form]="AppezzamentoEditForm"></gias-form-error-visualizer>
+            </div>
+            <div class="col-2 col-sm-3"></div>
+          </div>
+
+          <div class="row form-row">
+            <div class="col-12 col-sm-12 text-center">
+              <h4 class="card-title">{{ 'DatiCatastali' | transloco }}</h4>
+            </div>
+          </div>
+
+          <div class="row form-row" *ngIf="objParametriAgenda.TipoOperazioneDB == 1">
+            <div class="col-12 col-sm-6" [formGroup]="catastoForm.get('centro')">
+              <gias-drop-down-template-s [name]="'Centro' | transloco " [obligatory]="true" [clearButton]="true"
+                                         textField="descrizione" (open)="openDdl($event)" valueField="codice" [filterable]="true"
+                                         giasFormControlName="codice" [listItems]="lista_Centri" [valuePrimitive]="true">
+              </gias-drop-down-template-s>
+            </div>
+            <!--<hr>-->
+          </div>
+          <!-- Parte relativa alla Particella -->
+          <div [formGroup]="catastoForm.get('particella')">
+            <div [formGroup]="catastoForm.get('particella').get('primaryKey')">
+              <div class="row">
+                <div class="col-12 col-sm-3">
+                  <gias-drop-down-template [name]="'Provincia' | transloco" [filterable]="true" [listItems]="Provincie"
+                                           (valueChange)="ProvinciaChange($event)" textField="Provincia_Des" valueField="Istat_Prov"
+                                           giasFormControlName="Prov">
+                  </gias-drop-down-template>
+                </div>
+                <div class="col-12 col-sm-3">
+                  <gias-drop-down-template [name]="'Comune' | transloco" [filterable]="true" [listItems]="Comuni"
+                                           textField="descrizione" valueField="codice" giasFormControlName="Com">
+                  </gias-drop-down-template>
+                </div>
+                <div class="col-6 col-sm-1">
+                  <gias-text-template [name]="'Sezione' | transloco" [clearButton]="true" giasFormControlName="Sezione">
+                  </gias-text-template>
+                </div>
+                <div class="col-6 col-sm-2">
+                  <gias-numeric-template [name]="'Foglio' | transloco" giasFormControlName="Foglio" [format]="'n0'">
+                  </gias-numeric-template>
+                </div>
+                <div class="col-6 col-sm-2">
+                  <gias-numeric-template [name]="'Numero' | transloco" giasFormControlName="Numero" [format]="'n0'">
+                  </gias-numeric-template>
+                </div>
+                <div class="col-6 col-sm-1">
+                  <gias-text-template [name]="'Subalterno' | transloco" giasFormControlName="Subalterno">
+                  </gias-text-template>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- <div class="row form-row">
+
+            </div> -->
+            <div class="row form-row">
+              <div class="col-6">
+                <gias-numeric-template [name]="'catasto.Superficie' | transloco" [clearButton]="true" [placeholder]="'Superficie [Ha]'"
+                                       giasFormControlName="Area" [format]="'n4'">
+                </gias-numeric-template>
+              </div>
+              <div class="col-6">
+                <gias-text-template
+                  [name]="'Proprietario' | transloco"
+                  [clearButton]="true"
+                  [placeholder]="''"
+                  giasFormControlName="proprietario"
+                >
+                </gias-text-template>
+              </div>
+            </div>
+          </div>
+
+          <!--<hr>-->
+          <!-- Parte relativa ai Possessi-->
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <app-catasto-possessi-edit formGroupName="possessiParticella">
+
+              </app-catasto-possessi-edit>
+            </div>
+          </div>
+
+          <!--<hr>-->
+          <!-- Parte relativa al Metodo Di Produzione -->
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <div [formGroup]="catastoForm.get('particella')">
+                <app-catasto-metodo-produzione-edit formGroupName="metodoProduzione">
+                </app-catasto-metodo-produzione-edit>
+              </div>
+            </div>
+          </div>
+
+          <!--<hr>-->
+          <!-- Parte relativa ai Macrousi -->
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <div [formGroup]="catastoForm.get('particella')">
+                <app-catasto-macrousi-edit formGroupName="macrousi"></app-catasto-macrousi-edit>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <div [formGroup]="catastoForm.get('particella')">
+                <app-catasto-zone-edit formGroupName="zonizzazione">
+                </app-catasto-zone-edit>
+              </div>
+            </div>
+          </div>
+
+          <!--<hr>-->
+          <!-- Parte relativa al Classamento -->
+          <div class="row">
+            <div class="col-12 col-sm-12">
+              <div [formGroup]="catastoForm.get('particella')">
+                <app-catasto-classamento-edit formGroupName="classamento">
+                </app-catasto-classamento-edit>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

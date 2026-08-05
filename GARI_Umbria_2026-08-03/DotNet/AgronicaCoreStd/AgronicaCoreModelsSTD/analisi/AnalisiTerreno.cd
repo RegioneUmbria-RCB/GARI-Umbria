@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.ClasseTessitura">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACgAAAAAAAAA=</HashCode>
+      <FileName>anagrafiche\ClasseTessitura.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.metaschema.AnalisiTipo">
+    <Position X="5" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>metaschema\AnalisiTipo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.Campione">
+    <Position X="9.75" Y="5.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQgAQAAAAAAAAAAAAAASAAAAKAAACAAGEABAAAAAAAA=</HashCode>
+      <FileName>analisi\Campione.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.AnalisiTipologia">
+    <Position X="4" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="dettagli" Type="AgronicaCoreModelsSTD.analisi.DettaglioTipologia">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.123" Y="0.062" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>analisi\AnalisiTipologia.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="dettagli" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.AnalisiDettaglio">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAABgAAAAAAAAQAAAAAAAAACAAAAAAAEEAAAA=</HashCode>
+      <FileName>analisi\AnalisiDettaglio.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="campione" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="correzioni" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.AnalisiEntita">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAEAAAAAAAAAAAAAAFAAAAAEAAAAgAAAAAAAA=</HashCode>
+      <FileName>analisi\AnalisiEntita.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.DettaglioTipologia">
+    <Position X="1.5" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAIAAAAAAAAQAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analisi\DettaglioTipologia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.AnalisiCorrezione">
+    <Position X="4.5" Y="9" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAgAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>analisi\AnalisiCorrezione.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.AnalisiTerreno">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQBAAAAAAAAAAAAACAAQQCAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>analisi\AnalisiTerreno.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="tessitura" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="campioni" />
+      <Property Name="entita" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.analisi.Analisi">
+    <Position X="7.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAIAAAEACAACCAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>analisi\Analisi.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="AnalisiTipo" />
+      <Property Name="analisiTipologia" />
+      <Property Name="laboratorio" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="dettagli" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="AgronicaCoreModelsSTD.anagrafiche.Contatto" Collapsed="true">
+    <Position X="7.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQABBAAAgAggABQQAAAAADAQgQYABIAAAACAAABYUAA=</HashCode>
+      <FileName>anagrafiche\Contatto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

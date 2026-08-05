@@ -1,0 +1,68 @@
+<div [formGroup]="ProdottiForm" [id]="'RicercaProdotto_'+ Lav_Cod">
+    <div class="row form-row mt-2 mb-2">
+        <div class="col-12 ricerca-prodotto-title">
+            <div class="ricerca-text">
+                <gias-info-template size="lg" [title]="prodottiservice.setInfoLabelImpostazioni()"></gias-info-template>
+                <h5 class="card-title me-1">{{'Prodotto' | transloco}} *</h5>
+                <!--<h6 class="subtitle me-1" *ngIf="ServerFiltering">
+                    {{'InserireTreCaratteriDellaDescrizione' | transloco}}
+                </h6>-->
+                <h6 class="subtitle me-1">{{ Numero_Fertilizzanti() }}</h6>
+                <h6 class="subtitle">{{'qdc.lblDettaglioFertilizzanti.InnerText'| transloco}}</h6>
+                <div class="ricerca-visualizza-giacenze">
+                    <app-flag-visualizza-giacenze-zero></app-flag-visualizza-giacenze-zero>
+                </div>
+                <div class="ricerca-visualizza-magazzini-agenzie">
+                    <app-flag-magazzini-agenzie></app-flag-magazzini-agenzie>
+                </div>
+                <div class="ricerca-visualizza-magazzini-esterni">
+                  <app-flag-magazzini-esterni></app-flag-magazzini-esterni>
+                </div>
+                <div class="bottone-ricerca-prodotto">
+                    <app-bottone-ricerca-prodotti></app-bottone-ricerca-prodotti>
+                </div>
+            </div>
+
+            <div class="ricerca-gestione-prodotto" *ngIf="qdcservice.Mostra_Btn_Gestione_Prodotto()">
+                <app-bottoni-gestione-prodotto></app-bottoni-gestione-prodotto>
+            </div>
+        </div>
+        <div class="col-12 col-sm-10">
+
+            <!-- Ricerca Fertilizzanti senza Pulsante
+            [valuePrimitive]="false"
+            [applyMinimumFilterLength]="true"
+            [MinimumFilterLength]="3"
+            [ddlServerFiltering]="true"
+            (open)="openddl($event)"
+            [loadFunctionMultiColumnComboboxServerFiltering]="loadFunctionddlServerFilteringProdotti.bind(this)"-->
+
+            <gias-multi-column-combobox-template
+                #MultiColumnCombobox
+                [name]="''"
+                [listItems]="qdcdettaglifertilizzantiservice.Array_Fertilizzanti"
+                textField="Descrizione_Concatenata"
+                valueField="Codice_Concatenato"
+                [filterable]="true"
+                giasFormControlName="Prodotto"
+                [columns]="qdcdettaglifertilizzantiservice.ColumnComboboxFertilizzanti"
+                [placeholder]="prodottiservice.PlaceHolderRicercaProdotti()"
+                [emptyObj]="qdcservice.Obj_Empty_MultiColumnComboboxFertilizzazione"
+                (filterChange)="filterChangeFertilizzanti($event)"
+                [allowCustom]="true"
+                [valuePrimitive]="false">
+            </gias-multi-column-combobox-template>
+        </div>
+        <div class="col-12 col-sm-2">
+            <app-bottoni-sezione-prodotti></app-bottoni-sezione-prodotti>
+        </div>
+
+        <div class="row"
+             *ngIf="qdcservice.showInfoGiacenza(ProdottiForm.get('Prodotto').getRawValue()?.MagazziniMovimentazioni) !== ''">
+            <div class="col">
+                <div id="Lbl_Info_Giacenza_Prodotto"
+                     [innerHtml]="qdcservice.showInfoGiacenza(ProdottiForm.get('Prodotto').getRawValue()?.MagazziniMovimentazioni)"></div>
+            </div>
+        </div>
+    </div>
+</div>

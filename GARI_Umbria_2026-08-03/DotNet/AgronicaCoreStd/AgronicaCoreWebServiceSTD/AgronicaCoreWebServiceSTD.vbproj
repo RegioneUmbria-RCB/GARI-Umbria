@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <RootNamespace>AgronicaCoreWebServiceSTD</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgronicaControlli_2010STD\AgronicaControlli_2010STD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreDTOStd\AgronicaCoreDTOStd.csproj" />
+    <ProjectReference Include="..\AgronicaCoreModelloSTD\AgronicaCoreModelloSTD.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreModelsSTD\AgronicaCoreModelsSTD.csproj" />
+    <ProjectReference Include="..\AgronicaCoreUtilityStd\AgronicaCoreUtilityStd.vbproj" />
+    <ProjectReference Include="..\AgronicaCoreVarieBizSTD\AgronicaCoreVarieBizSTD.vbproj" />
+  </ItemGroup>
+
+</Project>

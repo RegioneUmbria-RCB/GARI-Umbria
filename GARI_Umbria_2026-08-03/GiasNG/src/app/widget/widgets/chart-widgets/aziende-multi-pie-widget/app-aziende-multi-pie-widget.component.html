@@ -1,0 +1,12 @@
+<div *ngIf="loading" class="widget-loading-container">
+    <kendo-loader type="converging-spinner"></kendo-loader>
+</div>
+
+<div *ngIf="!loading && data.length > 0" class="colture-full-width">
+    <app-chart-widget [data]="data" field="Superficie" unit="%" [chartPie]="chartPie"
+    style="height: 85%"></app-chart-widget>
+</div>
+
+<div *ngIf="!loading && data.length == 0" class="widget-loading-container">
+    <p class="widget-no-data">{{ 'NessunaAzienda' | transloco }}</p>
+</div>

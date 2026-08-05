@@ -1,0 +1,38 @@
+.resizer-container {
+    position: relative;
+    display: inline-block;
+}
+
+.resizer-container .resizer-grid {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-rows: repeat(5, 20px);
+    grid-template-columns: repeat(5, 20px);
+    grid-auto-flow: row;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 0px grey;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    transform: translate(-120px, 0);
+    z-index: 1;
+}
+
+.resizer-cell {
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+}
+
+.resizer-cell.selected {
+    background-color: #002D5A;
+    border: 1px solid #002D5A;
+}
+
+.resizer-handle {
+    cursor: pointer;
+}

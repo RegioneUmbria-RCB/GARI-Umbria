@@ -1,0 +1,55 @@
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.1.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>Agronica - Picker (XAML)</Title>
+      <Author>Vanni</Author>
+      <Shortcut>shortcut</Shortcut>
+    </Header>
+    <Snippet>
+		<Declarations>
+			<Literal>
+				<ID>id</ID>
+				<ToolTip>id controllo</ToolTip>
+				<Default>id</Default>
+			</Literal>
+			<Literal>
+				<ID>titolo</ID>
+				<ToolTip>titolo</ToolTip>
+				<Default>Titolo</Default>
+			</Literal>
+			<Literal>
+				<ID>note</ID>
+				<ToolTip>note</ToolTip>
+				<Default></Default>
+			</Literal>
+			<Literal>
+				<ID>binding</ID>
+				<ToolTip>binding</ToolTip>
+				<Default>binding</Default>
+			</Literal>
+			<Literal>
+				<ID>NumeroGriglia</ID>
+				<ToolTip>numero nella griglia</ToolTip>
+				<Default>1</Default>
+			</Literal>
+
+		</Declarations>
+      <Code Language="XAML">
+        <![CDATA[<!-- $titolo$ -->        
+            <StackLayout x:Name="section$id$" HorizontalOptions="FillAndExpand" Padding="4">
+                <Picker x:Name="picker$id$"
+                    Title="$titolo$"
+                    ItemsSource="{Binding Lista$id$}"
+                    ItemDisplayBinding="{Binding $binding$}"
+                    SelectedItem="{Binding Selected$id$}"
+                    Focused="Seleziona$id$"
+                    FontSize="Small" />
+            </StackLayout>
+        ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

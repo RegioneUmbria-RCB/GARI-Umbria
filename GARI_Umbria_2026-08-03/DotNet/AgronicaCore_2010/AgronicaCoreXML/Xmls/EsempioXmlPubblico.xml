@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Utente      xmlns="http://www.agronica.it/pub/" xmlns:gml="http://www.opengis.net/gml" username="utente" password="" codice="123">
+  <Impresa  tipo_operazione="1"
+            partita_iva="11122233344"
+            ragione_sociale="Impresa Rossi Mario"
+            codice_cuaa="33333333333"
+            i_indirizzo ="via del Mare, 1"
+            i_frazione="Cesena"
+            i_cap="47023"
+            i_comune="CESENA"
+            i_provincia="FC"
+            i_stato="Italia"
+            i_note_indirizzo=""
+            i_codice_istat_provincia="040"
+            i_codice_istat_comune="007">
+
+    <CentroAziendale 	tipo_operazione="1" codice_centro="0" nome_centro="Podere n.01 // in alternativa può essere fornita una descrizione anonima per il centro aziendale"
+
+    c_indirizzo =" via del Mare, 1"
+    c_frazione="Cesena"
+    c_cap="47023"
+    c_comune="CESENA"
+    c_provincia="FC"
+    c_stato="Italia"
+    c_note_indirizzo=""
+    c_codice_istat_provincia="040"
+    c_codice_istat_comune="007"
+    c_chiave_cliente="001 // codice assegnato al centro da chi sta presentando la dichiarazione">
+
+      <Appezzamento	tipo_operazione="1"
+      codice_appezzamento="0"
+      appezzamento_denominazione="app"
+      sup_appezzamento="20"
+      validita_inizio="07/10/2000"
+      validita_fine="31/12/2100"
+      app_chiave_cliente="001 // codice assegnato all’appezzamento da chi sta presentando la dichiarazione"
+      partita_iva_padre="01234567890"
+    >
+
+        <Impianto		tipo_operazione="1"
+        codice_impianto="0"
+        codice_specie_gias="52 //vedi tabella di codifica, appendice C"
+        codice_finalita_gias="0 // opzionale default=0 	vedi nota"
+        codice_varieta_gias ="678	// opzionale, sarà assegnato un default"
+        codice_tipologia_varieta_gias="2	// vedi tabelle di codifica, appendice C"
+        validita_inizio="07/10/2000"
+        validita_fine="31/12/2100"
+        data_semina_prevista = "01/11/2011"
+        data_raccolta_prevista = "31/12/2100"
+        sup_imp="20"
+        imp_chiave_cliente="001">
+
+
+
+          <geodata Flag_GPS="0" ElementoGrafico_Cod="0">
+            <gml:Polygon>
+              <gml:exterior>
+                <gml:LinearRing>
+                  <gml:posList>44.8372206232063 12.2101430448804 44.8373274419476 12.21012178603 44.837352935 12.2099264391667 44.8373367633333 12.20992193 44.8373011925 12.2094616141667 44.8375998425 12.2094439175 44.8377766441667 12.21384538 44.8374451612915 12.2138789203463 44.8372206232063 12.2101430448804</gml:posList>
+                </gml:LinearRing>
+              </gml:exterior>
+            </gml:Polygon>
+          </geodata>
+        </Impianto>
+      </Appezzamento>
+    </CentroAziendale>
+
+
+  </Impresa>
+
+
+
+</Utente>

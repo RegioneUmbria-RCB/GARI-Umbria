@@ -1,0 +1,213 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://example.com/changelogScript.schema.json",
+  "type": "object",
+  "title": "Agronica Changelog Script",
+  "description": "JSON Schema per Changelog di Script Agronica",
+  "required": [
+    "progetto",
+    "versioni"
+  ],
+  "properties": {
+    "progetto": {
+      "id": "#/properties/progetto",
+      "type": "string",
+      "description": "Il nome dello Script di questo changelog.",
+      "default": "",
+      "examples": [
+        "Migra"
+      ]
+    },
+    "versioni": {
+      "$ref": "#/definitions/versioni"
+    }
+  },
+
+  "definitions": {
+    "versioni": {
+      "id": "#/definitions/versioni",
+      "type": "array",
+      "title": "The versioni schema",
+      "description": "Elenco delle versioni.",
+      "uniqueItems": true,
+      "default": [],
+      "examples": [
+        [
+          {
+            "versione": 685,
+            "data": "2022-05-13",
+            "changelog": {
+              "gias_super_server": [],
+              "server": [
+                {
+                  "area": "Sequenza_Tabelle",
+                  "descrizione": "Aggiornamento colonna [End] = 2000000000 (Nome_Tabella: Pratiche, passaggiodistato_cod)"
+                },
+                {
+                  "area": "Audit",
+                  "descrizione": "Aggiunto campo 'Campionato nella tabella 'Audit'"
+                },
+                {
+                  "area": "Gruppi_UtenteXGruppi_Merce",
+                  "descrizione": "Aggiunto campo [Piva] in tabella [Gruppi_UtenteXGruppi_Merce] come parte della chiave primaria"
+                }
+              ],
+              "utenti": [
+                {
+                  "area": "Permessi",
+                  "descrizione": "Nuovo record in TB_Attivita: Piani di Campionamento: Compilazione Capitolati Cliente"
+                }
+              ],
+              "metaschema": [
+                {
+                  "area": "Nuove tabelle",
+                  "descrizione": "Codifica_FasiFenologicheEpoche_SistemiEsterni [per codifiche Enogis / Artea]"
+                },
+                {
+                  "area": "MenuBS_2017_Sezioni",
+                  "descrizione": "nuove colonne: Fittizio, OrdinamentoComplessivo, IDSezioneAre, Note"
+                }
+              ],
+              "piano_concimazione_pua": []
+            }
+          }
+        ]
+      ],
+      "items": {
+        "$ref": "#/definitions/singolaVersione"
+      }
+    },
+    "singolaVersione": {
+      "id": "#/definitions/singolaVersione",
+      "type": "object",
+      "description": "Singola versione",
+      "required": [
+        "versione",
+        "data",
+        "changelog"
+      ],
+      "properties": {
+        "versione": {
+          "id": "#/definitions/singolaVersione/properties/versione",
+          "type": "integer",
+          "description": "La versione del rilascio",
+          "default": 0,
+          "examples": [
+            50
+          ]
+        },
+        "data": {
+          "id": "#/definitions/singolaVersione/properties/data",
+          "type": [ "string", "null" ],
+          "format": "date",
+          "description": "La data del rilascio",
+          "default": "2100-12-31",
+          "examples": [
+            "2020-03-28"
+          ]
+        },
+        "changelog": {
+          "$ref": "#/definitions/changelog"
+        }
+      }
+    },
+
+    "changelog": {
+      "id": "#/definitions/changelog",
+      "type": "object",
+      "description": "Changelog di questa versione",
+      "additionalProperties": false,
+      "required": [
+        "server"
+      ],
+      "properties": {
+        "gias_super_server": {
+          "id": "#/definitions/changelog/properties/giasSuperServer",
+          "type": "array",
+          "description": "Array di modifiche a database Super Server",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleMod"
+          }
+        },
+        "server": {
+          "id": "#/definitions/changelog/properties/server",
+          "type": "array",
+          "description": "Array di modifiche a database Server",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleMod"
+          }
+        },
+        "utenti": {
+          "id": "#/definitions/changelog/properties/utenti",
+          "type": "array",
+          "description": "Array di modifiche a database Utenti",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleMod"
+          }
+        },
+        "metaschema": {
+          "id": "#/definitions/changelog/properties/metaschema",
+          "type": "array",
+          "description": "Array di modifiche a database Metaschema",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleMod"
+          }
+        },
+        "piano_concimazione_pua": {
+          "id": "#/definitions/changelog/properties/pianoConcimazionePua",
+          "type": "array",
+          "description": "Array di modifiche a database Piano Concimazione PUA",
+          "uniqueItems": true,
+          "default": [],
+          "items": {
+            "$ref": "#/definitions/singleMod"
+          }
+        }
+      }
+    },
+
+    "singleMod": {
+      "id": "#/definitions/singleMod",
+      "type": "object",
+      "description": "Singola modifica effettuata",
+      "additionalProperties": false,
+      "examples": {
+        "area": "Tabella Utenti",
+        "descrizione": "Aggiunte colonne Piva_SuperUser e Tipologia_Cod"
+      },
+      "required": [
+        "area",
+        "descrizione"
+      ],
+      "properties": {
+        "area": {
+          "$ref": "#/definitions/area"
+        },
+        "descrizione": {
+          "$ref": "#/definitions/descrizione"
+        }
+      }
+    },
+    
+    "area": {
+      "id": "#/definitions/area",
+      "type": "string",
+      "description": "Area o pagina di intervento",
+      "minLength": 1
+    },
+    "descrizione": {
+      "id": "#/definitions/descrizione",
+      "type": "string",
+      "description": "Descrizione della modifica effettuata",
+      "minLength": 1
+    }
+  }
+}

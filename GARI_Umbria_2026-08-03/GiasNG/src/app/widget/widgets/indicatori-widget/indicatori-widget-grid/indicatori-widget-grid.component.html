@@ -1,0 +1,25 @@
+<kendo-grid [data]="rows" [resizable]="true" [height]="height">
+  <ng-template kendoGridToolbarTemplate>
+    <div (click)="saveExcel(excelexport)" class="excel-button">
+      <span class="fa fa-file-excel-o" style="font-size: larger"></span>
+    </div>
+  </ng-template>
+  <ng-container *ngFor="let col of columns">
+    <kendo-grid-column *ngIf="col.field != 'rischio'" [field]="col.field" [title]="col.title"
+      [headerClass]="col.headerClass ?? ''" [class]="col.headerClass ?? ''"></kendo-grid-column>
+
+    <kendo-grid-column *ngIf="col.field == 'rischio'" [field]="col.field" [title]="col.title"
+      [headerClass]="col.headerClass ?? ''" [class]="col.headerClass ?? ''">
+      <ng-template kendoGridCellTemplate let-dataItem>
+        <ng-container *ngIf="dataItem.rischio != ''">
+          {{dataItem.rischio}}<div class="semaforo" [style]="'background-color: ' + dataItem.colore"></div>
+        </ng-container>
+      </ng-template>
+    </kendo-grid-column>
+  </ng-container>
+</kendo-grid>
+
+<kendo-excelexport [data]="rows" fileName="RiepilogoIndicatoriDSS.xlsx" #excelexport>
+  <kendo-excelexport-column *ngFor="let col of columns" [field]="col.field" [title]="col.title">
+  </kendo-excelexport-column>
+</kendo-excelexport>

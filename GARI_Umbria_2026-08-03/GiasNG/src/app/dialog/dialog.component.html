@@ -1,0 +1,12 @@
+<div class="icon-container">
+    <i aria-hidden="true" [ngClass]="['icon', dialogType]"></i>
+</div>
+<p [ngClass]="['title', dialogType]">{{title}}</p>
+
+
+<!--Classe content-scrollable per aggiungere la scroll bar-->
+<div class="content-scrollable" [ngStyle]="{'height': CalculateHeight()}">
+    <!--Lasciare l'innerHtml per poter stilizzare correttamente il content che potrebbe avere dei tag html (come bold,br, ecc...)-->
+    <p class="content" [innerHtml]="content"></p>
+</div>
+

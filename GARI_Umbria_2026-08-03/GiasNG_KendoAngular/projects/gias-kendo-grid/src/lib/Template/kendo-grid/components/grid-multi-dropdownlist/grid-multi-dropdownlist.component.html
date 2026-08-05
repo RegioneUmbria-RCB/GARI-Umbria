@@ -1,0 +1,14 @@
+
+
+<kendo-multiselect #multi
+    [data]="data"
+    [textField]="textField"
+    [valueField]="valueField"
+    [valuePrimitive]="valuePrimitive"
+    (ngModelChange)="changeValue($event)"
+    [formGroup]="formGroup"
+    [formControlName]="controlName"
+    [filterable]="filterable"
+    (filterChange)="handleFilter($event)"
+    (open)="onOpen()"
+></kendo-multiselect>

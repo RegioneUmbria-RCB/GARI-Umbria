@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Gestione di una transazione</Title>
+      <Author>vanni</Author>
+      <Shortcut>collegamento</Shortcut>
+      <Description>Gestione di transazioni su database via core</Description>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>nodoxml</ID>
+          <Type/>
+          <ToolTip>Sostituire con l'origine dati per il nodo xml che si sta usando.</ToolTip>
+          <Default>DrUtentixAppezzamenti</Default>
+          <Function/>
+        </Literal>
+
+        <Literal>
+          <ID>Data Creazione, modifica, ecc..</ID>
+          <Default>Data Creazione, modifica, ecc..</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="VB">
+        <![CDATA[
+        
+    Public Shared Function Transazione(objParametri_Server As AgronicaCoreDataProvider.AgronicaCoreParametri) As AgronicaCoreVarieBIZ.RispostaStandard
+
+        'La funzione gestisce una transazione, in caso di eccezione imposta il valore sul rispostaStandard (sarà restituito dalla funzione)
+
+        Dim messaggioErrore As String = ""
+
+        Dim FlagTransazioneLocale As Boolean = False
+        Dim FlagConnessioneLocale As Boolean = False
+
+        Dim rval As New AgronicaCoreVarieBIZ.RispostaStandard
+
+        'TODO: Gestire la tranzazione
+        Try
+
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Apro la connessione al DB
+            AgronicaCoreDataProvider.ConnessioniTransazioni.ApriConnessioneXCoreBiz(FlagConnessioneLocale,
+                                                                            FlagTransazioneLocale,
+                                                                            objParametri_Server)
+
+
+            '--indicare la query/le query o chiamare le fuzioni necessarie
+            Dim stb As New StringBuilder
+            stb.Length = 0
+            stb.Append(" insert ...  " & vbCrLf)
+
+
+
+            ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+            'Chiudo la transazione e la connessione al DB
+            AgronicaCoreDataProvider.ConnessioniTransazioni.ChiudiTransazioneXCoreBiz(FlagTransazioneLocale, objParametri_Server)
+            '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+            rval.RispostaOK = True
+            rval.RispostaStringa = "..."
+
+        Catch ex As Exception
+
+            'Faccio il rollback della transazione
+            If Not objParametri_Server.objTransazione Is Nothing Then
+                'objParametri.objTransazione.Rollback()
+                'objParametri.objTransazione = Nothing
+                AgronicaCoreDataProvider.ConnessioniTransazioni.ChiudiTransazione(2, objParametri_Server)
+
+            End If
+
+            messaggioErrore = AgronicaCoreUtility.Gestione_Eccezioni.MessaggioCompletoDataEccezione(ex, True)
+
+
+            Dim Messaggio As String = ""
+            If messaggioErrore <> "" Then
+
+
+                Messaggio += "ERR: Sono stati rilevati i seguenti errori : " & vbCrLf
+                Messaggio += "" & vbCrLf
+                Messaggio += messaggioErrore
+                Messaggio += "" & vbCrLf
+                Messaggio += "Ritentare il salvataggio dopo la correzione ..."
+
+            End If
+
+            rval.RispostaOK = False
+            rval.Errore = Messaggio
+
+            Scrivi_LOG(objParametri, NomeRoutine, messaggioErrore)
+
+
+        Finally
+
+            AgronicaCoreDataProvider.ConnessioniTransazioni.ChiudiConnessioneXCoreBiz(FlagConnessioneLocale, objParametri_Server)
+
+        End Try
+
+        Return rval
+
+    End Function
+
+            ]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

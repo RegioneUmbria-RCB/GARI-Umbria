@@ -1,0 +1,55 @@
+<ng-container *ngIf="!onlyDialog">
+  <ng-container *ngIf="selection == 'single'">
+    <kendo-textbox [value]="selectedDate == null ? null : (selectedDate | date: 'dd/MM/yyyy')"
+      (inputFocus)="calendarOpen = true" placeholder="giorno/mese/anno" [disabled]="disabled">
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-textbox-separator></kendo-textbox-separator>
+        <button kendoButton fillMode="flat" icon="close" (click)="changeDate(null)"></button>
+      </ng-template>
+    </kendo-textbox>
+  </ng-container>
+
+  <ng-container *ngIf="selection == 'range'">
+    <kendo-textbox
+      [value]="selectedDate == null ? null : `${(selectedDate.start | date: 'dd/MM/yyyy')} - ${(selectedDate.end | date: 'dd/MM/yyyy')}`"
+      (inputFocus)="calendarOpen = true" placeholder="giorno/mese/anno - giorno/mese/anno" [disabled]="disabled">
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-textbox-separator></kendo-textbox-separator>
+        <button kendoButton fillMode="flat" icon="close" (click)="changeDate(null)"></button>
+      </ng-template>
+    </kendo-textbox>
+  </ng-container>
+</ng-container>
+
+<kendo-dialog *ngIf="calendarOpen" (close)="calendarOpen = false">
+  <kendo-dialog-titlebar>
+    <div class="text_uppercase font-700"> {{ 'gis.Calendario' | transloco }}</div>
+  </kendo-dialog-titlebar>
+
+  <div class="analisi-mappe-satellitari-column">
+    <div class="calendar" *ngIf="dates$ | async as dates; else loading">
+      <kendo-calendar type="classic" (valueChange)="changeDate($event)" [focusedDate]="focusedDate"
+        [value]="selectedDate" [selection]="selection">
+        <ng-template kendoCalendarCellTemplate let-date>
+          <span [ngClass]="[ getDayEvent(dates, date) ]">{{ date.getDate() }}</span>
+        </ng-template>
+
+        <ng-template kendoCalendarYearCellTemplate let-context="cellContext">
+          <span [ngClass]="[ getMonthEvent(dates, context.value) ]">{{ context.formattedValue }}</span>
+        </ng-template>
+
+        <ng-template kendoCalendarDecadeCellTemplate let-context="cellContext">
+          <span [ngClass]="[ getYearEvent(dates, context.value, 1) ]">{{ context.formattedValue }}</span>
+        </ng-template>
+
+        <ng-template kendoCalendarCenturyCellTemplate let-context="cellContext">
+          <span [ngClass]="[ getYearEvent(dates, context.value, 10) ]">{{ context.formattedValue }}</span>
+        </ng-template>
+      </kendo-calendar>
+    </div>
+  </div>
+</kendo-dialog>
+
+<ng-template #loading>
+  <kendo-loader type="converging-spinner" size="large" class="loader"></kendo-loader>
+</ng-template>

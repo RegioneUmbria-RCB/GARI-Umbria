@@ -1,0 +1,103 @@
+:host {
+    background-color: #f8f9fa;
+}
+
+.active {
+    font-weight: bold;
+    border-bottom-style: solid;
+}
+
+ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+}
+li {
+    margin: 0 9px;
+}
+li:hover {
+    color: #ffc000;
+    cursor: pointer;
+}
+.k-appbar-section {
+    display: flex;
+}
+.content li {
+    margin: 0;
+    padding: 6px 5px;
+}
+.content ul {
+    display: block;
+}
+.content {
+    padding: 4px;
+}
+
+#expander.k-button:hover::before {
+    opacity: 0 !important;
+}
+
+kendo-appbar-section #expander.k-button:hover {
+    background-color: unset !important;
+}
+.k-button-flat::after {
+    box-shadow: inset 0 0 0 0 currentColor;
+}
+
+@media only screen and (max-width: 600px) {
+    .search-section {
+        display: none;
+    }
+    .appbar-items,
+    .user-actions kendo-badge-container,
+    kendo-avatar.k-avatar,
+    .k-appbar-separator {
+        display: none;
+    }
+
+    .overflow-button,
+    .search {
+        display: block;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .appbar-items,
+    .search,
+    kendo-avatar.k-avatar,
+    .user-actions kendo-badge-container,
+    .k-appbar-separator {
+        display: none;
+    }
+
+    .overflow-button {
+        display: block;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .appbar-items,
+    .user-actions kendo-badge-container,
+    .k-appbar-separator,
+    kendo-avatar.k-avatar {
+        display: block;
+    }
+
+    .overflow-button {
+        display: none;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+li.k-active {
+    color: #002850 !important;
+    border-bottom: 3px solid #002850;
+    font-weight: bold;
+}

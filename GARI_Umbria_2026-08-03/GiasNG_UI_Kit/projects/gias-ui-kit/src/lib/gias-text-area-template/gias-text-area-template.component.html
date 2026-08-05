@@ -1,0 +1,19 @@
+<div *ngIf="(giasFormControlName == undefined || giasFormControlName == null || giasFormControlName == '')">
+  <div *ngIf="inputType == 2">
+    <kendo-label>{{name}}</kendo-label>
+    <kendo-textarea style="width: 100%;" [ngClass]="{'required' : obligatory}" [placeholder]="placeholder"
+      [(ngModel)]="value" (ngModelChange)="changeValue($event)" [disabled]="isDisabled" [resizable]="resizable">
+    </kendo-textarea>
+  </div>
+</div>
+
+<div *ngIf="(giasFormControlName != undefined && giasFormControlName != null && giasFormControlName != '')">
+  <kendo-formfield *ngIf="inputType == 2">
+    <kendo-label *ngIf="name != undefined && name != null && name != ''"
+      [ngClass]="{'lbl_required' : obligatory}">{{name}}</kendo-label>
+    <kendo-textarea ngDefaultControl style="width: 100%" [ngClass]="{'required' : obligatory}"
+      [placeholder]="placeholder" [formControlName]="giasFormControlName" [disabled]="isDisabled"
+      [resizable]="resizable">
+    </kendo-textarea>
+  </kendo-formfield>
+</div>

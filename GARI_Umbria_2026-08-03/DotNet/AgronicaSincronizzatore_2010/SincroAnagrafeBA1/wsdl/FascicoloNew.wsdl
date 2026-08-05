@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<wsdl:definitions name="FascicoloWS_FascicoloHttp_Service" targetNamespace="http://bluarancio.com/sian/Binding" xmlns:Port_0="http://bluarancio.com/sian" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://bluarancio.com/sian/Binding" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import location="Fascicolo.wsdl" namespace="http://bluarancio.com/sian" />
+  <wsdl:binding name="FascicoloWS_FascicoloHttpBinding" type="Port_0:Fascicolo">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getFascicolo">
+      <soap:operation soapAction="http://bluarancio.com/sian/Binding/getFascicolo" />
+      <wsdl:input name="getFascicoloRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getFascicoloResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getInfoFascicolo">
+      <soap:operation soapAction="http://bluarancio.com/sian/Binding/getInfoFascicolo" />
+      <wsdl:input name="getInfoFascicoloRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getInfoFascicoloResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getFascicoloNew">
+      <soap:operation soapAction="http://bluarancio.com/sian/Binding/getFascicoloNew" />
+      <wsdl:input name="getFascicoloNewRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getFascicoloNewResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FascicoloWS_FascicoloHttpService">
+    <wsdl:port binding="this:FascicoloWS_FascicoloHttpBinding" name="FascicoloWS_FascicoloHttpPort">
+      <soap:address location="http://collesb.coldiretti.it:80/FascicoloMMWeb/sca/FascicoloWS" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

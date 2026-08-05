@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GIASAlarmModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="GIASAlarmModelStoreContainer">
+          <EntitySet Name="CoordinateGPS" EntityType="GIASAlarmModel.Store.CoordinateGPS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Coordinate_GPS_Vista_LatLong" EntityType="GIASAlarmModel.Store.Coordinate_GPS_Vista_LatLong" store:Type="Views" store:Schema="dbo" store:Name="Coordinate_GPS_Vista_LatLong">
+            <DefiningQuery>SELECT 
+      [Coordinate_GPS_Vista_LatLong].[ID_Coordinata] AS [ID_Coordinata], 
+      [Coordinate_GPS_Vista_LatLong].[DataOra] AS [DataOra], 
+      [Coordinate_GPS_Vista_LatLong].[IMEI] AS [IMEI], 
+      [Coordinate_GPS_Vista_LatLong].[Altezza] AS [Altezza], 
+      [Coordinate_GPS_Vista_LatLong].[Speed] AS [Speed], 
+      [Coordinate_GPS_Vista_LatLong].[DOP] AS [DOP], 
+      [Coordinate_GPS_Vista_LatLong].[Fix] AS [Fix], 
+      [Coordinate_GPS_Vista_LatLong].[TipologiaMovimento] AS [TipologiaMovimento], 
+      [Coordinate_GPS_Vista_LatLong].[Lat] AS [Lat], 
+      [Coordinate_GPS_Vista_LatLong].[Long] AS [Long]
+      FROM [dbo].[Coordinate_GPS_Vista_LatLong] AS [Coordinate_GPS_Vista_LatLong]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errori trovati durante la generazione:
+      avviso 6005: Tipo di dati 'geography' non supportato. La colonna 'Poligono_GeoEntity' nella tabella 'GIASAlarm.dbo.CoordinateGPS' è stata esclusa.
+      -->
+        <EntityType Name="CoordinateGPS">
+          <Key>
+            <PropertyRef Name="ID_Coordinata" />
+          </Key>
+          <Property Name="ID_Coordinata" Type="int" Nullable="false" />
+          <Property Name="DataOra" Type="datetime" />
+          <Property Name="IMEI" Type="nvarchar" MaxLength="500" />
+          <Property Name="Altezza" Type="float" />
+          <Property Name="Speed" Type="float" />
+          <Property Name="DOP" Type="float" />
+          <Property Name="Fix" Type="float" />
+          <Property Name="TipologiaMovimento" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errori trovati durante la generazione:
+      avviso 6002: Nessuna chiave primaria definita per la tabella/visualizzazione 'GIASAlarm.dbo.Coordinate_GPS_Vista_LatLong'. La chiave è stata dedotta e la definizione è stata creata come tabella/visualizzazione di sola lettura.
+      -->
+        <EntityType Name="Coordinate_GPS_Vista_LatLong">
+          <Key>
+            <PropertyRef Name="ID_Coordinata" />
+          </Key>
+          <Property Name="ID_Coordinata" Type="int" Nullable="false" />
+          <Property Name="DataOra" Type="datetime" />
+          <Property Name="IMEI" Type="nvarchar" MaxLength="500" />
+          <Property Name="Altezza" Type="float" />
+          <Property Name="Speed" Type="float" />
+          <Property Name="DOP" Type="float" />
+          <Property Name="Fix" Type="float" />
+          <Property Name="TipologiaMovimento" Type="nvarchar" MaxLength="500" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Long" Type="float" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GIASAlarmModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GIASAlarmEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CoordinateGPS" EntityType="GIASAlarmModel.CoordinateGPS" />
+          <EntitySet Name="Coordinate_GPS_Vista_LatLong" EntityType="GIASAlarmModel.Coordinate_GPS_Vista_LatLong" />
+        </EntityContainer>
+        <EntityType Name="CoordinateGPS">
+          <Key>
+            <PropertyRef Name="ID_Coordinata" />
+          </Key>
+          <Property Type="Int32" Name="ID_Coordinata" Nullable="false" />
+          <Property Type="DateTime" Name="DataOra" />
+          <Property Type="String" Name="IMEI" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Altezza" />
+          <Property Type="Double" Name="Speed" />
+          <Property Type="Double" Name="DOP" />
+          <Property Type="Double" Name="Fix" />
+          <Property Type="String" Name="TipologiaMovimento" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Coordinate_GPS_Vista_LatLong">
+          <Key>
+            <PropertyRef Name="ID_Coordinata" />
+          </Key>
+          <Property Type="Int32" Name="ID_Coordinata" Nullable="false" />
+          <Property Type="DateTime" Name="DataOra" />
+          <Property Type="String" Name="IMEI" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Altezza" />
+          <Property Type="Double" Name="Speed" />
+          <Property Type="Double" Name="DOP" />
+          <Property Type="Double" Name="Fix" />
+          <Property Type="String" Name="TipologiaMovimento" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Lat" />
+          <Property Type="Double" Name="Long" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GIASAlarmModelStoreContainer" CdmEntityContainer="GIASAlarmEntities">
+          <EntitySetMapping Name="CoordinateGPS">
+            <EntityTypeMapping TypeName="GIASAlarmModel.CoordinateGPS">
+              <MappingFragment StoreEntitySet="CoordinateGPS">
+                <ScalarProperty Name="TipologiaMovimento" ColumnName="TipologiaMovimento" />
+                <ScalarProperty Name="Fix" ColumnName="Fix" />
+                <ScalarProperty Name="DOP" ColumnName="DOP" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Altezza" ColumnName="Altezza" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+                <ScalarProperty Name="ID_Coordinata" ColumnName="ID_Coordinata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coordinate_GPS_Vista_LatLong">
+            <EntityTypeMapping TypeName="GIASAlarmModel.Coordinate_GPS_Vista_LatLong">
+              <MappingFragment StoreEntitySet="Coordinate_GPS_Vista_LatLong">
+                <ScalarProperty Name="Long" ColumnName="Long" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="TipologiaMovimento" ColumnName="TipologiaMovimento" />
+                <ScalarProperty Name="Fix" ColumnName="Fix" />
+                <ScalarProperty Name="DOP" ColumnName="DOP" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Altezza" ColumnName="Altezza" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="DataOra" ColumnName="DataOra" />
+                <ScalarProperty Name="ID_Coordinata" ColumnName="ID_Coordinata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="GIASAlarmModel.CoordinateGPS" Width="3.875" PointX="1.5" PointY="0.875" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="GIASAlarmModel.Coordinate_GPS_Vista_LatLong" Width="1.5" PointX="6.625" PointY="1" Height="2.9417936197916656" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

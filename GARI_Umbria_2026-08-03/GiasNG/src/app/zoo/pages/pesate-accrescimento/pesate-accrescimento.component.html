@@ -1,0 +1,204 @@
+<!-- ── Filter panel ─────────────────────────────────────────────────────────────────────────── -->
+<gias-side-filters-template
+  [filtersTemplate]="filtersForm"
+  (search)="applyFilters()">
+</gias-side-filters-template>
+
+<!-- ── Chart ─────────────────────────────────────────────────────────────────────────────────── -->
+@if (chartScatterPoints.length > 0) {
+  <section class="chart-section k-mb-4">
+    <kendo-chart>
+      <kendo-chart-title [text]="'PesateAccrescimento' | transloco"></kendo-chart-title>
+
+      <kendo-chart-legend position="bottom"></kendo-chart-legend>
+
+      <kendo-chart-x-axis>
+        <kendo-chart-x-axis-item
+          [title]="{ text: 'EtaGiorni' | transloco }">
+        </kendo-chart-x-axis-item>
+      </kendo-chart-x-axis>
+
+      <kendo-chart-y-axis>
+        <kendo-chart-y-axis-item
+          [title]="{ text: 'PesoKg' | transloco }">
+        </kendo-chart-y-axis-item>
+      </kendo-chart-y-axis>
+
+      <kendo-chart-series>
+        <!-- Real weighings scatter (blue dots) — tooltip only on this series -->
+        <kendo-chart-series-item
+          type="scatter"
+          [data]="chartScatterPoints"
+          xField="eta_giorni"
+          yField="peso_kg"
+          [name]="'PesateReali' | transloco"
+          [color]="'var(--kendo-color-primary)'"
+          [markers]="{ visible: true, size: 6 }">
+          <kendo-chart-series-item-tooltip>
+            <ng-template let-dataItem="dataItem">
+              <div class="chart-tooltip">
+                <div><strong>LID:</strong> {{ dataItem?.lid }}</div>
+                <div><strong>Data pesata:</strong> {{ dataItem?.data_pesata_fmt }}</div>
+                <div><strong>Peso (kg):</strong> {{ dataItem?.peso_kg }} kg</div>
+                <div><strong>Peso teorico:</strong> {{ dataItem?.peso_teorico }} kg</div>
+                <div><strong>Scostamento:</strong> {{ dataItem?.scostamento_pct }}%</div>
+              </div>
+            </ng-template>
+          </kendo-chart-series-item-tooltip>
+        </kendo-chart-series-item>
+
+        <!-- Theoretical curve (red line) — tooltip disabled -->
+        <kendo-chart-series-item
+          type="scatterLine"
+          [data]="chartCurvaTeeoricaPoints"
+          xField="eta_giorni"
+          yField="peso_teorico"
+          [name]="'CurvaTeorica' | transloco"
+          [color]="'var(--kendo-color-error)'"
+          [markers]="{ visible: false }"
+          [tooltip]="{ visible: false }">
+        </kendo-chart-series-item>
+
+        <!-- Confidence band upper +5% (grey area) — tooltip disabled -->
+        <kendo-chart-series-item
+          type="scatterLine"
+          [data]="chartCurvaTeeoricaPoints"
+          xField="eta_giorni"
+          yField="fascia_sup"
+          [name]="'FasciaConfidenza' | transloco"
+          color="transparent"
+          [line]="{ style: 'smooth', dashType: 'dash' }"
+          [markers]="{ visible: false }"
+          [tooltip]="{ visible: false }">
+        </kendo-chart-series-item>
+
+        <!-- Confidence band lower -5% (grey area) — tooltip disabled -->
+        <kendo-chart-series-item
+          type="scatterLine"
+          [data]="chartCurvaTeeoricaPoints"
+          xField="eta_giorni"
+          yField="fascia_inf"
+          [name]="'FasciaConfidenzaInf' | transloco"
+          color="grey"
+          [line]="{ style: 'smooth', dashType: 'dash', opacity: 0.4 }"
+          [markers]="{ visible: false }"
+          [tooltip]="{ visible: false }">
+        </kendo-chart-series-item>
+      </kendo-chart-series>
+    </kendo-chart>
+  </section>
+}
+
+<!-- ── Grid ─────────────────────────────────────────────────────────────────────────────────── -->
+<section class="k-mb-4">
+  <gias-kendo-grid
+    #pesateGrid
+    class="kendo-grid-no-shadows">
+
+    <ng-container headerContentButtons>
+    </ng-container>
+
+  </gias-kendo-grid>
+</section>
+
+<!-- ── Export bar ──────────────────────────────────────────────────────────────────────────────────── -->
+@if (zooLoaded) {
+  <div class="export-bar k-d-flex k-align-items-center k-gap-3 k-p-3 k-mt-2">
+    <span class="k-font-weight-semibold">{{ 'FormatoExport' | transloco }}:</span>
+    <kendo-buttongroup selection="single">
+      <button kendoButton
+        themeColor="base"
+        [selected]="exportFormat === 'CSV'"
+        (click)="exportFormat = 'CSV'">
+        CSV
+      </button>
+      <button kendoButton
+        themeColor="base"
+        [selected]="exportFormat === 'XLS'"
+        (click)="exportFormat = 'XLS'">
+        Excel
+      </button>
+    </kendo-buttongroup>
+    <button
+      kendoButton
+      class="btn btn-primary btn-primary-fill"
+      [disabled]="isExporting"
+      (click)="onExport()">
+      {{ 'EsportaDati' | transloco }}
+    </button>
+  </div>
+}
+
+<!-- ── Filter form template ──────────────────────────────────────────────────────────────────── -->
+<ng-template #filtersForm>
+  <form [formGroup]="filters">
+    <gias-drop-down-template-s
+      giasFormControlName="center"
+      [name]="'CentroAziendale' | transloco"
+      [listItems]="centerItems"
+      textField="descrizione"
+      valueField="codice">
+    </gias-drop-down-template-s>
+
+    <!--
+      Stalla: single-select dropdown.
+      See UIDS001 — "Dropdown Stalla" mapping.
+    -->
+    <gias-drop-down-template-s
+      giasFormControlName="stalla_key"
+      [name]="'Stalla' | transloco"
+      [listItems]="stableItems"
+      textField="text"
+      valueField="value"
+      [clearButton]="true">
+    </gias-drop-down-template-s>
+
+    <!--
+      Razza: multi-select.
+      See UIDS001 — "Multiselect Razza" mapping.
+    -->
+    <gias-multiselect-template-s
+      giasFormControlName="razza_key"
+      [name]="'Razza' | transloco"
+      [listItems]="razzaItems"
+      textField="text"
+      valueField="value">
+    </gias-multiselect-template-s>
+
+    <!-- Date range -->
+    <gias-data-template
+      giasFormControlName="date_from"
+      [name]="'Da' | transloco">
+    </gias-data-template>
+
+    <gias-data-template
+      giasFormControlName="date_to"
+      [name]="'A' | transloco">
+    </gias-data-template>
+
+    <!--
+      Kg/giorno growth factor.
+      See UIDS001 — "Input kg/giorno".
+    -->
+    <gias-numeric-template
+      giasFormControlName="kg_per_day"
+      [name]="'KgPerGiorno' | transloco"
+      [minValue]="0.1"
+      [maxValue]="2.0"
+      [decimals]="2"
+      [format]="'n2'">
+    </gias-numeric-template>
+
+    <!--
+      Alert threshold %.
+      See UIDS001 — "Input soglia scostamento %".
+    -->
+    <gias-numeric-template
+      giasFormControlName="alert_threshold_pct"
+      [name]="'SogliaScostamento' | transloco"
+      [minValue]="0"
+      [decimals]="1"
+      [format]="'n1'">
+    </gias-numeric-template>
+  </form>
+</ng-template>

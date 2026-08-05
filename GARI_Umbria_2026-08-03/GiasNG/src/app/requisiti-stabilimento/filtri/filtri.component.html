@@ -1,0 +1,69 @@
+<form [formGroup]="filtriForm">
+      <div class="row form-rows">
+          <gias-validita [formGroupName]="'validita'"></gias-validita>
+
+        <div class="col-lg-1 col-md-1 col-sm-1">
+          <gias-switch-template
+            giasFormControlName="assegnazione"
+            [name]="'Budget' | transloco"
+            (valueChange)="changeAssegnazione($event)"
+          ></gias-switch-template>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <gias-drop-down-template
+            [name]="'Budget' | transloco"
+            giasFormControlName="budget"
+            [id]="'budget'"
+            [isDisabled]="false"
+            [listItems]="budgets"
+            textField="Nome_Budget"
+            valueField="Id_Budget"
+            [valuePrimitive]="false"
+            (open)="loadBudgetsData($event)"
+          ></gias-drop-down-template>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <gias-drop-down-template
+            [name]="'CooperativaReferente' | transloco"
+            giasFormControlName="cooperativa"
+            [id]="'cooperativa'"
+            [isDisabled]="false"
+            [listItems]="cooperative"
+            textField="Rag_Soc_Completa"
+            valueField="Cod_RisUm"
+            [valuePrimitive]="false"
+            (open)="loadCoopData($event)"
+            (valueChange)="changeCoop($event)"
+          ></gias-drop-down-template>
+        </div>
+
+      </div>
+      <div class="row form-row">
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <gias-drop-down-template
+            [name]="'SpecieVegetali' | transloco"
+            giasFormControlName="specie"
+            [id]="'specie'"
+            [isDisabled]="false"
+            [listItems]="specieVegetali"
+            textField="descrizione"
+            valueField="codice"
+            [valuePrimitive]="false"
+            (open)="loadSpecieData($event)"
+            (valueChange)="changeSpecie($event)"
+          ></gias-drop-down-template>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12">
+          <gias-drop-down-template
+            [name]="'Prodotto' | transloco"
+            giasFormControlName="prodotto"
+            [id]="'prodotto'"
+            [isDisabled]="false"
+            [listItems]="prodotti"
+            textField="descrizione"
+            valueField="codice"
+            [valuePrimitive]="false"
+          ></gias-drop-down-template>
+        </div>
+      </div>
+</form>

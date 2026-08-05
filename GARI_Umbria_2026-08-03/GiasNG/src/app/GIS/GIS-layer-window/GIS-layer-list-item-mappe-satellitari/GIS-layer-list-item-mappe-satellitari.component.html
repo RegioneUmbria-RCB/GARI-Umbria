@@ -1,0 +1,32 @@
+<ng-container *nfIg="lastPage$ | async"></ng-container>
+
+<ng-container *ngIf="{ masks: masks$ | async } as data">
+  <div class="info-box">
+
+    <ng-content></ng-content>
+
+    <span (click)="toggleVisible($event, dataItem, data.masks)"
+      class="menu-icon">
+      <i aria-hidden="true" class="xi-settings-disabled"></i>
+    </span>
+
+    <div class="color-icon" [ngStyle]="{ 'background-color': '#' + dataItem.colore_1 }"
+      (click)="toggleVisible($event, dataItem, data.masks)">
+    </div>
+
+    <div *ngIf="themes"><i aria-hidden="true" class="xi-theme-layer-empty add-margin-right"></i></div>
+    <div *ngIf="!themes" class="add-margin-right"></div>
+
+    <span> {{ dataItem.nome }}</span>
+  </div>
+
+  <span class="info-icon">
+    <i aria-hidden="true"
+      class="xi-satellitari-forward-invisible"></i>
+  </span>
+
+  <span (click)="toggleVisible($event, dataItem, data.masks)" class="info-icon">
+    <i aria-hidden="true" class="xi-eye-invisible-dark">
+    </i>
+  </span>
+</ng-container>

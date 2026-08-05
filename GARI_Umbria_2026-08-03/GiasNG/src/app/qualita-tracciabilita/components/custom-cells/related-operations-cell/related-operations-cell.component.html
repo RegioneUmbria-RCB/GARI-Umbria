@@ -1,0 +1,20 @@
+@if (relatedOperations.length > 0) {
+  <button kendoButton look="flat" (click)="toggleOperationsDetails()">
+      <fa-icon size="lg" [icon]="expandIcon"></fa-icon>
+  </button>
+}
+
+@if (showOperationsDetails) {
+<ul class="operations-list">
+  @for(operation of relatedOperations; track $index) {
+    <li>
+      <p>{{getRelatedOperationString(operation)}}</p>
+      @if (canReadQdc) {
+        <button kendoButton (click)="goToOperation(operation)">
+          <fa-icon size="lg" [icon]="faArrowRight"></fa-icon>
+        </button>
+      }
+    </li>
+  }
+</ul>
+}
